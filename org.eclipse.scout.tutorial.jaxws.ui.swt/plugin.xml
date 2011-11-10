@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="org.eclipse.scout.tutorial.jaxws.ui.swt.perspective.Perspective"
+            fixed="true"
+            id="org.eclipse.scout.tutorial.jaxws.ui.swt.perspective.Perspective"
+            name="tutorial"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="org.eclipse.scout.tutorial.jaxws.ui.swt.views.CenterView"
+            icon="resources/icons/eclipse_scout.gif"
+            id="org.eclipse.scout.tutorial.jaxws.ui.swt.views.CenterView"
+            name="CenterView">
+      </view>
+      <view
+            class="org.eclipse.scout.tutorial.jaxws.ui.swt.views.OutlinePageView"
+            icon="resources/icons/eclipse_scout.gif"
+            id="org.eclipse.scout.tutorial.jaxws.ui.swt.views.OutlinePageView"
+            name="Outline"
+            restorable="true">
+      </view>
+      <view
+            class="org.eclipse.scout.tutorial.jaxws.ui.swt.views.TablePageView"
+            icon="resources/icons/eclipse_scout.gif"
+            id="org.eclipse.scout.tutorial.jaxws.ui.swt.views.TablePageView"
+            name="Table Page"
+            restorable="true">
+      </view>
+      <view
+            class="org.eclipse.scout.tutorial.jaxws.ui.swt.views.SearchView"
+            icon="resources/icons/eclipse_scout.gif"
+            id="org.eclipse.scout.tutorial.jaxws.ui.swt.views.SearchView"
+            name="Search"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="org.eclipse.scout.tutorial.jaxws.ui.swt.SwtStartup">
+      </startup>
+   </extension>
+     <extension id="application" name="Application" point="org.eclipse.core.runtime.applications">
+    <application>
+      <run class="org.eclipse.scout.tutorial.jaxws.ui.swt.application.Application"/>
+    </application>
+  </extension>
+  <extension id="product" point="org.eclipse.core.runtime.products">
+    <product
+          application="org.eclipse.scout.tutorial.jaxws.ui.swt.application"
+          name="tutorial">
+       <property
+             name="appName"
+             value="tutorial"/>
+    </product>
+  </extension>
+  <extension
+      point="org.eclipse.ui.views">
+   <view
+         class="org.eclipse.ui.internal.progress.ProgressView"
+         icon="resources/icons/progress_none.gif"
+         id="org.eclipse.ui.views.ProgressView"
+         name="Progress View">
+   </view>
+  </extension>
+
+</plugin>

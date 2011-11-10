@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+  <extension point="org.eclipse.scout.service.services">
+    <proxy class="org.eclipse.scout.tutorial.jaxws.shared.services.outline.IMainOutlineService" factory="org.eclipse.scout.rt.client.services.ClientProxyServiceFactory"/>
+    <proxy class="org.eclipse.scout.tutorial.jaxws.shared.services.process.ICompanyProcessService" factory="org.eclipse.scout.rt.client.services.ClientProxyServiceFactory"/>
+    <proxy class="org.eclipse.scout.tutorial.jaxws.shared.services.process.IWsLogProcessService" factory="org.eclipse.scout.rt.client.services.ClientProxyServiceFactory"/>
+  </extension>
+  <extension point="org.eclipse.scout.service.services">
+  </extension>
+</plugin>

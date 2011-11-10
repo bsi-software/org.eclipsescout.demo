@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webservices>
+  <consumer name="StockQuoteWebServiceClient" wsdl="WEB-INF/wsdl/StockQuoteService.asmx.wsdl">
+    <property name="b" value="WEB-INF/build/StockQuoteWebServiceClient-bindings.xml"/>
+    <property name="verbose"/>
+    <property name="target" value="2.0"/>
+    <property name="Xdebug"/>
+    <property name="keep"/>
+  </consumer>
+  <provider name="CompanyWebService">
+    <property name="b" value="WEB-INF/build/CompanyWebService-bindings.xml"/>
+    <property name="verbose"/>
+    <property name="target" value="2.0"/>
+    <property name="Xdebug"/>
+    <property name="keep"/>
+  </provider>
+</webservices>
