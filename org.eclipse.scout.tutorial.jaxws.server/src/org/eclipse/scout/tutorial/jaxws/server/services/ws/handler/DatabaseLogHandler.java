@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Daniel Wiehl (Business Systems Integration AG) - initial API and implementation
  ******************************************************************************/
@@ -29,14 +29,19 @@ public class DatabaseLogHandler extends LogHandler {
 
   private static final IScoutLogger LOG = ScoutLogManager.getLogger(DatabaseLogHandler.class);
 
+  /**
+   * Property that identifies the primary key of the log entry.
+   */
   public static final String PROP_WS_LOG_NR = UUID.randomUUID().toString();
 
   @Override
   protected void handleLogMessage(DirectionType directionType, String soapMessage, SOAPMessageContext context) {
     try {
-      if (directionType == DirectionType.Out) {
-        Long wsLogNr = SQL.getSequenceNextval("GLOBAL_SEQ");
+      Long wsLogNr = (Long) context.get(PROP_WS_LOG_NR);
+      if (wsLogNr == null) {
+        wsLogNr = SQL.getSequenceNextval("GLOBAL_SEQ");
         context.put(PROP_WS_LOG_NR, wsLogNr);
+
         SQL.insert("" +
             "INSERT INTO   WS_LOG " +
             "             (WS_LOG_NR, " +
@@ -58,22 +63,13 @@ public class DatabaseLogHandler extends LogHandler {
             , new NVPair("request", soapMessage)
             , new NVPair("evtDate", new Date())
             );
-
       }
       else {
-        Long wsLogNr = (Long) context.get(PROP_WS_LOG_NR);
-
         SQL.update("" +
             "UPDATE   WS_LOG " +
-            "SET      SERVICE = :service, " +
-            "         PORT = :port, " +
-            "         OPERATION = :operation, " +
-            "         RESPONSE = :response " +
+            "SET      RESPONSE = :response " +
             "WHERE    WS_LOG_NR = :wsLogNr"
             , new NVPair("wsLogNr", wsLogNr)
-            , new NVPair("service", StringUtility.nvl(context.get(SOAPMessageContext.WSDL_SERVICE), "?"))
-            , new NVPair("port", StringUtility.nvl(context.get(SOAPMessageContext.WSDL_PORT), "?"))
-            , new NVPair("operation", StringUtility.nvl(context.get(SOAPMessageContext.WSDL_OPERATION), "?"))
             , new NVPair("response", soapMessage)
             );
       }
