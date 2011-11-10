@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+  <extension point="org.eclipse.scout.service.services">
+    <service class="org.eclipse.scout.rt.server.services.common.bookmark.FileSystemBookmarkStorageService" factory="org.eclipse.scout.rt.server.services.ServerServiceFactory" session="org.eclipse.scout.tutorial.jaxws.server.ServerSession"/>
+    <service class="org.eclipse.scout.rt.server.services.common.workflow.WorkflowProviderService" factory="org.eclipse.scout.rt.server.services.ServerServiceFactory" session="org.eclipse.scout.tutorial.jaxws.server.ServerSession"/>
+    <service class="org.eclipse.scout.tutorial.jaxws.server.services.custom.security.AccessControlService" factory="org.eclipse.scout.rt.server.services.ServerServiceFactory" session="org.eclipse.scout.tutorial.jaxws.server.ServerSession"/>
+    <service class="org.eclipse.scout.tutorial.jaxws.server.services.common.sql.DerbySqlService" session="org.eclipse.scout.tutorial.jaxws.server.ServerSession" factory="org.eclipse.scout.rt.server.services.ServerServiceFactory"/>
+    <service class="org.eclipse.scout.tutorial.jaxws.server.services.outline.MainOutlineService" session="org.eclipse.scout.tutorial.jaxws.server.ServerSession" factory="org.eclipse.scout.rt.server.services.ServerServiceFactory"/>
+    <service class="org.eclipse.scout.tutorial.jaxws.server.services.process.CompanyProcessService" session="org.eclipse.scout.tutorial.jaxws.server.ServerSession" factory="org.eclipse.scout.rt.server.services.ServerServiceFactory"/>
+    <service class="org.eclipse.scout.tutorial.jaxws.server.services.process.WsLogProcessService" session="org.eclipse.scout.tutorial.jaxws.server.ServerSession" factory="org.eclipse.scout.rt.server.services.ServerServiceFactory"/>
+    <service class="org.eclipse.scout.tutorial.jaxws.server.services.ws.consumer.StockQuoteWebServiceClient" session="org.eclipse.scout.tutorial.jaxws.server.ServerSession" factory="org.eclipse.scout.rt.server.services.ServerServiceFactory"/>
+  </extension>
+  <extension point="org.eclipse.equinox.http.registry.servlets">
+    <servlet alias="/process" class="org.eclipse.scout.rt.server.ServiceTunnelServlet">
+      <init-param name="min-version" value="0.0.0"/>
+    </servlet>
+    <servlet alias="/remotefiles" class="org.eclipse.scout.rt.server.RemoteFileServlet">
+     </servlet>
+    <servlet alias="/updatesite" class="org.eclipse.scout.rt.server.RemoteFileServlet">
+      <init-param name="folder" value="/updatesite"/>
+    </servlet>
+    <servlet alias="/" class="org.eclipse.scout.rt.server.ResourceServlet">
+      <init-param name="bundle-name" value="org.eclipse.scout.tutorial.jaxws.server"/>
+      <init-param name="bundle-path" value="/resources/html"/>
+    </servlet>
+    <servlet alias="/ajax" class="org.eclipse.scout.rt.server.ServiceTunnelServlet"/>
+    <servlet alias="/jaxws" class="org.eclipse.scout.jaxws216.JaxWsServlet"/>
+  </extension>
+  <extension point="org.eclipse.scout.http.servletfilter.filters">
+    <filter aliases="/process /remotefiles /updatesite" class="org.eclipse.scout.http.servletfilter.security.BasicSecurityFilter" ranking="20">
+      <init-param name="realm" value="BSIAG Development"/>
+      <init-param name="users" value="admin=manager,allen=allen,blake=blake"/>
+    </filter>
+    <filter aliases="/process /remotefiles /updatesite" class="org.eclipse.scout.http.servletfilter.security.AnonymousSecurityFilter" ranking="30">
+    </filter>
+  </extension>
+  <extension id="app" name="Server Application" point="org.eclipse.core.runtime.applications">
+    <application>
+      <run class="org.eclipse.scout.tutorial.jaxws.server.ServerApplication"/>
+    </application>
+  </extension>
+  <extension id="product" point="org.eclipse.core.runtime.products">
+    <product application="org.eclipse.scout.tutorial.jaxws.server.app" name="Tutorial Server">
+      <property name="appName" value="Tutorial Server">
+       </property>
+    </product>
+  </extension>
+</plugin>
