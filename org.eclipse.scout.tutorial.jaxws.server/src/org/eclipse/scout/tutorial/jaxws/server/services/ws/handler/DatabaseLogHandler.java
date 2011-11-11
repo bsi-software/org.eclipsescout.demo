@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2001 BSI Business Systems Integration AG.
+ * Copyright (c) 2011 BSI Business Systems Integration AG.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *     Daniel Wiehl (Business Systems Integration AG) - initial API and implementation
  ******************************************************************************/
@@ -30,15 +30,20 @@ public class DatabaseLogHandler extends LogHandler {
   private static final IScoutLogger LOG = ScoutLogManager.getLogger(DatabaseLogHandler.class);
 
   /**
-   * Property that identifies the primary key of the log entry.
+   * Property to access the primary key of the log entry in the message context.
    */
   public static final String PROP_WS_LOG_NR = UUID.randomUUID().toString();
 
   @Override
   protected void handleLogMessage(DirectionType directionType, String soapMessage, SOAPMessageContext context) {
     try {
+      /*
+       * If this handler is invoked to post-process the SOAP-response, the SOAP-request was already logged and
+       * the log's primary key put into the message context. In consequence, the log entry is updated with the SOAP response.
+       */
       Long wsLogNr = (Long) context.get(PROP_WS_LOG_NR);
       if (wsLogNr == null) {
+        // SOAP request
         wsLogNr = SQL.getSequenceNextval("GLOBAL_SEQ");
         context.put(PROP_WS_LOG_NR, wsLogNr);
 
@@ -65,6 +70,7 @@ public class DatabaseLogHandler extends LogHandler {
             );
       }
       else {
+        // SOAP response
         SQL.update("" +
             "UPDATE   WS_LOG " +
             "SET      RESPONSE = :response " +
