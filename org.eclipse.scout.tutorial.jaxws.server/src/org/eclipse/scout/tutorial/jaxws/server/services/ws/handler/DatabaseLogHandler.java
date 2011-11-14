@@ -4,12 +4,13 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Daniel Wiehl (Business Systems Integration AG) - initial API and implementation
  ******************************************************************************/
 package org.eclipse.scout.tutorial.jaxws.server.services.ws.handler;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Date;
 import java.util.UUID;
 
@@ -20,6 +21,7 @@ import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.holders.NVPair;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
+import org.eclipse.scout.commons.xmlparser.ScoutXmlDocument;
 import org.eclipse.scout.jaxws216.annotation.ScoutTransaction;
 import org.eclipse.scout.jaxws216.handler.LogHandler;
 import org.eclipse.scout.rt.server.services.common.jdbc.SQL;
@@ -65,7 +67,7 @@ public class DatabaseLogHandler extends LogHandler {
             , new NVPair("service", StringUtility.nvl(context.get(SOAPMessageContext.WSDL_SERVICE), "?"))
             , new NVPair("port", StringUtility.nvl(context.get(SOAPMessageContext.WSDL_PORT), "?"))
             , new NVPair("operation", StringUtility.nvl(context.get(SOAPMessageContext.WSDL_OPERATION), "?"))
-            , new NVPair("request", soapMessage)
+            , new NVPair("request", wellformXml(soapMessage))
             , new NVPair("evtDate", new Date())
             );
       }
@@ -76,12 +78,26 @@ public class DatabaseLogHandler extends LogHandler {
             "SET      RESPONSE = :response " +
             "WHERE    WS_LOG_NR = :wsLogNr"
             , new NVPair("wsLogNr", wsLogNr)
-            , new NVPair("response", soapMessage)
+            , new NVPair("response", wellformXml(soapMessage))
             );
       }
     }
     catch (ProcessingException e) {
       LOG.error("failed to persist webservice-log", e);
     }
+  }
+
+  private String wellformXml(String rawXml) {
+    try {
+      ScoutXmlDocument doc = new ScoutXmlDocument(rawXml);
+      doc.setPrettyPrint(true);
+      ByteArrayOutputStream os = new ByteArrayOutputStream();
+      doc.write(os);
+      return new String(os.toByteArray(), doc.getXmlEncoding());
+    }
+    catch (Exception e) {
+      LOG.warn("failed to wellform XML", e);
+    }
+    return rawXml;
   }
 }
