@@ -22,8 +22,8 @@ import org.eclipse.scout.commons.holders.NVPair;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.commons.xmlparser.ScoutXmlDocument;
-import org.eclipse.scout.jaxws216.annotation.ScoutTransaction;
-import org.eclipse.scout.jaxws216.handler.LogHandler;
+import org.eclipse.scout.jaxws.annotation.ScoutTransaction;
+import org.eclipse.scout.jaxws.handler.LogHandler;
 import org.eclipse.scout.rt.server.services.common.jdbc.SQL;
 
 @ScoutTransaction
