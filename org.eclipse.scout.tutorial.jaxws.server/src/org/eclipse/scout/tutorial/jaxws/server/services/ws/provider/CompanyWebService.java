@@ -18,7 +18,7 @@ import javax.jws.WebService;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.holders.BeanArrayHolder;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
-import org.eclipse.scout.jaxws216.annotation.ScoutWebService;
+import org.eclipse.scout.jaxws.annotation.ScoutWebService;
 import org.eclipse.scout.rt.server.services.common.jdbc.SQL;
 import org.eclipse.scout.tutorial.jaxws.services.ws.companywebservice.Company;
 import org.eclipse.scout.tutorial.jaxws.services.ws.companywebservice.CompanyWebServicePortType;
