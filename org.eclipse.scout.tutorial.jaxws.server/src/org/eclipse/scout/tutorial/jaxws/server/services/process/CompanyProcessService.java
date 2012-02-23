@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Daniel Wiehl (Business Systems Integration AG) - initial API and implementation
  ******************************************************************************/
@@ -13,6 +13,7 @@ package org.eclipse.scout.tutorial.jaxws.server.services.process;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
@@ -95,15 +96,15 @@ public class CompanyProcessService extends AbstractService implements ICompanyPr
   private Date parseDateTime(String date, String time) {
     try {
       if (date != null && !date.equals("N/A") && time != null && !time.equals("N/A")) {
-        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy hh:mmaa");
+        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy hh:mmaa", Locale.US);
         return format.parse(date + " " + time);
       }
       else if (date != null && !date.equals("N/A")) {
-        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
         return format.parse(date);
       }
       else if (time != null && !time.equals("N/A")) {
-        SimpleDateFormat format = new SimpleDateFormat("hh:mmaa");
+        SimpleDateFormat format = new SimpleDateFormat("hh:mmaa", Locale.US);
         return format.parse(time);
       }
     }
