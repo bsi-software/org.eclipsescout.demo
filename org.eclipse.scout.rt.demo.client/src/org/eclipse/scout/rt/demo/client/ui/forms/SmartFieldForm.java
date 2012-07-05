@@ -26,7 +26,7 @@ import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 
-public class SmartFieldForm extends AbstractForm implements ITestForm {
+public class SmartFieldForm extends AbstractForm implements IPageForm {
 
   public SmartFieldForm() throws ProcessingException {
     super();
@@ -38,8 +38,8 @@ public class SmartFieldForm extends AbstractForm implements ITestForm {
   }
 
   @Override
-  public void startTest() throws ProcessingException {
-    startInternal(new TestHandler());
+  public void startPageForm() throws ProcessingException {
+    startInternal(new PageFormHandler());
   }
 
   public CloseButton getCloseButton() {
@@ -248,6 +248,6 @@ public class SmartFieldForm extends AbstractForm implements ITestForm {
     }
   }
 
-  public class TestHandler extends AbstractFormHandler {
+  public class PageFormHandler extends AbstractFormHandler {
   }
 }

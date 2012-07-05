@@ -6,13 +6,17 @@ import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNodes;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm;
-import org.eclipse.scout.rt.demo.client.ui.forms.BrowserForm;
+import org.eclipse.scout.rt.demo.client.ui.forms.BrowserFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.CalendarForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.CheckboxForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.DateFieldForm;
+import org.eclipse.scout.rt.demo.client.ui.forms.GroupBoxForm;
+import org.eclipse.scout.rt.demo.client.ui.forms.KeyStrokeForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.LabelForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.SVGFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.SmartFieldForm;
+import org.eclipse.scout.rt.demo.client.ui.forms.StatusForm;
+import org.eclipse.scout.rt.demo.client.ui.forms.TableForm;
 import org.eclipse.scout.rt.shared.TEXTS;
 
 public class FormFieldsNodePage extends AbstractPageWithNodes {
@@ -29,21 +33,29 @@ public class FormFieldsNodePage extends AbstractPageWithNodes {
 
   @Override
   protected void execCreateChildPages(Collection<IPage> pageList) throws ProcessingException {
-    TestPage testPage = new TestPage(AllFieldsForm.class);
-    pageList.add(testPage);
-    TestPage testPage0 = new TestPage(SmartFieldForm.class);
-    pageList.add(testPage0);
-    TestPage testPage1 = new TestPage(LabelForm.class);
-    pageList.add(testPage1);
-    TestPage testPage2 = new TestPage(CalendarForm.class);
-    pageList.add(testPage2);
-    TestPage testPage3 = new TestPage(CheckboxForm.class);
-    pageList.add(testPage3);
-    TestPage testPage4 = new TestPage(DateFieldForm.class);
-    pageList.add(testPage4);
-    TestPage testPage5 = new TestPage(SVGFieldForm.class);
-    pageList.add(testPage5);
-    TestPage testPage6 = new TestPage(BrowserForm.class);
-    pageList.add(testPage6);
+    FormPage formPage = new FormPage(AllFieldsForm.class);
+    pageList.add(formPage);
+    FormPage formPage0 = new FormPage(SmartFieldForm.class);
+    pageList.add(formPage0);
+    FormPage formPage1 = new FormPage(LabelForm.class);
+    pageList.add(formPage1);
+    FormPage formPage2 = new FormPage(CalendarForm.class);
+    pageList.add(formPage2);
+    FormPage formPage3 = new FormPage(CheckboxForm.class);
+    pageList.add(formPage3);
+    FormPage formPage4 = new FormPage(DateFieldForm.class);
+    pageList.add(formPage4);
+    FormPage formPage5 = new FormPage(SVGFieldForm.class);
+    pageList.add(formPage5);
+    FormPage formPage6 = new FormPage(BrowserFieldForm.class);
+    pageList.add(formPage6);
+    FormPage formPage7 = new FormPage(KeyStrokeForm.class);
+    pageList.add(formPage7);
+    FormPage formPage8 = new FormPage(StatusForm.class);
+    pageList.add(formPage8);
+    FormPage formPage9 = new FormPage(TableForm.class);
+    pageList.add(formPage9);
+    FormPage formPage10 = new FormPage(GroupBoxForm.class);
+    pageList.add(formPage10);
   }
 }

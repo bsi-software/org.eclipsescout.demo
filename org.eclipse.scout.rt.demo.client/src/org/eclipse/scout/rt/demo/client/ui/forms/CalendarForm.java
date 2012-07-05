@@ -19,7 +19,7 @@ import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.calendar.CalendarAppointment;
 import org.eclipse.scout.rt.shared.services.common.calendar.ICalendarItem;
 
-public class CalendarForm extends AbstractForm implements ITestForm {
+public class CalendarForm extends AbstractForm implements IPageForm {
 
   public CalendarForm() throws ProcessingException {
     super();
@@ -31,8 +31,8 @@ public class CalendarForm extends AbstractForm implements ITestForm {
   }
 
   @Override
-  public void startTest() throws ProcessingException {
-    startInternal(new TestHandler());
+  public void startPageForm() throws ProcessingException {
+    startInternal(new PageFormHandler());
   }
 
   public CalendarField getCalendarField() {
@@ -115,6 +115,6 @@ public class CalendarForm extends AbstractForm implements ITestForm {
     }
   }
 
-  public class TestHandler extends AbstractFormHandler {
+  public class PageFormHandler extends AbstractFormHandler {
   }
 }

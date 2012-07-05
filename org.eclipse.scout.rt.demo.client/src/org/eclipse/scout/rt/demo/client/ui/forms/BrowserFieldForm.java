@@ -8,14 +8,14 @@ import org.eclipse.scout.rt.client.ui.form.fields.browserfield.AbstractBrowserFi
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractLinkButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
-import org.eclipse.scout.rt.demo.client.ui.forms.BrowserForm.MainBox.BrowserField;
-import org.eclipse.scout.rt.demo.client.ui.forms.BrowserForm.MainBox.BsiagButton;
-import org.eclipse.scout.rt.demo.client.ui.forms.BrowserForm.MainBox.CloseButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.BrowserFieldForm.MainBox.BrowserField;
+import org.eclipse.scout.rt.demo.client.ui.forms.BrowserFieldForm.MainBox.BsiagButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.BrowserFieldForm.MainBox.CloseButton;
 import org.eclipse.scout.rt.shared.TEXTS;
 
-public class BrowserForm extends AbstractForm implements ITestForm {
+public class BrowserFieldForm extends AbstractForm implements IPageForm {
 
-  public BrowserForm() throws ProcessingException {
+  public BrowserFieldForm() throws ProcessingException {
     super();
   }
 
@@ -25,8 +25,8 @@ public class BrowserForm extends AbstractForm implements ITestForm {
   }
 
   @Override
-  public void startTest() throws ProcessingException {
-    startInternal(new TestHandler());
+  public void startPageForm() throws ProcessingException {
+    startInternal(new PageFormHandler());
   }
 
   public BrowserField getBrowserField() {
@@ -50,6 +50,11 @@ public class BrowserForm extends AbstractForm implements ITestForm {
 
     @Order(10.0)
     public class BrowserField extends AbstractBrowserField {
+
+      @Override
+      protected boolean getConfiguredAutoDisplayText() {
+        return false;
+      }
 
       @Override
       protected int getConfiguredGridH() {
@@ -92,6 +97,6 @@ public class BrowserForm extends AbstractForm implements ITestForm {
     }
   }
 
-  public class TestHandler extends AbstractFormHandler {
+  public class PageFormHandler extends AbstractFormHandler {
   }
 }

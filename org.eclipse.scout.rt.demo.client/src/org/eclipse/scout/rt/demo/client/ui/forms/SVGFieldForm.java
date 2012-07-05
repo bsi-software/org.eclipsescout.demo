@@ -6,10 +6,10 @@ import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
-import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCancelButton;
+import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.demo.client.Activator;
-import org.eclipse.scout.rt.demo.client.ui.forms.SVGFieldForm.MainBox.CancelButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.SVGFieldForm.MainBox.CloseButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.SVGFieldForm.MainBox.SVGField;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.svg.client.SVGUtility;
@@ -20,7 +20,7 @@ import org.w3c.dom.svg.SVGPoint;
 import org.w3c.dom.svg.SVGPointList;
 import org.w3c.dom.svg.SVGPolygonElement;
 
-public class SVGFieldForm extends AbstractForm implements ITestForm {
+public class SVGFieldForm extends AbstractForm implements IPageForm {
 
   public SVGFieldForm() throws ProcessingException {
     super();
@@ -32,12 +32,12 @@ public class SVGFieldForm extends AbstractForm implements ITestForm {
   }
 
   @Override
-  public void startTest() throws ProcessingException {
-    startInternal(new TestHandler());
+  public void startPageForm() throws ProcessingException {
+    startInternal(new PageFormHandler());
   }
 
-  public CancelButton getCancelButton() {
-    return getFieldByClass(CancelButton.class);
+  public CloseButton getCloseButton() {
+    return getFieldByClass(CloseButton.class);
   }
 
   public MainBox getMainBox() {
@@ -78,11 +78,11 @@ public class SVGFieldForm extends AbstractForm implements ITestForm {
     }
 
     @Order(30.0)
-    public class CancelButton extends AbstractCancelButton {
+    public class CloseButton extends AbstractCloseButton {
     }
   }
 
-  public class TestHandler extends AbstractFormHandler {
+  public class PageFormHandler extends AbstractFormHandler {
     @Override
     public void execLoad() throws ProcessingException {
       try {

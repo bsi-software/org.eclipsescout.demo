@@ -23,7 +23,7 @@ import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.data.basic.FontSpec;
 import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 
-public class LabelForm extends AbstractForm implements ITestForm {
+public class LabelForm extends AbstractForm implements IPageForm {
 
   public LabelForm() throws ProcessingException {
     super();
@@ -39,8 +39,8 @@ public class LabelForm extends AbstractForm implements ITestForm {
   }
 
   @Override
-  public void startTest() throws ProcessingException {
-    startInternal(new TestHandler());
+  public void startPageForm() throws ProcessingException {
+    startInternal(new PageFormHandler());
   }
 
   public ForegroundColorField getColorField() {
@@ -219,6 +219,6 @@ public class LabelForm extends AbstractForm implements ITestForm {
     }
   }
 
-  public class TestHandler extends AbstractFormHandler {
+  public class PageFormHandler extends AbstractFormHandler {
   }
 }

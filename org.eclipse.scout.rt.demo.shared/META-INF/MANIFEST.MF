@@ -7,7 +7,8 @@ Bundle-Activator: org.eclipse.scout.rt.demo.shared.Activator
 Export-Package: org.eclipse.scout.rt.demo.shared,
  org.eclipse.scout.rt.demo.shared.services.code,
  org.eclipse.scout.rt.demo.shared.services.common.text,
- org.eclipse.scout.rt.demo.shared.services.outline
+ org.eclipse.scout.rt.demo.shared.services.outline,
+ org.eclipse.scout.rt.demo.shared.services.process
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.scout.rt.shared;visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

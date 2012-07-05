@@ -8,14 +8,14 @@ import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.IFormField;
-import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCancelButton;
+import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.datefield.AbstractDateField;
 import org.eclipse.scout.rt.client.ui.form.fields.datefield.AbstractDateTimeField;
 import org.eclipse.scout.rt.client.ui.form.fields.datefield.AbstractTimeField;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.demo.client.services.lookup.TimezonesLookupCall;
-import org.eclipse.scout.rt.demo.client.ui.forms.DateFieldForm.MainBox.CancelButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.DateFieldForm.MainBox.CloseButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.DateFieldForm.MainBox.GroupBox;
 import org.eclipse.scout.rt.demo.client.ui.forms.DateFieldForm.MainBox.GroupBox.DateField;
 import org.eclipse.scout.rt.demo.client.ui.forms.DateFieldForm.MainBox.GroupBox.DateTimeField;
@@ -24,7 +24,7 @@ import org.eclipse.scout.rt.demo.client.ui.forms.DateFieldForm.MainBox.GroupBox.
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 
-public class DateFieldForm extends AbstractForm implements ITestForm {
+public class DateFieldForm extends AbstractForm implements IPageForm {
 
   public DateFieldForm() throws ProcessingException {
     super();
@@ -36,12 +36,12 @@ public class DateFieldForm extends AbstractForm implements ITestForm {
   }
 
   @Override
-  public void startTest() throws ProcessingException {
-    startInternal(new TestHandler());
+  public void startPageForm() throws ProcessingException {
+    startInternal(new PageFormHandler());
   }
 
-  public CancelButton getCancelButton() {
-    return getFieldByClass(CancelButton.class);
+  public CloseButton getCloseButton() {
+    return getFieldByClass(CloseButton.class);
   }
 
   public DateField getDateField() {
@@ -89,10 +89,20 @@ public class DateFieldForm extends AbstractForm implements ITestForm {
 
         @Override
         protected void execChangedValue() throws ProcessingException {
-          int offset = getValue().getRawOffset();
-          for (IFormField f : getAllFields()) {
-            if (f instanceof AbstractDateField) {
-              ((AbstractDateField) f).setValue(new Date(System.currentTimeMillis() + offset));
+          if (getValue() != null) {
+            int offset = getValue().getRawOffset();
+            offset = offset - TimeZone.getDefault().getRawOffset();
+            for (IFormField f : getAllFields()) {
+              if (f instanceof AbstractDateField) {
+                ((AbstractDateField) f).setValue(new Date(System.currentTimeMillis() + offset));
+              }
+            }
+          }
+          else {
+            for (IFormField f : getAllFields()) {
+              if (f instanceof AbstractDateField) {
+                ((AbstractDateField) f).setValue(new Date());
+              }
             }
           }
         }
@@ -157,10 +167,10 @@ public class DateFieldForm extends AbstractForm implements ITestForm {
     }
 
     @Order(60.0)
-    public class CancelButton extends AbstractCancelButton {
+    public class CloseButton extends AbstractCloseButton {
     }
   }
 
-  public class TestHandler extends AbstractFormHandler {
+  public class PageFormHandler extends AbstractFormHandler {
   }
 }

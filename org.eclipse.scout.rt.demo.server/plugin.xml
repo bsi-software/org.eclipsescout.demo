@@ -24,6 +24,16 @@
             class="org.eclipse.scout.rt.demo.server.services.outline.StandardOutlineService"
             session="org.eclipse.scout.rt.demo.server.ServerSession">
       </service>
+      <service
+            factory="org.eclipse.scout.rt.server.services.ServerServiceFactory"
+            class="org.eclipse.scout.rt.demo.server.services.process.JaxWsProcessService"
+            session="org.eclipse.scout.rt.demo.server.ServerSession">
+      </service>
+      <service
+            factory="org.eclipse.scout.rt.server.services.ServerServiceFactory"
+            class="org.eclipse.scout.rt.demo.server.services.ws.consumer.StockQuoteServiceSoapWebServiceClient"
+            session="org.eclipse.scout.rt.demo.server.ServerSession">
+      </service>
    </extension>
    <extension
          name=""

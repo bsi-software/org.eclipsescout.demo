@@ -5,18 +5,18 @@ import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNodes;
 import org.eclipse.scout.rt.client.ui.form.IForm;
-import org.eclipse.scout.rt.demo.client.ui.forms.ITestForm;
+import org.eclipse.scout.rt.demo.client.ui.forms.IPageForm;
 import org.eclipse.scout.rt.shared.TEXTS;
 
-public class TestPage extends AbstractPageWithNodes {
+public class FormPage extends AbstractPageWithNodes {
 
-  private Class<? extends ITestForm> m_testFormType;
+  private Class<? extends IPageForm> m_testFormType;
 
-  public TestPage() {
+  public FormPage() {
     super();
   }
 
-  public TestPage(Class<? extends ITestForm> c) {
+  public FormPage(Class<? extends IPageForm> c) {
     super(false, c.getName());
     m_testFormType = c;
     callInitializer();
@@ -38,13 +38,13 @@ public class TestPage extends AbstractPageWithNodes {
   @Override
   protected void execPageActivated() throws ProcessingException {
     if (getDetailForm() == null) {
-      ITestForm form = execCreateDetailForm();
+      IPageForm form = execCreateDetailForm();
       setDetailForm(form);
-      form.startTest();
+      form.startPageForm();
     }
   }
 
-  protected ITestForm execCreateDetailForm() throws ProcessingException {
+  protected IPageForm execCreateDetailForm() throws ProcessingException {
     try {
       return m_testFormType.newInstance();
     }
@@ -71,10 +71,10 @@ public class TestPage extends AbstractPageWithNodes {
 
     @Override
     protected void execAction() throws ProcessingException {
-      ITestForm form = execCreateDetailForm();
+      IPageForm form = execCreateDetailForm();
       form.setDisplayHint(IForm.DISPLAY_HINT_DIALOG);
       form.setAskIfNeedSave(false);
-      form.startTest();
+      form.startPageForm();
       form.waitFor();
     }
   }
