@@ -30,12 +30,17 @@ public class LabelForm extends AbstractForm implements IPageForm {
   }
 
   @Override
-  protected String getConfiguredTitle() {
-    return TEXTS.get("Labels");
+  protected boolean getConfiguredAskIfNeedSave() {
+    return false;
   }
 
   public CloseButton getCloseButton() {
     return getFieldByClass(CloseButton.class);
+  }
+
+  @Override
+  protected String getConfiguredTitle() {
+    return TEXTS.get("Label");
   }
 
   @Override

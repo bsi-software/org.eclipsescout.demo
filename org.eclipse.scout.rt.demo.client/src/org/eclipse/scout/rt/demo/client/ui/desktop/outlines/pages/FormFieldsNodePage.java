@@ -11,12 +11,15 @@ import org.eclipse.scout.rt.demo.client.ui.forms.CalendarForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.CheckboxForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.DateFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.GroupBoxForm;
+import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.KeyStrokeForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.LabelForm;
+import org.eclipse.scout.rt.demo.client.ui.forms.MessageBoxesForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.SVGFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.SmartFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.StatusForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.TableForm;
+import org.eclipse.scout.rt.demo.client.ui.forms.WrappedFormFieldForm;
 import org.eclipse.scout.rt.shared.TEXTS;
 
 public class FormFieldsNodePage extends AbstractPageWithNodes {
@@ -57,5 +60,11 @@ public class FormFieldsNodePage extends AbstractPageWithNodes {
     pageList.add(formPage9);
     FormPage formPage10 = new FormPage(GroupBoxForm.class);
     pageList.add(formPage10);
+    FormPage formPage11 = new FormPage(MessageBoxesForm.class);
+    pageList.add(formPage11);
+    FormPage formPage12 = new FormPage(WrappedFormFieldForm.class);
+    pageList.add(formPage12);
+    FormPage formPage13 = new FormPage(ImageFieldForm.class);
+    pageList.add(formPage13);
   }
 }

@@ -30,7 +30,7 @@ public class FormPage extends AbstractPageWithNodes {
   @Override
   protected void execInitPage() throws ProcessingException {
     String s = m_testFormType.getSimpleName();
-    s = s.replace("Form", "");
+    s = s.substring(0, s.length() - 4);
     getCellForUpdate().setText(s);
     setTableVisible(false);
   }

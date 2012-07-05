@@ -23,6 +23,8 @@ import org.eclipse.scout.rt.shared.services.common.code.CODES;
 public class ClientSession extends AbstractClientSession {
   private static IScoutLogger logger = ScoutLogManager.getLogger(ClientSession.class);
 
+  private boolean m_footless;
+
   public ClientSession() {
     super(true);
   }
@@ -39,12 +41,21 @@ public class ClientSession extends AbstractClientSession {
     return getSharedContextVariable("personNr", Long.class);
   }
 
+  public boolean isFootless() {
+    return m_footless;
+  }
+
   @Override
   public void execLoadSession() throws ProcessingException {
+//    m_footless = Boolean.valueOf(getBundle().getBundleContext().getProperty("server.available"));
+//
+//    if (!isFootless()) {
     setServiceTunnel(new HttpServiceTunnel(this, getBundle().getBundleContext().getProperty("server.url")));
 
     //pre-load all known code types
     CODES.getAllCodeTypes(org.eclipse.scout.rt.demo.shared.Activator.PLUGIN_ID);
+
+//    }
 
     setDesktop(new Desktop());
 

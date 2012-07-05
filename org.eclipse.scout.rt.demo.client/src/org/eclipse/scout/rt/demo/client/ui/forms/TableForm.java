@@ -12,6 +12,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.doublefield.AbstractDoubleField;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
+import org.eclipse.scout.rt.demo.client.ClientSession;
 import org.eclipse.scout.rt.demo.client.ui.forms.TableForm.MainBox.CloseButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.TableForm.MainBox.GroupBox;
 import org.eclipse.scout.rt.demo.client.ui.forms.TableForm.MainBox.GroupBox.EditableTableField;
@@ -24,6 +25,11 @@ public class TableForm extends AbstractForm implements IPageForm {
 
   public TableForm() throws ProcessingException {
     super();
+  }
+
+  @Override
+  protected boolean getConfiguredAskIfNeedSave() {
+    return false;
   }
 
   @Override
@@ -108,7 +114,9 @@ public class TableForm extends AbstractForm implements IPageForm {
 
           @Override
           protected void execRowsSelected(ITableRow[] rows) throws ProcessingException {
-            getLastValueField().setValue(SERVICES.getService(IJaxWsProcessService.class).getCompanyLastValue((String) rows[0].getCellValue(2)));
+            if (!ClientSession.get().isFootless()) {
+              getLastValueField().setValue(SERVICES.getService(IJaxWsProcessService.class).getCompanyLastValue((String) rows[0].getCellValue(2)));
+            }
           }
 
           public CompanyNrColumn getCompanyNrColumn() {
@@ -150,6 +158,11 @@ public class TableForm extends AbstractForm implements IPageForm {
         @Override
         protected String getConfiguredLabel() {
           return TEXTS.get("LastValue");
+        }
+
+        @Override
+        protected boolean getConfiguredVisible() {
+          return !ClientSession.get().isFootless();
         }
       }
 
