@@ -14,7 +14,6 @@ Export-Package: org.eclipse.scout.rt.demo.ui.swt;uses:="org.eclipse.scout.rt.ui.
 Require-Bundle: org.eclipse.scout.rt.demo.client;visibility:=reexport,
  org.eclipse.scout.rt.demo.shared,
  org.eclipse.scout.rt.ui.swt,
- org.eclipse.scout.net,
  org.eclipse.equinox.app,
  org.eclipse.core.runtime,
  org.eclipse.ui,

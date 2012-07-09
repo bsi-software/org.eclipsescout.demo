@@ -101,15 +101,11 @@
          name=""
          point="org.eclipse.core.runtime.products">
       <product
-            name=""
+            name="demo"
             application="org.eclipse.scout.rt.demo.ui.swt.application">
          <property
                name="appName"
                value="demo">
-         </property>
-         <property
-               name="windowImages"
-               value="resources/icons/eclipseScout16x16.gif,resources/icons/eclipseScout32x32.gif">
          </property>
          <property
                name="applicationXMI"
