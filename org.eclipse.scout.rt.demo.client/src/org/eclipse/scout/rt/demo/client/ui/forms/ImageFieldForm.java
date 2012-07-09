@@ -5,13 +5,26 @@ import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
+import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractRadioButton;
+import org.eclipse.scout.rt.client.ui.form.fields.doublefield.AbstractDoubleField;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.imagebox.AbstractImageField;
+import org.eclipse.scout.rt.client.ui.form.fields.radiobuttongroup.AbstractRadioButtonGroup;
 import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.CloseButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.HorizontalAlignmentBox;
+import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.HorizontalAlignmentBox.CenterField;
 import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.HorizontalAlignmentBox.LeftField;
+import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.HorizontalAlignmentBox.RightField;
+import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.ImageSampleGroup;
+import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.ImageSampleGroup.HorizontalAlignmentButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.ImageSampleGroup.RotateButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.ImageSampleGroup.ZoomButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.RotateBox;
+import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.RotateBox.DegreeOfRotationField;
+import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.RotateBox.RotateField;
 import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.ZoomBox;
 import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.ZoomBox.ZoomField;
+import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.ZoomBox.ZoomvalueField;
 import org.eclipse.scout.rt.shared.TEXTS;
 
 public class ImageFieldForm extends AbstractForm implements IPageForm {
@@ -30,12 +43,28 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
     startInternal(new PageFormHandler());
   }
 
+  public CenterField getCenterField() {
+    return getFieldByClass(CenterField.class);
+  }
+
   public CloseButton getCloseButton() {
     return getFieldByClass(CloseButton.class);
   }
 
+  public DegreeOfRotationField getDegreeOfRotationField() {
+    return getFieldByClass(DegreeOfRotationField.class);
+  }
+
   public HorizontalAlignmentBox getHorizontalAlignmentBox() {
     return getFieldByClass(HorizontalAlignmentBox.class);
+  }
+
+  public HorizontalAlignmentButton getHorizontalAlignmentButton() {
+    return getFieldByClass(HorizontalAlignmentButton.class);
+  }
+
+  public ImageSampleGroup getImageSampleGroup() {
+    return getFieldByClass(ImageSampleGroup.class);
   }
 
   public LeftField getLeftField() {
@@ -46,6 +75,26 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(MainBox.class);
   }
 
+  public RightField getRightField() {
+    return getFieldByClass(RightField.class);
+  }
+
+  public RotateBox getRotateBox() {
+    return getFieldByClass(RotateBox.class);
+  }
+
+  public RotateButton getRotateButton() {
+    return getFieldByClass(RotateButton.class);
+  }
+
+  public RotateField getRotateField() {
+    return getFieldByClass(RotateField.class);
+  }
+
+  public ZoomButton getZoomButton() {
+    return getFieldByClass(ZoomButton.class);
+  }
+
   public ZoomBox getZoomBox() {
     return getFieldByClass(ZoomBox.class);
   }
@@ -54,10 +103,71 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(ZoomField.class);
   }
 
+  public ZoomvalueField getZoomvalueField() {
+    return getFieldByClass(ZoomvalueField.class);
+  }
+
   @Order(10.0)
   public class MainBox extends AbstractGroupBox {
 
     @Order(10.0)
+    public class ImageSampleGroup extends AbstractRadioButtonGroup<Long> {
+
+      @Override
+      protected int getConfiguredGridW() {
+        return 0;
+      }
+
+      @Order(10.0)
+      public class HorizontalAlignmentButton extends AbstractRadioButton {
+
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("HorizontalAlignment");
+        }
+
+        @Override
+        protected void execClickAction() throws ProcessingException {
+          getHorizontalAlignmentBox().setVisible(true);
+          getZoomBox().setVisible(false);
+          getRotateBox().setVisible(false);
+        }
+      }
+
+      @Order(20.0)
+      public class ZoomButton extends AbstractRadioButton {
+
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("Zoom");
+        }
+
+        @Override
+        protected void execClickAction() throws ProcessingException {
+          getHorizontalAlignmentBox().setVisible(false);
+          getZoomBox().setVisible(true);
+          getRotateBox().setVisible(false);
+        }
+      }
+
+      @Order(30.0)
+      public class RotateButton extends AbstractRadioButton {
+
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("Rotate");
+        }
+
+        @Override
+        protected void execClickAction() throws ProcessingException {
+          getHorizontalAlignmentBox().setVisible(false);
+          getZoomBox().setVisible(false);
+          getRotateBox().setVisible(true);
+        }
+      }
+    }
+
+    @Order(20.0)
     public class HorizontalAlignmentBox extends AbstractGroupBox {
 
       @Override
@@ -71,6 +181,11 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
       }
 
       @Override
+      protected int getConfiguredGridH() {
+        return 2;
+      }
+
+      @Override
       protected String getConfiguredLabel() {
         return TEXTS.get("HorizontalAlignment");
       }
@@ -80,7 +195,7 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected int getConfiguredGridH() {
-          return 2;
+          return 7;
         }
 
         @Override
@@ -109,7 +224,7 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected int getConfiguredGridH() {
-          return 2;
+          return 7;
         }
 
         @Override
@@ -138,7 +253,7 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected int getConfiguredGridH() {
-          return 2;
+          return 7;
         }
 
         @Override
@@ -163,7 +278,7 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
       }
     }
 
-    @Order(20.0)
+    @Order(30.0)
     public class ZoomBox extends AbstractGroupBox {
 
       @Override
@@ -177,8 +292,8 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
       }
 
       @Override
-      protected boolean getConfiguredExpanded() {
-        return false;
+      protected int getConfiguredGridH() {
+        return 2;
       }
 
       @Override
@@ -186,12 +301,74 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
         return TEXTS.get("Zoom");
       }
 
-      @Order(20.0)
+      @Override
+      protected boolean getConfiguredVisible() {
+        return false;
+      }
+
+      @Order(10.0)
       public class ZoomField extends AbstractImageField {
 
         @Override
         protected int getConfiguredGridH() {
+          return 7;
+        }
+
+        @Override
+        protected int getConfiguredGridW() {
           return 2;
+        }
+
+        @Override
+        protected int getConfiguredHorizontalAlignment() {
+          return -1;
+        }
+
+        @Override
+        protected String getConfiguredImageId() {
+          return "windsurf.jpg";
+        }
+
+        @Override
+        protected int getConfiguredVerticalAlignment() {
+          return -1;
+        }
+      }
+
+      @Order(20.0)
+      public class ZoomvalueField extends AbstractDoubleField {
+
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("Zoom");
+        }
+
+        @Override
+        protected void execChangedValue() throws ProcessingException {
+          getZoomField().doZoom(getValue(), getValue());
+        }
+      }
+    }
+
+    @Order(40.0)
+    public class RotateBox extends AbstractGroupBox {
+
+      @Override
+      protected String getConfiguredLabel() {
+        return TEXTS.get("Rotate");
+      }
+
+      @Override
+      protected boolean getConfiguredVisible() {
+        return false;
+      }
+
+      @Order(10.0)
+      public class RotateField extends AbstractImageField {
+
+        @Override
+        protected int getConfiguredGridH() {
+          return 7;
         }
 
         @Override
@@ -204,11 +381,35 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
           return "windsurf.jpg";
         }
       }
+
+      @Order(20.0)
+      public class DegreeOfRotationField extends AbstractDoubleField {
+
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("DegreeOfRotation");
+        }
+
+        @Override
+        protected Double getConfiguredMaximumValue() {
+          return 360.0;
+        }
+
+        @Override
+        protected Double getConfiguredMinimumValue() {
+          return -360.0;
+        }
+
+        @Override
+        protected void execChangedValue() throws ProcessingException {
+          getRotateField().doRotate(getValue() / 57.3);
+        }
+      }
     }
 
-    @Order(30.0)
+    @Order(50.0)
     public class CloseButton extends AbstractCloseButton {
-  }
+    }
   }
 
   public class PageFormHandler extends AbstractFormHandler {
