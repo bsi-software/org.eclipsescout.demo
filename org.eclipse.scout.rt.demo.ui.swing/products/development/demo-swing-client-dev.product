@@ -6,7 +6,7 @@
    <configIni use="default">
       <linux>/org.eclipse.scout.rt.demo.ui.swing/products/development/config.ini</linux>
       <macosx>/org.eclipse.scout.rt.demo.ui.swing/products/development/config.ini</macosx>
-      <win32>/org.eclipse.scout.rt.demo.ui.swing/products/offline/config.ini</win32>
+      <win32>/org.eclipse.scout.rt.demo.ui.swing/products/development/config.ini</win32>
    </configIni>
 
    <launcherArgs>

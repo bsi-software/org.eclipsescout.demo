@@ -52,6 +52,7 @@ import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFie
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.ImageField;
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.IntegerField;
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.LabelField;
+import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.StringFieldForPasswordField;
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.SmartFieldField;
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.StringField;
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.TimeField;
@@ -193,6 +194,10 @@ public class AllFieldsForm extends AbstractForm implements IPageForm {
 
   public MinimizeButton getMinimizeButton() {
     return getFieldByClass(MinimizeButton.class);
+  }
+
+  public StringFieldForPasswordField getStringFieldForPasswordField() {
+    return getFieldByClass(StringFieldForPasswordField.class);
   }
 
   public RadioButton getRadioButton() {
@@ -422,6 +427,16 @@ public class AllFieldsForm extends AbstractForm implements IPageForm {
         protected String getConfiguredLabel() {
           return TEXTS.get("LabelField");
         }
+
+        @Override
+        protected boolean getConfiguredWrapText() {
+          return true;
+        }
+
+        @Override
+        protected void execInitField() throws ProcessingException {
+          setValue(TEXTS.get("Lorem"));
+        }
       }
 
       @Order(80.0)
@@ -476,6 +491,20 @@ public class AllFieldsForm extends AbstractForm implements IPageForm {
         @Override
         protected String getConfiguredLabel() {
           return TEXTS.get("DateTimeField");
+        }
+      }
+
+      @Order(130.0)
+      public class StringFieldForPasswordField extends AbstractStringField {
+
+        @Override
+        protected boolean getConfiguredInputMasked() {
+          return true;
+        }
+
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("StringFieldForPassword");
         }
       }
     }
