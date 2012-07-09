@@ -48,15 +48,21 @@ public class ClientSession extends AbstractClientSession {
   @Override
   public void execLoadSession() throws ProcessingException {
 //    m_footless = Boolean.valueOf(getBundle().getBundleContext().getProperty("server.available"));
-//
-//    if (!isFootless()) {
-    setServiceTunnel(new HttpServiceTunnel(this, getBundle().getBundleContext().getProperty("server.url")));
 
-    //pre-load all known code types
-    CODES.getAllCodeTypes(org.eclipse.scout.rt.demo.shared.Activator.PLUGIN_ID);
+    try {
+      setServiceTunnel(new HttpServiceTunnel(this, getBundle().getBundleContext().getProperty("server.url")));
 
-//    }
+      //pre-load all known code types
+      CODES.getAllCodeTypes(org.eclipse.scout.rt.demo.shared.Activator.PLUGIN_ID);
 
+    }
+    catch (Throwable t) {
+      ClientSession.get().goOffline();
+      setServiceTunnel(new HttpServiceTunnel(this, getBundle().getBundleContext().getProperty("server.url")));
+
+      //pre-load all known code types
+      CODES.getAllCodeTypes(org.eclipse.scout.rt.demo.shared.Activator.PLUGIN_ID);
+    }
     setDesktop(new Desktop());
 
     // turn client notification polling on

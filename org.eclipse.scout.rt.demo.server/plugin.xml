@@ -34,6 +34,10 @@
             class="org.eclipse.scout.rt.demo.server.services.ws.consumer.StockQuoteServiceSoapWebServiceClient"
             session="org.eclipse.scout.rt.demo.server.ServerSession">
       </service>
+      <service
+            class="org.eclipse.scout.rt.server.services.common.offline.OfflineDispatcherService"
+            createImmediately="false">
+      </service>
    </extension>
    <extension
          name=""
