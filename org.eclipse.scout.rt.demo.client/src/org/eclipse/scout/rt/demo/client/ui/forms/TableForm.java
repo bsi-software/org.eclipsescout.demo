@@ -12,7 +12,6 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.doublefield.AbstractDoubleField;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
-import org.eclipse.scout.rt.demo.client.ClientSession;
 import org.eclipse.scout.rt.demo.client.ui.forms.TableForm.MainBox.CloseButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.TableForm.MainBox.GroupBox;
 import org.eclipse.scout.rt.demo.client.ui.forms.TableForm.MainBox.GroupBox.EditableTableField;
@@ -87,7 +86,8 @@ public class TableForm extends AbstractForm implements IPageForm {
               {1, "Exxon Mobil Corporation", "XOM"},
               {2, "IBM", "IBM"},
               {3, "UBS", "UBS"},
-              {4, "Coca-Cola Company", "KO"}};
+              {4, "Coca-Cola Company", "KO"},
+              {5, "Other Company", ""}};
           getTable().addRowsByMatrix(data);
         }
 
@@ -114,7 +114,7 @@ public class TableForm extends AbstractForm implements IPageForm {
 
           @Override
           protected void execRowsSelected(ITableRow[] rows) throws ProcessingException {
-            if (!ClientSession.get().isFootless()) {
+            if (!rows[0].getCellValue(2).equals("") && rows[0].getCellValue(2) != null) {
               getLastValueField().setValue(SERVICES.getService(IJaxWsProcessService.class).getCompanyLastValue((String) rows[0].getCellValue(2)));
             }
           }
@@ -136,8 +136,21 @@ public class TableForm extends AbstractForm implements IPageForm {
           public class NameColumn extends AbstractStringColumn {
 
             @Override
+            protected boolean getConfiguredEditable() {
+              return true;
+            }
+
+            @Override
             protected String getConfiguredHeaderText() {
               return TEXTS.get("Name");
+            }
+
+            @Override
+            protected boolean execIsEditable(ITableRow row) throws ProcessingException {
+              if (getCompanyNrColumn().getValue(row) == 5) {
+                return super.execIsEditable(row);
+              }
+              return false;
             }
           }
 
@@ -145,8 +158,22 @@ public class TableForm extends AbstractForm implements IPageForm {
           public class SymbolColumn extends AbstractStringColumn {
 
             @Override
+            protected boolean getConfiguredEditable() {
+              return true;
+            }
+
+            @Override
             protected String getConfiguredHeaderText() {
               return TEXTS.get("Symbol");
+            }
+
+            @Override
+            protected boolean execIsEditable(ITableRow row) throws ProcessingException {
+              if (getCompanyNrColumn().getValue(row) == 5) {
+                return super.execIsEditable(row);
+              }
+              System.out.println("Not editable " + getNameColumn().getValue(row));
+              return false;
             }
           }
         }
@@ -158,11 +185,6 @@ public class TableForm extends AbstractForm implements IPageForm {
         @Override
         protected String getConfiguredLabel() {
           return TEXTS.get("LastValue");
-        }
-
-        @Override
-        protected boolean getConfiguredVisible() {
-          return !ClientSession.get().isFootless();
         }
       }
 

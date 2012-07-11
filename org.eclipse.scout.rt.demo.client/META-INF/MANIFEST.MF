@@ -7,7 +7,9 @@ Bundle-Activator: org.eclipse.scout.rt.demo.client.Activator
 Export-Package: org.eclipse.scout.rt.demo.client,
  org.eclipse.scout.rt.demo.client.ui.desktop,
  org.eclipse.scout.rt.demo.client.ui.desktop.outlines,
- org.eclipse.scout.rt.demo.client.ui.forms
+ org.eclipse.scout.rt.demo.client.ui.desktop.outlines.pages,
+ org.eclipse.scout.rt.demo.client.ui.forms,
+ org.eclipse.scout.rt.demo.client.ui.searchforms
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.scout.rt.client;visibility:=reexport,
  org.eclipse.scout.rt.demo.shared,

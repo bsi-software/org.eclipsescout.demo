@@ -23,8 +23,6 @@ import org.eclipse.scout.rt.shared.services.common.code.CODES;
 public class ClientSession extends AbstractClientSession {
   private static IScoutLogger logger = ScoutLogManager.getLogger(ClientSession.class);
 
-  private boolean m_footless;
-
   public ClientSession() {
     super(true);
   }
@@ -39,10 +37,6 @@ public class ClientSession extends AbstractClientSession {
   @FormData
   public Long getPersonNr() {
     return getSharedContextVariable("personNr", Long.class);
-  }
-
-  public boolean isFootless() {
-    return m_footless;
   }
 
   @Override

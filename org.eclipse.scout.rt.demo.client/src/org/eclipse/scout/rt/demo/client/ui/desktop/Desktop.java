@@ -29,8 +29,8 @@ import org.eclipse.scout.rt.client.ui.form.ScoutInfoForm;
 import org.eclipse.scout.rt.client.ui.form.outline.DefaultOutlineTableForm;
 import org.eclipse.scout.rt.client.ui.form.outline.DefaultOutlineTreeForm;
 import org.eclipse.scout.rt.demo.client.ClientSession;
-import org.eclipse.scout.rt.demo.client.ui.desktop.outlines.StandardOutline;
-import org.eclipse.scout.rt.demo.client.ui.desktop.outlines.TestCasesOutline;
+import org.eclipse.scout.rt.demo.client.ui.desktop.outlines.FormFieldsOutline;
+import org.eclipse.scout.rt.demo.client.ui.desktop.outlines.PagesSearchFormsOutline;
 import org.eclipse.scout.rt.demo.client.ui.desktop.outlines.pages.FormFieldsNodePage;
 import org.eclipse.scout.rt.demo.shared.Icons;
 import org.eclipse.scout.rt.shared.TEXTS;
@@ -45,8 +45,8 @@ public class Desktop extends AbstractDesktop implements IDesktop {
   @Override
   protected Class<? extends IOutline>[] getConfiguredOutlines() {
     ArrayList<Class> outlines = new ArrayList<Class>();
-    outlines.add(TestCasesOutline.class);
-    outlines.add(StandardOutline.class);
+    outlines.add(FormFieldsOutline.class);
+    outlines.add(PagesSearchFormsOutline.class);
     return outlines.toArray(new Class[outlines.size()]);
   }
 
@@ -164,7 +164,7 @@ public class Desktop extends AbstractDesktop implements IDesktop {
   @Order(10.0)
   public class TestCasesOutlineViewButton extends AbstractOutlineViewButton {
     public TestCasesOutlineViewButton() {
-      super(Desktop.this, TestCasesOutline.class);
+      super(Desktop.this, FormFieldsOutline.class);
     }
 
     @Override
@@ -174,14 +174,14 @@ public class Desktop extends AbstractDesktop implements IDesktop {
   }
 
   @Order(20.0)
-  public class StandardOutlineViewButton extends AbstractOutlineViewButton {
-    public StandardOutlineViewButton() {
-      super(Desktop.this, StandardOutline.class);
+  public class PagesSearchFormsOutlineViewButton extends AbstractOutlineViewButton {
+    public PagesSearchFormsOutlineViewButton() {
+      super(Desktop.this, PagesSearchFormsOutline.class);
     }
 
     @Override
     protected String getConfiguredText() {
-      return TEXTS.get("StandardOutline");
+      return TEXTS.get("PagesSearchForms");
     }
   }
 }

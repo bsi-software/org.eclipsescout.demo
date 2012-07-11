@@ -28,12 +28,6 @@ public class ProductLookupCall extends LocalLookupCall {
         }
       }
     }
-    try {
-      Thread.sleep(2000);
-    }
-    catch (InterruptedException e) {
-      throw new ProcessingException("Thread can't sleep ", e);
-    }
     return rows;
   }
 }

@@ -6,6 +6,7 @@ import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNodes;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm;
+import org.eclipse.scout.rt.demo.client.ui.forms.ButtonsForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.CalendarForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.CheckboxForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.DateFieldForm;
@@ -45,6 +46,8 @@ public class FormFieldsNodePage extends AbstractPageWithNodes {
     pageList.add(formPage);
 //    FormPage formPage0 = new FormPage(BrowserFieldForm.class);
 //    pageList.add(formPage0);
+    FormPage formPage0 = new FormPage(ButtonsForm.class);
+    pageList.add(formPage0);
     FormPage formPage1 = new FormPage(CalendarForm.class);
     pageList.add(formPage1);
     FormPage formPage2 = new FormPage(CheckboxForm.class);
