@@ -127,7 +127,7 @@ public class StringFieldForm extends AbstractForm implements IPageForm {
       public class InputMaskedField extends AbstractStringField {
 
         @Override
-        protected int getConfiguredGridH() {
+        protected int getConfiguredGridW() {
           return 2;
         }
 
@@ -152,7 +152,7 @@ public class StringFieldForm extends AbstractForm implements IPageForm {
     @Override
     protected void execLoad() throws ProcessingException {
       getDefaultField().setValue(TEXTS.get("Lorem"));
-      getMultilineField().setValue(TEXTS.get("Lorem"));
+      getMultilineField().setValue(TEXTS.get("Lorem") + "\n" + TEXTS.get("Lorem"));
     }
   }
 }

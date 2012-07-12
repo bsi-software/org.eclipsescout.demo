@@ -119,7 +119,7 @@ public class BrowserFieldForm extends AbstractForm implements IPageForm {
       @Override
       protected void execClickAction() throws ProcessingException {
         getBrowserField().setValue(null);
-        getBrowserField().setLocation("www.bsiag.com");
+        getBrowserField().setLocation("http://www.bsiag.com");
       }
     }
 
@@ -134,6 +134,8 @@ public class BrowserFieldForm extends AbstractForm implements IPageForm {
       @Override
       protected void execClickAction() throws ProcessingException {
         try {
+          getBrowserField().setLocation(null);
+
           RemoteFile f = new RemoteFile("wizardStatus.html", 0L);
           f.readData(org.eclipse.scout.rt.demo.client.Activator.getDefault().getBundle().getResource("resources/html/wizardStatus.html").openStream());
 
