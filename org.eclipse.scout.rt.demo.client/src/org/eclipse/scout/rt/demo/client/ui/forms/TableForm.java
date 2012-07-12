@@ -2,6 +2,7 @@ package org.eclipse.scout.rt.demo.client.ui.forms;
 
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
@@ -12,6 +13,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.doublefield.AbstractDoubleField;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
+import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
 import org.eclipse.scout.rt.demo.client.ui.forms.TableForm.MainBox.CloseButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.TableForm.MainBox.GroupBox;
 import org.eclipse.scout.rt.demo.client.ui.forms.TableForm.MainBox.GroupBox.EditableTableField;
@@ -172,8 +174,26 @@ public class TableForm extends AbstractForm implements IPageForm {
               if (getCompanyNrColumn().getValue(row) == 5) {
                 return super.execIsEditable(row);
               }
-              System.out.println("Not editable " + getNameColumn().getValue(row));
               return false;
+            }
+          }
+
+          @Order(10.0)
+          public class GetValueMenu extends AbstractMenu {
+
+            @Override
+            protected String getConfiguredText() {
+              return TEXTS.get("GetValue");
+            }
+
+            @Override
+            protected void execAction() throws ProcessingException {
+              try {
+                MessageBox.showOkMessage("Value of " + getNameColumn().getSelectedValue(), null, "The value of " + getNameColumn().getSelectedValue() + " is " + SERVICES.getService(IJaxWsProcessService.class).getCompanyLastValue((String) getSymbolColumn().getSelectedValue()));
+              }
+              catch (ProcessingException e) {
+                MessageBox.showOkMessage("No value found", null, "No value found for " + getNameColumn().getSelectedValue());
+              }
             }
           }
         }

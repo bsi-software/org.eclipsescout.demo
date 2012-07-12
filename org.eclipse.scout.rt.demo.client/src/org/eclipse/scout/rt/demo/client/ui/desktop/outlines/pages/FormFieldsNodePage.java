@@ -22,6 +22,7 @@ import org.eclipse.scout.rt.demo.client.ui.forms.MessageBoxesForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.SVGFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.SmartFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.StatusForm;
+import org.eclipse.scout.rt.demo.client.ui.forms.StringFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.TabBoxForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.TableForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.TreeBoxForm;
@@ -89,5 +90,8 @@ public class FormFieldsNodePage extends AbstractPageWithNodes {
     pageList.add(formPage20);
     FormPage formPage21 = new FormPage(WrappedFormFieldForm.class);
     pageList.add(formPage21);
+
+    FormPage formPage22 = new FormPage(StringFieldForm.class);
+    pageList.add(formPage22);
   }
 }
