@@ -17,6 +17,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.filechooserfield.AbstractFileC
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.tabbox.AbstractTabBox;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
+import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
 import org.eclipse.scout.rt.demo.client.ui.forms.FileChooserFieldForm.MainBox.CloseButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.FileChooserFieldForm.MainBox.TabBox;
 import org.eclipse.scout.rt.demo.client.ui.forms.FileChooserFieldForm.MainBox.TabBox.FolderContentsBox;
@@ -146,6 +147,11 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
           }
 
           @Override
+          protected int getConfiguredGridW() {
+            return 2;
+          }
+
+          @Override
           protected String getConfiguredLabel() {
             return TEXTS.get("SelectAFolder");
           }
@@ -157,15 +163,24 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
 
           @Override
           protected void execChangedValue() throws ProcessingException {
-            String folderName = getValue();
-            getContentField().getTable().deleteAllRows();
-            if (!StringUtility.isNullOrEmpty(folderName)) {
-              File folder = new File(folderName);
-              for (File f : folder.listFiles()) {
-                String fileName = f.getName();
-                String filePath = f.getPath();
-                getContentField().getTable().addRowByArray(new Object[]{f, fileName, filePath});
+            try {
+              String folderName = getValue();
+              getContentField().getTable().deleteAllRows();
+              if (!StringUtility.isNullOrEmpty(folderName)) {
+                File folder = new File(folderName);
+                if (folder.isFile()) {
+                  MessageBox.showOkMessage("No RAP support", null, "RAP does not support this sample");
+                  return;
+                }
+                for (File f : folder.listFiles()) {
+                  String fileName = f.getName();
+                  String filePath = f.getPath();
+                  getContentField().getTable().addRowByArray(new Object[]{f, fileName, filePath});
+                }
               }
+            }
+            catch (NullPointerException e) {
+              MessageBox.showOkMessage("Folder not found", null, "Can't find folder " + getValue());
             }
           }
         }
@@ -175,7 +190,7 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
 
           @Override
           protected int getConfiguredGridH() {
-            return 5;
+            return 7;
           }
 
           @Override
@@ -231,11 +246,11 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
             }
 
             @Order(10.0)
-            public class FormStateLoadMenu extends AbstractMenu {
+            public class OpenMenu extends AbstractMenu {
 
               @Override
               protected String getConfiguredText() {
-                return TEXTS.get("FormStateLoad");
+                return TEXTS.get("Open0");
               }
 
               @Override

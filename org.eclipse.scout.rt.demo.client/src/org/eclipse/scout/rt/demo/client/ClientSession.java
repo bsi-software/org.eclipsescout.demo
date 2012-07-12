@@ -10,6 +10,8 @@
  ******************************************************************************/
 package org.eclipse.scout.rt.demo.client;
 
+import java.lang.reflect.UndeclaredThrowableException;
+
 import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
@@ -47,7 +49,7 @@ public class ClientSession extends AbstractClientSession {
       //pre-load all known code types
       CODES.getAllCodeTypes(org.eclipse.scout.rt.demo.shared.Activator.PLUGIN_ID);
     }
-    catch (Throwable t) {
+    catch (UndeclaredThrowableException e) {
       //if no connection go offline
       ClientSession.get().goOffline();
       CODES.getAllCodeTypes(org.eclipse.scout.rt.demo.shared.Activator.PLUGIN_ID);

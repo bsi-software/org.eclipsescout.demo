@@ -161,12 +161,6 @@ public class SmartFieldForm extends AbstractForm implements IPageForm {
 
         @Order(30.0)
         public class TreeWithLookupCallIncrementalField extends AbstractSmartField<Long> {
-          //TODO problems with load incremental
-          @Override
-          protected boolean getConfiguredVisible() {
-            return false;
-          }
-
           @Override
           public boolean acceptBrowseHierarchySelection(Long value, int level, boolean leaf) {
             return leaf;
