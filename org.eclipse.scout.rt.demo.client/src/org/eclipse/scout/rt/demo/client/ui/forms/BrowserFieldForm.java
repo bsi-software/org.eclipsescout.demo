@@ -1,5 +1,7 @@
 package org.eclipse.scout.rt.demo.client.ui.forms;
 
+import java.io.IOException;
+
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
@@ -11,7 +13,9 @@ import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.demo.client.ui.forms.BrowserFieldForm.MainBox.BrowserField;
 import org.eclipse.scout.rt.demo.client.ui.forms.BrowserFieldForm.MainBox.BsiagButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.BrowserFieldForm.MainBox.CloseButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.BrowserFieldForm.MainBox.WizardStatusButton;
 import org.eclipse.scout.rt.shared.TEXTS;
+import org.eclipse.scout.rt.shared.services.common.file.RemoteFile;
 
 public class BrowserFieldForm extends AbstractForm implements IPageForm {
 
@@ -50,6 +54,10 @@ public class BrowserFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(MainBox.class);
   }
 
+  public WizardStatusButton getWizardStatusButton() {
+    return getFieldByClass(WizardStatusButton.class);
+  }
+
   @Order(10.0)
   public class MainBox extends AbstractGroupBox {
 
@@ -80,6 +88,20 @@ public class BrowserFieldForm extends AbstractForm implements IPageForm {
       protected boolean getConfiguredScrollBarEnabled() {
         return true;
       }
+
+      @Override
+      protected void execInitField() throws ProcessingException {
+        try {
+          RemoteFile f = new RemoteFile("wizardStatus.html", 0L);
+          f.readData(org.eclipse.scout.rt.demo.client.Activator.getDefault().getBundle().getResource("resources/html/wizardStatus.html").openStream());
+
+          setValue(f);
+        }
+        catch (IOException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        }
+      }
     }
 
     @Order(20.0)
@@ -98,6 +120,29 @@ public class BrowserFieldForm extends AbstractForm implements IPageForm {
       protected void execClickAction() throws ProcessingException {
         getBrowserField().setValue(null);
         getBrowserField().setLocation("www.bsiag.com");
+      }
+    }
+
+    @Order(40.0)
+    public class WizardStatusButton extends AbstractLinkButton {
+
+      @Override
+      protected String getConfiguredLabel() {
+        return TEXTS.get("WizardStatus");
+      }
+
+      @Override
+      protected void execClickAction() throws ProcessingException {
+        try {
+          RemoteFile f = new RemoteFile("wizardStatus.html", 0L);
+          f.readData(org.eclipse.scout.rt.demo.client.Activator.getDefault().getBundle().getResource("resources/html/wizardStatus.html").openStream());
+
+          getBrowserField().setValue(f);
+        }
+        catch (IOException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        }
       }
     }
   }
