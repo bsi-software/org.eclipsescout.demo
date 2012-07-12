@@ -585,6 +585,7 @@ public class AllFieldsForm extends AbstractForm implements IPageForm {
           }
         }
       }
+
     }
 
     @Order(40.0)

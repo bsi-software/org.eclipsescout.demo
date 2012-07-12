@@ -292,11 +292,6 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
       }
 
       @Override
-      protected int getConfiguredGridH() {
-        return 2;
-      }
-
-      @Override
       protected String getConfiguredLabel() {
         return TEXTS.get("Zoom");
       }
@@ -310,8 +305,13 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
       public class ZoomField extends AbstractImageField {
 
         @Override
-        protected int getConfiguredGridH() {
-          return 7;
+        protected boolean getConfiguredGridUseUiHeight() {
+          return true;
+        }
+
+        @Override
+        protected boolean getConfiguredGridUseUiWidth() {
+          return true;
         }
 
         @Override
@@ -354,6 +354,16 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
     public class RotateBox extends AbstractGroupBox {
 
       @Override
+      protected String getConfiguredBorderDecoration() {
+        return "section";
+      }
+
+      @Override
+      protected boolean getConfiguredExpandable() {
+        return true;
+      }
+
+      @Override
       protected String getConfiguredLabel() {
         return TEXTS.get("Rotate");
       }
@@ -367,8 +377,13 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
       public class RotateField extends AbstractImageField {
 
         @Override
-        protected int getConfiguredGridH() {
-          return 7;
+        protected boolean getConfiguredGridUseUiHeight() {
+          return true;
+        }
+
+        @Override
+        protected boolean getConfiguredGridUseUiWidth() {
+          return true;
         }
 
         @Override
@@ -377,8 +392,18 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
         }
 
         @Override
+        protected int getConfiguredHorizontalAlignment() {
+          return -1;
+        }
+
+        @Override
         protected String getConfiguredImageId() {
           return "windsurf.jpg";
+        }
+
+        @Override
+        protected int getConfiguredVerticalAlignment() {
+          return -1;
         }
       }
 

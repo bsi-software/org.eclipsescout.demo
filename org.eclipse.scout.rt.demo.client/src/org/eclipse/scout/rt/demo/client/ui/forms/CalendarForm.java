@@ -115,7 +115,7 @@ public class CalendarForm extends AbstractForm implements IPageForm {
       }
     }
 
-    @Order(20.0)
+    @Order(30.0)
     public class CloseButton extends AbstractCloseButton {
     }
   }
