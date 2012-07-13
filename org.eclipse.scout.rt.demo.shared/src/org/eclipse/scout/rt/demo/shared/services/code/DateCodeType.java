@@ -155,7 +155,7 @@ public class DateCodeType extends AbstractCodeType<Long> {
 
     @Override
     protected String getConfiguredText() {
-      return TEXTS.get("Year2011");
+      return TEXTS.get("year2011");
     }
 
     @Override

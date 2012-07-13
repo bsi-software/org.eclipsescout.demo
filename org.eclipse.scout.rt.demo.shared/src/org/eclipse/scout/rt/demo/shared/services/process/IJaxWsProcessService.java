@@ -6,4 +6,6 @@ import org.eclipse.scout.service.IService;
 public interface IJaxWsProcessService extends IService {
 
   public double getCompanyLastValue(String symbol) throws ProcessingException;
+
+  public double[] getDetailFormValues(String symbol) throws ProcessingException;
 }

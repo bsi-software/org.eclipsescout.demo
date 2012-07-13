@@ -18,7 +18,8 @@ import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
 import org.eclipse.scout.rt.demo.client.ui.forms.TableForm.MainBox.CloseButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.TableForm.MainBox.GroupBox;
 import org.eclipse.scout.rt.demo.client.ui.forms.TableForm.MainBox.GroupBox.EditableTableField;
-import org.eclipse.scout.rt.demo.client.ui.forms.TableForm.MainBox.GroupBox.LastValueField;
+import org.eclipse.scout.rt.demo.client.ui.forms.TableForm.MainBox.GroupBox.ValueLastField;
+import org.eclipse.scout.rt.demo.shared.services.outline.IStandardOutlineService;
 import org.eclipse.scout.rt.demo.shared.services.process.IJaxWsProcessService;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.service.SERVICES;
@@ -56,8 +57,8 @@ public class TableForm extends AbstractForm implements IPageForm {
     return getFieldByClass(GroupBox.class);
   }
 
-  public LastValueField getLastValueField() {
-    return getFieldByClass(LastValueField.class);
+  public ValueLastField getValueLastField() {
+    return getFieldByClass(ValueLastField.class);
   }
 
   public MainBox getMainBox() {
@@ -85,11 +86,7 @@ public class TableForm extends AbstractForm implements IPageForm {
 
         @Override
         protected void execInitField() throws ProcessingException {
-          Object data[][] = {
-              {1, "Exxon Mobil Corporation", "XOM"},
-              {2, "IBM", "IBM"},
-              {3, "UBS", "UBS"},
-              {4, "Coca-Cola Company", "KO"}};
+          Object data[][] = SERVICES.getService(IStandardOutlineService.class).getPageWithADetailformTableData();
           getTable().addRowsByMatrix(data);
         }
 
@@ -120,7 +117,7 @@ public class TableForm extends AbstractForm implements IPageForm {
             if (StringUtility.isNullOrEmpty(rowValue)) {
               return;
             }
-            getLastValueField().setValue(SERVICES.getService(IJaxWsProcessService.class).getCompanyLastValue(rowValue));
+            getValueLastField().setValue(SERVICES.getService(IJaxWsProcessService.class).getCompanyLastValue(rowValue));
           }
 
           public CompanyNrColumn getCompanyNrColumn() {
@@ -226,11 +223,11 @@ public class TableForm extends AbstractForm implements IPageForm {
       }
 
       @Order(20.0)
-      public class LastValueField extends AbstractDoubleField {
+      public class ValueLastField extends AbstractDoubleField {
 
         @Override
         protected String getConfiguredLabel() {
-          return TEXTS.get("LastValue");
+          return TEXTS.get("ValueLast");
         }
       }
 

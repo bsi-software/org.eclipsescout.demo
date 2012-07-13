@@ -33,4 +33,17 @@ public class JaxWsProcessService extends AbstractService implements IJaxWsProces
     }
     return null;
   }
+
+  @Override
+  public double[] getDetailFormValues(String symbol) throws ProcessingException {
+    StockQuoteServiceSoapWebServiceClient service = SERVICES.getService(StockQuoteServiceSoapWebServiceClient.class);
+    StockQuoteServiceSoap portType = service.getPortType();
+    StockQuote stockQuote = portType.getStockQuote(symbol);
+    double valueLast = parseDouble(stockQuote.getLastTrade());
+    double valueOpen = parseDouble(stockQuote.getOpen());
+    double valueLow = parseDouble(stockQuote.getDayLow());
+    double valueHigh = parseDouble(stockQuote.getDayHigh());
+
+    return new double[]{valueLast, valueOpen, valueLow, valueHigh};
+  }
 }
