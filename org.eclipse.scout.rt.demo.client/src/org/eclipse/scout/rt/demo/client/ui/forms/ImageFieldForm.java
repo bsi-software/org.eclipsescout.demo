@@ -2,6 +2,7 @@ package org.eclipse.scout.rt.demo.client.ui.forms;
 
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.client.ui.action.keystroke.AbstractKeyStroke;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
@@ -9,6 +10,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractRadioButton;
 import org.eclipse.scout.rt.client.ui.form.fields.doublefield.AbstractDoubleField;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.imagebox.AbstractImageField;
+import org.eclipse.scout.rt.client.ui.form.fields.labelfield.AbstractLabelField;
 import org.eclipse.scout.rt.client.ui.form.fields.radiobuttongroup.AbstractRadioButtonGroup;
 import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.CloseButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.HorizontalAlignmentBox;
@@ -23,6 +25,7 @@ import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.RotateBo
 import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.RotateBox.DegreeOfRotationField;
 import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.RotateBox.RotateField;
 import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.ZoomBox;
+import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.ZoomBox.LabelField;
 import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.ZoomBox.ZoomField;
 import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.ZoomBox.ZoomvalueField;
 import org.eclipse.scout.rt.shared.TEXTS;
@@ -31,6 +34,11 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
 
   public ImageFieldForm() throws ProcessingException {
     super();
+  }
+
+  @Override
+  protected boolean getConfiguredAskIfNeedSave() {
+    return false;
   }
 
   @Override
@@ -93,6 +101,10 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
 
   public ZoomButton getZoomButton() {
     return getFieldByClass(ZoomButton.class);
+  }
+
+  public LabelField getLabelField() {
+    return getFieldByClass(LabelField.class);
   }
 
   public ZoomBox getZoomBox() {
@@ -348,6 +360,20 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
           getZoomField().doZoom(getValue(), getValue());
         }
       }
+
+      @Order(30.0)
+      public class LabelField extends AbstractLabelField {
+
+        @Override
+        protected boolean getConfiguredLabelVisible() {
+          return false;
+        }
+
+        @Override
+        protected void execInitField() throws ProcessingException {
+          setValue(TEXTS.get("UseWASAndDToMoveTheImage"));
+        }
+      }
     }
 
     @Order(40.0)
@@ -434,6 +460,70 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
 
     @Order(50.0)
     public class CloseButton extends AbstractCloseButton {
+    }
+
+    @Order(10.0)
+    public class DownKeyStroke extends AbstractKeyStroke {
+
+      @Override
+      protected String getConfiguredKeyStroke() {
+        return "S";
+      }
+
+      @Override
+      protected void execAction() throws ProcessingException {
+        if (getZoomButton().isSelected()) {
+          getZoomField().doRelativePan(0, -10);
+        }
+      }
+    }
+
+    @Order(20.0)
+    public class LeftKeyStroke extends AbstractKeyStroke {
+
+      @Override
+      protected String getConfiguredKeyStroke() {
+        return "A";
+      }
+
+      @Override
+      protected void execAction() throws ProcessingException {
+        if (getZoomButton().isSelected()) {
+          getZoomField().doRelativePan(10, 0);
+        }
+      }
+    }
+
+    @Order(30.0)
+    public class RightKeyStroke extends AbstractKeyStroke {
+
+      @Override
+      protected String getConfiguredKeyStroke() {
+        return "D";
+      }
+
+      @Override
+      protected void execAction() throws ProcessingException {
+        if (getZoomButton().isSelected()) {
+          getZoomField().doRelativePan(-10, 0);
+        }
+      }
+    }
+
+    @Order(40.0)
+    public class UpKeyStroke extends AbstractKeyStroke {
+
+      @Override
+      protected String getConfiguredKeyStroke() {
+        return "W";
+      }
+
+      @Override
+      protected void execAction() throws ProcessingException {
+        if (getZoomButton().isSelected()) {
+          getZoomField().doRelativePan(0, 10);
+        }
+      }
     }
   }
 

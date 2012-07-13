@@ -23,6 +23,11 @@ public class StringFieldForm extends AbstractForm implements IPageForm {
   }
 
   @Override
+  protected boolean getConfiguredAskIfNeedSave() {
+    return false;
+  }
+
+  @Override
   protected String getConfiguredTitle() {
     return TEXTS.get("StringField");
   }
@@ -106,6 +111,11 @@ public class StringFieldForm extends AbstractForm implements IPageForm {
 
       @Order(30.0)
       public class WrapTextButton extends AbstractButton {
+
+        @Override
+        protected int getConfiguredDisplayStyle() {
+          return DISPLAY_STYLE_TOGGLE;
+        }
 
         @Override
         protected String getConfiguredLabel() {

@@ -1,5 +1,6 @@
 package org.eclipse.scout.rt.demo.client.ui.forms;
 
+import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
@@ -88,8 +89,7 @@ public class TableForm extends AbstractForm implements IPageForm {
               {1, "Exxon Mobil Corporation", "XOM"},
               {2, "IBM", "IBM"},
               {3, "UBS", "UBS"},
-              {4, "Coca-Cola Company", "KO"},
-              {5, "Other Company", ""}};
+              {4, "Coca-Cola Company", "KO"}};
           getTable().addRowsByMatrix(data);
         }
 
@@ -116,9 +116,11 @@ public class TableForm extends AbstractForm implements IPageForm {
 
           @Override
           protected void execRowsSelected(ITableRow[] rows) throws ProcessingException {
-            if (!rows[0].getCellValue(2).equals("") && rows[0].getCellValue(2) != null) {
-              getLastValueField().setValue(SERVICES.getService(IJaxWsProcessService.class).getCompanyLastValue((String) rows[0].getCellValue(2)));
+            String rowValue = (String) rows[0].getCellValue(2);
+            if (StringUtility.isNullOrEmpty(rowValue)) {
+              return;
             }
+            getLastValueField().setValue(SERVICES.getService(IJaxWsProcessService.class).getCompanyLastValue(rowValue));
           }
 
           public CompanyNrColumn getCompanyNrColumn() {
@@ -149,7 +151,7 @@ public class TableForm extends AbstractForm implements IPageForm {
 
             @Override
             protected boolean execIsEditable(ITableRow row) throws ProcessingException {
-              if (getCompanyNrColumn().getValue(row) == 5) {
+              if (getCompanyNrColumn().getValue(row) >= 5) {
                 return super.execIsEditable(row);
               }
               return false;
@@ -171,7 +173,7 @@ public class TableForm extends AbstractForm implements IPageForm {
 
             @Override
             protected boolean execIsEditable(ITableRow row) throws ProcessingException {
-              if (getCompanyNrColumn().getValue(row) == 5) {
+              if (getCompanyNrColumn().getValue(row) >= 5) {
                 return super.execIsEditable(row);
               }
               return false;
@@ -194,6 +196,30 @@ public class TableForm extends AbstractForm implements IPageForm {
               catch (ProcessingException e) {
                 MessageBox.showOkMessage("No value found", null, "No value found for " + getNameColumn().getSelectedValue());
               }
+            }
+          }
+
+          @Order(20.0)
+          public class NewCompanyMenu extends AbstractMenu {
+
+            @Override
+            protected boolean getConfiguredEmptySpaceAction() {
+              return true;
+            }
+
+            @Override
+            protected boolean getConfiguredSingleSelectionAction() {
+              return false;
+            }
+
+            @Override
+            protected String getConfiguredText() {
+              return TEXTS.get("NewCompany");
+            }
+
+            @Override
+            protected void execAction() throws ProcessingException {
+              getEditableTableField().getTable().addRowByArray(new Object[]{getEditableTableField().getTable().getCompanyNrColumn().getValues().length + 1, "New Company", ""});
             }
           }
         }

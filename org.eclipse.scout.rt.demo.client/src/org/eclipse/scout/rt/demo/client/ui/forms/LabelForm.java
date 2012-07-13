@@ -29,13 +29,13 @@ public class LabelForm extends AbstractForm implements IPageForm {
     super();
   }
 
+  public CloseButton getCloseButton() {
+    return getFieldByClass(CloseButton.class);
+  }
+
   @Override
   protected boolean getConfiguredAskIfNeedSave() {
     return false;
-  }
-
-  public CloseButton getCloseButton() {
-    return getFieldByClass(CloseButton.class);
   }
 
   @Override

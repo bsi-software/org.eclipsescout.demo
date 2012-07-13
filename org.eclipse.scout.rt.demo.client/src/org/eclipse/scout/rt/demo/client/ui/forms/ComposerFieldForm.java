@@ -20,6 +20,11 @@ public class ComposerFieldForm extends AbstractForm implements IPageForm {
   }
 
   @Override
+  protected boolean getConfiguredAskIfNeedSave() {
+    return false;
+  }
+
+  @Override
   protected String getConfiguredTitle() {
     return TEXTS.get("ComposerField");
   }

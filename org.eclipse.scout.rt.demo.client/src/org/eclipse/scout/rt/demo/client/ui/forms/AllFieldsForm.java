@@ -10,7 +10,6 @@ import org.eclipse.scout.rt.client.ui.form.fields.bigdecimalfield.AbstractBigDec
 import org.eclipse.scout.rt.client.ui.form.fields.bigintegerfield.AbstractBigIntegerField;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
-import org.eclipse.scout.rt.client.ui.form.fields.checkbox.AbstractCheckBox;
 import org.eclipse.scout.rt.client.ui.form.fields.datefield.AbstractDateField;
 import org.eclipse.scout.rt.client.ui.form.fields.datefield.AbstractDateTimeField;
 import org.eclipse.scout.rt.client.ui.form.fields.datefield.AbstractTimeField;
@@ -26,7 +25,6 @@ import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringFiel
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.AllEnabledButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.AllMandatoryButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.ButtonsBox;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.ButtonsBox.CheckboxButtonField;
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.ButtonsBox.DefaultButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.ButtonsBox.LinkButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.ButtonsBox.RadioButton;
@@ -35,6 +33,8 @@ import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.ButtonsVi
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.CloseButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.MaximizeButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.MinimizeButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.OpenModalFormButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.OpenNonModalFormButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SequenceBoxesBox;
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SequenceBoxesBox.Birthday2Box;
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SequenceBoxesBox.Birthday2Box.Birthday2From;
@@ -140,10 +140,6 @@ public class AllFieldsForm extends AbstractForm implements IPageForm {
     return getFieldByClass(ButtonsVisibleButton.class);
   }
 
-  public CheckboxButtonField getCheckboxButtonField() {
-    return getFieldByClass(CheckboxButtonField.class);
-  }
-
   public CloseButton getCloseButton() {
     return getFieldByClass(CloseButton.class);
   }
@@ -200,6 +196,14 @@ public class AllFieldsForm extends AbstractForm implements IPageForm {
     return getFieldByClass(StringFieldForPasswordField.class);
   }
 
+  public OpenModalFormButton getOpenModalFormButton() {
+    return getFieldByClass(OpenModalFormButton.class);
+  }
+
+  public OpenNonModalFormButton getOpenNonModalFormButton() {
+    return getFieldByClass(OpenNonModalFormButton.class);
+  }
+
   public RadioButton getRadioButton() {
     return getFieldByClass(RadioButton.class);
   }
@@ -234,6 +238,11 @@ public class AllFieldsForm extends AbstractForm implements IPageForm {
 
   @Order(10.0)
   public class MainBox extends AbstractGroupBox {
+    @Override
+    protected boolean getConfiguredGridUseUiWidth() {
+      return true;
+    }
+
     @Override
     protected boolean getConfiguredScrollable() {
       return true;
@@ -327,15 +336,6 @@ public class AllFieldsForm extends AbstractForm implements IPageForm {
           return false;
         }
       }
-
-      @Order(50.0)
-      public class CheckboxButtonField extends AbstractCheckBox {
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("CheckboxButton");
-        }
-      }
     }
 
     @Order(20.0)
@@ -401,7 +401,7 @@ public class AllFieldsForm extends AbstractForm implements IPageForm {
 
         @Override
         protected int getConfiguredGridH() {
-          return 5;
+          return 6;
         }
 
         @Override
@@ -711,6 +711,40 @@ public class AllFieldsForm extends AbstractForm implements IPageForm {
       @Override
       protected void execClickAction() throws ProcessingException {
         setMaximized(true);
+      }
+    }
+
+    @Order(110.0)
+    public class OpenNonModalFormButton extends AbstractButton {
+
+      @Override
+      protected String getConfiguredLabel() {
+        return TEXTS.get("OpenNonModalForm");
+      }
+
+      @Override
+      protected void execClickAction() throws ProcessingException {
+        AllFieldsForm form = new AllFieldsForm();
+        form.setModal(false);
+        form.getOpenNonModalFormButton().setVisible(false);
+        form.startPageForm();
+      }
+    }
+
+    @Order(120.0)
+    public class OpenModalFormButton extends AbstractButton {
+
+      @Override
+      protected String getConfiguredLabel() {
+        return TEXTS.get("OpenModalForm");
+      }
+
+      @Override
+      protected void execClickAction() throws ProcessingException {
+        AllFieldsForm form = new AllFieldsForm();
+        form.setModal(true);
+        form.getOpenNonModalFormButton().setVisible(false);
+        form.startPageForm();
       }
     }
   }
