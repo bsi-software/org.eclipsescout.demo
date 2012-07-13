@@ -26,7 +26,7 @@ public class PagesNodePage extends AbstractPageWithNodes {
 
     PageWithNodesNodePage pageWithNodesNodePage = new PageWithNodesNodePage();
     pageList.add(pageWithNodesNodePage);
-//    PageWithADetailformTablePage pageWithADetailformPage = new PageWithADetailformTablePage();
-//    pageList.add(pageWithADetailformPage);
+    PageWithADetailformTablePage pageWithADetailformPage = new PageWithADetailformTablePage();
+    pageList.add(pageWithADetailformPage);
   }
 }

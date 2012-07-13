@@ -5,9 +5,9 @@ import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNode
 import org.eclipse.scout.rt.demo.client.ui.forms.WizardsForm;
 import org.eclipse.scout.rt.shared.TEXTS;
 
-public class WizardNodePage extends AbstractPageWithNodes {
+public class WizardsNodePage extends AbstractPageWithNodes {
 
-  public WizardNodePage() throws ProcessingException {
+  public WizardsNodePage() throws ProcessingException {
     super(true, WizardsForm.class.getName());
     WizardsForm w = new WizardsForm();
     setDetailForm(w);
@@ -22,6 +22,6 @@ public class WizardNodePage extends AbstractPageWithNodes {
 
   @Override
   protected String getConfiguredTitle() {
-    return TEXTS.get("Wizard");
+    return TEXTS.get("Wizards");
   }
 }

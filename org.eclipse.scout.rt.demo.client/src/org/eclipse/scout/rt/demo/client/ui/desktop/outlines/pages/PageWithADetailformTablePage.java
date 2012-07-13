@@ -21,6 +21,12 @@ public class PageWithADetailformTablePage extends AbstractPageWithTable<PageWith
     super(true, DetailForm.class.getName());
     m_detailForm = new DetailForm();
     setDetailForm(m_detailForm);
+    m_detailForm.startNew();
+  }
+
+  @Override
+  protected String getConfiguredIconId() {
+    return org.eclipse.scout.rt.shared.AbstractIcons.TreeNodeOpen;
   }
 
   @Override
@@ -31,11 +37,6 @@ public class PageWithADetailformTablePage extends AbstractPageWithTable<PageWith
   @Override
   protected Object[][] execLoadTableData(SearchFilter filter) throws ProcessingException {
     return SERVICES.getService(IStandardOutlineService.class).getPageWithADetailformTableData();
-  }
-
-  @Override
-  protected void execPageActivated() throws ProcessingException {
-    m_detailForm.startNew();
   }
 
   @Order(10.0)

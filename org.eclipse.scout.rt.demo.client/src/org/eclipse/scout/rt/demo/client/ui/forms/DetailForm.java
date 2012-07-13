@@ -63,6 +63,16 @@ public class DetailForm extends AbstractForm {
     @Order(10.0)
     public class GroupBox extends AbstractGroupBox {
 
+      @Override
+      protected boolean getConfiguredGridUseUiHeight() {
+        return false;
+      }
+
+      @Override
+      protected int getConfiguredHeightInPixel() {
+        return 80;
+      }
+
       @Order(10.0)
       public class ValueLastField extends AbstractDoubleField {
 
