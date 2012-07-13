@@ -316,10 +316,5 @@ public class OutlineSelectorSearchForm extends AbstractSearchForm {
   }
 
   public class SearchHandler extends AbstractFormHandler {
-
-    @Override
-    public void execLoad() {
-      //TODO [ssw] Auto-generated method stub.
-    }
   }
 }

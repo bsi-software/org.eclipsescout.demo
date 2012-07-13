@@ -98,8 +98,7 @@ public class BrowserFieldForm extends AbstractForm implements IPageForm {
           setValue(f);
         }
         catch (IOException e) {
-          // TODO Auto-generated catch block
-          e.printStackTrace();
+          throw new ProcessingException("create RemoteFile", e);
         }
       }
     }
@@ -142,8 +141,7 @@ public class BrowserFieldForm extends AbstractForm implements IPageForm {
           getBrowserField().setValue(f);
         }
         catch (IOException e) {
-          // TODO Auto-generated catch block
-          e.printStackTrace();
+          throw new ProcessingException("create RemoteFile", e);
         }
       }
     }

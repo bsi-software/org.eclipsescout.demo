@@ -16,7 +16,7 @@ import org.eclipse.scout.rt.client.ui.form.IForm;
 public interface IPageForm extends IForm {
 
   /**
-   * start the TestHandler
+   * start the PageFormHandler
    */
   void startPageForm() throws ProcessingException;
 

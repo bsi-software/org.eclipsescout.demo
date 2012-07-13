@@ -7,6 +7,7 @@ import org.eclipse.scout.rt.client.ui.desktop.outline.AbstractOutline;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
 import org.eclipse.scout.rt.demo.client.ui.desktop.outlines.pages.FormFieldsNodePage;
 import org.eclipse.scout.rt.shared.TEXTS;
+import org.eclipse.scout.rt.demo.client.ui.desktop.outlines.pages.WizardNodePage;
 
 public class FormFieldsOutline extends AbstractOutline {
 
@@ -19,5 +20,6 @@ public class FormFieldsOutline extends AbstractOutline {
   protected void execCreateChildPages(Collection<IPage> pageList) throws ProcessingException {
     FormFieldsNodePage formFieldNodePage = new FormFieldsNodePage();
     pageList.add(formFieldNodePage);
+pageList.add(new WizardNodePage());
   }
 }
