@@ -22,6 +22,7 @@ import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.desktop.AbstractDesktop;
 import org.eclipse.scout.rt.client.ui.desktop.IDesktop;
 import org.eclipse.scout.rt.client.ui.desktop.bookmark.menu.AbstractBookmarkMenu;
+import org.eclipse.scout.rt.client.ui.desktop.outline.AbstractFormToolButton;
 import org.eclipse.scout.rt.client.ui.desktop.outline.AbstractOutlineViewButton;
 import org.eclipse.scout.rt.client.ui.desktop.outline.IOutline;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
@@ -32,6 +33,8 @@ import org.eclipse.scout.rt.demo.client.ClientSession;
 import org.eclipse.scout.rt.demo.client.ui.desktop.outlines.FormFieldsWizardsOutline;
 import org.eclipse.scout.rt.demo.client.ui.desktop.outlines.PagesSearchFormsOutline;
 import org.eclipse.scout.rt.demo.client.ui.desktop.outlines.pages.FormFieldsNodePage;
+import org.eclipse.scout.rt.demo.client.ui.forms.ToolButton1Form;
+import org.eclipse.scout.rt.demo.client.ui.forms.ToolButton2Form;
 import org.eclipse.scout.rt.demo.shared.Icons;
 import org.eclipse.scout.rt.shared.TEXTS;
 
@@ -139,6 +142,50 @@ public class Desktop extends AbstractDesktop implements IDesktop {
         ScoutInfoForm form = new ScoutInfoForm();
         form.startModify();
       }
+    }
+  }
+
+  @Order(10.0)
+  public class ToolButton1Tool extends AbstractFormToolButton {
+
+    @Override
+    protected String getConfiguredIconId() {
+      return org.eclipse.scout.rt.shared.AbstractIcons.ComposerFieldAttribute;
+    }
+
+    @Override
+    protected String getConfiguredText() {
+      return TEXTS.get("ToolButton1");
+    }
+
+    @Override
+    protected void execAction() throws ProcessingException {
+      ToolButton1Form form = new ToolButton1Form();
+      decorateForm(form);
+      form.startTool();
+      setForm(form);
+    }
+  }
+
+  @Order(20.0)
+  public class ToolButton2Tool extends AbstractFormToolButton {
+
+    @Override
+    protected String getConfiguredIconId() {
+      return org.eclipse.scout.rt.shared.AbstractIcons.ComposerFieldAttribute;
+    }
+
+    @Override
+    protected String getConfiguredText() {
+      return TEXTS.get("ToolButton2");
+    }
+
+    @Override
+    protected void execAction() throws ProcessingException {
+      ToolButton2Form form = new ToolButton2Form();
+      decorateForm(form);
+      form.startTool();
+      setForm(form);
     }
   }
 
