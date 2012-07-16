@@ -113,11 +113,13 @@ public class TableForm extends AbstractForm implements IPageForm {
 
           @Override
           protected void execRowsSelected(ITableRow[] rows) throws ProcessingException {
-            String rowValue = (String) rows[0].getCellValue(2);
-            if (StringUtility.isNullOrEmpty(rowValue)) {
-              return;
+            if (rows.length > 0) {
+              String rowValue = (String) rows[0].getCellValue(2);
+              if (StringUtility.isNullOrEmpty(rowValue)) {
+                return;
+              }
+              getValueLastField().setValue(SERVICES.getService(IJaxWsProcessService.class).getCompanyLastValue(rowValue));
             }
-            getValueLastField().setValue(SERVICES.getService(IJaxWsProcessService.class).getCompanyLastValue(rowValue));
           }
 
           public CompanyNrColumn getCompanyNrColumn() {

@@ -6,7 +6,9 @@ import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
+import org.eclipse.scout.rt.demo.client.ui.forms.WizardsForm.MainBox.OpenDynamicFormWizardButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.WizardsForm.MainBox.OpenLabelwizardButton;
+import org.eclipse.scout.rt.demo.client.ui.wizards.DynamicFormWizard;
 import org.eclipse.scout.rt.demo.client.ui.wizards.LabelWizard;
 import org.eclipse.scout.rt.shared.TEXTS;
 
@@ -30,6 +32,10 @@ public class WizardsForm extends AbstractForm implements IPageForm {
     return getFieldByClass(MainBox.class);
   }
 
+  public OpenDynamicFormWizardButton getOpenDynamicFormWizardButton() {
+    return getFieldByClass(OpenDynamicFormWizardButton.class);
+  }
+
   public OpenLabelwizardButton getOpenLabelwizardButton() {
     return getFieldByClass(OpenLabelwizardButton.class);
   }
@@ -48,6 +54,21 @@ public class WizardsForm extends AbstractForm implements IPageForm {
       @Override
       protected void execClickAction() throws ProcessingException {
         LabelWizard wizard = new LabelWizard();
+        wizard.start();
+      }
+    }
+
+    @Order(20.0)
+    public class OpenDynamicFormWizardButton extends AbstractButton {
+
+      @Override
+      protected String getConfiguredLabel() {
+        return TEXTS.get("OpenDynamicFormWizard");
+      }
+
+      @Override
+      protected void execClickAction() throws ProcessingException {
+        DynamicFormWizard wizard = new DynamicFormWizard();
         wizard.start();
       }
     }

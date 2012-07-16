@@ -130,6 +130,11 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
         return 0;
       }
 
+      @Override
+      protected boolean getConfiguredLabelVisible() {
+        return false;
+      }
+
       @Order(10.0)
       public class HorizontalAlignmentButton extends AbstractRadioButton {
 

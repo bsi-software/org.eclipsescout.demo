@@ -1,0 +1,142 @@
+package org.eclipse.scout.rt.demo.client.ui.desktop.outlines.pages;
+
+import org.eclipse.scout.commons.annotations.Order;
+import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
+import org.eclipse.scout.rt.client.ui.action.menu.checkbox.AbstractCheckBoxMenu;
+import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNodes;
+import org.eclipse.scout.rt.shared.TEXTS;
+
+public class MenusNodePage extends AbstractPageWithNodes {
+
+  @Override
+  protected String getConfiguredIconId() {
+    return org.eclipse.scout.rt.shared.AbstractIcons.NavigationCurrent;
+  }
+
+  @Override
+  protected String getConfiguredTitle() {
+    return TEXTS.get("Menus");
+  }
+
+  @Order(10.0)
+  public class MenuWithTextMenu extends AbstractMenu {
+
+    @Override
+    protected boolean getConfiguredEmptySpaceAction() {
+      return true;
+    }
+
+    @Override
+    protected String getConfiguredText() {
+      return TEXTS.get("MenuWithText");
+    }
+  }
+
+  @Order(20.0)
+  public class MenuWithIconMenu extends AbstractMenu {
+
+    @Override
+    protected boolean getConfiguredEmptySpaceAction() {
+      return true;
+    }
+
+    @Override
+    protected String getConfiguredIconId() {
+      return org.eclipse.scout.rt.shared.AbstractIcons.Gears;
+    }
+
+    @Override
+    protected String getConfiguredText() {
+      return TEXTS.get("MenuWithIcon");
+    }
+  }
+
+  @Order(30.0)
+  public class CheckableMenu extends AbstractCheckBoxMenu {
+
+    @Override
+    protected boolean getConfiguredEmptySpaceAction() {
+      return true;
+    }
+
+    @Override
+    protected String getConfiguredText() {
+      return TEXTS.get("CheckableMenu");
+    }
+  }
+
+  @Order(40.0)
+  public class MenuWithMenusMenu extends AbstractMenu {
+
+    @Override
+    protected boolean getConfiguredEmptySpaceAction() {
+      return true;
+    }
+
+    @Override
+    protected String getConfiguredText() {
+      return TEXTS.get("MenuWithMenus");
+    }
+
+    @Order(10.0)
+    public class Menu1Menu extends AbstractMenu {
+
+      @Override
+      protected boolean getConfiguredEmptySpaceAction() {
+        return true;
+      }
+
+      @Override
+      protected String getConfiguredText() {
+        return TEXTS.get("Menu1");
+      }
+    }
+
+    @Order(20.0)
+    public class Menu2Menu extends AbstractMenu {
+
+      @Override
+      protected boolean getConfiguredEmptySpaceAction() {
+        return true;
+      }
+
+      @Override
+      protected String getConfiguredText() {
+        return TEXTS.get("Menu2");
+      }
+    }
+
+    @Order(30.0)
+    public class Menu3Menu extends AbstractMenu {
+
+      @Override
+      protected boolean getConfiguredEmptySpaceAction() {
+        return true;
+      }
+
+      @Override
+      protected String getConfiguredText() {
+        return TEXTS.get("Menu3");
+      }
+    }
+  }
+
+  @Order(50.0)
+  public class MenuWithKeyStrokeMenu extends AbstractMenu {
+
+    @Override
+    protected boolean getConfiguredEmptySpaceAction() {
+      return true;
+    }
+
+    @Override
+    protected String getConfiguredKeyStroke() {
+      return "m";
+    }
+
+    @Override
+    protected String getConfiguredText() {
+      return TEXTS.get("MenuWithKeyStroke");
+    }
+  }
+}

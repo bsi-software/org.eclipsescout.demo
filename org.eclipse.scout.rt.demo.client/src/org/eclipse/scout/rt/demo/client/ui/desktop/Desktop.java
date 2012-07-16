@@ -29,7 +29,7 @@ import org.eclipse.scout.rt.client.ui.form.ScoutInfoForm;
 import org.eclipse.scout.rt.client.ui.form.outline.DefaultOutlineTableForm;
 import org.eclipse.scout.rt.client.ui.form.outline.DefaultOutlineTreeForm;
 import org.eclipse.scout.rt.demo.client.ClientSession;
-import org.eclipse.scout.rt.demo.client.ui.desktop.outlines.FormFieldsOutline;
+import org.eclipse.scout.rt.demo.client.ui.desktop.outlines.FormFieldsWizardsOutline;
 import org.eclipse.scout.rt.demo.client.ui.desktop.outlines.PagesSearchFormsOutline;
 import org.eclipse.scout.rt.demo.client.ui.desktop.outlines.pages.FormFieldsNodePage;
 import org.eclipse.scout.rt.demo.shared.Icons;
@@ -45,7 +45,7 @@ public class Desktop extends AbstractDesktop implements IDesktop {
   @Override
   protected Class<? extends IOutline>[] getConfiguredOutlines() {
     ArrayList<Class> outlines = new ArrayList<Class>();
-    outlines.add(FormFieldsOutline.class);
+    outlines.add(FormFieldsWizardsOutline.class);
     outlines.add(PagesSearchFormsOutline.class);
     return outlines.toArray(new Class[outlines.size()]);
   }
@@ -164,7 +164,7 @@ public class Desktop extends AbstractDesktop implements IDesktop {
   @Order(10.0)
   public class TestCasesOutlineViewButton extends AbstractOutlineViewButton {
     public TestCasesOutlineViewButton() {
-      super(Desktop.this, FormFieldsOutline.class);
+      super(Desktop.this, FormFieldsWizardsOutline.class);
     }
 
     @Override

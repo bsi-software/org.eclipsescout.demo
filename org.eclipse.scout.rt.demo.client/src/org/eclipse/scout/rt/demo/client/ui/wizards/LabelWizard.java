@@ -19,6 +19,16 @@ public class LabelWizard extends AbstractWizard {
     super();
   }
 
+  @Override
+  protected IWizardContainerForm execCreateContainerForm() throws ProcessingException {
+    IWizardContainerForm f = super.execCreateContainerForm();
+    GridData gd = f.getRootGroupBox().getGridData();
+    gd.widthInPixel = 550;
+    gd.heightInPixel = 400;
+    f.getRootGroupBox().setGridDataInternal(gd);
+    return f;
+  }
+
   @Order(10.0)
   public class FontStep extends AbstractWizardStep<LabelWizardFontForm> {
 
@@ -37,16 +47,6 @@ public class LabelWizard extends AbstractWizard {
       }
       getWizard().setWizardForm(form);
     }
-  }
-
-  @Override
-  protected IWizardContainerForm execCreateContainerForm() throws ProcessingException {
-    IWizardContainerForm f = super.execCreateContainerForm();
-    GridData gd = f.getRootGroupBox().getGridData();
-    gd.widthInPixel = 550;
-    gd.heightInPixel = 400;
-    f.getRootGroupBox().setGridDataInternal(gd);
-    return f;
   }
 
   public FontStep getFontStep() {

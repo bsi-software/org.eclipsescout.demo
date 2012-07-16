@@ -21,19 +21,6 @@ public class JaxWsProcessService extends AbstractService implements IJaxWsProces
     return parseDouble(stockQuote.getLastTrade());
   }
 
-  private Double parseDouble(String number) {
-    if (number != null && number.equals("N/A")) {
-      return null;
-    }
-    try {
-      return Double.parseDouble(number);
-    }
-    catch (Exception e) {
-      ScoutLogManager.getLogger(JaxWsProcessService.class).error("failed to parse double value '" + number + "'", e);
-    }
-    return null;
-  }
-
   @Override
   public double[] getDetailFormValues(String symbol) throws ProcessingException {
     StockQuoteServiceSoapWebServiceClient service = SERVICES.getService(StockQuoteServiceSoapWebServiceClient.class);
@@ -45,5 +32,18 @@ public class JaxWsProcessService extends AbstractService implements IJaxWsProces
     double valueHigh = parseDouble(stockQuote.getDayHigh());
 
     return new double[]{valueLast, valueOpen, valueLow, valueHigh};
+  }
+
+  private Double parseDouble(String number) {
+    if (number != null && number.equals("N/A")) {
+      return 0D;
+    }
+    try {
+      return Double.parseDouble(number);
+    }
+    catch (Exception e) {
+      ScoutLogManager.getLogger(JaxWsProcessService.class).error("failed to parse double value '" + number + "'", e);
+    }
+    return 0D;
   }
 }
