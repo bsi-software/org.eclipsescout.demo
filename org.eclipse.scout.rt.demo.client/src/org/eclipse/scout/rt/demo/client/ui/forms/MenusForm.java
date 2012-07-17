@@ -87,7 +87,7 @@ public class MenusForm extends AbstractForm implements IPageForm {
         }
 
         @Order(10.0)
-        public class Menu1Menu extends MenuWithMenusMenu {
+        public class Menu1Menu extends AbstractMenu {
 
           @Override
           protected String getConfiguredText() {

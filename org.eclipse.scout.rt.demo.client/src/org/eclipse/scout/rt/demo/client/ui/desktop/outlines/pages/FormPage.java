@@ -10,15 +10,11 @@ import org.eclipse.scout.rt.shared.TEXTS;
 
 public class FormPage extends AbstractPageWithNodes {
 
-  private Class<? extends IPageForm> m_testFormType;
-
-  public FormPage() {
-    super();
-  }
+  private Class<? extends IPageForm> m_formType;
 
   public FormPage(Class<? extends IPageForm> c) {
     super(false, c.getName());
-    m_testFormType = c;
+    m_formType = c;
     callInitializer();
   }
 
@@ -29,7 +25,7 @@ public class FormPage extends AbstractPageWithNodes {
 
   @Override
   protected void execInitPage() throws ProcessingException {
-    String s = m_testFormType.getSimpleName();
+    String s = m_formType.getSimpleName();
     s = s.substring(0, s.length() - 4);
     getCellForUpdate().setText(s);
     setTableVisible(false);
@@ -46,10 +42,10 @@ public class FormPage extends AbstractPageWithNodes {
 
   protected IPageForm execCreateDetailForm() throws ProcessingException {
     try {
-      return m_testFormType.newInstance();
+      return m_formType.newInstance();
     }
     catch (Exception e) {
-      throw new ProcessingException("create " + m_testFormType, e);
+      throw new ProcessingException("create " + m_formType, e);
     }
   }
 
