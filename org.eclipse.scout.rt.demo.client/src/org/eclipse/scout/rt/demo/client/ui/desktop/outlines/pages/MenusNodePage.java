@@ -1,12 +1,18 @@
 package org.eclipse.scout.rt.demo.client.ui.desktop.outlines.pages;
 
 import org.eclipse.scout.commons.annotations.Order;
+import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.action.menu.checkbox.AbstractCheckBoxMenu;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNodes;
+import org.eclipse.scout.rt.demo.client.ui.forms.MenusForm;
 import org.eclipse.scout.rt.shared.TEXTS;
 
 public class MenusNodePage extends AbstractPageWithNodes {
+
+  public MenusNodePage() {
+    super(true, MenusForm.class.getSimpleName());
+  }
 
   @Override
   protected String getConfiguredIconId() {
@@ -14,8 +20,20 @@ public class MenusNodePage extends AbstractPageWithNodes {
   }
 
   @Override
+  protected boolean getConfiguredTableVisible() {
+    return false;
+  }
+
+  @Override
   protected String getConfiguredTitle() {
     return TEXTS.get("Menus");
+  }
+
+  @Override
+  protected void execInitPage() throws ProcessingException {
+    MenusForm form = new MenusForm();
+    form.startPageForm();
+    setDetailForm(form);
   }
 
   @Order(10.0)
