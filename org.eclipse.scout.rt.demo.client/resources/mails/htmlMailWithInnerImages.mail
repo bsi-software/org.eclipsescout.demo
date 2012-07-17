@@ -1,23 +1,23 @@
-Return-Path: <carmen.pfundner@gmx.net>
-Received: from mail.gmx.net (mail.gmx.net [213.165.64.20])
-	by mail.hermes-vs.de (Postfix) with SMTP id 156655A498
-	for <Kundenservice@hlg.de>; Sun, 21 Dec 2008 13:40:41 +0100 (CET)
-Received: from mailsweeper.hermes-vs.de (mailsweeper.hermes-vs.de [192.168.91.12])
-	by xtramind-rz2.hermes-vs.de (Postfix) with ESMTP id 7745C769AD
-	for <kundenservice@xtramind-rz2.hermes-vs.de>; Sun, 21 Dec 2008 13:40:41 +0100 (CET)
+Return-Path: <demo@scout.org>
+Received: from mail.scout.org (mail.scout.org [213.165.64.20])
+	by mail.demo.de (Postfix) with SMTP id 156655A495
+	for <scout@demo.org>; Sun, 21 Dec 2008 13:40:41 +0100 (CET)
+Received: from mailsweeper.demo.de (mailsweeper.demo.de [192.168.91.12])
+	by xtramind-rz2.demo.de (Postfix) with ESMTP id 7745C769AD
+	for <scout@xtramind-rz2.demo.de>; Sun, 21 Dec 2008 13:40:41 +0100 (CET)
 Received: (qmail invoked by alias); 21 Dec 2008 12:40:27 -0000
 Received: from 77.119.39.6.wireless.dyn.drei.com (EHLO admin-8fa7013c3) [77.119.39.6]
-  by mail.gmx.net (mp066) with SMTP; 21 Dec 2008 13:40:27 +0100
-Received: from xtramind-rz2.hermes-vs.de ([unix socket])
+  by mail.scout.org (mp066) with SMTP; 21 Dec 2008 13:40:27 +0100
+Received: from xtramind-rz2.demo.de ([unix socket])
 	by xtramind-rz2 (Cyrus v2.2.3) with LMTP; Sun, 21 Dec 2008 13:40:41 +0100
-Received: from mail.hermes-vs.de (unverified) by mailsweeper.hermes-vs.de
- (Clearswift SMTPRS 5.2.9) with ESMTP id <T8b66306d71c0a85b0c9b4@mailsweeper.hermes-vs.de> for <kundenservice@xtramind-rz2.hermes-vs.de>;
+Received: from mail.demo.de (unverified) by mailsweeper.demo.de
+ (Clearswift SMTPRS 5.2.9) with ESMTP id <T8b66306d71c0a85b0c9b4@mailsweeper.demo.de> for <scout@xtramind-rz2.demo.de>;
  Sun, 21 Dec 2008 13:41:43 +0100
 Message-ID: <26179581.1229936970094.JavaMail.MailMinder@_TICKET_ID[|#1695324880#1787534#5d50174#|]_>
 Date: Sun, 21 Dec 2008 13:36:46 +0100 (WesteuropXische Normalzeit)
-From: Carmen <carmen.pfundner@gmx.net>
-Reply-To: Carmen <carmen.pfundner@gmx.net>
-To: Kundenservice@hlg.de
+From: Scout <demo@scout.org>
+Reply-To: Scout <demo@scout.org>
+To: scout@demo.org
 Subject: Sendungsauskunft
 In-Reply-To: <494E385E.000006.02052@ADMIN-8FA7013C3>
 Mime-Version: 1.0
@@ -50,14 +50,14 @@ Content-Transfer-Encoding: 8bit
 
 
 Auftragsnummer
-082000017353995
+082000017354324
 
 Am Montag ist keiner zuhause!
-Wenn sie könnten, könnten sie mir den Koffer bei der Firma Kainbacher in Köflach abgeben da ich bis fünf Arbeite!
-Die angegebene Telefonnummer ist auch falsch aufgenommen worden hier die richtige: 0664/3153280
+Wenn sie könnten, könnten sie mir den Koffer bei der Firma Scout abgeben da ich bis fünf Arbeite!
+Die angegebene Telefonnummer ist auch falsch aufgenommen worden hier die richtige: 0664/0000000
 Danke im voraus
 
-Gratzer Thomas
+Eclipse Scout
 
 
 
@@ -130,14 +130,14 @@ Content-Transfer-Encoding: 8bit
 <TR>
 <TD id=INCREDITEXTREGION dir=ltr style="FONT-SIZE: 12pt; DIRECTION: ltr" vAlign=top width="100%">
 <DIV>Auftragsnummer </DIV>
-<DIV>082000017353995</DIV>
+<DIV>082000017354324</DIV>
 <DIV>&nbsp;</DIV>
 <DIV>Am Montag ist keiner zuhause! </DIV>
-<DIV>Wenn sie könnten, könnten&nbsp;sie mir den Koffer bei der Firma Kainbacher in Köflach abgeben da ich bis fünf Arbeite!</DIV>
-<DIV>Die angegebene Telefonnummer ist auch falsch aufgenommen worden hier die richtige: 0664/3153280</DIV>
+<DIV>Wenn sie könnten, könnten&nbsp;sie mir den Koffer bei der Firma Scout abgeben da ich bis fünf Arbeite!</DIV>
+<DIV>Die angegebene Telefonnummer ist auch falsch aufgenommen worden hier die richtige: 0664/0000000</DIV>
 <DIV>Danke im voraus </DIV>
 <DIV>&nbsp;</DIV>
-<DIV>Gratzer Thomas</DIV>
+<DIV>Eclipse Scout</DIV>
 <DIV>&nbsp;</DIV></TD></TR>
 <TR>
 <TD id=INCREDIFOOTER width="100%">
