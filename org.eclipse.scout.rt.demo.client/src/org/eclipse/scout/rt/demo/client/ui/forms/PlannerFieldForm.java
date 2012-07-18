@@ -9,6 +9,7 @@ import org.eclipse.scout.commons.DateUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.basic.activitymap.AbstractActivityMap;
+import org.eclipse.scout.rt.client.ui.basic.activitymap.ActivityCell;
 import org.eclipse.scout.rt.client.ui.basic.activitymap.IActivityMap;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
@@ -202,14 +203,18 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
 
           @Order(10.0)
           public class ActivityMap extends AbstractActivityMap {
+
+            @Override
+            protected void execDecorateActivityCell(ActivityCell cell) throws ProcessingException {
+              cell.setMajorColor("FE9915");
+              cell.setMinorColor("046989");
+            }
           }
         }
       }
 
       @Order(20.0)
       public class PlannerField2Box extends AbstractGroupBox {
-
-        private Date base = DateUtility.parse("20120717", "yyyyMMdd");
 
         @Override
         protected String getConfiguredLabel() {
@@ -218,6 +223,8 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
 
         @Order(10.0)
         public class WeekPlannerField extends AbstractPlannerField<WeekPlannerField.ResourceTable, WeekPlannerField.ActivityMap> {
+
+          private Date base = DateUtility.parse("20120717", "yyyyMMdd");
 
           private Object[][] weekTestcases = new Object[][]{
               {true, base, base, "start/end date same, at the beginning of the displayed range."},
@@ -269,11 +276,11 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
               // endTime
               data[i][3] = weekTestcases[i][2];
               // text
-              data[i][4] = null;
+              data[i][4] = "";
               // tooltipText
-              data[i][5] = null;
+              data[i][5] = "";
               // iconId
-              data[i][6] = null;
+              data[i][6] = "";
               // majorValue
               data[i][7] = ((Boolean) weekTestcases[i][0]) ? 1f : 0f;
               // minorValue
@@ -358,6 +365,8 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
         @Order(20.0)
         public class DayPlannerField extends AbstractPlannerField<DayPlannerField.ResourceTable, DayPlannerField.ActivityMap> {
 
+          private Date base = DateUtility.parse("20120717", "yyyyMMdd");
+
           private Object[][] dayTestcases = new Object[][]{
               {true, base, base, "start/end date same, at the beginning of the displayed range."},
               {true, DateUtility.addDays(base, 7), DateUtility.addDays(base, 7), "start/end date same, not at the beginning of the range."},
@@ -404,7 +413,7 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
               // activityId
               data[i][1] = i;
               // startTime
-              data[i][2] = dayTestcases[i][1];
+              data[i][2] = (dayTestcases[i][1] != null) ? dayTestcases[i][1] : base;
               // endTime
               data[i][3] = dayTestcases[i][2];
               // text
@@ -497,7 +506,10 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
         @Order(30.0)
         public class IntradayPlannerField extends AbstractPlannerField<IntradayPlannerField.ResourceTable, IntradayPlannerField.ActivityMap> {
 
-          private Date intradayBase = DateUtility.parse("20110103 08:00", "yyyyMMdd HH:mm"); //a monday
+          private Date base = DateUtility.parse("20120717", "yyyyMMdd");
+
+          private Date intradayBase = DateUtility.parse("20120717 08:00", "yyyyMMdd HH:mm"); //a monday
+
           private Object[][] intradayTestcases = new Object[][]{
               {true, intradayBase, intradayBase, "start/end date same, at the beginning of the displayed range."},
               {true, DateUtility.addHours(intradayBase, 1), DateUtility.addHours(intradayBase, 1), "start/end date same, not at the beginning of the range."},
