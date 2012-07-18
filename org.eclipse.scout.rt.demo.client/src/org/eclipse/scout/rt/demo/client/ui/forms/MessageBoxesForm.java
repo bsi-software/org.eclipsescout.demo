@@ -2,6 +2,7 @@ package org.eclipse.scout.rt.demo.client.ui.forms;
 
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.commons.exception.VetoException;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
@@ -9,9 +10,13 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractLinkButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
 import org.eclipse.scout.rt.demo.client.ui.forms.MessageBoxesForm.MainBox.CloseButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.MessageBoxesForm.MainBox.DeleteConfirmationMessageButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.MessageBoxesForm.MainBox.MessageBoxWithHiddenTextButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.MessageBoxesForm.MainBox.MessageBoxWithOkButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.MessageBoxesForm.MainBox.MessageBoxWithYesNoCancelOptionButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.MessageBoxesForm.MainBox.MessageBoxWithYesNoOptionButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.MessageBoxesForm.MainBox.ProcessingExceptionButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.MessageBoxesForm.MainBox.VetoExceptionButton;
 import org.eclipse.scout.rt.shared.TEXTS;
 
 public class MessageBoxesForm extends AbstractForm implements IPageForm {
@@ -35,12 +40,16 @@ public class MessageBoxesForm extends AbstractForm implements IPageForm {
     startInternal(new PageFormHandler());
   }
 
-  public CloseButton getCloseButton() {
-    return getFieldByClass(CloseButton.class);
+  public DeleteConfirmationMessageButton getDeleteConfirmationMessageButton() {
+    return getFieldByClass(DeleteConfirmationMessageButton.class);
   }
 
   public MainBox getMainBox() {
     return getFieldByClass(MainBox.class);
+  }
+
+  public MessageBoxWithHiddenTextButton getMessageBoxWithHiddenTextButton() {
+    return getFieldByClass(MessageBoxWithHiddenTextButton.class);
   }
 
   public MessageBoxWithOkButton getMessageBoxWithOkButton() {
@@ -55,6 +64,18 @@ public class MessageBoxesForm extends AbstractForm implements IPageForm {
     return getFieldByClass(MessageBoxWithYesNoOptionButton.class);
   }
 
+  public ProcessingExceptionButton getProcessingExceptionButton() {
+    return getFieldByClass(ProcessingExceptionButton.class);
+  }
+
+  public CloseButton getCloseButton() {
+    return getFieldByClass(CloseButton.class);
+  }
+
+  public VetoExceptionButton getVetoExceptionButton() {
+    return getFieldByClass(VetoExceptionButton.class);
+  }
+
   @Order(10.0)
   public class MainBox extends AbstractGroupBox {
 
@@ -63,7 +84,7 @@ public class MessageBoxesForm extends AbstractForm implements IPageForm {
 
       @Override
       protected int getConfiguredGridW() {
-        return 0;
+        return 2;
       }
 
       @Override
@@ -87,7 +108,7 @@ public class MessageBoxesForm extends AbstractForm implements IPageForm {
 
       @Override
       protected int getConfiguredGridW() {
-        return 0;
+        return 2;
       }
 
       @Override
@@ -111,7 +132,7 @@ public class MessageBoxesForm extends AbstractForm implements IPageForm {
 
       @Override
       protected int getConfiguredGridW() {
-        return 0;
+        return 2;
       }
 
       @Override
@@ -131,6 +152,103 @@ public class MessageBoxesForm extends AbstractForm implements IPageForm {
     }
 
     @Order(40.0)
+    public class MessageBoxWithHiddenTextButton extends AbstractLinkButton {
+
+      @Override
+      protected int getConfiguredGridW() {
+        return 2;
+      }
+
+      @Override
+      protected String getConfiguredLabel() {
+        return TEXTS.get("MessageBoxWithHiddenText");
+      }
+
+      @Override
+      protected boolean getConfiguredProcessButton() {
+        return false;
+      }
+
+      @Override
+      protected void execClickAction() throws ProcessingException {
+        MessageBox msgbox = new MessageBox("MessageBox with hidden text", "This MessageBox has a hidden text", "click on copy or press ctrl+c to get the hidden text in your clipboard", TEXTS.get("YesButton"), TEXTS.get("NoButton"), TEXTS.get("CancelButton"), TEXTS.get("Lorem"), null);
+        msgbox.startMessageBox();
+      }
+    }
+
+    @Order(50.0)
+    public class DeleteConfirmationMessageButton extends AbstractLinkButton {
+
+      @Override
+      protected int getConfiguredGridW() {
+        return 2;
+      }
+
+      @Override
+      protected String getConfiguredLabel() {
+        return TEXTS.get("DeleteConfirmationMessage");
+      }
+
+      @Override
+      protected boolean getConfiguredProcessButton() {
+        return false;
+      }
+
+      @Override
+      protected void execClickAction() throws ProcessingException {
+        MessageBox.showDeleteConfirmationMessage("Option", new String[]{"Item1", "Item2", "Item3"});
+      }
+    }
+
+    @Order(60.0)
+    public class VetoExceptionButton extends AbstractLinkButton {
+
+      @Override
+      protected int getConfiguredGridW() {
+        return 2;
+      }
+
+      @Override
+      protected String getConfiguredLabel() {
+        return TEXTS.get("VetoException");
+      }
+
+      @Override
+      protected boolean getConfiguredProcessButton() {
+        return false;
+      }
+
+      @Override
+      protected void execClickAction() throws ProcessingException {
+        throw new VetoException("This is a VetoException");
+      }
+    }
+
+    @Order(70.0)
+    public class ProcessingExceptionButton extends AbstractLinkButton {
+
+      @Override
+      protected int getConfiguredGridW() {
+        return 2;
+      }
+
+      @Override
+      protected String getConfiguredLabel() {
+        return TEXTS.get("ProcessingException");
+      }
+
+      @Override
+      protected boolean getConfiguredProcessButton() {
+        return false;
+      }
+
+      @Override
+      protected void execClickAction() throws ProcessingException {
+        throw new ProcessingException("This is a ProcessingException");
+      }
+    }
+
+    @Order(80.0)
     public class CloseButton extends AbstractCloseButton {
     }
   }
