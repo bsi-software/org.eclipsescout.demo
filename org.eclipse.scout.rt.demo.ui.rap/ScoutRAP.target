@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.8"?>
 
-<target name="ScoutRAP" sequenceNumber="1">
+<target name="ScoutRAP" sequenceNumber="6">
 <locations>
 <location path="${eclipse_home}\rap_target" type="Directory"/>
 <location path="${eclipse_home}\" type="Directory"/>
@@ -13,6 +13,7 @@
 <unit id="org.eclipse.scout.rt.ui.rap.incubator.filechooser.feature.feature.group" version="3.8.0.201206130843"/>
 <repository location="http://download.eclipse.org/scout/releases/3.8"/>
 </location>
+<location path="C:\eclipse\eclipse\links\bsiag\eclipse" type="Directory"/>
 </locations>
 <launcherArgs>
 <vmArgs>-Xms256m -Xmx512m -XX:MaxPermSize=256m</vmArgs>

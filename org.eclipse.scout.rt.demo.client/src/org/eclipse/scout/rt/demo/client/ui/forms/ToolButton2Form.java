@@ -46,6 +46,11 @@ public class ToolButton2Form extends AbstractForm {
       }
 
       @Override
+      protected int getConfiguredGridH() {
+        return 5;
+      }
+
+      @Override
       protected boolean getConfiguredLabelVisible() {
         return false;
       }

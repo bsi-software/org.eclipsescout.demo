@@ -35,7 +35,7 @@ public class GroupBoxForm extends AbstractForm implements IPageForm {
 
   @Override
   protected String getConfiguredTitle() {
-    return TEXTS.get("HorizontalAlignmentBox");
+    return TEXTS.get("GroupBox");
   }
 
   @Override
