@@ -113,6 +113,11 @@ public class TabBoxForm extends AbstractForm implements IPageForm {
     @Order(10.0)
     public class TabBox extends AbstractTabBox {
 
+      @Override
+      protected boolean getConfiguredLabelVisible() {
+        return false;
+      }
+
       @Order(10.0)
       public class Tab1Box extends AbstractGroupBox {
 
@@ -266,6 +271,11 @@ public class TabBoxForm extends AbstractForm implements IPageForm {
 
         @Order(10.0)
         public class InnerTabBox extends AbstractTabBox {
+
+          @Override
+          protected boolean getConfiguredLabelVisible() {
+            return false;
+          }
 
           @Order(10.0)
           public class InnerTab1Box extends AbstractGroupBox {
