@@ -11,11 +11,24 @@ import org.eclipse.scout.rt.shared.TEXTS;
 public class FormPage extends AbstractPageWithNodes {
 
   private Class<? extends IPageForm> m_formType;
+  private boolean m_enabled = true;
 
   public FormPage(Class<? extends IPageForm> c) {
     super(false, c.getName());
     m_formType = c;
     callInitializer();
+  }
+
+  public FormPage(Class<? extends IPageForm> c, boolean enabled) {
+    super(false, c.getName());
+    m_formType = c;
+    m_enabled = enabled;
+    callInitializer();
+  }
+
+  @Override
+  protected boolean getConfiguredEnabled() {
+    return m_enabled;
   }
 
   @Override
@@ -33,7 +46,7 @@ public class FormPage extends AbstractPageWithNodes {
 
   @Override
   protected void execPageActivated() throws ProcessingException {
-    if (getDetailForm() == null) {
+    if (getDetailForm() == null && m_enabled) {
       IPageForm form = execCreateDetailForm();
       setDetailForm(form);
       form.startPageForm();

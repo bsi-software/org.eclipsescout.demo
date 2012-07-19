@@ -25,6 +25,8 @@ import org.eclipse.scout.rt.shared.services.common.code.CODES;
 public class ClientSession extends AbstractClientSession {
   private static IScoutLogger logger = ScoutLogManager.getLogger(ClientSession.class);
 
+  private String m_product;
+
   public ClientSession() {
     super(true);
   }
@@ -41,9 +43,23 @@ public class ClientSession extends AbstractClientSession {
     return getSharedContextVariable("personNr", Long.class);
   }
 
+  public boolean isSwing() {
+    return m_product.equals("org.eclipse.scout.rt.demo.ui.swing.product");
+  }
+
+  public boolean isSwt() {
+    return m_product.equals("org.eclipse.scout.rt.demo.ui.swt.product");
+  }
+
+  public boolean isRap() {
+    return m_product.equals("org.eclipse.scout.rt.demo.ui.rap.product");
+  }
+
   @Override
   public void execLoadSession() throws ProcessingException {
     setServiceTunnel(new HttpServiceTunnel(this, getBundle().getBundleContext().getProperty("server.url")));
+
+    m_product = getBundle().getBundleContext().getProperty("eclipse.product");
 
     try {
       //pre-load all known code types
@@ -56,9 +72,6 @@ public class ClientSession extends AbstractClientSession {
     }
 
     setDesktop(new Desktop());
-
-    // turn client notification polling on
-    // getServiceTunnel().setClientNotificationPollInterval(2000L);
   }
 
   @Override

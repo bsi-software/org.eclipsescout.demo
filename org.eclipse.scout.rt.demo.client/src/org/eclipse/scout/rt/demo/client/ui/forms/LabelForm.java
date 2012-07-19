@@ -10,6 +10,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.integerfield.AbstractIntegerFi
 import org.eclipse.scout.rt.client.ui.form.fields.labelfield.AbstractLabelField;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
+import org.eclipse.scout.rt.demo.client.ClientSession;
 import org.eclipse.scout.rt.demo.client.services.lookup.FontstyleLookupCall;
 import org.eclipse.scout.rt.demo.client.ui.forms.LabelForm.MainBox.CloseButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.LabelForm.MainBox.FieldBox;
@@ -166,7 +167,11 @@ public class LabelForm extends AbstractForm implements IPageForm {
 
         @Override
         protected void execInitField() {
-          this.setValue("<html>" + TEXTS.get("Lorem") + "</html>");
+          String value = TEXTS.get("Lorem");
+          if (ClientSession.get().isSwing()) {
+            value = "<html>" + value + "</html>";
+          }
+          this.setValue(value);
         }
       }
 

@@ -9,6 +9,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractLinkButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
+import org.eclipse.scout.rt.demo.client.ClientSession;
 import org.eclipse.scout.rt.demo.client.ui.forms.MessageBoxesForm.MainBox.CloseButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.MessageBoxesForm.MainBox.DeleteConfirmationMessageButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.MessageBoxesForm.MainBox.MessageBoxWithHiddenTextButton;
@@ -167,6 +168,11 @@ public class MessageBoxesForm extends AbstractForm implements IPageForm {
       @Override
       protected boolean getConfiguredProcessButton() {
         return false;
+      }
+
+      @Override
+      protected boolean getConfiguredEnabled() {
+        return !ClientSession.get().isRap();
       }
 
       @Override

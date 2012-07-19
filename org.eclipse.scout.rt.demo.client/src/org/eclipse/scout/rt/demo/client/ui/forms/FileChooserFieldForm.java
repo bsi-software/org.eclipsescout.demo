@@ -18,6 +18,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.tabbox.AbstractTabBox;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
+import org.eclipse.scout.rt.demo.client.ClientSession;
 import org.eclipse.scout.rt.demo.client.ui.forms.FileChooserFieldForm.MainBox.CloseButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.FileChooserFieldForm.MainBox.TabBox;
 import org.eclipse.scout.rt.demo.client.ui.forms.FileChooserFieldForm.MainBox.TabBox.FolderContentsBox;
@@ -167,16 +168,17 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
           }
 
           @Override
+          protected boolean getConfiguredEnabled() {
+            return !ClientSession.get().isRap();
+          }
+
+          @Override
           protected void execChangedValue() throws ProcessingException {
             try {
               String folderName = getValue();
               getContentField().getTable().deleteAllRows();
               if (!StringUtility.isNullOrEmpty(folderName)) {
                 File folder = new File(folderName);
-                if (folder.isFile()) {
-                  MessageBox.showOkMessage("No RAP support", null, "RAP does not support this sample");
-                  return;
-                }
                 for (File f : folder.listFiles()) {
                   String fileName = f.getName();
                   String filePath = f.getPath();

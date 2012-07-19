@@ -12,6 +12,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.imagebox.AbstractImageField;
 import org.eclipse.scout.rt.client.ui.form.fields.labelfield.AbstractLabelField;
 import org.eclipse.scout.rt.client.ui.form.fields.radiobuttongroup.AbstractRadioButtonGroup;
+import org.eclipse.scout.rt.demo.client.ClientSession;
 import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.CloseButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.HorizontalAlignmentBox;
 import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.HorizontalAlignmentBox.CenterField;
@@ -155,6 +156,11 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
       public class ZoomButton extends AbstractRadioButton {
 
         @Override
+        protected boolean getConfiguredEnabled() {
+          return !ClientSession.get().isRap();
+        }
+
+        @Override
         protected String getConfiguredLabel() {
           return TEXTS.get("Zoom");
         }
@@ -169,6 +175,11 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
 
       @Order(30.0)
       public class RotateButton extends AbstractRadioButton {
+
+        @Override
+        protected boolean getConfiguredEnabled() {
+          return !ClientSession.get().isRap();
+        }
 
         @Override
         protected String getConfiguredLabel() {

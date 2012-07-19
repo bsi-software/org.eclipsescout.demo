@@ -112,6 +112,11 @@ public class ToolButton1Form extends AbstractForm {
       protected String getConfiguredLabel() {
         return TEXTS.get("FileChooserField");
       }
+
+      @Override
+      protected boolean getConfiguredTypeLoad() {
+        return true;
+      }
     }
 
     @Order(40.0)

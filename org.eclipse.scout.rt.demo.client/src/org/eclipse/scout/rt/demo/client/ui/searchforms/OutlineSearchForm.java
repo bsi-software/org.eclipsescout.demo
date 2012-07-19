@@ -294,6 +294,11 @@ public class OutlineSearchForm extends AbstractSearchForm {
         public class SmartField extends AbstractListBox<Long> {
 
           @Override
+          protected int getConfiguredGridH() {
+            return 4;
+          }
+
+          @Override
           protected String getConfiguredLabel() {
             return TEXTS.get("SmartColumn");
           }
