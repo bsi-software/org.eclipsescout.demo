@@ -12,7 +12,6 @@ import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.imagebox.AbstractImageField;
 import org.eclipse.scout.rt.client.ui.form.fields.labelfield.AbstractLabelField;
 import org.eclipse.scout.rt.client.ui.form.fields.radiobuttongroup.AbstractRadioButtonGroup;
-import org.eclipse.scout.rt.demo.client.ClientSession;
 import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.CloseButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.HorizontalAlignmentBox;
 import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.HorizontalAlignmentBox.CenterField;
@@ -30,6 +29,7 @@ import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.ZoomBox.
 import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.ZoomBox.ZoomField;
 import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm.MainBox.ZoomBox.ZoomvalueField;
 import org.eclipse.scout.rt.shared.TEXTS;
+import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
 
 public class ImageFieldForm extends AbstractForm implements IPageForm {
 
@@ -157,7 +157,7 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected boolean getConfiguredEnabled() {
-          return !ClientSession.get().isRap();
+          return UserAgentUtility.isRichClient();
         }
 
         @Override
@@ -178,7 +178,7 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected boolean getConfiguredEnabled() {
-          return !ClientSession.get().isRap();
+          return UserAgentUtility.isRichClient();
         }
 
         @Override

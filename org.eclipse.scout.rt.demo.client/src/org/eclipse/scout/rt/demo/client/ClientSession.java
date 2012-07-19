@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
@@ -25,8 +25,6 @@ import org.eclipse.scout.rt.shared.services.common.code.CODES;
 public class ClientSession extends AbstractClientSession {
   private static IScoutLogger logger = ScoutLogManager.getLogger(ClientSession.class);
 
-  private String m_product;
-
   public ClientSession() {
     super(true);
   }
@@ -43,23 +41,9 @@ public class ClientSession extends AbstractClientSession {
     return getSharedContextVariable("personNr", Long.class);
   }
 
-  public boolean isSwing() {
-    return m_product.equals("org.eclipse.scout.rt.demo.ui.swing.product");
-  }
-
-  public boolean isSwt() {
-    return m_product.equals("org.eclipse.scout.rt.demo.ui.swt.product");
-  }
-
-  public boolean isRap() {
-    return m_product.equals("org.eclipse.scout.rt.demo.ui.rap.product");
-  }
-
   @Override
   public void execLoadSession() throws ProcessingException {
     setServiceTunnel(new HttpServiceTunnel(this, getBundle().getBundleContext().getProperty("server.url")));
-
-    m_product = getBundle().getBundleContext().getProperty("eclipse.product");
 
     try {
       //pre-load all known code types

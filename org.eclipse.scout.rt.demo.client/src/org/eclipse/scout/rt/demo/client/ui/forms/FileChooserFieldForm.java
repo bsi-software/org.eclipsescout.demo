@@ -18,7 +18,6 @@ import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.tabbox.AbstractTabBox;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
-import org.eclipse.scout.rt.demo.client.ClientSession;
 import org.eclipse.scout.rt.demo.client.ui.forms.FileChooserFieldForm.MainBox.CloseButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.FileChooserFieldForm.MainBox.TabBox;
 import org.eclipse.scout.rt.demo.client.ui.forms.FileChooserFieldForm.MainBox.TabBox.FolderContentsBox;
@@ -29,6 +28,7 @@ import org.eclipse.scout.rt.demo.client.ui.forms.FileChooserFieldForm.MainBox.Ta
 import org.eclipse.scout.rt.demo.client.ui.forms.FileChooserFieldForm.MainBox.TabBox.OpenImageBox.OpenFileButton;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.shell.IShellService;
+import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
 import org.eclipse.scout.service.SERVICES;
 
 public class FileChooserFieldForm extends AbstractForm implements IPageForm {
@@ -169,7 +169,7 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
 
           @Override
           protected boolean getConfiguredEnabled() {
-            return !ClientSession.get().isRap();
+            return UserAgentUtility.isRichClient();
           }
 
           @Override

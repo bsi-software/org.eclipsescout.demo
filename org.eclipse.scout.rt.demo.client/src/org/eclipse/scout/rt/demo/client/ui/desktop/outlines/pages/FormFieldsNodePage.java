@@ -5,7 +5,6 @@ import java.util.Collection;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNodes;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
-import org.eclipse.scout.rt.demo.client.ClientSession;
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.BrowserFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.ButtonsForm;
@@ -33,6 +32,7 @@ import org.eclipse.scout.rt.demo.client.ui.forms.TreeBoxForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.TreeFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.WrappedFormFieldForm;
 import org.eclipse.scout.rt.shared.TEXTS;
+import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
 
 public class FormFieldsNodePage extends AbstractPageWithNodes {
 
@@ -54,7 +54,7 @@ public class FormFieldsNodePage extends AbstractPageWithNodes {
     pageList.add(formPage0);
     FormPage formPage1 = new FormPage(ButtonsForm.class);
     pageList.add(formPage1);
-    FormPage formPage2 = new FormPage(CalendarForm.class, !ClientSession.get().isRap());
+    FormPage formPage2 = new FormPage(CalendarForm.class, UserAgentUtility.isRichClient());
     pageList.add(formPage2);
     FormPage formPage3 = new FormPage(CheckboxForm.class);
     pageList.add(formPage3);
@@ -70,17 +70,17 @@ public class FormFieldsNodePage extends AbstractPageWithNodes {
     pageList.add(formPage8);
     FormPage formPage9 = new FormPage(ImageFieldForm.class);
     pageList.add(formPage9);
-    FormPage formPage10 = new FormPage(KeyStrokeForm.class, !ClientSession.get().isRap());
+    FormPage formPage10 = new FormPage(KeyStrokeForm.class, UserAgentUtility.isRichClient());
     pageList.add(formPage10);
     FormPage formPage11 = new FormPage(LabelForm.class);
     pageList.add(formPage11);
     FormPage formPage12 = new FormPage(ListBoxForm.class);
     pageList.add(formPage12);
-    FormPage formPage13 = new FormPage(MailFieldForm.class, !ClientSession.get().isRap());
+    FormPage formPage13 = new FormPage(MailFieldForm.class, UserAgentUtility.isRichClient());
     pageList.add(formPage13);
     FormPage formPage14 = new FormPage(MessageBoxesForm.class);
     pageList.add(formPage14);
-    FormPage formPage15 = new FormPage(PlannerFieldForm.class, !ClientSession.get().isRap());
+    FormPage formPage15 = new FormPage(PlannerFieldForm.class, UserAgentUtility.isRichClient());
     pageList.add(formPage15);
     FormPage formPage16 = new FormPage(SmartFieldForm.class);
     pageList.add(formPage16);
