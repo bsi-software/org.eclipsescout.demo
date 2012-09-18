@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?>
+
+<target name="ScoutRAP" sequenceNumber="1">
+<locations>
+<location path="${eclipse_home}\rap_target" type="Directory"/>
+<location path="${eclipse_home}\" type="Directory"/>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.rap.incubator.supplemental.fileupload.feature.feature.group" version="1.5.0.20120220-1720"/>
+<repository location="http://download.eclipse.org/rt/rap/1.5/incubator"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.scout.rt.ui.rap.incubator.filechooser.feature.feature.group" version="3.8.0.201206130843"/>
+<repository location="http://download.eclipse.org/scout/releases/3.8"/>
+</location>
+</locations>
+<launcherArgs>
+<vmArgs>-Xms256m -Xmx512m -XX:MaxPermSize=256m</vmArgs>
+</launcherArgs>
+</target>
