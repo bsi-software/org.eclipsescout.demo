@@ -95,6 +95,7 @@
       <plugin id="org.eclipse.scout.net"/>
       <plugin id="org.eclipse.scout.rt.client"/>
       <plugin id="org.eclipse.scout.rt.demo.client"/>
+      <plugin id="org.eclipse.scout.rt.demo.server"/>
       <plugin id="org.eclipse.scout.rt.demo.shared"/>
       <plugin id="org.eclipse.scout.rt.demo.ui.rap"/>
       <plugin id="org.eclipse.scout.rt.shared"/>
@@ -108,6 +109,13 @@
       <plugin id="org.w3c.css.sac"/>
       <plugin id="org.w3c.dom.smil"/>
       <plugin id="org.w3c.dom.svg"/>
+      <plugin id="org.apache.derby.jdbc_1082.fragment" fragment="true"/>
+      <plugin id="org.eclipse.scout.rt.jdbc.derby"/>
+      <plugin id="org.eclipse.scout.rt.server"/>
+      <plugin id="org.eclipse.scout.http.servletfilter"/>
+      <plugin id="org.eclipse.equinox.http.registry"/>
+      <plugin id="javax.servlet"/>
+      <plugin id="org.eclipse.scout.jaxws216"/>
    </plugins>
 
 
