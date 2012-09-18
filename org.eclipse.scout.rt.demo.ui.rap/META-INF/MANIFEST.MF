@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: RAP Bundle
 Bundle-SymbolicName: org.eclipse.scout.rt.demo.ui.rap;singleton:=true
-Bundle-Version: 3.9.0.qualifier
+Bundle-Version: 3.8.2.qualifier
 Bundle-Activator: org.eclipse.scout.rt.demo.ui.rap.Activator
 Bundle-Vendor: Eclipse Scout Project
 Export-Package: org.eclipse.scout.rt.demo.ui.rap

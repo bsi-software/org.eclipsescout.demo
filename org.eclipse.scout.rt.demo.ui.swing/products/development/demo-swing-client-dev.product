@@ -29,7 +29,6 @@
    </vm>
 
    <plugins>
-      <plugin id="com.bsiag.scout.rt.ui.swing.rayo"/>
       <plugin id="org.apache.batik.bridge"/>
       <plugin id="org.apache.batik.css"/>
       <plugin id="org.apache.batik.dom"/>

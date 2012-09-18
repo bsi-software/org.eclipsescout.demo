@@ -2,16 +2,16 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: My Application
 Bundle-SymbolicName: org.eclipse.scout.rt.demo.ui.swing;singleton:=true
-Bundle-Version: 3.9.0.qualifier
+Bundle-Version: 3.8.2.qualifier
+Bundle-ClassPath: .
 Bundle-Activator: org.eclipse.scout.rt.demo.ui.swing.Activator
-Bundle-ActivationPolicy: lazy
-Scout-Project: org.eclipse.scout.rt.demo
-Scout-Project-Alias: demo
+Export-Package: org.eclipse.scout.rt.demo.ui.swing;uses:="org.eclipse.scout.rt.ui.swing,org.eclipse.scout.rt.client.session,org.osgi.framework"
 Require-Bundle: org.eclipse.scout.rt.ui.swing,
  org.eclipse.scout.rt.demo.client;visibility:=reexport,
  org.eclipse.scout.rt.demo.shared,
  org.eclipse.scout.net,
- com.bsiag.scout.rt.ui.swing.rayo;bundle-version="3.8.1"
-Export-Package: org.eclipse.scout.rt.demo.ui.swing;uses:="org.eclipse.scout.rt.ui.swing,org.eclipse.scout.rt.client.session,org.osgi.framework"
-Bundle-ClassPath: .
+ com.bsiag.scout.rt.ui.swing.rayo;resolution:=optional
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Scout-Project: org.eclipse.scout.rt.demo
+Scout-Project-Alias: demo
