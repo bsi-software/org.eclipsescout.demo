@@ -42,7 +42,7 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
 
   @Override
   protected String getConfiguredTitle() {
-    return TEXTS.get("Planner1Field");
+    return TEXTS.get("PlannerField");
   }
 
   @Override

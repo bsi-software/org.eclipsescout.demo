@@ -10,6 +10,8 @@
  ******************************************************************************/
 package org.eclipse.scout.rt.demo.client;
 
+import java.lang.reflect.UndeclaredThrowableException;
+
 import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
@@ -41,33 +43,21 @@ public class ClientSession extends AbstractClientSession {
     return getSharedContextVariable("personNr", Long.class);
   }
 
-  public boolean isSwing() {
-    return m_product.equals("org.eclipse.scout.rt.demo.ui.swing.product");
-  }
-
-  public boolean isSwt() {
-    return m_product.equals("org.eclipse.scout.rt.demo.ui.swt.product");
-  }
-
-  public boolean isRap() {
-    return m_product.equals("org.eclipse.scout.rt.demo.ui.rap.product");
-  }
-
   @Override
   public void execLoadSession() throws ProcessingException {
     setServiceTunnel(new HttpServiceTunnel(this, getBundle().getBundleContext().getProperty("server.url")));
 
     m_product = getBundle().getBundleContext().getProperty("eclipse.product");
 
-//    try {
-    //pre-load all known code types
-    CODES.getAllCodeTypes(org.eclipse.scout.rt.demo.shared.Activator.PLUGIN_ID);
-//    }
-//    catch (UndeclaredThrowableException e) {
-//      //if no connection go offline
-//      ClientSession.get().goOffline();
-//      CODES.getAllCodeTypes(org.eclipse.scout.rt.demo.shared.Activator.PLUGIN_ID);
-//    }
+    try {
+      //pre-load all known code types
+      CODES.getAllCodeTypes(org.eclipse.scout.rt.demo.shared.Activator.PLUGIN_ID);
+    }
+    catch (UndeclaredThrowableException e) {
+      //if no connection go offline
+      ClientSession.get().goOffline();
+      CODES.getAllCodeTypes(org.eclipse.scout.rt.demo.shared.Activator.PLUGIN_ID);
+    }
 
     setDesktop(new Desktop());
   }

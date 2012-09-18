@@ -9,7 +9,6 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractLinkButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
-import org.eclipse.scout.rt.demo.client.ClientSession;
 import org.eclipse.scout.rt.demo.client.ui.forms.MessageBoxesForm.MainBox.CloseButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.MessageBoxesForm.MainBox.DeleteConfirmationMessageButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.MessageBoxesForm.MainBox.MessageBoxWithHiddenTextButton;
@@ -19,6 +18,7 @@ import org.eclipse.scout.rt.demo.client.ui.forms.MessageBoxesForm.MainBox.Messag
 import org.eclipse.scout.rt.demo.client.ui.forms.MessageBoxesForm.MainBox.ProcessingExceptionButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.MessageBoxesForm.MainBox.VetoExceptionButton;
 import org.eclipse.scout.rt.shared.TEXTS;
+import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
 
 public class MessageBoxesForm extends AbstractForm implements IPageForm {
 
@@ -172,7 +172,7 @@ public class MessageBoxesForm extends AbstractForm implements IPageForm {
 
       @Override
       protected boolean getConfiguredEnabled() {
-        return !ClientSession.get().isRap();
+        return UserAgentUtility.isRichClient();
       }
 
       @Override

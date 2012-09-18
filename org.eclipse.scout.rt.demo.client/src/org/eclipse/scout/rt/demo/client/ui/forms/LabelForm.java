@@ -10,7 +10,6 @@ import org.eclipse.scout.rt.client.ui.form.fields.integerfield.AbstractIntegerFi
 import org.eclipse.scout.rt.client.ui.form.fields.labelfield.AbstractLabelField;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
-import org.eclipse.scout.rt.demo.client.ClientSession;
 import org.eclipse.scout.rt.demo.client.services.lookup.FontstyleLookupCall;
 import org.eclipse.scout.rt.demo.client.ui.forms.LabelForm.MainBox.CloseButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.LabelForm.MainBox.FieldBox;
@@ -23,6 +22,7 @@ import org.eclipse.scout.rt.demo.client.ui.forms.LabelForm.MainBox.FieldBox.Size
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.data.basic.FontSpec;
 import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
+import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
 
 public class LabelForm extends AbstractForm implements IPageForm {
 
@@ -168,7 +168,7 @@ public class LabelForm extends AbstractForm implements IPageForm {
         @Override
         protected void execInitField() {
           String value = TEXTS.get("Lorem");
-          if (ClientSession.get().isSwing()) {
+          if (UserAgentUtility.isSwingUi()) {
             value = "<html>" + value + "</html>";
           }
           this.setValue(value);
