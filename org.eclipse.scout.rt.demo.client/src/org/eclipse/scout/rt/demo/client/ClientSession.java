@@ -10,7 +10,8 @@
  ******************************************************************************/
 package org.eclipse.scout.rt.demo.client;
 
-import java.lang.reflect.UndeclaredThrowableException;
+import java.lang.reflect.Method;
+import java.net.URL;
 
 import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.commons.exception.ProcessingException;
@@ -18,9 +19,8 @@ import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.client.AbstractClientSession;
 import org.eclipse.scout.rt.client.ClientJob;
-import org.eclipse.scout.rt.client.servicetunnel.http.HttpServiceTunnel;
+import org.eclipse.scout.rt.client.servicetunnel.IServiceTunnel;
 import org.eclipse.scout.rt.demo.client.ui.desktop.Desktop;
-import org.eclipse.scout.rt.shared.services.common.code.CODES;
 
 public class ClientSession extends AbstractClientSession {
   private static IScoutLogger logger = ScoutLogManager.getLogger(ClientSession.class);
@@ -45,19 +45,40 @@ public class ClientSession extends AbstractClientSession {
 
   @Override
   public void execLoadSession() throws ProcessingException {
-    setServiceTunnel(new HttpServiceTunnel(this, getBundle().getBundleContext().getProperty("server.url")));
+    setServiceTunnel(new IServiceTunnel() {
 
-    m_product = getBundle().getBundleContext().getProperty("eclipse.product");
+      @Override
+      public void setServerURL(URL url) {
+      }
 
-    try {
-      //pre-load all known code types
-      CODES.getAllCodeTypes(org.eclipse.scout.rt.demo.shared.Activator.PLUGIN_ID);
-    }
-    catch (UndeclaredThrowableException e) {
-      //if no connection go offline
-      ClientSession.get().goOffline();
-      CODES.getAllCodeTypes(org.eclipse.scout.rt.demo.shared.Activator.PLUGIN_ID);
-    }
+      @Override
+      public void setClientNotificationPollInterval(long intervallMillis) {
+      }
+
+      @Override
+      public void setAnalyzeNetworkLatency(boolean b) {
+      }
+
+      @Override
+      public boolean isAnalyzeNetworkLatency() {
+        return false;
+      }
+
+      @Override
+      public Object invokeService(Class<?> serviceInterfaceClass, Method operation, Object[] args) throws ProcessingException {
+        return null;
+      }
+
+      @Override
+      public URL getServerURL() {
+        return null;
+      }
+
+      @Override
+      public long getClientNotificationPollInterval() {
+        return 0;
+      }
+    });
 
     setDesktop(new Desktop());
   }

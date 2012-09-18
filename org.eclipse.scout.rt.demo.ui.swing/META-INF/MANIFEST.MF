@@ -10,7 +10,8 @@ Scout-Project-Alias: demo
 Require-Bundle: org.eclipse.scout.rt.ui.swing,
  org.eclipse.scout.rt.demo.client;visibility:=reexport,
  org.eclipse.scout.rt.demo.shared,
- org.eclipse.scout.net
+ org.eclipse.scout.net,
+ com.bsiag.scout.rt.ui.swing.rayo;bundle-version="3.8.1"
 Export-Package: org.eclipse.scout.rt.demo.ui.swing;uses:="org.eclipse.scout.rt.ui.swing,org.eclipse.scout.rt.client.session,org.osgi.framework"
 Bundle-ClassPath: .
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

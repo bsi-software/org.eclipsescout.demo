@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="demo Client" id="org.eclipse.scout.rt.demo.ui.swing.product" application="org.eclipse.scout.rt.demo.ui.swing.app" useFeatures="false" includeLaunchers="true">
+<product name="demo Client" id="org.eclipse.scout.rt.demo.ui.swing.rayo_product" application="org.eclipse.scout.rt.demo.ui.swing.rayo_app" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
-      <linux>/org.eclipse.scout.rt.demo.ui.swing/products/development/config.ini</linux>
-      <macosx>/org.eclipse.scout.rt.demo.ui.swing/products/development/config.ini</macosx>
-      <win32>/org.eclipse.scout.rt.demo.ui.swing/products/development/config.ini</win32>
+      <linux>/org.eclipse.scout.rt.demo.ui.swing/products/development_rayo/config.ini</linux>
+      <macosx>/org.eclipse.scout.rt.demo.ui.swing/products/development_rayo/config.ini</macosx>
+      <win32>/org.eclipse.scout.rt.demo.ui.swing/products/development_rayo/config.ini</win32>
    </configIni>
 
    <launcherArgs>
@@ -29,6 +29,7 @@
    </vm>
 
    <plugins>
+      <plugin id="com.bsiag.scout.rt.ui.swing.laf.rayo.fragment" fragment="true"/>
       <plugin id="com.bsiag.scout.rt.ui.swing.rayo"/>
       <plugin id="org.apache.batik.bridge"/>
       <plugin id="org.apache.batik.css"/>
