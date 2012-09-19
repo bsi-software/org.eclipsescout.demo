@@ -10,16 +10,13 @@
  ******************************************************************************/
 package org.eclipse.scout.rt.demo.client;
 
-import java.lang.reflect.Method;
-import java.net.URL;
-
 import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.client.AbstractClientSession;
 import org.eclipse.scout.rt.client.ClientJob;
-import org.eclipse.scout.rt.client.servicetunnel.IServiceTunnel;
+import org.eclipse.scout.rt.client.servicetunnel.http.HttpServiceTunnel;
 import org.eclipse.scout.rt.demo.client.ui.desktop.Desktop;
 
 public class ClientSession extends AbstractClientSession {
@@ -45,40 +42,7 @@ public class ClientSession extends AbstractClientSession {
 
   @Override
   public void execLoadSession() throws ProcessingException {
-    setServiceTunnel(new IServiceTunnel() {
-
-      @Override
-      public void setServerURL(URL url) {
-      }
-
-      @Override
-      public void setClientNotificationPollInterval(long intervallMillis) {
-      }
-
-      @Override
-      public void setAnalyzeNetworkLatency(boolean b) {
-      }
-
-      @Override
-      public boolean isAnalyzeNetworkLatency() {
-        return false;
-      }
-
-      @Override
-      public Object invokeService(Class<?> serviceInterfaceClass, Method operation, Object[] args) throws ProcessingException {
-        return null;
-      }
-
-      @Override
-      public URL getServerURL() {
-        return null;
-      }
-
-      @Override
-      public long getClientNotificationPollInterval() {
-        return 0;
-      }
-    });
+    setServiceTunnel(new HttpServiceTunnel(this, getBundle().getBundleContext().getProperty("server.url"), (String) getBundle().getHeaders().get("Bundle-Version")));
 
     setDesktop(new Desktop());
   }
