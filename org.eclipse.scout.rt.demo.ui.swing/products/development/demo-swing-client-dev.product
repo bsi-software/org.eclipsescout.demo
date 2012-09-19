@@ -30,7 +30,6 @@
 
    <plugins>
       <plugin id="javax.activation"/>
-      <plugin id="javax.mail"/>
       <plugin id="org.apache.batik.bridge"/>
       <plugin id="org.apache.batik.css"/>
       <plugin id="org.apache.batik.dom"/>
@@ -64,6 +63,7 @@
       <plugin id="org.eclipse.scout.rt.demo.ui.swing"/>
       <plugin id="org.eclipse.scout.rt.shared"/>
       <plugin id="org.eclipse.scout.rt.ui.swing"/>
+      <plugin id="org.eclipse.scout.rt.ui.swing.browser.swt.fragment" fragment="true"/>
       <plugin id="org.eclipse.scout.service"/>
       <plugin id="org.eclipse.scout.svg.client"/>
       <plugin id="org.eclipse.scout.svg.ui.swing"/>
