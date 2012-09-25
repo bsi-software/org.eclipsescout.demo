@@ -11,22 +11,12 @@ import org.eclipse.scout.rt.demo.client.ui.forms.DetailForm.MainBox.GroupBox.Val
 import org.eclipse.scout.rt.demo.client.ui.forms.DetailForm.MainBox.GroupBox.ValueLastField;
 import org.eclipse.scout.rt.demo.client.ui.forms.DetailForm.MainBox.GroupBox.ValueLowField;
 import org.eclipse.scout.rt.demo.client.ui.forms.DetailForm.MainBox.GroupBox.ValueOpenField;
-import org.eclipse.scout.rt.demo.shared.services.process.IJaxWsProcessService;
 import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.service.SERVICES;
 
 public class DetailForm extends AbstractForm {
 
   public DetailForm() throws ProcessingException {
     super();
-  }
-
-  public void setDataFields(String symbol) throws ProcessingException {
-    double[] values = SERVICES.getService(IJaxWsProcessService.class).getDetailFormValues(symbol);
-    getValueLastField().setValue(values[0]);
-    getValueOpenField().setValue(values[1]);
-    getValueLowField().setValue(values[2]);
-    getValueHighField().setValue(values[3]);
   }
 
   public ValueHighField getValueHighField() {

@@ -146,7 +146,7 @@ public class Desktop extends AbstractDesktop implements IDesktop {
   }
 
   @Order(10.0)
-  public class ToolButton1Tool extends AbstractFormToolButton {
+  public class ToolButton1Tool extends AbstractFormToolButton<ToolButton1Form> {
 
     @Override
     protected String getConfiguredIconId() {
@@ -168,7 +168,7 @@ public class Desktop extends AbstractDesktop implements IDesktop {
   }
 
   @Order(20.0)
-  public class ToolButton2Tool extends AbstractFormToolButton {
+  public class ToolButton2Tool extends AbstractFormToolButton<ToolButton2Form> {
 
     @Override
     protected String getConfiguredIconId() {

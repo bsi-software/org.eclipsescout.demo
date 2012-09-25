@@ -11,22 +11,22 @@ import org.eclipse.scout.rt.client.ui.form.fields.labelfield.AbstractLabelField;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.demo.client.services.lookup.FontstyleLookupCall;
-import org.eclipse.scout.rt.demo.client.ui.forms.LabelForm.MainBox.CloseButton;
-import org.eclipse.scout.rt.demo.client.ui.forms.LabelForm.MainBox.FieldBox;
-import org.eclipse.scout.rt.demo.client.ui.forms.LabelForm.MainBox.FieldBox.BackgroundColorField;
-import org.eclipse.scout.rt.demo.client.ui.forms.LabelForm.MainBox.FieldBox.FontField;
-import org.eclipse.scout.rt.demo.client.ui.forms.LabelForm.MainBox.FieldBox.FontstyleField;
-import org.eclipse.scout.rt.demo.client.ui.forms.LabelForm.MainBox.FieldBox.ForegroundColorField;
-import org.eclipse.scout.rt.demo.client.ui.forms.LabelForm.MainBox.FieldBox.LoremField;
-import org.eclipse.scout.rt.demo.client.ui.forms.LabelForm.MainBox.FieldBox.SizeField;
+import org.eclipse.scout.rt.demo.client.ui.forms.LabelFieldForm.MainBox.CloseButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.LabelFieldForm.MainBox.FieldBox;
+import org.eclipse.scout.rt.demo.client.ui.forms.LabelFieldForm.MainBox.FieldBox.BackgroundColorField;
+import org.eclipse.scout.rt.demo.client.ui.forms.LabelFieldForm.MainBox.FieldBox.FontField;
+import org.eclipse.scout.rt.demo.client.ui.forms.LabelFieldForm.MainBox.FieldBox.FontstyleField;
+import org.eclipse.scout.rt.demo.client.ui.forms.LabelFieldForm.MainBox.FieldBox.ForegroundColorField;
+import org.eclipse.scout.rt.demo.client.ui.forms.LabelFieldForm.MainBox.FieldBox.LoremField;
+import org.eclipse.scout.rt.demo.client.ui.forms.LabelFieldForm.MainBox.FieldBox.SizeField;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.data.basic.FontSpec;
 import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
 
-public class LabelForm extends AbstractForm implements IPageForm {
+public class LabelFieldForm extends AbstractForm implements IPageForm {
 
-  public LabelForm() throws ProcessingException {
+  public LabelFieldForm() throws ProcessingException {
     super();
   }
 

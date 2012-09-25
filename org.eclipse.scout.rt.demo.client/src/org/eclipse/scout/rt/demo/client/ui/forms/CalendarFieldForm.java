@@ -13,15 +13,15 @@ import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.calendarfield.AbstractCalendarField;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
-import org.eclipse.scout.rt.demo.client.ui.forms.CalendarForm.MainBox.CalendarField;
-import org.eclipse.scout.rt.demo.client.ui.forms.CalendarForm.MainBox.CloseButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.CalendarFieldForm.MainBox.CalendarField;
+import org.eclipse.scout.rt.demo.client.ui.forms.CalendarFieldForm.MainBox.CloseButton;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.calendar.CalendarAppointment;
 import org.eclipse.scout.rt.shared.services.common.calendar.ICalendarItem;
 
-public class CalendarForm extends AbstractForm implements IPageForm {
+public class CalendarFieldForm extends AbstractForm implements IPageForm {
 
-  public CalendarForm() throws ProcessingException {
+  public CalendarFieldForm() throws ProcessingException {
     super();
   }
 

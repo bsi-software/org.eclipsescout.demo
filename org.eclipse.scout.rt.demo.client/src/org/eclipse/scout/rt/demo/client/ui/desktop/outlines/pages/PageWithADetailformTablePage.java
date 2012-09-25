@@ -3,15 +3,12 @@ package org.eclipse.scout.rt.demo.client.ui.desktop.outlines.pages;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
-import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithTable;
 import org.eclipse.scout.rt.demo.client.ui.forms.DetailForm;
-import org.eclipse.scout.rt.demo.shared.services.outline.IStandardOutlineService;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
-import org.eclipse.scout.service.SERVICES;
 
 public class PageWithADetailformTablePage extends AbstractPageWithTable<PageWithADetailformTablePage.Table> {
 
@@ -36,7 +33,11 @@ public class PageWithADetailformTablePage extends AbstractPageWithTable<PageWith
 
   @Override
   protected Object[][] execLoadTableData(SearchFilter filter) throws ProcessingException {
-    return SERVICES.getService(IStandardOutlineService.class).getPageWithADetailformTableData();
+    return new Object[][]{
+        {1, "Exxon Mobil Corporation", "XOM"},
+        {2, "IBM", "IBM"},
+        {3, "UBS", "UBS"},
+        {4, "Coca-Cola Company", "KO"}};
   }
 
   @Order(10.0)
@@ -58,13 +59,6 @@ public class PageWithADetailformTablePage extends AbstractPageWithTable<PageWith
     @Override
     protected boolean getConfiguredMultiSelect() {
       return false;
-    }
-
-    @Override
-    protected void execRowsSelected(ITableRow[] rows) throws ProcessingException {
-      String rowValue = getSymbolColumn().getValue(rows[0]);
-
-      m_detailForm.setDataFields(rowValue);
     }
 
     public CompanyNrColumn getCompanyNrColumn() {

@@ -1,6 +1,5 @@
 package org.eclipse.scout.rt.demo.client.ui.forms;
 
-import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
@@ -11,22 +10,17 @@ import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
-import org.eclipse.scout.rt.client.ui.form.fields.doublefield.AbstractDoubleField;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
-import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
-import org.eclipse.scout.rt.demo.client.ui.forms.TableForm.MainBox.CloseButton;
-import org.eclipse.scout.rt.demo.client.ui.forms.TableForm.MainBox.GroupBox;
-import org.eclipse.scout.rt.demo.client.ui.forms.TableForm.MainBox.GroupBox.EditableTableField;
-import org.eclipse.scout.rt.demo.client.ui.forms.TableForm.MainBox.GroupBox.ValueLastField;
-import org.eclipse.scout.rt.demo.shared.services.outline.IStandardOutlineService;
-import org.eclipse.scout.rt.demo.shared.services.process.IJaxWsProcessService;
+import org.eclipse.scout.rt.demo.client.ui.forms.DetailForm.MainBox.GroupBox.ValueLastField;
+import org.eclipse.scout.rt.demo.client.ui.forms.TableFieldForm.MainBox.CloseButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.TableFieldForm.MainBox.GroupBox;
+import org.eclipse.scout.rt.demo.client.ui.forms.TableFieldForm.MainBox.GroupBox.EditableTableField;
 import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.service.SERVICES;
 
-public class TableForm extends AbstractForm implements IPageForm {
+public class TableFieldForm extends AbstractForm implements IPageForm {
 
-  public TableForm() throws ProcessingException {
+  public TableFieldForm() throws ProcessingException {
     super();
   }
 
@@ -37,7 +31,7 @@ public class TableForm extends AbstractForm implements IPageForm {
 
   @Override
   protected String getConfiguredTitle() {
-    return TEXTS.get("Table");
+    return TEXTS.get("TableField");
   }
 
   @Override
@@ -86,7 +80,11 @@ public class TableForm extends AbstractForm implements IPageForm {
 
         @Override
         protected void execInitField() throws ProcessingException {
-          Object data[][] = SERVICES.getService(IStandardOutlineService.class).getPageWithADetailformTableData();
+          Object data[][] = new Object[][]{
+              {1, "Exxon Mobil Corporation", "XOM"},
+              {2, "IBM", "IBM"},
+              {3, "UBS", "UBS"},
+              {4, "Coca-Cola Company", "KO"}};
           getTable().addRowsByMatrix(data);
         }
 
@@ -109,17 +107,6 @@ public class TableForm extends AbstractForm implements IPageForm {
           @Override
           protected boolean getConfiguredMultiSelect() {
             return false;
-          }
-
-          @Override
-          protected void execRowsSelected(ITableRow[] rows) throws ProcessingException {
-            if (rows.length > 0) {
-              String rowValue = (String) rows[0].getCellValue(2);
-              if (StringUtility.isNullOrEmpty(rowValue)) {
-                return;
-              }
-              getValueLastField().setValue(SERVICES.getService(IJaxWsProcessService.class).getCompanyLastValue(rowValue));
-            }
           }
 
           public CompanyNrColumn getCompanyNrColumn() {
@@ -180,25 +167,6 @@ public class TableForm extends AbstractForm implements IPageForm {
           }
 
           @Order(10.0)
-          public class GetValueMenu extends AbstractMenu {
-
-            @Override
-            protected String getConfiguredText() {
-              return TEXTS.get("GetValue");
-            }
-
-            @Override
-            protected void execAction() throws ProcessingException {
-              try {
-                MessageBox.showOkMessage("Value of " + getNameColumn().getSelectedValue(), null, "The value of " + getNameColumn().getSelectedValue() + " is " + SERVICES.getService(IJaxWsProcessService.class).getCompanyLastValue((String) getSymbolColumn().getSelectedValue()));
-              }
-              catch (ProcessingException e) {
-                MessageBox.showOkMessage("No value found", null, "No value found for " + getNameColumn().getSelectedValue());
-              }
-            }
-          }
-
-          @Order(20.0)
           public class NewCompanyMenu extends AbstractMenu {
 
             @Override
@@ -221,15 +189,6 @@ public class TableForm extends AbstractForm implements IPageForm {
               getEditableTableField().getTable().addRowByArray(new Object[]{getEditableTableField().getTable().getCompanyNrColumn().getValues().length + 1, "New Company", ""});
             }
           }
-        }
-      }
-
-      @Order(20.0)
-      public class ValueLastField extends AbstractDoubleField {
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("ValueLast");
         }
       }
 

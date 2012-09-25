@@ -52,7 +52,7 @@ import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFie
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.ImageField;
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.IntegerField;
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.LabelField;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.SmartFieldField;
+import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.SmartField;
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.StringField;
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.StringFieldForPasswordField;
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.TimeField;
@@ -216,8 +216,8 @@ public class AllFieldsForm extends AbstractForm implements IPageForm {
     return getFieldByClass(SimpleFieldsBox.class);
   }
 
-  public SmartFieldField getSmartFieldField() {
-    return getFieldByClass(SmartFieldField.class);
+  public SmartField getSmartField() {
+    return getFieldByClass(SmartField.class);
   }
 
   public StartProcessButton getStartProcessButton() {
@@ -444,7 +444,7 @@ public class AllFieldsForm extends AbstractForm implements IPageForm {
       }
 
       @Order(90.0)
-      public class SmartFieldField extends AbstractSmartField<Long> {
+      public class SmartField extends AbstractSmartField<Long> {
 
         @Override
         protected boolean getConfiguredBrowseHierarchy() {
@@ -458,7 +458,7 @@ public class AllFieldsForm extends AbstractForm implements IPageForm {
 
         @Override
         protected String getConfiguredLabel() {
-          return TEXTS.get("SmartFieldField");
+          return TEXTS.get("SmartField");
         }
       }
 
