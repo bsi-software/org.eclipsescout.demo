@@ -102,6 +102,7 @@
       <plugin id="org.eclipse.scout.rt.ui.rap"/>
       <plugin id="org.eclipse.scout.rt.ui.rap.core"/>
       <plugin id="org.eclipse.scout.rt.ui.rap.incubator.filechooser"/>
+      <plugin id="org.eclipse.scout.rt.ui.rap.theme.rayo"/>
       <plugin id="org.eclipse.scout.rt.ui.svg.calendar"/>
       <plugin id="org.eclipse.scout.service"/>
       <plugin id="org.eclipse.scout.svg.client"/>
