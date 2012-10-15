@@ -14,6 +14,7 @@ import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
+import org.eclipse.scout.bahbah.shared.services.code.UserRoleCodeType;
 import org.eclipse.scout.commons.Base64Utility;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.holders.NVPair;
@@ -25,10 +26,10 @@ public class BahBahAuthenticationUtility {
   private static final String ENCODING = "UTF-8";
 
   public static boolean createNewUser(String username, String password) throws ProcessingException {
-    return createNewUser(username, password, BahBahPermission.USER);
+    return createNewUser(username, password, UserRoleCodeType.UserCode.ID);
   }
 
-  public static boolean createNewUser(String username, String password, BahBahPermission permission) throws ProcessingException {
+  public static boolean createNewUser(String username, String password, Integer permission) throws ProcessingException {
     try {
       byte[] bSalt = HashUtility.createSalt();
       byte[] bHash = HashUtility.hash(password.getBytes(ENCODING), bSalt);
@@ -40,7 +41,7 @@ public class BahBahAuthenticationUtility {
           new NVPair("username", username),
           new NVPair("pass", digest),
           new NVPair("salt", salt),
-          new NVPair("permission", permission.getValue()));
+          new NVPair("permission", permission));
 
       return true;
     }

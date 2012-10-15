@@ -32,10 +32,19 @@
    </vm>
 
    <plugins>
-      <plugin id="org.eclipse.scout.bahbah.client" fragment=""/>
-      <plugin id="org.eclipse.scout.bahbah.shared" fragment=""/>
-      <plugin id="org.eclipse.scout.bahbah.ui.swt" fragment=""/>
       <plugin id="com.ibm.icu"/>
+      <plugin id="org.apache.batik.bridge"/>
+      <plugin id="org.apache.batik.css"/>
+      <plugin id="org.apache.batik.dom"/>
+      <plugin id="org.apache.batik.dom.svg"/>
+      <plugin id="org.apache.batik.ext.awt"/>
+      <plugin id="org.apache.batik.parser"/>
+      <plugin id="org.apache.batik.svggen"/>
+      <plugin id="org.apache.batik.swing"/>
+      <plugin id="org.apache.batik.transcoder"/>
+      <plugin id="org.apache.batik.util"/>
+      <plugin id="org.apache.batik.util.gui"/>
+      <plugin id="org.apache.batik.xml"/>
       <plugin id="org.eclipse.compare.core"/>
       <plugin id="org.eclipse.core.commands"/>
       <plugin id="org.eclipse.core.contenttype"/>
@@ -62,9 +71,13 @@
       <plugin id="org.eclipse.jface.text"/>
       <plugin id="org.eclipse.osgi"/>
       <plugin id="org.eclipse.osgi.services"/>
+      <plugin id="org.eclipse.scout.bahbah.client"/>
+      <plugin id="org.eclipse.scout.bahbah.shared"/>
+      <plugin id="org.eclipse.scout.bahbah.ui.swt"/>
       <plugin id="org.eclipse.scout.commons"/>
       <plugin id="org.eclipse.scout.net"/>
       <plugin id="org.eclipse.scout.rt.client"/>
+      <plugin id="org.eclipse.scout.rt.extension.client"/>
       <plugin id="org.eclipse.scout.rt.shared"/>
       <plugin id="org.eclipse.scout.rt.ui.swt"/>
       <plugin id="org.eclipse.scout.service"/>
@@ -79,21 +92,9 @@
       <plugin id="org.eclipse.ui.workbench"/>
       <plugin id="org.eclipse.ui.workbench.texteditor"/>
       <plugin id="org.eclipse.update.configurator"/>
-      <plugin id="org.apache.batik.bridge"/>
-      <plugin id="org.apache.batik.css"/>
-      <plugin id="org.apache.batik.dom"/>
-      <plugin id="org.apache.batik.dom.svg"/>
-      <plugin id="org.apache.batik.ext.awt"/>
-      <plugin id="org.apache.batik.parser"/>
-      <plugin id="org.apache.batik.svggen"/>
-      <plugin id="org.apache.batik.swing"/>
-      <plugin id="org.apache.batik.transcoder"/>
-      <plugin id="org.apache.batik.util"/>
-      <plugin id="org.apache.batik.util.gui"/>
-      <plugin id="org.apache.batik.xml"/>
-      <plugin id="org.w3c.dom.svg"/>
       <plugin id="org.w3c.css.sac"/>
       <plugin id="org.w3c.dom.smil"/>
+      <plugin id="org.w3c.dom.svg"/>
    </plugins>
 
 

@@ -13,14 +13,12 @@ package org.eclipse.scout.bahbah.client.ui.desktop;
 import java.util.ArrayList;
 
 import org.eclipse.scout.bahbah.client.ClientSession;
+import org.eclipse.scout.bahbah.client.ui.desktop.outlines.AdministrationOutline;
 import org.eclipse.scout.bahbah.client.ui.desktop.outlines.StandardOutline;
 import org.eclipse.scout.bahbah.client.ui.desktop.outlines.pages.UserNodePage;
 import org.eclipse.scout.bahbah.shared.Icons;
-import org.eclipse.scout.bahbah.shared.services.process.IUserProcessService;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.logger.IScoutLogger;
-import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.client.ClientSyncJob;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.desktop.IDesktop;
@@ -32,10 +30,9 @@ import org.eclipse.scout.rt.client.ui.form.outline.DefaultOutlineTableForm;
 import org.eclipse.scout.rt.client.ui.form.outline.DefaultOutlineTreeForm;
 import org.eclipse.scout.rt.extension.client.ui.desktop.AbstractExtensibleDesktop;
 import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.service.SERVICES;
+import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
 
 public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
-  private static IScoutLogger logger = ScoutLogManager.getLogger(Desktop.class);
 
   public Desktop() {
   }
@@ -45,6 +42,7 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
   protected Class<? extends IOutline>[] getConfiguredOutlines() {
     ArrayList<Class> outlines = new ArrayList<Class>();
     outlines.add(StandardOutline.class);
+    outlines.add(AdministrationOutline.class);
     return outlines.toArray(new Class[outlines.size()]);
   }
 
@@ -110,10 +108,12 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
     }
 
     @Override
+    protected void execPrepareAction() throws ProcessingException {
+      setVisible(UserAgentUtility.isDesktopDevice());
+    }
+
+    @Override
     protected void execAction() throws ProcessingException {
-      // disable notification polling with -1
-      ClientSession.get().getServiceTunnel().setClientNotificationPollInterval(-1);
-      SERVICES.getService(IUserProcessService.class).removeUser();
       ClientSession.get().stopSession();
     }
   }
@@ -122,6 +122,23 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
   public class StandardOutlineViewButton extends AbstractOutlineViewButton {
     public StandardOutlineViewButton() {
       super(Desktop.this, StandardOutline.class);
+    }
+
+    @Override
+    protected String getConfiguredText() {
+      return TEXTS.get("Chat");
+    }
+  }
+
+  @Order(20.0)
+  public class AdministrationOutlineViewButton extends AbstractOutlineViewButton {
+    public AdministrationOutlineViewButton() {
+      super(Desktop.this, AdministrationOutline.class);
+    }
+
+    @Override
+    protected String getConfiguredText() {
+      return TEXTS.get("Administration");
     }
   }
 }

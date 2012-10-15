@@ -87,13 +87,10 @@
   <extension id="product" point="org.eclipse.core.runtime.products">
     <product
           application="org.eclipse.scout.bahbah.ui.swt.application"
-          name="">
+          name="bahbah">
        <property
              name="appName"
              value="bahbah"/>
-       <property
-          name="windowImages"
-          value="resources/icons/eclipseScout16x16.gif,resources/icons/eclipseScout32x32.gif"/>
     </product>
   </extension>
   <extension

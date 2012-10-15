@@ -8,11 +8,15 @@ import java.io.ByteArrayOutputStream;
 
 import javax.imageio.ImageIO;
 
+import org.eclipse.scout.bahbah.shared.security.UpdateIconPermission;
 import org.eclipse.scout.bahbah.shared.services.process.IIconProcessService;
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.commons.exception.VetoException;
 import org.eclipse.scout.commons.holders.ByteArrayHolder;
 import org.eclipse.scout.commons.holders.NVPair;
 import org.eclipse.scout.rt.server.services.common.jdbc.SQL;
+import org.eclipse.scout.rt.shared.TEXTS;
+import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
 import org.eclipse.scout.service.AbstractService;
 
 public class IconProcessService extends AbstractService implements IIconProcessService {
@@ -61,6 +65,9 @@ public class IconProcessService extends AbstractService implements IIconProcessS
 
   @Override
   public void saveIcon(String name, byte[] icon) throws ProcessingException {
+    if (!ACCESS.check(new UpdateIconPermission())) {
+      throw new VetoException(TEXTS.get("AuthorizationFailed"));
+    }
     SQL.update("UPDATE TABUSERS SET icon = :icon WHERE username = :userId",
         new NVPair("name", name), new NVPair("icon", resize(icon)));
   }

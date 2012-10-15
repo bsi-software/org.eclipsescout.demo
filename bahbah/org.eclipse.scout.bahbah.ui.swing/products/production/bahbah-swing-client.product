@@ -29,7 +29,7 @@
    </vm>
 
    <plugins>
-      <plugin id="com.bsiag.scout.rt.ui.swing.laf.rayo.fragment"/>
+      <plugin id="com.bsiag.scout.rt.ui.swing.laf.rayo.fragment" fragment="true"/>
       <plugin id="com.bsiag.scout.rt.ui.swing.rayo"/>
       <plugin id="org.apache.batik.bridge"/>
       <plugin id="org.apache.batik.css"/>
@@ -62,6 +62,7 @@
       <plugin id="org.eclipse.scout.commons"/>
       <plugin id="org.eclipse.scout.net"/>
       <plugin id="org.eclipse.scout.rt.client"/>
+      <plugin id="org.eclipse.scout.rt.extension.client"/>
       <plugin id="org.eclipse.scout.rt.shared"/>
       <plugin id="org.eclipse.scout.rt.ui.swing"/>
       <plugin id="org.eclipse.scout.service"/>

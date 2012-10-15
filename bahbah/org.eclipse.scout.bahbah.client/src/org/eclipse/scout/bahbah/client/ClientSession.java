@@ -12,6 +12,7 @@ package org.eclipse.scout.bahbah.client;
 
 import org.eclipse.scout.bahbah.client.services.IBahBahNotificationConsumerService;
 import org.eclipse.scout.bahbah.client.ui.desktop.Desktop;
+import org.eclipse.scout.bahbah.shared.services.process.IUserProcessService;
 import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
@@ -21,6 +22,7 @@ import org.eclipse.scout.rt.client.ClientJob;
 import org.eclipse.scout.rt.client.services.common.clientnotification.IClientNotificationConsumerService;
 import org.eclipse.scout.rt.client.servicetunnel.http.HttpServiceTunnel;
 import org.eclipse.scout.rt.shared.services.common.code.CODES;
+import org.eclipse.scout.rt.shared.services.common.code.ICode;
 import org.eclipse.scout.service.SERVICES;
 
 public class ClientSession extends AbstractClientSession {
@@ -37,9 +39,10 @@ public class ClientSession extends AbstractClientSession {
     return ClientJob.getCurrentSession(ClientSession.class);
   }
 
+  @SuppressWarnings("unchecked")
   @FormData
-  public Long getPersonNr() {
-    return getSharedContextVariable("personNr", Long.class);
+  public ICode<Integer> getPermission() {
+    return getSharedContextVariable(IUserProcessService.PERMISSION_KEY, ICode.class);
   }
 
   @Override
@@ -61,5 +64,8 @@ public class ClientSession extends AbstractClientSession {
 
   @Override
   public void execStoreSession() throws ProcessingException {
+    // disable notification polling with -1
+    ClientSession.get().getServiceTunnel().setClientNotificationPollInterval(-1);
+    SERVICES.getService(IUserProcessService.class).removeUser();
   }
 }

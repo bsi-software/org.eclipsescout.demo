@@ -230,10 +230,10 @@ public class ChatForm extends AbstractForm {
         String message = getMessageField().getValue();
 
         if (!StringUtility.isNullOrEmpty(message)) {
-          // update local chat history
-          getHistoryField().addMessage(true, getUserName(), getBuddyName(), new Date(), message);
           // send message to server
           SERVICES.getService(INotificationProcessService.class).sendMessage(getBuddyName(), message);
+          // update local chat history
+          getHistoryField().addMessage(true, getUserName(), getBuddyName(), new Date(), message);
         }
         getMessageField().setValue(null);
       }

@@ -9,6 +9,7 @@ import java.util.HashSet;
 import org.eclipse.scout.bahbah.client.ClientSession;
 import org.eclipse.scout.bahbah.client.services.BuddyIconProviderService;
 import org.eclipse.scout.bahbah.client.ui.forms.ChatForm;
+import org.eclipse.scout.bahbah.shared.security.UpdateIconPermission;
 import org.eclipse.scout.bahbah.shared.services.outline.IStandardOutlineService;
 import org.eclipse.scout.bahbah.shared.services.process.IIconProcessService;
 import org.eclipse.scout.commons.IOUtility;
@@ -22,6 +23,7 @@ import org.eclipse.scout.rt.client.ui.basic.tree.ITreeNode;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNodes;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
 import org.eclipse.scout.rt.shared.TEXTS;
+import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
 import org.eclipse.scout.service.SERVICES;
 
 public class UserNodePage extends AbstractPageWithNodes {
@@ -113,6 +115,11 @@ public class UserNodePage extends AbstractPageWithNodes {
     @Override
     protected String getConfiguredText() {
       return TEXTS.get("ChangeIcon");
+    }
+
+    @Override
+    protected void execPrepareAction() throws ProcessingException {
+      setVisible(ACCESS.check(new UpdateIconPermission()));
     }
 
     @Override

@@ -7,6 +7,7 @@ Bundle-Activator: org.eclipse.scout.bahbah.shared.Activator
 Export-Package: org.eclipse.scout.bahbah.shared,
  org.eclipse.scout.bahbah.shared.notification,
  org.eclipse.scout.bahbah.shared.security,
+ org.eclipse.scout.bahbah.shared.services.code,
  org.eclipse.scout.bahbah.shared.services.common.text,
  org.eclipse.scout.bahbah.shared.services.outline,
  org.eclipse.scout.bahbah.shared.services.process
