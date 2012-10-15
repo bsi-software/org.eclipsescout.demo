@@ -7,6 +7,6 @@ public class ReadUsersPermission extends BasicPermission {
   private static final long serialVersionUID = 0L;
 
   public ReadUsersPermission() {
-    super("ReadChat");
+    super(ReadUsersPermission.class.getName());
   }
 }

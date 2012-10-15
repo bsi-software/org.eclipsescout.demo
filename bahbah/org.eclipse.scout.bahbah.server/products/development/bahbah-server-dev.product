@@ -63,7 +63,6 @@
       <plugin id="org.eclipse.scout.rt.jdbc.derby"/>
       <plugin id="org.eclipse.scout.rt.server"/>
       <plugin id="org.eclipse.scout.rt.shared"/>
-      <plugin id="org.eclipse.scout.rt.shared.legacy.texts.fragment" fragment="true"/>
       <plugin id="org.eclipse.scout.service"/>
       <plugin id="org.eclipse.update.configurator"/>
    </plugins>

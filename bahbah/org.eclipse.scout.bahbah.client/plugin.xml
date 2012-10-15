@@ -34,6 +34,14 @@
             factory="org.eclipse.scout.rt.client.services.ClientProxyServiceFactory"
             class="org.eclipse.scout.bahbah.shared.services.process.IIconProcessService">
       </proxy>
+      <proxy
+            factory="org.eclipse.scout.rt.client.services.ClientProxyServiceFactory"
+            class="org.eclipse.scout.bahbah.shared.services.process.IPasswordProcessService">
+      </proxy>
+      <proxy
+            factory="org.eclipse.scout.rt.client.services.ClientProxyServiceFactory"
+            class="org.eclipse.scout.rt.shared.services.common.pwd.IPasswordManagementService">
+      </proxy>
    </extension>
    <extension
          name=""

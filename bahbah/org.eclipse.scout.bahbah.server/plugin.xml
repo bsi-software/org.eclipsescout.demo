@@ -49,6 +49,11 @@
             class="org.eclipse.scout.bahbah.server.services.process.IconProcessService"
             session="org.eclipse.scout.bahbah.server.ServerSession">
       </service>
+      <service
+            factory="org.eclipse.scout.rt.server.services.ServerServiceFactory"
+            class="org.eclipse.scout.bahbah.server.services.process.PasswordProcessService"
+            session="org.eclipse.scout.bahbah.server.ServerSession">
+      </service>
    </extension>
    <extension
          name=""
@@ -131,8 +136,8 @@
          name=""
          point="org.eclipse.core.runtime.products">
       <product
-            name="bahbah Server"
-            application="org.eclipse.scout.bahbah.server.app">
+            application="org.eclipse.scout.bahbah.server.app"
+            name="bahbah Server">
          <property
                name="appName"
                value="bahbah Server">

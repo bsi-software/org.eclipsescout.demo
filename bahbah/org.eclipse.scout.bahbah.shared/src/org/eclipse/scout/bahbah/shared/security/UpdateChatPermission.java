@@ -7,6 +7,6 @@ public class UpdateChatPermission extends BasicPermission {
   private static final long serialVersionUID = 0L;
 
   public UpdateChatPermission() {
-    super("UpdateChat");
+    super(UpdateChatPermission.class.getName());
   }
 }

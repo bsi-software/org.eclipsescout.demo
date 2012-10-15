@@ -7,6 +7,6 @@ public class RegisterUserPermission extends BasicPermission {
   private static final long serialVersionUID = 0L;
 
   public RegisterUserPermission() {
-    super("CreateUser");
+    super(RegisterUserPermission.class.getName());
   }
 }

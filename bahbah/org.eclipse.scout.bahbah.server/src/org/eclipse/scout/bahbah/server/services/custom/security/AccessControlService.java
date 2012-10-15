@@ -15,13 +15,15 @@ import java.security.Permissions;
 import org.eclipse.scout.bahbah.server.ServerSession;
 import org.eclipse.scout.bahbah.shared.security.CreateNotificationPermission;
 import org.eclipse.scout.bahbah.shared.security.CreateUserPermission;
+import org.eclipse.scout.bahbah.shared.security.DeleteUserPermission;
 import org.eclipse.scout.bahbah.shared.security.ReadChatPermission;
 import org.eclipse.scout.bahbah.shared.security.ReadUsersPermission;
 import org.eclipse.scout.bahbah.shared.security.RegisterUserPermission;
-import org.eclipse.scout.bahbah.shared.security.RemoveUserPermission;
+import org.eclipse.scout.bahbah.shared.security.ResetPasswordPermission;
 import org.eclipse.scout.bahbah.shared.security.UnregisterUserPermission;
 import org.eclipse.scout.bahbah.shared.security.UpdateChatPermission;
 import org.eclipse.scout.bahbah.shared.security.UpdateIconPermission;
+import org.eclipse.scout.bahbah.shared.security.UpdateUserPermission;
 import org.eclipse.scout.bahbah.shared.services.code.UserRoleCodeType.AdministratorCode;
 import org.eclipse.scout.bahbah.shared.services.code.UserRoleCodeType.UserCode;
 import org.eclipse.scout.rt.server.services.common.security.AbstractAccessControlService;
@@ -52,7 +54,9 @@ public class AccessControlService extends AbstractAccessControlService {
       // ADMIN
       if (permission.getId() >= AdministratorCode.ID) {
         permissions.add(new CreateUserPermission());
-        permissions.add(new RemoveUserPermission());
+        permissions.add(new DeleteUserPermission());
+        permissions.add(new ResetPasswordPermission());
+        permissions.add(new UpdateUserPermission());
       }
     }
     return permissions;

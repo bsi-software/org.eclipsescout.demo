@@ -14,7 +14,7 @@ public class StandardOutlineService extends AbstractService implements IStandard
 
   @Override
   public String[] getOnlineUsers() throws ProcessingException {
-    Set<String> allUsers = SERVICES.getService(IUserProcessService.class).getUsers();
+    Set<String> allUsers = SERVICES.getService(IUserProcessService.class).getUsersOnline();
     Set<String> users = new HashSet<String>(allUsers);
     // remove myself
     users.remove(ServerSession.get().getUserId());

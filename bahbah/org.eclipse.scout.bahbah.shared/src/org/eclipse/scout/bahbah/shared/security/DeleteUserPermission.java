@@ -2,11 +2,11 @@ package org.eclipse.scout.bahbah.shared.security;
 
 import java.security.BasicPermission;
 
-public class UpdateIconPermission extends BasicPermission {
+public class DeleteUserPermission extends BasicPermission {
 
   private static final long serialVersionUID = 0L;
 
-  public UpdateIconPermission() {
-    super(UpdateIconPermission.class.getName());
+  public DeleteUserPermission() {
+    super(DeleteUserPermission.class.getName());
   }
 }

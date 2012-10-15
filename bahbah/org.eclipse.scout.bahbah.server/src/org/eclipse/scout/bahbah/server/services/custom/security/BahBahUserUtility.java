@@ -15,13 +15,18 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
 import org.eclipse.scout.bahbah.shared.services.code.UserRoleCodeType;
+import org.eclipse.scout.bahbah.shared.services.process.IPasswordProcessService;
+import org.eclipse.scout.bahbah.shared.services.process.IUserProcessService;
 import org.eclipse.scout.commons.Base64Utility;
+import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.commons.exception.VetoException;
 import org.eclipse.scout.commons.holders.NVPair;
 import org.eclipse.scout.commons.holders.StringHolder;
 import org.eclipse.scout.rt.server.services.common.jdbc.SQL;
+import org.eclipse.scout.rt.shared.TEXTS;
 
-public class BahBahAuthenticationUtility {
+public class BahBahUserUtility {
 
   private static final String ENCODING = "UTF-8";
 
@@ -31,6 +36,9 @@ public class BahBahAuthenticationUtility {
 
   public static boolean createNewUser(String username, String password, Integer permission) throws ProcessingException {
     try {
+      checkUsername(username);
+      checkPassword(password);
+
       byte[] bSalt = HashUtility.createSalt();
       byte[] bHash = HashUtility.hash(password.getBytes(ENCODING), bSalt);
 
@@ -44,6 +52,38 @@ public class BahBahAuthenticationUtility {
           new NVPair("permission", permission));
 
       return true;
+    }
+    catch (NoSuchAlgorithmException e) {
+      throw new ProcessingException("hash algorithm not found", e);
+    }
+    catch (UnsupportedEncodingException e) {
+      throw new ProcessingException("unknown string encoding: " + ENCODING, e);
+    }
+  }
+
+  public static void checkUsername(String username) throws VetoException {
+    if (StringUtility.length(username) < IUserProcessService.MIN_USERNAME_LENGTH) {
+      throw new VetoException(TEXTS.get("UsernameMinLength", "" + IUserProcessService.MIN_USERNAME_LENGTH));
+    }
+  }
+
+  public static void checkPassword(String password) throws VetoException {
+    if (StringUtility.length(password) < IPasswordProcessService.MIN_PASSWORD_LENGTH) {
+      throw new VetoException(TEXTS.get("PasswordMinLength", "" + IPasswordProcessService.MIN_PASSWORD_LENGTH));
+    }
+  }
+
+  public static void resetPassword(Long u_Id, String newPassword) throws ProcessingException {
+    try {
+      checkPassword(newPassword);
+
+      byte[] bSalt = HashUtility.createSalt();
+      byte[] bHash = HashUtility.hash(newPassword.getBytes(ENCODING), bSalt);
+
+      String salt = Base64Utility.encode(bSalt);
+      String digest = Base64Utility.encode(bHash);
+
+      SQL.update("UPDATE TABUSERS SET pass = :newPass, salt = :newSalt WHERE u_id = :uid", new NVPair("newPass", digest), new NVPair("newSalt", salt), new NVPair("uid", u_Id));
     }
     catch (NoSuchAlgorithmException e) {
       throw new ProcessingException("hash algorithm not found", e);

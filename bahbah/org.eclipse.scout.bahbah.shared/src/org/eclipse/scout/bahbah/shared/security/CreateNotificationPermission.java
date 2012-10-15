@@ -7,6 +7,6 @@ public class CreateNotificationPermission extends BasicPermission {
   private static final long serialVersionUID = 0L;
 
   public CreateNotificationPermission() {
-    super("CreateNotification");
+    super(CreateNotificationPermission.class.getName());
   }
 }

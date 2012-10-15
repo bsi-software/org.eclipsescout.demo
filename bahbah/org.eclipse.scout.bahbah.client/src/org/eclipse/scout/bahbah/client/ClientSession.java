@@ -66,6 +66,6 @@ public class ClientSession extends AbstractClientSession {
   public void execStoreSession() throws ProcessingException {
     // disable notification polling with -1
     ClientSession.get().getServiceTunnel().setClientNotificationPollInterval(-1);
-    SERVICES.getService(IUserProcessService.class).removeUser();
+    SERVICES.getService(IUserProcessService.class).unregisterUser();
   }
 }

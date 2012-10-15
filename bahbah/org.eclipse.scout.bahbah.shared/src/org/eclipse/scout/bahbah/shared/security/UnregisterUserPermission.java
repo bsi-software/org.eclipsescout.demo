@@ -7,6 +7,6 @@ public class UnregisterUserPermission extends BasicPermission {
   private static final long serialVersionUID = 0L;
 
   public UnregisterUserPermission() {
-    super("CreateUser");
+    super(UnregisterUserPermission.class.getName());
   }
 }

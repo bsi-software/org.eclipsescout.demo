@@ -8,7 +8,7 @@ import org.eclipse.scout.rt.client.ui.desktop.outline.AbstractOutline;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
 import org.eclipse.scout.rt.shared.TEXTS;
 
-public class StandardOutline extends AbstractOutline {
+public class ChatOutline extends AbstractOutline {
 
   @Override
   protected String getConfiguredTitle() {

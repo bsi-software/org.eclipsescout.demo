@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 import org.eclipse.scout.bahbah.client.ClientSession;
 import org.eclipse.scout.bahbah.client.ui.desktop.outlines.AdministrationOutline;
-import org.eclipse.scout.bahbah.client.ui.desktop.outlines.StandardOutline;
+import org.eclipse.scout.bahbah.client.ui.desktop.outlines.ChatOutline;
 import org.eclipse.scout.bahbah.client.ui.desktop.outlines.pages.UserNodePage;
 import org.eclipse.scout.bahbah.shared.Icons;
 import org.eclipse.scout.commons.annotations.Order;
@@ -41,7 +41,7 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
   @Override
   protected Class<? extends IOutline>[] getConfiguredOutlines() {
     ArrayList<Class> outlines = new ArrayList<Class>();
-    outlines.add(StandardOutline.class);
+    outlines.add(ChatOutline.class);
     outlines.add(AdministrationOutline.class);
     return outlines.toArray(new Class[outlines.size()]);
   }
@@ -73,8 +73,17 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
     return (Desktop) ClientSyncJob.getCurrentSession().getDesktop();
   }
 
+  private IOutline getChatOutline() {
+    for (IOutline o : getAvailableOutlines()) {
+      if (o.getClass().equals(ChatOutline.class)) {
+        return o;
+      }
+    }
+    return null;
+  }
+
   public UserNodePage getUserNodePage() {
-    IPage invisibleRootPage = getOutline().getRootPage();
+    IPage invisibleRootPage = getChatOutline().getRootPage();
     if (invisibleRootPage != null && invisibleRootPage.getChildNodeCount() > 0) {
       IPage p = invisibleRootPage.getChildPage(0);
       if (p instanceof UserNodePage) {
@@ -121,7 +130,7 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
   @Order(10.0)
   public class StandardOutlineViewButton extends AbstractOutlineViewButton {
     public StandardOutlineViewButton() {
-      super(Desktop.this, StandardOutline.class);
+      super(Desktop.this, ChatOutline.class);
     }
 
     @Override

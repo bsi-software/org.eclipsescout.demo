@@ -3,7 +3,7 @@ package org.eclipse.scout.bahbah.server;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.eclipse.scout.bahbah.server.services.custom.security.BahBahAuthenticationUtility;
+import org.eclipse.scout.bahbah.server.services.custom.security.BahBahUserUtility;
 import org.eclipse.scout.bahbah.shared.services.code.UserRoleCodeType;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.server.services.common.jdbc.SQL;
@@ -28,7 +28,7 @@ public class DbSetup {
       SQL.insert(" CREATE UNIQUE INDEX IX_USERNAME ON TABUSERS (username) ");
 
       // create first admin account
-      BahBahAuthenticationUtility.createNewUser("admin", "admin", UserRoleCodeType.AdministratorCode.ID);
+      BahBahUserUtility.createNewUser("admin", "admin", UserRoleCodeType.AdministratorCode.ID);
     }
 
     SQL.commit();
