@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.HashSet;
 
 import org.eclipse.scout.bahbah.client.ClientSession;
+import org.eclipse.scout.bahbah.client.services.BuddyIconProviderService;
 import org.eclipse.scout.bahbah.client.ui.forms.ChatForm;
 import org.eclipse.scout.bahbah.shared.services.outline.IStandardOutlineService;
 import org.eclipse.scout.bahbah.shared.services.process.IIconProcessService;
@@ -32,7 +33,7 @@ public class UserNodePage extends AbstractPageWithNodes {
 
   @Override
   protected String getConfiguredIconId() {
-    return ClientSession.get().getUserId();
+    return BuddyIconProviderService.BUDDY_ICON_PREFIX + ClientSession.get().getUserId();
   }
 
   @Override

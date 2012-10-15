@@ -17,6 +17,9 @@ import org.osgi.framework.ServiceRegistration;
  */
 public class BuddyIconProviderService extends IconProviderService implements IBuddyIconProviderService {
   private static IScoutLogger logger = ScoutLogManager.getLogger(BuddyIconProviderService.class);
+
+  public static final String BUDDY_ICON_PREFIX = "@@BUDDY_ICON@@_";
+
   private ClientSession m_session;
 
   @Override
@@ -29,16 +32,17 @@ public class BuddyIconProviderService extends IconProviderService implements IBu
 
   @Override
   public IconSpec getIconSpec(String iconName) {
-    P_LoadDbIconJob job = new P_LoadDbIconJob(m_session, iconName);
-    job.schedule();
-    try {
-      job.join();
-    }
-    catch (InterruptedException e1) {
-    }
-
-    if (job.getIconSpec() != null) {
+    if (iconName.startsWith(BUDDY_ICON_PREFIX)) {
       // it is a buddy icon
+      P_LoadDbIconJob job = new P_LoadDbIconJob(m_session, iconName.substring(BUDDY_ICON_PREFIX.length()));
+      job.schedule();
+      try {
+        job.join();
+      }
+      catch (InterruptedException e1) {
+        logger.warn("interrupted waiting on buddy icon load job. ", e1);
+      }
+
       if (job.getIconSpec().getContent() == null) {
         // but the user has no icon uploaded yet
         return super.getIconSpec(BUDDY_DEFAULT_ICON);

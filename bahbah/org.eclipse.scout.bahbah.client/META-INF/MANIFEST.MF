@@ -13,6 +13,7 @@ Export-Package: org.eclipse.scout.bahbah.client,
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.scout.rt.client;visibility:=reexport,
  org.eclipse.scout.bahbah.shared,
- org.eclipse.scout.svg.client
+ org.eclipse.scout.svg.client,
+ org.eclipse.scout.rt.extension.client
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy

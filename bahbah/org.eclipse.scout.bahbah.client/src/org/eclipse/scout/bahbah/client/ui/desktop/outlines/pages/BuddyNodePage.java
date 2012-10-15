@@ -2,6 +2,7 @@ package org.eclipse.scout.bahbah.client.ui.desktop.outlines.pages;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.scout.bahbah.client.ClientSession;
+import org.eclipse.scout.bahbah.client.services.BuddyIconProviderService;
 import org.eclipse.scout.bahbah.client.ui.forms.ChatForm;
 import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.commons.exception.ProcessingException;
@@ -20,7 +21,7 @@ public class BuddyNodePage extends AbstractPageWithNodes {
 
   @Override
   protected String getConfiguredIconId() {
-    return getName();
+    return BuddyIconProviderService.BUDDY_ICON_PREFIX + getName();
   }
 
   @Override
