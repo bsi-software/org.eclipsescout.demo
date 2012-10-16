@@ -19,6 +19,7 @@ public class BuddyIconProviderService extends IconProviderService implements IBu
   private static IScoutLogger logger = ScoutLogManager.getLogger(BuddyIconProviderService.class);
 
   public static final String BUDDY_ICON_PREFIX = "@@BUDDY_ICON@@_";
+  public static final String OPT_BUDDY_ICON_SUFFIX = "_open";
 
   private ClientSession m_session;
 
@@ -34,6 +35,10 @@ public class BuddyIconProviderService extends IconProviderService implements IBu
   public IconSpec getIconSpec(String iconName) {
     if (iconName.startsWith(BUDDY_ICON_PREFIX)) {
       // it is a buddy icon
+      if (iconName.endsWith(OPT_BUDDY_ICON_SUFFIX)) {
+        // special case for tables: they may add a suffix for open tree nodes -> remove as we only have one icon for expanded & not expanded folders
+        iconName = iconName.substring(0, iconName.length() - OPT_BUDDY_ICON_SUFFIX.length());
+      }
       P_LoadDbIconJob job = new P_LoadDbIconJob(m_session, iconName.substring(BUDDY_ICON_PREFIX.length()));
       job.schedule();
       try {
