@@ -80,8 +80,8 @@ public class ChatFormData extends AbstractFormData {
     public static final int TYPE_COLUMN_ID = 0;
     public static final int SENDER_COLUMN_ID = 1;
     public static final int RECEIVER_COLUMN_ID = 2;
-    public static final int TIME_COLUMN_ID = 3;
-    public static final int MESSAGE_COLUMN_ID = 4;
+    public static final int MESSAGE_COLUMN_ID = 3;
+    public static final int TIME_COLUMN_ID = 4;
 
     public void setType(int row, Integer type) {
       setValueInternal(row, TYPE_COLUMN_ID, type);
@@ -107,20 +107,20 @@ public class ChatFormData extends AbstractFormData {
       return (String) getValueInternal(row, RECEIVER_COLUMN_ID);
     }
 
-    public void setTime(int row, Date time) {
-      setValueInternal(row, TIME_COLUMN_ID, time);
-    }
-
-    public Date getTime(int row) {
-      return (Date) getValueInternal(row, TIME_COLUMN_ID);
-    }
-
     public void setMessage(int row, String message) {
       setValueInternal(row, MESSAGE_COLUMN_ID, message);
     }
 
     public String getMessage(int row) {
       return (String) getValueInternal(row, MESSAGE_COLUMN_ID);
+    }
+
+    public void setTime(int row, Date time) {
+      setValueInternal(row, TIME_COLUMN_ID, time);
+    }
+
+    public Date getTime(int row) {
+      return (Date) getValueInternal(row, TIME_COLUMN_ID);
     }
 
     @Override
@@ -137,10 +137,10 @@ public class ChatFormData extends AbstractFormData {
           return getSender(row);
         case RECEIVER_COLUMN_ID:
           return getReceiver(row);
-        case TIME_COLUMN_ID:
-          return getTime(row);
         case MESSAGE_COLUMN_ID:
           return getMessage(row);
+        case TIME_COLUMN_ID:
+          return getTime(row);
         default:
           return null;
       }
@@ -158,11 +158,11 @@ public class ChatFormData extends AbstractFormData {
         case RECEIVER_COLUMN_ID:
           setReceiver(row, (String) value);
           break;
-        case TIME_COLUMN_ID:
-          setTime(row, (Date) value);
-          break;
         case MESSAGE_COLUMN_ID:
           setMessage(row, (String) value);
+          break;
+        case TIME_COLUMN_ID:
+          setTime(row, (Date) value);
           break;
       }
     }

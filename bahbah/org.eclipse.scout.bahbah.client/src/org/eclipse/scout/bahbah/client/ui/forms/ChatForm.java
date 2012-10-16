@@ -16,9 +16,9 @@ import org.eclipse.scout.rt.client.ui.action.keystroke.AbstractKeyStroke;
 import org.eclipse.scout.rt.client.ui.basic.cell.Cell;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
-import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractDateColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractIntegerColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
+import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractTimeColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.IColumn;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
@@ -109,7 +109,7 @@ public class ChatForm extends AbstractForm {
       private final Integer MESSAGE_TYPE_REMOTE = 2;
 
       public void addMessage(boolean local, String sender, String receiver, Date date, String message) throws ProcessingException {
-        getTable().addRowByArray(new Object[]{(local ? MESSAGE_TYPE_LOCAL : MESSAGE_TYPE_REMOTE), sender, receiver, date, message});
+        getTable().addRowByArray(new Object[]{(local ? MESSAGE_TYPE_LOCAL : MESSAGE_TYPE_REMOTE), sender, receiver, message, date});
       }
 
       @Override
@@ -122,6 +122,11 @@ public class ChatForm extends AbstractForm {
 
         public TimeColumn getTimeColumn() {
           return getColumnSet().getColumnByClass(TimeColumn.class);
+        }
+
+        @Override
+        protected boolean getConfiguredMultilineText() {
+          return true;
         }
 
         @Override
@@ -199,7 +204,26 @@ public class ChatForm extends AbstractForm {
         }
 
         @Order(40.0)
-        public class TimeColumn extends AbstractDateColumn {
+        public class MessageColumn extends AbstractStringColumn {
+
+          @Override
+          protected String getConfiguredHeaderText() {
+            return TEXTS.get("Message");
+          }
+
+          @Override
+          protected int getConfiguredWidth() {
+            return 500;
+          }
+
+          @Override
+          protected boolean getConfiguredTextWrap() {
+            return true;
+          }
+        }
+
+        @Order(50.0)
+        public class TimeColumn extends AbstractTimeColumn {
 
           @Override
           protected String getConfiguredFormat() {
@@ -219,20 +243,6 @@ public class ChatForm extends AbstractForm {
           @Override
           protected int getConfiguredSortIndex() {
             return 0;
-          }
-        }
-
-        @Order(50.0)
-        public class MessageColumn extends AbstractStringColumn {
-
-          @Override
-          protected String getConfiguredHeaderText() {
-            return TEXTS.get("Message");
-          }
-
-          @Override
-          protected int getConfiguredWidth() {
-            return 500;
           }
         }
       }
