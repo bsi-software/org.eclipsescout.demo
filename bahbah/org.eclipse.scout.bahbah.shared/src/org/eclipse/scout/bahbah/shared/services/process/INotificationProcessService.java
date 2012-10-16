@@ -1,9 +1,12 @@
 package org.eclipse.scout.bahbah.shared.services.process;
 
-import org.eclipse.scout.service.IService;
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.shared.validate.IValidationStrategy;
+import org.eclipse.scout.rt.shared.validate.InputValidation;
+import org.eclipse.scout.service.IService;
 
-public interface INotificationProcessService extends IService{
+@InputValidation(IValidationStrategy.NO_CHECK.class)
+public interface INotificationProcessService extends IService {
 
   public void sendRefreshBuddies() throws ProcessingException;
 
