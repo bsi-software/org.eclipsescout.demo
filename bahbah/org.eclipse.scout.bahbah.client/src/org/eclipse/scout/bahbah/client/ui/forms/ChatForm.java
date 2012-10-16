@@ -5,9 +5,7 @@ import java.util.Date;
 import org.eclipse.scout.bahbah.client.services.BuddyIconProviderService;
 import org.eclipse.scout.bahbah.client.ui.forms.ChatForm.MainBox.HistoryField;
 import org.eclipse.scout.bahbah.client.ui.forms.ChatForm.MainBox.MessageField;
-import org.eclipse.scout.bahbah.shared.security.UpdateChatPermission;
 import org.eclipse.scout.bahbah.shared.services.process.ChatFormData;
-import org.eclipse.scout.bahbah.shared.services.process.IChatProcessService;
 import org.eclipse.scout.bahbah.shared.services.process.INotificationProcessService;
 import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.annotations.FormData;
@@ -23,7 +21,6 @@ import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractIntegerColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.IColumn;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
-import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
@@ -41,8 +38,34 @@ public class ChatForm extends AbstractForm {
     super();
   }
 
-  public void startModify() throws ProcessingException {
-    startInternal(new ModifyHandler());
+  @Override
+  protected boolean getConfiguredAskIfNeedSave() {
+    return false;
+  }
+
+  @Override
+  protected int getConfiguredDisplayHint() {
+    return DISPLAY_HINT_VIEW;
+  }
+
+  @FormData
+  public String getBuddyName() {
+    return m_buddyName;
+  }
+
+  @FormData
+  public void setBuddyName(String buddyName) {
+    m_buddyName = buddyName;
+  }
+
+  @FormData
+  public String getUserName() {
+    return m_userName;
+  }
+
+  @FormData
+  public void setUserName(String userName) {
+    m_userName = userName;
   }
 
   public HistoryField getHistoryField() {
@@ -85,11 +108,8 @@ public class ChatForm extends AbstractForm {
       private final Integer MESSAGE_TYPE_LOCAL = 1;
       private final Integer MESSAGE_TYPE_REMOTE = 2;
 
-      public void addMessage(boolean local, String sender, String receiver, Date date, String message)
-          throws ProcessingException
-      {
-        getTable().addRowByArray(
-            new Object[]{(local ? MESSAGE_TYPE_LOCAL : MESSAGE_TYPE_REMOTE), sender, receiver, date, message});
+      public void addMessage(boolean local, String sender, String receiver, Date date, String message) throws ProcessingException {
+        getTable().addRowByArray(new Object[]{(local ? MESSAGE_TYPE_LOCAL : MESSAGE_TYPE_REMOTE), sender, receiver, date, message});
       }
 
       @Override
@@ -239,56 +259,5 @@ public class ChatForm extends AbstractForm {
         getMessageField().setValue(null);
       }
     }
-  }
-
-  public class ModifyHandler extends AbstractFormHandler {
-
-    @Override
-    public void execLoad() throws ProcessingException {
-      IChatProcessService service = SERVICES.getService(IChatProcessService.class);
-      ChatFormData formData = new ChatFormData();
-      exportFormData(formData);
-      formData = service.load(formData);
-      importFormData(formData);
-      setEnabledPermission(new UpdateChatPermission());
-    }
-
-    @Override
-    public void execStore() throws ProcessingException {
-      IChatProcessService service = SERVICES.getService(IChatProcessService.class);
-      ChatFormData formData = new ChatFormData();
-      exportFormData(formData);
-      formData = service.store(formData);
-    }
-  }
-
-  @Override
-  protected boolean getConfiguredAskIfNeedSave() {
-    return false;
-  }
-
-  @Override
-  protected int getConfiguredDisplayHint() {
-    return DISPLAY_HINT_VIEW;
-  }
-
-  @FormData
-  public String getBuddyName() {
-    return m_buddyName;
-  }
-
-  @FormData
-  public void setBuddyName(String buddyName) {
-    m_buddyName = buddyName;
-  }
-
-  @FormData
-  public String getUserName() {
-    return m_userName;
-  }
-
-  @FormData
-  public void setUserName(String userName) {
-    m_userName = userName;
   }
 }

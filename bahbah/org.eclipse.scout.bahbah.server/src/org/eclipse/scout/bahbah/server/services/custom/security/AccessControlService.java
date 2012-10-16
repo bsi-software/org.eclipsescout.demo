@@ -16,12 +16,10 @@ import org.eclipse.scout.bahbah.server.ServerSession;
 import org.eclipse.scout.bahbah.shared.security.CreateNotificationPermission;
 import org.eclipse.scout.bahbah.shared.security.CreateUserPermission;
 import org.eclipse.scout.bahbah.shared.security.DeleteUserPermission;
-import org.eclipse.scout.bahbah.shared.security.ReadChatPermission;
 import org.eclipse.scout.bahbah.shared.security.ReadUsersPermission;
 import org.eclipse.scout.bahbah.shared.security.RegisterUserPermission;
 import org.eclipse.scout.bahbah.shared.security.ResetPasswordPermission;
 import org.eclipse.scout.bahbah.shared.security.UnregisterUserPermission;
-import org.eclipse.scout.bahbah.shared.security.UpdateChatPermission;
 import org.eclipse.scout.bahbah.shared.security.UpdateIconPermission;
 import org.eclipse.scout.bahbah.shared.security.UpdateUserPermission;
 import org.eclipse.scout.bahbah.shared.services.code.UserRoleCodeType.AdministratorCode;
@@ -43,11 +41,9 @@ public class AccessControlService extends AbstractAccessControlService {
         permissions.add(new RemoteServiceAccessPermission("*.shared.*", "*"));
 
         permissions.add(new CreateNotificationPermission());
-        permissions.add(new ReadChatPermission());
         permissions.add(new ReadUsersPermission());
         permissions.add(new RegisterUserPermission());
         permissions.add(new UnregisterUserPermission());
-        permissions.add(new UpdateChatPermission());
         permissions.add(new UpdateIconPermission());
       }
 

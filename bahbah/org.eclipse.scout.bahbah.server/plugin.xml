@@ -41,11 +41,6 @@
       </service>
       <service
             factory="org.eclipse.scout.rt.server.services.ServerServiceFactory"
-            class="org.eclipse.scout.bahbah.server.services.process.ChatProcessService"
-            session="org.eclipse.scout.bahbah.server.ServerSession">
-      </service>
-      <service
-            factory="org.eclipse.scout.rt.server.services.ServerServiceFactory"
             class="org.eclipse.scout.bahbah.server.services.process.IconProcessService"
             session="org.eclipse.scout.bahbah.server.ServerSession">
       </service>

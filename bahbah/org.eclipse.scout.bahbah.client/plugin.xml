@@ -21,10 +21,6 @@
             factory="org.eclipse.scout.rt.client.services.ClientProxyServiceFactory"
             class="org.eclipse.scout.bahbah.shared.services.process.INotificationProcessService">
       </proxy>
-      <proxy
-            factory="org.eclipse.scout.rt.client.services.ClientProxyServiceFactory"
-            class="org.eclipse.scout.bahbah.shared.services.process.IChatProcessService">
-      </proxy>
       <service
             factory="org.eclipse.scout.rt.client.services.ClientServiceFactory"
             class="org.eclipse.scout.bahbah.client.services.BuddyIconProviderService"
