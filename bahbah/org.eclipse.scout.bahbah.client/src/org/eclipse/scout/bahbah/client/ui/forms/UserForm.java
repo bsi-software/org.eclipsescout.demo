@@ -124,6 +124,9 @@ public class UserForm extends AbstractForm {
           if (StringUtility.length(rawValue) < IUserProcessService.MIN_USERNAME_LENGTH) {
             throw new VetoException(TEXTS.get("UsernameMinLength", "" + IUserProcessService.MIN_USERNAME_LENGTH));
           }
+          if (rawValue.contains("@")) {
+            throw new VetoException(TEXTS.get("UsernameSpecialChars"));
+          }
           return rawValue;
         }
       }
