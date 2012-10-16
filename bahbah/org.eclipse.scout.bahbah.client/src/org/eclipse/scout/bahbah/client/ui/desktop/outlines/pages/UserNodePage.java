@@ -22,6 +22,7 @@ import org.eclipse.scout.rt.client.ui.basic.filechooser.FileChooser;
 import org.eclipse.scout.rt.client.ui.basic.tree.ITreeNode;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNodes;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
+import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
 import org.eclipse.scout.service.SERVICES;
@@ -131,7 +132,7 @@ public class UserNodePage extends AbstractPageWithNodes {
         try {
           byte[] content = IOUtility.getContent(new FileInputStream(files[0]), true);
           SERVICES.getService(IIconProcessService.class).saveIcon(ClientSession.get().getUserId(), content);
-          getParentPage().reloadPage();
+          MessageBox.showOkMessage("", TEXTS.get("IconChangeTitle"), TEXTS.get("IconChangeMessage"));
         }
         catch (Throwable e) {
           // nop
