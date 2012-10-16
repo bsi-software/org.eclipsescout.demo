@@ -2,6 +2,7 @@ package org.eclipse.scout.bahbah.client.ui.forms;
 
 import java.util.Date;
 
+import org.eclipse.scout.bahbah.client.services.BuddyIconProviderService;
 import org.eclipse.scout.bahbah.client.ui.forms.ChatForm.MainBox.HistoryField;
 import org.eclipse.scout.bahbah.client.ui.forms.ChatForm.MainBox.MessageField;
 import org.eclipse.scout.bahbah.shared.security.UpdateChatPermission;
@@ -109,7 +110,7 @@ public class ChatForm extends AbstractForm {
           row.setForegroundColor("000000");
 
           // set icon id of the sender of the message (user icons have a specific prefix)
-          row.setIconId(getSenderColumn().getValue(row));
+          row.setIconId(BuddyIconProviderService.BUDDY_ICON_PREFIX + getSenderColumn().getValue(row));
 
           // set font style and background color depending whether the message is from myself or not
           boolean isMessageFromMe = MESSAGE_TYPE_LOCAL.equals(getTypeColumn().getValue(row));
