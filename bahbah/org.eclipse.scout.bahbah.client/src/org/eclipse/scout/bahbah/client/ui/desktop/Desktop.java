@@ -128,8 +128,8 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
   }
 
   @Order(10.0)
-  public class StandardOutlineViewButton extends AbstractOutlineViewButton {
-    public StandardOutlineViewButton() {
+  public class ChatOutlineViewButton extends AbstractOutlineViewButton {
+    public ChatOutlineViewButton() {
       super(Desktop.this, ChatOutline.class);
     }
 

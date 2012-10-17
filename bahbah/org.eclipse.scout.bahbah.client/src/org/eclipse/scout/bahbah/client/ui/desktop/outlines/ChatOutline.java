@@ -19,6 +19,5 @@ public class ChatOutline extends AbstractOutline {
   protected void execCreateChildPages(Collection<IPage> pageList) throws ProcessingException {
     UserNodePage buddiesNodePage = new UserNodePage();
     pageList.add(buddiesNodePage);
-
   }
 }

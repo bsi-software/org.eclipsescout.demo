@@ -23,6 +23,7 @@ public class OutlineViewAction extends Action {
 
   public OutlineViewAction() {
     setText(" ");
+    setEnabled(false);
   }
 
   public void init(IViewButton b) {
