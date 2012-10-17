@@ -21,6 +21,7 @@ import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractTimeColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.IColumn;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
+import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
@@ -66,6 +67,10 @@ public class ChatForm extends AbstractForm {
   @FormData
   public void setUserName(String userName) {
     m_userName = userName;
+  }
+
+  public void startNew() throws ProcessingException {
+    startInternal(new NewHandler());
   }
 
   public HistoryField getHistoryField() {
@@ -120,10 +125,6 @@ public class ChatForm extends AbstractForm {
       @Order(10.0)
       public class Table extends AbstractTable {
 
-        public TimeColumn getTimeColumn() {
-          return getColumnSet().getColumnByClass(TimeColumn.class);
-        }
-
         @Override
         protected boolean getConfiguredMultilineText() {
           return true;
@@ -143,6 +144,10 @@ public class ChatForm extends AbstractForm {
             view.setFont(FontSpec.parse("BOLD"));
             row.setBackgroundColor("ddebf4");
           }
+        }
+
+        public TimeColumn getTimeColumn() {
+          return getColumnSet().getColumnByClass(TimeColumn.class);
         }
 
         public MessageColumn getMessageColumn() {
@@ -269,5 +274,8 @@ public class ChatForm extends AbstractForm {
         getMessageField().setValue(null);
       }
     }
+  }
+
+  public class NewHandler extends AbstractFormHandler {
   }
 }

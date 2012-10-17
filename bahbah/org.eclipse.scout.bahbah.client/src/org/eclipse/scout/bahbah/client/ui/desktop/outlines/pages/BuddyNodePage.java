@@ -54,6 +54,7 @@ public class BuddyNodePage extends AbstractPageWithNodes {
       m_form.setAutoAddRemoveOnDesktop(false);
       m_form.setUserName(ClientSession.get().getUserId());
       m_form.setBuddyName(getName());
+      m_form.startNew();
     }
     return m_form;
   }
