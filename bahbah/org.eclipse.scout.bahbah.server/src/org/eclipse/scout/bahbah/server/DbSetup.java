@@ -3,7 +3,7 @@ package org.eclipse.scout.bahbah.server;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.eclipse.scout.bahbah.server.services.custom.security.BahBahUserUtility;
+import org.eclipse.scout.bahbah.server.util.UserUtility;
 import org.eclipse.scout.bahbah.shared.services.code.UserRoleCodeType;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.server.services.common.jdbc.SQL;
@@ -24,14 +24,16 @@ public class DbSetup {
           " permission_id INT NOT NULL, " +
           " icon BLOB " +
           ")");
+      SQL.commit();
 
       SQL.insert(" CREATE UNIQUE INDEX IX_USERNAME ON TABUSERS (username) ");
+      SQL.commit();
 
       // create first admin account
-      BahBahUserUtility.createNewUser("admin", "admin", UserRoleCodeType.AdministratorCode.ID);
+      UserUtility.createNewUser("admin", "admin", UserRoleCodeType.AdministratorCode.ID);
+      SQL.commit();
     }
 
-    SQL.commit();
   }
 
   private static Set<String> getExistingTables() throws ProcessingException {

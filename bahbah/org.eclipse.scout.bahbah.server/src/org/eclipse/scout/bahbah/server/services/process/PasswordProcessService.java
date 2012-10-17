@@ -3,10 +3,10 @@ package org.eclipse.scout.bahbah.server.services.process;
 import java.util.Calendar;
 import java.util.Date;
 
-import org.eclipse.scout.bahbah.server.services.custom.security.BahBahUserUtility;
+import org.eclipse.scout.bahbah.server.util.UserUtility;
 import org.eclipse.scout.bahbah.shared.security.ResetPasswordPermission;
 import org.eclipse.scout.bahbah.shared.services.process.IPasswordProcessService;
-import org.eclipse.scout.commons.StringUtility;
+import org.eclipse.scout.bahbah.shared.util.SharedUserUtility;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.exception.VetoException;
 import org.eclipse.scout.commons.holders.NVPair;
@@ -31,9 +31,8 @@ public class PasswordProcessService extends AbstractPasswordManagementService im
 
       @Override
       public void check(String userId, String newPassword, String userName, int historyIndex) throws ProcessingException {
-        if (StringUtility.length(newPassword) < IPasswordProcessService.MIN_PASSWORD_LENGTH) {
-          throw new VetoException("The minimal password length is " + IPasswordProcessService.MIN_PASSWORD_LENGTH + " characters.");
-        }
+        SharedUserUtility.checkPassword(newPassword);
+        SharedUserUtility.checkUsername(userName);
       }
     });
   }
@@ -68,6 +67,6 @@ public class PasswordProcessService extends AbstractPasswordManagementService im
   @Override
   protected void resetPasswordInternal(String userId, String newPassword) throws ProcessingException {
     Long u_id = Long.parseLong(userId);
-    BahBahUserUtility.resetPassword(u_id, newPassword);
+    UserUtility.resetPassword(u_id, newPassword);
   }
 }

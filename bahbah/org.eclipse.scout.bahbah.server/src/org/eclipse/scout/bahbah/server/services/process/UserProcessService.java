@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.scout.bahbah.server.ServerSession;
-import org.eclipse.scout.bahbah.server.services.custom.security.BahBahUserUtility;
+import org.eclipse.scout.bahbah.server.util.UserUtility;
 import org.eclipse.scout.bahbah.shared.security.CreateUserPermission;
 import org.eclipse.scout.bahbah.shared.security.DeleteUserPermission;
 import org.eclipse.scout.bahbah.shared.security.ReadUsersPermission;
@@ -64,7 +64,7 @@ public class UserProcessService extends AbstractService implements IUserProcessS
       throw new VetoException(TEXTS.get("AuthorizationFailed"));
     }
 
-    BahBahUserUtility.createNewUser(formData.getUsername().getValue(), formData.getPassword().getValue(), formData.getUserRole().getValue());
+    UserUtility.createNewUser(formData.getUsername().getValue(), formData.getPassword().getValue(), formData.getUserRole().getValue());
   }
 
   @Override

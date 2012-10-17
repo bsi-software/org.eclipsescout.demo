@@ -16,7 +16,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.eclipse.scout.bahbah.server.services.custom.security.BahBahUserUtility;
+import org.eclipse.scout.bahbah.server.util.UserUtility;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.http.servletfilter.HttpServletEx;
@@ -44,7 +44,7 @@ public class BahBahAuthenticationServlet extends HttpServletEx {
     try {
       String user = req.getHeader("User");
       String pass = req.getHeader("Pass");
-      if (BahBahUserUtility.isValidUser(user, pass)) {
+      if (UserUtility.isValidUser(user, pass)) {
         //OK
         return;
       }

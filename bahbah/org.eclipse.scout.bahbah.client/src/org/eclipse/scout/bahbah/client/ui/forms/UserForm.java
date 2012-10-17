@@ -9,15 +9,13 @@ import org.eclipse.scout.bahbah.shared.security.CreateUserPermission;
 import org.eclipse.scout.bahbah.shared.security.UpdateUserPermission;
 import org.eclipse.scout.bahbah.shared.services.code.UserRoleCodeType;
 import org.eclipse.scout.bahbah.shared.services.code.UserRoleCodeType.UserCode;
-import org.eclipse.scout.bahbah.shared.services.process.IPasswordProcessService;
 import org.eclipse.scout.bahbah.shared.services.process.IUserProcessService;
 import org.eclipse.scout.bahbah.shared.services.process.UserFormData;
-import org.eclipse.scout.commons.StringUtility;
+import org.eclipse.scout.bahbah.shared.util.SharedUserUtility;
 import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.commons.annotations.FormData.SdkCommand;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.exception.VetoException;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCancelButton;
@@ -121,12 +119,7 @@ public class UserForm extends AbstractForm {
 
         @Override
         protected String execValidateValue(String rawValue) throws ProcessingException {
-          if (StringUtility.length(rawValue) < IUserProcessService.MIN_USERNAME_LENGTH) {
-            throw new VetoException(TEXTS.get("UsernameMinLength", "" + IUserProcessService.MIN_USERNAME_LENGTH));
-          }
-          if (rawValue.contains("@")) {
-            throw new VetoException(TEXTS.get("UsernameSpecialChars"));
-          }
+          SharedUserUtility.checkUsername(rawValue);
           return rawValue;
         }
       }
@@ -156,9 +149,7 @@ public class UserForm extends AbstractForm {
 
         @Override
         protected String execValidateValue(String rawValue) throws ProcessingException {
-          if (StringUtility.length(rawValue) < IPasswordProcessService.MIN_PASSWORD_LENGTH) {
-            throw new VetoException(TEXTS.get("PasswordMinLength", "" + IPasswordProcessService.MIN_PASSWORD_LENGTH));
-          }
+          SharedUserUtility.checkPassword(rawValue);
           return rawValue;
         }
       }

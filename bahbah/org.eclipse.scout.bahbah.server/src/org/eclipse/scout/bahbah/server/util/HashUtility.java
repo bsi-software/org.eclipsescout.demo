@@ -8,7 +8,7 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
-package org.eclipse.scout.bahbah.server.services.custom.security;
+package org.eclipse.scout.bahbah.server.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

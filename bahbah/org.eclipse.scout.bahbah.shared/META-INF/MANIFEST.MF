@@ -10,7 +10,8 @@ Export-Package: org.eclipse.scout.bahbah.shared,
  org.eclipse.scout.bahbah.shared.services.code,
  org.eclipse.scout.bahbah.shared.services.common.text,
  org.eclipse.scout.bahbah.shared.services.outline,
- org.eclipse.scout.bahbah.shared.services.process
+ org.eclipse.scout.bahbah.shared.services.process,
+ org.eclipse.scout.bahbah.shared.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.scout.rt.shared;visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

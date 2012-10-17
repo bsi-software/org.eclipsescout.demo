@@ -11,8 +11,6 @@ import org.eclipse.scout.service.IService;
 @InputValidation(IValidationStrategy.PROCESS.class)
 public interface IUserProcessService extends IService {
 
-  static final int MIN_USERNAME_LENGTH = 3;
-
   static final String PERMISSION_KEY = "permission_id";
 
   public void registerUser() throws ProcessingException;
