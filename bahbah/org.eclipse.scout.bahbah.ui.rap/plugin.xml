@@ -97,7 +97,7 @@
   </extension>
   <extension point="org.eclipse.scout.http.servletfilter.filters">
     <filter
-      aliases="/web /mobile /tablet"
+      aliases="/"
       class="org.eclipse.scout.bahbah.server.security.BasicForwardSecurityFilter"
       ranking="20">
     </filter>
