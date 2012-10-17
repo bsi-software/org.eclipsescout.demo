@@ -32,7 +32,7 @@ public class BahBahNotificationConsumerService extends AbstractService implement
         }
       }
       catch (Throwable t) {
-        logger.error("failed handling of remote message failed" + t.getMessage());
+        logger.error("handling of remote message failed.", t);
       }
     }
   }
@@ -91,7 +91,7 @@ public class BahBahNotificationConsumerService extends AbstractService implement
         userPage.updateBuddyPages();
       }
       catch (Throwable t) {
-        logger.error("failed handling of remote message failed" + t.getMessage());
+        logger.error("handling of remote message failed.", t);
       }
     }
   }
