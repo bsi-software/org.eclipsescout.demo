@@ -16,7 +16,7 @@ import org.eclipse.scout.rt.shared.TEXTS;
 
 public class SharedUserUtility {
 
-  public static final int MIN_PASSWORD_LENGTH = 5;
+  public static final int MIN_PASSWORD_LENGTH = 3;
   public static final int MIN_USERNAME_LENGTH = 3;
 
   public static void checkUsername(String username) throws VetoException {
