@@ -1,7 +1,5 @@
 package org.eclipse.scout.bahbah.client.ui.desktop.outlines.pages;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -9,20 +7,17 @@ import java.util.HashSet;
 import org.eclipse.scout.bahbah.client.ClientSession;
 import org.eclipse.scout.bahbah.client.services.BuddyIconProviderService;
 import org.eclipse.scout.bahbah.client.ui.forms.ChatForm;
+import org.eclipse.scout.bahbah.client.ui.forms.IconChooserForm;
 import org.eclipse.scout.bahbah.shared.security.UpdateIconPermission;
 import org.eclipse.scout.bahbah.shared.services.outline.IStandardOutlineService;
-import org.eclipse.scout.bahbah.shared.services.process.IIconProcessService;
-import org.eclipse.scout.commons.IOUtility;
 import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.basic.cell.Cell;
-import org.eclipse.scout.rt.client.ui.basic.filechooser.FileChooser;
 import org.eclipse.scout.rt.client.ui.basic.tree.ITreeNode;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNodes;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
-import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
 import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
@@ -126,19 +121,8 @@ public class UserNodePage extends AbstractPageWithNodes {
 
     @Override
     protected void execAction() throws ProcessingException {
-      FileChooser chooser = new FileChooser(null, null, true);
-      File[] files = chooser.startChooser();
-
-      if (files.length > 0) {
-        try {
-          byte[] content = IOUtility.getContent(new FileInputStream(files[0]), true);
-          SERVICES.getService(IIconProcessService.class).saveIcon(ClientSession.get().getUserId(), content);
-          MessageBox.showOkMessage("", TEXTS.get("IconChangeTitle"), TEXTS.get("IconChangeMessage"));
-        }
-        catch (Throwable e) {
-          // nop
-        }
-      }
+      IconChooserForm form = new IconChooserForm();
+      form.startNew();
     }
   }
 }

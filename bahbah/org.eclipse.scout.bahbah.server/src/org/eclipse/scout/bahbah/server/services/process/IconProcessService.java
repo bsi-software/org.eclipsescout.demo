@@ -68,7 +68,13 @@ public class IconProcessService extends AbstractService implements IIconProcessS
     if (!ACCESS.check(new UpdateIconPermission())) {
       throw new VetoException(TEXTS.get("AuthorizationFailed"));
     }
+    byte[] resizedIcon = resize(icon);
+    if (resizedIcon == null) {
+      throw new VetoException("Icon is invalid and could not save icon.");
+    }
+
+    //store in database
     SQL.update("UPDATE TABUSERS SET icon = :icon WHERE username = :userId",
-        new NVPair("name", name), new NVPair("icon", resize(icon)));
+        new NVPair("name", name), new NVPair("icon", resizedIcon));
   }
 }
