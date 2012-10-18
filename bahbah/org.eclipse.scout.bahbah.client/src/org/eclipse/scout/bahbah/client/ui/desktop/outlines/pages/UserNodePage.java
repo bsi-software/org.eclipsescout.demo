@@ -25,6 +25,7 @@ import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
+import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
 import org.eclipse.scout.service.SERVICES;
 
 public class UserNodePage extends AbstractPageWithNodes {
@@ -120,7 +121,7 @@ public class UserNodePage extends AbstractPageWithNodes {
 
     @Override
     protected void execPrepareAction() throws ProcessingException {
-      setVisible(ACCESS.check(new UpdateIconPermission()));
+      setVisible(UserAgentUtility.isDesktopDevice() && ACCESS.check(new UpdateIconPermission()));
     }
 
     @Override
