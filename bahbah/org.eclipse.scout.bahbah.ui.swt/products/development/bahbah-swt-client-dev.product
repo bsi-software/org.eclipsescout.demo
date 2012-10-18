@@ -3,6 +3,7 @@
 
 <product name="bahbah" id="org.eclipse.scout.bahbah.ui.swt.product" application="org.eclipse.scout.bahbah.ui.swt.application" useFeatures="false" includeLaunchers="true">
 
+
    <configIni use="default">
       <linux>/org.eclipse.scout.bahbah.ui.swt/products/development/config.ini</linux>
       <macosx>/org.eclipse.scout.bahbah.ui.swt/products/development/config.ini</macosx>
@@ -16,20 +17,21 @@
       <vmArgsMac>-Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 
-   <windowImages/>
+   <windowImages i16="/org.eclipse.scout.bahbah.ui.swt/resources/icons/eclipseScout16x16.gif" i32="/org.eclipse.scout.bahbah.ui.swt/resources/icons/eclipseScout32x32.gif"/>
 
    <splash
       location="org.eclipse.scout.bahbah.ui.swt" />
    <launcher name="bahbah">
       <solaris/>
       <win useIco="true">
-         <ico path="/org.eclipse.scout.bahbah.ui.swt/icons/bsi.ico"/>
          <bmp/>
       </win>
    </launcher>
 
+
    <vm>
    </vm>
+
 
    <plugins>
       <plugin id="com.ibm.icu"/>
