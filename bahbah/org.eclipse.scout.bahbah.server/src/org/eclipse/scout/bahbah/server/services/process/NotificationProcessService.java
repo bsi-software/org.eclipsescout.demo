@@ -20,7 +20,7 @@ import org.eclipse.scout.service.SERVICES;
 public class NotificationProcessService extends AbstractService implements INotificationProcessService {
   private static IScoutLogger logger = ScoutLogManager.getLogger(NotificationProcessService.class);
 
-  private final static long TIMEOUT = 1000 * 60; // 1min
+  private final static long TIMEOUT = 1000 * 60 * 10; // 10min
 
   @Override
   public void sendRefreshBuddies() throws ProcessingException {
