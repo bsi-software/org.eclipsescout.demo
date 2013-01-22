@@ -79,6 +79,11 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
         }
 
         @Override
+        protected boolean getConfiguredLabelVisible() {
+          return false;
+        }
+
+        @Override
         protected void execInitField() throws ProcessingException {
           Object data[][] = new Object[][]{
               {1, "Exxon Mobil Corporation", "XOM"},

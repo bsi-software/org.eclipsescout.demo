@@ -114,14 +114,14 @@ public class Desktop extends AbstractDesktop implements IDesktop {
     }
   }
 
-  @Order(25)
+  @Order(30.0)
   public class BookmarkMenu extends AbstractBookmarkMenu {
     public BookmarkMenu() {
       super(Desktop.this);
     }
   }
 
-  @Order(30.0)
+  @Order(40.0)
   public class HelpMenu extends AbstractMenu {
 
     @Override

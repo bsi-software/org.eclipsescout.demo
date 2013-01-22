@@ -70,6 +70,11 @@ public class SVGFieldForm extends AbstractForm implements IPageForm {
       }
 
       @Override
+      protected String getConfiguredLabel() {
+        return TEXTS.get("SVGField");
+      }
+
+      @Override
       protected void execHyperlink(SvgFieldEvent e) throws ProcessingException {
         //create a copy...
         SVGDocument doc = (SVGDocument) getSvgDocument().cloneNode(true);

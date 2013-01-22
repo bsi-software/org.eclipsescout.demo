@@ -19,6 +19,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.imagebox.AbstractImageField;
 import org.eclipse.scout.rt.client.ui.form.fields.integerfield.AbstractIntegerField;
 import org.eclipse.scout.rt.client.ui.form.fields.labelfield.AbstractLabelField;
+import org.eclipse.scout.rt.client.ui.form.fields.longfield.AbstractLongField;
 import org.eclipse.scout.rt.client.ui.form.fields.sequencebox.AbstractSequenceBox;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
@@ -52,6 +53,7 @@ import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFie
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.ImageField;
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.IntegerField;
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.LabelField;
+import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.LongField;
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.SmartField;
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.StringField;
 import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.StringFieldForPasswordField;
@@ -178,6 +180,10 @@ public class AllFieldsForm extends AbstractForm implements IPageForm {
 
   public LinkButton getLinkButton() {
     return getFieldByClass(LinkButton.class);
+  }
+
+  public LongField getLongField() {
+    return getFieldByClass(LongField.class);
   }
 
   public MainBox getMainBox() {
@@ -500,6 +506,15 @@ public class AllFieldsForm extends AbstractForm implements IPageForm {
         @Override
         protected String getConfiguredLabel() {
           return TEXTS.get("StringFieldForPassword");
+        }
+      }
+
+      @Order(140.0)
+      public class LongField extends AbstractLongField {
+
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("LongField");
         }
       }
     }

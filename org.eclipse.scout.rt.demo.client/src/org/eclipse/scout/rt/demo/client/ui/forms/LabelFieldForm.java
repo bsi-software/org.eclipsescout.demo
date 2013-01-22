@@ -41,7 +41,7 @@ public class LabelFieldForm extends AbstractForm implements IPageForm {
 
   @Override
   protected String getConfiguredTitle() {
-    return TEXTS.get("Label");
+    return TEXTS.get("LabelField");
   }
 
   @Override

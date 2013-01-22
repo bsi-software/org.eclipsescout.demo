@@ -310,7 +310,7 @@ public class ButtonsForm extends AbstractForm implements IPageForm {
       }
     }
 
-    @Order(20.0)
+    @Order(30.0)
     public class EnabledButton extends AbstractButton {
 
       @Override
@@ -334,7 +334,7 @@ public class ButtonsForm extends AbstractForm implements IPageForm {
       }
     }
 
-    @Order(30.0)
+    @Order(40.0)
     public class CloseButton extends AbstractCloseButton {
     }
   }

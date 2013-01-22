@@ -32,7 +32,7 @@ public class CalendarFieldForm extends AbstractForm implements IPageForm {
 
   @Override
   protected String getConfiguredTitle() {
-    return TEXTS.get("Calendar");
+    return TEXTS.get("CalendarField");
   }
 
   @Override
