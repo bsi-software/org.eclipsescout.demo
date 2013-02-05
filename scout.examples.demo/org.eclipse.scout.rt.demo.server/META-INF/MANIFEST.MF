@@ -3,15 +3,11 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Eclipse Scout Demo Server
 Bundle-SymbolicName: org.eclipse.scout.rt.demo.server;singleton:=true
 Bundle-Version: 3.9.0.qualifier
-Bundle-ClassPath: .,
- ws-stub/StockQuoteService.jar
+Bundle-ClassPath: .
 Bundle-Activator: org.eclipse.scout.rt.demo.server.Activator
 Bundle-Vendor: Eclipse Scout Project
 Export-Package: org.eclipse.scout.rt.demo.server,
- org.eclipse.scout.rt.demo.server.services.custom.security,
- org.eclipse.scout.rt.demo.server.services.outline,
- org.eclipse.scout.rt.demo.server.services.process,
- org.eclipse.scout.rt.demo.server.services.ws.consumer
+ org.eclipse.scout.rt.demo.server.services.custom.security
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.scout.rt.demo.shared,
  org.eclipse.scout.rt.server,
