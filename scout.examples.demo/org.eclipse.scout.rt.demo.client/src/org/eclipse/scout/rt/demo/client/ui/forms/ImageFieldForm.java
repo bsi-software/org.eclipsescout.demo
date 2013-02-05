@@ -157,7 +157,7 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected boolean getConfiguredEnabled() {
-          return UserAgentUtility.isRichClient();
+          return UserAgentUtility.isSwingUi();
         }
 
         @Override
@@ -178,7 +178,7 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected boolean getConfiguredEnabled() {
-          return UserAgentUtility.isRichClient();
+          return UserAgentUtility.isSwingUi();
         }
 
         @Override
@@ -238,7 +238,7 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected String getConfiguredImageId() {
-          return "windsurf.jpg";
+          return "scout_logo.jpg";
         }
 
         @Override
@@ -267,7 +267,7 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected String getConfiguredImageId() {
-          return "windsurf.jpg";
+          return "scout_logo.jpg";
         }
 
         @Override
@@ -296,7 +296,7 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected String getConfiguredImageId() {
-          return "windsurf.jpg";
+          return "scout_logo.jpg";
         }
 
         @Override
@@ -354,7 +354,7 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected String getConfiguredImageId() {
-          return "windsurf.jpg";
+          return "scout_logo.jpg";
         }
 
         @Override
@@ -440,7 +440,7 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected String getConfiguredImageId() {
-          return "windsurf.jpg";
+          return "scout_logo.jpg";
         }
 
         @Override

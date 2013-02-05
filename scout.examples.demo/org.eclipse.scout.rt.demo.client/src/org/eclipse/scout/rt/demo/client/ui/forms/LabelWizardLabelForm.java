@@ -9,6 +9,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.labelfield.AbstractLabelField;
 import org.eclipse.scout.rt.demo.client.ui.forms.LabelWizardLabelForm.MainBox.GroupBox;
 import org.eclipse.scout.rt.demo.client.ui.forms.LabelWizardLabelForm.MainBox.GroupBox.LoremField;
 import org.eclipse.scout.rt.shared.TEXTS;
+import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
 
 public class LabelWizardLabelForm extends AbstractForm {
 
@@ -68,7 +69,11 @@ public class LabelWizardLabelForm extends AbstractForm {
 
         @Override
         protected void execInitField() throws ProcessingException {
-          setValue("<html>" + TEXTS.get("Lorem") + "</html>");
+          String value = TEXTS.get("Lorem");
+          if (UserAgentUtility.isSwingUi()) {
+            value = "<html>" + value + "</html>";
+          }
+          this.setValue(value);
         }
       }
     }

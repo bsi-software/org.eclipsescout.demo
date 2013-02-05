@@ -417,7 +417,7 @@ public class AllFieldsForm extends AbstractForm implements IPageForm {
 
         @Override
         protected String getConfiguredImageId() {
-          return "windsurf.jpg";
+          return "scout_logo.jpg";
         }
 
         @Override

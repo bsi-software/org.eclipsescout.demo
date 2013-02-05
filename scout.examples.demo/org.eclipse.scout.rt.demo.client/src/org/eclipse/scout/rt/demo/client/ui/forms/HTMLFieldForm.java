@@ -19,7 +19,7 @@ import org.eclipse.scout.rt.demo.client.Activator;
 import org.eclipse.scout.rt.demo.client.ui.forms.HTMLFieldForm.MainBox.BlankButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.HTMLFieldForm.MainBox.CloseButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.HTMLFieldForm.MainBox.HTMLField;
-import org.eclipse.scout.rt.demo.client.ui.forms.HTMLFieldForm.MainBox.LeShopButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.HTMLFieldForm.MainBox.ScoutHtmlButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.HTMLFieldForm.MainBox.WizardStatusButton;
 import org.eclipse.scout.rt.shared.AbstractIcons;
 import org.eclipse.scout.rt.shared.TEXTS;
@@ -58,8 +58,8 @@ public class HTMLFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(HTMLField.class);
   }
 
-  public LeShopButton getLeShopButton() {
-    return getFieldByClass(LeShopButton.class);
+  public ScoutHtmlButton getScoutHtmlButton() {
+    return getFieldByClass(ScoutHtmlButton.class);
   }
 
   public MainBox getMainBox() {
@@ -128,16 +128,16 @@ public class HTMLFieldForm extends AbstractForm implements IPageForm {
     }
 
     @Order(40.0)
-    public class LeShopButton extends AbstractLinkButton {
+    public class ScoutHtmlButton extends AbstractLinkButton {
 
       @Override
       protected String getConfiguredLabel() {
-        return TEXTS.get("LeShop");
+        return TEXTS.get("ScoutHtml");
       }
 
       @Override
       protected void execClickAction() throws ProcessingException {
-        loadFile("LeShop.html");
+        loadFile("ScoutHtml.html");
       }
     }
 
