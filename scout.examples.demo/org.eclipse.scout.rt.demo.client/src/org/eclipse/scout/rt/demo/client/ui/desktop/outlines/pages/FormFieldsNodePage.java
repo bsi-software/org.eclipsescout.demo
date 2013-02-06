@@ -15,7 +15,7 @@ import java.util.Collection;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNodes;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.BrowserFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.ButtonsForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.CalendarFieldForm;
@@ -60,7 +60,7 @@ public class FormFieldsNodePage extends AbstractPageWithNodes {
 
   @Override
   protected void execCreateChildPages(Collection<IPage> pageList) throws ProcessingException {
-    FormPage formPage = new FormPage(AllFieldsForm.class);
+    FormPage formPage = new FormPage(OverviewForm.class);
     pageList.add(formPage);
     FormPage formPage0 = new FormPage(BrowserFieldForm.class);
     pageList.add(formPage0);

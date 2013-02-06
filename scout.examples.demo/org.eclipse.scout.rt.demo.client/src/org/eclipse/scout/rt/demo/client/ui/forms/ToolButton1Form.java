@@ -20,12 +20,11 @@ import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.integerfield.AbstractIntegerField;
 import org.eclipse.scout.rt.client.ui.form.fields.sequencebox.AbstractSequenceBox;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
-import org.eclipse.scout.rt.demo.client.ui.forms.ToolButton1Form.MainBox.FileChooserField;
-import org.eclipse.scout.rt.demo.client.ui.forms.ToolButton1Form.MainBox.IntegerField;
-import org.eclipse.scout.rt.demo.client.ui.forms.ToolButton1Form.MainBox.SequenceBox;
-import org.eclipse.scout.rt.demo.client.ui.forms.ToolButton1Form.MainBox.SequenceBox.SequenceFrom;
-import org.eclipse.scout.rt.demo.client.ui.forms.ToolButton1Form.MainBox.SequenceBox.SequenceTo;
-import org.eclipse.scout.rt.demo.client.ui.forms.ToolButton1Form.MainBox.StringField;
+import org.eclipse.scout.rt.demo.client.ui.forms.ToolButton1Form.MainBox.GroupBox;
+import org.eclipse.scout.rt.demo.client.ui.forms.ToolButton1Form.MainBox.GroupBox.FileChooserField;
+import org.eclipse.scout.rt.demo.client.ui.forms.ToolButton1Form.MainBox.GroupBox.IntegerField;
+import org.eclipse.scout.rt.demo.client.ui.forms.ToolButton1Form.MainBox.GroupBox.SequenceBox;
+import org.eclipse.scout.rt.demo.client.ui.forms.ToolButton1Form.MainBox.GroupBox.StringField;
 import org.eclipse.scout.rt.shared.TEXTS;
 
 public class ToolButton1Form extends AbstractForm {
@@ -47,6 +46,10 @@ public class ToolButton1Form extends AbstractForm {
     return getFieldByClass(FileChooserField.class);
   }
 
+  public GroupBox getGroupBox() {
+    return getFieldByClass(GroupBox.class);
+  }
+
   public IntegerField getIntegerField() {
     return getFieldByClass(IntegerField.class);
   }
@@ -57,14 +60,6 @@ public class ToolButton1Form extends AbstractForm {
 
   public SequenceBox getSequenceBox() {
     return getFieldByClass(SequenceBox.class);
-  }
-
-  public SequenceFrom getSequenceFrom() {
-    return getFieldByClass(SequenceFrom.class);
-  }
-
-  public SequenceTo getSequenceTo() {
-    return getFieldByClass(SequenceTo.class);
   }
 
   public StringField getStringField() {
@@ -79,67 +74,71 @@ public class ToolButton1Form extends AbstractForm {
       return 1;
     }
 
-    @Order(10.0)
-    public class StringField extends AbstractStringField {
-
-      @Override
-      protected String getConfiguredLabel() {
-        return TEXTS.get("StringField");
-      }
-    }
-
-    @Order(20.0)
-    public class SequenceBox extends AbstractSequenceBox {
-
-      @Override
-      protected String getConfiguredLabel() {
-        return TEXTS.get("SequenceBox");
-      }
+    @Order(50.0)
+    public class GroupBox extends AbstractGroupBox {
 
       @Order(10.0)
-      public class SequenceFrom extends AbstractDateField {
+      public class StringField extends AbstractStringField {
 
         @Override
         protected String getConfiguredLabel() {
-          return TEXTS.get("from");
+          return TEXTS.get("StringField");
         }
       }
 
       @Order(20.0)
-      public class SequenceTo extends AbstractDateField {
+      public class SequenceBox extends AbstractSequenceBox {
 
         @Override
         protected String getConfiguredLabel() {
-          return TEXTS.get("to");
+          return TEXTS.get("SequenceBox");
+        }
+
+        @Order(10.0)
+        public class SequenceFrom extends AbstractDateField {
+
+          @Override
+          protected String getConfiguredLabel() {
+            return TEXTS.get("from");
+          }
+        }
+
+        @Order(20.0)
+        public class SequenceTo extends AbstractDateField {
+
+          @Override
+          protected String getConfiguredLabel() {
+            return TEXTS.get("to");
+          }
         }
       }
-    }
 
-    @Order(30.0)
-    public class FileChooserField extends AbstractFileChooserField {
+      @Order(30.0)
+      public class FileChooserField extends AbstractFileChooserField {
 
-      @Override
-      protected String getConfiguredLabel() {
-        return TEXTS.get("FileChooserField");
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("FileChooserField");
+        }
+
+        @Override
+        protected boolean getConfiguredTypeLoad() {
+          return true;
+        }
       }
 
-      @Override
-      protected boolean getConfiguredTypeLoad() {
-        return true;
-      }
-    }
+      @Order(40.0)
+      public class IntegerField extends AbstractIntegerField {
 
-    @Order(40.0)
-    public class IntegerField extends AbstractIntegerField {
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("IntegerField");
+        }
 
-      @Override
-      protected String getConfiguredLabel() {
-        return TEXTS.get("IntegerField");
-      }
-
-      @Override
-      protected int getConfiguredLabelPosition() {
-        return LABEL_POSITION_ON_FIELD;
+        @Override
+        protected int getConfiguredLabelPosition() {
+          return LABEL_POSITION_ON_FIELD;
+        }
       }
     }
   }

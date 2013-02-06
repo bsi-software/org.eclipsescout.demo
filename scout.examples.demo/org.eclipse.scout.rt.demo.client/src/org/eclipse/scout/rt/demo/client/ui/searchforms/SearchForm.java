@@ -12,9 +12,12 @@ package org.eclipse.scout.rt.demo.client.ui.searchforms;
 
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.client.ui.basic.table.ITable;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractSearchForm;
+import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPageWithTable;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.booleanfield.AbstractBooleanField;
+import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractResetButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractSearchButton;
 import org.eclipse.scout.rt.client.ui.form.fields.datefield.AbstractDateField;
@@ -26,48 +29,44 @@ import org.eclipse.scout.rt.client.ui.form.fields.longfield.AbstractLongField;
 import org.eclipse.scout.rt.client.ui.form.fields.sequencebox.AbstractSequenceBox;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.client.ui.form.fields.tabbox.AbstractTabBox;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.SouthEastSearchForm.MainBox.ResetButton;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.SouthEastSearchForm.MainBox.SearchButton;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.SouthEastSearchForm.MainBox.TabBox;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.SouthEastSearchForm.MainBox.TabBox.FieldBox;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.SouthEastSearchForm.MainBox.TabBox.FieldBox.BooleanField;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.SouthEastSearchForm.MainBox.TabBox.FieldBox.DateBox;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.SouthEastSearchForm.MainBox.TabBox.FieldBox.DateBox.DateFrom;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.SouthEastSearchForm.MainBox.TabBox.FieldBox.DateBox.DateTo;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.SouthEastSearchForm.MainBox.TabBox.FieldBox.DoubleBox;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.SouthEastSearchForm.MainBox.TabBox.FieldBox.DoubleBox.DoubleFrom;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.SouthEastSearchForm.MainBox.TabBox.FieldBox.DoubleBox.DoubleTo;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.SouthEastSearchForm.MainBox.TabBox.FieldBox.IntegerBox;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.SouthEastSearchForm.MainBox.TabBox.FieldBox.IntegerBox.IntegerFrom;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.SouthEastSearchForm.MainBox.TabBox.FieldBox.IntegerBox.IntegerTo;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.SouthEastSearchForm.MainBox.TabBox.FieldBox.LongBox;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.SouthEastSearchForm.MainBox.TabBox.FieldBox.LongBox.LongFrom;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.SouthEastSearchForm.MainBox.TabBox.FieldBox.LongBox.LongTo;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.SouthEastSearchForm.MainBox.TabBox.FieldBox.SmartField;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.SouthEastSearchForm.MainBox.TabBox.FieldBox.StringField;
+import org.eclipse.scout.rt.demo.client.ClientSession;
+import org.eclipse.scout.rt.demo.client.ui.searchforms.SearchForm.MainBox.CloseButton;
+import org.eclipse.scout.rt.demo.client.ui.searchforms.SearchForm.MainBox.ResetButton;
+import org.eclipse.scout.rt.demo.client.ui.searchforms.SearchForm.MainBox.SearchButton;
+import org.eclipse.scout.rt.demo.client.ui.searchforms.SearchForm.MainBox.TabBox;
+import org.eclipse.scout.rt.demo.client.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox;
+import org.eclipse.scout.rt.demo.client.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.BooleanField;
+import org.eclipse.scout.rt.demo.client.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.DateBox;
+import org.eclipse.scout.rt.demo.client.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.DateBox.DateFrom;
+import org.eclipse.scout.rt.demo.client.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.DateBox.DateTo;
+import org.eclipse.scout.rt.demo.client.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.DoubleBox;
+import org.eclipse.scout.rt.demo.client.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.DoubleBox.DoubleFrom;
+import org.eclipse.scout.rt.demo.client.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.DoubleBox.DoubleTo;
+import org.eclipse.scout.rt.demo.client.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.IntegerBox;
+import org.eclipse.scout.rt.demo.client.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.IntegerBox.IntegerFrom;
+import org.eclipse.scout.rt.demo.client.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.IntegerBox.IntegerTo;
+import org.eclipse.scout.rt.demo.client.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.LongBox;
+import org.eclipse.scout.rt.demo.client.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.LongBox.LongFrom;
+import org.eclipse.scout.rt.demo.client.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.LongBox.LongTo;
+import org.eclipse.scout.rt.demo.client.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.SmartField;
+import org.eclipse.scout.rt.demo.client.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.StringField;
 import org.eclipse.scout.rt.demo.shared.services.code.CountryCodeType;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 
-public class SouthEastSearchForm extends AbstractSearchForm {
-
-  @Override
-  protected String getConfiguredDisplayViewId() {
-    return VIEW_ID_SE;
-  }
+public class SearchForm extends AbstractSearchForm {
 
   @Override
   protected String getConfiguredIconId() {
     return org.eclipse.scout.rt.shared.AbstractIcons.SmartFieldBrowse;
   }
 
-  @Override
-  protected String getConfiguredTitle() {
-    return TEXTS.get("SouthEast");
+  public SearchForm() throws ProcessingException {
+    super();
   }
 
-  public SouthEastSearchForm() throws ProcessingException {
-    super();
+  public CloseButton getCloseButton() {
+    return getFieldByClass(CloseButton.class);
   }
 
   public BooleanField getBooleanField() {
@@ -153,16 +152,16 @@ public class SouthEastSearchForm extends AbstractSearchForm {
   @Order(10.0)
   public class MainBox extends AbstractGroupBox {
 
+    @Override
+    protected int getConfiguredGridColumnCount() {
+      return 1;
+    }
+
     @Order(10.0)
     public class TabBox extends AbstractTabBox {
 
       @Order(10.0)
       public class FieldBox extends AbstractGroupBox {
-
-        @Override
-        protected int getConfiguredGridColumnCount() {
-          return 1;
-        }
 
         @Override
         protected String getConfiguredLabel() {
@@ -317,10 +316,26 @@ public class SouthEastSearchForm extends AbstractSearchForm {
     }
 
     @Order(20.0)
-    public class ResetButton extends AbstractResetButton {
+    public class CloseButton extends AbstractButton {
+
+      @Override
+      protected String getConfiguredLabel() {
+        return TEXTS.get("CloseButton");
+      }
+
+      @Override
+      protected void execClickAction() throws ProcessingException {
+        @SuppressWarnings("unchecked")
+        IPageWithTable<ITable> page = (IPageWithTable<ITable>) ClientSession.get().getDesktop().getOutline().getActivePage();
+        page.setSearchActive(false);
+      }
     }
 
     @Order(30.0)
+    public class ResetButton extends AbstractResetButton {
+    }
+
+    @Order(40.0)
     public class SearchButton extends AbstractSearchButton {
     }
   }
@@ -331,5 +346,9 @@ public class SouthEastSearchForm extends AbstractSearchForm {
   }
 
   public class SearchHandler extends AbstractFormHandler {
+
+    @Override
+    public void execLoad() {
+    }
   }
 }

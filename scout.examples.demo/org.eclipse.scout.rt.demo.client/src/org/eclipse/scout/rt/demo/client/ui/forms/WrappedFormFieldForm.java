@@ -121,7 +121,7 @@ public class WrappedFormFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected void execInitField() throws ProcessingException {
-          setInnerForm(new AllFieldsForm());
+          setInnerForm(new OverviewForm());
         }
       }
     }

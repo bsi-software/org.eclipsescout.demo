@@ -33,49 +33,49 @@ import org.eclipse.scout.rt.client.ui.form.fields.longfield.AbstractLongField;
 import org.eclipse.scout.rt.client.ui.form.fields.sequencebox.AbstractSequenceBox;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.AllEnabledButton;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.AllMandatoryButton;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.ButtonsBox;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.ButtonsBox.DefaultButton;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.ButtonsBox.LinkButton;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.ButtonsBox.RadioButton;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.ButtonsBox.ToggleButton;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.ButtonsVisibleButton;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.CloseButton;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.MaximizeButton;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.MinimizeButton;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.OpenModalFormButton;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.OpenNonModalFormButton;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SequenceBoxesBox;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SequenceBoxesBox.Birthday2Box;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SequenceBoxesBox.Birthday2Box.Birthday2From;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SequenceBoxesBox.Birthday2Box.Birthday2To;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SequenceBoxesBox.BirthdayBox;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SequenceBoxesBox.BirthdayBox.BirthdayFrom;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SequenceBoxesBox.BirthdayBox.BirthdayTo;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.BigDecimalField;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.BigIntegerField;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.DateField;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.DateTimeField;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.DoubleField;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.FileChooserField;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.ImageField;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.IntegerField;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.LabelField;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.LongField;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.SmartField;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.StringField;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.StringFieldForPasswordField;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.SimpleFieldsBox.TimeField;
-import org.eclipse.scout.rt.demo.client.ui.forms.AllFieldsForm.MainBox.StartProcessButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.AllEnabledButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.AllMandatoryButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.ButtonsBox;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.ButtonsBox.DefaultButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.ButtonsBox.LinkButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.ButtonsBox.RadioButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.ButtonsBox.ToggleButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.ButtonsVisibleButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.CloseButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.MaximizeButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.MinimizeButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.OpenModalFormButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.OpenNonModalFormButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.SequenceBoxesBox;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.SequenceBoxesBox.Birthday2Box;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.SequenceBoxesBox.Birthday2Box.Birthday2From;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.SequenceBoxesBox.Birthday2Box.Birthday2To;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.SequenceBoxesBox.BirthdayBox;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.SequenceBoxesBox.BirthdayBox.BirthdayFrom;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.SequenceBoxesBox.BirthdayBox.BirthdayTo;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.SimpleFieldsBox;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.SimpleFieldsBox.BigDecimalField;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.SimpleFieldsBox.BigIntegerField;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.SimpleFieldsBox.DateField;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.SimpleFieldsBox.DateTimeField;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.SimpleFieldsBox.DoubleField;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.SimpleFieldsBox.FileChooserField;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.SimpleFieldsBox.ImageField;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.SimpleFieldsBox.IntegerField;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.SimpleFieldsBox.LabelField;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.SimpleFieldsBox.LongField;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.SimpleFieldsBox.SmartField;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.SimpleFieldsBox.StringField;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.SimpleFieldsBox.StringFieldForPasswordField;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.SimpleFieldsBox.TimeField;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.StartProcessButton;
 import org.eclipse.scout.rt.demo.shared.services.code.DateCodeType;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 
-public class AllFieldsForm extends AbstractForm implements IPageForm {
+public class OverviewForm extends AbstractForm implements IPageForm {
 
-  public AllFieldsForm() throws ProcessingException {
+  public OverviewForm() throws ProcessingException {
     super();
   }
 
@@ -749,7 +749,7 @@ public class AllFieldsForm extends AbstractForm implements IPageForm {
 
       @Override
       protected void execClickAction() throws ProcessingException {
-        AllFieldsForm form = new AllFieldsForm();
+        OverviewForm form = new OverviewForm();
         form.setModal(false);
         form.startPageForm();
       }
@@ -765,7 +765,7 @@ public class AllFieldsForm extends AbstractForm implements IPageForm {
 
       @Override
       protected void execClickAction() throws ProcessingException {
-        AllFieldsForm form = new AllFieldsForm();
+        OverviewForm form = new OverviewForm();
         form.setModal(true);
         form.getOpenNonModalFormButton().setVisible(false);
         form.startPageForm();

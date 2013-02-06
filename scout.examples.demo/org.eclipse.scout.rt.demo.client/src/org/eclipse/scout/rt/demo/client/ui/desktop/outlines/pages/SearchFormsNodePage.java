@@ -15,20 +15,7 @@ import java.util.Collection;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNodes;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.DefaultSearchForm;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.EastSearchForm;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.NorthEastSearchForm;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.NorthSearchForm;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.NorthWestSearchForm;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.OutlineSearchForm;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.OutlineSelectorSearchForm;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.PageDetailSearchForm;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.PageSearchSearchForm;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.PageTableSearchForm;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.SouthEastSearchForm;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.SouthSearchForm;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.SouthWestSearchForm;
-import org.eclipse.scout.rt.demo.client.ui.searchforms.WestSearchForm;
+import org.eclipse.scout.rt.client.ui.desktop.outline.pages.ISearchForm;
 import org.eclipse.scout.rt.shared.TEXTS;
 
 public class SearchFormsNodePage extends AbstractPageWithNodes {
@@ -45,33 +32,33 @@ public class SearchFormsNodePage extends AbstractPageWithNodes {
 
   @Override
   protected void execCreateChildPages(Collection<IPage> pageList) throws ProcessingException {
-    SearchFormTablePage searchFormTablePage = new SearchFormTablePage(DefaultSearchForm.class);
+    SearchFormTablePage searchFormTablePage = new SearchFormTablePage();
     pageList.add(searchFormTablePage);
-    SearchFormTablePage searchFormTablePage0 = new SearchFormTablePage(OutlineSearchForm.class);
+    SearchFormTablePage searchFormTablePage0 = new SearchFormTablePage(ISearchForm.VIEW_ID_OUTLINE, "Outline");
     pageList.add(searchFormTablePage0);
-    SearchFormTablePage searchFormTablePage1 = new SearchFormTablePage(OutlineSelectorSearchForm.class);
+    SearchFormTablePage searchFormTablePage1 = new SearchFormTablePage(ISearchForm.VIEW_ID_OUTLINE_SELECTOR, "Outline Selector");
     pageList.add(searchFormTablePage1);
-    SearchFormTablePage searchFormTablePage2 = new SearchFormTablePage(PageTableSearchForm.class);
+    SearchFormTablePage searchFormTablePage2 = new SearchFormTablePage(ISearchForm.VIEW_ID_PAGE_TABLE, "Page Table");
     pageList.add(searchFormTablePage2);
-    SearchFormTablePage searchFormTablePage3 = new SearchFormTablePage(PageDetailSearchForm.class);
+    SearchFormTablePage searchFormTablePage3 = new SearchFormTablePage(ISearchForm.VIEW_ID_PAGE_SEARCH, "Page Search");
     pageList.add(searchFormTablePage3);
-    SearchFormTablePage searchFormTablePage4 = new SearchFormTablePage(PageSearchSearchForm.class);
+    SearchFormTablePage searchFormTablePage4 = new SearchFormTablePage(ISearchForm.VIEW_ID_PAGE_DETAIL, "Page Detail");
     pageList.add(searchFormTablePage4);
-    SearchFormTablePage searchFormTablePage5 = new SearchFormTablePage(NorthSearchForm.class);
+    SearchFormTablePage searchFormTablePage5 = new SearchFormTablePage(ISearchForm.VIEW_ID_N, "North");
     pageList.add(searchFormTablePage5);
-    SearchFormTablePage searchFormTablePage6 = new SearchFormTablePage(NorthEastSearchForm.class);
+    SearchFormTablePage searchFormTablePage6 = new SearchFormTablePage(ISearchForm.VIEW_ID_NE, "North-East");
     pageList.add(searchFormTablePage6);
-    SearchFormTablePage searchFormTablePage7 = new SearchFormTablePage(EastSearchForm.class);
+    SearchFormTablePage searchFormTablePage7 = new SearchFormTablePage(ISearchForm.VIEW_ID_E, "East");
     pageList.add(searchFormTablePage7);
-    SearchFormTablePage searchFormTablePage8 = new SearchFormTablePage(SouthEastSearchForm.class);
+    SearchFormTablePage searchFormTablePage8 = new SearchFormTablePage(ISearchForm.VIEW_ID_SE, "South-East");
     pageList.add(searchFormTablePage8);
-    SearchFormTablePage searchFormTablePage9 = new SearchFormTablePage(SouthSearchForm.class);
+    SearchFormTablePage searchFormTablePage9 = new SearchFormTablePage(ISearchForm.VIEW_ID_S, "South");
     pageList.add(searchFormTablePage9);
-    SearchFormTablePage searchFormTablePage10 = new SearchFormTablePage(SouthWestSearchForm.class);
+    SearchFormTablePage searchFormTablePage10 = new SearchFormTablePage(ISearchForm.VIEW_ID_SW, "South-West");
     pageList.add(searchFormTablePage10);
-    SearchFormTablePage searchFormTablePage11 = new SearchFormTablePage(WestSearchForm.class);
+    SearchFormTablePage searchFormTablePage11 = new SearchFormTablePage(ISearchForm.VIEW_ID_W, "West");
     pageList.add(searchFormTablePage11);
-    SearchFormTablePage searchFormTablePage12 = new SearchFormTablePage(NorthWestSearchForm.class);
+    SearchFormTablePage searchFormTablePage12 = new SearchFormTablePage(ISearchForm.VIEW_ID_NW, "North-West");
     pageList.add(searchFormTablePage12);
   }
 }
