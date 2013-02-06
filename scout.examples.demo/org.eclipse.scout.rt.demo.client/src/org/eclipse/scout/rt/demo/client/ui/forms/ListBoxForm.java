@@ -17,12 +17,12 @@ import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.listbox.AbstractListBox;
+import org.eclipse.scout.rt.demo.client.services.lookup.CompanyTypeLookupCall;
 import org.eclipse.scout.rt.demo.client.ui.forms.ListBoxForm.MainBox.CloseButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.ListBoxForm.MainBox.GroupBox;
 import org.eclipse.scout.rt.demo.client.ui.forms.ListBoxForm.MainBox.GroupBox.ListBoxField;
-import org.eclipse.scout.rt.demo.shared.services.code.CountryCodeType;
 import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
+import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 
 public class ListBoxForm extends AbstractForm implements IPageForm {
 
@@ -86,8 +86,8 @@ public class ListBoxForm extends AbstractForm implements IPageForm {
         }
 
         @Override
-        protected Class<? extends ICodeType> getConfiguredCodeType() {
-          return CountryCodeType.class;
+        protected Class<? extends LookupCall> getConfiguredLookupCall() {
+          return CompanyTypeLookupCall.class;
         }
       }
     }

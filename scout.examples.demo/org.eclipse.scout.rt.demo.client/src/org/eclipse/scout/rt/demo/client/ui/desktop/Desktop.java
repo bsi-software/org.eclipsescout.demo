@@ -21,7 +21,6 @@ import org.eclipse.scout.rt.client.ui.action.keystroke.AbstractKeyStroke;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.desktop.AbstractDesktop;
 import org.eclipse.scout.rt.client.ui.desktop.IDesktop;
-import org.eclipse.scout.rt.client.ui.desktop.bookmark.menu.AbstractBookmarkMenu;
 import org.eclipse.scout.rt.client.ui.desktop.outline.AbstractFormToolButton;
 import org.eclipse.scout.rt.client.ui.desktop.outline.AbstractOutlineViewButton;
 import org.eclipse.scout.rt.client.ui.desktop.outline.IOutline;
@@ -102,22 +101,6 @@ public class Desktop extends AbstractDesktop implements IDesktop {
       public void execAction() throws ProcessingException {
         ClientSyncJob.getCurrentSession(ClientSession.class).stopSession();
       }
-    }
-  }
-
-  @Order(20.0)
-  public class ToolsMenu extends AbstractMenu {
-
-    @Override
-    protected String getConfiguredText() {
-      return TEXTS.get("ToolsMenu");
-    }
-  }
-
-  @Order(30.0)
-  public class BookmarkMenu extends AbstractBookmarkMenu {
-    public BookmarkMenu() {
-      super(Desktop.this);
     }
   }
 

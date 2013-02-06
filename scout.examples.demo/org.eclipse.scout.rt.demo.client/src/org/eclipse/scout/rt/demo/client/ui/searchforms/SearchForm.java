@@ -30,6 +30,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.sequencebox.AbstractSequenceBo
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.client.ui.form.fields.tabbox.AbstractTabBox;
 import org.eclipse.scout.rt.demo.client.ClientSession;
+import org.eclipse.scout.rt.demo.client.services.lookup.CompanyTypeLookupCall;
 import org.eclipse.scout.rt.demo.client.ui.searchforms.SearchForm.MainBox.CloseButton;
 import org.eclipse.scout.rt.demo.client.ui.searchforms.SearchForm.MainBox.ResetButton;
 import org.eclipse.scout.rt.demo.client.ui.searchforms.SearchForm.MainBox.SearchButton;
@@ -50,9 +51,8 @@ import org.eclipse.scout.rt.demo.client.ui.searchforms.SearchForm.MainBox.TabBox
 import org.eclipse.scout.rt.demo.client.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.LongBox.LongTo;
 import org.eclipse.scout.rt.demo.client.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.SmartField;
 import org.eclipse.scout.rt.demo.client.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.StringField;
-import org.eclipse.scout.rt.demo.shared.services.code.CountryCodeType;
 import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
+import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 
 public class SearchForm extends AbstractSearchForm {
 
@@ -308,8 +308,8 @@ public class SearchForm extends AbstractSearchForm {
           }
 
           @Override
-          protected Class<? extends ICodeType> getConfiguredCodeType() {
-            return CountryCodeType.class;
+          protected Class<? extends LookupCall> getConfiguredLookupCall() {
+            return CompanyTypeLookupCall.class;
           }
         }
       }

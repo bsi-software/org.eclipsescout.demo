@@ -33,6 +33,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.longfield.AbstractLongField;
 import org.eclipse.scout.rt.client.ui.form.fields.sequencebox.AbstractSequenceBox;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
+import org.eclipse.scout.rt.demo.client.services.lookup.DateLookupCall;
 import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.AllEnabledButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.AllMandatoryButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.ButtonsBox;
@@ -69,9 +70,8 @@ import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.SimpleFiel
 import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.SimpleFieldsBox.StringFieldForPasswordField;
 import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.SimpleFieldsBox.TimeField;
 import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm.MainBox.StartProcessButton;
-import org.eclipse.scout.rt.demo.shared.services.code.DateCodeType;
 import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
+import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 
 public class OverviewForm extends AbstractForm implements IPageForm {
 
@@ -468,13 +468,13 @@ public class OverviewForm extends AbstractForm implements IPageForm {
         }
 
         @Override
-        protected Class<? extends ICodeType<?>> getConfiguredCodeType() {
-          return DateCodeType.class;
+        protected String getConfiguredLabel() {
+          return TEXTS.get("SmartField");
         }
 
         @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("SmartField");
+        protected Class<? extends LookupCall> getConfiguredLookupCall() {
+          return DateLookupCall.class;
         }
       }
 

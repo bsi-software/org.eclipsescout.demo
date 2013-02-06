@@ -17,8 +17,10 @@ import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
+import org.eclipse.scout.rt.demo.client.ClientSession;
 import org.eclipse.scout.rt.demo.client.services.lookup.CompanyTypeLookupCall;
 import org.eclipse.scout.rt.demo.client.services.lookup.ProductLookupCall;
+import org.eclipse.scout.rt.demo.client.services.lookup.StatusTextLookupCall;
 import org.eclipse.scout.rt.demo.client.ui.forms.SmartFieldForm.MainBox.CloseButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.SmartFieldForm.MainBox.GroupBox;
 import org.eclipse.scout.rt.demo.client.ui.forms.SmartFieldForm.MainBox.GroupBox.LeftBox;
@@ -31,7 +33,6 @@ import org.eclipse.scout.rt.demo.client.ui.forms.SmartFieldForm.MainBox.GroupBox
 import org.eclipse.scout.rt.demo.client.ui.forms.SmartFieldForm.MainBox.GroupBox.RightBox.CodeAssistField;
 import org.eclipse.scout.rt.demo.shared.services.code.CountryCodeType;
 import org.eclipse.scout.rt.demo.shared.services.code.DateCodeType;
-import org.eclipse.scout.rt.demo.shared.services.code.StatusTextCodeType;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
@@ -124,6 +125,11 @@ public class SmartFieldForm extends AbstractForm implements IPageForm {
         public class TreeWithCodeTypeField extends AbstractSmartField<Long> {
 
           @Override
+          protected boolean getConfiguredEnabled() {
+            return ClientSession.get().isServerAvailable();
+          }
+
+          @Override
           protected String getConfiguredLabel() {
             return TEXTS.get("TreeWithCodeType");
           }
@@ -145,7 +151,17 @@ public class SmartFieldForm extends AbstractForm implements IPageForm {
 
           @Override
           protected Class<? extends ICodeType<Long>> getConfiguredCodeType() {
-            return DateCodeType.class;
+            if (ClientSession.get().isServerAvailable()) {
+              return DateCodeType.class;
+            }
+            return null;
+          }
+
+          @Override
+          protected void execInitField() throws ProcessingException {
+            if (!ClientSession.get().isServerAvailable()) {
+              setErrorStatus("CodeTypes are only with server available");
+            }
           }
         }
 
@@ -212,13 +228,28 @@ public class SmartFieldForm extends AbstractForm implements IPageForm {
         public class ListWithCodeTypeField extends AbstractSmartField<Long> {
 
           @Override
+          protected boolean getConfiguredEnabled() {
+            return ClientSession.get().isServerAvailable();
+          }
+
+          @Override
           protected String getConfiguredLabel() {
             return TEXTS.get("ListWithCodeType");
           }
 
           @Override
           protected Class<? extends ICodeType<Long>> getConfiguredCodeType() {
-            return CountryCodeType.class;
+            if (ClientSession.get().isServerAvailable()) {
+              return CountryCodeType.class;
+            }
+            return null;
+          }
+
+          @Override
+          protected void execInitField() throws ProcessingException {
+            if (!ClientSession.get().isServerAvailable()) {
+              setErrorStatus("CodeTypes are only with server available");
+            }
           }
         }
 
@@ -254,13 +285,13 @@ public class SmartFieldForm extends AbstractForm implements IPageForm {
         public class CodeAssistField extends AbstractSmartField<Long> {
 
           @Override
-          protected Class<? extends ICodeType<?>> getConfiguredCodeType() {
-            return StatusTextCodeType.class;
+          protected String getConfiguredLabel() {
+            return TEXTS.get("CodeAssistField");
           }
 
           @Override
-          protected String getConfiguredLabel() {
-            return TEXTS.get("CodeAssistField");
+          protected Class<? extends LookupCall> getConfiguredLookupCall() {
+            return StatusTextLookupCall.class;
           }
         }
 

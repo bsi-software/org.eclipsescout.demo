@@ -23,10 +23,10 @@ import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractSmartColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithTable;
-import org.eclipse.scout.rt.demo.shared.services.code.CountryCodeType;
+import org.eclipse.scout.rt.demo.client.services.lookup.CompanyTypeLookupCall;
 import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
+import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 
 public class PageWithTableTablePage extends AbstractPageWithTable<PageWithTableTablePage.Table> {
 
@@ -188,9 +188,8 @@ public class PageWithTableTablePage extends AbstractPageWithTable<PageWithTableT
       }
 
       @Override
-      protected Class<? extends ICodeType> getConfiguredCodeType() {
-        return CountryCodeType.class;
-
+      protected Class<? extends LookupCall> getConfiguredLookupCall() {
+        return CompanyTypeLookupCall.class;
       }
     }
   }

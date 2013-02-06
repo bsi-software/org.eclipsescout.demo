@@ -17,12 +17,12 @@ import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.treebox.AbstractTreeBox;
+import org.eclipse.scout.rt.demo.client.services.lookup.DateLookupCall;
 import org.eclipse.scout.rt.demo.client.ui.forms.TreeBoxForm.MainBox.CloseButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.TreeBoxForm.MainBox.GroupBox;
 import org.eclipse.scout.rt.demo.client.ui.forms.TreeBoxForm.MainBox.GroupBox.TreeBoxField;
-import org.eclipse.scout.rt.demo.shared.services.code.DateCodeType;
 import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
+import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 
 public class TreeBoxForm extends AbstractForm implements IPageForm {
 
@@ -71,11 +71,6 @@ public class TreeBoxForm extends AbstractForm implements IPageForm {
       public class TreeBoxField extends AbstractTreeBox<Long> {
 
         @Override
-        protected Class<? extends ICodeType> getConfiguredCodeType() {
-          return DateCodeType.class;
-        }
-
-        @Override
         protected int getConfiguredGridH() {
           return 5;
         }
@@ -88,6 +83,11 @@ public class TreeBoxForm extends AbstractForm implements IPageForm {
         @Override
         protected String getConfiguredLabel() {
           return TEXTS.get("TreeBox");
+        }
+
+        @Override
+        protected Class<? extends LookupCall> getConfiguredLookupCall() {
+          return DateLookupCall.class;
         }
       }
     }

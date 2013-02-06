@@ -16,10 +16,10 @@ import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.treebox.AbstractTreeBox;
+import org.eclipse.scout.rt.demo.client.services.lookup.DateLookupCall;
 import org.eclipse.scout.rt.demo.client.ui.forms.ToolButton2Form.MainBox.TreeBoxField;
-import org.eclipse.scout.rt.demo.shared.services.code.DateCodeType;
 import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
+import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 
 public class ToolButton2Form extends AbstractForm {
 
@@ -51,11 +51,6 @@ public class ToolButton2Form extends AbstractForm {
     public class TreeBoxField extends AbstractTreeBox<Long> {
 
       @Override
-      protected Class<? extends ICodeType> getConfiguredCodeType() {
-        return DateCodeType.class;
-      }
-
-      @Override
       protected int getConfiguredGridH() {
         return 5;
       }
@@ -63,6 +58,11 @@ public class ToolButton2Form extends AbstractForm {
       @Override
       protected boolean getConfiguredLabelVisible() {
         return false;
+      }
+
+      @Override
+      protected Class<? extends LookupCall> getConfiguredLookupCall() {
+        return DateLookupCall.class;
       }
     }
   }
