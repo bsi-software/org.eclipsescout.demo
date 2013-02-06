@@ -23,7 +23,7 @@ import org.eclipse.scout.rt.demo.client.ui.desktop.Desktop;
 import org.eclipse.scout.rt.shared.services.common.code.CODES;
 
 public class ClientSession extends AbstractClientSession {
-  private boolean m_serverAvailable;
+  private boolean m_serverAvailable = true;
   private static IScoutLogger logger = ScoutLogManager.getLogger(ClientSession.class);
 
   private String m_product;
@@ -50,7 +50,6 @@ public class ClientSession extends AbstractClientSession {
     try {
       setServiceTunnel(new HttpServiceTunnel(this, getBundle().getBundleContext().getProperty("server.url"), (String) getBundle().getHeaders().get("Bundle-Version")));
       CODES.getAllCodeTypes(org.eclipse.scout.rt.demo.shared.Activator.PLUGIN_ID);
-      m_serverAvailable = true;
     }
     // If client can't reach the server, go offline
     catch (UndeclaredThrowableException ex) {
