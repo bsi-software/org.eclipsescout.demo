@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Eclipse Scout Demo Client
+Bundle-Name: Scout Widgets Demo App Client
 Bundle-SymbolicName: org.eclipse.scout.rt.demo.client;singleton:=true
 Bundle-Version: 3.9.0.qualifier
 Bundle-Activator: org.eclipse.scout.rt.demo.client.Activator

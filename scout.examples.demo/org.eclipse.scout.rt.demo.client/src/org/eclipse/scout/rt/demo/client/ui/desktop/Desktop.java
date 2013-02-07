@@ -54,7 +54,7 @@ public class Desktop extends AbstractDesktop implements IDesktop {
 
   @Override
   protected String getConfiguredTitle() {
-    return TEXTS.get("ScoutDemo");
+    return TEXTS.get("ScoutWidgetsDemoApp");
   }
 
   @Override
