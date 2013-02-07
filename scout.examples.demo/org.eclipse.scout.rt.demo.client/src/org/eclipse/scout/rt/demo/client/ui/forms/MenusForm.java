@@ -18,6 +18,7 @@ import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
+import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
 import org.eclipse.scout.rt.demo.client.ui.forms.MenusForm.MainBox.MenusButton;
 import org.eclipse.scout.rt.shared.TEXTS;
 
@@ -25,6 +26,11 @@ public class MenusForm extends AbstractForm implements IPageForm {
 
   public MenusForm() throws ProcessingException {
     super();
+  }
+
+  @Override
+  protected String getConfiguredTitle() {
+    return TEXTS.get("Menus");
   }
 
   @Override
@@ -63,6 +69,12 @@ public class MenusForm extends AbstractForm implements IPageForm {
         protected String getConfiguredText() {
           return TEXTS.get("MenuWithText");
         }
+
+        @Override
+        protected void execAction() throws ProcessingException {
+          String menuname = this.getClass().getSimpleName();
+          MessageBox.showOkMessage("Clicked on Menu", "You have clicked on \"" + TEXTS.get(menuname.substring(0, menuname.length() - 4)) + "\"", null);
+        }
       }
 
       @Order(20.0)
@@ -77,6 +89,12 @@ public class MenusForm extends AbstractForm implements IPageForm {
         protected String getConfiguredText() {
           return TEXTS.get("MenuWithIcon");
         }
+
+        @Override
+        protected void execAction() throws ProcessingException {
+          String menuname = this.getClass().getSimpleName();
+          MessageBox.showOkMessage("Clicked on Menu", "You have clicked on \"" + TEXTS.get(menuname.substring(0, menuname.length() - 4)) + "\"", null);
+        }
       }
 
       @Order(30.0)
@@ -85,6 +103,14 @@ public class MenusForm extends AbstractForm implements IPageForm {
         @Override
         protected String getConfiguredText() {
           return TEXTS.get("CheckableMenu");
+        }
+
+        @Override
+        protected void execToggleAction(boolean selected) throws ProcessingException {
+          super.execToggleAction(selected);
+          if (selected == true) {
+            MessageBox.showOkMessage("Checked the Menu", "You have checked the \"" + TEXTS.get(this.getClass().getSimpleName()) + "\"", null);
+          }
         }
       }
 
@@ -103,6 +129,12 @@ public class MenusForm extends AbstractForm implements IPageForm {
           protected String getConfiguredText() {
             return TEXTS.get("Menu1");
           }
+
+          @Override
+          protected void execAction() throws ProcessingException {
+            String menuname = this.getClass().getSimpleName();
+            MessageBox.showOkMessage("Clicked on Menu", "You have clicked on \"" + TEXTS.get(menuname.substring(0, menuname.length() - 4)) + "\"", null);
+          }
         }
 
         @Order(20.0)
@@ -112,6 +144,12 @@ public class MenusForm extends AbstractForm implements IPageForm {
           protected String getConfiguredText() {
             return TEXTS.get("Menu2");
           }
+
+          @Override
+          protected void execAction() throws ProcessingException {
+            String menuname = this.getClass().getSimpleName();
+            MessageBox.showOkMessage("Clicked on Menu", "You have clicked on \"" + TEXTS.get(menuname.substring(0, menuname.length() - 4)) + "\"", null);
+          }
         }
 
         @Order(30.0)
@@ -120,6 +158,12 @@ public class MenusForm extends AbstractForm implements IPageForm {
           @Override
           protected String getConfiguredText() {
             return TEXTS.get("Menu3");
+          }
+
+          @Override
+          protected void execAction() throws ProcessingException {
+            String menuname = this.getClass().getSimpleName();
+            MessageBox.showOkMessage("Clicked on Menu", "You have clicked on \"" + TEXTS.get(menuname.substring(0, menuname.length() - 4)) + "\"", null);
           }
         }
       }
@@ -135,6 +179,12 @@ public class MenusForm extends AbstractForm implements IPageForm {
         @Override
         protected String getConfiguredText() {
           return TEXTS.get("MenuWithKeyStroke");
+        }
+
+        @Override
+        protected void execAction() throws ProcessingException {
+          String menuname = this.getClass().getSimpleName();
+          MessageBox.showOkMessage("Clicked on Menu", "You have clicked on \"" + TEXTS.get(menuname.substring(0, menuname.length() - 4)) + "\"", null);
         }
       }
     }
