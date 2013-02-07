@@ -13,7 +13,6 @@ package org.eclipse.scout.rt.demo.client.ui.wizards;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.form.fields.GridData;
-import org.eclipse.scout.rt.client.ui.form.fields.IFormField;
 import org.eclipse.scout.rt.client.ui.wizard.AbstractWizardStep;
 import org.eclipse.scout.rt.client.ui.wizard.IWizardContainerForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.LabelWizardFontForm;
@@ -38,9 +37,6 @@ public class LabelWizard extends AbstractPageWizard {
   protected IWizardContainerForm execCreateContainerForm() throws ProcessingException {
     IWizardContainerForm f = super.execCreateContainerForm();
     GridData gd = f.getRootGroupBox().getGridData();
-    for (IFormField field : f.getAllFields()) {
-      System.out.println(field.getClass().getSimpleName());
-    }
     gd.widthInPixel = 600;
     gd.heightInPixel = 400;
     f.getRootGroupBox().setGridDataInternal(gd);
