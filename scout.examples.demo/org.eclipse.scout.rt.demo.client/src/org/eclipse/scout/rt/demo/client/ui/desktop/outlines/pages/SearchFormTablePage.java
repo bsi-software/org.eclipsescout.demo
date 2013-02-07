@@ -42,6 +42,11 @@ public class SearchFormTablePage extends AbstractPageWithTable<SearchFormTablePa
   }
 
   @Override
+  protected boolean getConfiguredLeaf() {
+    return true;
+  }
+
+  @Override
   protected Class<? extends ISearchForm> getConfiguredSearchForm() {
     return SearchForm.class;
   }

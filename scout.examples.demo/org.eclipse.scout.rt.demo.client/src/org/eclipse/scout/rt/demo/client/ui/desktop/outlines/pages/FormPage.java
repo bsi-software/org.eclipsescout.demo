@@ -25,9 +25,9 @@ public class FormPage extends AbstractPageWithNodes {
   private Class<? extends IPageForm> m_formType;
   private boolean m_enabled = true;
 
-  public FormPage(Class<? extends IPageForm> c) {
-    super(false, c.getName());
-    m_formType = c;
+  public FormPage(Class<? extends IPageForm> formType) {
+    super(false, formType.getName());
+    m_formType = formType;
     callInitializer();
   }
 
@@ -46,6 +46,11 @@ public class FormPage extends AbstractPageWithNodes {
   @Override
   protected String getConfiguredIconId() {
     return org.eclipse.scout.rt.shared.AbstractIcons.TreeNodeOpen;
+  }
+
+  @Override
+  protected boolean getConfiguredLeaf() {
+    return true;
   }
 
   @Override

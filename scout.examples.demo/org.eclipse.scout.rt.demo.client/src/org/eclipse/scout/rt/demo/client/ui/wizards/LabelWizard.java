@@ -13,7 +13,6 @@ package org.eclipse.scout.rt.demo.client.ui.wizards;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.form.fields.GridData;
-import org.eclipse.scout.rt.client.ui.wizard.AbstractWizard;
 import org.eclipse.scout.rt.client.ui.wizard.AbstractWizardStep;
 import org.eclipse.scout.rt.client.ui.wizard.IWizardContainerForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.LabelWizardFontForm;
@@ -23,20 +22,29 @@ import org.eclipse.scout.rt.demo.client.ui.forms.LabelWizardSizeForm;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.data.basic.FontSpec;
 
-public class LabelWizard extends AbstractWizard {
+public class LabelWizard extends AbstractPageWizard {
 
   public LabelWizard() {
     super();
   }
 
   @Override
+  protected String getConfiguredTitle() {
+    return TEXTS.get("LabelWizard");
+  }
+
+  @Override
   protected IWizardContainerForm execCreateContainerForm() throws ProcessingException {
     IWizardContainerForm f = super.execCreateContainerForm();
     GridData gd = f.getRootGroupBox().getGridData();
-    gd.widthInPixel = 550;
+    gd.widthInPixel = 600;
     gd.heightInPixel = 400;
     f.getRootGroupBox().setGridDataInternal(gd);
     return f;
+  }
+
+  @Override
+  protected void execStart() throws ProcessingException {
   }
 
   @Order(10.0)

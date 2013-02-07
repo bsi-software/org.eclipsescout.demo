@@ -45,6 +45,11 @@ public class PageWithTableTablePage extends AbstractPageWithTable<PageWithTableT
   }
 
   @Override
+  protected boolean getConfiguredLeaf() {
+    return true;
+  }
+
+  @Override
   protected String getConfiguredTitle() {
     return TEXTS.get("PageWithTable");
   }

@@ -37,6 +37,11 @@ public class PageWithADetailformTablePage extends AbstractPageWithTable<PageWith
   }
 
   @Override
+  protected boolean getConfiguredLeaf() {
+    return true;
+  }
+
+  @Override
   protected String getConfiguredTitle() {
     return TEXTS.get("PageWithADetailform");
   }

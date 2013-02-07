@@ -13,14 +13,14 @@ package org.eclipse.scout.rt.demo.client.ui.wizards;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.form.fields.GridData;
-import org.eclipse.scout.rt.client.ui.wizard.AbstractWizard;
 import org.eclipse.scout.rt.client.ui.wizard.AbstractWizardStep;
 import org.eclipse.scout.rt.client.ui.wizard.IWizardContainerForm;
+import org.eclipse.scout.rt.client.ui.wizard.IWizardStep;
 import org.eclipse.scout.rt.demo.client.ui.forms.DynamicFormWizardChooseAForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.IPageForm;
 import org.eclipse.scout.rt.shared.TEXTS;
 
-public class DynamicFormWizard extends AbstractWizard {
+public class DynamicFormWizard extends AbstractPageWizard {
 
   public DynamicFormWizard() {
     super();
@@ -35,8 +35,8 @@ public class DynamicFormWizard extends AbstractWizard {
   protected IWizardContainerForm execCreateContainerForm() throws ProcessingException {
     IWizardContainerForm f = super.execCreateContainerForm();
     GridData gd = f.getRootGroupBox().getGridData();
-    gd.widthInPixel = 900;
-    gd.heightInPixel = 800;
+    gd.widthInPixel = 800;
+    gd.heightInPixel = 900;
     f.getRootGroupBox().setGridDataInternal(gd);
     return f;
   }
@@ -58,6 +58,13 @@ public class DynamicFormWizard extends AbstractWizard {
         setForm(form);
       }
       setWizardForm(form);
+    }
+
+    @Override
+    protected void execDeactivate(int stepKind) throws ProcessingException {
+      if (stepKind == IWizardStep.STEP_NEXT) {
+        getForm().validateForm();
+      }
     }
   }
 

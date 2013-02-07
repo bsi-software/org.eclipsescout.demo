@@ -10,20 +10,16 @@
  ******************************************************************************/
 package org.eclipse.scout.rt.demo.client.ui.desktop.outlines.pages;
 
+import java.util.Collection;
+
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNodes;
-import org.eclipse.scout.rt.demo.client.ui.forms.WizardsForm;
+import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
+import org.eclipse.scout.rt.demo.client.ui.wizards.DynamicFormWizard;
+import org.eclipse.scout.rt.demo.client.ui.wizards.LabelWizard;
 import org.eclipse.scout.rt.shared.TEXTS;
 
 public class WizardsNodePage extends AbstractPageWithNodes {
-
-  public WizardsNodePage() throws ProcessingException {
-    super(true, WizardsForm.class.getName());
-    WizardsForm w = new WizardsForm();
-    setDetailForm(w);
-    w.startPageForm();
-    setTableVisible(false);
-  }
 
   @Override
   protected String getConfiguredIconId() {
@@ -33,5 +29,14 @@ public class WizardsNodePage extends AbstractPageWithNodes {
   @Override
   protected String getConfiguredTitle() {
     return TEXTS.get("Wizards");
+  }
+
+  @Override
+  protected void execCreateChildPages(Collection<IPage> pageList) throws ProcessingException {
+
+    WizardPage wizardPage = new WizardPage(LabelWizard.class);
+    pageList.add(wizardPage);
+    WizardPage wizardPage0 = new WizardPage(DynamicFormWizard.class);
+    pageList.add(wizardPage0);
   }
 }

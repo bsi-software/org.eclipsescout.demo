@@ -133,7 +133,7 @@ public class Desktop extends AbstractDesktop implements IDesktop {
 
     @Override
     protected String getConfiguredIconId() {
-      return org.eclipse.scout.rt.shared.AbstractIcons.ComposerFieldAttribute;
+      return org.eclipse.scout.rt.shared.AbstractIcons.Gears;
     }
 
     @Override
@@ -155,7 +155,7 @@ public class Desktop extends AbstractDesktop implements IDesktop {
 
     @Override
     protected String getConfiguredIconId() {
-      return org.eclipse.scout.rt.shared.AbstractIcons.ComposerFieldAttribute;
+      return org.eclipse.scout.rt.shared.AbstractIcons.Gears;
     }
 
     @Override

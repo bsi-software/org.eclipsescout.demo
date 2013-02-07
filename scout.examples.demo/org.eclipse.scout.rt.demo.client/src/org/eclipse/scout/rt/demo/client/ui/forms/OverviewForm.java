@@ -96,7 +96,7 @@ public class OverviewForm extends AbstractForm implements IPageForm {
 
   @Override
   protected String getConfiguredTitle() {
-    return TEXTS.get("AllFields");
+    return TEXTS.get("Overview");
   }
 
   @Override
