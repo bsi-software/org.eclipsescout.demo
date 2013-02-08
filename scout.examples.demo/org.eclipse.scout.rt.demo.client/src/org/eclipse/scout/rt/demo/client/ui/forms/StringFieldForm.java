@@ -140,7 +140,7 @@ public class StringFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected void execClickAction() throws ProcessingException {
-          getMultilineField().setWrapText(!getMultilineField().isWrapText());
+          getMultilineField().setWrapText(this.isSelected());
         }
       }
 
