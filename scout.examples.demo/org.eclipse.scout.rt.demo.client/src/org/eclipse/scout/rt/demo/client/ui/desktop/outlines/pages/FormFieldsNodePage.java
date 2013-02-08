@@ -15,7 +15,6 @@ import java.util.Collection;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNodes;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
-import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.BrowserFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.ButtonsForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.CalendarFieldForm;
@@ -26,11 +25,13 @@ import org.eclipse.scout.rt.demo.client.ui.forms.FileChooserFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.GroupBoxForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.HTMLFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm;
+import org.eclipse.scout.rt.demo.client.ui.forms.InjectionForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.KeyStrokeForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.LabelFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.ListBoxForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.MailFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.MessageBoxesForm;
+import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.PageFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.PlannerFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.SVGFieldForm;
@@ -116,6 +117,7 @@ public class FormFieldsNodePage extends AbstractPageWithNodes {
     pageList.add(formPage25);
     FormPage formPage26 = new FormPage(WrappedFormFieldForm.class);
     pageList.add(formPage26);
-
+    FormPage formPageBonus = new FormPage(InjectionForm.class);
+    pageList.add(formPageBonus);
   }
 }
