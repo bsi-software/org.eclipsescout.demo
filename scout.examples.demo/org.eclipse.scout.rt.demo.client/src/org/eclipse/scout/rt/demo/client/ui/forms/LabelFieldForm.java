@@ -40,6 +40,7 @@ public class LabelFieldForm extends AbstractForm implements IPageForm {
     super();
   }
 
+  @Override
   public CloseButton getCloseButton() {
     return getFieldByClass(CloseButton.class);
   }

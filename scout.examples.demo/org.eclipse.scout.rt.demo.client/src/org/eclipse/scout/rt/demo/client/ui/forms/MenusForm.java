@@ -17,6 +17,7 @@ import org.eclipse.scout.rt.client.ui.action.menu.checkbox.AbstractCheckBoxMenu;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractButton;
+import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
 import org.eclipse.scout.rt.demo.client.ui.forms.MenusForm.MainBox.MenusButton;
@@ -44,6 +45,11 @@ public class MenusForm extends AbstractForm implements IPageForm {
 
   public MenusButton getMenusButton() {
     return getFieldByClass(MenusButton.class);
+  }
+
+  @Override
+  public AbstractCloseButton getCloseButton() throws ProcessingException {
+    return null;
   }
 
   @Order(10.0)

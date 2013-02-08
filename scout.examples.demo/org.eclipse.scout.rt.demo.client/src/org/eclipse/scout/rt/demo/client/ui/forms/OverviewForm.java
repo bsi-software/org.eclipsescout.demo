@@ -152,6 +152,7 @@ public class OverviewForm extends AbstractForm implements IPageForm {
     return getFieldByClass(ButtonsVisibleButton.class);
   }
 
+  @Override
   public CloseButton getCloseButton() {
     return getFieldByClass(CloseButton.class);
   }

@@ -66,6 +66,7 @@ public class FormPage extends AbstractPageWithNodes {
     if (getDetailForm() == null && m_enabled) {
       IPageForm form = execCreateDetailForm();
       setDetailForm(form);
+      form.getCloseButton().setVisible(false);
       form.startPageForm();
     }
   }

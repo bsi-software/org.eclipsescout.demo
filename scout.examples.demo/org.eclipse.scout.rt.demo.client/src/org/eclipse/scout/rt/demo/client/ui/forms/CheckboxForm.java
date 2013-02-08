@@ -53,6 +53,7 @@ public class CheckboxForm extends AbstractForm implements IPageForm {
     return getFieldByClass(CheckboxField.class);
   }
 
+  @Override
   public CloseButton getCloseButton() {
     return getFieldByClass(CloseButton.class);
   }

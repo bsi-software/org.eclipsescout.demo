@@ -54,6 +54,7 @@ public class CalendarFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(CalendarField.class);
   }
 
+  @Override
   public CloseButton getCloseButton() {
     return getFieldByClass(CloseButton.class);
   }

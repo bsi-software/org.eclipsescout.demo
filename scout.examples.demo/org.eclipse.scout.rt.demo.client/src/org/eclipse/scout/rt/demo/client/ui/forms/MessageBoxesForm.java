@@ -79,6 +79,7 @@ public class MessageBoxesForm extends AbstractForm implements IPageForm {
     return getFieldByClass(ProcessingExceptionButton.class);
   }
 
+  @Override
   public CloseButton getCloseButton() {
     return getFieldByClass(CloseButton.class);
   }

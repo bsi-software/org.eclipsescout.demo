@@ -66,6 +66,7 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(CenterField.class);
   }
 
+  @Override
   public CloseButton getCloseButton() {
     return getFieldByClass(CloseButton.class);
   }

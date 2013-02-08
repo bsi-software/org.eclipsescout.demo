@@ -27,9 +27,11 @@ import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
+import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.plannerfield.AbstractPlannerField;
 import org.eclipse.scout.rt.client.ui.form.fields.tabbox.AbstractTabBox;
+import org.eclipse.scout.rt.demo.client.ui.forms.PlannerFieldForm.MainBox.CloseButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.PlannerFieldForm.MainBox.TabBox;
 import org.eclipse.scout.rt.demo.client.ui.forms.PlannerFieldForm.MainBox.TabBox.PlannerField1Box;
 import org.eclipse.scout.rt.demo.client.ui.forms.PlannerFieldForm.MainBox.TabBox.PlannerField1Box.Planner1Field;
@@ -58,6 +60,11 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
   @Override
   public void startPageForm() throws ProcessingException {
     startInternal(new PageFormHandler());
+  }
+
+  @Override
+  public CloseButton getCloseButton() {
+    return getFieldByClass(CloseButton.class);
   }
 
   public DayPlannerField getDayPlannerField() {
@@ -95,7 +102,12 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
   @Order(10.0)
   public class MainBox extends AbstractGroupBox {
 
-    @Order(20.0)
+    @Override
+    protected int getConfiguredWidthInPixel() {
+      return 1200;
+    }
+
+    @Order(10.0)
     public class TabBox extends AbstractTabBox {
 
       @Order(10.0)
@@ -111,12 +123,12 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
 
           @Override
           protected int getConfiguredGridH() {
-            return 15;
+            return 30;
           }
 
           @Override
           protected int getConfiguredGridW() {
-            return 8;
+            return 2;
           }
 
           @Override
@@ -247,7 +259,7 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
 
           @Override
           protected int getConfiguredGridH() {
-            return 5;
+            return 10;
           }
 
           @Override
@@ -388,7 +400,7 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
 
           @Override
           protected int getConfiguredGridH() {
-            return 5;
+            return 10;
           }
 
           @Override
@@ -534,7 +546,7 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
 
           @Override
           protected int getConfiguredGridH() {
-            return 5;
+            return 10;
           }
 
           @Override
@@ -660,6 +672,10 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
         }
 
       }
+    }
+
+    @Order(20.0)
+    public class CloseButton extends AbstractCloseButton {
     }
 
   }

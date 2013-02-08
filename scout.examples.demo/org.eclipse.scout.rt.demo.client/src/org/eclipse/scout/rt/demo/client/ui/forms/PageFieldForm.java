@@ -39,6 +39,7 @@ public class PageFieldForm extends AbstractForm implements IPageForm {
     startInternal(new PageFormHandler());
   }
 
+  @Override
   public CloseButton getCloseButton() {
     return getFieldByClass(CloseButton.class);
   }

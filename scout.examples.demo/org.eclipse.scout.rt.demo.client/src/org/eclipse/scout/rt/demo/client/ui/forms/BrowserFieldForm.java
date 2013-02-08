@@ -57,6 +57,7 @@ public class BrowserFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(BsiagButton.class);
   }
 
+  @Override
   public CloseButton getCloseButton() {
     return getFieldByClass(CloseButton.class);
   }

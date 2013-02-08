@@ -60,6 +60,7 @@ public class HTMLFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(BlankButton.class);
   }
 
+  @Override
   public CloseButton getCloseButton() {
     return getFieldByClass(CloseButton.class);
   }

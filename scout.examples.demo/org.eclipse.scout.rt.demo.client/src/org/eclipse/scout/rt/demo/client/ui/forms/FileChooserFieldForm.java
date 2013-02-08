@@ -66,6 +66,7 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(ChooseAnImageField.class);
   }
 
+  @Override
   public CloseButton getCloseButton() {
     return getFieldByClass(CloseButton.class);
   }

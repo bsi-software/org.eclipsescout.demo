@@ -12,6 +12,7 @@ package org.eclipse.scout.rt.demo.client.ui.forms;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.form.IForm;
+import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 
 public interface IPageForm extends IForm {
 
@@ -19,5 +20,7 @@ public interface IPageForm extends IForm {
    * start the PageFormHandler
    */
   void startPageForm() throws ProcessingException;
+
+  AbstractCloseButton getCloseButton() throws ProcessingException;
 
 }

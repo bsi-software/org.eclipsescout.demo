@@ -57,6 +57,7 @@ public class ButtonsForm extends AbstractForm implements IPageForm {
     return getFieldByClass(ButtonWithMenusButton.class);
   }
 
+  @Override
   public CloseButton getCloseButton() {
     return getFieldByClass(CloseButton.class);
   }
