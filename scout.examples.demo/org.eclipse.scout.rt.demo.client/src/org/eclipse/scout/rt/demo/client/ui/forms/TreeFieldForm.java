@@ -113,7 +113,6 @@ public class TreeFieldForm extends AbstractForm implements IPageForm {
         public class Tree extends AbstractTree {
         }
       }
-
     }
 
     @Order(20.0)

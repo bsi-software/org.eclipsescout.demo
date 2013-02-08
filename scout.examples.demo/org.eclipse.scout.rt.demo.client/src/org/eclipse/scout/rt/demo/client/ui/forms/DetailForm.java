@@ -29,18 +29,6 @@ public class DetailForm extends AbstractForm {
     super();
   }
 
-  public ValueHighField getValueHighField() {
-    return getFieldByClass(ValueHighField.class);
-  }
-
-  public ValueLowField getValueLowField() {
-    return getFieldByClass(ValueLowField.class);
-  }
-
-  public ValueOpenField getValueOpenField() {
-    return getFieldByClass(ValueOpenField.class);
-  }
-
   public void startNew() throws ProcessingException {
     startInternal(new NewHandler());
   }
@@ -49,12 +37,24 @@ public class DetailForm extends AbstractForm {
     return getFieldByClass(GroupBox.class);
   }
 
+  public MainBox getMainBox() {
+    return getFieldByClass(MainBox.class);
+  }
+
+  public ValueHighField getValueHighField() {
+    return getFieldByClass(ValueHighField.class);
+  }
+
   public ValueLastField getValueLastField() {
     return getFieldByClass(ValueLastField.class);
   }
 
-  public MainBox getMainBox() {
-    return getFieldByClass(MainBox.class);
+  public ValueLowField getValueLowField() {
+    return getFieldByClass(ValueLowField.class);
+  }
+
+  public ValueOpenField getValueOpenField() {
+    return getFieldByClass(ValueOpenField.class);
   }
 
   @Order(10.0)

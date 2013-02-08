@@ -69,12 +69,63 @@ public class HTMLFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(HTMLField.class);
   }
 
+  public MainBox getMainBox() {
+    return getFieldByClass(MainBox.class);
+  }
+
   public ScoutHtmlButton getScoutHtmlButton() {
     return getFieldByClass(ScoutHtmlButton.class);
   }
 
-  public MainBox getMainBox() {
-    return getFieldByClass(MainBox.class);
+  public WizardStatusButton getWizardStatusButton() {
+    return getFieldByClass(WizardStatusButton.class);
+  }
+
+  private void loadFile(String simpleName, RemoteFile... attachments) throws ProcessingException {
+    try {
+      String s = IOUtility.getContent(new InputStreamReader(Activator.getDefault().getBundle().getResource("resources/html/" + simpleName).openStream()));
+      getHTMLField().setValue(null);
+      getHTMLField().setAttachments(attachments);
+      getHTMLField().setValue(s);
+    }
+    catch (Exception e) {
+      throw new ProcessingException("Html-Field can't load file ", e);
+    }
+  }
+
+  private RemoteFile loadIcon(String iconName) throws ProcessingException {
+    try {
+      // determine file format
+      int index = iconName.lastIndexOf(".");
+      String format = iconName.substring(iconName.lastIndexOf("."));
+      // determine icon name
+      iconName = iconName.substring(0, iconName.lastIndexOf("."));
+      // determine icon base name
+      String baseIconName = iconName;
+      index = iconName.lastIndexOf("_");
+      if (index > 0) {
+        baseIconName = iconName.substring(0, index);
+      }
+
+      // load icon
+      IClientSession clientSession = ClientSyncJob.getCurrentSession();
+      IconSpec iconSpec = clientSession.getIconLocator().getIconSpec(iconName);
+      if (iconSpec == null && !iconName.equals(baseIconName)) {
+        iconSpec = clientSession.getIconLocator().getIconSpec(baseIconName);
+      }
+
+      if (iconSpec != null) {
+        RemoteFile iconFile = new RemoteFile(iconName + format, 0);
+        ByteArrayInputStream is = new ByteArrayInputStream(iconSpec.getContent());
+        iconFile.readData(is);
+        is.close();
+        return iconFile;
+      }
+    }
+    catch (Exception e) {
+      throw new ProcessingException("failed to load image for " + iconName, e);
+    }
+    return null;
   }
 
   @Order(10.0)
@@ -155,57 +206,6 @@ public class HTMLFieldForm extends AbstractForm implements IPageForm {
     @Order(50.0)
     public class CloseButton extends AbstractCloseButton {
     }
-  }
-
-  public WizardStatusButton getWizardStatusButton() {
-    return getFieldByClass(WizardStatusButton.class);
-  }
-
-  private void loadFile(String simpleName, RemoteFile... attachments) throws ProcessingException {
-    try {
-      String s = IOUtility.getContent(new InputStreamReader(Activator.getDefault().getBundle().getResource("resources/html/" + simpleName).openStream()));
-      getHTMLField().setValue(null);
-      getHTMLField().setAttachments(attachments);
-      getHTMLField().setValue(s);
-    }
-    catch (Exception e) {
-      throw new ProcessingException("Html-Field can't load file ", e);
-    }
-  }
-
-  private RemoteFile loadIcon(String iconName) throws ProcessingException {
-    try {
-      // determine file format
-      int index = iconName.lastIndexOf(".");
-      String format = iconName.substring(iconName.lastIndexOf("."));
-      // determine icon name
-      iconName = iconName.substring(0, iconName.lastIndexOf("."));
-      // determine icon base name
-      String baseIconName = iconName;
-      index = iconName.lastIndexOf("_");
-      if (index > 0) {
-        baseIconName = iconName.substring(0, index);
-      }
-
-      // load icon
-      IClientSession clientSession = ClientSyncJob.getCurrentSession();
-      IconSpec iconSpec = clientSession.getIconLocator().getIconSpec(iconName);
-      if (iconSpec == null && !iconName.equals(baseIconName)) {
-        iconSpec = clientSession.getIconLocator().getIconSpec(baseIconName);
-      }
-
-      if (iconSpec != null) {
-        RemoteFile iconFile = new RemoteFile(iconName + format, 0);
-        ByteArrayInputStream is = new ByteArrayInputStream(iconSpec.getContent());
-        iconFile.readData(is);
-        is.close();
-        return iconFile;
-      }
-    }
-    catch (Exception e) {
-      throw new ProcessingException("failed to load image for " + iconName, e);
-    }
-    return null;
   }
 
   public class PageFormHandler extends AbstractFormHandler {

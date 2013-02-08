@@ -104,6 +104,7 @@ public class SVGFieldForm extends AbstractForm implements IPageForm {
   }
 
   public class PageFormHandler extends AbstractFormHandler {
+
     @Override
     public void execLoad() throws ProcessingException {
       try {

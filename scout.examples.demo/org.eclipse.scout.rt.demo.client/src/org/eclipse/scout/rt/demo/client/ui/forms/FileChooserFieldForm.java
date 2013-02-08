@@ -117,6 +117,11 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
         public class ChooseAnImageField extends AbstractFileChooserField {
 
           @Override
+          protected String[] getConfiguredFileExtensions() {
+            return new String[]{"png", "bmp", "jpg", "jpeg", "gif"};
+          }
+
+          @Override
           protected String getConfiguredLabel() {
             return TEXTS.get("ChooseAnImage");
           }
@@ -124,11 +129,6 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
           @Override
           protected boolean getConfiguredTypeLoad() {
             return true;
-          }
-
-          @Override
-          protected String[] getConfiguredFileExtensions() {
-            return new String[]{"png", "bmp", "jpg", "jpeg", "gif"};
           }
         }
 
@@ -159,6 +159,11 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
         public class SelectAFolderField extends AbstractFileChooserField {
 
           @Override
+          protected boolean getConfiguredEnabled() {
+            return UserAgentUtility.isRichClient();
+          }
+
+          @Override
           protected boolean getConfiguredFolderMode() {
             return true;
           }
@@ -176,11 +181,6 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
           @Override
           protected boolean getConfiguredTypeLoad() {
             return true;
-          }
-
-          @Override
-          protected boolean getConfiguredEnabled() {
-            return UserAgentUtility.isRichClient();
           }
 
           @Override
@@ -219,14 +219,6 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
           @Order(10.0)
           public class Table extends AbstractTable {
 
-            public FileNameColumn getFileNameColumn() {
-              return getColumnSet().getColumnByClass(FileNameColumn.class);
-            }
-
-            public PathColumn getPathColumn() {
-              return getColumnSet().getColumnByClass(PathColumn.class);
-            }
-
             @Override
             protected boolean getConfiguredAutoResizeColumns() {
               return true;
@@ -234,6 +226,14 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
 
             public FileColumn getFileColumn() {
               return getColumnSet().getColumnByClass(FileColumn.class);
+            }
+
+            public FileNameColumn getFileNameColumn() {
+              return getColumnSet().getColumnByClass(FileNameColumn.class);
+            }
+
+            public PathColumn getPathColumn() {
+              return getColumnSet().getColumnByClass(PathColumn.class);
             }
 
             @Order(10.0)
@@ -309,7 +309,6 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
             }
           }
         }
-
       }
     }
 

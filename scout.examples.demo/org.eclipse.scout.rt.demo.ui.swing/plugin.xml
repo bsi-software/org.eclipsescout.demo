@@ -8,10 +8,10 @@
   <extension id="product" point="org.eclipse.core.runtime.products">
     <product
           application="org.eclipse.scout.rt.demo.ui.swing.app"
-          name="demo Client">
+          name="Scout Widget Demo App Client">
        <property
              name="appName"
-             value="demo Client">
+             value="Scout Widget Demo App Client">
        </property>
     </product>
   </extension>
@@ -24,10 +24,10 @@
   <extension id="rayo_product" point="org.eclipse.core.runtime.products">
     <product
           application="org.eclipse.scout.rt.demo.ui.swing.rayo_app"
-          name="demo Client">
+          name="Scout Widget Demo App Client">
        <property
              name="appName"
-             value="demo Client">
+             value="Scout Widget Demo App Client">
        </property>
     </product>
   </extension>

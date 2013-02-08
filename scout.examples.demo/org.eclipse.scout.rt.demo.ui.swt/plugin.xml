@@ -5,7 +5,7 @@
          name=""
          point="org.eclipse.ui.perspectives">
       <perspective
-            name="demo"
+            name="Scout Widget Demo App"
             fixed="true"
             class="org.eclipse.scout.rt.demo.ui.swt.perspective.Perspective"
             id="org.eclipse.scout.rt.demo.ui.swt.perspective.Perspective">
@@ -101,11 +101,11 @@
          name=""
          point="org.eclipse.core.runtime.products">
       <product
-            name="demo"
+            name="Scout Widget Demo App"
             application="org.eclipse.scout.rt.demo.ui.swt.application">
          <property
                name="appName"
-               value="demo">
+               value="Scout Widget Demo App">
          </property>
          <property
                name="applicationXMI"

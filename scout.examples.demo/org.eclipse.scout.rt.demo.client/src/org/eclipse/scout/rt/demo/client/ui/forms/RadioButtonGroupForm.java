@@ -7,11 +7,11 @@ import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractRadioButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
-import org.eclipse.scout.rt.client.ui.form.fields.listbox.AbstractListBox;
 import org.eclipse.scout.rt.client.ui.form.fields.radiobuttongroup.AbstractRadioButtonGroup;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.demo.client.services.lookup.DateLookupCall;
+import org.eclipse.scout.rt.demo.client.services.lookup.YearLookupCall;
 import org.eclipse.scout.rt.demo.client.ui.forms.RadioButtonGroupForm.MainBox.CloseButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.RadioButtonGroupForm.MainBox.GroupBox;
 import org.eclipse.scout.rt.demo.client.ui.forms.RadioButtonGroupForm.MainBox.GroupBox.RadioButtonGroup;
@@ -129,11 +129,16 @@ public class RadioButtonGroupForm extends AbstractForm implements IPageForm {
         }
 
         @Order(30.0)
-        public class YearField extends AbstractListBox<Long> {
+        public class YearField extends AbstractSmartField<Long> {
 
           @Override
           protected String getConfiguredLabel() {
             return TEXTS.get("Year");
+          }
+
+          @Override
+          protected Class<? extends LookupCall> getConfiguredLookupCall() {
+            return YearLookupCall.class;
           }
         }
 

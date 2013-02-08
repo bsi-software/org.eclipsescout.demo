@@ -202,16 +202,17 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
               loadActivityMapDataOfSelectedRecources();
             }
 
-            public ResourceIdColumn getResourceIdColumn() {
-              return getColumnSet().getColumnByClass(ResourceIdColumn.class);
-            }
-
             public NameColumn getNameColumn() {
               return getColumnSet().getColumnByClass(NameColumn.class);
             }
 
+            public ResourceIdColumn getResourceIdColumn() {
+              return getColumnSet().getColumnByClass(ResourceIdColumn.class);
+            }
+
             @Order(10.0f)
             public class ResourceIdColumn extends AbstractLongColumn {
+
               @Override
               protected boolean getConfiguredPrimaryKey() {
                 return true;
@@ -247,7 +248,6 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
         public class WeekPlannerField extends AbstractPlannerField<WeekPlannerField.ResourceTable, WeekPlannerField.ActivityMap> {
 
           private Date base = DateUtility.parse("20120717", "yyyyMMdd");
-
           private Object[][] weekTestcases = new Object[][]{
               {true, base, base, "start/end date same, at the beginning of the displayed range."},
               {true, DateUtility.addDays(base, 7), DateUtility.addDays(base, 7), "start/end date same, not at the beginning of the range."},
@@ -353,15 +353,14 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
             public class IdColumn extends AbstractLongColumn {
 
               @Override
-              protected boolean getConfiguredPrimaryKey() {
-                return true;
-              }
-
-              @Override
               protected boolean getConfiguredDisplayable() {
                 return false;
               }
 
+              @Override
+              protected boolean getConfiguredPrimaryKey() {
+                return true;
+              }
             }
 
             @Order(20.0)
@@ -388,7 +387,6 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
         public class DayPlannerField extends AbstractPlannerField<DayPlannerField.ResourceTable, DayPlannerField.ActivityMap> {
 
           private Date base = DateUtility.parse("20120717", "yyyyMMdd");
-
           private Object[][] dayTestcases = new Object[][]{
               {true, base, base, "start/end date same, at the beginning of the displayed range."},
               {true, DateUtility.addDays(base, 7), DateUtility.addDays(base, 7), "start/end date same, not at the beginning of the range."},
@@ -494,15 +492,14 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
             public class IdColumn extends AbstractLongColumn {
 
               @Override
-              protected boolean getConfiguredPrimaryKey() {
-                return true;
-              }
-
-              @Override
               protected boolean getConfiguredDisplayable() {
                 return false;
               }
 
+              @Override
+              protected boolean getConfiguredPrimaryKey() {
+                return true;
+              }
             }
 
             @Order(20.0)
@@ -529,9 +526,7 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
         public class IntradayPlannerField extends AbstractPlannerField<IntradayPlannerField.ResourceTable, IntradayPlannerField.ActivityMap> {
 
           private Date base = DateUtility.parse("20120717", "yyyyMMdd");
-
           private Date intradayBase = DateUtility.parse("20120717 08:00", "yyyyMMdd HH:mm"); //a monday
-
           private Object[][] intradayTestcases = new Object[][]{
               {true, intradayBase, intradayBase, "start/end date same, at the beginning of the displayed range."},
               {true, DateUtility.addHours(intradayBase, 1), DateUtility.addHours(intradayBase, 1), "start/end date same, not at the beginning of the range."},
@@ -640,15 +635,14 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
             public class IdColumn extends AbstractLongColumn {
 
               @Override
-              protected boolean getConfiguredPrimaryKey() {
-                return true;
-              }
-
-              @Override
               protected boolean getConfiguredDisplayable() {
                 return false;
               }
 
+              @Override
+              protected boolean getConfiguredPrimaryKey() {
+                return true;
+              }
             }
 
             @Order(20.0)
@@ -670,14 +664,12 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
           public class ActivityMap extends AbstractActivityMap {
           }
         }
-
       }
     }
 
     @Order(20.0)
     public class CloseButton extends AbstractCloseButton {
     }
-
   }
 
   public class PageFormHandler extends AbstractFormHandler {

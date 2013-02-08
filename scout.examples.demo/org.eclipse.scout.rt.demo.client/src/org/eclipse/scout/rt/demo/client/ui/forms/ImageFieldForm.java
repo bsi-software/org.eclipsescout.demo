@@ -87,6 +87,10 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(ImageSampleGroup.class);
   }
 
+  public LabelField getLabelField() {
+    return getFieldByClass(LabelField.class);
+  }
+
   public LeftField getLeftField() {
     return getFieldByClass(LeftField.class);
   }
@@ -111,16 +115,12 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(RotateField.class);
   }
 
-  public ZoomButton getZoomButton() {
-    return getFieldByClass(ZoomButton.class);
-  }
-
-  public LabelField getLabelField() {
-    return getFieldByClass(LabelField.class);
-  }
-
   public ZoomBox getZoomBox() {
     return getFieldByClass(ZoomBox.class);
+  }
+
+  public ZoomButton getZoomButton() {
+    return getFieldByClass(ZoomButton.class);
   }
 
   public ZoomField getZoomField() {

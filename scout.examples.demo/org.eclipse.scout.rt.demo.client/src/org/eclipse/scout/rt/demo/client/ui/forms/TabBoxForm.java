@@ -94,10 +94,6 @@ public class TabBoxForm extends AbstractForm implements IPageForm {
     return getFieldByClass(MainBox.class);
   }
 
-  public MultilineStringField getMultiRowStringField() {
-    return getFieldByClass(MultilineStringField.class);
-  }
-
   public StringField getStringField() {
     return getFieldByClass(StringField.class);
   }
@@ -116,6 +112,10 @@ public class TabBoxForm extends AbstractForm implements IPageForm {
 
   public TabBox getTabBox() {
     return getFieldByClass(TabBox.class);
+  }
+
+  public MultilineStringField getMultiRowStringField() {
+    return getFieldByClass(MultilineStringField.class);
   }
 
   @Order(10.0)

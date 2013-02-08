@@ -51,6 +51,11 @@ public class MessageBoxesForm extends AbstractForm implements IPageForm {
     startInternal(new PageFormHandler());
   }
 
+  @Override
+  public CloseButton getCloseButton() {
+    return getFieldByClass(CloseButton.class);
+  }
+
   public DeleteConfirmationMessageButton getDeleteConfirmationMessageButton() {
     return getFieldByClass(DeleteConfirmationMessageButton.class);
   }
@@ -77,11 +82,6 @@ public class MessageBoxesForm extends AbstractForm implements IPageForm {
 
   public ProcessingExceptionButton getProcessingExceptionButton() {
     return getFieldByClass(ProcessingExceptionButton.class);
-  }
-
-  @Override
-  public CloseButton getCloseButton() {
-    return getFieldByClass(CloseButton.class);
   }
 
   public VetoExceptionButton getVetoExceptionButton() {
@@ -167,6 +167,11 @@ public class MessageBoxesForm extends AbstractForm implements IPageForm {
     public class MessageBoxWithHiddenTextButton extends AbstractLinkButton {
 
       @Override
+      protected boolean getConfiguredEnabled() {
+        return UserAgentUtility.isRichClient();
+      }
+
+      @Override
       protected int getConfiguredGridW() {
         return 2;
       }
@@ -179,11 +184,6 @@ public class MessageBoxesForm extends AbstractForm implements IPageForm {
       @Override
       protected boolean getConfiguredProcessButton() {
         return false;
-      }
-
-      @Override
-      protected boolean getConfiguredEnabled() {
-        return UserAgentUtility.isRichClient();
       }
 
       @Override

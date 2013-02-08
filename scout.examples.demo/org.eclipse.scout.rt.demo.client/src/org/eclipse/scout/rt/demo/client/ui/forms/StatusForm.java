@@ -59,16 +59,6 @@ public class StatusForm extends AbstractForm implements IPageForm {
     return TEXTS.get("Status");
   }
 
-  @Override
-  public void startPageForm() throws ProcessingException {
-    startInternal(new PageFormHandler());
-  }
-
-  @Override
-  public CloseButton getCloseButton() {
-    return getFieldByClass(CloseButton.class);
-  }
-
   @FormData
   public Long getStatusNr() {
     return statusNr;
@@ -79,16 +69,22 @@ public class StatusForm extends AbstractForm implements IPageForm {
     this.statusNr = statusNr;
   }
 
+  @Override
+  public void startPageForm() throws ProcessingException {
+    startInternal(new PageFormHandler());
+  }
+
   public CheckboxField getCheckboxField() {
     return getFieldByClass(CheckboxField.class);
   }
 
-  public ERRORStatusButton getERRORStatusButton() {
-    return getFieldByClass(ERRORStatusButton.class);
+  @Override
+  public CloseButton getCloseButton() {
+    return getFieldByClass(CloseButton.class);
   }
 
-  public FileChooserField getFileChooserField0Field() {
-    return getFieldByClass(FileChooserField.class);
+  public ERRORStatusButton getERRORStatusButton() {
+    return getFieldByClass(ERRORStatusButton.class);
   }
 
   public GroupBox getGroupBox() {
@@ -125,6 +121,10 @@ public class StatusForm extends AbstractForm implements IPageForm {
 
   public WARNINGStatusButton getWARNINGStatusButton() {
     return getFieldByClass(WARNINGStatusButton.class);
+  }
+
+  public FileChooserField getFileChooserField0Field() {
+    return getFieldByClass(FileChooserField.class);
   }
 
   @Order(10.0)
@@ -293,7 +293,6 @@ public class StatusForm extends AbstractForm implements IPageForm {
           }
         }
       }
-
     }
 
     @Order(50.0)
@@ -326,7 +325,6 @@ public class StatusForm extends AbstractForm implements IPageForm {
           }
         }
       }
-
     }
   }
 

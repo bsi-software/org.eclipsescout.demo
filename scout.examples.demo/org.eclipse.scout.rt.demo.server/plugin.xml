@@ -93,11 +93,11 @@
          name=""
          point="org.eclipse.core.runtime.products">
       <product
-            name="demo Server"
+            name="Scout Widget Demo App Server"
             application="org.eclipse.scout.rt.demo.server.app">
          <property
                name="appName"
-               value="demo Server">
+               value="Scout Widget Demo App Server">
          </property>
       </product>
    </extension>

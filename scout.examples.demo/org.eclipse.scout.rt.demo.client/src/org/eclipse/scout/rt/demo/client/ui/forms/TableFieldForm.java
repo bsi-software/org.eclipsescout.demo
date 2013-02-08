@@ -62,12 +62,12 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(GroupBox.class);
   }
 
-  public ValueLastField getValueLastField() {
-    return getFieldByClass(ValueLastField.class);
-  }
-
   public MainBox getMainBox() {
     return getFieldByClass(MainBox.class);
+  }
+
+  public ValueLastField getValueLastField() {
+    return getFieldByClass(ValueLastField.class);
   }
 
   @Order(10.0)
@@ -107,14 +107,6 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
         @Order(10.0)
         public class Table extends AbstractTable {
 
-          public NameColumn getNameColumn() {
-            return getColumnSet().getColumnByClass(NameColumn.class);
-          }
-
-          public SymbolColumn getSymbolColumn() {
-            return getColumnSet().getColumnByClass(SymbolColumn.class);
-          }
-
           @Override
           protected boolean getConfiguredAutoResizeColumns() {
             return true;
@@ -127,6 +119,14 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
 
           public CompanyNrColumn getCompanyNrColumn() {
             return getColumnSet().getColumnByClass(CompanyNrColumn.class);
+          }
+
+          public NameColumn getNameColumn() {
+            return getColumnSet().getColumnByClass(NameColumn.class);
+          }
+
+          public SymbolColumn getSymbolColumn() {
+            return getColumnSet().getColumnByClass(SymbolColumn.class);
           }
 
           @Order(10.0)
@@ -207,7 +207,6 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
           }
         }
       }
-
     }
 
     @Order(20.0)

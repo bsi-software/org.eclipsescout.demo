@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="demo" id="org.eclipse.scout.rt.demo.ui.rap.product" application="org.eclipse.scout.rt.demo.ui.rap.app" useFeatures="false" includeLaunchers="true">
+<product name="Scout Widget Demo App" id="org.eclipse.scout.rt.demo.ui.rap.product" application="org.eclipse.scout.rt.demo.ui.rap.app" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
       <linux>/org.eclipse.scout.rt.demo.ui.rap/products/development/config.ini</linux>

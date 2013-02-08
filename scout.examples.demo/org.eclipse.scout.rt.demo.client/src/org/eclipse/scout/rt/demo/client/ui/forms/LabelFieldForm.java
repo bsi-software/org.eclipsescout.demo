@@ -41,11 +41,6 @@ public class LabelFieldForm extends AbstractForm implements IPageForm {
   }
 
   @Override
-  public CloseButton getCloseButton() {
-    return getFieldByClass(CloseButton.class);
-  }
-
-  @Override
   protected boolean getConfiguredAskIfNeedSave() {
     return false;
   }
@@ -60,12 +55,13 @@ public class LabelFieldForm extends AbstractForm implements IPageForm {
     startInternal(new PageFormHandler());
   }
 
-  public ForegroundColorField getColorField() {
-    return getFieldByClass(ForegroundColorField.class);
-  }
-
   public BackgroundColorField getBackgroundColorField() {
     return getFieldByClass(BackgroundColorField.class);
+  }
+
+  @Override
+  public CloseButton getCloseButton() {
+    return getFieldByClass(CloseButton.class);
   }
 
   public FieldBox getFieldBox() {
@@ -92,11 +88,59 @@ public class LabelFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(SizeField.class);
   }
 
+  public ForegroundColorField getColorField() {
+    return getFieldByClass(ForegroundColorField.class);
+  }
+
   @Order(10.0)
   public class MainBox extends AbstractGroupBox {
 
     @Order(10.0)
     public class FieldBox extends AbstractGroupBox {
+
+      @Order(10.0)
+      public class FontField extends AbstractStringField {
+
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("Font");
+        }
+
+        @Override
+        protected void execChangedValue() throws ProcessingException {
+          getLoremField().setFont(new FontSpec(
+              getValue(),
+              getFontstyleField().getValue() != null ? getFontstyleField().getValue() : 0,
+              getSizeField().getValue() != null ? getSizeField().getValue() : 0));
+        }
+      }
+
+      @Order(15.0)
+      public class FontstyleField extends AbstractSmartField<Integer> {
+
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("Fontstyle");
+        }
+
+        @Override
+        protected Class<? extends LookupCall> getConfiguredLookupCall() {
+          return FontstyleLookupCall.class;
+        }
+
+        @Override
+        protected boolean getConfiguredTreat0AsNull() {
+          return false;
+        }
+
+        @Override
+        protected void execChangedValue() throws ProcessingException {
+          getLoremField().setFont(new FontSpec(
+              getFontField().getValue() != null ? getFontField().getValue() : "",
+              getValue() != null ? getValue() : 0,
+              getSizeField().getValue() != null ? getSizeField().getValue() : 0));
+        }
+      }
 
       @Order(20.0)
       public class SizeField extends AbstractIntegerField {
@@ -136,20 +180,24 @@ public class LabelFieldForm extends AbstractForm implements IPageForm {
         }
       }
 
-      @Order(10.0)
-      public class FontField extends AbstractStringField {
+      @Order(40.0)
+      public class BackgroundColorField extends AbstractStringField {
 
         @Override
         protected String getConfiguredLabel() {
-          return TEXTS.get("Font");
+          return TEXTS.get("BackgroundColor");
         }
 
         @Override
-        protected void execChangedValue() throws ProcessingException {
-          getLoremField().setFont(new FontSpec(
-              getValue(),
-              getFontstyleField().getValue() != null ? getFontstyleField().getValue() : 0,
-              getSizeField().getValue() != null ? getSizeField().getValue() : 0));
+        protected String execValidateValue(String rawValue) throws ProcessingException {
+          clearErrorStatus();
+          if (!rawValue.matches("[0-9A-Fa-f]{6}")) {
+            this.setErrorStatus("\"" + rawValue + "\" " + TEXTS.get("NoColor"));
+          }
+          else {
+            getLoremField().setBackgroundColor(rawValue);
+          }
+          return rawValue;
         }
       }
 
@@ -183,54 +231,6 @@ public class LabelFieldForm extends AbstractForm implements IPageForm {
             value = "<html>" + value + "</html>";
           }
           this.setValue(value);
-        }
-      }
-
-      @Order(40.0)
-      public class BackgroundColorField extends AbstractStringField {
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("BackgroundColor");
-        }
-
-        @Override
-        protected String execValidateValue(String rawValue) throws ProcessingException {
-          clearErrorStatus();
-          if (!rawValue.matches("[0-9A-Fa-f]{6}")) {
-            this.setErrorStatus("\"" + rawValue + "\" " + TEXTS.get("NoColor"));
-          }
-          else {
-            getLoremField().setBackgroundColor(rawValue);
-          }
-          return rawValue;
-        }
-      }
-
-      @Order(15.0)
-      public class FontstyleField extends AbstractSmartField<Integer> {
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("Fontstyle");
-        }
-
-        @Override
-        protected Class<? extends LookupCall> getConfiguredLookupCall() {
-          return FontstyleLookupCall.class;
-        }
-
-        @Override
-        protected boolean getConfiguredTreat0AsNull() {
-          return false;
-        }
-
-        @Override
-        protected void execChangedValue() throws ProcessingException {
-          getLoremField().setFont(new FontSpec(
-              getFontField().getValue() != null ? getFontField().getValue() : "",
-              getValue() != null ? getValue() : 0,
-              getSizeField().getValue() != null ? getSizeField().getValue() : 0));
         }
       }
     }

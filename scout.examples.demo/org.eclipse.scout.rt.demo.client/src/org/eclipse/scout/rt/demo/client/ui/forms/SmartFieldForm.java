@@ -126,16 +126,6 @@ public class SmartFieldForm extends AbstractForm implements IPageForm {
         public class TreeWithCodeTypeField extends AbstractSmartField<Long> {
 
           @Override
-          protected boolean getConfiguredEnabled() {
-            return ClientSession.get().isServerAvailable();
-          }
-
-          @Override
-          protected String getConfiguredLabel() {
-            return TEXTS.get("TreeWithCodeType");
-          }
-
-          @Override
           protected boolean getConfiguredActiveFilterEnabled() {
             return true;
           }
@@ -156,6 +146,16 @@ public class SmartFieldForm extends AbstractForm implements IPageForm {
               return DateCodeType.class;
             }
             return null;
+          }
+
+          @Override
+          protected boolean getConfiguredEnabled() {
+            return ClientSession.get().isServerAvailable();
+          }
+
+          @Override
+          protected String getConfiguredLabel() {
+            return TEXTS.get("TreeWithCodeType");
           }
 
           @Override
@@ -188,24 +188,15 @@ public class SmartFieldForm extends AbstractForm implements IPageForm {
 
         @Order(30.0)
         public class TreeWithLookupCallIncrementalField extends AbstractSmartField<Long> {
-          @Override
-          protected boolean getConfiguredVisible() {
-            return false;
-          }
 
           @Override
-          public boolean acceptBrowseHierarchySelection(Long value, int level, boolean leaf) {
-            return leaf;
+          protected boolean getConfiguredBrowseAutoExpandAll() {
+            return false;
           }
 
           @Override
           protected boolean getConfiguredBrowseHierarchy() {
             return true;
-          }
-
-          @Override
-          protected boolean getConfiguredBrowseAutoExpandAll() {
-            return false;
           }
 
           @Override
@@ -223,10 +214,28 @@ public class SmartFieldForm extends AbstractForm implements IPageForm {
             return ProductLookupCall.class;
 
           }
+
+          @Override
+          protected boolean getConfiguredVisible() {
+            return false;
+          }
+
+          @Override
+          public boolean acceptBrowseHierarchySelection(Long value, int level, boolean leaf) {
+            return leaf;
+          }
         }
 
         @Order(40.0)
         public class ListWithCodeTypeField extends AbstractSmartField<Long> {
+
+          @Override
+          protected Class<? extends ICodeType<Long>> getConfiguredCodeType() {
+            if (ClientSession.get().isServerAvailable()) {
+              return CountryCodeType.class;
+            }
+            return null;
+          }
 
           @Override
           protected boolean getConfiguredEnabled() {
@@ -236,14 +245,6 @@ public class SmartFieldForm extends AbstractForm implements IPageForm {
           @Override
           protected String getConfiguredLabel() {
             return TEXTS.get("ListWithCodeType");
-          }
-
-          @Override
-          protected Class<? extends ICodeType<Long>> getConfiguredCodeType() {
-            if (ClientSession.get().isServerAvailable()) {
-              return CountryCodeType.class;
-            }
-            return null;
           }
 
           @Override
@@ -295,7 +296,6 @@ public class SmartFieldForm extends AbstractForm implements IPageForm {
             return StatusTextLookupCall.class;
           }
         }
-
       }
     }
 

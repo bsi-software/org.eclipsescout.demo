@@ -170,6 +170,7 @@ public class StringFieldForm extends AbstractForm implements IPageForm {
   }
 
   public class PageFormHandler extends AbstractFormHandler {
+
     @Override
     protected void execLoad() throws ProcessingException {
       getDefaultField().setValue(TEXTS.get("Lorem"));

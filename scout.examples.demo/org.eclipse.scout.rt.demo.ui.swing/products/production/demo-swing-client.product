@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="demo Client" id="org.eclipse.scout.rt.demo.ui.swing.product" application="org.eclipse.scout.rt.demo.ui.swing.app" useFeatures="false" includeLaunchers="true">
+<product name="Scout Widget Demo App Client" id="org.eclipse.scout.rt.demo.ui.swing.product" application="org.eclipse.scout.rt.demo.ui.swing.app" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
       <linux>/org.eclipse.scout.rt.demo.ui.swing/products/production/config.ini</linux>
@@ -18,7 +18,7 @@
 
    <windowImages/>
 
-   <launcher name="demo">
+   <launcher name="Scout Widget Demo App">
       <solaris/>
       <win useIco="false">
          <bmp/>

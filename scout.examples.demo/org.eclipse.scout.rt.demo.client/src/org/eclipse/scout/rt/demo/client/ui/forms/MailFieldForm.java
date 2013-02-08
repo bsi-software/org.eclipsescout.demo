@@ -78,6 +78,17 @@ public class MailFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(TextButton.class);
   }
 
+  public void loadFile(String fileName) throws ProcessingException {
+    try {
+      InputStream inStream = FileLocator.openStream(Activator.getDefault().getBundle(), new Path("resources/mails/" + fileName), true);
+      MimeMessage message = new MimeMessage(null, inStream);
+      getMailField().setValue(message);
+    }
+    catch (Exception e) {
+      throw new ProcessingException(null, e);
+    }
+  }
+
   @Order(10.0)
   public class MainBox extends AbstractGroupBox {
 
@@ -163,17 +174,6 @@ public class MailFieldForm extends AbstractForm implements IPageForm {
 
     @Order(60.0)
     public class CloseButton extends AbstractCloseButton {
-    }
-  }
-
-  public void loadFile(String fileName) throws ProcessingException {
-    try {
-      InputStream inStream = FileLocator.openStream(Activator.getDefault().getBundle(), new Path("resources/mails/" + fileName), true);
-      MimeMessage message = new MimeMessage(null, inStream);
-      getMailField().setValue(message);
-    }
-    catch (Exception e) {
-      throw new ProcessingException(null, e);
     }
   }
 

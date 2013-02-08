@@ -209,10 +209,6 @@ public class OverviewForm extends AbstractForm implements IPageForm {
     return getFieldByClass(MinimizeButton.class);
   }
 
-  public StringFieldForPasswordField getStringFieldForPasswordField() {
-    return getFieldByClass(StringFieldForPasswordField.class);
-  }
-
   public OpenModalFormButton getOpenModalFormButton() {
     return getFieldByClass(OpenModalFormButton.class);
   }
@@ -245,6 +241,10 @@ public class OverviewForm extends AbstractForm implements IPageForm {
     return getFieldByClass(StringField.class);
   }
 
+  public StringFieldForPasswordField getStringFieldForPasswordField() {
+    return getFieldByClass(StringFieldForPasswordField.class);
+  }
+
   public TimeField getTimeField() {
     return getFieldByClass(TimeField.class);
   }
@@ -255,6 +255,7 @@ public class OverviewForm extends AbstractForm implements IPageForm {
 
   @Order(10.0)
   public class MainBox extends AbstractGroupBox {
+
     @Override
     protected boolean getConfiguredGridUseUiWidth() {
       return true;
@@ -269,6 +270,11 @@ public class OverviewForm extends AbstractForm implements IPageForm {
     public class ButtonsBox extends AbstractGroupBox {
 
       @Override
+      protected String getConfiguredBorderDecoration() {
+        return BORDER_DECORATION_SECTION;
+      }
+
+      @Override
       protected boolean getConfiguredExpandable() {
         return true;
       }
@@ -276,11 +282,6 @@ public class OverviewForm extends AbstractForm implements IPageForm {
       @Override
       protected String getConfiguredLabel() {
         return TEXTS.get("Buttons");
-      }
-
-      @Override
-      protected String getConfiguredBorderDecoration() {
-        return BORDER_DECORATION_SECTION;
       }
 
       @Order(10.0)
@@ -611,7 +612,6 @@ public class OverviewForm extends AbstractForm implements IPageForm {
           }
         }
       }
-
     }
 
     @Order(40.0)
