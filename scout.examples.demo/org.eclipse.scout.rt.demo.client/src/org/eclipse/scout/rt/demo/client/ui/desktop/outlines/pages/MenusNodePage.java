@@ -31,6 +31,11 @@ public class MenusNodePage extends AbstractPageWithNodes {
   }
 
   @Override
+  protected boolean getConfiguredLeaf() {
+    return true;
+  }
+
+  @Override
   protected boolean getConfiguredTableVisible() {
     return false;
   }
