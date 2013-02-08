@@ -14,6 +14,7 @@ import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.form.fields.GridData;
 import org.eclipse.scout.rt.client.ui.wizard.AbstractWizardStep;
+import org.eclipse.scout.rt.client.ui.wizard.DefaultWizardContainerForm;
 import org.eclipse.scout.rt.client.ui.wizard.IWizardContainerForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.LabelWizardFontForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.LabelWizardForegroundColorForm;
@@ -35,11 +36,18 @@ public class LabelWizard extends AbstractPageWizard {
 
   @Override
   protected IWizardContainerForm execCreateContainerForm() throws ProcessingException {
-    IWizardContainerForm f = super.execCreateContainerForm();
+    DefaultWizardContainerForm f = (DefaultWizardContainerForm) super.execCreateContainerForm();
+
+    // The wizard is 600x400px
     GridData gd = f.getRootGroupBox().getGridData();
     gd.widthInPixel = 600;
     gd.heightInPixel = 400;
     f.getRootGroupBox().setGridDataInternal(gd);
+
+    // Position of the splitter will not be cached
+    f.getSplitBox().setCacheSplitterPosition(false);
+    // The splitter gives the left field 70% of the hole place
+    f.getSplitBox().setSplitterPosition(0.7);
     return f;
   }
 

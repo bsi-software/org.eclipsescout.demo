@@ -56,7 +56,6 @@ public class InjectionForm extends FileChooserFieldForm {
     protected void execClickAction() throws ProcessingException {
       if (IOUtility.fileExists(getChooseAnImageField().getValue())) {
         getShowImageField().setImage(IOUtility.getContent(getChooseAnImageField().getValue()));
-        System.out.println(getShowImageField().getImageId());
       }
     }
   }
