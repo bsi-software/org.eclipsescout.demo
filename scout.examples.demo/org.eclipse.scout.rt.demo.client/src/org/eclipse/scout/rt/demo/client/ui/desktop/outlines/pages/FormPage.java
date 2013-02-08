@@ -45,7 +45,7 @@ public class FormPage extends AbstractPageWithNodes {
 
   @Override
   protected String getConfiguredIconId() {
-    return org.eclipse.scout.rt.shared.AbstractIcons.TreeNodeOpen;
+    return org.eclipse.scout.rt.demo.shared.Icons.Form;
   }
 
   @Override

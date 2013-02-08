@@ -34,6 +34,7 @@ import org.eclipse.scout.rt.demo.client.ui.forms.MessageBoxesForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.PageFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.PlannerFieldForm;
+import org.eclipse.scout.rt.demo.client.ui.forms.RadioButtonGroupForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.SVGFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.SmartFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.SplitBoxForm;
@@ -51,7 +52,7 @@ public class FormFieldsNodePage extends AbstractPageWithNodes {
 
   @Override
   protected String getConfiguredIconId() {
-    return org.eclipse.scout.rt.shared.AbstractIcons.TreeNode;
+    return org.eclipse.scout.rt.demo.shared.Icons.Forms;
   }
 
   @Override
@@ -97,26 +98,28 @@ public class FormFieldsNodePage extends AbstractPageWithNodes {
     pageList.add(formPage15);
     FormPage formPage16 = new FormPage(PlannerFieldForm.class, UserAgentUtility.isSwingUi());
     pageList.add(formPage16);
-    FormPage formPage17 = new FormPage(SmartFieldForm.class);
+    FormPage formPage17 = new FormPage(RadioButtonGroupForm.class);
     pageList.add(formPage17);
-    FormPage formPage18 = new FormPage(SplitBoxForm.class);
+    FormPage formPage18 = new FormPage(SmartFieldForm.class);
     pageList.add(formPage18);
-    FormPage formPage19 = new FormPage(StatusForm.class);
+    FormPage formPage19 = new FormPage(SplitBoxForm.class);
     pageList.add(formPage19);
-    FormPage formPage20 = new FormPage(StringFieldForm.class);
+    FormPage formPage20 = new FormPage(StatusForm.class);
     pageList.add(formPage20);
-    FormPage formPage21 = new FormPage(SVGFieldForm.class);
+    FormPage formPage21 = new FormPage(StringFieldForm.class);
     pageList.add(formPage21);
-    FormPage formPage22 = new FormPage(TabBoxForm.class);
+    FormPage formPage22 = new FormPage(SVGFieldForm.class);
     pageList.add(formPage22);
-    FormPage formPage23 = new FormPage(TableFieldForm.class);
+    FormPage formPage23 = new FormPage(TabBoxForm.class);
     pageList.add(formPage23);
-    FormPage formPage24 = new FormPage(TreeBoxForm.class);
+    FormPage formPage24 = new FormPage(TableFieldForm.class);
     pageList.add(formPage24);
-    FormPage formPage25 = new FormPage(TreeFieldForm.class);
+    FormPage formPage25 = new FormPage(TreeBoxForm.class);
     pageList.add(formPage25);
-    FormPage formPage26 = new FormPage(WrappedFormFieldForm.class);
+    FormPage formPage26 = new FormPage(TreeFieldForm.class);
     pageList.add(formPage26);
+    FormPage formPage27 = new FormPage(WrappedFormFieldForm.class);
+    pageList.add(formPage27);
     FormPage formPageBonus = new FormPage(InjectionForm.class);
     pageList.add(formPageBonus);
   }
