@@ -19,5 +19,6 @@ public class Icons extends AbstractIcons {
   public static final String Form = "form_icon";
   public static final String Forms = "forms_icon";
   public static final String Wizard = "wizard_icon";
+  public static final String Wizards = "wizards_icon";
   public static final String EclipseScout = "eclipse_scout";
 }

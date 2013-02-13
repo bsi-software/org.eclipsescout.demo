@@ -22,13 +22,13 @@ import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.demo.client.services.lookup.FontstyleLookupCall;
 import org.eclipse.scout.rt.demo.client.ui.forms.LabelFieldForm.MainBox.CloseButton;
-import org.eclipse.scout.rt.demo.client.ui.forms.LabelFieldForm.MainBox.FieldBox;
-import org.eclipse.scout.rt.demo.client.ui.forms.LabelFieldForm.MainBox.FieldBox.BackgroundColorField;
-import org.eclipse.scout.rt.demo.client.ui.forms.LabelFieldForm.MainBox.FieldBox.FontField;
-import org.eclipse.scout.rt.demo.client.ui.forms.LabelFieldForm.MainBox.FieldBox.FontstyleField;
-import org.eclipse.scout.rt.demo.client.ui.forms.LabelFieldForm.MainBox.FieldBox.ForegroundColorField;
-import org.eclipse.scout.rt.demo.client.ui.forms.LabelFieldForm.MainBox.FieldBox.LoremField;
-import org.eclipse.scout.rt.demo.client.ui.forms.LabelFieldForm.MainBox.FieldBox.SizeField;
+import org.eclipse.scout.rt.demo.client.ui.forms.LabelFieldForm.MainBox.GroupBox;
+import org.eclipse.scout.rt.demo.client.ui.forms.LabelFieldForm.MainBox.GroupBox.BackgroundColorField;
+import org.eclipse.scout.rt.demo.client.ui.forms.LabelFieldForm.MainBox.GroupBox.FontField;
+import org.eclipse.scout.rt.demo.client.ui.forms.LabelFieldForm.MainBox.GroupBox.FontstyleField;
+import org.eclipse.scout.rt.demo.client.ui.forms.LabelFieldForm.MainBox.GroupBox.ForegroundColorField;
+import org.eclipse.scout.rt.demo.client.ui.forms.LabelFieldForm.MainBox.GroupBox.LoremField;
+import org.eclipse.scout.rt.demo.client.ui.forms.LabelFieldForm.MainBox.GroupBox.SizeField;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.data.basic.FontSpec;
 import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
@@ -64,8 +64,8 @@ public class LabelFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(CloseButton.class);
   }
 
-  public FieldBox getFieldBox() {
-    return getFieldByClass(FieldBox.class);
+  public GroupBox getGroupBox() {
+    return getFieldByClass(GroupBox.class);
   }
 
   public FontField getFontField() {
@@ -96,7 +96,7 @@ public class LabelFieldForm extends AbstractForm implements IPageForm {
   public class MainBox extends AbstractGroupBox {
 
     @Order(10.0)
-    public class FieldBox extends AbstractGroupBox {
+    public class GroupBox extends AbstractGroupBox {
 
       @Order(10.0)
       public class FontField extends AbstractStringField {

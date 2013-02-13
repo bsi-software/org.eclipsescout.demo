@@ -12,12 +12,11 @@ package org.eclipse.scout.rt.demo.client.ui.desktop.outlines.pages;
 
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.rt.client.services.common.shell.DefaultShellService;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNodes;
 import org.eclipse.scout.rt.client.ui.form.IForm;
-import org.eclipse.scout.rt.demo.client.ClientSession;
 import org.eclipse.scout.rt.demo.client.ui.forms.IPageForm;
+import org.eclipse.scout.rt.demo.client.ui.template.menu.AbstractViewSourceOnGitHubMenu;
 import org.eclipse.scout.rt.shared.TEXTS;
 
 public class FormPage extends AbstractPageWithNodes {
@@ -57,7 +56,7 @@ public class FormPage extends AbstractPageWithNodes {
   protected void execInitPage() throws ProcessingException {
     String s = m_formType.getSimpleName();
     s = s.substring(0, s.length() - 4);
-    getCellForUpdate().setText(s);
+    getCellForUpdate().setText(TEXTS.get(s));
     setTableVisible(false);
   }
 
@@ -107,21 +106,11 @@ public class FormPage extends AbstractPageWithNodes {
   }
 
   @Order(20.0)
-  public class ViewSourceOnGitHubMenu extends AbstractMenu {
+  public class ViewSourceOnGitHubMenu extends AbstractViewSourceOnGitHubMenu {
 
     @Override
-    protected String getConfiguredText() {
-      return TEXTS.get("ViewSourceOnGitHub");
-    }
-
-    @Override
-    protected void execAction() throws ProcessingException {
-      String linkaddress = "https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.example/tree/" +
-          ClientSession.get().getBundle().getBundleContext().getProperty("git.branch") +
-          "/scout.examples.demo/org.eclipse.scout.rt.demo.client/src/org/eclipse/scout/rt/demo/client/ui/forms/" +
-          m_formType.getSimpleName() + ".java";
-
-      new DefaultShellService().shellOpen(linkaddress);
+    protected Class<?> provideSourceClass() {
+      return m_formType;
     }
   }
 }

@@ -33,7 +33,6 @@ import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
 import org.eclipse.scout.rt.demo.client.ClientSession;
 import org.eclipse.scout.rt.demo.client.ui.desktop.outlines.FormFieldsWizardsOutline;
 import org.eclipse.scout.rt.demo.client.ui.desktop.outlines.PagesSearchFormsOutline;
-import org.eclipse.scout.rt.demo.client.ui.desktop.outlines.pages.FormFieldsNodePage;
 import org.eclipse.scout.rt.demo.client.ui.forms.ToolButton1Form;
 import org.eclipse.scout.rt.demo.client.ui.forms.ToolButton2Form;
 import org.eclipse.scout.rt.demo.shared.Icons;
@@ -78,7 +77,6 @@ public class Desktop extends AbstractDesktop implements IDesktop {
 
     if (getAvailableOutlines().length > 0) {
       setOutline(getAvailableOutlines()[0]);
-      getOutline().expandAll(getOutline().findPage(FormFieldsNodePage.class));
     }
 
   }

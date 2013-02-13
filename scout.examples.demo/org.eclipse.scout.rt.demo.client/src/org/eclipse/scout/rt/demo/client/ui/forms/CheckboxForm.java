@@ -15,6 +15,7 @@ import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.exception.VetoException;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
+import org.eclipse.scout.rt.client.ui.form.fields.ValidationFailedStatus;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.checkbox.AbstractCheckBox;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
@@ -135,6 +136,18 @@ public class CheckboxForm extends AbstractForm implements IPageForm {
           @Override
           protected String getConfiguredLabel() {
             return TEXTS.get("HasToBeChecked");
+          }
+
+          @Override
+          protected void execChangedValue() throws ProcessingException {
+            if (getValue()) {
+              if (!getCheckboxField().getValue()) {
+                getCheckboxField().setErrorStatus(new ValidationFailedStatus("Field has to be checked"));
+              }
+            }
+            else {
+              getCheckboxField().clearErrorStatus();
+            }
           }
         }
       }

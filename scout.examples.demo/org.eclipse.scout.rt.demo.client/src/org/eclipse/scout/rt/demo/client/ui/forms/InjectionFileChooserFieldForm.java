@@ -8,16 +8,14 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractButton;
 import org.eclipse.scout.rt.client.ui.form.fields.imagebox.AbstractImageField;
 import org.eclipse.scout.rt.shared.TEXTS;
 
-public class InjectionForm extends FileChooserFieldForm {
+public class InjectionFileChooserFieldForm extends FileChooserFieldForm {
 
-  public InjectionForm() throws ProcessingException {
+  public InjectionFileChooserFieldForm() throws ProcessingException {
     super();
   }
 
   @Override
-  protected String getConfiguredTitle() {
-    return TEXTS.get("Injection");
-  }
+  protected String getConfiguredTitle() {  return TEXTS.get("InjectionFileChooserField");}
 
   public ImageField getShowImageField() {
     return getFieldByClass(ImageField.class);

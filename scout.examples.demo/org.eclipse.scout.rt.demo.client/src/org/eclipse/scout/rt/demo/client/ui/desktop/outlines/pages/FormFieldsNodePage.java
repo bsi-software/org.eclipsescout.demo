@@ -22,15 +22,17 @@ import org.eclipse.scout.rt.demo.client.ui.forms.CheckboxForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.ComposerFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.DateFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.FileChooserFieldForm;
+import org.eclipse.scout.rt.demo.client.ui.forms.FormFieldTreeForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.GroupBoxForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.HTMLFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.ImageFieldForm;
-import org.eclipse.scout.rt.demo.client.ui.forms.InjectionForm;
+import org.eclipse.scout.rt.demo.client.ui.forms.InjectionFileChooserFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.KeyStrokeForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.LabelFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.ListBoxForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.MailFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.MessageBoxesForm;
+import org.eclipse.scout.rt.demo.client.ui.forms.NumberFieldsDecimalFieldsForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.OverviewForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.PageFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.PlannerFieldForm;
@@ -94,33 +96,47 @@ public class FormFieldsNodePage extends AbstractPageWithNodes {
     pageList.add(formPage13);
     FormPage formPage14 = new FormPage(MessageBoxesForm.class);
     pageList.add(formPage14);
-    FormPage formPage15 = new FormPage(PageFieldForm.class);
+    FormPage formPage15 = new FormPage(NumberFieldsDecimalFieldsForm.class);
     pageList.add(formPage15);
-    FormPage formPage16 = new FormPage(PlannerFieldForm.class, UserAgentUtility.isSwingUi());
+    FormPage formPage16 = new FormPage(PageFieldForm.class);
     pageList.add(formPage16);
-    FormPage formPage17 = new FormPage(RadioButtonGroupForm.class);
+    FormPage formPage17 = new FormPage(PlannerFieldForm.class, UserAgentUtility.isSwingUi());
     pageList.add(formPage17);
-    FormPage formPage18 = new FormPage(SmartFieldForm.class);
+    FormPage formPage18 = new FormPage(RadioButtonGroupForm.class);
     pageList.add(formPage18);
-    FormPage formPage19 = new FormPage(SplitBoxForm.class);
+    FormPage formPage19 = new FormPage(SmartFieldForm.class);
     pageList.add(formPage19);
-    FormPage formPage20 = new FormPage(StatusForm.class);
+    FormPage formPage20 = new FormPage(SplitBoxForm.class);
     pageList.add(formPage20);
-    FormPage formPage21 = new FormPage(StringFieldForm.class);
+    FormPage formPage21 = new FormPage(StatusForm.class);
     pageList.add(formPage21);
-    FormPage formPage22 = new FormPage(SVGFieldForm.class);
+    FormPage formPage22 = new FormPage(StringFieldForm.class);
     pageList.add(formPage22);
-    FormPage formPage23 = new FormPage(TabBoxForm.class);
+    FormPage formPage23 = new FormPage(SVGFieldForm.class);
     pageList.add(formPage23);
-    FormPage formPage24 = new FormPage(TableFieldForm.class);
+    FormPage formPage24 = new FormPage(TabBoxForm.class);
     pageList.add(formPage24);
-    FormPage formPage25 = new FormPage(TreeBoxForm.class);
+    FormPage formPage25 = new FormPage(TableFieldForm.class);
     pageList.add(formPage25);
-    FormPage formPage26 = new FormPage(TreeFieldForm.class);
+    FormPage formPage26 = new FormPage(TreeBoxForm.class);
     pageList.add(formPage26);
-    FormPage formPage27 = new FormPage(WrappedFormFieldForm.class);
+    FormPage formPage27 = new FormPage(TreeFieldForm.class);
     pageList.add(formPage27);
-    FormPage formPageBonus = new FormPage(InjectionForm.class);
+    FormPage formPage28 = new FormPage(WrappedFormFieldForm.class);
+    pageList.add(formPage28);
+    FormPage formPageBonus = new FormPage(InjectionFileChooserFieldForm.class);
     pageList.add(formPageBonus);
+  }
+
+  @Override
+  protected void execInitPage() throws ProcessingException {
+  }
+
+  @Override
+  protected void execPageActivated() throws ProcessingException {
+    FormFieldTreeForm form = new FormFieldTreeForm(this);
+    setDetailForm(form);
+    form.startPageForm();
+    setTableVisible(false);
   }
 }

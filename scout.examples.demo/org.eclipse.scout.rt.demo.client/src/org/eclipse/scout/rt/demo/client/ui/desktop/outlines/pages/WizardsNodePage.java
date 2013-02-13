@@ -23,7 +23,7 @@ public class WizardsNodePage extends AbstractPageWithNodes {
 
   @Override
   protected String getConfiguredIconId() {
-    return org.eclipse.scout.rt.shared.AbstractIcons.Bookmark;
+    return org.eclipse.scout.rt.demo.shared.Icons.Wizards;
   }
 
   @Override

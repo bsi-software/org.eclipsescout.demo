@@ -123,7 +123,7 @@ public class StatusForm extends AbstractForm implements IPageForm {
     return getFieldByClass(WARNINGStatusButton.class);
   }
 
-  public FileChooserField getFileChooserField0Field() {
+  public FileChooserField getFileChooserField() {
     return getFieldByClass(FileChooserField.class);
   }
 

@@ -71,6 +71,11 @@ public class SearchFormTablePage extends AbstractPageWithTable<SearchFormTablePa
       ClientSession.get().getDesktop().getToolButtons()[0].setToggleAction(true);
       ClientSession.get().getDesktop().getToolButtons()[0].doAction();
     }
+    else {
+      ClientSession.get().getDesktop().getToolButtons()[0].setSelected(false);
+      ClientSession.get().getDesktop().getToolButtons()[0].setToggleAction(false);
+      ClientSession.get().getDesktop().getToolButtons()[0].doAction();
+    }
   }
 
   @Order(10.0)

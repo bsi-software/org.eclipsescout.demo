@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.2"
+   width="400"
+   height="400"
+   id="svg2">
+  <defs
+     id="defs4" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(0,-652.36218)"
+     id="layer1">
+    <rect
+       width="398.38324"
+       height="398.38327"
+       x="0.80836922"
+       y="653.17053"
+       id="rect3003"
+       style="fill:#00ffff;fill-opacity:1;stroke:#000000;stroke-width:1.61673844;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <g
+       transform="matrix(0.23024946,0,0,0.23024946,123.67313,726.73351)"
+       id="g3830">
+      <rect
+         width="308.6528"
+         height="91.509933"
+         rx="42.545933"
+         ry="29.303713"
+         x="223.91583"
+         y="76.02993"
+         id="rect2985"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.91863996;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <flowRoot
+         transform="translate(77.691094,-282.00587)"
+         id="flowRoot3755"
+         xml:space="preserve"
+         style="font-size:32px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><flowRegion
+           id="flowRegion3757"><rect
+             width="267.14285"
+             height="41.42857"
+             x="191.42857"
+             y="390.93362"
+             id="rect3759"
+             style="font-size:32px" /></flowRegion><flowPara
+           id="flowPara3761"
+           style="font-size:28px">AbstractFormField</flowPara></flowRoot>    </g>
+    <g
+       transform="matrix(0.23024946,0,0,0.23024946,115.3,656.49221)"
+       id="g3837">
+      <rect
+         width="308.6528"
+         height="91.509933"
+         rx="42.545933"
+         ry="29.303713"
+         x="37.102169"
+         y="629.46436"
+         id="rect2985-1"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.91863996;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <flowRoot
+         transform="translate(-113.69399,270.24509)"
+         id="flowRoot3755-7"
+         xml:space="preserve"
+         style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><flowRegion
+           id="flowRegion3757-4"><rect
+             width="267.14285"
+             height="41.42857"
+             x="191.42857"
+             y="390.93362"
+             id="rect3759-0"
+             style="font-size:28px" /></flowRegion><flowPara
+           id="flowPara3761-9"
+           style="font-size:28px">AbstractValueField</flowPara></flowRoot>    </g>
+    <a
+       xlink:href="http://local/composerfield"
+       transform="matrix(0.23024946,0,0,0.23024946,120.88209,726.73351)"
+       id="a3002">
+      <g
+         transform="translate(422.74418,-299.65935)"
+         id="g3837-4">
+        <rect
+           width="308.6528"
+           height="91.509933"
+           rx="42.545933"
+           ry="29.303713"
+           x="37.102169"
+           y="629.46436"
+           id="rect2985-1-8"
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.91863996;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <flowRoot
+           transform="translate(-143.99856,270.24509)"
+           id="flowRoot3755-7-8"
+           xml:space="preserve"
+           style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><flowRegion
+             id="flowRegion3757-4-2"><rect
+               width="305.52866"
+               height="41.42857"
+               x="191.42857"
+               y="390.93362"
+               id="rect3759-0-4"
+               style="font-size:28px" /></flowRegion><flowPara
+             id="flowPara3761-9-5"
+             style="font-size:28px">AbstractComposerField</flowPara></flowRoot>      </g>
+    </a>
+    <path
+       d="m 246.29677,754.77442 15.99827,0 0,47.89652"
+       id="path3877"
+       style="fill:none;stroke:#000000;stroke-width:0.23024946px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       d="m 194.9099,811.96109 15.8533,0 0,-46.65162"
+       id="path3879"
+       style="fill:none;stroke:#000000;stroke-width:0.23024946px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline" />
+  </g>
+</svg>
