@@ -15,7 +15,9 @@ public class InjectionFileChooserFieldForm extends FileChooserFieldForm {
   }
 
   @Override
-  protected String getConfiguredTitle() {  return TEXTS.get("InjectionFileChooserField");}
+  protected String getConfiguredTitle() {
+    return TEXTS.get("InjectionFileChooserField");
+  }
 
   public ImageField getShowImageField() {
     return getFieldByClass(ImageField.class);

@@ -4,6 +4,11 @@
    <extension
          name=""
          point="org.eclipse.scout.service.services">
+      <service
+            factory="org.eclipse.scout.rt.client.services.ClientServiceFactory"
+            class="org.eclipse.scout.rt.demo.client.services.LocalCodeService"
+            session="org.eclipse.scout.rt.demo.client.ClientSession">
+      </service>
    </extension>
    <extension
          name=""

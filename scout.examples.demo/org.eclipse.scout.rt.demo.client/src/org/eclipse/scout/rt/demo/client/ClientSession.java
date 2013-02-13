@@ -10,15 +10,12 @@
  ******************************************************************************/
 package org.eclipse.scout.rt.demo.client;
 
-import java.lang.reflect.UndeclaredThrowableException;
-
 import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.client.AbstractClientSession;
 import org.eclipse.scout.rt.client.ClientJob;
-import org.eclipse.scout.rt.client.servicetunnel.http.HttpServiceTunnel;
 import org.eclipse.scout.rt.demo.client.ui.desktop.Desktop;
 import org.eclipse.scout.rt.shared.services.common.code.CODES;
 
@@ -46,16 +43,8 @@ public class ClientSession extends AbstractClientSession {
 
   @Override
   public void execLoadSession() throws ProcessingException {
-    // Trying to connect to the Server
-    try {
-      setServiceTunnel(new HttpServiceTunnel(this, getBundle().getBundleContext().getProperty("server.url"), (String) getBundle().getHeaders().get("Bundle-Version")));
-      CODES.getAllCodeTypes(org.eclipse.scout.rt.demo.shared.Activator.PLUGIN_ID);
-    }
-    // If client can't reach the server, go offline
-    catch (UndeclaredThrowableException ex) {
-      goOffline();
-      m_serverAvailable = false;
-    }
+    CODES.getAllCodeTypes(org.eclipse.scout.rt.demo.shared.Activator.PLUGIN_ID);
+
     setDesktop(new Desktop());
   }
 

@@ -43,7 +43,7 @@ public class DateCodeType extends AbstractCodeType<Long> {
 
     @Override
     protected String getConfiguredText() {
-      return TEXTS.get("year2012");
+      return "2012";
     }
 
     @Override
@@ -121,7 +121,7 @@ public class DateCodeType extends AbstractCodeType<Long> {
 
     @Override
     protected String getConfiguredText() {
-      return TEXTS.get("year2013");
+      return "2013";
     }
 
     @Override
@@ -165,7 +165,7 @@ public class DateCodeType extends AbstractCodeType<Long> {
 
     @Override
     protected String getConfiguredText() {
-      return TEXTS.get("year2011");
+      return "2011";
     }
 
     @Override

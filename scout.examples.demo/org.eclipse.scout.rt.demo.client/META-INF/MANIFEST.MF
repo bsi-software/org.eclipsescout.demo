@@ -6,6 +6,7 @@ Bundle-Version: 3.9.0.qualifier
 Bundle-Activator: org.eclipse.scout.rt.demo.client.Activator
 Bundle-Vendor: Eclipse Scout Project
 Export-Package: org.eclipse.scout.rt.demo.client,
+ org.eclipse.scout.rt.demo.client.services,
  org.eclipse.scout.rt.demo.client.ui.desktop,
  org.eclipse.scout.rt.demo.client.ui.desktop.outlines,
  org.eclipse.scout.rt.demo.client.ui.desktop.outlines.pages,
@@ -17,5 +18,5 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.scout.rt.demo.shared,
  org.eclipse.scout.svg.client
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Bundle-ActivationPolicy: lazy
 Import-Package: javax.mail.internet;version="1.4.0";resolution:=optional
+Bundle-ActivationPolicy: lazy

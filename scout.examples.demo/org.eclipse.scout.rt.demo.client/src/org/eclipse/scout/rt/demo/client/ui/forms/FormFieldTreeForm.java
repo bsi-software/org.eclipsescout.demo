@@ -76,6 +76,11 @@ public class FormFieldTreeForm extends AbstractForm {
       }
 
       @Override
+      protected String getConfiguredBackgroundColor() {
+        return "E3F4FF";
+      }
+
+      @Override
       protected int getConfiguredGridH() {
         return 10;
       }
@@ -98,7 +103,7 @@ public class FormFieldTreeForm extends AbstractForm {
 
         for (ITreeNode node : m_page.getChildNodes()) {
           for (String fieldName : node.getCellForUpdate().getText().split(" ")) {
-            if (fieldName.toLowerCase().contains(url_form)) {
+            if (fieldName.toLowerCase().startsWith(url_form)) {
               m_page.getTree().selectNode(node);
             }
           }

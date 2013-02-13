@@ -80,6 +80,8 @@ public class FormFieldsNodePage extends AbstractPageWithNodes {
     pageList.add(formPage5);
     FormPage formPage6 = new FormPage(FileChooserFieldForm.class);
     pageList.add(formPage6);
+    FormPage formPage6extended = new FormPage(InjectionFileChooserFieldForm.class);
+    pageList.add(formPage6extended);
     FormPage formPage7 = new FormPage(GroupBoxForm.class);
     pageList.add(formPage7);
     FormPage formPage8 = new FormPage(HTMLFieldForm.class);
@@ -124,8 +126,6 @@ public class FormFieldsNodePage extends AbstractPageWithNodes {
     pageList.add(formPage27);
     FormPage formPage28 = new FormPage(WrappedFormFieldForm.class);
     pageList.add(formPage28);
-    FormPage formPageBonus = new FormPage(InjectionFileChooserFieldForm.class);
-    pageList.add(formPageBonus);
   }
 
   @Override
