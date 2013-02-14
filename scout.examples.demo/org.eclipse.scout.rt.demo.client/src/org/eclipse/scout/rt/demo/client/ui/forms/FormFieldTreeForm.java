@@ -60,14 +60,26 @@ public class FormFieldTreeForm extends AbstractForm {
 
     @Order(10.0)
     public class FormFieldTreeField extends AbstractSvgField {
+      private SVGDocument m_formfieldtree;
+      private SVGDocument m_valuefieldtree;
+      private SVGDocument m_compositetree;
 
       @Override
       protected void execInitField() throws ProcessingException {
         try {
           URL url = Activator.getDefault().getBundle().getResource("/resources/svg/formfieldtree.svg");
           InputStream is = url.openStream();
-          SVGDocument svgDoc = SVGUtility.readSVGDocument(is);
-          setSvgDocument(svgDoc);
+          m_formfieldtree = SVGUtility.readSVGDocument(is);
+
+          url = Activator.getDefault().getBundle().getResource("/resources/svg/valuefieldtree.svg");
+          is = url.openStream();
+          m_valuefieldtree = SVGUtility.readSVGDocument(is);
+
+          url = Activator.getDefault().getBundle().getResource("/resources/svg/compositefieldtree.svg");
+          is = url.openStream();
+          m_compositetree = SVGUtility.readSVGDocument(is);
+
+          setSvgDocument(m_formfieldtree);
         }
         catch (IOException e) {
           e.printStackTrace();
@@ -105,8 +117,18 @@ public class FormFieldTreeForm extends AbstractForm {
           for (String fieldName : node.getCellForUpdate().getText().split(" ")) {
             if (fieldName.toLowerCase().startsWith(url_form)) {
               m_page.getTree().selectNode(node);
+              return;
             }
           }
+        }
+        if (url_form.equals("back")) {
+          setSvgDocument(m_formfieldtree);
+        }
+        else if (url_form.equals("valuefield")) {
+          setSvgDocument(m_valuefieldtree);
+        }
+        else if (url_form.equals("compositefield")) {
+          setSvgDocument(m_compositetree);
         }
       }
     }
