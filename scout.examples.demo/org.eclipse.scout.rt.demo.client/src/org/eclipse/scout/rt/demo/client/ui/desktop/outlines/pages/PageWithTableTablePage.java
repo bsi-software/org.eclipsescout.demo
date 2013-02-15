@@ -24,6 +24,7 @@ import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractSmartColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithTable;
 import org.eclipse.scout.rt.demo.client.services.lookup.CompanyTypeLookupCall;
+import org.eclipse.scout.rt.demo.client.ui.template.menu.AbstractViewSourceOnGitHubMenu;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
 import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
@@ -195,6 +196,25 @@ public class PageWithTableTablePage extends AbstractPageWithTable<PageWithTableT
       @Override
       protected Class<? extends LookupCall> getConfiguredLookupCall() {
         return CompanyTypeLookupCall.class;
+      }
+    }
+
+    @Order(10.0)
+    public class ViewSourceOnGitHubMenu extends AbstractViewSourceOnGitHubMenu {
+
+      @Override
+      protected boolean getConfiguredEmptySpaceAction() {
+        return true;
+      }
+
+      @Override
+      protected boolean getConfiguredSingleSelectionAction() {
+        return false;
+      }
+
+      @Override
+      protected Class<?> provideSourceClass() {
+        return PageWithTableTablePage.class;
       }
     }
   }

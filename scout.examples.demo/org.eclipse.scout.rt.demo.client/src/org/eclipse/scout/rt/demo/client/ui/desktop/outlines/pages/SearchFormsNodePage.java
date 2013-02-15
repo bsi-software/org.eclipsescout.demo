@@ -12,10 +12,12 @@ package org.eclipse.scout.rt.demo.client.ui.desktop.outlines.pages;
 
 import java.util.Collection;
 
+import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNodes;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.ISearchForm;
+import org.eclipse.scout.rt.demo.client.ui.template.menu.AbstractViewSourceOnGitHubMenu;
 import org.eclipse.scout.rt.shared.TEXTS;
 
 public class SearchFormsNodePage extends AbstractPageWithNodes {
@@ -60,5 +62,14 @@ public class SearchFormsNodePage extends AbstractPageWithNodes {
     pageList.add(searchFormTablePage11);
     SearchFormTablePage searchFormTablePage12 = new SearchFormTablePage(ISearchForm.VIEW_ID_NW, "North-West");
     pageList.add(searchFormTablePage12);
+  }
+
+  @Order(10.0)
+  public class ViewSourceOnGitHubMenu extends AbstractViewSourceOnGitHubMenu {
+
+    @Override
+    protected Class<?> provideSourceClass() {
+      return SearchFormTablePage.class;
+    }
   }
 }

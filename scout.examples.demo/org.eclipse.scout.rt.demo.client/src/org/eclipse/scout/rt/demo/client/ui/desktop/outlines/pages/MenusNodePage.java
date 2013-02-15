@@ -17,6 +17,7 @@ import org.eclipse.scout.rt.client.ui.action.menu.checkbox.AbstractCheckBoxMenu;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNodes;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
 import org.eclipse.scout.rt.demo.client.ui.forms.MenusForm;
+import org.eclipse.scout.rt.demo.client.ui.template.menu.AbstractViewSourceOnGitHubMenu;
 import org.eclipse.scout.rt.shared.TEXTS;
 
 public class MenusNodePage extends AbstractPageWithNodes {
@@ -56,11 +57,6 @@ public class MenusNodePage extends AbstractPageWithNodes {
   public class MenuWithTextMenu extends AbstractMenu {
 
     @Override
-    protected boolean getConfiguredEmptySpaceAction() {
-      return true;
-    }
-
-    @Override
     protected String getConfiguredText() {
       return TEXTS.get("MenuWithText");
     }
@@ -74,11 +70,6 @@ public class MenusNodePage extends AbstractPageWithNodes {
 
   @Order(20.0)
   public class MenuWithIconMenu extends AbstractMenu {
-
-    @Override
-    protected boolean getConfiguredEmptySpaceAction() {
-      return true;
-    }
 
     @Override
     protected String getConfiguredIconId() {
@@ -101,11 +92,6 @@ public class MenusNodePage extends AbstractPageWithNodes {
   public class CheckableMenu extends AbstractCheckBoxMenu {
 
     @Override
-    protected boolean getConfiguredEmptySpaceAction() {
-      return true;
-    }
-
-    @Override
     protected String getConfiguredText() {
       return TEXTS.get("CheckableMenu");
     }
@@ -121,11 +107,6 @@ public class MenusNodePage extends AbstractPageWithNodes {
 
   @Order(40.0)
   public class MenuWithMenusMenu extends AbstractMenu {
-
-    @Override
-    protected boolean getConfiguredEmptySpaceAction() {
-      return true;
-    }
 
     @Override
     protected String getConfiguredText() {
@@ -197,11 +178,6 @@ public class MenusNodePage extends AbstractPageWithNodes {
   public class MenuWithKeyStrokeMenu extends AbstractMenu {
 
     @Override
-    protected boolean getConfiguredEmptySpaceAction() {
-      return true;
-    }
-
-    @Override
     protected String getConfiguredKeyStroke() {
       return "m";
     }
@@ -215,6 +191,15 @@ public class MenusNodePage extends AbstractPageWithNodes {
     protected void execAction() throws ProcessingException {
       String menuname = this.getClass().getSimpleName();
       MessageBox.showOkMessage("Clicked on Menu", "You have clicked on \"" + TEXTS.get(menuname.substring(0, menuname.length() - 4)) + "\"", null);
+    }
+  }
+
+  @Order(60.0)
+  public class ViewSourceOnGitHubMenu extends AbstractViewSourceOnGitHubMenu {
+
+    @Override
+    protected Class<?> provideSourceClass() {
+      return MenusNodePage.class;
     }
   }
 }

@@ -21,6 +21,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
 import org.eclipse.scout.rt.demo.client.ui.forms.MenusForm.MainBox.MenusButton;
+import org.eclipse.scout.rt.demo.client.ui.template.menu.AbstractViewSourceOnGitHubMenu;
 import org.eclipse.scout.rt.shared.TEXTS;
 
 public class MenusForm extends AbstractForm implements IPageForm {
@@ -191,6 +192,15 @@ public class MenusForm extends AbstractForm implements IPageForm {
         protected void execAction() throws ProcessingException {
           String menuname = this.getClass().getSimpleName();
           MessageBox.showOkMessage("Clicked on Menu", "You have clicked on \"" + TEXTS.get(menuname.substring(0, menuname.length() - 4)) + "\"", null);
+        }
+      }
+
+      @Order(60.0)
+      public class ViewSourceOnGitHubMenu extends AbstractViewSourceOnGitHubMenu {
+
+        @Override
+        protected Class<?> provideSourceClass() {
+          return MenusForm.class;
         }
       }
     }

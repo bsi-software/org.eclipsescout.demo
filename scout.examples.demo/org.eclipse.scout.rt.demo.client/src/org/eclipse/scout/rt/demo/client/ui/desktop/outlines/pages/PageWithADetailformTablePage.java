@@ -17,6 +17,7 @@ import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithTable;
 import org.eclipse.scout.rt.demo.client.ui.forms.DetailForm;
+import org.eclipse.scout.rt.demo.client.ui.template.menu.AbstractViewSourceOnGitHubMenu;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
 
@@ -104,6 +105,25 @@ public class PageWithADetailformTablePage extends AbstractPageWithTable<PageWith
       @Override
       protected String getConfiguredHeaderText() {
         return TEXTS.get("Symbol");
+      }
+    }
+
+    @Order(10.0)
+    public class ViewSourceOnGitHubMenu extends AbstractViewSourceOnGitHubMenu {
+
+      @Override
+      protected boolean getConfiguredEmptySpaceAction() {
+        return true;
+      }
+
+      @Override
+      protected boolean getConfiguredSingleSelectionAction() {
+        return false;
+      }
+
+      @Override
+      protected Class<?> provideSourceClass() {
+        return PageWithADetailformTablePage.class;
       }
     }
   }

@@ -12,6 +12,7 @@ package org.eclipse.scout.rt.demo.client.ui.desktop.outlines.pages;
 
 import java.util.Collection;
 
+import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNodes;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
@@ -47,6 +48,7 @@ import org.eclipse.scout.rt.demo.client.ui.forms.TableFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.TreeBoxForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.TreeFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.WrappedFormFieldForm;
+import org.eclipse.scout.rt.demo.client.ui.template.menu.AbstractViewSourceOnGitHubMenu;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
 
@@ -138,5 +140,14 @@ public class FormFieldsNodePage extends AbstractPageWithNodes {
     setDetailForm(form);
     form.startPageForm();
     setTableVisible(false);
+  }
+
+  @Order(10.0)
+  public class ViewSourceOnGitHubMenu extends AbstractViewSourceOnGitHubMenu {
+
+    @Override
+    protected Class<?> provideSourceClass() {
+      return FormFieldTreeForm.class;
+    }
   }
 }
