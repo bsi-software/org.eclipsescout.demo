@@ -10,6 +10,8 @@
  ******************************************************************************/
 package org.eclipse.scout.rt.demo.client;
 
+import java.util.Locale;
+
 import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
@@ -43,6 +45,8 @@ public class ClientSession extends AbstractClientSession {
 
   @Override
   public void execLoadSession() throws ProcessingException {
+    setLocale(Locale.ENGLISH);
+
     CODES.getAllCodeTypes(org.eclipse.scout.rt.demo.shared.Activator.PLUGIN_ID);
 
     setDesktop(new Desktop());

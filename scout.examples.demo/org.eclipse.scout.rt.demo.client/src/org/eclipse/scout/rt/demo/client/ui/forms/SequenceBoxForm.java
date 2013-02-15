@@ -23,14 +23,15 @@ import org.eclipse.scout.rt.client.ui.form.fields.integerfield.AbstractIntegerFi
 import org.eclipse.scout.rt.client.ui.form.fields.labelfield.AbstractLabelField;
 import org.eclipse.scout.rt.client.ui.form.fields.sequencebox.AbstractSequenceBox;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
-import org.eclipse.scout.rt.demo.client.ui.forms.SequenceBoxForm.MainBox.CloseButton;
-import org.eclipse.scout.rt.demo.client.ui.forms.SequenceBoxForm.MainBox.RandomValueBox;
-import org.eclipse.scout.rt.demo.client.ui.forms.SequenceBoxForm.MainBox.RandomValueBox.fromField;
-import org.eclipse.scout.rt.demo.client.ui.forms.SequenceBoxForm.MainBox.RandomValueBox.toField;
-import org.eclipse.scout.rt.demo.client.ui.forms.SequenceBoxForm.MainBox.SequenceBox;
-import org.eclipse.scout.rt.demo.client.ui.forms.SequenceBoxForm.MainBox.SequenceBox.OkButton;
-import org.eclipse.scout.rt.demo.client.ui.forms.SequenceBoxForm.MainBox.SequenceBox.SomeFieldsHaventAValueField;
-import org.eclipse.scout.rt.demo.client.ui.forms.SequenceBoxForm.MainBox.SequenceBox.WhichNumberWillTheComputerFindField;
+import org.eclipse.scout.rt.demo.client.ui.forms.SequenceBoxForm.MainBox.GroupBox;
+import org.eclipse.scout.rt.demo.client.ui.forms.SequenceBoxForm.MainBox.GroupBox.CloseButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.SequenceBoxForm.MainBox.GroupBox.RandomValueBox;
+import org.eclipse.scout.rt.demo.client.ui.forms.SequenceBoxForm.MainBox.GroupBox.RandomValueBox.fromField;
+import org.eclipse.scout.rt.demo.client.ui.forms.SequenceBoxForm.MainBox.GroupBox.RandomValueBox.toField;
+import org.eclipse.scout.rt.demo.client.ui.forms.SequenceBoxForm.MainBox.GroupBox.SequenceBox;
+import org.eclipse.scout.rt.demo.client.ui.forms.SequenceBoxForm.MainBox.GroupBox.SequenceBox.OkButton;
+import org.eclipse.scout.rt.demo.client.ui.forms.SequenceBoxForm.MainBox.GroupBox.SequenceBox.SomeFieldsHaventAValueField;
+import org.eclipse.scout.rt.demo.client.ui.forms.SequenceBoxForm.MainBox.GroupBox.SequenceBox.WhichNumberWillTheComputerFindField;
 import org.eclipse.scout.rt.shared.TEXTS;
 
 public class SequenceBoxForm extends AbstractForm implements IPageForm {
@@ -56,6 +57,10 @@ public class SequenceBoxForm extends AbstractForm implements IPageForm {
 
   public RandomValueBox getRandomValueBox() {
     return getFieldByClass(RandomValueBox.class);
+  }
+
+  public GroupBox getGroupBox() {
+    return getFieldByClass(GroupBox.class);
   }
 
   public MainBox getMainBox() {
@@ -90,107 +95,111 @@ public class SequenceBoxForm extends AbstractForm implements IPageForm {
   public class MainBox extends AbstractGroupBox {
 
     @Order(10.0)
-    public class RandomValueBox extends AbstractSequenceBox {
-
-      @Override
-      protected int getConfiguredGridW() {
-        return 2;
-      }
-
-      @Override
-      protected String getConfiguredLabel() {
-        return TEXTS.get("RandomValue");
-      }
+    public class GroupBox extends AbstractGroupBox {
 
       @Order(10.0)
-      public class fromField extends AbstractIntegerField {
+      public class RandomValueBox extends AbstractSequenceBox {
+
+        @Override
+        protected int getConfiguredGridW() {
+          return 2;
+        }
 
         @Override
         protected String getConfiguredLabel() {
-          return TEXTS.get("from");
+          return TEXTS.get("RandomValue");
+        }
+
+        @Order(10.0)
+        public class fromField extends AbstractIntegerField {
+
+          @Override
+          protected String getConfiguredLabel() {
+            return TEXTS.get("from");
+          }
+        }
+
+        @Order(20.0)
+        public class toField extends AbstractIntegerField {
+
+          @Override
+          protected String getConfiguredLabel() {
+            return TEXTS.get("to");
+          }
         }
       }
 
       @Order(20.0)
-      public class toField extends AbstractIntegerField {
+      public class SequenceBox extends AbstractSequenceBox {
 
         @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("to");
-        }
-      }
-    }
-
-    @Order(20.0)
-    public class SequenceBox extends AbstractSequenceBox {
-
-      @Override
-      protected boolean getConfiguredAutoCheckFromTo() {
-        return false;
-      }
-
-      @Override
-      protected int getConfiguredGridW() {
-        return 2;
-      }
-
-      @Order(10.0)
-      public class WhichNumberWillTheComputerFindField extends AbstractIntegerField {
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("WhichNumberWillTheComputerFind");
-        }
-      }
-
-      @Order(20.0)
-      public class OkButton extends AbstractButton {
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("OkButton");
-        }
-
-        @Override
-        protected boolean getConfiguredProcessButton() {
+        protected boolean getConfiguredAutoCheckFromTo() {
           return false;
         }
 
         @Override
-        protected void execClickAction() throws ProcessingException {
-          if (getfromField().getValue() == null || gettoField().getValue() == null || getWhichNumberWillTheComputerFindField().getValue() == null) {
-            getSomeFieldsHaventAValueField().setVisible(true);
+        protected int getConfiguredGridW() {
+          return 2;
+        }
+
+        @Order(10.0)
+        public class WhichNumberWillTheComputerFindField extends AbstractIntegerField {
+
+          @Override
+          protected String getConfiguredLabel() {
+            return TEXTS.get("WhichNumberWillTheComputerFind");
           }
-          else {
-            getSomeFieldsHaventAValueField().setVisible(false);
-            int value = new Random().nextInt(gettoField().getValue() - getfromField().getValue() + 1) + getfromField().getValue();
-            if (value == getWhichNumberWillTheComputerFindField().getValue()) {
-              MessageBox.showOkMessage("Correct", "Correct\nThe number is " + value, null);
+        }
+
+        @Order(20.0)
+        public class OkButton extends AbstractButton {
+
+          @Override
+          protected String getConfiguredLabel() {
+            return TEXTS.get("OkButton");
+          }
+
+          @Override
+          protected boolean getConfiguredProcessButton() {
+            return false;
+          }
+
+          @Override
+          protected void execClickAction() throws ProcessingException {
+            if (getfromField().getValue() == null || gettoField().getValue() == null || getWhichNumberWillTheComputerFindField().getValue() == null) {
+              getSomeFieldsHaventAValueField().setVisible(true);
             }
             else {
-              MessageBox.showOkMessage("Wrong", "Wrong\nThe number is " + value, null);
+              getSomeFieldsHaventAValueField().setVisible(false);
+              int value = new Random().nextInt(gettoField().getValue() - getfromField().getValue() + 1) + getfromField().getValue();
+              if (value == getWhichNumberWillTheComputerFindField().getValue()) {
+                MessageBox.showOkMessage("Correct", "Correct\nThe number is " + value, null);
+              }
+              else {
+                MessageBox.showOkMessage("Wrong", "Wrong\nThe number is " + value, null);
+              }
             }
+          }
+        }
+
+        @Order(30.0)
+        public class SomeFieldsHaventAValueField extends AbstractLabelField {
+
+          @Override
+          protected String getConfiguredLabel() {
+            return TEXTS.get("SomeFieldsHaventAValue");
+          }
+
+          @Override
+          protected boolean getConfiguredVisible() {
+            return false;
           }
         }
       }
 
       @Order(30.0)
-      public class SomeFieldsHaventAValueField extends AbstractLabelField {
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("SomeFieldsHaventAValue");
-        }
-
-        @Override
-        protected boolean getConfiguredVisible() {
-          return false;
-        }
+      public class CloseButton extends AbstractCloseButton {
       }
-    }
-
-    @Order(30.0)
-    public class CloseButton extends AbstractCloseButton {
     }
   }
 
