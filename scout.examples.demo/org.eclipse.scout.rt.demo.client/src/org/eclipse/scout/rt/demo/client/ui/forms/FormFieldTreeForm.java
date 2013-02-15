@@ -16,6 +16,7 @@ import java.net.URL;
 
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractColumn;
@@ -28,7 +29,8 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractLinkButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
 import org.eclipse.scout.rt.demo.client.Activator;
-import org.eclipse.scout.rt.demo.client.ui.forms.FormFieldTreeForm.MainBox.FormFieldListField;
+import org.eclipse.scout.rt.demo.client.ui.desktop.outlines.pages.FormPage;
+import org.eclipse.scout.rt.demo.client.ui.forms.FormFieldTreeForm.MainBox.FormFieldTableField;
 import org.eclipse.scout.rt.demo.client.ui.forms.FormFieldTreeForm.MainBox.FormFieldTreeField;
 import org.eclipse.scout.rt.demo.client.ui.forms.FormFieldTreeForm.MainBox.ShowTableButton;
 import org.eclipse.scout.rt.shared.TEXTS;
@@ -49,8 +51,8 @@ public class FormFieldTreeForm extends AbstractForm {
     startInternal(new PageFormHandler());
   }
 
-  public FormFieldListField getFormFieldListField() {
-    return getFieldByClass(FormFieldListField.class);
+  public FormFieldTableField getFormFieldTableField() {
+    return getFieldByClass(FormFieldTableField.class);
   }
 
   public FormFieldTreeField getFormFieldTreeField() {
@@ -144,7 +146,7 @@ public class FormFieldTreeForm extends AbstractForm {
     }
 
     @Order(20.0)
-    public class FormFieldListField extends AbstractTableField {
+    public class FormFieldTableField extends AbstractTableField {
 
       @Override
       protected int getConfiguredGridH() {
@@ -226,6 +228,34 @@ public class FormFieldTreeForm extends AbstractForm {
           }
         }
 
+        @Order(10.0)
+        public class OpenInADialogMenu extends AbstractMenu {
+
+          @Override
+          protected String getConfiguredText() {
+            return TEXTS.get("OpenInADialog");
+          }
+
+          @Override
+          protected void execAction() throws ProcessingException {
+            getTreeNodeColumn().getSelectedValue().getMenu(FormPage.OpenInADialogMenu.class).doAction();
+          }
+        }
+
+        @Order(20.0)
+        public class ViewSourceOnGitHubMenu extends AbstractMenu {
+
+          @Override
+          protected String getConfiguredText() {
+            return TEXTS.get("ViewSourceOnGitHub");
+          }
+
+          @Override
+          protected void execAction() throws ProcessingException {
+            getTreeNodeColumn().getSelectedValue().getMenu(FormPage.ViewSourceOnGitHubMenu.class).doAction();
+          }
+        }
+
       }
     }
 
@@ -241,13 +271,13 @@ public class FormFieldTreeForm extends AbstractForm {
       protected void execClickAction() throws ProcessingException {
         if (getFormFieldTreeField().isVisible()) {
           getFormFieldTreeField().setVisible(false);
-          getFormFieldListField().setVisible(true);
-          getFormFieldListField().reloadTableData();
+          getFormFieldTableField().setVisible(true);
+          getFormFieldTableField().reloadTableData();
           setLabel(TEXTS.get("ShowHierarchy"));
         }
         else {
           getFormFieldTreeField().setVisible(true);
-          getFormFieldListField().setVisible(false);
+          getFormFieldTableField().setVisible(false);
           setLabel(TEXTS.get("ShowTable"));
         }
       }

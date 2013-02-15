@@ -39,6 +39,7 @@ import org.eclipse.scout.rt.demo.client.ui.forms.PageFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.PlannerFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.RadioButtonGroupForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.SVGFieldForm;
+import org.eclipse.scout.rt.demo.client.ui.forms.SequenceBoxForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.SmartFieldForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.SplitBoxForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.StatusForm;
@@ -110,24 +111,26 @@ public class FormFieldsNodePage extends AbstractPageWithNodes {
     pageList.add(formPage18);
     FormPage formPage19 = new FormPage(SmartFieldForm.class);
     pageList.add(formPage19);
-    FormPage formPage20 = new FormPage(SplitBoxForm.class);
+    FormPage formPage20 = new FormPage(SequenceBoxForm.class);
     pageList.add(formPage20);
-    FormPage formPage21 = new FormPage(StatusForm.class);
+    FormPage formPage21 = new FormPage(SplitBoxForm.class);
     pageList.add(formPage21);
-    FormPage formPage22 = new FormPage(StringFieldForm.class);
+    FormPage formPage22 = new FormPage(StatusForm.class);
     pageList.add(formPage22);
-    FormPage formPage23 = new FormPage(SVGFieldForm.class);
+    FormPage formPage23 = new FormPage(StringFieldForm.class);
     pageList.add(formPage23);
-    FormPage formPage24 = new FormPage(TabBoxForm.class);
+    FormPage formPage24 = new FormPage(SVGFieldForm.class);
     pageList.add(formPage24);
-    FormPage formPage25 = new FormPage(TableFieldForm.class);
+    FormPage formPage25 = new FormPage(TabBoxForm.class);
     pageList.add(formPage25);
-    FormPage formPage26 = new FormPage(TreeBoxForm.class);
+    FormPage formPage26 = new FormPage(TableFieldForm.class);
     pageList.add(formPage26);
-    FormPage formPage27 = new FormPage(TreeFieldForm.class);
+    FormPage formPage27 = new FormPage(TreeBoxForm.class);
     pageList.add(formPage27);
-    FormPage formPage28 = new FormPage(WrappedFormFieldForm.class);
+    FormPage formPage28 = new FormPage(TreeFieldForm.class);
     pageList.add(formPage28);
+    FormPage formPage29 = new FormPage(WrappedFormFieldForm.class);
+    pageList.add(formPage29);
   }
 
   @Override
