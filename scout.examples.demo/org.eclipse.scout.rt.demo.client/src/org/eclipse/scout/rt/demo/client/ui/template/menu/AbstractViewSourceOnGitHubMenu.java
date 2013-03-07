@@ -11,10 +11,11 @@
 package org.eclipse.scout.rt.demo.client.ui.template.menu;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.rt.client.services.common.shell.DefaultShellService;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.demo.client.ClientSession;
 import org.eclipse.scout.rt.shared.TEXTS;
+import org.eclipse.scout.rt.shared.services.common.shell.IShellService;
+import org.eclipse.scout.service.SERVICES;
 
 public abstract class AbstractViewSourceOnGitHubMenu extends AbstractMenu {
 
@@ -30,7 +31,7 @@ public abstract class AbstractViewSourceOnGitHubMenu extends AbstractMenu {
         "/scout.examples.demo/org.eclipse.scout.rt.demo.client/src/" +
         provideSourceClass().getCanonicalName().replace(".", "/") + ".java";
 
-    new DefaultShellService().shellOpen(linkaddress);
+    SERVICES.getService(IShellService.class).shellOpen(linkaddress);
   }
 
   abstract protected Class<?> provideSourceClass();
