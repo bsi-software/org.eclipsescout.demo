@@ -68,7 +68,7 @@
             class="org.eclipse.scout.rt.server.ResourceServlet">
          <init-param
                name="bundle-name"
-               value="minifigcreator.server">
+               value="org.eclipsescout.demo.minifigcreator.server">
          </init-param>
          <init-param
                name="bundle-path"
