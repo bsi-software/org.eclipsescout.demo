@@ -33,8 +33,6 @@
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>target-platform-configuration</artifactId>
         <configuration>
-          <resolver>p2</resolver>
-          <pomDependencies>consider</pomDependencies>
           <target>
             <artifact>
               <groupId>org.eclipsescout.demo</groupId>
