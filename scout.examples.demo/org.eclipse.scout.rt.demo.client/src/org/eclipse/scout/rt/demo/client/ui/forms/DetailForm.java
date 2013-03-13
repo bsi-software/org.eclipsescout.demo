@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2013 BSI Business Systems Integration AG.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     BSI Business Systems Integration AG - initial API and implementation
+ ******************************************************************************/
 package org.eclipse.scout.rt.demo.client.ui.forms;
 
 import org.eclipse.scout.commons.annotations.Order;
@@ -19,18 +29,6 @@ public class DetailForm extends AbstractForm {
     super();
   }
 
-  public ValueHighField getValueHighField() {
-    return getFieldByClass(ValueHighField.class);
-  }
-
-  public ValueLowField getValueLowField() {
-    return getFieldByClass(ValueLowField.class);
-  }
-
-  public ValueOpenField getValueOpenField() {
-    return getFieldByClass(ValueOpenField.class);
-  }
-
   public void startNew() throws ProcessingException {
     startInternal(new NewHandler());
   }
@@ -39,12 +37,24 @@ public class DetailForm extends AbstractForm {
     return getFieldByClass(GroupBox.class);
   }
 
+  public MainBox getMainBox() {
+    return getFieldByClass(MainBox.class);
+  }
+
+  public ValueHighField getValueHighField() {
+    return getFieldByClass(ValueHighField.class);
+  }
+
   public ValueLastField getValueLastField() {
     return getFieldByClass(ValueLastField.class);
   }
 
-  public MainBox getMainBox() {
-    return getFieldByClass(MainBox.class);
+  public ValueLowField getValueLowField() {
+    return getFieldByClass(ValueLowField.class);
+  }
+
+  public ValueOpenField getValueOpenField() {
+    return getFieldByClass(ValueOpenField.class);
   }
 
   @Order(10.0)

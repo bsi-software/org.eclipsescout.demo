@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2013 BSI Business Systems Integration AG.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     BSI Business Systems Integration AG - initial API and implementation
+ ******************************************************************************/
 package org.eclipse.scout.rt.demo.client.ui.desktop.outlines.pages;
 
 import org.eclipse.scout.commons.annotations.Order;
@@ -7,6 +17,7 @@ import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithTable;
 import org.eclipse.scout.rt.demo.client.ui.forms.DetailForm;
+import org.eclipse.scout.rt.demo.client.ui.template.menu.AbstractViewSourceOnGitHubMenu;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
 
@@ -24,6 +35,11 @@ public class PageWithADetailformTablePage extends AbstractPageWithTable<PageWith
   @Override
   protected String getConfiguredIconId() {
     return org.eclipse.scout.rt.shared.AbstractIcons.TreeNodeOpen;
+  }
+
+  @Override
+  protected boolean getConfiguredLeaf() {
+    return true;
   }
 
   @Override
@@ -89,6 +105,25 @@ public class PageWithADetailformTablePage extends AbstractPageWithTable<PageWith
       @Override
       protected String getConfiguredHeaderText() {
         return TEXTS.get("Symbol");
+      }
+    }
+
+    @Order(10.0)
+    public class ViewSourceOnGitHubMenu extends AbstractViewSourceOnGitHubMenu {
+
+      @Override
+      protected boolean getConfiguredEmptySpaceAction() {
+        return true;
+      }
+
+      @Override
+      protected boolean getConfiguredSingleSelectionAction() {
+        return false;
+      }
+
+      @Override
+      protected Class<?> provideSourceClass() {
+        return PageWithADetailformTablePage.class;
       }
     }
   }

@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2013 BSI Business Systems Integration AG.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     BSI Business Systems Integration AG - initial API and implementation
+ ******************************************************************************/
 package org.eclipse.scout.rt.demo.client.ui.forms;
 
 import org.eclipse.scout.commons.annotations.Order;
@@ -7,12 +17,12 @@ import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.listbox.AbstractListBox;
+import org.eclipse.scout.rt.demo.client.services.lookup.CompanyTypeLookupCall;
 import org.eclipse.scout.rt.demo.client.ui.forms.ListBoxForm.MainBox.CloseButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.ListBoxForm.MainBox.GroupBox;
 import org.eclipse.scout.rt.demo.client.ui.forms.ListBoxForm.MainBox.GroupBox.ListBoxField;
-import org.eclipse.scout.rt.demo.shared.services.code.CountryCodeType;
 import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
+import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 
 public class ListBoxForm extends AbstractForm implements IPageForm {
 
@@ -35,6 +45,7 @@ public class ListBoxForm extends AbstractForm implements IPageForm {
     startInternal(new PageFormHandler());
   }
 
+  @Override
   public CloseButton getCloseButton() {
     return getFieldByClass(CloseButton.class);
   }
@@ -76,8 +87,8 @@ public class ListBoxForm extends AbstractForm implements IPageForm {
         }
 
         @Override
-        protected Class<? extends ICodeType> getConfiguredCodeType() {
-          return CountryCodeType.class;
+        protected Class<? extends LookupCall> getConfiguredLookupCall() {
+          return CompanyTypeLookupCall.class;
         }
       }
     }

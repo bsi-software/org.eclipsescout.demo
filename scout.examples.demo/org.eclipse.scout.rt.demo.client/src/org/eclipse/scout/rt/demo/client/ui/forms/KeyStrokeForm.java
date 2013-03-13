@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2013 BSI Business Systems Integration AG.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     BSI Business Systems Integration AG - initial API and implementation
+ ******************************************************************************/
 package org.eclipse.scout.rt.demo.client.ui.forms;
 
 import org.eclipse.scout.commons.annotations.Order;
@@ -37,12 +47,13 @@ public class KeyStrokeForm extends AbstractForm implements IPageForm {
     startInternal(new PageFormHandler());
   }
 
-  public CloseButton getCloseButton() {
-    return getFieldByClass(CloseButton.class);
-  }
-
   public ChangeValueWithCtrlshiftcField getChangeValueWithCtrlshiftcField() {
     return getFieldByClass(ChangeValueWithCtrlshiftcField.class);
+  }
+
+  @Override
+  public CloseButton getCloseButton() {
+    return getFieldByClass(CloseButton.class);
   }
 
   public CtrlshiftdForFocusField getCtrlshiftdForFocusField() {
@@ -76,21 +87,21 @@ public class KeyStrokeForm extends AbstractForm implements IPageForm {
         }
       }
 
-      @Order(20.0)
-      public class ChangeValueWithCtrlshiftcField extends AbstractCheckBox {
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("ChangeValueWithCtrlshiftc");
-        }
-      }
-
       @Order(15.0)
       public class CtrlshiftdForFocusField extends AbstractStringField {
 
         @Override
         protected String getConfiguredLabel() {
           return TEXTS.get("CtrlshiftdForFocus");
+        }
+      }
+
+      @Order(20.0)
+      public class ChangeValueWithCtrlshiftcField extends AbstractCheckBox {
+
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("ChangeValueWithCtrlshiftc");
         }
       }
     }
@@ -143,6 +154,7 @@ public class KeyStrokeForm extends AbstractForm implements IPageForm {
   }
 
   public class PageFormHandler extends AbstractFormHandler {
+
     @Override
     public void execLoad() throws ProcessingException {
     }

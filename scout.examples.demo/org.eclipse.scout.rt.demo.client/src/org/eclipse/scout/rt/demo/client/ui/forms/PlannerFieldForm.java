@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2013 BSI Business Systems Integration AG.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     BSI Business Systems Integration AG - initial API and implementation
+ ******************************************************************************/
 package org.eclipse.scout.rt.demo.client.ui.forms;
 
 import java.util.ArrayList;
@@ -17,9 +27,11 @@ import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
+import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.plannerfield.AbstractPlannerField;
 import org.eclipse.scout.rt.client.ui.form.fields.tabbox.AbstractTabBox;
+import org.eclipse.scout.rt.demo.client.ui.forms.PlannerFieldForm.MainBox.CloseButton;
 import org.eclipse.scout.rt.demo.client.ui.forms.PlannerFieldForm.MainBox.TabBox;
 import org.eclipse.scout.rt.demo.client.ui.forms.PlannerFieldForm.MainBox.TabBox.PlannerField1Box;
 import org.eclipse.scout.rt.demo.client.ui.forms.PlannerFieldForm.MainBox.TabBox.PlannerField1Box.Planner1Field;
@@ -48,6 +60,11 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
   @Override
   public void startPageForm() throws ProcessingException {
     startInternal(new PageFormHandler());
+  }
+
+  @Override
+  public CloseButton getCloseButton() {
+    return getFieldByClass(CloseButton.class);
   }
 
   public DayPlannerField getDayPlannerField() {
@@ -85,7 +102,12 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
   @Order(10.0)
   public class MainBox extends AbstractGroupBox {
 
-    @Order(20.0)
+    @Override
+    protected int getConfiguredWidthInPixel() {
+      return 1200;
+    }
+
+    @Order(10.0)
     public class TabBox extends AbstractTabBox {
 
       @Order(10.0)
@@ -101,12 +123,12 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
 
           @Override
           protected int getConfiguredGridH() {
-            return 15;
+            return 30;
           }
 
           @Override
           protected int getConfiguredGridW() {
-            return 8;
+            return 2;
           }
 
           @Override
@@ -180,16 +202,17 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
               loadActivityMapDataOfSelectedRecources();
             }
 
-            public ResourceIdColumn getResourceIdColumn() {
-              return getColumnSet().getColumnByClass(ResourceIdColumn.class);
-            }
-
             public NameColumn getNameColumn() {
               return getColumnSet().getColumnByClass(NameColumn.class);
             }
 
+            public ResourceIdColumn getResourceIdColumn() {
+              return getColumnSet().getColumnByClass(ResourceIdColumn.class);
+            }
+
             @Order(10.0f)
             public class ResourceIdColumn extends AbstractLongColumn {
+
               @Override
               protected boolean getConfiguredPrimaryKey() {
                 return true;
@@ -225,7 +248,6 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
         public class WeekPlannerField extends AbstractPlannerField<WeekPlannerField.ResourceTable, WeekPlannerField.ActivityMap> {
 
           private Date base = DateUtility.parse("20120717", "yyyyMMdd");
-
           private Object[][] weekTestcases = new Object[][]{
               {true, base, base, "start/end date same, at the beginning of the displayed range."},
               {true, DateUtility.addDays(base, 7), DateUtility.addDays(base, 7), "start/end date same, not at the beginning of the range."},
@@ -237,7 +259,7 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
 
           @Override
           protected int getConfiguredGridH() {
-            return 5;
+            return 10;
           }
 
           @Override
@@ -331,15 +353,14 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
             public class IdColumn extends AbstractLongColumn {
 
               @Override
-              protected boolean getConfiguredPrimaryKey() {
-                return true;
-              }
-
-              @Override
               protected boolean getConfiguredDisplayable() {
                 return false;
               }
 
+              @Override
+              protected boolean getConfiguredPrimaryKey() {
+                return true;
+              }
             }
 
             @Order(20.0)
@@ -366,7 +387,6 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
         public class DayPlannerField extends AbstractPlannerField<DayPlannerField.ResourceTable, DayPlannerField.ActivityMap> {
 
           private Date base = DateUtility.parse("20120717", "yyyyMMdd");
-
           private Object[][] dayTestcases = new Object[][]{
               {true, base, base, "start/end date same, at the beginning of the displayed range."},
               {true, DateUtility.addDays(base, 7), DateUtility.addDays(base, 7), "start/end date same, not at the beginning of the range."},
@@ -378,7 +398,7 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
 
           @Override
           protected int getConfiguredGridH() {
-            return 5;
+            return 10;
           }
 
           @Override
@@ -472,15 +492,14 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
             public class IdColumn extends AbstractLongColumn {
 
               @Override
-              protected boolean getConfiguredPrimaryKey() {
-                return true;
-              }
-
-              @Override
               protected boolean getConfiguredDisplayable() {
                 return false;
               }
 
+              @Override
+              protected boolean getConfiguredPrimaryKey() {
+                return true;
+              }
             }
 
             @Order(20.0)
@@ -507,9 +526,7 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
         public class IntradayPlannerField extends AbstractPlannerField<IntradayPlannerField.ResourceTable, IntradayPlannerField.ActivityMap> {
 
           private Date base = DateUtility.parse("20120717", "yyyyMMdd");
-
           private Date intradayBase = DateUtility.parse("20120717 08:00", "yyyyMMdd HH:mm"); //a monday
-
           private Object[][] intradayTestcases = new Object[][]{
               {true, intradayBase, intradayBase, "start/end date same, at the beginning of the displayed range."},
               {true, DateUtility.addHours(intradayBase, 1), DateUtility.addHours(intradayBase, 1), "start/end date same, not at the beginning of the range."},
@@ -524,7 +541,7 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
 
           @Override
           protected int getConfiguredGridH() {
-            return 5;
+            return 10;
           }
 
           @Override
@@ -618,15 +635,14 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
             public class IdColumn extends AbstractLongColumn {
 
               @Override
-              protected boolean getConfiguredPrimaryKey() {
-                return true;
-              }
-
-              @Override
               protected boolean getConfiguredDisplayable() {
                 return false;
               }
 
+              @Override
+              protected boolean getConfiguredPrimaryKey() {
+                return true;
+              }
             }
 
             @Order(20.0)
@@ -648,10 +664,12 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
           public class ActivityMap extends AbstractActivityMap {
           }
         }
-
       }
     }
 
+    @Order(20.0)
+    public class CloseButton extends AbstractCloseButton {
+    }
   }
 
   public class PageFormHandler extends AbstractFormHandler {

@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2013 BSI Business Systems Integration AG.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     BSI Business Systems Integration AG - initial API and implementation
+ ******************************************************************************/
 package org.eclipse.scout.rt.demo.client.ui.forms;
 
 import org.eclipse.scout.commons.annotations.Order;
@@ -41,6 +51,11 @@ public class MessageBoxesForm extends AbstractForm implements IPageForm {
     startInternal(new PageFormHandler());
   }
 
+  @Override
+  public CloseButton getCloseButton() {
+    return getFieldByClass(CloseButton.class);
+  }
+
   public DeleteConfirmationMessageButton getDeleteConfirmationMessageButton() {
     return getFieldByClass(DeleteConfirmationMessageButton.class);
   }
@@ -67,10 +82,6 @@ public class MessageBoxesForm extends AbstractForm implements IPageForm {
 
   public ProcessingExceptionButton getProcessingExceptionButton() {
     return getFieldByClass(ProcessingExceptionButton.class);
-  }
-
-  public CloseButton getCloseButton() {
-    return getFieldByClass(CloseButton.class);
   }
 
   public VetoExceptionButton getVetoExceptionButton() {
@@ -156,6 +167,11 @@ public class MessageBoxesForm extends AbstractForm implements IPageForm {
     public class MessageBoxWithHiddenTextButton extends AbstractLinkButton {
 
       @Override
+      protected boolean getConfiguredEnabled() {
+        return UserAgentUtility.isRichClient();
+      }
+
+      @Override
       protected int getConfiguredGridW() {
         return 2;
       }
@@ -171,13 +187,8 @@ public class MessageBoxesForm extends AbstractForm implements IPageForm {
       }
 
       @Override
-      protected boolean getConfiguredEnabled() {
-        return UserAgentUtility.isRichClient();
-      }
-
-      @Override
       protected void execClickAction() throws ProcessingException {
-        MessageBox msgbox = new MessageBox("MessageBox with hidden text", "This MessageBox has a hidden text", "click on copy or press ctrl+c to get the hidden text in your clipboard", TEXTS.get("YesButton"), TEXTS.get("NoButton"), TEXTS.get("CancelButton"), TEXTS.get("Lorem"), null);
+        MessageBox msgbox = new MessageBox("MessageBox with hidden text", "This MessageBox has a hidden text", "click on copy or press ctrl+c to get the hidden text in your clipboard", TEXTS.get("YesButton"), TEXTS.get("NoButton"), TEXTS.get("CloseButton"), TEXTS.get("Lorem"), null);
         msgbox.startMessageBox();
       }
     }

@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2013 BSI Business Systems Integration AG.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     BSI Business Systems Integration AG - initial API and implementation
+ ******************************************************************************/
 package org.eclipse.scout.rt.demo.client.ui.forms;
 
 import java.io.File;
@@ -56,6 +66,7 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(ChooseAnImageField.class);
   }
 
+  @Override
   public CloseButton getCloseButton() {
     return getFieldByClass(CloseButton.class);
   }
@@ -106,6 +117,11 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
         public class ChooseAnImageField extends AbstractFileChooserField {
 
           @Override
+          protected String[] getConfiguredFileExtensions() {
+            return new String[]{"png", "bmp", "jpg", "jpeg", "gif"};
+          }
+
+          @Override
           protected String getConfiguredLabel() {
             return TEXTS.get("ChooseAnImage");
           }
@@ -113,11 +129,6 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
           @Override
           protected boolean getConfiguredTypeLoad() {
             return true;
-          }
-
-          @Override
-          protected String[] getConfiguredFileExtensions() {
-            return new String[]{"png", "bmp", "jpg", "jpeg", "gif"};
           }
         }
 
@@ -148,6 +159,11 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
         public class SelectAFolderField extends AbstractFileChooserField {
 
           @Override
+          protected boolean getConfiguredEnabled() {
+            return UserAgentUtility.isRichClient();
+          }
+
+          @Override
           protected boolean getConfiguredFolderMode() {
             return true;
           }
@@ -165,11 +181,6 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
           @Override
           protected boolean getConfiguredTypeLoad() {
             return true;
-          }
-
-          @Override
-          protected boolean getConfiguredEnabled() {
-            return UserAgentUtility.isRichClient();
           }
 
           @Override
@@ -208,14 +219,6 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
           @Order(10.0)
           public class Table extends AbstractTable {
 
-            public FileNameColumn getFileNameColumn() {
-              return getColumnSet().getColumnByClass(FileNameColumn.class);
-            }
-
-            public PathColumn getPathColumn() {
-              return getColumnSet().getColumnByClass(PathColumn.class);
-            }
-
             @Override
             protected boolean getConfiguredAutoResizeColumns() {
               return true;
@@ -223,6 +226,14 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
 
             public FileColumn getFileColumn() {
               return getColumnSet().getColumnByClass(FileColumn.class);
+            }
+
+            public FileNameColumn getFileNameColumn() {
+              return getColumnSet().getColumnByClass(FileNameColumn.class);
+            }
+
+            public PathColumn getPathColumn() {
+              return getColumnSet().getColumnByClass(PathColumn.class);
             }
 
             @Order(10.0)
@@ -298,7 +309,6 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
             }
           }
         }
-
       }
     }
 

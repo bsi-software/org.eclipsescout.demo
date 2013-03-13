@@ -1,16 +1,27 @@
+/*******************************************************************************
+ * Copyright (c) 2013 BSI Business Systems Integration AG.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     BSI Business Systems Integration AG - initial API and implementation
+ ******************************************************************************/
 package org.eclipse.scout.rt.demo.client.ui.wizards;
 
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.form.fields.GridData;
-import org.eclipse.scout.rt.client.ui.wizard.AbstractWizard;
 import org.eclipse.scout.rt.client.ui.wizard.AbstractWizardStep;
+import org.eclipse.scout.rt.client.ui.wizard.DefaultWizardContainerForm;
 import org.eclipse.scout.rt.client.ui.wizard.IWizardContainerForm;
+import org.eclipse.scout.rt.client.ui.wizard.IWizardStep;
 import org.eclipse.scout.rt.demo.client.ui.forms.DynamicFormWizardChooseAForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.IPageForm;
 import org.eclipse.scout.rt.shared.TEXTS;
 
-public class DynamicFormWizard extends AbstractWizard {
+public class DynamicFormWizard extends AbstractPageWizard {
 
   public DynamicFormWizard() {
     super();
@@ -23,11 +34,18 @@ public class DynamicFormWizard extends AbstractWizard {
 
   @Override
   protected IWizardContainerForm execCreateContainerForm() throws ProcessingException {
-    IWizardContainerForm f = super.execCreateContainerForm();
+    DefaultWizardContainerForm f = (DefaultWizardContainerForm) super.execCreateContainerForm();
+
+    // The wizard is 800x900px
     GridData gd = f.getRootGroupBox().getGridData();
-    gd.widthInPixel = 900;
-    gd.heightInPixel = 800;
+    gd.widthInPixel = 800;
+    gd.heightInPixel = 900;
     f.getRootGroupBox().setGridDataInternal(gd);
+
+    // Position of the splitter will not be cached
+    f.getSplitBox().setCacheSplitterPosition(false);
+    // The splitter gives the left field 80% of the hole place
+    f.getSplitBox().setSplitterPosition(0.8);
     return f;
   }
 
@@ -48,6 +66,13 @@ public class DynamicFormWizard extends AbstractWizard {
         setForm(form);
       }
       setWizardForm(form);
+    }
+
+    @Override
+    protected void execDeactivate(int stepKind) throws ProcessingException {
+      if (stepKind == IWizardStep.STEP_NEXT) {
+        getForm().validateForm();
+      }
     }
   }
 

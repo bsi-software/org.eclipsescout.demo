@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="demo" id="org.eclipse.scout.rt.demo.ui.swt.product" application="org.eclipse.scout.rt.demo.ui.swt.application" useFeatures="false" includeLaunchers="true">
+<product name="Scout Widget Demo App" id="org.eclipse.scout.rt.demo.ui.swt.product" application="org.eclipse.scout.rt.demo.ui.swt.application" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
       <linux>/org.eclipse.scout.rt.demo.ui.swt/products/production/config.ini</linux>
@@ -20,7 +20,7 @@
 
    <splash
       location="org.eclipse.scout.rt.demo.ui.swt" />
-   <launcher name="demo">
+   <launcher name="Scout Widget Demo App">
       <solaris/>
       <win useIco="true">
          <ico path="/org.eclipse.scout.rt.demo.ui.swt/icons/bsi.ico"/>

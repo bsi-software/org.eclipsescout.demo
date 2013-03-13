@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="demo Server" id="org.eclipse.scout.rt.demo.server.product" application="org.eclipse.scout.rt.demo.server.app" useFeatures="false" includeLaunchers="true">
+<product name="Scout Widget Demo App Server" id="org.eclipse.scout.rt.demo.server.product" application="org.eclipse.scout.rt.demo.server.app" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
       <linux>/org.eclipse.scout.rt.demo.server/products/production/config.ini</linux>

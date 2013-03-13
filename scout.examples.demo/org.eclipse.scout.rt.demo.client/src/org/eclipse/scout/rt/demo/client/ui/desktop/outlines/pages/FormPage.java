@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2013 BSI Business Systems Integration AG.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     BSI Business Systems Integration AG - initial API and implementation
+ ******************************************************************************/
 package org.eclipse.scout.rt.demo.client.ui.desktop.outlines.pages;
 
 import org.eclipse.scout.commons.annotations.Order;
@@ -6,6 +16,7 @@ import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNodes;
 import org.eclipse.scout.rt.client.ui.form.IForm;
 import org.eclipse.scout.rt.demo.client.ui.forms.IPageForm;
+import org.eclipse.scout.rt.demo.client.ui.template.menu.AbstractViewSourceOnGitHubMenu;
 import org.eclipse.scout.rt.shared.TEXTS;
 
 public class FormPage extends AbstractPageWithNodes {
@@ -13,9 +24,9 @@ public class FormPage extends AbstractPageWithNodes {
   private Class<? extends IPageForm> m_formType;
   private boolean m_enabled = true;
 
-  public FormPage(Class<? extends IPageForm> c) {
-    super(false, c.getName());
-    m_formType = c;
+  public FormPage(Class<? extends IPageForm> formType) {
+    super(false, formType.getName());
+    m_formType = formType;
     callInitializer();
   }
 
@@ -33,14 +44,19 @@ public class FormPage extends AbstractPageWithNodes {
 
   @Override
   protected String getConfiguredIconId() {
-    return org.eclipse.scout.rt.shared.AbstractIcons.TreeNodeOpen;
+    return org.eclipse.scout.rt.demo.shared.Icons.Form;
+  }
+
+  @Override
+  protected boolean getConfiguredLeaf() {
+    return true;
   }
 
   @Override
   protected void execInitPage() throws ProcessingException {
     String s = m_formType.getSimpleName();
     s = s.substring(0, s.length() - 4);
-    getCellForUpdate().setText(s);
+    getCellForUpdate().setText(TEXTS.get(s));
     setTableVisible(false);
   }
 
@@ -49,6 +65,7 @@ public class FormPage extends AbstractPageWithNodes {
     if (getDetailForm() == null && m_enabled) {
       IPageForm form = execCreateDetailForm();
       setDetailForm(form);
+      form.getCloseButton().setVisible(false);
       form.startPageForm();
     }
   }
@@ -85,6 +102,15 @@ public class FormPage extends AbstractPageWithNodes {
       form.setAskIfNeedSave(false);
       form.startPageForm();
       form.waitFor();
+    }
+  }
+
+  @Order(20.0)
+  public class ViewSourceOnGitHubMenu extends AbstractViewSourceOnGitHubMenu {
+
+    @Override
+    protected Class<?> provideSourceClass() {
+      return m_formType;
     }
   }
 }

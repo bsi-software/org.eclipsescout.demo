@@ -22,13 +22,13 @@ Content-Type: text/plain;
 	charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 
-Dies ist eine gestylte Mail.
+This is a mail with Html.
 
-FETT
+Bold
 
-KURSIV
+Cursive
 
-Unterstrichen
+Underlined
 
 =20
 
@@ -38,7 +38,7 @@ Unterstrichen
 
 ______________________________________________________=20
 
-Scout Demo Application
+Scout Widget Demo Application
 
 Eclipse Scout
 
@@ -112,13 +112,13 @@ div.Section1
 
 <div class=Section1>
 
-<p class=MsoPlainText><font size=2 face="Courier New"><span style='font-size:10.0pt'>Dies ist eine gestylte Mail.<o:p></o:p></span></font></p>
+<p class=MsoPlainText><font size=2 face="Courier New"><span style='font-size:10.0pt'>This is a mail with Html.<o:p></o:p></span></font></p>
 
-<p class=MsoPlainText><b><font size=2 face="Courier New"><span style='font-size:10.0pt;font-weight:bold'>FETT<o:p></o:p></span></font></b></p>
+<p class=MsoPlainText><b><font size=2 face="Courier New"><span style='font-size:10.0pt;font-weight:bold'>Bold<o:p></o:p></span></font></b></p>
 
-<p class=MsoPlainText><i><font size=2 face="Courier New"><span style='font-size:10.0pt;font-style:italic'>KURSIV<o:p></o:p></span></font></i></p>
+<p class=MsoPlainText><i><font size=2 face="Courier New"><span style='font-size:10.0pt;font-style:italic'>Cursive<o:p></o:p></span></font></i></p>
 
-<p class=MsoPlainText><u><font size=2 face="Courier New"><span style='font-size:10.0pt'>Unterstrichen<o:p></o:p></span></font></u></p>
+<p class=MsoPlainText><u><font size=2 face="Courier New"><span style='font-size:10.0pt'>Underlined<o:p></o:p></span></font></u></p>
 
 <st1:personname w:st="on"></st1:personname>
 

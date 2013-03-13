@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 BSI Business Systems Integration AG.
+ * Copyright (c) 2013 BSI Business Systems Integration AG.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,9 +19,9 @@ import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.client.ClientSyncJob;
 import org.eclipse.scout.rt.client.ui.action.keystroke.AbstractKeyStroke;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
+import org.eclipse.scout.rt.client.ui.action.menu.checkbox.AbstractCheckBoxMenu;
 import org.eclipse.scout.rt.client.ui.desktop.AbstractDesktop;
 import org.eclipse.scout.rt.client.ui.desktop.IDesktop;
-import org.eclipse.scout.rt.client.ui.desktop.bookmark.menu.AbstractBookmarkMenu;
 import org.eclipse.scout.rt.client.ui.desktop.outline.AbstractFormToolButton;
 import org.eclipse.scout.rt.client.ui.desktop.outline.AbstractOutlineViewButton;
 import org.eclipse.scout.rt.client.ui.desktop.outline.IOutline;
@@ -29,10 +29,10 @@ import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
 import org.eclipse.scout.rt.client.ui.form.ScoutInfoForm;
 import org.eclipse.scout.rt.client.ui.form.outline.DefaultOutlineTableForm;
 import org.eclipse.scout.rt.client.ui.form.outline.DefaultOutlineTreeForm;
+import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
 import org.eclipse.scout.rt.demo.client.ClientSession;
 import org.eclipse.scout.rt.demo.client.ui.desktop.outlines.FormFieldsWizardsOutline;
 import org.eclipse.scout.rt.demo.client.ui.desktop.outlines.PagesSearchFormsOutline;
-import org.eclipse.scout.rt.demo.client.ui.desktop.outlines.pages.FormFieldsNodePage;
 import org.eclipse.scout.rt.demo.client.ui.forms.ToolButton1Form;
 import org.eclipse.scout.rt.demo.client.ui.forms.ToolButton2Form;
 import org.eclipse.scout.rt.demo.shared.Icons;
@@ -55,7 +55,7 @@ public class Desktop extends AbstractDesktop implements IDesktop {
 
   @Override
   protected String getConfiguredTitle() {
-    return TEXTS.get("ScoutDemo");
+    return TEXTS.get("ScoutWidgetsDemoApp");
   }
 
   @Override
@@ -77,7 +77,6 @@ public class Desktop extends AbstractDesktop implements IDesktop {
 
     if (getAvailableOutlines().length > 0) {
       setOutline(getAvailableOutlines()[0]);
-      getOutline().expandAll(getOutline().findPage(FormFieldsNodePage.class));
     }
 
   }
@@ -112,16 +111,135 @@ public class Desktop extends AbstractDesktop implements IDesktop {
     protected String getConfiguredText() {
       return TEXTS.get("ToolsMenu");
     }
-  }
 
-  @Order(30.0)
-  public class BookmarkMenu extends AbstractBookmarkMenu {
-    public BookmarkMenu() {
-      super(Desktop.this);
+    @Order(10.0)
+    public class MenuWithTextMenu extends AbstractMenu {
+
+      @Override
+      protected String getConfiguredText() {
+        return TEXTS.get("MenuWithText");
+      }
+
+      @Override
+      protected void execAction() throws ProcessingException {
+        String menuname = this.getClass().getSimpleName();
+        MessageBox.showOkMessage("Clicked on Menu", "You have clicked on \"" + TEXTS.get(menuname.substring(0, menuname.length() - 4)) + "\"", null);
+      }
+    }
+
+    @Order(20.0)
+    public class MenuWithIconMenu extends AbstractMenu {
+
+      @Override
+      protected String getConfiguredIconId() {
+        return org.eclipse.scout.rt.shared.AbstractIcons.Gears;
+      }
+
+      @Override
+      protected String getConfiguredText() {
+        return TEXTS.get("MenuWithIcon");
+      }
+
+      @Override
+      protected void execAction() throws ProcessingException {
+        String menuname = this.getClass().getSimpleName();
+        MessageBox.showOkMessage("Clicked on Menu", "You have clicked on \"" + TEXTS.get(menuname.substring(0, menuname.length() - 4)) + "\"", null);
+      }
+    }
+
+    @Order(30.0)
+    public class CheckableMenu extends AbstractCheckBoxMenu {
+
+      @Override
+      protected String getConfiguredText() {
+        return TEXTS.get("CheckableMenu");
+      }
+
+      @Override
+      protected void execToggleAction(boolean selected) throws ProcessingException {
+        super.execToggleAction(selected);
+        if (selected == true) {
+          MessageBox.showOkMessage("Checked the Menu", "You have checked the \"" + TEXTS.get(this.getClass().getSimpleName()) + "\"", null);
+        }
+      }
+    }
+
+    @Order(40.0)
+    public class MenuWithMenusMenu extends AbstractMenu {
+
+      @Override
+      protected String getConfiguredText() {
+        return TEXTS.get("MenuWithMenus");
+      }
+
+      @Order(10.0)
+      public class Menu1Menu extends AbstractMenu {
+
+        @Override
+        protected String getConfiguredText() {
+          return TEXTS.get("Menu1");
+        }
+
+        @Override
+        protected void execAction() throws ProcessingException {
+          String menuname = this.getClass().getSimpleName();
+          MessageBox.showOkMessage("Clicked on Menu", "You have clicked on \"" + TEXTS.get(menuname.substring(0, menuname.length() - 4)) + "\"", null);
+        }
+      }
+
+      @Order(20.0)
+      public class Menu2Menu extends AbstractMenu {
+
+        @Override
+        protected String getConfiguredText() {
+          return TEXTS.get("Menu2");
+        }
+
+        @Override
+        protected void execAction() throws ProcessingException {
+          String menuname = this.getClass().getSimpleName();
+          MessageBox.showOkMessage("Clicked on Menu", "You have clicked on \"" + TEXTS.get(menuname.substring(0, menuname.length() - 4)) + "\"", null);
+        }
+      }
+
+      @Order(30.0)
+      public class Menu3Menu extends AbstractMenu {
+
+        @Override
+        protected String getConfiguredText() {
+          return TEXTS.get("Menu3");
+        }
+
+        @Override
+        protected void execAction() throws ProcessingException {
+          String menuname = this.getClass().getSimpleName();
+          MessageBox.showOkMessage("Clicked on Menu", "You have clicked on \"" + TEXTS.get(menuname.substring(0, menuname.length() - 4)) + "\"", null);
+        }
+      }
+    }
+
+    @Order(50.0)
+    public class MenuWithKeyStrokeMenu extends AbstractMenu {
+
+      @Override
+      protected String getConfiguredKeyStroke() {
+        return "m";
+      }
+
+      @Override
+      protected String getConfiguredText() {
+        return TEXTS.get("MenuWithKeyStroke");
+      }
+
+      @Override
+      protected void execAction() throws ProcessingException {
+        String menuname = this.getClass().getSimpleName();
+        MessageBox.showOkMessage("Clicked on Menu", "You have clicked on \"" + TEXTS.get(menuname.substring(0, menuname.length() - 4)) + "\"", null);
+      }
     }
   }
 
-  @Order(40.0)
+  @Order(30.0)
   public class HelpMenu extends AbstractMenu {
 
     @Override
@@ -150,7 +268,7 @@ public class Desktop extends AbstractDesktop implements IDesktop {
 
     @Override
     protected String getConfiguredIconId() {
-      return org.eclipse.scout.rt.shared.AbstractIcons.ComposerFieldAttribute;
+      return org.eclipse.scout.rt.shared.AbstractIcons.Gears;
     }
 
     @Override
@@ -172,7 +290,7 @@ public class Desktop extends AbstractDesktop implements IDesktop {
 
     @Override
     protected String getConfiguredIconId() {
-      return org.eclipse.scout.rt.shared.AbstractIcons.ComposerFieldAttribute;
+      return org.eclipse.scout.rt.shared.AbstractIcons.Gears;
     }
 
     @Override

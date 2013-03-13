@@ -4,14 +4,14 @@
   <extension id="product" point="org.eclipse.core.runtime.products">
     <product
       application="org.eclipse.scout.rt.demo.ui.rap.app"
-      name="demo">
+      name="Scout Widget Demo App">
       <property
         name="appName"
-        value="demo">
+        value="Scout Widget Demo App">
       </property>
     </product>
   </extension>
-  <extension id="app" name="demo" point="org.eclipse.core.runtime.applications">
+  <extension id="app" name="Scout Widget Demo App" point="org.eclipse.core.runtime.applications">
    <application>
      <run class="org.eclipse.scout.rt.ui.rap.RwtApplication"/>
    </application>
@@ -42,7 +42,7 @@
       path="/web"/>
   </extension>
   <extension point="org.eclipse.rap.ui.branding">
-    <branding body="web-resources/startup-body.html" favicon="web-resources/eclipseScout.gif" id="org.eclipse.scout.rt.demo.ui.rap.branding" servletName="web" themeId="org.eclipse.scout.rt.ui.rap.theme" title="demo">
+    <branding body="web-resources/startup-body.html" favicon="web-resources/eclipseScout.gif" id="org.eclipse.scout.rt.demo.ui.rap.branding" servletName="web" themeId="org.eclipse.scout.rt.ui.rap.theme" title="Scout Widget Demo App">
       <additionalHeaders>
         <link href="res/html-styles.css" rel="stylesheet"/>
       </additionalHeaders>

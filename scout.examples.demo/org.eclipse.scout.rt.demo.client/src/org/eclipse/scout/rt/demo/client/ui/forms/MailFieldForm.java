@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2013 BSI Business Systems Integration AG.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     BSI Business Systems Integration AG - initial API and implementation
+ ******************************************************************************/
 package org.eclipse.scout.rt.demo.client.ui.forms;
 
 import java.io.InputStream;
@@ -39,6 +49,7 @@ public class MailFieldForm extends AbstractForm implements IPageForm {
     startInternal(new PageFormHandler());
   }
 
+  @Override
   public CloseButton getCloseButton() {
     return getFieldByClass(CloseButton.class);
   }
@@ -65,6 +76,17 @@ public class MailFieldForm extends AbstractForm implements IPageForm {
 
   public TextButton getTextButton() {
     return getFieldByClass(TextButton.class);
+  }
+
+  public void loadFile(String fileName) throws ProcessingException {
+    try {
+      InputStream inStream = FileLocator.openStream(Activator.getDefault().getBundle(), new Path("resources/mails/" + fileName), true);
+      MimeMessage message = new MimeMessage(null, inStream);
+      getMailField().setValue(message);
+    }
+    catch (Exception e) {
+      throw new ProcessingException(null, e);
+    }
   }
 
   @Order(10.0)
@@ -152,17 +174,6 @@ public class MailFieldForm extends AbstractForm implements IPageForm {
 
     @Order(60.0)
     public class CloseButton extends AbstractCloseButton {
-    }
-  }
-
-  public void loadFile(String fileName) throws ProcessingException {
-    try {
-      InputStream inStream = FileLocator.openStream(Activator.getDefault().getBundle(), new Path("resources/mails/" + fileName), true);
-      MimeMessage message = new MimeMessage(null, inStream);
-      getMailField().setValue(message);
-    }
-    catch (Exception e) {
-      throw new ProcessingException(null, e);
     }
   }
 

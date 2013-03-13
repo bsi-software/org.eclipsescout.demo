@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2013 BSI Business Systems Integration AG.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     BSI Business Systems Integration AG - initial API and implementation
+ ******************************************************************************/
 package org.eclipse.scout.rt.demo.client.ui.forms;
 
 import org.eclipse.scout.commons.annotations.Order;
@@ -56,6 +66,7 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(CenterField.class);
   }
 
+  @Override
   public CloseButton getCloseButton() {
     return getFieldByClass(CloseButton.class);
   }
@@ -74,6 +85,10 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
 
   public ImageSampleGroup getImageSampleGroup() {
     return getFieldByClass(ImageSampleGroup.class);
+  }
+
+  public LabelField getLabelField() {
+    return getFieldByClass(LabelField.class);
   }
 
   public LeftField getLeftField() {
@@ -100,16 +115,12 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(RotateField.class);
   }
 
-  public ZoomButton getZoomButton() {
-    return getFieldByClass(ZoomButton.class);
-  }
-
-  public LabelField getLabelField() {
-    return getFieldByClass(LabelField.class);
-  }
-
   public ZoomBox getZoomBox() {
     return getFieldByClass(ZoomBox.class);
+  }
+
+  public ZoomButton getZoomButton() {
+    return getFieldByClass(ZoomButton.class);
   }
 
   public ZoomField getZoomField() {
@@ -157,7 +168,7 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected boolean getConfiguredEnabled() {
-          return UserAgentUtility.isRichClient();
+          return UserAgentUtility.isSwingUi();
         }
 
         @Override
@@ -178,7 +189,7 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected boolean getConfiguredEnabled() {
-          return UserAgentUtility.isRichClient();
+          return UserAgentUtility.isSwingUi();
         }
 
         @Override
@@ -238,7 +249,7 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected String getConfiguredImageId() {
-          return "windsurf.jpg";
+          return "scout_logo.jpg";
         }
 
         @Override
@@ -267,7 +278,7 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected String getConfiguredImageId() {
-          return "windsurf.jpg";
+          return "scout_logo.jpg";
         }
 
         @Override
@@ -296,7 +307,7 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected String getConfiguredImageId() {
-          return "windsurf.jpg";
+          return "scout_logo.jpg";
         }
 
         @Override
@@ -354,7 +365,7 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected String getConfiguredImageId() {
-          return "windsurf.jpg";
+          return "scout_logo.jpg";
         }
 
         @Override
@@ -440,7 +451,7 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected String getConfiguredImageId() {
-          return "windsurf.jpg";
+          return "scout_logo.jpg";
         }
 
         @Override

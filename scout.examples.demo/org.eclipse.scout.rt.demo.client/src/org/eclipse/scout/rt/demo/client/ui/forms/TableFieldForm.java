@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2013 BSI Business Systems Integration AG.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     BSI Business Systems Integration AG - initial API and implementation
+ ******************************************************************************/
 package org.eclipse.scout.rt.demo.client.ui.forms;
 
 import org.eclipse.scout.commons.annotations.Order;
@@ -39,6 +49,7 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
     startInternal(new PageFormHandler());
   }
 
+  @Override
   public CloseButton getCloseButton() {
     return getFieldByClass(CloseButton.class);
   }
@@ -51,12 +62,12 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(GroupBox.class);
   }
 
-  public ValueLastField getValueLastField() {
-    return getFieldByClass(ValueLastField.class);
-  }
-
   public MainBox getMainBox() {
     return getFieldByClass(MainBox.class);
+  }
+
+  public ValueLastField getValueLastField() {
+    return getFieldByClass(ValueLastField.class);
   }
 
   @Order(10.0)
@@ -96,14 +107,6 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
         @Order(10.0)
         public class Table extends AbstractTable {
 
-          public NameColumn getNameColumn() {
-            return getColumnSet().getColumnByClass(NameColumn.class);
-          }
-
-          public SymbolColumn getSymbolColumn() {
-            return getColumnSet().getColumnByClass(SymbolColumn.class);
-          }
-
           @Override
           protected boolean getConfiguredAutoResizeColumns() {
             return true;
@@ -116,6 +119,14 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
 
           public CompanyNrColumn getCompanyNrColumn() {
             return getColumnSet().getColumnByClass(CompanyNrColumn.class);
+          }
+
+          public NameColumn getNameColumn() {
+            return getColumnSet().getColumnByClass(NameColumn.class);
+          }
+
+          public SymbolColumn getSymbolColumn() {
+            return getColumnSet().getColumnByClass(SymbolColumn.class);
           }
 
           @Order(10.0)
@@ -196,7 +207,6 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
           }
         }
       }
-
     }
 
     @Order(20.0)

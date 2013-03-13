@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2013 BSI Business Systems Integration AG.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     BSI Business Systems Integration AG - initial API and implementation
+ ******************************************************************************/
 package org.eclipse.scout.rt.demo.client.ui.forms;
 
 import org.eclipse.scout.commons.annotations.FormData;
@@ -49,15 +59,6 @@ public class StatusForm extends AbstractForm implements IPageForm {
     return TEXTS.get("Status");
   }
 
-  @Override
-  public void startPageForm() throws ProcessingException {
-    startInternal(new PageFormHandler());
-  }
-
-  public CloseButton getCloseButton() {
-    return getFieldByClass(CloseButton.class);
-  }
-
   @FormData
   public Long getStatusNr() {
     return statusNr;
@@ -68,16 +69,22 @@ public class StatusForm extends AbstractForm implements IPageForm {
     this.statusNr = statusNr;
   }
 
+  @Override
+  public void startPageForm() throws ProcessingException {
+    startInternal(new PageFormHandler());
+  }
+
   public CheckboxField getCheckboxField() {
     return getFieldByClass(CheckboxField.class);
   }
 
-  public ERRORStatusButton getERRORStatusButton() {
-    return getFieldByClass(ERRORStatusButton.class);
+  @Override
+  public CloseButton getCloseButton() {
+    return getFieldByClass(CloseButton.class);
   }
 
-  public FileChooserField getFileChooserField0Field() {
-    return getFieldByClass(FileChooserField.class);
+  public ERRORStatusButton getERRORStatusButton() {
+    return getFieldByClass(ERRORStatusButton.class);
   }
 
   public GroupBox getGroupBox() {
@@ -114,6 +121,10 @@ public class StatusForm extends AbstractForm implements IPageForm {
 
   public WARNINGStatusButton getWARNINGStatusButton() {
     return getFieldByClass(WARNINGStatusButton.class);
+  }
+
+  public FileChooserField getFileChooserField() {
+    return getFieldByClass(FileChooserField.class);
   }
 
   @Order(10.0)
@@ -282,7 +293,6 @@ public class StatusForm extends AbstractForm implements IPageForm {
           }
         }
       }
-
     }
 
     @Order(50.0)
@@ -315,7 +325,6 @@ public class StatusForm extends AbstractForm implements IPageForm {
           }
         }
       }
-
     }
   }
 

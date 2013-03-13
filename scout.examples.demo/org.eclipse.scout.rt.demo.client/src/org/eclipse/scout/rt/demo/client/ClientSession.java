@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 BSI Business Systems Integration AG.
+ * Copyright (c) 2013 BSI Business Systems Integration AG.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,16 +10,19 @@
  ******************************************************************************/
 package org.eclipse.scout.rt.demo.client;
 
+import java.util.Locale;
+
 import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.client.AbstractClientSession;
 import org.eclipse.scout.rt.client.ClientJob;
-import org.eclipse.scout.rt.client.servicetunnel.http.HttpServiceTunnel;
 import org.eclipse.scout.rt.demo.client.ui.desktop.Desktop;
+import org.eclipse.scout.rt.shared.services.common.code.CODES;
 
 public class ClientSession extends AbstractClientSession {
+  private boolean m_serverAvailable = true;
   private static IScoutLogger logger = ScoutLogManager.getLogger(ClientSession.class);
 
   private String m_product;
@@ -42,12 +45,18 @@ public class ClientSession extends AbstractClientSession {
 
   @Override
   public void execLoadSession() throws ProcessingException {
-    setServiceTunnel(new HttpServiceTunnel(this, getBundle().getBundleContext().getProperty("server.url"), (String) getBundle().getHeaders().get("Bundle-Version")));
+    setLocale(Locale.ENGLISH);
+
+    CODES.getAllCodeTypes(org.eclipse.scout.rt.demo.shared.Activator.PLUGIN_ID);
 
     setDesktop(new Desktop());
   }
 
   @Override
   public void execStoreSession() throws ProcessingException {
+  }
+
+  public boolean isServerAvailable() {
+    return m_serverAvailable;
   }
 }

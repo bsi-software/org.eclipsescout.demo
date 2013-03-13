@@ -4,14 +4,11 @@
    <extension
          name=""
          point="org.eclipse.scout.service.services">
-      <proxy
-            factory="org.eclipse.scout.rt.client.services.ClientProxyServiceFactory"
-            class="org.eclipse.scout.rt.demo.shared.services.outline.IStandardOutlineService">
-      </proxy>
-      <proxy
-            factory="org.eclipse.scout.rt.client.services.ClientProxyServiceFactory"
-            class="org.eclipse.scout.rt.demo.shared.services.process.IJaxWsProcessService">
-      </proxy>
+      <service
+            factory="org.eclipse.scout.rt.client.services.ClientServiceFactory"
+            class="org.eclipse.scout.rt.demo.client.services.LocalCodeService"
+            session="org.eclipse.scout.rt.demo.client.ClientSession">
+      </service>
    </extension>
    <extension
          name=""
