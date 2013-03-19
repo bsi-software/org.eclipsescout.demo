@@ -1,26 +1,24 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="Restored Target" sequenceNumber="13">
-<locations>
-<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.scout.rt.rap.target.feature.feature.group" version="3.8.2.201302111336"/>
-<unit id="org.eclipse.scout.rt.feature.feature.group" version="3.8.2.201302111336"/>
-<unit id="org.eclipse.scout.sdk.feature.feature.group" version="3.8.2.201302111336"/>
-<unit id="org.eclipse.scout.sdk.rap.feature.feature.group" version="3.8.2.201302111336"/>
-<repository location="http://download.eclipse.org/releases/juno"/>
-</location>
-<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.scout.rt.testing.feature.feature.group" version="3.8.2.201302111336"/>
-<repository location="http://download.eclipse.org/scout/releases/3.8/3.8.2/"/>
-</location>
-<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="com.bsiag.scout.rt.ui.swing.laf.rayo.feature.feature.group" version="3.8.2.201302221531"/>
-<repository location="http://tools.bsiag.com/marketplace/rayo/3.8"/>
-</location>
-</locations>
-<environment>
-<os>win32</os>
-<ws>win32</ws>
-<arch>x86</arch>
-<nl>en_US</nl>
-</environment>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<?pde version="3.8"?>
+<target name="Restored Target" sequenceNumber="13">
+  <locations>
+    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+      <unit id="org.eclipse.scout.rt.rap.target.feature.feature.group" version="3.8.2.201302111336"/>
+      <unit id="org.eclipse.scout.rt.feature.feature.group" version="3.8.2.201302111336"/>
+      <unit id="org.eclipse.scout.sdk.feature.feature.group" version="3.8.2.201302111336"/>
+      <unit id="org.eclipse.scout.sdk.rap.feature.feature.group" version="3.8.2.201302111336"/>
+
+      <repository location="http://download.eclipse.org/releases/juno"/>
+    </location>
+    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+      <unit id="org.eclipse.scout.rt.testing.feature.feature.group" version="0.0.0"/>
+
+      <repository location="http://download.eclipse.org/scout/releases/3.8/3.8.2/"/>
+    </location>
+    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+      <unit id="com.bsiag.scout.rt.ui.swing.laf.rayo.feature.feature.group" version="0.0.0"/>
+
+      <repository location="http://tools.bsiag.com/marketplace/rayo/3.8"/>
+    </location>
+  </locations>
 </target>
