@@ -9,7 +9,6 @@ Export-Package: org.eclipsescout.demo.minifigcreator.client,
  org.eclipsescout.demo.minifigcreator.client.ui.forms
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.scout.rt.client;visibility:=reexport,
- org.eclipsescout.demo.minifigcreator.shared,
- org.eclipse.scout.svg.client
+ org.eclipsescout.demo.minifigcreator.shared
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
