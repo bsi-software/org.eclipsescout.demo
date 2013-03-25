@@ -31,6 +31,7 @@
    <plugins>
       <plugin id="com.bsiag.scout.rt.ui.swing.laf.rayo.fragment" fragment="true"/>
       <plugin id="com.bsiag.scout.rt.ui.swing.rayo"/>
+      <plugin id="javax.xml"/>
       <plugin id="org.eclipse.core.contenttype"/>
       <plugin id="org.eclipse.core.jobs"/>
       <plugin id="org.eclipse.core.net"/>

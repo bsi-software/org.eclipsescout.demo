@@ -36,6 +36,9 @@
       <plugin id="javax.annotation"/>
       <plugin id="javax.inject"/>
       <plugin id="javax.xml"/>
+      <plugin id="org.apache.batik.css"/>
+      <plugin id="org.apache.batik.util"/>
+      <plugin id="org.apache.batik.util.gui"/>
       <plugin id="org.eclipse.compare.core"/>
       <plugin id="org.eclipse.core.commands"/>
       <plugin id="org.eclipse.core.contenttype"/>
@@ -108,6 +111,9 @@
       <plugin id="org.eclipsescout.demo.minifigcreator.client"/>
       <plugin id="org.eclipsescout.demo.minifigcreator.shared"/>
       <plugin id="org.eclipsescout.demo.minifigcreator.ui.swt"/>
+      <plugin id="org.w3c.css.sac"/>
+      <plugin id="org.w3c.dom.smil"/>
+      <plugin id="org.w3c.dom.svg"/>
    </plugins>
 
 

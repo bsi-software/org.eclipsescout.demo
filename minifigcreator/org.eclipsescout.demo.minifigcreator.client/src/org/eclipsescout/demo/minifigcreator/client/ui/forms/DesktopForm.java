@@ -149,6 +149,11 @@ public class DesktopForm extends AbstractForm {
         }
 
         @Override
+        protected boolean getConfiguredMandatory() {
+          return true;
+        }
+
+        @Override
         protected void execChangedValue() throws ProcessingException {
           updateSummary();
         }
@@ -196,6 +201,11 @@ public class DesktopForm extends AbstractForm {
           }
 
           @Override
+          protected boolean getConfiguredMandatory() {
+            return true;
+          }
+
+          @Override
           protected void execChangedValue() throws ProcessingException {
             updateImage();
             updateSummary();
@@ -209,6 +219,11 @@ public class DesktopForm extends AbstractForm {
           @Override
           protected String getConfiguredLabel() {
             return TEXTS.get("Torso");
+          }
+
+          @Override
+          protected boolean getConfiguredMandatory() {
+            return true;
           }
 
           @Override
@@ -229,6 +244,11 @@ public class DesktopForm extends AbstractForm {
           @Override
           protected String getConfiguredLabel() {
             return TEXTS.get("Legs");
+          }
+
+          @Override
+          protected boolean getConfiguredMandatory() {
+            return true;
           }
 
           @Override
@@ -332,6 +352,8 @@ public class DesktopForm extends AbstractForm {
 
       @Override
       protected void execClickAction() throws ProcessingException {
+        validateForm();
+
         IDesktopProcessService service = SERVICES.getService(IDesktopProcessService.class);
         DesktopFormData formData = new DesktopFormData();
         exportFormData(formData);

@@ -23,20 +23,21 @@ import org.osgi.framework.ServiceRegistration;
  *
  * @author jbr
  */
+//...
 @RunWith(ScoutClientTestRunner.class)
 public class DesktopFormTest {
 
-  private P_DesktopProcessService s_mockService = new P_DesktopProcessService();
-  private List<ServiceRegistration> s_registeredServices;
+  private P_DesktopProcessService m_mockService = new P_DesktopProcessService();
+  private List<ServiceRegistration> m_registeredServices;
 
   @Before
   public void setUp() {
-    s_registeredServices = TestingUtility.registerServices(Activator.getDefault().getBundle(), 1000, s_mockService);
+    m_registeredServices = TestingUtility.registerServices(Activator.getDefault().getBundle(), 1000, m_mockService);
   }
 
   @After
   public void teardown() {
-    TestingUtility.unregisterServices(s_registeredServices);
+    TestingUtility.unregisterServices(m_registeredServices);
   }
 
   /**
@@ -107,7 +108,7 @@ public class DesktopFormTest {
     state.setLegsEnabled(legsEnabled);
 
     loadFormData.setState(state);
-    s_mockService.setLoadFormData(loadFormData);
+    m_mockService.setLoadFormData(loadFormData);
 
     DesktopForm form = new DesktopForm();
     form.startView();
