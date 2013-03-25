@@ -324,26 +324,55 @@ public class DesktopForm extends AbstractForm {
       protected String getConfiguredLabel() {
         return TEXTS.get("Export");
       }
+
+      @Override
+      protected int getConfiguredHorizontalAlignment() {
+        return 1;
+      }
+
+      @Override
+      protected void execClickAction() throws ProcessingException {
+        IDesktopProcessService service = SERVICES.getService(IDesktopProcessService.class);
+        DesktopFormData formData = new DesktopFormData();
+        exportFormData(formData);
+        formData = service.store(formData);
+        //Add the export code here.
+        resetForm();
+        reloadForm();
+      }
+
+      private void resetForm() throws ProcessingException {
+        DesktopFormData formData = new DesktopFormData();
+        formData.getName().setValueSet(true);
+        formData.getHead().setValueSet(true);
+        formData.getTorso().setValueSet(true);
+        formData.getLegs().setValueSet(true);
+        importFormData(formData);
+      }
     }
+  }
+
+  public void reloadForm() throws ProcessingException {
+    IDesktopProcessService service = SERVICES.getService(IDesktopProcessService.class);
+    DesktopFormData formData = new DesktopFormData();
+    exportFormData(formData);
+    formData = service.load(formData);
+    importFormData(formData);
+    FormState state = getState();
+    if (state != null) {
+      getHeadField().setEnabled(state.isHeadEnabled());
+      getTorsoField().setEnabled(state.isTorsoEnabled());
+      getLegsField().setEnabled(state.isLegsEnabled());
+    }
+    updateImage();
+    updateSummary();
   }
 
   public class ViewHandler extends AbstractFormHandler {
 
     @Override
     protected void execLoad() throws ProcessingException {
-      IDesktopProcessService service = SERVICES.getService(IDesktopProcessService.class);
-      DesktopFormData formData = new DesktopFormData();
-      exportFormData(formData);
-      formData = service.load(formData);
-      importFormData(formData);
-      FormState state = getState();
-      if (state != null) {
-        getHeadField().setEnabled(state.isHeadEnabled());
-        getTorsoField().setEnabled(state.isTorsoEnabled());
-        getLegsField().setEnabled(state.isLegsEnabled());
-      }
-      updateImage();
-      updateSummary();
+      reloadForm();
     }
   }
 

@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
@@ -58,6 +58,20 @@ public final class PartUtility {
   private static String partContribution(String prefix, Part part) {
     int id = (part == null) ? 0 : part.getId();
     return prefix + String.format("%02d", id);
+  }
+
+  public static String calculateSmallIconId(Part singlePart) {
+    int id;
+    String letter;
+    if (singlePart == null) {
+      id = 0;
+      letter = "X";
+    }
+    else {
+      id = singlePart.getId();
+      letter = singlePart.getType().name().substring(0, 1);
+    }
+    return "Part_" + letter + String.format("%02d", id);
   }
 
   private PartUtility() {

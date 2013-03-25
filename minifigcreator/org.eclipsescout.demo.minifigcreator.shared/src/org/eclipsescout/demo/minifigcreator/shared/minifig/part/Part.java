@@ -21,12 +21,14 @@ public class Part implements Serializable {
   private final String m_name;
   private final int m_value;
   private final int m_id;
+  private final PartType m_type;
 
-  public Part(int id, String name, int value) {
+  public Part(PartType type, int id, String name, int value) {
     super();
+    m_type = type;
+    m_id = id;
     m_name = name;
     m_value = value;
-    m_id = id;
   }
 
   public String getName() {
@@ -41,11 +43,16 @@ public class Part implements Serializable {
     return m_id;
   }
 
+  public PartType getType() {
+    return m_type;
+  }
+
   @Override
   public int hashCode() {
     final int prime = 31;
     int result = 1;
     result = prime * result + m_id;
+    result = prime * result + ((m_type == null) ? 0 : m_type.hashCode());
     return result;
   }
 
@@ -56,6 +63,7 @@ public class Part implements Serializable {
     if (getClass() != obj.getClass()) return false;
     Part other = (Part) obj;
     if (m_id != other.m_id) return false;
+    if (m_type != other.m_type) return false;
     return true;
   }
 

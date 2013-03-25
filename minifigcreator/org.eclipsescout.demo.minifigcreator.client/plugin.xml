@@ -20,6 +20,10 @@
             factory="org.eclipse.scout.rt.client.services.ClientProxyServiceFactory"
             class="org.eclipsescout.demo.minifigcreator.shared.services.lookup.ILegsLookupService">
       </proxy>
+      <proxy
+            factory="org.eclipse.scout.rt.client.services.ClientProxyServiceFactory"
+            class="org.eclipsescout.demo.minifigcreator.shared.services.process.IServerProcessService">
+      </proxy>
    </extension>
    <extension
          name=""

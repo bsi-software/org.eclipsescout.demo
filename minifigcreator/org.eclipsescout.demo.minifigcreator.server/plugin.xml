@@ -39,6 +39,16 @@
             class="org.eclipsescout.demo.minifigcreator.server.services.lookup.LegsLookupService"
             session="org.eclipsescout.demo.minifigcreator.server.ServerSession">
       </service>
+      <service
+            factory="org.eclipse.scout.rt.server.services.ServerServiceFactory"
+            class="org.eclipsescout.demo.minifigcreator.server.services.process.ServerProcessService"
+            session="org.eclipsescout.demo.minifigcreator.server.ServerSession">
+      </service>
+      <service
+            factory="org.eclipse.scout.rt.server.services.ServerServiceFactory"
+            class="org.eclipsescout.demo.minifigcreator.server.data.MinifigDataStoreService"
+            session="org.eclipsescout.demo.minifigcreator.server.ServerSession">
+      </service>
    </extension>
    <extension
          name=""
