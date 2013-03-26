@@ -274,12 +274,9 @@
 					<name>#1!mappedGDCat#1!</name>
 					<association>
 						<technicalName>
-							<neighbour>com.bsiag.scout.rt.ui.swing.rayo.ext.RayoStatusLabelEx_1
-							</neighbour>
-							<componentClassName>org.eclipse.scout.rt.ui.swing.ext.JTextFieldEx
-							</componentClassName>
-							<supportedClassName>javax.swing.text.JTextComponent
-							</supportedClassName>
+							<neighbour>com.bsiag.scout.rt.ui.swing.rayo.ext.RayoStatusLabelEx_1</neighbour>
+							<componentClassName>org.eclipse.scout.rt.ui.swing.ext.JTextFieldEx</componentClassName>
+							<supportedClassName>javax.swing.text.JTextComponent</supportedClassName>
 							<hierarchyName>frame1</hierarchyName>
 							<hierarchyName>Synth.Frame</hierarchyName>
 							<hierarchyName>null.layeredPane</hierarchyName>
@@ -287,22 +284,16 @@
 							<hierarchyName>RootFrame.Spacer</hierarchyName>
 							<hierarchyName>javax.swing.JDesktopPane_1</hierarchyName>
 							<hierarchyName>Synth.View</hierarchyName>
-							<hierarchyName>org.eclipse.scout.rt.ui.swing.window.internalframe.SwingScoutInternalFrame$1$1_1
-							</hierarchyName>
+							<hierarchyName>org.eclipse.scout.rt.ui.swing.window.internalframe.SwingScoutInternalFrame$1$1_1</hierarchyName>
 							<hierarchyName>null.layeredPane</hierarchyName>
 							<hierarchyName>null.contentPane</hierarchyName>
 							<hierarchyName>DesktopForm.optimalSizePanel</hierarchyName>
-							<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1
-							</hierarchyName>
-							<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1
-							</hierarchyName>
-							<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1
-							</hierarchyName>
+							<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1</hierarchyName>
+							<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1</hierarchyName>
+							<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1</hierarchyName>
 							<hierarchyName>Synth.GroupBoxBody</hierarchyName>
-							<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1
-							</hierarchyName>
-							<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JTextFieldEx_1
-							</hierarchyName>
+							<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1</hierarchyName>
+							<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JTextFieldEx_1</hierarchyName>
 							<alternativeDisplayName>Text Component</alternativeDisplayName>
 						</technicalName>
 						<type xsi:nil="true" />
@@ -310,12 +301,9 @@
 					</association>
 					<association>
 						<technicalName>
-							<neighbour>com.bsiag.scout.rt.ui.swing.rayo.ext.RayoStatusLabelEx_1
-							</neighbour>
-							<componentClassName>org.eclipse.scout.rt.ui.swing.ext.JTextFieldEx
-							</componentClassName>
-							<supportedClassName>javax.swing.text.JTextComponent
-							</supportedClassName>
+							<neighbour>com.bsiag.scout.rt.ui.swing.rayo.ext.RayoStatusLabelEx_1</neighbour>
+							<componentClassName>org.eclipse.scout.rt.ui.swing.ext.JTextFieldEx</componentClassName>
+							<supportedClassName>javax.swing.text.JTextComponent</supportedClassName>
 							<hierarchyName>frame1</hierarchyName>
 							<hierarchyName>Synth.Frame</hierarchyName>
 							<hierarchyName>null.layeredPane</hierarchyName>
@@ -323,22 +311,16 @@
 							<hierarchyName>RootFrame.Spacer</hierarchyName>
 							<hierarchyName>javax.swing.JDesktopPane_1</hierarchyName>
 							<hierarchyName>Synth.View</hierarchyName>
-							<hierarchyName>org.eclipse.scout.rt.ui.swing.window.internalframe.SwingScoutInternalFrame$1$1_1
-							</hierarchyName>
+							<hierarchyName>org.eclipse.scout.rt.ui.swing.window.internalframe.SwingScoutInternalFrame$1$1_1</hierarchyName>
 							<hierarchyName>null.layeredPane</hierarchyName>
 							<hierarchyName>null.contentPane</hierarchyName>
 							<hierarchyName>DesktopForm.optimalSizePanel</hierarchyName>
-							<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1
-							</hierarchyName>
-							<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1
-							</hierarchyName>
-							<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1
-							</hierarchyName>
+							<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1</hierarchyName>
+							<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1</hierarchyName>
+							<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1</hierarchyName>
 							<hierarchyName>Synth.GroupBoxBody</hierarchyName>
-							<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_4
-							</hierarchyName>
-							<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JTextFieldEx_1
-							</hierarchyName>
+							<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_4</hierarchyName>
+							<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JTextFieldEx_1</hierarchyName>
 							<alternativeDisplayName>Text Component</alternativeDisplayName>
 						</technicalName>
 						<type xsi:nil="true" />
@@ -348,8 +330,7 @@
 						<name>Head</name>
 						<association>
 							<technicalName>
-								<componentClassName>org.eclipse.scout.rt.ui.swing.basic.table.SwingScoutTable$P_SwingTable
-								</componentClassName>
+								<componentClassName>org.eclipse.scout.rt.ui.swing.basic.table.SwingScoutTable$P_SwingTable</componentClassName>
 								<supportedClassName>javax.swing.JTable</supportedClassName>
 								<hierarchyName>frame1</hierarchyName>
 								<hierarchyName>win12</hierarchyName>
@@ -357,12 +338,9 @@
 								<hierarchyName>null.layeredPane</hierarchyName>
 								<hierarchyName>null.contentPane</hierarchyName>
 								<hierarchyName>SmartTableForm.optimalSizePanel</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1
-								</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1
-								</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.client.ui.form.fields.smartfield.SmartTableForm$MainBox$ResultTableField.container
-								</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.client.ui.form.fields.smartfield.SmartTableForm$MainBox$ResultTableField.container</hierarchyName>
 								<hierarchyName>Synth.SmartfieldScrollPane</hierarchyName>
 								<hierarchyName>javax.swing.JViewport_1</hierarchyName>
 								<hierarchyName>Synth.SmartfieldTable</hierarchyName>
@@ -373,12 +351,9 @@
 						</association>
 						<association>
 							<technicalName>
-								<neighbour>com.bsiag.scout.rt.ui.swing.rayo.ext.RayoStatusLabelEx_1
-								</neighbour>
-								<componentClassName>org.eclipse.scout.rt.ui.swing.ext.JTextFieldWithDropDownButton
-								</componentClassName>
-								<supportedClassName>javax.swing.text.JTextComponent
-								</supportedClassName>
+								<neighbour>com.bsiag.scout.rt.ui.swing.rayo.ext.RayoStatusLabelEx_1</neighbour>
+								<componentClassName>org.eclipse.scout.rt.ui.swing.ext.JTextFieldWithDropDownButton</componentClassName>
+								<supportedClassName>javax.swing.text.JTextComponent</supportedClassName>
 								<hierarchyName>frame1</hierarchyName>
 								<hierarchyName>Synth.Frame</hierarchyName>
 								<hierarchyName>null.layeredPane</hierarchyName>
@@ -386,26 +361,18 @@
 								<hierarchyName>RootFrame.Spacer</hierarchyName>
 								<hierarchyName>javax.swing.JDesktopPane_1</hierarchyName>
 								<hierarchyName>Synth.View</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.ui.swing.window.internalframe.SwingScoutInternalFrame$1$1_1
-								</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.ui.swing.window.internalframe.SwingScoutInternalFrame$1$1_1</hierarchyName>
 								<hierarchyName>null.layeredPane</hierarchyName>
 								<hierarchyName>null.contentPane</hierarchyName>
 								<hierarchyName>DesktopForm.optimalSizePanel</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1
-								</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1
-								</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1
-								</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1</hierarchyName>
 								<hierarchyName>Synth.GroupBoxBody</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_2
-								</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1
-								</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1
-								</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JTextFieldWithDropDownButton_1
-								</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_2</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JTextFieldWithDropDownButton_1</hierarchyName>
 								<alternativeDisplayName>Text Component</alternativeDisplayName>
 							</technicalName>
 							<type xsi:nil="true" />
@@ -416,8 +383,7 @@
 						<name>Torso</name>
 						<association>
 							<technicalName>
-								<componentClassName>org.eclipse.scout.rt.ui.swing.basic.table.SwingScoutTable$P_SwingTable
-								</componentClassName>
+								<componentClassName>org.eclipse.scout.rt.ui.swing.basic.table.SwingScoutTable$P_SwingTable</componentClassName>
 								<supportedClassName>javax.swing.JTable</supportedClassName>
 								<hierarchyName>frame1</hierarchyName>
 								<hierarchyName>win14</hierarchyName>
@@ -425,12 +391,9 @@
 								<hierarchyName>null.layeredPane</hierarchyName>
 								<hierarchyName>null.contentPane</hierarchyName>
 								<hierarchyName>SmartTableForm.optimalSizePanel</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1
-								</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1
-								</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.client.ui.form.fields.smartfield.SmartTableForm$MainBox$ResultTableField.container
-								</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.client.ui.form.fields.smartfield.SmartTableForm$MainBox$ResultTableField.container</hierarchyName>
 								<hierarchyName>Synth.SmartfieldScrollPane</hierarchyName>
 								<hierarchyName>javax.swing.JViewport_1</hierarchyName>
 								<hierarchyName>Synth.SmartfieldTable</hierarchyName>
@@ -441,12 +404,9 @@
 						</association>
 						<association>
 							<technicalName>
-								<neighbour>com.bsiag.scout.rt.ui.swing.rayo.ext.RayoStatusLabelEx_1
-								</neighbour>
-								<componentClassName>org.eclipse.scout.rt.ui.swing.ext.JTextFieldWithDropDownButton
-								</componentClassName>
-								<supportedClassName>javax.swing.text.JTextComponent
-								</supportedClassName>
+								<neighbour>com.bsiag.scout.rt.ui.swing.rayo.ext.RayoStatusLabelEx_1</neighbour>
+								<componentClassName>org.eclipse.scout.rt.ui.swing.ext.JTextFieldWithDropDownButton</componentClassName>
+								<supportedClassName>javax.swing.text.JTextComponent</supportedClassName>
 								<hierarchyName>frame1</hierarchyName>
 								<hierarchyName>Synth.Frame</hierarchyName>
 								<hierarchyName>null.layeredPane</hierarchyName>
@@ -454,26 +414,18 @@
 								<hierarchyName>RootFrame.Spacer</hierarchyName>
 								<hierarchyName>javax.swing.JDesktopPane_1</hierarchyName>
 								<hierarchyName>Synth.View</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.ui.swing.window.internalframe.SwingScoutInternalFrame$1$1_1
-								</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.ui.swing.window.internalframe.SwingScoutInternalFrame$1$1_1</hierarchyName>
 								<hierarchyName>null.layeredPane</hierarchyName>
 								<hierarchyName>null.contentPane</hierarchyName>
 								<hierarchyName>DesktopForm.optimalSizePanel</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1
-								</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1
-								</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1
-								</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1</hierarchyName>
 								<hierarchyName>Synth.GroupBoxBody</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_2
-								</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1
-								</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_2
-								</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JTextFieldWithDropDownButton_1
-								</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_2</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_2</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JTextFieldWithDropDownButton_1</hierarchyName>
 								<alternativeDisplayName>Text Component</alternativeDisplayName>
 							</technicalName>
 							<type xsi:nil="true" />
@@ -484,8 +436,7 @@
 						<name>Legs</name>
 						<association>
 							<technicalName>
-								<componentClassName>org.eclipse.scout.rt.ui.swing.basic.table.SwingScoutTable$P_SwingTable
-								</componentClassName>
+								<componentClassName>org.eclipse.scout.rt.ui.swing.basic.table.SwingScoutTable$P_SwingTable</componentClassName>
 								<supportedClassName>javax.swing.JTable</supportedClassName>
 								<hierarchyName>frame1</hierarchyName>
 								<hierarchyName>win21</hierarchyName>
@@ -493,12 +444,9 @@
 								<hierarchyName>null.layeredPane</hierarchyName>
 								<hierarchyName>null.contentPane</hierarchyName>
 								<hierarchyName>SmartTableForm.optimalSizePanel</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1
-								</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1
-								</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.client.ui.form.fields.smartfield.SmartTableForm$MainBox$ResultTableField.container
-								</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.client.ui.form.fields.smartfield.SmartTableForm$MainBox$ResultTableField.container</hierarchyName>
 								<hierarchyName>Synth.SmartfieldScrollPane</hierarchyName>
 								<hierarchyName>javax.swing.JViewport_1</hierarchyName>
 								<hierarchyName>Synth.SmartfieldTable</hierarchyName>
@@ -509,12 +457,9 @@
 						</association>
 						<association>
 							<technicalName>
-								<neighbour>com.bsiag.scout.rt.ui.swing.rayo.ext.RayoStatusLabelEx_1
-								</neighbour>
-								<componentClassName>org.eclipse.scout.rt.ui.swing.ext.JTextFieldWithDropDownButton
-								</componentClassName>
-								<supportedClassName>javax.swing.text.JTextComponent
-								</supportedClassName>
+								<neighbour>com.bsiag.scout.rt.ui.swing.rayo.ext.RayoStatusLabelEx_1</neighbour>
+								<componentClassName>org.eclipse.scout.rt.ui.swing.ext.JTextFieldWithDropDownButton</componentClassName>
+								<supportedClassName>javax.swing.text.JTextComponent</supportedClassName>
 								<hierarchyName>frame1</hierarchyName>
 								<hierarchyName>Synth.Frame</hierarchyName>
 								<hierarchyName>null.layeredPane</hierarchyName>
@@ -522,26 +467,18 @@
 								<hierarchyName>RootFrame.Spacer</hierarchyName>
 								<hierarchyName>javax.swing.JDesktopPane_1</hierarchyName>
 								<hierarchyName>Synth.View</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.ui.swing.window.internalframe.SwingScoutInternalFrame$1$1_1
-								</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.ui.swing.window.internalframe.SwingScoutInternalFrame$1$1_1</hierarchyName>
 								<hierarchyName>null.layeredPane</hierarchyName>
 								<hierarchyName>null.contentPane</hierarchyName>
 								<hierarchyName>DesktopForm.optimalSizePanel</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1
-								</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1
-								</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1
-								</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1</hierarchyName>
 								<hierarchyName>Synth.GroupBoxBody</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_2
-								</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1
-								</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_3
-								</hierarchyName>
-								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JTextFieldWithDropDownButton_1
-								</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_2</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_1</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JPanelEx_3</hierarchyName>
+								<hierarchyName>org.eclipse.scout.rt.ui.swing.ext.JTextFieldWithDropDownButton_1</hierarchyName>
 								<alternativeDisplayName>Text Component</alternativeDisplayName>
 							</technicalName>
 							<type xsi:nil="true" />
@@ -1612,8 +1549,7 @@
 							<data columnCount="1">
 								<data>
 									<language>en_US</language>
-									<value>.*=5ac5a8f640ac42b6b2dd96a08ebfb0c7.*=2a067359923246b4a263c3dc60e19ea6.*
-									</value>
+									<value>.*=5ac5a8f640ac42b6b2dd96a08ebfb0c7.*=2a067359923246b4a263c3dc60e19ea6.*</value>
 								</data>
 							</data>
 						</row>
@@ -1672,8 +1608,7 @@
 							<data columnCount="1">
 								<data>
 									<language>en_US</language>
-									<value>.*=5ac5a8f640ac42b6b2dd96a08ebfb0c7.*=2a067359923246b4a263c3dc60e19ea6.*=885d084bc6cf4cbe934caf00af2c8844.*
-									</value>
+									<value>.*=5ac5a8f640ac42b6b2dd96a08ebfb0c7.*=2a067359923246b4a263c3dc60e19ea6.*=885d084bc6cf4cbe934caf00af2c8844.*</value>
 								</data>
 							</data>
 						</row>
@@ -1732,8 +1667,7 @@
 							<data columnCount="1">
 								<data>
 									<language>en_US</language>
-									<value>.*=5ac5a8f640ac42b6b2dd96a08ebfb0c7.*=2a067359923246b4a263c3dc60e19ea6.*=885d084bc6cf4cbe934caf00af2c8844.*=004a0e9e6499470e8b17bf3d8fe56048.*
-									</value>
+									<value>.*=5ac5a8f640ac42b6b2dd96a08ebfb0c7.*=2a067359923246b4a263c3dc60e19ea6.*=885d084bc6cf4cbe934caf00af2c8844.*=004a0e9e6499470e8b17bf3d8fe56048.*</value>
 								</data>
 							</data>
 						</row>
@@ -1882,8 +1816,7 @@
 		</componentNames>
 		<testresultSummaries />
 		<checkConfiguration>
-			<checkId>org.eclipse.jubula.client.teststyle.impl.standard.checks.testSuiteHasAUT
-			</checkId>
+			<checkId>org.eclipse.jubula.client.teststyle.impl.standard.checks.testSuiteHasAUT</checkId>
 			<activated>true</activated>
 			<severity>ERROR</severity>
 			<activeContext>
@@ -1892,8 +1825,7 @@
 			</activeContext>
 		</checkConfiguration>
 		<checkConfiguration>
-			<checkId>org.eclipse.jubula.client.teststyle.impl.standard.checks.testSuiteNotEmpty
-			</checkId>
+			<checkId>org.eclipse.jubula.client.teststyle.impl.standard.checks.testSuiteNotEmpty</checkId>
 			<activated>true</activated>
 			<severity>ERROR</severity>
 			<activeContext>
