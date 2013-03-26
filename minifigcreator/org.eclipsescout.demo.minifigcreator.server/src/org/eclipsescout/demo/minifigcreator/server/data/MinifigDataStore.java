@@ -33,9 +33,11 @@ public final class MinifigDataStore {
     add(9, new Part(PartType.LEGS, 4, "Gray", 15));
     add(8, new Part(PartType.LEGS, 5, "Overall", 15));
     add(3, new Part(PartType.LEGS, 6, "Blue", 15));
-    add(8, new Part(PartType.TORSO, 1, "Yellow", 19));
-    add(1, new Part(PartType.TORSO, 2, "Police", 28));
-    add(1, new Part(PartType.TORSO, 3, "Suit", 32));
+    add(9, new Part(PartType.LEGS, 7, "Orange", 38));
+    add(3, new Part(PartType.TORSO, 1, "Yellow", 19));
+    add(5, new Part(PartType.TORSO, 2, "Police", 28));
+    add(1, new Part(PartType.TORSO, 3, "Suit", 25));
+    add(9, new Part(PartType.TORSO, 4, "Scouty", 32));
   }
 
   private void add(int quantity, Part part) {
