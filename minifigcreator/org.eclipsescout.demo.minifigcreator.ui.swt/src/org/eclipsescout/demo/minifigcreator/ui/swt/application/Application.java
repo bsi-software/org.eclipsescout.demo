@@ -11,17 +11,19 @@
 package org.eclipsescout.demo.minifigcreator.ui.swt.application;
 
 import java.security.PrivilegedExceptionAction;
+
 import javax.security.auth.Subject;
+
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
-import org.eclipse.scout.net.NetActivator;
 import org.eclipse.scout.commons.security.SimplePrincipal;
+import org.eclipse.scout.net.NetActivator;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 
-/** <h3>Activator</h3>
- *  This class controls all aspects of the application's execution
+/**
+ * <h3>Activator</h3> This class controls all aspects of the application's execution
  */
 public class Application implements IApplication {
 
@@ -55,8 +57,8 @@ public class Application implements IApplication {
       @Override
       public void run() {
         if (!display.isDisposed())
-          workbench.close();
-        }
+        workbench.close();
+      }
     });
   }
 }

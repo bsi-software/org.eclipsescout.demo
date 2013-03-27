@@ -19,11 +19,10 @@ import org.eclipsescout.demo.minifigcreator.ui.swt.views.EastView;
 import org.eclipsescout.demo.minifigcreator.ui.swt.views.OutlineView;
 import org.eclipsescout.demo.minifigcreator.ui.swt.views.SearchView;
 import org.eclipsescout.demo.minifigcreator.ui.swt.views.TableView;
-
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
-public class Activator implements BundleActivator{
+public class Activator implements BundleActivator {
 
   // the plugin id
   public static final String BUNDLE_ID = "org.eclipsescout.demo.minifigcreator.ui.swt";
@@ -60,4 +59,3 @@ public class Activator implements BundleActivator{
     return m_environment;
   }
 }
-

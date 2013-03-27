@@ -18,7 +18,7 @@ public class Perspective implements IPerspectiveFactory {
   public static final String ID = Perspective.class.getName();
 
   @Override
-	public void createInitialLayout(IPageLayout layout) {
+  public void createInitialLayout(IPageLayout layout) {
     layout.setEditorAreaVisible(false);
   }
 }
