@@ -1,13 +1,13 @@
 package org.eclipsescout.demo.minifigcreator.shared.services.process;
 
-import org.eclipsescout.demo.minifigcreator.shared.services.lookup.HeadLookupCall;
-import org.eclipsescout.demo.minifigcreator.shared.services.lookup.LegsLookupCall;
+import org.eclipse.scout.rt.shared.data.form.AbstractFormData;
 import org.eclipse.scout.rt.shared.data.form.ValidationRule;
 import org.eclipse.scout.rt.shared.data.form.fields.AbstractValueFieldData;
-import org.eclipsescout.demo.minifigcreator.shared.services.lookup.TorsoLookupCall;
-import org.eclipse.scout.rt.shared.data.form.AbstractFormData;
-import org.eclipsescout.demo.minifigcreator.shared.minifig.part.Part;
 import org.eclipse.scout.rt.shared.data.form.properties.AbstractPropertyData;
+import org.eclipsescout.demo.minifigcreator.shared.minifig.part.Part;
+import org.eclipsescout.demo.minifigcreator.shared.services.lookup.HeadLookupCall;
+import org.eclipsescout.demo.minifigcreator.shared.services.lookup.LegsLookupCall;
+import org.eclipsescout.demo.minifigcreator.shared.services.lookup.TorsoLookupCall;
 
 public class DesktopFormData extends AbstractFormData {
   private static final long serialVersionUID = 1L;
@@ -81,6 +81,7 @@ public class DesktopFormData extends AbstractFormData {
     protected void initValidationRules(java.util.Map<String, Object> ruleMap) {
       super.initValidationRules(ruleMap);
       ruleMap.put(ValidationRule.LOOKUP_CALL, HeadLookupCall.class);
+      ruleMap.put(ValidationRule.MANDATORY, true);
       ruleMap.put(ValidationRule.ZERO_NULL_EQUALITY, true);
     }
   }
@@ -98,6 +99,7 @@ public class DesktopFormData extends AbstractFormData {
     protected void initValidationRules(java.util.Map<String, Object> ruleMap) {
       super.initValidationRules(ruleMap);
       ruleMap.put(ValidationRule.LOOKUP_CALL, LegsLookupCall.class);
+      ruleMap.put(ValidationRule.MANDATORY, true);
       ruleMap.put(ValidationRule.ZERO_NULL_EQUALITY, true);
     }
   }
@@ -114,6 +116,7 @@ public class DesktopFormData extends AbstractFormData {
     @Override
     protected void initValidationRules(java.util.Map<String, Object> ruleMap) {
       super.initValidationRules(ruleMap);
+      ruleMap.put(ValidationRule.MANDATORY, true);
       ruleMap.put(ValidationRule.MAX_LENGTH, 4000);
     }
   }
@@ -161,6 +164,7 @@ public class DesktopFormData extends AbstractFormData {
     protected void initValidationRules(java.util.Map<String, Object> ruleMap) {
       super.initValidationRules(ruleMap);
       ruleMap.put(ValidationRule.LOOKUP_CALL, TorsoLookupCall.class);
+      ruleMap.put(ValidationRule.MANDATORY, true);
       ruleMap.put(ValidationRule.ZERO_NULL_EQUALITY, true);
     }
   }
