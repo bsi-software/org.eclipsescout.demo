@@ -13,24 +13,23 @@ package org.eclipsescout.demo.minifigcreator.shared;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
-public class Activator implements BundleActivator{
+public class Activator implements BundleActivator {
 
-  public static String PLUGIN_ID="org.eclipsescout.demo.minifigcreator.shared";
+  public static String PLUGIN_ID = "org.eclipsescout.demo.minifigcreator.shared";
 
   private static Activator plugin;
 
-  public static Activator getDefault(){
+  public static Activator getDefault() {
     return plugin;
   }
 
   @Override
-  public void start(BundleContext context) throws Exception{
-    plugin=this;
+  public void start(BundleContext context) throws Exception {
+    plugin = this;
   }
 
   @Override
-  public void stop(BundleContext context) throws Exception{
-    plugin=null;
+  public void stop(BundleContext context) throws Exception {
+    plugin = null;
   }
 }
-

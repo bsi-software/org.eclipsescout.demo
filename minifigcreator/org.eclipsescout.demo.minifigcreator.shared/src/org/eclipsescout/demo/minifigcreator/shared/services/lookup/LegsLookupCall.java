@@ -1,10 +1,9 @@
 package org.eclipsescout.demo.minifigcreator.shared.services.lookup;
 
-import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupService;
-import org.eclipsescout.demo.minifigcreator.shared.services.lookup.ILegsLookupService;
+import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 
-public class LegsLookupCall extends LookupCall{
+public class LegsLookupCall extends LookupCall {
 
   private static final long serialVersionUID = 1L;
 

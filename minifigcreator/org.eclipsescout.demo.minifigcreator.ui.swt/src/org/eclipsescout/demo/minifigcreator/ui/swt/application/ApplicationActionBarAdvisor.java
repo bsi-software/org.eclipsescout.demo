@@ -16,17 +16,17 @@ import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.application.ActionBarAdvisor;
 import org.eclipse.ui.application.IActionBarConfigurer;
 
-/** <h3>ApplicationActionBarAdvisor</h3>
- *  Used for menu contributions.
+/**
+ * <h3>ApplicationActionBarAdvisor</h3> Used for menu contributions.
  */
 public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 
-	public ApplicationActionBarAdvisor(IActionBarConfigurer configurer) {
-		super(configurer);
-	}
+  public ApplicationActionBarAdvisor(IActionBarConfigurer configurer) {
+    super(configurer);
+  }
 
-	@Override
-	protected void fillMenuBar(IMenuManager menuBar) {
-		menuBar.add(new MenuManager("", IWorkbenchActionConstants.M_FILE));
-	}
+  @Override
+  protected void fillMenuBar(IMenuManager menuBar) {
+    menuBar.add(new MenuManager("", IWorkbenchActionConstants.M_FILE));
+  }
 }

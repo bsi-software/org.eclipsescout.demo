@@ -10,39 +10,39 @@
  ******************************************************************************/
 package org.eclipsescout.demo.minifigcreator.server;
 
+import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
-import org.eclipse.scout.commons.annotations.FormData;
-import org.eclipse.scout.rt.server.ServerJob;
 import org.eclipse.scout.rt.server.AbstractServerSession;
+import org.eclipse.scout.rt.server.ServerJob;
 
-public class ServerSession extends AbstractServerSession{
-  private static IScoutLogger logger=ScoutLogManager.getLogger(ServerSession.class);
+public class ServerSession extends AbstractServerSession {
+  private static IScoutLogger logger = ScoutLogManager.getLogger(ServerSession.class);
 
-  public ServerSession(){
+  public ServerSession() {
     super(true);
   }
 
   /**
    * @return session in current ThreadContext
    */
-  public static ServerSession get(){
+  public static ServerSession get() {
     return ServerJob.getCurrentSession(ServerSession.class);
   }
 
   @FormData
-  public Long getPersonNr(){
-    return getSharedContextVariable("personNr",Long.class);
+  public Long getPersonNr() {
+    return getSharedContextVariable("personNr", Long.class);
   }
 
   @FormData
   public void setPersonNr(Long newValue) {
-    setSharedContextVariable("personNr",Long.class,newValue);
+    setSharedContextVariable("personNr", Long.class, newValue);
   }
 
   @Override
-  protected void execLoadSession() throws ProcessingException{
-    logger.info("created a new session for "+getUserId());
+  protected void execLoadSession() throws ProcessingException {
+    logger.info("created a new session for " + getUserId());
   }
 }

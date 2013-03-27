@@ -13,26 +13,24 @@ package org.eclipsescout.demo.minifigcreator.server;
 import javax.security.auth.Subject;
 
 import org.eclipse.core.runtime.Plugin;
+import org.eclipse.scout.commons.security.SimplePrincipal;
+import org.eclipse.scout.rt.server.scheduler.Scheduler;
 import org.osgi.framework.BundleContext;
 
-import org.eclipse.scout.rt.server.scheduler.Scheduler;
-import org.eclipse.scout.commons.security.SimplePrincipal;
+public class Activator extends Plugin {
 
-public class Activator extends Plugin{
-
-
-  public static String PLUGIN_ID="org.eclipsescout.demo.minifigcreator.server";
+  public static String PLUGIN_ID = "org.eclipsescout.demo.minifigcreator.server";
   // The shared instance
   private static Activator plugin;
 
   /**
    * Returns the shared instance
+   * 
    * @return the shared instance
    */
   public static Activator getDefault() {
     return plugin;
   }
-
 
   private Scheduler m_scheduler;
   /**
@@ -55,7 +53,7 @@ public class Activator extends Plugin{
     super.start(context);
     plugin = this;
     //create the backend subject
-    m_subject=new Subject();
+    m_subject = new Subject();
     m_subject.getPrincipals().add(new SimplePrincipal("server"));
   }
 
@@ -65,9 +63,9 @@ public class Activator extends Plugin{
    */
   @Override
   public void stop(BundleContext context) throws Exception {
-    if(m_scheduler!=null){
+    if (m_scheduler != null) {
       m_scheduler.stop();
-      m_scheduler=null;
+      m_scheduler = null;
     }
     plugin = null;
     super.stop(context);
@@ -82,7 +80,7 @@ public class Activator extends Plugin{
   }
 
   public void setScheduler(Scheduler scheduler) {
-    m_scheduler=scheduler;
+    m_scheduler = scheduler;
   }
 
 }

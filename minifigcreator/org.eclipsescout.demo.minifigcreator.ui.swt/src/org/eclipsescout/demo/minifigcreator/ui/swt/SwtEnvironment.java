@@ -31,10 +31,9 @@ import org.eclipsescout.demo.minifigcreator.ui.swt.views.SearchView;
 import org.eclipsescout.demo.minifigcreator.ui.swt.views.TableView;
 import org.osgi.framework.Bundle;
 
+public class SwtEnvironment extends AbstractSwtEnvironment {
 
-public class SwtEnvironment extends AbstractSwtEnvironment{
-
-  public SwtEnvironment(Bundle bundle,String perspectiveId,Class<? extends AbstractClientSession> clientSessionClazz) {
+  public SwtEnvironment(Bundle bundle, String perspectiveId, Class<? extends AbstractClientSession> clientSessionClazz) {
     super(bundle, perspectiveId, clientSessionClazz);
 
     registerPart(IForm.VIEW_ID_OUTLINE, OutlineView.class.getName());

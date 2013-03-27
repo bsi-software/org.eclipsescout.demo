@@ -18,9 +18,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.osgi.framework.ServiceRegistration;
+
 /**
  * Tests for {@link org.eclipsescout.demo.minifigcreator.client.ui.forms.DesktopForm}
- *
+ * 
  * @author jbr
  */
 //...
@@ -69,11 +70,11 @@ public class DesktopFormTest {
    */
   @Test
   public void testHeadDisabled() throws Exception {
-	  DesktopForm form = createFormWithState(false, true, true);
+    DesktopForm form = createFormWithState(false, true, true);
 
-	  ScoutClientAssert.assertDisabled(form.getHeadField());
-	  ScoutClientAssert.assertEnabled(form.getTorsoField());
-	  ScoutClientAssert.assertEnabled(form.getLegsField());
+    ScoutClientAssert.assertDisabled(form.getHeadField());
+    ScoutClientAssert.assertEnabled(form.getTorsoField());
+    ScoutClientAssert.assertEnabled(form.getLegsField());
   }
 
   /**
@@ -81,11 +82,11 @@ public class DesktopFormTest {
    */
   @Test
   public void testTorsoDisabled() throws Exception {
-	  DesktopForm form = createFormWithState(true, false, true);
+    DesktopForm form = createFormWithState(true, false, true);
 
-	  ScoutClientAssert.assertEnabled(form.getHeadField());
-	  ScoutClientAssert.assertDisabled(form.getTorsoField());
-	  ScoutClientAssert.assertEnabled(form.getLegsField());
+    ScoutClientAssert.assertEnabled(form.getHeadField());
+    ScoutClientAssert.assertDisabled(form.getTorsoField());
+    ScoutClientAssert.assertEnabled(form.getLegsField());
   }
 
   /**
@@ -93,11 +94,11 @@ public class DesktopFormTest {
    */
   @Test
   public void testLegsDisabled() throws Exception {
-	  DesktopForm form = createFormWithState(true, true, false);
+    DesktopForm form = createFormWithState(true, true, false);
 
-	  ScoutClientAssert.assertEnabled(form.getHeadField());
-	  ScoutClientAssert.assertEnabled(form.getTorsoField());
-	  ScoutClientAssert.assertDisabled(form.getLegsField());
+    ScoutClientAssert.assertEnabled(form.getHeadField());
+    ScoutClientAssert.assertEnabled(form.getTorsoField());
+    ScoutClientAssert.assertDisabled(form.getLegsField());
   }
 
   private DesktopForm createFormWithState(boolean headEnabled, boolean torsoEnabled, boolean legsEnabled) throws ProcessingException {
