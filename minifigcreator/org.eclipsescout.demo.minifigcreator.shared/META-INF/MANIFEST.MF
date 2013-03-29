@@ -9,7 +9,7 @@ Export-Package: org.eclipsescout.demo.minifigcreator.shared,
  org.eclipsescout.demo.minifigcreator.shared.services.common.text,
  org.eclipsescout.demo.minifigcreator.shared.services.lookup,
  org.eclipsescout.demo.minifigcreator.shared.services.process
-Require-Bundle: org.eclipse.core.runtime,
+Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.6.0,4.0.0)",
  org.eclipse.scout.rt.shared;bundle-version="[3.9.0,4.0.0)";visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy

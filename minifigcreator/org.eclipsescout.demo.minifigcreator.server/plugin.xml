@@ -49,6 +49,11 @@
             class="org.eclipsescout.demo.minifigcreator.server.data.MinifigDataStoreService"
             session="org.eclipsescout.demo.minifigcreator.server.ServerSession">
       </service>
+      <service
+            factory="org.eclipse.scout.rt.server.services.ServerServiceFactory"
+            class="org.eclipsescout.demo.minifigcreator.server.services.common.sql.PGSqlService"
+            session="org.eclipsescout.demo.minifigcreator.server.ServerSession">
+      </service>
    </extension>
    <extension
          name=""
@@ -115,8 +120,8 @@
          name=""
          point="org.eclipse.core.runtime.products">
       <product
-            application="org.eclipsescout.demo.minifigcreator.server.app"
-            name="minifigcreator Server">
+            name="minifigcreator Server"
+            application="org.eclipsescout.demo.minifigcreator.server.app">
          <property
                name="appName"
                value="minifigcreator Server">

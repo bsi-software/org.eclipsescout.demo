@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?><target name="jdbc" sequenceNumber="3">
+<locations>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="com.bsiag.scout.rt.server.jdbc.db2_97.feature.group" version="9.7.0.20130328-1209"/>
+<unit id="com.bsiag.scout.rt.server.jdbc.mssql2005.feature.group" version="1.1.150110.20130328-1209"/>
+<unit id="com.bsiag.scout.rt.server.jdbc.oracle10g.feature.group" version="10.0.20.20130328-1209"/>
+<unit id="com.bsiag.scout.rt.server.jdbc.oracle9i.feature.group" version="9.0.20.20130328-1209"/>
+<repository location="https://scout.bsiag.com/repository/com.bsiag.tools-snapshot-local/com/bsiag/tools/rt/server/jdbc/com.bsiag.scout.rt.server.jdbc.updatesite-internal/3.9.0-SNAPSHOT/com.bsiag.scout.rt.server.jdbc.updatesite-internal-3.9.0-SNAPSHOT.zip!/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="com.bsiag.scout.rt.server.jdbc.oracle11g2.feature.group" version="11.2.0.20130328-1209"/>
+<unit id="com.bsiag.scout.rt.server.jdbc.postgres9.feature.group" version="9.0.801.20130328-1209"/>
+<unit id="com.bsiag.scout.rt.server.jdbc.mysql5117.feature.group" version="5.1.17.20130328-1209"/>
+<repository location="https://scout.bsiag.com/repository/marketplace.jdbc"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.scout.rt.testing.source.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.scout.rt.source.feature.group" version="0.0.0"/>
+<repository location="https://scout.bsiag.com/repository/eclipse-scout-snapshot-repo/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.equinox.sdk.feature.group" version="3.6.2.r362_v20110210b-7H7R67v9rtOv_dTCawtb0WQnN92B"/>
+<repository location="https://scout.bsiag.com/repository/eclipse.releases.helios"/>
+</location>
+
+    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+      <unit id="com.bsiag.scout.rt.ui.swing.laf.rayo.feature.group" version="0.0.0"/>
+
+      <repository location="https://scout.bsiag.com/repository/marketplace.rayo/"/>
+    </location>
+</locations>
+</target>
