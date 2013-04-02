@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+    version="2.5">
+
+  <!-- ==================== Session Configuration ================= -->
+  <!-- You can set the session timeout (in minutes) for all newly   -->
+  <!-- created sessions by modifying the value below.               -->
+  <session-config>
+    <session-timeout>240</session-timeout>
+  </session-config>
+
+  <servlet>
+    <servlet-name>EquinoxBridge</servlet-name>
+    <servlet-class>
+      org.eclipse.equinox.servletbridge.BridgeServlet
+    </servlet-class>
+    <init-param>
+      <param-name>enableFrameworkControls</param-name>
+      <param-value>false</param-value>
+    </init-param>
+    <!-- org.eclipse.equinox.servletbridge and the Servlet API are exported
+      automatically to the underlying OSGi framework. The extendedFrameworkExports
+      parameter allows the specification of additional java package exports. The
+      format is a comma separated list of exports as specified by the "Export-Package"
+      bundle manifest header. For example: com.mycompany.exports; version=1.0.0,
+      com.mycompany.otherexports; version=1.0.0 -->
+    <init-param>
+      <param-name>extendedFrameworkExports</param-name>
+      <param-value></param-value>
+    </init-param>
+    <!-- Specify alternate framework launcher here. The default is: org.eclipse.equinox.servletbridge.FrameworkLauncher
+      <init-param>
+        <param-name>frameworkLauncherClass</param-name>
+        <param-value>org.eclipse.equinox.servletbridge.FrameworkLauncher</param-value>
+      </init-param>
+    -->
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EquinoxBridge</servlet-name>
+    <url-pattern>/*</url-pattern>
+  </servlet-mapping>
+</web-app>

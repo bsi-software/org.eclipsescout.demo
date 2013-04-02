@@ -11,6 +11,6 @@
 		<relativePath>../org.eclipsescout.demo.minifigcreator.parent/</relativePath>
 	</parent>
 
-	<artifactId>org.eclipsescout.demo.minifigcreator.server.test</artifactId>
-	<packaging>eclipse-plugin</packaging>
+	<artifactId>org.eclipsescout.demo.minifigcreator.server.test.fragment</artifactId>
+	<packaging>eclipse-test-plugin</packaging>
 </project>

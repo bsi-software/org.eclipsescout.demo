@@ -3,23 +3,22 @@
 <target name="Restored Target" sequenceNumber="14">
   <locations>
     <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-      <!-- <unit id="org.eclipse.scout.rt.testing.source.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.scout.rt.source.feature.group" version="0.0.0"/> -->
+      <unit id="org.eclipse.equinox.executable.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.server.jetty.feature.group" version="0.0.0"/>
 
       <repository location="http://download.eclipse.org/releases/kepler"/>
-    </location>
-
-    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-      <unit id="org.eclipse.scout.rt.testing.source.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.scout.rt.source.feature.group" version="0.0.0"/>
-
-      <repository location="http://download.eclipse.org/scout/nightly"/>
     </location>
 
     <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
       <unit id="com.bsiag.scout.rt.ui.swing.laf.rayo.feature.group" version="0.0.0"/>
 
       <repository location="https://scout.bsiag.com/repository/marketplace.rayo/"/>
+    </location>
+    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+      <unit id="org.eclipse.scout.rt.testing.source.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.scout.rt.source.feature.group" version="0.0.0"/>
+
+      <repository location="http://download.eclipse.org/scout/releases/3.9/3.9.0/M620130319-1249/"/>
     </location>
   </locations>
 </target>

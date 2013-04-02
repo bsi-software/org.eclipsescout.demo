@@ -12,5 +12,5 @@
 	</parent>
 
 	<artifactId>org.eclipsescout.demo.minifigcreator.client.test</artifactId>
-	<packaging>eclipse-test-plugin</packaging>
+	<packaging>eclipse-plugin</packaging>
 </project>
