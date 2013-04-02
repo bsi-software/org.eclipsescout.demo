@@ -13,4 +13,68 @@
 
 	<artifactId>org.eclipsescout.demo.minifigcreator.client.test</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
+
+
+	<build>
+		<plugins>
+			<!-- Start Server WAR with Cargo -->
+			<plugin>
+				<groupId>org.codehaus.cargo</groupId>
+				<artifactId>cargo-maven2-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>start-container</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>start</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>stop-container</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>stop</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<deployables>
+						<deployable>
+							<groupId>org.eclipsescout.demo.minifigcreator</groupId>
+							<artifactId>org.eclipsescout.demo.minifigcreator.server.test.product.war</artifactId>
+							<type>war</type>
+							<properties>
+								<context>minifig</context>
+							</properties>
+						</deployable>
+					</deployables>
+				</configuration>
+			</plugin>
+
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.eclipse.tycho</groupId> -->
+<!-- 				<artifactId>tycho-surefire-plugin</artifactId> -->
+<!-- 				<configuration> -->
+<!-- 					<testSuite>com.bsiag.crm.client.core.test.fragment</testSuite> -->
+<!-- 					<testClass>com.bsiag.crm.client.core.ProductClientTestSuite</testClass> -->
+<!-- 					<dependencies> -->
+<!-- 						<dependency> -->
+<!-- 							<type>p2-installable-unit</type> -->
+<!-- 							<artifactId>com.bsiag.crm.client.test.feature.feature.group</artifactId> -->
+<!-- 							<version>0.0.0</version> -->
+<!-- 						</dependency> -->
+<!-- 					</dependencies> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.eclipsescout.demo.minifigcreator</groupId>
+			<artifactId>org.eclipsescout.demo.minifigcreator.server.test.product.war</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+			<type>war</type>
+		</dependency>
+	</dependencies>
 </project>

@@ -78,6 +78,31 @@
 					<version>${tycho.version}</version>
 				</plugin>
 
+				<plugin>
+					<groupId>org.codehaus.cargo</groupId>
+					<artifactId>cargo-maven2-plugin</artifactId>
+					<version>1.3.2</version>
+					<configuration>
+						<container>
+							<containerId>jetty8x</containerId>
+							<artifactInstaller>
+								<groupId>org.eclipse.jetty</groupId>
+								<artifactId>jetty-distribution</artifactId>
+								<version>8.1.10.v20130312</version>
+							</artifactInstaller>
+						</container>
+						<configuration>
+							<properties>
+								<cargo.servlet.port>18080</cargo.servlet.port>
+								<cargo.java.home>${java.home}</cargo.java.home>
+								<cargo.jvmargs>-Xmx512m -Xms512m</cargo.jvmargs>
+								<cargo.logging>low</cargo.logging>
+							</properties>
+						</configuration>
+						<wait>false</wait>
+					</configuration>
+				</plugin>
+
 <!-- 				<plugin> -->
 <!-- 					<groupId>org.jacoco</groupId> -->
 <!-- 					<artifactId>jacoco-maven-plugin</artifactId> -->

@@ -15,6 +15,10 @@
 	<artifactId>org.eclipsescout.demo.minifigcreator.parent</artifactId>
 	<packaging>pom</packaging>
 
+	<properties>
+		<server.url>http://localhost:18080/minifig/process</server.url>
+	</properties>
+
 	<modules>
 		<module>../org.eclipsescout.demo.minifigcreator.client</module>
 		<module>../org.eclipsescout.demo.minifigcreator.server</module>
@@ -36,6 +40,9 @@
 			<modules>
 				<module>../org.eclipsescout.demo.minifigcreator.client.test</module>
 				<module>../org.eclipsescout.demo.minifigcreator.server.test</module>
+				<module>../org.eclipsescout.demo.minifigcreator.server.test.product</module>
+				<module>../org.eclipsescout.demo.minifigcreator.server.test.product.war</module>
+				<module>../org.eclipsescout.demo.minifigcreator.server.test.fragment</module>
 				<module>../org.eclipsescout.demo.minifigcreator.shared.test</module>
 			</modules>
 		</profile>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="minifigcreator Server" uid="minifig-server-test.product" id="org.eclipsescout.demo.minifigcreator.server.test.product" application="org.eclipsescout.demo.minifigcreator.server.test.app" useFeatures="false" includeLaunchers="true">
+
+   <configIni use="default">
+      <linux>/org.eclipsescout.demo.minifigcreator.server.test.prouct/config.ini</linux>
+      <macosx>/org.eclipsescout.demo.minifigcreator.server.test.prouct/config.ini</macosx>
+      <win32>/org.eclipsescout.demo.minifigcreator.server.test.prouct/config.ini</win32>
+   </configIni>
+
+   <launcherArgs>
+      <vmArgs>-Xms64m
+-Xmx512m
+-XX:MaxPermSize=256m
+-XX:+UnlockExperimentalVMOptions
+-XX:+UseG1GC</vmArgs>
+   </launcherArgs>
+
+   <windowImages/>
+
+   <launcher>
+      <solaris/>
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+   <vm>
+   </vm>
+
+   <plugins>
+      <plugin id="javax.servlet"/>
+      <plugin id="javax.xml"/>
+      <plugin id="org.apache.ant"/>
+      <plugin id="org.eclipse.core.contenttype"/>
+      <plugin id="org.eclipse.core.jobs"/>
+      <plugin id="org.eclipse.core.runtime"/>
+      <plugin id="org.eclipse.equinox.app"/>
+      <plugin id="org.eclipse.equinox.common"/>
+      <plugin id="org.eclipse.equinox.http.registry"/>
+      <plugin id="org.eclipse.equinox.http.servlet"/>
+      <plugin id="org.eclipse.equinox.http.servletbridge"/>
+      <plugin id="org.eclipse.equinox.launcher"/>
+      <plugin id="org.eclipse.equinox.preferences"/>
+      <plugin id="org.eclipse.equinox.registry"/>
+      <plugin id="org.eclipse.equinox.security"/>
+      <plugin id="org.eclipse.equinox.servletbridge"/>
+      <plugin id="org.eclipse.jetty.continuation"/>
+      <plugin id="org.eclipse.jetty.http"/>
+      <plugin id="org.eclipse.jetty.io"/>
+      <plugin id="org.eclipse.jetty.security"/>
+      <plugin id="org.eclipse.jetty.server"/>
+      <plugin id="org.eclipse.jetty.servlet"/>
+      <plugin id="org.eclipse.jetty.util"/>
+      <plugin id="org.eclipse.osgi"/>
+      <plugin id="org.eclipse.osgi.services"/>
+      <plugin id="org.eclipse.scout.commons"/>
+      <plugin id="org.eclipse.scout.http.servletfilter"/>
+      <plugin id="org.eclipse.scout.rt.server"/>
+      <plugin id="org.eclipse.scout.rt.shared"/>
+      <plugin id="org.eclipse.scout.rt.testing.commons"/>
+      <plugin id="org.eclipse.scout.rt.testing.server"/>
+      <plugin id="org.eclipse.scout.rt.testing.shared"/>
+      <plugin id="org.eclipse.scout.service"/>
+      <plugin id="org.eclipse.update.configurator"/>
+      <plugin id="org.eclipsescout.demo.minifigcreator.server"/>
+      <plugin id="org.eclipsescout.demo.minifigcreator.server.test"/>
+      <plugin id="org.eclipsescout.demo.minifigcreator.server.test.fragment" fragment="true"/>
+      <plugin id="org.eclipsescout.demo.minifigcreator.shared"/>
+      <plugin id="org.hamcrest.core"/>
+      <plugin id="org.junit"/>
+   </plugins>
+
+
+</product>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<fragment>
+   <extension id="app" point="org.eclipse.core.runtime.applications">
+      <application cardinality="singleton-global" thread="main" visible="true">
+         <run class="org.eclipsescout.demo.minifigcreator.server.MinifigcreatorProductServerTestApplication" />
+      </application>
+   </extension>
+
+   <extension id="product" point="org.eclipse.core.runtime.products">
+      <product application="org.eclipsescout.demo.minifigcreator.server.test.app" name="Minifigcreator Product Test Server">
+         <property name="appName" value="Minifigcreator Product Test Server" />
+      </product>
+   </extension>
+
+   <extension
+         point="org.eclipse.equinox.http.registry.servlets">
+      <servlet
+            alias="/process"
+            class="org.eclipse.scout.rt.server.ServiceTunnelServlet">
+         <init-param
+               name="session"
+               value="org.eclipsescout.demo.minifigcreator.server.ServerSession">
+         </init-param>
+      </servlet>
+   </extension>
+</fragment>
