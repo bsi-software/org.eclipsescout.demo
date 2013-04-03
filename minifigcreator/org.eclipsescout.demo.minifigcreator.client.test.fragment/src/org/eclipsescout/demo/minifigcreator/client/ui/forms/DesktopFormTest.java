@@ -17,19 +17,21 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InOrder;
+import org.mockito.Mockito;
 import org.osgi.framework.ServiceRegistration;
 
 /**
  * Tests for
  * {@link org.eclipsescout.demo.minifigcreator.client.ui.forms.DesktopForm}
- * 
+ *
  * @author jbr
  */
 // ...
 @RunWith(ScoutClientTestRunner.class)
-public class DesktopFormTest {
+public class DesktopFormTest extends Mockito{
 
-	private P_DesktopProcessService m_mockService = new P_DesktopProcessService();
+	private IDesktopProcessService m_mockService = mock(IDesktopProcessService.class);
 	@SuppressWarnings("rawtypes")
 	private List<ServiceRegistration> m_registeredServices;
 
@@ -41,6 +43,19 @@ public class DesktopFormTest {
 	@After
 	public void teardown() {
 		TestingUtility.unregisterServices(m_registeredServices);
+	}
+
+	@Test
+	public void testAllMethodsAreCalled() throws Exception {
+		DesktopForm form = spy(createFormWithState(true, true, true));
+
+		InOrder orderCheck = inOrder(form);
+
+		verify(form, times(1)).updateImage();
+		verify(form, times(1)).updateSummary();
+
+		orderCheck.verify(form).updateImage();
+		orderCheck.verify(form).updateSummary();
 	}
 
 	/**
@@ -103,7 +118,7 @@ public class DesktopFormTest {
 		ScoutClientAssert.assertDisabled(form.getLegsField());
 	}
 
-	private DesktopForm createFormWithState(boolean headEnabled, boolean torsoEnabled, boolean legsEnabled) throws ProcessingException {
+	private DesktopForm createFormWithState(final boolean headEnabled, final boolean torsoEnabled, final boolean legsEnabled) throws ProcessingException {
 		DesktopFormData loadFormData = new DesktopFormData();
 		FormState state = new FormState();
 		state.setHeadEnabled(headEnabled);
@@ -111,34 +126,10 @@ public class DesktopFormTest {
 		state.setLegsEnabled(legsEnabled);
 
 		loadFormData.setState(state);
-		m_mockService.setLoadFormData(loadFormData);
+		when(m_mockService.load(any(DesktopFormData.class))).thenReturn(loadFormData);
 
 		DesktopForm form = new DesktopForm();
 		form.startView();
 		return form;
 	}
-
-	public static class P_DesktopProcessService implements IDesktopProcessService {
-
-		private DesktopFormData m_loadFormData;
-
-		@Override
-		public void initializeService() {
-		}
-
-		@Override
-		public DesktopFormData load(DesktopFormData formData) throws ProcessingException {
-			return m_loadFormData;
-		}
-
-		public void setLoadFormData(DesktopFormData loadFormData) {
-			m_loadFormData = loadFormData;
-		}
-
-		@Override
-		public DesktopFormData store(DesktopFormData formData) throws ProcessingException {
-			return formData;
-		}
-	}
-
 }
