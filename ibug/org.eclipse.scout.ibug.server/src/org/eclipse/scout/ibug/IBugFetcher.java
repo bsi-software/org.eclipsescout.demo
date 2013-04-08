@@ -17,11 +17,15 @@ public interface IBugFetcher {
 
   public void setAssignee(String assignee);
 
+  public void setProduct(String product);
+
   public String getQueryCriteria();
 
   public int getMaxNumberOfBugs();
 
   public String getAssignee();
+
+  public String getProduct();
 
   public List<IBug> fetchBugs() throws ProcessingException;
 }

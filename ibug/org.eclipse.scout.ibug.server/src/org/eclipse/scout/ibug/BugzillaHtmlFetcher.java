@@ -25,6 +25,7 @@ public class BugzillaHtmlFetcher implements IBugFetcher {
 
   private String m_criteria = null;
   private String m_assignee = null;
+  private String m_product = null;
   private int m_maxNumberOfBugs = 5;
 
   @Override
@@ -33,13 +34,28 @@ public class BugzillaHtmlFetcher implements IBugFetcher {
   }
 
   @Override
+  public String getQueryCriteria() {
+    return m_criteria;
+  }
+
+  @Override
   public void setAssignee(String assignee) {
     m_assignee = assignee;
   }
 
   @Override
-  public String getQueryCriteria() {
-    return m_criteria;
+  public String getAssignee() {
+    return m_assignee;
+  }
+
+  @Override
+  public void setProduct(String product) {
+    m_product = product;
+  }
+
+  @Override
+  public String getProduct() {
+    return m_product;
   }
 
   @Override
@@ -50,11 +66,6 @@ public class BugzillaHtmlFetcher implements IBugFetcher {
   @Override
   public int getMaxNumberOfBugs() {
     return m_maxNumberOfBugs;
-  }
-
-  @Override
-  public String getAssignee() {
-    return m_assignee;
   }
 
   @Override
@@ -76,13 +87,17 @@ public class BugzillaHtmlFetcher implements IBugFetcher {
 
   private String buildQueryUrl() {
     String url = getQueryCriteria();
-    String assignee = getAssignee();
+    String assignee = StringUtility.nvl(getAssignee(), "").trim();
+    String product = StringUtility.nvl(getProduct(), "").trim();
 
-    if (!StringUtility.isNullOrEmpty(assignee)) {
-      if (assignee.trim().length() > 0) {
-        LOG.info("assignee='" + assignee.trim() + "'");
-        url += "&emailtype1=substring&emailassigned_to1=1&email1=" + getAssignee();
-      }
+    if (assignee.length() > 0) {
+      LOG.info("assignee='" + assignee + "'");
+      url += "&emailtype1=substring&emailassigned_to1=1&email1=" + assignee;
+    }
+
+    if (product.length() > 0) {
+      LOG.info("product='" + product + "'");
+      url += "&product=" + product;
     }
 
     LOG.info("using query url='" + url + "'");

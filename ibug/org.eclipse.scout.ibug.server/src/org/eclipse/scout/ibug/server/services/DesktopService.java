@@ -2,6 +2,7 @@ package org.eclipse.scout.ibug.server.services;
 
 import java.util.List;
 
+import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
@@ -43,17 +44,13 @@ public class DesktopService extends AbstractService implements IDesktopService {
     m_bugFetcher.setMaxNumberOfBugs(bugs);
   }
 
-  public void setAssignee(String assignee) {
-    m_bugFetcher.setAssignee(assignee);
-  }
-
   @Override
   public DesktopFormData load(DesktopFormData formData) throws ProcessingException {
 
-    setAssignee(formData.getAssignee().getValue());
+    verifySearchCriteria(formData, m_bugFetcher, "Scout");
 
-    formData.getBugs().clearRows();
     List<IBug> bugs = m_bugFetcher.fetchBugs();
+    formData.getBugs().clearRows();
 
     for (IBug bug : bugs) {
       LOG.info("adding bug " + bug);
@@ -74,5 +71,19 @@ public class DesktopService extends AbstractService implements IDesktopService {
     }
 
     return formData;
+  }
+
+  private void verifySearchCriteria(DesktopFormData formData, IBugFetcher bugFetcher, String defaultProduct) {
+    String assignee = formData.getAssignee().getValue();
+    String product = formData.getProduct().getValue();
+
+    if (StringUtility.isNullOrEmpty(assignee) && StringUtility.isNullOrEmpty(product)) {
+      LOG.info("no assignee or product provided, setting product to '" + defaultProduct + "'");
+      formData.getProduct().setValue(defaultProduct);
+      product = defaultProduct;
+    }
+
+    bugFetcher.setAssignee(assignee);
+    bugFetcher.setProduct(product);
   }
 }

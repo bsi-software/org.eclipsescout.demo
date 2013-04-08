@@ -19,6 +19,10 @@ public class DesktopFormData extends AbstractFormData {
     return getFieldByClass(Bugs.class);
   }
 
+  public Product getProduct() {
+    return getFieldByClass(Product.class);
+  }
+
   public static class Assignee extends AbstractValueFieldData<String> {
     private static final long serialVersionUID = 1L;
 
@@ -39,15 +43,6 @@ public class DesktopFormData extends AbstractFormData {
     private static final long serialVersionUID = 1L;
 
     public Bugs() {
-    }
-
-    /**
-     * list of derived validation rules.
-     */
-    @Override
-    protected void initValidationRules(java.util.Map<String, Object> ruleMap) {
-      super.initValidationRules(ruleMap);
-      ruleMap.put(ValidationRule.MASTER_VALUE_FIELD, Assignee.class);
     }
 
     public static final int ID_COLUMN_ID = 0;
@@ -222,6 +217,22 @@ public class DesktopFormData extends AbstractFormData {
           setSortValue(row, (Integer) value);
           break;
       }
+    }
+  }
+
+  public static class Product extends AbstractValueFieldData<String> {
+    private static final long serialVersionUID = 1L;
+
+    public Product() {
+    }
+
+    /**
+     * list of derived validation rules.
+     */
+    @Override
+    protected void initValidationRules(java.util.Map<String, Object> ruleMap) {
+      super.initValidationRules(ruleMap);
+      ruleMap.put(ValidationRule.MAX_LENGTH, 4000);
     }
   }
 }

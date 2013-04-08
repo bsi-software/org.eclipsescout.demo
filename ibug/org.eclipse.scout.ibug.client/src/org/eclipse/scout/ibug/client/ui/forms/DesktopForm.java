@@ -5,10 +5,11 @@ import org.eclipse.scout.commons.annotations.FormData.SdkCommand;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.ibug.client.ui.forms.DesktopForm.MainBox.DesktopBox;
-import org.eclipse.scout.ibug.client.ui.forms.DesktopForm.MainBox.DesktopBox.AssigneeBox;
-import org.eclipse.scout.ibug.client.ui.forms.DesktopForm.MainBox.DesktopBox.AssigneeBox.AssigneeField;
-import org.eclipse.scout.ibug.client.ui.forms.DesktopForm.MainBox.DesktopBox.AssigneeBox.RefreshButton;
 import org.eclipse.scout.ibug.client.ui.forms.DesktopForm.MainBox.DesktopBox.BugsField;
+import org.eclipse.scout.ibug.client.ui.forms.DesktopForm.MainBox.DesktopBox.SearchBox;
+import org.eclipse.scout.ibug.client.ui.forms.DesktopForm.MainBox.DesktopBox.SearchBox.AssigneeField;
+import org.eclipse.scout.ibug.client.ui.forms.DesktopForm.MainBox.DesktopBox.SearchBox.ProductField;
+import org.eclipse.scout.ibug.client.ui.forms.DesktopForm.MainBox.DesktopBox.SearchBox.RefreshButton;
 import org.eclipse.scout.ibug.shared.Icons;
 import org.eclipse.scout.ibug.shared.services.DesktopFormData;
 import org.eclipse.scout.ibug.shared.services.IDesktopService;
@@ -55,8 +56,8 @@ public class DesktopForm extends AbstractForm {
     return Icons.EclipseScout;
   }
 
-  public AssigneeBox getAssigneeBox() {
-    return getFieldByClass(AssigneeBox.class);
+  public SearchBox getSearchBox() {
+    return getFieldByClass(SearchBox.class);
   }
 
   public AssigneeField getAssigneeField() {
@@ -75,6 +76,10 @@ public class DesktopForm extends AbstractForm {
     return getFieldByClass(MainBox.class);
   }
 
+  public ProductField getProductField() {
+    return getFieldByClass(ProductField.class);
+  }
+
   public RefreshButton getRefreshButton() {
     return getFieldByClass(RefreshButton.class);
   }
@@ -91,7 +96,12 @@ public class DesktopForm extends AbstractForm {
     public class DesktopBox extends AbstractGroupBox {
 
       @Order(10.0)
-      public class AssigneeBox extends AbstractSequenceBox {
+      public class SearchBox extends AbstractSequenceBox {
+
+        @Override
+        protected boolean getConfiguredLabelVisible() {
+          return false;
+        }
 
         @Order(10.0)
         public class AssigneeField extends AbstractStringField {
@@ -100,9 +110,28 @@ public class DesktopForm extends AbstractForm {
           protected String getConfiguredLabel() {
             return TEXTS.get("Assignee");
           }
+
+          @Override
+          protected int getConfiguredLabelPosition() {
+            return LABEL_POSITION_ON_FIELD;
+          }
         }
 
         @Order(20.0)
+        public class ProductField extends AbstractStringField {
+
+          @Override
+          protected String getConfiguredLabel() {
+            return TEXTS.get("Product");
+          }
+
+          @Override
+          protected int getConfiguredLabelPosition() {
+            return LABEL_POSITION_ON_FIELD;
+          }
+        }
+
+        @Order(30.0)
         public class RefreshButton extends AbstractButton {
 
           @Override
@@ -126,8 +155,8 @@ public class DesktopForm extends AbstractForm {
         }
 
         @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("MostRecentBugs");
+        protected boolean getConfiguredLabelVisible() {
+          return false;
         }
 
         @Order(10.0)
