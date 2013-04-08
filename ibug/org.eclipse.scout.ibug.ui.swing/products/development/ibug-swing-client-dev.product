@@ -29,6 +29,8 @@
    </vm>
 
    <plugins>
+      <plugin id="com.bsiag.scout.rt.ui.swing.laf.rayo.fragment" fragment="true"/>
+      <plugin id="com.bsiag.scout.rt.ui.swing.rayo"/>
       <plugin id="javax.xml"/>
       <plugin id="org.apache.batik.bridge"/>
       <plugin id="org.apache.batik.css"/>
