@@ -1,0 +1,5 @@
+h1. Read Me
+
+This repository contains demo applications based on the "Eclipse Scout":http://eclipse.org/scout/ framework.
+
+More information on wiki: "Eclipse Scout -> Demo Applications":http://wiki.eclipse.org/Scout/Demo.
