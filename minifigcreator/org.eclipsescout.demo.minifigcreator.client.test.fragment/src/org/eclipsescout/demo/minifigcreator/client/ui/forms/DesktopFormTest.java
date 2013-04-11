@@ -24,12 +24,12 @@ import org.osgi.framework.ServiceRegistration;
 /**
  * Tests for
  * {@link org.eclipsescout.demo.minifigcreator.client.ui.forms.DesktopForm}
- *
+ * 
  * @author jbr
  */
 // ...
 @RunWith(ScoutClientTestRunner.class)
-public class DesktopFormTest extends Mockito{
+public class DesktopFormTest extends Mockito {
 
 	private IDesktopProcessService m_mockService = mock(IDesktopProcessService.class);
 	@SuppressWarnings("rawtypes")
@@ -49,10 +49,15 @@ public class DesktopFormTest extends Mockito{
 	public void testAllMethodsAreCalled() throws Exception {
 		DesktopForm form = spy(createFormWithState(true, true, true));
 
-		InOrder orderCheck = inOrder(form);
-
 		verify(form, times(1)).updateImage();
 		verify(form, times(1)).updateSummary();
+	}
+
+	@Test
+	public void testAllMethodsAreCalledInOrder() throws Exception {
+		DesktopForm form = spy(createFormWithState(true, true, true));
+
+		InOrder orderCheck = inOrder(form);
 
 		orderCheck.verify(form).updateImage();
 		orderCheck.verify(form).updateSummary();

@@ -38,6 +38,7 @@ import org.eclipsescout.demo.minifigcreator.client.ui.forms.DesktopForm.MainBox.
 import org.eclipsescout.demo.minifigcreator.client.ui.forms.DesktopForm.MainBox.Placeholder2Field;
 import org.eclipsescout.demo.minifigcreator.shared.Icons;
 import org.eclipsescout.demo.minifigcreator.shared.minifig.part.Part;
+import org.eclipsescout.demo.minifigcreator.shared.minifig.part.PartType;
 import org.eclipsescout.demo.minifigcreator.shared.minifig.part.PartUtility;
 import org.eclipsescout.demo.minifigcreator.shared.services.lookup.HeadLookupCall;
 import org.eclipsescout.demo.minifigcreator.shared.services.lookup.LegsLookupCall;
@@ -49,6 +50,7 @@ import org.eclipsescout.demo.minifigcreator.shared.services.process.IDesktopProc
 @FormData(value = DesktopFormData.class, sdkCommand = SdkCommand.CREATE)
 public class DesktopForm extends AbstractForm {
 
+	private static final Part PIRATE = new Part(PartType.HEAD, 2, "Pirate", 13);
 	private FormState m_state;
 
 	public DesktopForm() throws ProcessingException {
