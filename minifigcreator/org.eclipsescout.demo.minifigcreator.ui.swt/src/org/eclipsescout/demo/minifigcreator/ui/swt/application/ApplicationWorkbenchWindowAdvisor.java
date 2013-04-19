@@ -1,13 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2013 BSI Business Systems Integration AG.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *     BSI Business Systems Integration AG - initial API and implementation
- ******************************************************************************/
 package org.eclipsescout.demo.minifigcreator.ui.swt.application;
 
 import org.eclipse.swt.graphics.Point;
@@ -33,11 +23,12 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
   @Override
   public void preWindowOpen() {
     IWorkbenchWindowConfigurer configurer = getWindowConfigurer();
-    configurer.setInitialSize(new Point(1024, 800));
-    configurer.setShowCoolBar(false);
+    configurer.setInitialSize(new Point(1024, 768));
+    configurer.setShowCoolBar(ApplicationActionBarAdvisor.NUM_OUTLINE_BUTTONS > 0);
     configurer.setShowStatusLine(true);
     configurer.setShowProgressIndicator(true);
     configurer.setShowMenuBar(true);
     configurer.setShowPerspectiveBar(false);
+    configurer.setShowFastViewBars(false);
   }
 }

@@ -4,9 +4,9 @@ import org.eclipse.scout.rt.ui.swt.ISwtEnvironment;
 import org.eclipse.scout.rt.ui.swt.window.desktop.view.AbstractScoutView;
 import org.eclipsescout.demo.minifigcreator.ui.swt.Activator;
 
-public class CenterView extends AbstractScoutView {
+public class NorthEastView extends AbstractScoutView {
 
-  public CenterView() {
+  public NorthEastView() {
   }
 
   @Override

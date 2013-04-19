@@ -6,65 +6,109 @@
          point="org.eclipse.ui.perspectives">
       <perspective
             name="minifigcreator"
-            fixed="true"
+            icon="resources/icons/eclipse_scout.gif"
+            fixed="false"
             class="org.eclipsescout.demo.minifigcreator.ui.swt.perspective.Perspective"
-            id="minifigcreator.ui.swt.perspective.Perspective">
+            id="org.eclipsescout.demo.minifigcreator.ui.swt.perspective.Perspective">
       </perspective>
    </extension>
    <extension
          name=""
          point="org.eclipse.ui.views">
       <view
-            name="OutlineView"
-            icon="resources/icons/eclipse_scout.gif"
-            restorable="true"
-            class="org.eclipsescout.demo.minifigcreator.ui.swt.views.OutlineView"
-            id="minifigcreator.ui.swt.views.OutlineView">
-      </view>
-      <view
-            name="DetailView"
-            icon="resources/icons/eclipse_scout.gif"
-            restorable="true"
-            class="org.eclipsescout.demo.minifigcreator.ui.swt.views.DetailView"
-            id="minifigcreator.ui.swt.views.DetailView">
-      </view>
-      <view
             name="Center View"
             allowMultiple="true"
             icon="resources/icons/eclipse_scout.gif"
+            category="org.eclipsescout.demo.minifigcreator.ui.swt.viewCategory"
             restorable="true"
             class="org.eclipsescout.demo.minifigcreator.ui.swt.views.CenterView"
-            id="minifigcreator.ui.swt.views.CenterView">
+            id="org.eclipsescout.demo.minifigcreator.ui.swt.views.CenterView">
       </view>
       <view
-            name="Table View"
+            name="West view"
+            allowMultiple="true"
             icon="resources/icons/eclipse_scout.gif"
+            category="org.eclipsescout.demo.minifigcreator.ui.swt.viewCategory"
             restorable="true"
-            class="org.eclipsescout.demo.minifigcreator.ui.swt.views.TableView"
-            id="minifigcreator.ui.swt.views.TableView">
+            class="org.eclipsescout.demo.minifigcreator.ui.swt.views.WestView"
+            id="org.eclipsescout.demo.minifigcreator.ui.swt.views.WestView">
       </view>
       <view
-            name="Search View"
+            name="North view"
+            allowMultiple="true"
             icon="resources/icons/eclipse_scout.gif"
+            category="org.eclipsescout.demo.minifigcreator.ui.swt.viewCategory"
             restorable="true"
-            class="org.eclipsescout.demo.minifigcreator.ui.swt.views.SearchView"
-            id="minifigcreator.ui.swt.views.SearchView">
+            class="org.eclipsescout.demo.minifigcreator.ui.swt.views.NorthView"
+            id="org.eclipsescout.demo.minifigcreator.ui.swt.views.NorthView">
+      </view>
+      <view
+            name="North west view"
+            allowMultiple="true"
+            icon="resources/icons/eclipse_scout.gif"
+            category="org.eclipsescout.demo.minifigcreator.ui.swt.viewCategory"
+            restorable="true"
+            class="org.eclipsescout.demo.minifigcreator.ui.swt.views.NorthWestView"
+            id="org.eclipsescout.demo.minifigcreator.ui.swt.views.NorthWestView">
+      </view>
+      <view
+            name="North east view"
+            allowMultiple="true"
+            icon="resources/icons/eclipse_scout.gif"
+            category="org.eclipsescout.demo.minifigcreator.ui.swt.viewCategory"
+            restorable="true"
+            class="org.eclipsescout.demo.minifigcreator.ui.swt.views.NorthEastView"
+            id="org.eclipsescout.demo.minifigcreator.ui.swt.views.NorthEastView">
+      </view>
+      <view
+            name="East view"
+            allowMultiple="true"
+            icon="resources/icons/eclipse_scout.gif"
+            category="org.eclipsescout.demo.minifigcreator.ui.swt.viewCategory"
+            restorable="true"
+            class="org.eclipsescout.demo.minifigcreator.ui.swt.views.EastView"
+            id="org.eclipsescout.demo.minifigcreator.ui.swt.views.EastView">
+      </view>
+      <view
+            name="South view"
+            allowMultiple="true"
+            icon="resources/icons/eclipse_scout.gif"
+            category="org.eclipsescout.demo.minifigcreator.ui.swt.viewCategory"
+            restorable="true"
+            class="org.eclipsescout.demo.minifigcreator.ui.swt.views.SouthView"
+            id="org.eclipsescout.demo.minifigcreator.ui.swt.views.SouthView">
+      </view>
+      <view
+            name="South west view"
+            allowMultiple="true"
+            icon="resources/icons/eclipse_scout.gif"
+            category="org.eclipsescout.demo.minifigcreator.ui.swt.viewCategory"
+            restorable="true"
+            class="org.eclipsescout.demo.minifigcreator.ui.swt.views.SouthWestView"
+            id="org.eclipsescout.demo.minifigcreator.ui.swt.views.SouthWestView">
+      </view>
+      <view
+            name="South east view"
+            allowMultiple="true"
+            icon="resources/icons/eclipse_scout.gif"
+            category="org.eclipsescout.demo.minifigcreator.ui.swt.viewCategory"
+            restorable="true"
+            class="org.eclipsescout.demo.minifigcreator.ui.swt.views.SouthEastView"
+            id="org.eclipsescout.demo.minifigcreator.ui.swt.views.SouthEastView">
       </view>
       <view
             name="Progress View"
+            allowMultiple="false"
             icon="resources/icons/progress_view.gif"
             category="org.eclipse.ui"
             restorable="true"
             class="org.eclipse.ui.ExtensionFactory:progressView"
             id="org.eclipse.ui.views.ProgressView">
       </view>
-      <view
-            name="East View"
-            icon="resources/icons/eclipse_scout.gif"
-            restorable="true"
-            class="org.eclipsescout.demo.minifigcreator.ui.swt.views.EastView"
-            id="minifigcreator.ui.swt.views.EastView">
-      </view>
+      <category
+            name="minifigcreator"
+            id="org.eclipsescout.demo.minifigcreator.ui.swt.viewCategory">
+      </category>
    </extension>
    <extension
          name=""
@@ -92,7 +136,7 @@
             icon="resources/icons/eclipse_scout.gif"
             matchingStrategy="org.eclipse.scout.rt.ui.swt.window.desktop.editor.ScoutEditorMatchingStrategy"
             class="org.eclipsescout.demo.minifigcreator.ui.swt.editor.ScoutEditorPart"
-            id="minifigcreator.ui.swt.editor.ScoutEditorPart">
+            id="org.eclipsescout.demo.minifigcreator.ui.swt.editor.ScoutEditorPart">
       </editor>
    </extension>
    <extension
@@ -101,7 +145,7 @@
          point="org.eclipse.core.runtime.products">
       <product
             name=""
-            application="minifigcreator.ui.swt.application">
+            application="org.eclipsescout.demo.minifigcreator.ui.swt.application">
          <property
                name="appName"
                value="minifigcreator">
@@ -135,74 +179,6 @@
                id="org.eclipse.scout.swt.menu.dynamic">
          </dynamic>
       </menuContribution>
-   </extension>
-   <extension
-         name=""
-         point="org.eclipse.ui.perspectiveExtensions">
-      <perspectiveExtension
-            targetID="minifigcreator.ui.swt.perspective.Perspective">
-         <view
-               minimized="false"
-               relative="org.eclipse.ui.editorss"
-               closeable="false"
-               visible="false"
-               relationship="left"
-               id="minifigcreator.ui.swt.views.OutlineView">
-         </view>
-         <view
-               minimized="false"
-               ratio="0.75"
-               relative="minifigcreator.ui.swt.views.OutlineView"
-               closeable="true"
-               visible="false"
-               relationship="right"
-               id="minifigcreator.ui.swt.views.EastView">
-         </view>
-         <view
-               minimized="false"
-               ratio="0.25"
-               relative="minifigcreator.ui.swt.views.OutlineView"
-               closeable="false"
-               visible="false"
-               relationship="right"
-               id="minifigcreator.ui.swt.views.TableView">
-         </view>
-         <view
-               minimized="false"
-               ratio="0.25"
-               relative="minifigcreator.ui.swt.views.TableView"
-               closeable="false"
-               visible="false"
-               relationship="bottom"
-               id="minifigcreator.ui.swt.views.DetailView">
-         </view>
-         <view
-               minimized="false"
-               ratio="0.66"
-               relative="minifigcreator.ui.swt.views.TableView"
-               closeable="false"
-               visible="false"
-               relationship="bottom"
-               id="minifigcreator.ui.swt.views.SearchView">
-         </view>
-         <view
-               minimized="false"
-               relative="minifigcreator.ui.swt.views.TableView"
-               closeable="true"
-               visible="false"
-               relationship="stack"
-               id="minifigcreator.ui.swt.views.CenterView">
-         </view>
-         <view
-               minimized="false"
-               ratio="0.75"
-               relative="minifigcreator.ui.swt.views.EastView"
-               closeable="true"
-               visible="false"
-               relationship="bottom"
-               id="org.eclipse.ui.views.ProgressView">
-         </view>
-      </perspectiveExtension>
    </extension>
 
 </plugin>
