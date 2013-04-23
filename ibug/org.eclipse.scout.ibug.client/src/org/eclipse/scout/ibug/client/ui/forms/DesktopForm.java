@@ -103,6 +103,11 @@ public class DesktopForm extends AbstractForm {
           return false;
         }
 
+        @Override
+        protected boolean getConfiguredAutoCheckFromTo() {
+          return false;
+        }
+
         @Order(10.0)
         public class AssigneeField extends AbstractStringField {
 
@@ -223,6 +228,11 @@ public class DesktopForm extends AbstractForm {
             protected boolean getConfiguredPrimaryKey() {
               return true;
             }
+
+            @Override
+            protected int getConfiguredWidth() {
+              return 60;
+            }
           }
 
           @Order(20.0)
@@ -231,6 +241,11 @@ public class DesktopForm extends AbstractForm {
             @Override
             protected String getConfiguredHeaderText() {
               return TEXTS.get("Summary");
+            }
+
+            @Override
+            protected int getConfiguredWidth() {
+              return 470;
             }
           }
 
@@ -241,6 +256,11 @@ public class DesktopForm extends AbstractForm {
             protected String getConfiguredHeaderText() {
               return TEXTS.get("LastChanged");
             }
+
+            @Override
+            protected int getConfiguredWidth() {
+              return 100;
+            }
           }
 
           @Order(40.0)
@@ -249,6 +269,11 @@ public class DesktopForm extends AbstractForm {
             @Override
             protected String getConfiguredHeaderText() {
               return TEXTS.get("Severety");
+            }
+
+            @Override
+            protected int getConfiguredWidth() {
+              return 60;
             }
           }
 
@@ -259,6 +284,11 @@ public class DesktopForm extends AbstractForm {
             protected String getConfiguredHeaderText() {
               return TEXTS.get("Priority");
             }
+
+            @Override
+            protected int getConfiguredWidth() {
+              return 60;
+            }
           }
 
           @Order(60.0)
@@ -267,6 +297,11 @@ public class DesktopForm extends AbstractForm {
             @Override
             protected String getConfiguredHeaderText() {
               return TEXTS.get("TargetMilestone");
+            }
+
+            @Override
+            protected int getConfiguredWidth() {
+              return 110;
             }
           }
 
@@ -277,6 +312,11 @@ public class DesktopForm extends AbstractForm {
             protected String getConfiguredHeaderText() {
               return TEXTS.get("Status");
             }
+
+            @Override
+            protected int getConfiguredWidth() {
+              return 60;
+            }
           }
 
           @Order(80.0)
@@ -285,6 +325,11 @@ public class DesktopForm extends AbstractForm {
             @Override
             protected String getConfiguredHeaderText() {
               return TEXTS.get("Resolution");
+            }
+
+            @Override
+            protected int getConfiguredWidth() {
+              return 80;
             }
           }
 
@@ -295,6 +340,11 @@ public class DesktopForm extends AbstractForm {
             protected String getConfiguredHeaderText() {
               return TEXTS.get("Component");
             }
+
+            @Override
+            protected int getConfiguredWidth() {
+              return 89;
+            }
           }
 
           @Order(100.0)
@@ -303,6 +353,11 @@ public class DesktopForm extends AbstractForm {
             @Override
             protected String getConfiguredHeaderText() {
               return TEXTS.get("Assignee");
+            }
+
+            @Override
+            protected int getConfiguredWidth() {
+              return 130;
             }
           }
 
