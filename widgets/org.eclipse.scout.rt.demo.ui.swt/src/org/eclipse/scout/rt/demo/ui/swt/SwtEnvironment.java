@@ -16,6 +16,17 @@ import java.beans.PropertyChangeListener;
 import org.eclipse.scout.rt.client.AbstractClientSession;
 import org.eclipse.scout.rt.client.ui.desktop.IDesktop;
 import org.eclipse.scout.rt.client.ui.form.IForm;
+import org.eclipse.scout.rt.demo.ui.swt.application.ApplicationActionBarAdvisor;
+import org.eclipse.scout.rt.demo.ui.swt.editor.ScoutEditorPart;
+import org.eclipse.scout.rt.demo.ui.swt.views.CenterView;
+import org.eclipse.scout.rt.demo.ui.swt.views.EastView;
+import org.eclipse.scout.rt.demo.ui.swt.views.NorthEastView;
+import org.eclipse.scout.rt.demo.ui.swt.views.NorthView;
+import org.eclipse.scout.rt.demo.ui.swt.views.NorthWestView;
+import org.eclipse.scout.rt.demo.ui.swt.views.SouthEastView;
+import org.eclipse.scout.rt.demo.ui.swt.views.SouthView;
+import org.eclipse.scout.rt.demo.ui.swt.views.SouthWestView;
+import org.eclipse.scout.rt.demo.ui.swt.views.WestView;
 import org.eclipse.scout.rt.ui.swt.AbstractSwtEnvironment;
 import org.eclipse.scout.rt.ui.swt.ISwtEnvironmentListener;
 import org.eclipse.scout.rt.ui.swt.SwtEnvironmentEvent;
@@ -24,25 +35,28 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.osgi.framework.Bundle;
 
-import org.eclipse.scout.rt.demo.ui.swt.editor.ScoutEditorPart;
-import org.eclipse.scout.rt.demo.ui.swt.views.CenterView;
-import org.eclipse.scout.rt.demo.ui.swt.views.DetailView;
-import org.eclipse.scout.rt.demo.ui.swt.views.EastView;
-import org.eclipse.scout.rt.demo.ui.swt.views.OutlineView;
-import org.eclipse.scout.rt.demo.ui.swt.views.TableView;
-import org.eclipse.scout.rt.demo.ui.swt.views.SearchView;
+public class SwtEnvironment extends AbstractSwtEnvironment {
 
-public class SwtEnvironment extends AbstractSwtEnvironment{
+  private ApplicationActionBarAdvisor m_advisor;
 
-  public SwtEnvironment(Bundle bundle,String perspectiveId,Class<? extends AbstractClientSession> clientSessionClazz) {
+  public SwtEnvironment(Bundle bundle, String perspectiveId, Class<? extends AbstractClientSession> clientSessionClazz) {
     super(bundle, perspectiveId, clientSessionClazz);
 
-    registerPart(IForm.VIEW_ID_OUTLINE, OutlineView.class.getName());
-    registerPart(IForm.VIEW_ID_PAGE_DETAIL, DetailView.class.getName());
+    registerPart(IForm.VIEW_ID_OUTLINE, NorthWestView.class.getName());
+    registerPart(IForm.VIEW_ID_OUTLINE_SELECTOR, SouthWestView.class.getName());
     registerPart(IForm.VIEW_ID_CENTER, CenterView.class.getName());
-    registerPart(IForm.VIEW_ID_PAGE_TABLE, TableView.class.getName());
-    registerPart(IForm.VIEW_ID_PAGE_SEARCH, SearchView.class.getName());
+    registerPart(IForm.VIEW_ID_PAGE_TABLE, CenterView.class.getName());
+    registerPart(IForm.VIEW_ID_PAGE_DETAIL, NorthView.class.getName());
+    registerPart(IForm.VIEW_ID_PAGE_SEARCH, SouthView.class.getName());
+    registerPart(IForm.VIEW_ID_N, NorthView.class.getName());
+    registerPart(IForm.VIEW_ID_NW, NorthWestView.class.getName());
+    registerPart(IForm.VIEW_ID_W, WestView.class.getName());
+    registerPart(IForm.VIEW_ID_SW, SouthWestView.class.getName());
+    registerPart(IForm.VIEW_ID_S, SouthView.class.getName());
+    registerPart(IForm.VIEW_ID_SE, SouthEastView.class.getName());
     registerPart(IForm.VIEW_ID_E, EastView.class.getName());
+    registerPart(IForm.VIEW_ID_NE, NorthEastView.class.getName());
+
     registerPart(IForm.EDITOR_ID, ScoutEditorPart.class.getName());
 
     addEnvironmentListener(new ISwtEnvironmentListener() {
@@ -67,10 +81,17 @@ public class SwtEnvironment extends AbstractSwtEnvironment{
                 setWindowTitle((String) evt.getNewValue());
               }
             });
+            if (m_advisor != null) {
+              m_advisor.initViewButtons(d);
+            }
           }
         }
       }
     });
+  }
+
+  public void setAdvisor(ApplicationActionBarAdvisor advisor) {
+    m_advisor = advisor;
   }
 
   private void setWindowTitle(final String title) {

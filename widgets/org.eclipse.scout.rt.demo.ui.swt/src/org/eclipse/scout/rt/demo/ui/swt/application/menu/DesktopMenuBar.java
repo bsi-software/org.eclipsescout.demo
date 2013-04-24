@@ -11,11 +11,12 @@
 package org.eclipse.scout.rt.demo.ui.swt.application.menu;
 
 import org.eclipse.jface.action.IContributionItem;
+import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.scout.rt.client.ui.action.menu.IMenu;
+import org.eclipse.scout.rt.demo.ui.swt.Activator;
 import org.eclipse.scout.rt.ui.swt.ISwtEnvironment;
 import org.eclipse.scout.rt.ui.swt.SwtMenuUtility;
 import org.eclipse.ui.actions.CompoundContributionItem;
-import org.eclipse.scout.rt.demo.ui.swt.Activator;
 
 public class DesktopMenuBar extends CompoundContributionItem {
 
@@ -31,5 +32,14 @@ public class DesktopMenuBar extends CompoundContributionItem {
       }
     }
     return new IContributionItem[0];
+  }
+
+  @Override
+  public boolean isDirty() {
+    boolean isDirty = super.isDirty();
+    if (!isDirty && getParent() instanceof IMenuManager) {
+      isDirty = ((IMenuManager) getParent()).isDirty();
+    }
+    return isDirty;
   }
 }

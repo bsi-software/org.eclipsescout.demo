@@ -10,13 +10,13 @@
  ******************************************************************************/
 package org.eclipse.scout.rt.demo.ui.swt.views;
 
+import org.eclipse.scout.rt.demo.ui.swt.Activator;
 import org.eclipse.scout.rt.ui.swt.ISwtEnvironment;
 import org.eclipse.scout.rt.ui.swt.window.desktop.view.AbstractScoutView;
-import org.eclipse.scout.rt.demo.ui.swt.Activator;
 
-public class OutlineView extends AbstractScoutView {
+public class NorthEastView extends AbstractScoutView {
 
-  public OutlineView() {
+  public NorthEastView() {
   }
 
   @Override

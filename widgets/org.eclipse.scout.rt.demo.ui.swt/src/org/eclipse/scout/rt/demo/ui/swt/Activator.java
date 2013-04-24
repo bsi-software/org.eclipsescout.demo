@@ -10,30 +10,16 @@
  ******************************************************************************/
 package org.eclipse.scout.rt.demo.ui.swt;
 
-import org.eclipse.scout.rt.ui.swt.ISwtEnvironment;
 import org.eclipse.scout.rt.demo.client.ClientSession;
 import org.eclipse.scout.rt.demo.ui.swt.perspective.Perspective;
-import org.eclipse.scout.rt.demo.ui.swt.views.CenterView;
-import org.eclipse.scout.rt.demo.ui.swt.views.DetailView;
-import org.eclipse.scout.rt.demo.ui.swt.views.EastView;
-import org.eclipse.scout.rt.demo.ui.swt.views.OutlineView;
-import org.eclipse.scout.rt.demo.ui.swt.views.SearchView;
-import org.eclipse.scout.rt.demo.ui.swt.views.TableView;
+import org.eclipse.scout.rt.ui.swt.ISwtEnvironment;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
-public class Activator implements BundleActivator{
+public class Activator implements BundleActivator {
 
   // the plugin id
   public static final String BUNDLE_ID = "org.eclipse.scout.rt.demo.ui.swt";
-
-  // all view ID's commodity to access.
-  public static final String CENTER_VIEW_ID = CenterView.class.getName();
-  public static final String DETAIL_VIEW_ID = DetailView.class.getName();
-  public static final String EAST_VIEW_ID = EastView.class.getName();
-  public static final String OUTLINE_VIEW_ID = OutlineView.class.getName();
-  public static final String TABLE_VIEW_ID = TableView.class.getName();
-  public static final String SEARCH_VIEW_ID = SearchView.class.getName();
 
   private ISwtEnvironment m_environment;
 
@@ -59,4 +45,3 @@ public class Activator implements BundleActivator{
     return m_environment;
   }
 }
-

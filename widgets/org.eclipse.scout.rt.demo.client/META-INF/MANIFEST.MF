@@ -18,5 +18,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.scout.rt.demo.shared,
  org.eclipse.scout.svg.client
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Import-Package: javax.mail.internet;version="1.4.0";resolution:=optional
+Import-Package: javax.mail.internet;version="1.4.0";resolution:=optional,
+ org.w3c.dom.svg;version="[1.1.0,2.0.0)"
 Bundle-ActivationPolicy: lazy

@@ -22,8 +22,7 @@
       location="org.eclipse.scout.rt.demo.ui.swt" />
    <launcher name="Scout Widget Demo App">
       <solaris/>
-      <win useIco="true">
-         <ico path="/org.eclipse.scout.rt.demo.ui.swt/icons/bsi.ico"/>
+      <win useIco="false">
          <bmp/>
       </win>
    </launcher>
@@ -31,10 +30,8 @@
    <vm>
    </vm>
 
-
    <plugins>
       <plugin id="com.ibm.icu"/>
-      <plugin id="javax.activation"/>
       <plugin id="javax.annotation"/>
       <plugin id="javax.inject"/>
       <plugin id="javax.mail"/>
@@ -64,8 +61,6 @@
       <plugin id="org.eclipse.core.net"/>
       <plugin id="org.eclipse.core.resources"/>
       <plugin id="org.eclipse.core.runtime"/>
-      <plugin id="org.eclipse.core.runtime.compatibility.auth"/>
-      <plugin id="org.eclipse.core.runtime.compatibility.registry" fragment="true"/>
       <plugin id="org.eclipse.e4.core.commands"/>
       <plugin id="org.eclipse.e4.core.contexts"/>
       <plugin id="org.eclipse.e4.core.di"/>
@@ -110,6 +105,7 @@
       <plugin id="org.eclipse.scout.rt.demo.client"/>
       <plugin id="org.eclipse.scout.rt.demo.shared"/>
       <plugin id="org.eclipse.scout.rt.demo.ui.swt"/>
+      <plugin id="org.eclipse.scout.rt.extension.client"/>
       <plugin id="org.eclipse.scout.rt.shared"/>
       <plugin id="org.eclipse.scout.rt.ui.swt"/>
       <plugin id="org.eclipse.scout.service"/>

@@ -119,7 +119,7 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
         }
 
         @Order(10.0)
-        public class Planner1Field extends AbstractPlannerField<Planner1Field.ResourceTable, Planner1Field.ActivityMap> {
+        public class Planner1Field extends AbstractPlannerField<Planner1Field.ResourceTable, Planner1Field.ActivityMap, Long, Long> {
 
           @Override
           protected int getConfiguredGridH() {
@@ -225,7 +225,7 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
           }
 
           @Order(10.0)
-          public class ActivityMap extends AbstractActivityMap {
+          public class ActivityMap extends AbstractActivityMap<Long, Long> {
 
             @Override
             protected void execDecorateActivityCell(ActivityCell cell) throws ProcessingException {
@@ -245,7 +245,7 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
         }
 
         @Order(10.0)
-        public class WeekPlannerField extends AbstractPlannerField<WeekPlannerField.ResourceTable, WeekPlannerField.ActivityMap> {
+        public class WeekPlannerField extends AbstractPlannerField<WeekPlannerField.ResourceTable, WeekPlannerField.ActivityMap, Long, Long> {
 
           private Date base = DateUtility.parse("20120717", "yyyyMMdd");
           private Object[][] weekTestcases = new Object[][]{
@@ -379,12 +379,12 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
           }
 
           @Order(20.0)
-          public class ActivityMap extends AbstractActivityMap {
+          public class ActivityMap extends AbstractActivityMap<Long, Long> {
           }
         }
 
         @Order(20.0)
-        public class DayPlannerField extends AbstractPlannerField<DayPlannerField.ResourceTable, DayPlannerField.ActivityMap> {
+        public class DayPlannerField extends AbstractPlannerField<DayPlannerField.ResourceTable, DayPlannerField.ActivityMap, Long, Long> {
 
           private Date base = DateUtility.parse("20120717", "yyyyMMdd");
           private Object[][] dayTestcases = new Object[][]{
@@ -518,12 +518,12 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
           }
 
           @Order(20.0)
-          public class ActivityMap extends AbstractActivityMap {
+          public class ActivityMap extends AbstractActivityMap<Long, Long> {
           }
         }
 
         @Order(30.0)
-        public class IntradayPlannerField extends AbstractPlannerField<IntradayPlannerField.ResourceTable, IntradayPlannerField.ActivityMap> {
+        public class IntradayPlannerField extends AbstractPlannerField<IntradayPlannerField.ResourceTable, IntradayPlannerField.ActivityMap, Long, Long> {
 
           private Date base = DateUtility.parse("20120717", "yyyyMMdd");
           private Date intradayBase = DateUtility.parse("20120717 08:00", "yyyyMMdd HH:mm"); //a monday
@@ -661,7 +661,7 @@ public class PlannerFieldForm extends AbstractForm implements IPageForm {
           }
 
           @Order(20.0)
-          public class ActivityMap extends AbstractActivityMap {
+          public class ActivityMap extends AbstractActivityMap<Long, Long> {
           }
         }
       }

@@ -8,18 +8,17 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
-package org.eclipse.scout.rt.demo.ui.swt;
+package org.eclipse.scout.rt.demo.ui.swt.views;
 
-import org.eclipse.scout.rt.ui.swt.AbstractSwtStartup;
+import org.eclipse.scout.rt.demo.ui.swt.Activator;
 import org.eclipse.scout.rt.ui.swt.ISwtEnvironment;
+import org.eclipse.scout.rt.ui.swt.window.desktop.view.AbstractScoutView;
 
-/**
- * <h3>SwtStartup</h3> The startup class is registered as an extension in the plugin.xml.
- * It is used to be aware that the Workbench is ready.
- * 
- * @see AbstractSwtStartup
- */
-public class SwtStartup extends AbstractSwtStartup {
+public class WestView extends AbstractScoutView {
+
+  public WestView() {
+  }
+
   @Override
   protected ISwtEnvironment getSwtEnvironment() {
     return Activator.getDefault().getEnvironment();
