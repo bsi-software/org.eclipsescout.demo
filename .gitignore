@@ -9,6 +9,9 @@
 # Eclipse #
 bin/**
 
+# EGit #
+**/.gitignore
+
 # Maven #
 target/
 
