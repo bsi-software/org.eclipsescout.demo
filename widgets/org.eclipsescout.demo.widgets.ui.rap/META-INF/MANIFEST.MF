@@ -12,7 +12,10 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.scout.rt.ui.rap,
  org.eclipse.scout.net,
  org.eclipse.equinox.http.registry,
- org.eclipse.scout.http.servletfilter
+ org.eclipse.scout.http.servletfilter,
+ org.eclipse.scout.rt.ui.rap.mobile,
+ org.eclipse.scout.rt.ui.rap.theme.rayo,
+ org.eclipse.scout.rt.client.mobile
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Scout-Project: org.eclipse.scout.rt
 Bundle-ActivationPolicy: lazy

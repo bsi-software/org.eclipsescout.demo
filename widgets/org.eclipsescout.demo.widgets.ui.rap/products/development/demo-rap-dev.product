@@ -73,6 +73,7 @@
       <plugin id="org.eclipse.equinox.preferences"/>
       <plugin id="org.eclipse.equinox.registry"/>
       <plugin id="org.eclipse.equinox.security"/>
+      <plugin id="org.eclipse.equinox.security.win32.x86" fragment="true"/>
       <plugin id="org.eclipse.help"/>
       <plugin id="org.eclipse.jetty.continuation"/>
       <plugin id="org.eclipse.jetty.http"/>
@@ -96,18 +97,23 @@
       <plugin id="org.eclipse.scout.http.servletfilter"/>
       <plugin id="org.eclipse.scout.net"/>
       <plugin id="org.eclipse.scout.rt.client"/>
-      <plugin id="org.eclipsescout.demo.widgets.client"/>
-      <plugin id="org.eclipsescout.demo.widgets.shared"/>
-      <plugin id="org.eclipsescout.demo.widgets.ui.rap"/>
+      <plugin id="org.eclipse.scout.rt.client.mobile"/>
+      <plugin id="org.eclipse.scout.rt.extension.client"/>
       <plugin id="org.eclipse.scout.rt.shared"/>
       <plugin id="org.eclipse.scout.rt.ui.rap"/>
       <plugin id="org.eclipse.scout.rt.ui.rap.incubator.filechooser"/>
+      <plugin id="org.eclipse.scout.rt.ui.rap.mobile"/>
       <plugin id="org.eclipse.scout.rt.ui.rap.theme.rayo"/>
+      <plugin id="org.eclipse.scout.rt.ui.rap.theme.rayo.mobile" fragment="true"/>
       <plugin id="org.eclipse.scout.rt.ui.svg.calendar"/>
       <plugin id="org.eclipse.scout.service"/>
       <plugin id="org.eclipse.scout.svg.client"/>
       <plugin id="org.eclipse.scout.svg.ui.rap"/>
       <plugin id="org.eclipse.update.configurator"/>
+      <plugin id="org.eclipsescout.demo.widgets.client"/>
+      <plugin id="org.eclipsescout.demo.widgets.client.mobile"/>
+      <plugin id="org.eclipsescout.demo.widgets.shared"/>
+      <plugin id="org.eclipsescout.demo.widgets.ui.rap"/>
       <plugin id="org.w3c.css.sac"/>
       <plugin id="org.w3c.dom.smil"/>
       <plugin id="org.w3c.dom.svg"/>

@@ -8,14 +8,26 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
-package org.eclipsescout.demo.widgets.ui.rap;
+package org.eclipsescout.demo.widgets.client.mobile;
 
-import org.eclipse.scout.rt.ui.rap.AbstractStandaloneRwtEnvironment;
-import org.eclipsescout.demo.widgets.client.ClientSession;
+import org.osgi.framework.BundleActivator;
+import org.osgi.framework.BundleContext;
 
-public class StandaloneRwtEnvironment extends AbstractStandaloneRwtEnvironment {
+public class Activator implements BundleActivator {
 
-  public StandaloneRwtEnvironment() {
-    super(Activator.getDefault().getBundle(), ClientSession.class);
+  private static BundleContext context;
+
+  public static BundleContext getContext() {
+    return context;
+  }
+
+  @Override
+  public void start(BundleContext bundleContext) throws Exception {
+    Activator.context = bundleContext;
+  }
+
+  @Override
+  public void stop(BundleContext bundleContext) throws Exception {
+    Activator.context = null;
   }
 }
