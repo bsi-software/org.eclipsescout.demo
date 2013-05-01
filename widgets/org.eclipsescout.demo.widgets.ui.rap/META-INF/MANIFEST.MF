@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: RAP Bundle
+Bundle-Name: Scout Widgets Demo RAP
 Bundle-SymbolicName: org.eclipsescout.demo.widgets.ui.rap;singleton:=true
-Bundle-Version: 3.8.2.qualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.eclipsescout.demo.widgets.ui.rap.Activator
 Bundle-Vendor: Eclipse Scout Project
 Export-Package: org.eclipsescout.demo.widgets.ui.rap

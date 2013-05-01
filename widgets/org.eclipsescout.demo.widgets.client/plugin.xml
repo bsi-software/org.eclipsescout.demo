@@ -10,9 +10,4 @@
             session="org.eclipsescout.demo.widgets.client.ClientSession">
       </service>
    </extension>
-   <extension
-         name=""
-         point="org.eclipse.scout.service.services">
-   </extension>
-
 </plugin>

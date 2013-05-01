@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Client Mobile
+Bundle-Name: Scout Widgets Demo Client Mobile
 Bundle-SymbolicName: org.eclipsescout.demo.widgets.client.mobile;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.eclipsescout.demo.widgets.client.mobile.Activator

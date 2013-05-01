@@ -106,7 +106,7 @@
             id="org.eclipse.ui.views.ProgressView">
       </view>
       <category
-            name="demo"
+            name="widgets"
             id="org.eclipsescout.demo.widgets.ui.swt.viewCategory">
       </category>
    </extension>

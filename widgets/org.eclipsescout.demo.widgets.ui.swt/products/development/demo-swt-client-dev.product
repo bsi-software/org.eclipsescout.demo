@@ -20,7 +20,7 @@
 
    <splash
       location="org.eclipsescout.demo.widgets.ui.swt" />
-   <launcher name="Scout Widget Demo App">
+   <launcher name="widgets">
       <solaris/>
       <win useIco="false">
          <bmp/>
@@ -91,6 +91,7 @@
       <plugin id="org.eclipse.equinox.preferences"/>
       <plugin id="org.eclipse.equinox.registry"/>
       <plugin id="org.eclipse.equinox.security"/>
+      <plugin id="org.eclipse.equinox.security.win32.x86" fragment="true"/>
       <plugin id="org.eclipse.equinox.util"/>
       <plugin id="org.eclipse.help"/>
       <plugin id="org.eclipse.jface"/>
@@ -102,9 +103,6 @@
       <plugin id="org.eclipse.scout.commons"/>
       <plugin id="org.eclipse.scout.net"/>
       <plugin id="org.eclipse.scout.rt.client"/>
-      <plugin id="org.eclipsescout.demo.widgets.client"/>
-      <plugin id="org.eclipsescout.demo.widgets.shared"/>
-      <plugin id="org.eclipsescout.demo.widgets.ui.swt"/>
       <plugin id="org.eclipse.scout.rt.extension.client"/>
       <plugin id="org.eclipse.scout.rt.shared"/>
       <plugin id="org.eclipse.scout.rt.ui.swt"/>
@@ -126,6 +124,9 @@
       <plugin id="org.eclipse.ui.workbench"/>
       <plugin id="org.eclipse.ui.workbench.texteditor"/>
       <plugin id="org.eclipse.update.configurator"/>
+      <plugin id="org.eclipsescout.demo.widgets.client"/>
+      <plugin id="org.eclipsescout.demo.widgets.shared"/>
+      <plugin id="org.eclipsescout.demo.widgets.ui.swt"/>
       <plugin id="org.w3c.css.sac"/>
       <plugin id="org.w3c.dom.smil"/>
       <plugin id="org.w3c.dom.svg"/>
