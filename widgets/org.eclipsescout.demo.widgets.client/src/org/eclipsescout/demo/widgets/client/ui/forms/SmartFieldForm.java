@@ -20,7 +20,6 @@ import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
-import org.eclipsescout.demo.widgets.client.ClientSession;
 import org.eclipsescout.demo.widgets.client.services.lookup.CompanyTypeLookupCall;
 import org.eclipsescout.demo.widgets.client.services.lookup.ProductLookupCall;
 import org.eclipsescout.demo.widgets.client.services.lookup.StatusTextLookupCall;
@@ -142,15 +141,12 @@ public class SmartFieldForm extends AbstractForm implements IPageForm {
 
           @Override
           protected Class<? extends ICodeType<Long>> getConfiguredCodeType() {
-            if (ClientSession.get().isServerAvailable()) {
-              return DateCodeType.class;
-            }
-            return null;
+            return DateCodeType.class;
           }
 
           @Override
           protected boolean getConfiguredEnabled() {
-            return ClientSession.get().isServerAvailable();
+            return true;
           }
 
           @Override
@@ -158,12 +154,6 @@ public class SmartFieldForm extends AbstractForm implements IPageForm {
             return TEXTS.get("TreeWithCodeType");
           }
 
-          @Override
-          protected void execInitField() throws ProcessingException {
-            if (!ClientSession.get().isServerAvailable()) {
-              setErrorStatus("CodeTypes are only with server available");
-            }
-          }
         }
 
         @Order(20.0)
@@ -231,15 +221,7 @@ public class SmartFieldForm extends AbstractForm implements IPageForm {
 
           @Override
           protected Class<? extends ICodeType<Long>> getConfiguredCodeType() {
-            if (ClientSession.get().isServerAvailable()) {
-              return CountryCodeType.class;
-            }
-            return null;
-          }
-
-          @Override
-          protected boolean getConfiguredEnabled() {
-            return ClientSession.get().isServerAvailable();
+            return CountryCodeType.class;
           }
 
           @Override
@@ -247,12 +229,6 @@ public class SmartFieldForm extends AbstractForm implements IPageForm {
             return TEXTS.get("ListWithCodeType");
           }
 
-          @Override
-          protected void execInitField() throws ProcessingException {
-            if (!ClientSession.get().isServerAvailable()) {
-              setErrorStatus("CodeTypes are only with server available");
-            }
-          }
         }
 
         @Order(50.0)

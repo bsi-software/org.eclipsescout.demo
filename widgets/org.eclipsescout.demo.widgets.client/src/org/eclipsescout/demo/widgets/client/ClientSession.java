@@ -12,7 +12,6 @@ package org.eclipsescout.demo.widgets.client;
 
 import java.util.Locale;
 
-import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
@@ -22,7 +21,6 @@ import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipsescout.demo.widgets.client.ui.desktop.Desktop;
 
 public class ClientSession extends AbstractClientSession {
-  private boolean m_serverAvailable = true;
   private static IScoutLogger logger = ScoutLogManager.getLogger(ClientSession.class);
 
   private String m_product;
@@ -38,11 +36,6 @@ public class ClientSession extends AbstractClientSession {
     return ClientJob.getCurrentSession(ClientSession.class);
   }
 
-  @FormData
-  public Long getPersonNr() {
-    return getSharedContextVariable("personNr", Long.class);
-  }
-
   @Override
   public void execLoadSession() throws ProcessingException {
     setLocale(Locale.ENGLISH);
@@ -50,13 +43,5 @@ public class ClientSession extends AbstractClientSession {
     CODES.getAllCodeTypes(org.eclipsescout.demo.widgets.shared.Activator.PLUGIN_ID);
 
     setDesktop(new Desktop());
-  }
-
-  @Override
-  public void execStoreSession() throws ProcessingException {
-  }
-
-  public boolean isServerAvailable() {
-    return m_serverAvailable;
   }
 }
