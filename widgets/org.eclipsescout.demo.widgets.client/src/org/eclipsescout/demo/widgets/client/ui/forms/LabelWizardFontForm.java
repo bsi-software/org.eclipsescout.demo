@@ -16,9 +16,9 @@ import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
+import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.ui.forms.LabelWizardFontForm.MainBox.GroupBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.LabelWizardFontForm.MainBox.GroupBox.FontField;
-import org.eclipse.scout.rt.shared.TEXTS;
 
 public class LabelWizardFontForm extends AbstractForm {
 

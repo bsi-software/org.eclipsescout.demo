@@ -10,9 +10,9 @@
  ******************************************************************************/
 package org.eclipsescout.demo.widgets.ui.swt.views;
 
-import org.eclipsescout.demo.widgets.ui.swt.Activator;
 import org.eclipse.scout.rt.ui.swt.ISwtEnvironment;
 import org.eclipse.scout.rt.ui.swt.window.desktop.view.AbstractScoutView;
+import org.eclipsescout.demo.widgets.ui.swt.Activator;
 
 public class NorthView extends AbstractScoutView {
 

@@ -29,6 +29,8 @@ import org.eclipse.scout.rt.client.ui.form.fields.longfield.AbstractLongField;
 import org.eclipse.scout.rt.client.ui.form.fields.sequencebox.AbstractSequenceBox;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.client.ui.form.fields.tabbox.AbstractTabBox;
+import org.eclipse.scout.rt.shared.TEXTS;
+import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 import org.eclipsescout.demo.widgets.client.ClientSession;
 import org.eclipsescout.demo.widgets.client.services.lookup.CompanyTypeLookupCall;
 import org.eclipsescout.demo.widgets.client.ui.searchforms.SearchForm.MainBox.CloseButton;
@@ -51,8 +53,6 @@ import org.eclipsescout.demo.widgets.client.ui.searchforms.SearchForm.MainBox.Ta
 import org.eclipsescout.demo.widgets.client.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.LongBox.LongTo;
 import org.eclipsescout.demo.widgets.client.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.SmartField;
 import org.eclipsescout.demo.widgets.client.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.StringField;
-import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 
 public class SearchForm extends AbstractSearchForm {
 

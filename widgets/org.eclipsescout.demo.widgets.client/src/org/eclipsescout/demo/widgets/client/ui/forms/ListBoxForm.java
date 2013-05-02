@@ -17,12 +17,12 @@ import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.listbox.AbstractListBox;
+import org.eclipse.scout.rt.shared.TEXTS;
+import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 import org.eclipsescout.demo.widgets.client.services.lookup.CompanyTypeLookupCall;
 import org.eclipsescout.demo.widgets.client.ui.forms.ListBoxForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.ListBoxForm.MainBox.GroupBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.ListBoxForm.MainBox.GroupBox.ListBoxField;
-import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 
 public class ListBoxForm extends AbstractForm implements IPageForm {
 

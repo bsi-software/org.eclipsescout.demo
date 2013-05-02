@@ -19,11 +19,11 @@ import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.integerfield.AbstractIntegerField;
 import org.eclipse.scout.rt.client.ui.form.fields.splitbox.AbstractSplitBox;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
+import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.ui.forms.SplitBoxForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.SplitBoxForm.MainBox.GroupBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.SplitBoxForm.MainBox.GroupBox.SplitField;
 import org.eclipsescout.demo.widgets.client.ui.forms.SplitBoxForm.MainBox.GroupBox.String2Field;
-import org.eclipse.scout.rt.shared.TEXTS;
 
 public class SplitBoxForm extends AbstractForm implements IPageForm {
 

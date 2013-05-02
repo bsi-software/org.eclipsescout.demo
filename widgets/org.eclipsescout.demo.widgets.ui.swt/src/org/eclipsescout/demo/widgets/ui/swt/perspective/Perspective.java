@@ -10,6 +10,11 @@
  ******************************************************************************/
 package org.eclipsescout.demo.widgets.ui.swt.perspective;
 
+import org.eclipse.ui.IPageLayout;
+import org.eclipse.ui.IPerspectiveFactory;
+import org.eclipse.ui.IPlaceholderFolderLayout;
+import org.eclipse.ui.IViewLayout;
+import org.eclipse.ui.progress.IProgressConstants;
 import org.eclipsescout.demo.widgets.ui.swt.views.CenterView;
 import org.eclipsescout.demo.widgets.ui.swt.views.EastView;
 import org.eclipsescout.demo.widgets.ui.swt.views.NorthEastView;
@@ -19,11 +24,6 @@ import org.eclipsescout.demo.widgets.ui.swt.views.SouthEastView;
 import org.eclipsescout.demo.widgets.ui.swt.views.SouthView;
 import org.eclipsescout.demo.widgets.ui.swt.views.SouthWestView;
 import org.eclipsescout.demo.widgets.ui.swt.views.WestView;
-import org.eclipse.ui.IPageLayout;
-import org.eclipse.ui.IPerspectiveFactory;
-import org.eclipse.ui.IPlaceholderFolderLayout;
-import org.eclipse.ui.IViewLayout;
-import org.eclipse.ui.progress.IProgressConstants;
 
 public class Perspective implements IPerspectiveFactory {
 

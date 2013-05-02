@@ -17,9 +17,9 @@ import org.eclipse.scout.rt.client.ui.wizard.AbstractWizardStep;
 import org.eclipse.scout.rt.client.ui.wizard.DefaultWizardContainerForm;
 import org.eclipse.scout.rt.client.ui.wizard.IWizardContainerForm;
 import org.eclipse.scout.rt.client.ui.wizard.IWizardStep;
+import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.ui.forms.DynamicFormWizardChooseAForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.IPageForm;
-import org.eclipse.scout.rt.shared.TEXTS;
 
 public class DynamicFormWizard extends AbstractPageWizard {
 

@@ -18,8 +18,8 @@ import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.client.AbstractClientSession;
 import org.eclipse.scout.rt.client.ClientJob;
-import org.eclipsescout.demo.widgets.client.ui.desktop.Desktop;
 import org.eclipse.scout.rt.shared.services.common.code.CODES;
+import org.eclipsescout.demo.widgets.client.ui.desktop.Desktop;
 
 public class ClientSession extends AbstractClientSession {
   private boolean m_serverAvailable = true;

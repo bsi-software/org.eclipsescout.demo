@@ -20,6 +20,8 @@ import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.radiobuttongroup.AbstractRadioButtonGroup;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
+import org.eclipse.scout.rt.shared.TEXTS;
+import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 import org.eclipsescout.demo.widgets.client.services.lookup.DateLookupCall;
 import org.eclipsescout.demo.widgets.client.services.lookup.YearLookupCall;
 import org.eclipsescout.demo.widgets.client.ui.forms.RadioButtonGroupForm.MainBox.CloseButton;
@@ -30,8 +32,6 @@ import org.eclipsescout.demo.widgets.client.ui.forms.RadioButtonGroupForm.MainBo
 import org.eclipsescout.demo.widgets.client.ui.forms.RadioButtonGroupForm.MainBox.GroupBox.RadioButtonGroup.MonthField;
 import org.eclipsescout.demo.widgets.client.ui.forms.RadioButtonGroupForm.MainBox.GroupBox.RadioButtonGroup.NewDateButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.RadioButtonGroupForm.MainBox.GroupBox.RadioButtonGroup.YearField;
-import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 
 public class RadioButtonGroupForm extends AbstractForm implements IPageForm {
 

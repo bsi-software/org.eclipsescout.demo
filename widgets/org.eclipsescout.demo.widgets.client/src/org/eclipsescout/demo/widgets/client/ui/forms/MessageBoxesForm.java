@@ -19,6 +19,8 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractLinkButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
+import org.eclipse.scout.rt.shared.TEXTS;
+import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
 import org.eclipsescout.demo.widgets.client.ui.forms.MessageBoxesForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.MessageBoxesForm.MainBox.DeleteConfirmationMessageButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.MessageBoxesForm.MainBox.MessageBoxWithHiddenTextButton;
@@ -27,8 +29,6 @@ import org.eclipsescout.demo.widgets.client.ui.forms.MessageBoxesForm.MainBox.Me
 import org.eclipsescout.demo.widgets.client.ui.forms.MessageBoxesForm.MainBox.MessageBoxWithYesNoOptionButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.MessageBoxesForm.MainBox.ProcessingExceptionButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.MessageBoxesForm.MainBox.VetoExceptionButton;
-import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
 
 public class MessageBoxesForm extends AbstractForm implements IPageForm {
 

@@ -17,12 +17,12 @@ import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.composer.AbstractComposerField;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
-import org.eclipsescout.demo.widgets.client.ui.forms.ComposerFieldForm.MainBox.CloseButton;
-import org.eclipsescout.demo.widgets.client.ui.forms.ComposerFieldForm.MainBox.GroupBox;
-import org.eclipsescout.demo.widgets.client.ui.forms.ComposerFieldForm.MainBox.GroupBox.ComposerField;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.data.model.AbstractDataModelAttribute;
 import org.eclipse.scout.rt.shared.data.model.AbstractDataModelEntity;
+import org.eclipsescout.demo.widgets.client.ui.forms.ComposerFieldForm.MainBox.CloseButton;
+import org.eclipsescout.demo.widgets.client.ui.forms.ComposerFieldForm.MainBox.GroupBox;
+import org.eclipsescout.demo.widgets.client.ui.forms.ComposerFieldForm.MainBox.GroupBox.ComposerField;
 
 public class ComposerFieldForm extends AbstractForm implements IPageForm {
 

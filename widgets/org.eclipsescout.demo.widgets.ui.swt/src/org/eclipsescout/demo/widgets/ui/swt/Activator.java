@@ -10,9 +10,9 @@
  ******************************************************************************/
 package org.eclipsescout.demo.widgets.ui.swt;
 
+import org.eclipse.scout.rt.ui.swt.ISwtEnvironment;
 import org.eclipsescout.demo.widgets.client.ClientSession;
 import org.eclipsescout.demo.widgets.ui.swt.perspective.Perspective;
-import org.eclipse.scout.rt.ui.swt.ISwtEnvironment;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 

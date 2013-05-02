@@ -10,11 +10,11 @@
  ******************************************************************************/
 package org.eclipsescout.demo.widgets.ui.swt.application;
 
-import org.eclipsescout.demo.widgets.ui.swt.perspective.Perspective;
 import org.eclipse.ui.application.IWorkbenchConfigurer;
 import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchAdvisor;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
+import org.eclipsescout.demo.widgets.ui.swt.perspective.Perspective;
 
 /**
  * <h3>ApplicationWorkbenchAdvisor</h3> Used for getting the initial perspective.

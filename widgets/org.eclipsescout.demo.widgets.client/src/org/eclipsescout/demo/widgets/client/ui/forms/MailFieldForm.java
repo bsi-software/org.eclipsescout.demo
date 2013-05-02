@@ -24,6 +24,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractLinkButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.mailfield.AbstractMailField;
+import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.Activator;
 import org.eclipsescout.demo.widgets.client.ui.forms.MailFieldForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.MailFieldForm.MainBox.HTMLButton;
@@ -31,7 +32,6 @@ import org.eclipsescout.demo.widgets.client.ui.forms.MailFieldForm.MainBox.HTMLW
 import org.eclipsescout.demo.widgets.client.ui.forms.MailFieldForm.MainBox.HTMLWithInnerImagesButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.MailFieldForm.MainBox.MailField;
 import org.eclipsescout.demo.widgets.client.ui.forms.MailFieldForm.MainBox.TextButton;
-import org.eclipse.scout.rt.shared.TEXTS;
 
 public class MailFieldForm extends AbstractForm implements IPageForm {
 

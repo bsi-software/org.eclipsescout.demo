@@ -16,9 +16,9 @@ import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.integerfield.AbstractIntegerField;
+import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.ui.forms.LabelWizardSizeForm.MainBox.GroupBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.LabelWizardSizeForm.MainBox.GroupBox.SizeField;
-import org.eclipse.scout.rt.shared.TEXTS;
 
 public class LabelWizardSizeForm extends AbstractForm {
 

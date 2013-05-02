@@ -27,14 +27,12 @@ import org.eclipse.scout.service.SERVICES;
 import org.eclipsescout.demo.widgets.client.ClientSession;
 
 public class SwingApplication extends AbstractSwingApplication {
-  private static IScoutLogger logger = ScoutLogManager
-      .getLogger(SwingApplication.class);
+  private static IScoutLogger logger = ScoutLogManager.getLogger(SwingApplication.class);
 
   @Override
   public Object start(final IApplicationContext context) throws Exception {
     Subject subject = new Subject();
-    subject.getPrincipals().add(
-        new SimplePrincipal(System.getProperty("user.name")));
+    subject.getPrincipals().add(new SimplePrincipal(System.getProperty("user.name")));
     return Subject.doAs(subject, new PrivilegedExceptionAction<Object>() {
       @Override
       public Object run() throws Exception {
@@ -61,7 +59,6 @@ public class SwingApplication extends AbstractSwingApplication {
 
   @Override
   protected IClientSession getClientSession() {
-    return SERVICES.getService(IClientSessionRegistryService.class)
-        .newClientSession(ClientSession.class, initUserAgent());
+    return SERVICES.getService(IClientSessionRegistryService.class).newClientSession(ClientSession.class, initUserAgent());
   }
 }

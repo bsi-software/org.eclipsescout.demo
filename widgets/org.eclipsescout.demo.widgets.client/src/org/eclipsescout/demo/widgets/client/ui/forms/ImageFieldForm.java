@@ -22,6 +22,8 @@ import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.imagebox.AbstractImageField;
 import org.eclipse.scout.rt.client.ui.form.fields.labelfield.AbstractLabelField;
 import org.eclipse.scout.rt.client.ui.form.fields.radiobuttongroup.AbstractRadioButtonGroup;
+import org.eclipse.scout.rt.shared.TEXTS;
+import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
 import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.HorizontalAlignmentBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.HorizontalAlignmentBox.CenterField;
@@ -38,8 +40,6 @@ import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.Zoom
 import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.ZoomBox.LabelField;
 import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.ZoomBox.ZoomField;
 import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.ZoomBox.ZoomvalueField;
-import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
 
 public class ImageFieldForm extends AbstractForm implements IPageForm {
 

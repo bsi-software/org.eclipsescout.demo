@@ -18,13 +18,13 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
+import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.GroupBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.GroupBox.DefaultField;
 import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.GroupBox.InputMaskedField;
 import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.GroupBox.MultilineField;
 import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.GroupBox.WrapTextButton;
-import org.eclipse.scout.rt.shared.TEXTS;
 
 public class StringFieldForm extends AbstractForm implements IPageForm {
 

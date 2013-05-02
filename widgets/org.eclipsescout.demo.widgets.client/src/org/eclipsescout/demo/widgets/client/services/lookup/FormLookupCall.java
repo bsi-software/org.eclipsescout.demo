@@ -14,12 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipsescout.demo.widgets.client.ui.forms.OverviewForm;
-import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm;
-import org.eclipsescout.demo.widgets.client.ui.forms.SmartFieldForm;
-import org.eclipsescout.demo.widgets.client.ui.forms.StatusForm;
 import org.eclipse.scout.rt.shared.services.lookup.LocalLookupCall;
 import org.eclipse.scout.rt.shared.services.lookup.LookupRow;
+import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm;
+import org.eclipsescout.demo.widgets.client.ui.forms.OverviewForm;
+import org.eclipsescout.demo.widgets.client.ui.forms.SmartFieldForm;
+import org.eclipsescout.demo.widgets.client.ui.forms.StatusForm;
 
 public class FormLookupCall extends LocalLookupCall {
 

@@ -12,6 +12,6 @@ package org.eclipsescout.demo.widgets.ui.swing.defaultlaf;
 
 import org.eclipse.scout.rt.ui.swing.DefaultSwingEnvironment;
 
-public class SwingEnvironment extends DefaultSwingEnvironment{
+public class SwingEnvironment extends DefaultSwingEnvironment {
 
 }

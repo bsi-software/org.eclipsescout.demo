@@ -23,11 +23,11 @@ import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.calendarfield.AbstractCalendarField;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
-import org.eclipsescout.demo.widgets.client.ui.forms.CalendarFieldForm.MainBox.CalendarField;
-import org.eclipsescout.demo.widgets.client.ui.forms.CalendarFieldForm.MainBox.CloseButton;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.calendar.CalendarAppointment;
 import org.eclipse.scout.rt.shared.services.common.calendar.ICalendarItem;
+import org.eclipsescout.demo.widgets.client.ui.forms.CalendarFieldForm.MainBox.CalendarField;
+import org.eclipsescout.demo.widgets.client.ui.forms.CalendarFieldForm.MainBox.CloseButton;
 
 public class CalendarFieldForm extends AbstractForm implements IPageForm {
 

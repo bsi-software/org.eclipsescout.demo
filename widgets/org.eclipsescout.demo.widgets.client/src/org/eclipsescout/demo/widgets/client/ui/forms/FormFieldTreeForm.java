@@ -28,15 +28,15 @@ import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractLinkButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
+import org.eclipse.scout.rt.shared.TEXTS;
+import org.eclipse.scout.svg.client.SVGUtility;
+import org.eclipse.scout.svg.client.svgfield.AbstractSvgField;
+import org.eclipse.scout.svg.client.svgfield.SvgFieldEvent;
 import org.eclipsescout.demo.widgets.client.Activator;
 import org.eclipsescout.demo.widgets.client.ui.desktop.outlines.pages.FormPage;
 import org.eclipsescout.demo.widgets.client.ui.forms.FormFieldTreeForm.MainBox.FormFieldTableField;
 import org.eclipsescout.demo.widgets.client.ui.forms.FormFieldTreeForm.MainBox.FormFieldTreeField;
 import org.eclipsescout.demo.widgets.client.ui.forms.FormFieldTreeForm.MainBox.ShowTableButton;
-import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.svg.client.SVGUtility;
-import org.eclipse.scout.svg.client.svgfield.AbstractSvgField;
-import org.eclipse.scout.svg.client.svgfield.SvgFieldEvent;
 import org.w3c.dom.svg.SVGDocument;
 
 public class FormFieldTreeForm extends AbstractForm {

@@ -33,6 +33,8 @@ import org.eclipse.scout.rt.client.ui.form.fields.longfield.AbstractLongField;
 import org.eclipse.scout.rt.client.ui.form.fields.sequencebox.AbstractSequenceBox;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
+import org.eclipse.scout.rt.shared.TEXTS;
+import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 import org.eclipsescout.demo.widgets.client.services.lookup.DateLookupCall;
 import org.eclipsescout.demo.widgets.client.ui.forms.OverviewForm.MainBox.AllEnabledButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.OverviewForm.MainBox.AllMandatoryButton;
@@ -70,8 +72,6 @@ import org.eclipsescout.demo.widgets.client.ui.forms.OverviewForm.MainBox.Simple
 import org.eclipsescout.demo.widgets.client.ui.forms.OverviewForm.MainBox.SimpleFieldsBox.StringFieldForPasswordField;
 import org.eclipsescout.demo.widgets.client.ui.forms.OverviewForm.MainBox.SimpleFieldsBox.TimeField;
 import org.eclipsescout.demo.widgets.client.ui.forms.OverviewForm.MainBox.StartProcessButton;
-import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 
 public class OverviewForm extends AbstractForm implements IPageForm {
 

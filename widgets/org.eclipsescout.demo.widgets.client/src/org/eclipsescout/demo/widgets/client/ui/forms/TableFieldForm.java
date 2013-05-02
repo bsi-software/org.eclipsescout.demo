@@ -22,11 +22,11 @@ import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
+import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.ui.forms.DetailForm.MainBox.GroupBox.ValueLastField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.GroupBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.GroupBox.EditableTableField;
-import org.eclipse.scout.rt.shared.TEXTS;
 
 public class TableFieldForm extends AbstractForm implements IPageForm {
 

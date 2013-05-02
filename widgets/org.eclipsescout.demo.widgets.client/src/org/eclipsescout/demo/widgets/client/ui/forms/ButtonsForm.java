@@ -18,6 +18,7 @@ import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
+import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.ui.forms.ButtonsForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.ButtonsForm.MainBox.EnabledButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.ButtonsForm.MainBox.GroupBox;
@@ -30,7 +31,6 @@ import org.eclipsescout.demo.widgets.client.ui.forms.ButtonsForm.MainBox.GroupBo
 import org.eclipsescout.demo.widgets.client.ui.forms.ButtonsForm.MainBox.GroupBox.RadioButtonSelectedButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.ButtonsForm.MainBox.GroupBox.ToggleButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.ButtonsForm.MainBox.GroupBox.ToggleButtonSelectedButton;
-import org.eclipse.scout.rt.shared.TEXTS;
 
 public class ButtonsForm extends AbstractForm implements IPageForm {
 

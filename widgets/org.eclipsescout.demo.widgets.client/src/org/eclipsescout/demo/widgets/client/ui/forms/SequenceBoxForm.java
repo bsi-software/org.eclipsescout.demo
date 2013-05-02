@@ -23,6 +23,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.integerfield.AbstractIntegerFi
 import org.eclipse.scout.rt.client.ui.form.fields.labelfield.AbstractLabelField;
 import org.eclipse.scout.rt.client.ui.form.fields.sequencebox.AbstractSequenceBox;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
+import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.ui.forms.SequenceBoxForm.MainBox.GroupBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.SequenceBoxForm.MainBox.GroupBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.SequenceBoxForm.MainBox.GroupBox.RandomValueBox;
@@ -32,7 +33,6 @@ import org.eclipsescout.demo.widgets.client.ui.forms.SequenceBoxForm.MainBox.Gro
 import org.eclipsescout.demo.widgets.client.ui.forms.SequenceBoxForm.MainBox.GroupBox.SequenceBox.OkButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.SequenceBoxForm.MainBox.GroupBox.SequenceBox.SomeFieldsHaventAValueField;
 import org.eclipsescout.demo.widgets.client.ui.forms.SequenceBoxForm.MainBox.GroupBox.SequenceBox.WhichNumberWillTheComputerFindField;
-import org.eclipse.scout.rt.shared.TEXTS;
 
 public class SequenceBoxForm extends AbstractForm implements IPageForm {
 

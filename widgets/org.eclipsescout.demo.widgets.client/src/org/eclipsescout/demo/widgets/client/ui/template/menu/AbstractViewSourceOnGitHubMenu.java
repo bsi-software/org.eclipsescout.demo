@@ -12,10 +12,10 @@ package org.eclipsescout.demo.widgets.client.ui.template.menu;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
-import org.eclipsescout.demo.widgets.client.ClientSession;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.shell.IShellService;
 import org.eclipse.scout.service.SERVICES;
+import org.eclipsescout.demo.widgets.client.ClientSession;
 
 public abstract class AbstractViewSourceOnGitHubMenu extends AbstractMenu {
 

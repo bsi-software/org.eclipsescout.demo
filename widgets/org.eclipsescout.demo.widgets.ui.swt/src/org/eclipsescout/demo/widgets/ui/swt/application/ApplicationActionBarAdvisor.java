@@ -21,14 +21,14 @@ import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.client.ui.action.tool.IToolButton;
 import org.eclipse.scout.rt.client.ui.action.view.IViewButton;
 import org.eclipse.scout.rt.client.ui.desktop.IDesktop;
-import org.eclipsescout.demo.widgets.ui.swt.Activator;
-import org.eclipsescout.demo.widgets.ui.swt.SwtEnvironment;
-import org.eclipsescout.demo.widgets.ui.swt.application.button.CoolbarButton;
 import org.eclipse.swt.SWT;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.application.ActionBarAdvisor;
 import org.eclipse.ui.application.IActionBarConfigurer;
+import org.eclipsescout.demo.widgets.ui.swt.Activator;
+import org.eclipsescout.demo.widgets.ui.swt.SwtEnvironment;
+import org.eclipsescout.demo.widgets.ui.swt.application.button.CoolbarButton;
 
 /**
  * <h3>ApplicationActionBarAdvisor</h3> Used for menu contributions.

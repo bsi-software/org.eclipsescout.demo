@@ -30,13 +30,13 @@ import org.eclipse.scout.rt.client.ui.form.ScoutInfoForm;
 import org.eclipse.scout.rt.client.ui.form.outline.DefaultOutlineTableForm;
 import org.eclipse.scout.rt.client.ui.form.outline.DefaultOutlineTreeForm;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
+import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.ClientSession;
 import org.eclipsescout.demo.widgets.client.ui.desktop.outlines.FormFieldsWizardsOutline;
 import org.eclipsescout.demo.widgets.client.ui.desktop.outlines.PagesSearchFormsOutline;
 import org.eclipsescout.demo.widgets.client.ui.forms.ToolButton1Form;
 import org.eclipsescout.demo.widgets.client.ui.forms.ToolButton2Form;
 import org.eclipsescout.demo.widgets.shared.Icons;
-import org.eclipse.scout.rt.shared.TEXTS;
 
 public class Desktop extends AbstractDesktop implements IDesktop {
   private static IScoutLogger logger = ScoutLogManager.getLogger(Desktop.class);

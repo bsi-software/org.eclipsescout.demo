@@ -31,6 +31,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.plannerfield.AbstractPlannerField;
 import org.eclipse.scout.rt.client.ui.form.fields.tabbox.AbstractTabBox;
+import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.ui.forms.PlannerFieldForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.PlannerFieldForm.MainBox.TabBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.PlannerFieldForm.MainBox.TabBox.PlannerField1Box;
@@ -39,7 +40,6 @@ import org.eclipsescout.demo.widgets.client.ui.forms.PlannerFieldForm.MainBox.Ta
 import org.eclipsescout.demo.widgets.client.ui.forms.PlannerFieldForm.MainBox.TabBox.PlannerField2Box.DayPlannerField;
 import org.eclipsescout.demo.widgets.client.ui.forms.PlannerFieldForm.MainBox.TabBox.PlannerField2Box.IntradayPlannerField;
 import org.eclipsescout.demo.widgets.client.ui.forms.PlannerFieldForm.MainBox.TabBox.PlannerField2Box.WeekPlannerField;
-import org.eclipse.scout.rt.shared.TEXTS;
 
 public class PlannerFieldForm extends AbstractForm implements IPageForm {
 

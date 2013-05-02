@@ -16,11 +16,11 @@ import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
+import org.eclipse.scout.rt.shared.TEXTS;
+import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 import org.eclipsescout.demo.widgets.client.services.lookup.FormLookupCall;
 import org.eclipsescout.demo.widgets.client.ui.forms.DynamicFormWizardChooseAForm.MainBox.GroupBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.DynamicFormWizardChooseAForm.MainBox.GroupBox.FormField;
-import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 
 public class DynamicFormWizardChooseAForm extends AbstractForm {
 

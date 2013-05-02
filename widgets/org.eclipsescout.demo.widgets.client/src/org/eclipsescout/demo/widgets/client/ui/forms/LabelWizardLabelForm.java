@@ -16,10 +16,10 @@ import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.labelfield.AbstractLabelField;
-import org.eclipsescout.demo.widgets.client.ui.forms.LabelWizardLabelForm.MainBox.GroupBox;
-import org.eclipsescout.demo.widgets.client.ui.forms.LabelWizardLabelForm.MainBox.GroupBox.LoremField;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
+import org.eclipsescout.demo.widgets.client.ui.forms.LabelWizardLabelForm.MainBox.GroupBox;
+import org.eclipsescout.demo.widgets.client.ui.forms.LabelWizardLabelForm.MainBox.GroupBox.LoremField;
 
 public class LabelWizardLabelForm extends AbstractForm {
 

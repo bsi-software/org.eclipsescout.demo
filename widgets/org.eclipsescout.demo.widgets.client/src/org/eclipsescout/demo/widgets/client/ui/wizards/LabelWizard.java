@@ -16,12 +16,12 @@ import org.eclipse.scout.rt.client.ui.form.fields.GridData;
 import org.eclipse.scout.rt.client.ui.wizard.AbstractWizardStep;
 import org.eclipse.scout.rt.client.ui.wizard.DefaultWizardContainerForm;
 import org.eclipse.scout.rt.client.ui.wizard.IWizardContainerForm;
+import org.eclipse.scout.rt.shared.TEXTS;
+import org.eclipse.scout.rt.shared.data.basic.FontSpec;
 import org.eclipsescout.demo.widgets.client.ui.forms.LabelWizardFontForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.LabelWizardForegroundColorForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.LabelWizardLabelForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.LabelWizardSizeForm;
-import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.data.basic.FontSpec;
 
 public class LabelWizard extends AbstractPageWizard {
 

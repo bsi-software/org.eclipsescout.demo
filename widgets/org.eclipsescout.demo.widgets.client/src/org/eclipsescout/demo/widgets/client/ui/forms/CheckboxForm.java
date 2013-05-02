@@ -20,6 +20,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.checkbox.AbstractCheckBox;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.sequencebox.AbstractSequenceBox;
+import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.ui.forms.CheckboxForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.CheckboxForm.MainBox.GroupBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.CheckboxForm.MainBox.GroupBox.CheckboxField;
@@ -27,7 +28,6 @@ import org.eclipsescout.demo.widgets.client.ui.forms.CheckboxForm.MainBox.GroupB
 import org.eclipsescout.demo.widgets.client.ui.forms.CheckboxForm.MainBox.GroupBox.SequenceBox.EnabledField;
 import org.eclipsescout.demo.widgets.client.ui.forms.CheckboxForm.MainBox.GroupBox.SequenceBox.HasToBeCheckedField;
 import org.eclipsescout.demo.widgets.client.ui.forms.CheckboxForm.MainBox.GroupBox.SequenceBox.MandatoryField;
-import org.eclipse.scout.rt.shared.TEXTS;
 
 public class CheckboxForm extends AbstractForm implements IPageForm {
 

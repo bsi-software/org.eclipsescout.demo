@@ -27,6 +27,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.integerfield.AbstractIntegerField;
 import org.eclipse.scout.rt.client.ui.form.fields.sequencebox.AbstractSequenceBox;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
+import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.ui.forms.StatusForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.StatusForm.MainBox.ERRORStatusButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.StatusForm.MainBox.GroupBox;
@@ -39,7 +40,6 @@ import org.eclipsescout.demo.widgets.client.ui.forms.StatusForm.MainBox.GroupBox
 import org.eclipsescout.demo.widgets.client.ui.forms.StatusForm.MainBox.GroupBox.StringField;
 import org.eclipsescout.demo.widgets.client.ui.forms.StatusForm.MainBox.INFOStatusButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.StatusForm.MainBox.WARNINGStatusButton;
-import org.eclipse.scout.rt.shared.TEXTS;
 
 public class StatusForm extends AbstractForm implements IPageForm {
 

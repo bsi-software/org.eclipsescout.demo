@@ -16,6 +16,8 @@ import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNodes;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
+import org.eclipse.scout.rt.shared.TEXTS;
+import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
 import org.eclipsescout.demo.widgets.client.ui.forms.BrowserFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.ButtonsForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.CalendarFieldForm;
@@ -50,8 +52,6 @@ import org.eclipsescout.demo.widgets.client.ui.forms.TreeBoxForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.TreeFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.WrappedFormFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.template.menu.AbstractViewSourceOnGitHubMenu;
-import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
 
 public class FormFieldsNodePage extends AbstractPageWithNodes {
 

@@ -16,6 +16,12 @@ import java.beans.PropertyChangeListener;
 import org.eclipse.scout.rt.client.AbstractClientSession;
 import org.eclipse.scout.rt.client.ui.desktop.IDesktop;
 import org.eclipse.scout.rt.client.ui.form.IForm;
+import org.eclipse.scout.rt.ui.swt.AbstractSwtEnvironment;
+import org.eclipse.scout.rt.ui.swt.ISwtEnvironmentListener;
+import org.eclipse.scout.rt.ui.swt.SwtEnvironmentEvent;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
 import org.eclipsescout.demo.widgets.ui.swt.application.ApplicationActionBarAdvisor;
 import org.eclipsescout.demo.widgets.ui.swt.editor.ScoutEditorPart;
 import org.eclipsescout.demo.widgets.ui.swt.views.CenterView;
@@ -27,12 +33,6 @@ import org.eclipsescout.demo.widgets.ui.swt.views.SouthEastView;
 import org.eclipsescout.demo.widgets.ui.swt.views.SouthView;
 import org.eclipsescout.demo.widgets.ui.swt.views.SouthWestView;
 import org.eclipsescout.demo.widgets.ui.swt.views.WestView;
-import org.eclipse.scout.rt.ui.swt.AbstractSwtEnvironment;
-import org.eclipse.scout.rt.ui.swt.ISwtEnvironmentListener;
-import org.eclipse.scout.rt.ui.swt.SwtEnvironmentEvent;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PlatformUI;
 import org.osgi.framework.Bundle;
 
 public class SwtEnvironment extends AbstractSwtEnvironment {

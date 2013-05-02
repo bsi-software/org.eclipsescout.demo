@@ -10,7 +10,6 @@
  ******************************************************************************/
 package org.eclipsescout.demo.widgets.ui.swing.rayo;
 
-
-public class SwingEnvironment extends com.bsiag.scout.rt.ui.swing.rayo.RayoSwingEnvironment{
+public class SwingEnvironment extends com.bsiag.scout.rt.ui.swing.rayo.RayoSwingEnvironment {
 
 }

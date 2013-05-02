@@ -25,15 +25,15 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractLinkButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.htmlfield.AbstractHtmlField;
+import org.eclipse.scout.rt.shared.AbstractIcons;
+import org.eclipse.scout.rt.shared.TEXTS;
+import org.eclipse.scout.rt.shared.services.common.file.RemoteFile;
 import org.eclipsescout.demo.widgets.client.Activator;
 import org.eclipsescout.demo.widgets.client.ui.forms.HTMLFieldForm.MainBox.BlankButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.HTMLFieldForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.HTMLFieldForm.MainBox.HTMLField;
 import org.eclipsescout.demo.widgets.client.ui.forms.HTMLFieldForm.MainBox.ScoutHtmlButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.HTMLFieldForm.MainBox.WizardStatusButton;
-import org.eclipse.scout.rt.shared.AbstractIcons;
-import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.services.common.file.RemoteFile;
 
 public class HTMLFieldForm extends AbstractForm implements IPageForm {
 

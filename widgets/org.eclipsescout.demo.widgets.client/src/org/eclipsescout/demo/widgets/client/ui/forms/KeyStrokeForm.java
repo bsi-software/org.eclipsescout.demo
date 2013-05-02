@@ -19,12 +19,12 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.checkbox.AbstractCheckBox;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
+import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.ui.forms.KeyStrokeForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.KeyStrokeForm.MainBox.GroupBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.KeyStrokeForm.MainBox.GroupBox.ChangeValueWithCtrlshiftcField;
 import org.eclipsescout.demo.widgets.client.ui.forms.KeyStrokeForm.MainBox.GroupBox.CtrlshiftdForFocusField;
 import org.eclipsescout.demo.widgets.client.ui.forms.KeyStrokeForm.MainBox.GroupBox.CtrlshiftsForFocusField;
-import org.eclipse.scout.rt.shared.TEXTS;
 
 public class KeyStrokeForm extends AbstractForm implements IPageForm {
 

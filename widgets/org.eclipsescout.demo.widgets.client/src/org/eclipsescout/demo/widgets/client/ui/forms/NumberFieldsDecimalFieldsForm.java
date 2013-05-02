@@ -28,6 +28,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.longfield.AbstractLongField;
 import org.eclipse.scout.rt.client.ui.form.fields.placeholder.AbstractPlaceholderField;
 import org.eclipse.scout.rt.client.ui.form.fields.sequencebox.AbstractSequenceBox;
 import org.eclipse.scout.rt.client.ui.form.fields.tabbox.AbstractTabBox;
+import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.ui.forms.NumberFieldsDecimalFieldsForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.NumberFieldsDecimalFieldsForm.MainBox.HighestValueButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.NumberFieldsDecimalFieldsForm.MainBox.SmallestValueButton;
@@ -49,7 +50,6 @@ import org.eclipsescout.demo.widgets.client.ui.forms.NumberFieldsDecimalFieldsFo
 import org.eclipsescout.demo.widgets.client.ui.forms.NumberFieldsDecimalFieldsForm.MainBox.ValueFieldTypeBox.NumberFieldsBox.IntegerField;
 import org.eclipsescout.demo.widgets.client.ui.forms.NumberFieldsDecimalFieldsForm.MainBox.ValueFieldTypeBox.NumberFieldsBox.LongField;
 import org.eclipsescout.demo.widgets.client.ui.forms.NumberFieldsDecimalFieldsForm.MainBox.ValueFieldTypeBox.NumberFieldsBox.PlaceholderField;
-import org.eclipse.scout.rt.shared.TEXTS;
 
 public class NumberFieldsDecimalFieldsForm extends AbstractForm implements IPageForm {
 

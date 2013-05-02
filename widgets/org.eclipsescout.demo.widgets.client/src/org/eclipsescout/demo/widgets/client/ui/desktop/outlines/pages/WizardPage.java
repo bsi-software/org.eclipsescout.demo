@@ -15,9 +15,9 @@ import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNodes;
 import org.eclipse.scout.rt.client.ui.wizard.IWizard;
+import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.ui.template.menu.AbstractViewSourceOnGitHubMenu;
 import org.eclipsescout.demo.widgets.client.ui.wizards.AbstractPageWizard;
-import org.eclipse.scout.rt.shared.TEXTS;
 
 public class WizardPage extends AbstractPageWithNodes {
   private Class<? extends AbstractPageWizard> m_wizardType;

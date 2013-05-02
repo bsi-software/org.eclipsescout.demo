@@ -13,10 +13,10 @@ package org.eclipsescout.demo.widgets.ui.swt.application.menu;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.scout.rt.client.ui.action.menu.IMenu;
-import org.eclipsescout.demo.widgets.ui.swt.Activator;
 import org.eclipse.scout.rt.ui.swt.ISwtEnvironment;
 import org.eclipse.scout.rt.ui.swt.SwtMenuUtility;
 import org.eclipse.ui.actions.CompoundContributionItem;
+import org.eclipsescout.demo.widgets.ui.swt.Activator;
 
 public class DesktopMenuBar extends CompoundContributionItem {
 

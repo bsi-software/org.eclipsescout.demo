@@ -28,6 +28,8 @@ import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.client.ui.form.fields.tabbox.AbstractTabBox;
+import org.eclipse.scout.rt.shared.TEXTS;
+import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 import org.eclipsescout.demo.widgets.client.services.lookup.TimezonesLookupCall;
 import org.eclipsescout.demo.widgets.client.ui.forms.TabBoxForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.TabBoxForm.MainBox.TabBox;
@@ -41,8 +43,6 @@ import org.eclipsescout.demo.widgets.client.ui.forms.TabBoxForm.MainBox.TabBox.T
 import org.eclipsescout.demo.widgets.client.ui.forms.TabBoxForm.MainBox.TabBox.Tab3Box.InnerTabBox.InnerTab1Box.StringField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TabBoxForm.MainBox.TabBox.Tab3Box.InnerTabBox.InnerTab2Box;
 import org.eclipsescout.demo.widgets.client.ui.forms.TabBoxForm.MainBox.TabBox.Tab3Box.InnerTabBox.InnerTab2Box.FirstTabButton;
-import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 
 public class TabBoxForm extends AbstractForm implements IPageForm {
 

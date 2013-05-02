@@ -20,10 +20,10 @@ import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.treefield.AbstractTreeField;
+import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.ui.forms.TreeFieldForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.TreeFieldForm.MainBox.GroupBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.TreeFieldForm.MainBox.GroupBox.TreeField;
-import org.eclipse.scout.rt.shared.TEXTS;
 
 public class TreeFieldForm extends AbstractForm implements IPageForm {
 

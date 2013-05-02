@@ -17,6 +17,7 @@ import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
+import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.ui.forms.GroupBoxForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.GroupBoxForm.MainBox.DefaultBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.GroupBoxForm.MainBox.DefaultBox.Default0Field;
@@ -30,7 +31,6 @@ import org.eclipsescout.demo.widgets.client.ui.forms.GroupBoxForm.MainBox.LineBo
 import org.eclipsescout.demo.widgets.client.ui.forms.GroupBoxForm.MainBox.SectionBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.GroupBoxForm.MainBox.SectionBox.Section0Field;
 import org.eclipsescout.demo.widgets.client.ui.forms.GroupBoxForm.MainBox.SectionBox.SectionField;
-import org.eclipse.scout.rt.shared.TEXTS;
 
 public class GroupBoxForm extends AbstractForm implements IPageForm {
 

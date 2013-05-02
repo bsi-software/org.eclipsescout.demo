@@ -20,13 +20,13 @@ import org.eclipse.scout.rt.client.ui.form.fields.browserfield.AbstractBrowserFi
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractLinkButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
+import org.eclipse.scout.rt.shared.TEXTS;
+import org.eclipse.scout.rt.shared.services.common.file.RemoteFile;
 import org.eclipsescout.demo.widgets.client.ui.forms.BrowserFieldForm.MainBox.BrowserField;
 import org.eclipsescout.demo.widgets.client.ui.forms.BrowserFieldForm.MainBox.BsiagButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.BrowserFieldForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.BrowserFieldForm.MainBox.EclipseScoutButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.BrowserFieldForm.MainBox.WizardStatusButton;
-import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.services.common.file.RemoteFile;
 
 public class BrowserFieldForm extends AbstractForm implements IPageForm {
 
