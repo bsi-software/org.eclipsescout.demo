@@ -14,4 +14,9 @@ import org.eclipse.scout.rt.ui.swing.DefaultSwingEnvironment;
 
 public class SwingEnvironment extends DefaultSwingEnvironment {
 
+  @Override
+  public int getFormRowHeight() {
+    return 28;
+  }
+
 }
