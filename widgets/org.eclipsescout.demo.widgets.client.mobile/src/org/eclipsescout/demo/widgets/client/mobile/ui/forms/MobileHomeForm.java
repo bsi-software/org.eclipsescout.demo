@@ -89,7 +89,7 @@ public class MobileHomeForm extends AbstractMobileForm implements IOutlineChoose
       // Table already is scrollable, it's not necessary to make the form scrollable too
       IDeviceTransformationService service = SERVICES.getService(IDeviceTransformationService.class);
       if (service != null && service.getDeviceTransformer() != null) {
-        service.getDeviceTransformer().getDeviceTransformationExcluder().excludeFieldTransformation(this, MobileDeviceTransformation.MAKE_MAINBOX_SCROLLABLE);
+        service.getDeviceTransformer().getDeviceTransformationConfig().excludeFieldTransformation(this, MobileDeviceTransformation.MAKE_MAINBOX_SCROLLABLE);
       }
     }
 
