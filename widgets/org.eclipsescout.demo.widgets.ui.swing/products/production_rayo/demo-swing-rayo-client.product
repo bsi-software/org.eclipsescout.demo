@@ -51,8 +51,6 @@
       <plugin id="org.eclipse.core.net"/>
       <plugin id="org.eclipse.core.net.win32.x86" fragment="true"/>
       <plugin id="org.eclipse.core.runtime"/>
-      <plugin id="org.eclipse.core.runtime.compatibility.auth"/>
-      <plugin id="org.eclipse.core.runtime.compatibility.registry" fragment="true"/>
       <plugin id="org.eclipse.equinox.app"/>
       <plugin id="org.eclipse.equinox.common"/>
       <plugin id="org.eclipse.equinox.preferences"/>
@@ -66,7 +64,6 @@
       <plugin id="org.eclipse.scout.rt.client"/>
       <plugin id="org.eclipse.scout.rt.extension.client"/>
       <plugin id="org.eclipse.scout.rt.shared"/>
-      <plugin id="org.eclipse.scout.rt.shared.legacy.texts.fragment" fragment="true"/>
       <plugin id="org.eclipse.scout.rt.ui.swing"/>
       <plugin id="org.eclipse.scout.rt.ui.swing.browser.swt.fragment" fragment="true"/>
       <plugin id="org.eclipse.scout.service"/>
