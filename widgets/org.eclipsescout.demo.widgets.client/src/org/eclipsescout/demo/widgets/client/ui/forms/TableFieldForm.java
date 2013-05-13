@@ -97,10 +97,10 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
         @Override
         protected void execInitField() throws ProcessingException {
           Object data[][] = new Object[][]{
-              {1, "Exxon Mobil Corporation", "XOM"},
-              {2, "IBM", "IBM"},
-              {3, "UBS", "UBS"},
-              {4, "Coca-Cola Company", "KO"}};
+              {1L, "Exxon Mobil Corporation", "XOM"},
+              {2L, "IBM", "IBM"},
+              {3L, "UBS", "UBS"},
+              {4L, "Coca-Cola Company", "KO"}};
           getTable().addRowsByMatrix(data);
         }
 
@@ -153,7 +153,7 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
 
             @Override
             protected boolean execIsEditable(ITableRow row) throws ProcessingException {
-              if (getCompanyNrColumn().getValue(row) >= 5) {
+              if (getCompanyNrColumn().getValue(row) >= 5L) {
                 return super.execIsEditable(row);
               }
               return false;
@@ -175,7 +175,7 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
 
             @Override
             protected boolean execIsEditable(ITableRow row) throws ProcessingException {
-              if (getCompanyNrColumn().getValue(row) >= 5) {
+              if (getCompanyNrColumn().getValue(row) >= 5L) {
                 return super.execIsEditable(row);
               }
               return false;
