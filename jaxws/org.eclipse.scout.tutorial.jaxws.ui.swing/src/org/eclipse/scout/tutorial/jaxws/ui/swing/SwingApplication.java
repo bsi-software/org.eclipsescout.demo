@@ -10,47 +10,48 @@
  ******************************************************************************/
 package org.eclipse.scout.tutorial.jaxws.ui.swing;
 
-
 import java.security.PrivilegedExceptionAction;
+
 import javax.security.auth.Subject;
+
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
+import org.eclipse.scout.commons.security.SimplePrincipal;
 import org.eclipse.scout.net.NetActivator;
 import org.eclipse.scout.rt.client.IClientSession;
 import org.eclipse.scout.rt.client.services.common.session.IClientSessionRegistryService;
-import org.eclipse.scout.commons.security.SimplePrincipal;
+import org.eclipse.scout.rt.shared.ui.UserAgent;
 import org.eclipse.scout.rt.ui.swing.AbstractSwingApplication;
 import org.eclipse.scout.rt.ui.swing.ISwingEnvironment;
 import org.eclipse.scout.service.SERVICES;
 import org.eclipse.scout.tutorial.jaxws.client.ClientSession;
 
-
-public class SwingApplication extends AbstractSwingApplication{
+public class SwingApplication extends AbstractSwingApplication {
   private static IScoutLogger logger = ScoutLogManager.getLogger(SwingApplication.class);
 
   @Override
-  public Object start(final IApplicationContext context) throws Exception{
-    Subject subject=new Subject();
+  public Object start(final IApplicationContext context) throws Exception {
+    Subject subject = new Subject();
     subject.getPrincipals().add(new SimplePrincipal(System.getProperty("user.name")));
-    return Subject.doAs(subject, new PrivilegedExceptionAction<Object>(){
+    return Subject.doAs(subject, new PrivilegedExceptionAction<Object>() {
       @Override
-      public Object run() throws Exception{
+      public Object run() throws Exception {
         return startSecure(context);
       }
     });
   }
 
   @Override
-  protected ISwingEnvironment createSwingEnvironment(){
+  protected ISwingEnvironment createSwingEnvironment() {
     return new SwingEnvironment();
   }
 
-  private Object startSecure(IApplicationContext context) throws Exception{
-    try{
+  private Object startSecure(IApplicationContext context) throws Exception {
+    try {
       NetActivator.install();
     }
-    catch(Throwable t){
+    catch (Throwable t) {
       // no net handler found
       logger.warn("NetActivator is not available", t);
     }
@@ -59,6 +60,6 @@ public class SwingApplication extends AbstractSwingApplication{
 
   @Override
   protected IClientSession getClientSession() {
-    return SERVICES.getService(IClientSessionRegistryService.class).getClientSession(ClientSession.class);
+    return SERVICES.getService(IClientSessionRegistryService.class).newClientSession(ClientSession.class, UserAgent.createDefault());
   }
 }

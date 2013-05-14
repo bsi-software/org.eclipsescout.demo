@@ -23,8 +23,9 @@ public class StandaloneRwtEnvironment extends AbstractStandaloneRwtEnvironment {
   }
 
   @Override
-  public String getLogoutLandingUri() {
-    String logoutLandingUrl = super.getLogoutLandingUri();
+  protected String getLogoutLocation() {
+    String logoutLandingUrl = super.getLogoutLocation();
     return logoutLandingUrl + "/../res/logout.html";
   }
+
 }

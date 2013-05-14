@@ -37,15 +37,18 @@
   <extension
     point="org.eclipse.rap.ui.entrypoint">
     <entrypoint
-      class="org.eclipse.scout.bahbah.ui.rap.StandaloneRwtEnvironment"
-      id="default"
-      path="/web"/>
-    <entrypoint
+          brandingId="org.eclipse.scout.bahbah.ui.rap.branding.mobile"
           class="org.eclipse.scout.bahbah.ui.rap.MobileStandaloneRwtEnvironment"
           id="org.eclipse.scout.bahbah.ui.rap.mobile"
           path="/mobile">
     </entrypoint>
     <entrypoint
+          brandingId="org.eclipse.scout.bahbah.ui.rap.branding.web"
+          class="org.eclipse.scout.bahbah.ui.rap.StandaloneRwtEnvironment"
+          id="default"
+          path="/web"/>
+    <entrypoint
+          brandingId="org.eclipse.scout.bahbah.ui.rap.branding.tablet"
           class="org.eclipse.scout.bahbah.ui.rap.TabletStandaloneRwtEnvironment"
           id="org.eclipse.scout.bahbah.ui.rap.tablet"
           path="/tablet">
@@ -53,7 +56,12 @@
   </extension>
 
   <extension point="org.eclipse.rap.ui.branding">
-    <branding body="web-resources/startup-body.html" favicon="web-resources/bahbah.ico" id="org.eclipse.scout.bahbah.ui.rap.branding" servletName="web" themeId="org.eclipse.scout.rt.ui.rap.theme" title="BahBah">
+    <branding 
+    body="web-resources/startup-body.html" 
+    favicon="web-resources/bahbah.ico" 
+    id="org.eclipse.scout.bahbah.ui.rap.branding.web" 
+    themeId="org.eclipse.scout.rt.ui.rap.theme" 
+    title="BahBah">
       <additionalHeaders>
         <link href="res/html-styles.css" rel="stylesheet"/>
       </additionalHeaders>
@@ -62,7 +70,6 @@
           body="web-resources/startup-body.html"
           favicon="web-resources/bahbah.ico"
           id="org.eclipse.scout.bahbah.ui.rap.branding.mobile"
-          servletName="mobile"
           themeId="org.eclipse.scout.rt.ui.rap.mobile.theme"
           title="BahBah">
           <additionalHeaders>
@@ -77,7 +84,6 @@
           body="web-resources/startup-body.html"
           favicon="web-resources/bahbah.ico"
           id="org.eclipse.scout.bahbah.ui.rap.branding.tablet"
-          servletName="tablet"
           themeId="org.eclipse.scout.rt.ui.rap.mobile.theme"
           title="BahBah">
           <additionalHeaders>

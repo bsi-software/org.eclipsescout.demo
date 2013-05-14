@@ -31,11 +31,10 @@
    <plugins>
       <plugin id="javax.servlet"/>
       <plugin id="org.apache.commons.codec"/>
-      <plugin id="org.apache.derby.jdbc_1082.fragment" fragment="true"/>
+      <plugin id="org.apache.derby.jdbc_1091.fragment" fragment="true"/>
       <plugin id="org.eclipse.core.contenttype"/>
       <plugin id="org.eclipse.core.jobs"/>
       <plugin id="org.eclipse.core.runtime"/>
-      <plugin id="org.eclipse.core.runtime.compatibility.registry" fragment="true"/>
       <plugin id="org.eclipse.equinox.app"/>
       <plugin id="org.eclipse.equinox.common"/>
       <plugin id="org.eclipse.equinox.http.registry"/>
