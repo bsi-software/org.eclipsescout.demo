@@ -1,3 +1,7 @@
+# Backupfiles from mergetools #
+*.orig
+
+# Java Class Files #
 *.class
 
 # Package Files #
@@ -7,10 +11,8 @@
 *.zip
 
 # Eclipse #
-bin/**
-
-# EGit #
-**/.gitignore
+bin/
+classes/
 
 # Maven #
 target/
