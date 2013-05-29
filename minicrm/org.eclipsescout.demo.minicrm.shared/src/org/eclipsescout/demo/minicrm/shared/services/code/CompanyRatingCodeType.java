@@ -1,0 +1,95 @@
+package org.eclipsescout.demo.minicrm.shared.services.code;
+
+import org.eclipse.scout.commons.annotations.Order;
+import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.shared.TEXTS;
+import org.eclipse.scout.rt.shared.services.common.code.AbstractCode;
+import org.eclipse.scout.rt.shared.services.common.code.AbstractCodeType;
+
+public class CompanyRatingCodeType extends AbstractCodeType<Long> {
+
+  private static final long serialVersionUID = 1L;
+  public static final Long ID = 10100L;
+
+  public CompanyRatingCodeType() throws ProcessingException {
+    super();
+  }
+
+  @Override
+  protected String getConfiguredText() {
+    return TEXTS.get("CompanyRating");
+  }
+
+  @Override
+  public Long getId() {
+    return ID;
+  }
+
+  @Order(10.0)
+  public static class ACode extends AbstractCode<Long> {
+
+    private static final long serialVersionUID = 1L;
+    public static final Long ID = 10101L;
+
+    @Override
+    protected String getConfiguredText() {
+      return TEXTS.get("A");
+    }
+
+    @Override
+    public Long getId() {
+      return ID;
+    }
+  }
+
+  @Order(20.0)
+  public static class BCode extends AbstractCode<Long> {
+
+    private static final long serialVersionUID = 1L;
+    public static final Long ID = 10102L;
+
+    @Override
+    protected String getConfiguredText() {
+      return TEXTS.get("B");
+    }
+
+    @Override
+    public Long getId() {
+      return ID;
+    }
+  }
+
+  @Order(30.0)
+  public static class CCode extends AbstractCode<Long> {
+
+    private static final long serialVersionUID = 1L;
+    public static final Long ID = 10103L;
+
+    @Override
+    protected String getConfiguredText() {
+      return TEXTS.get("C");
+    }
+
+    @Override
+    public Long getId() {
+      return ID;
+    }
+  }
+
+  @Order(40.0)
+  public static class DCode extends AbstractCode<Long> {
+
+    private static final long serialVersionUID = 1L;
+    public static final Long ID = 10104L;
+
+    @Override
+    protected String getConfiguredText() {
+      return TEXTS.get("D");
+    }
+
+    @Override
+    public Long getId() {
+      return ID;
+    }
+  }
+}
