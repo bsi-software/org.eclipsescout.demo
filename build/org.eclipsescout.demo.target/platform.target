@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<?pde version="3.8"?>
-<target name="Restored Target" sequenceNumber="14">
+<?pde version="3.6"?>
+<target name="Restored Target" sequenceNumber="15">
   <locations>
-    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-      <!-- <unit id="org.eclipse.scout.rt.testing.source.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.scout.rt.source.feature.group" version="0.0.0"/> -->
+    <location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+      <unit id="org.eclipse.equinox.executable.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.server.jetty.feature.group" version="0.0.0"/>
 
       <repository location="http://download.eclipse.org/releases/kepler"/>
     </location>
 
-    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-      <unit id="org.eclipse.scout.rt.testing.source.feature.group" version="0.0.0"/>
+    <location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
       <unit id="org.eclipse.scout.rt.source.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.scout.rt.testing.source.feature.group" version="0.0.0"/>
 
-      <repository location="http://download.eclipse.org/scout/nightly"/>
-    </location>
+      <repository location="http://download.eclipse.org/scout/releases/3.9/3.9.0/scout.main"/>
+    </location> 
 
-    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+    <location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
       <unit id="com.bsiag.scout.rt.ui.swing.laf.rayo.feature.group" version="0.0.0"/>
 
       <repository location="https://scout.bsiag.com/repository/marketplace.rayo/"/>
     </location>
 
-    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-      <unit id="org.junit" version="4.10.0.v4_10_0_v20120426-0900"/>
+    <location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+      <unit id="org.mockito.feature.group" version="0.0.0"/>
+      <unit id="com.bsiag.tools.3rdParty.feature.group" version="0.0.0"/>
 
-      <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20130118183705/repository/"/>
+      <repository id="marketplace_bsi" location="https://scout.bsiag.com/repository/tools.3rdParty/"/>
     </location>
   </locations>
 </target>
