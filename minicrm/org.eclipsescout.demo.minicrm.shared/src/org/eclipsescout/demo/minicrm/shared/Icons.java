@@ -15,6 +15,8 @@ import org.eclipse.scout.rt.shared.AbstractIcons;
 public class Icons extends AbstractIcons {
   private static final long serialVersionUID = 1L;
 
-  public static final String Eye = "eye";
-  public static final String EclipseScout = "eclipse_scout";
+  public static final String Building = "building";
+  public static final String Star = "star";
+  public static final String User = "user";
+  public static final String VCard = "vcard";
 }

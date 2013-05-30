@@ -12,6 +12,7 @@ package org.eclipsescout.demo.minicrm.server.ui.desktop.form;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.exception.VetoException;
+import org.eclipse.scout.commons.holders.NVPair;
 import org.eclipse.scout.rt.server.services.common.jdbc.SQL;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
@@ -91,5 +92,16 @@ public class CompanyService extends AbstractService implements ICompanyService {
         , formData);
 
     return formData;
+  }
+
+  @Override
+  public void delete(Long companyNr) throws ProcessingException {
+    if (!ACCESS.check(new UpdateCompanyPermission())) {
+      throw new VetoException(TEXTS.get("AuthorizationFailed"));
+    }
+
+    SQL.delete("DELETE FROM COMPANY " +
+        "WHERE  COMPANY_NR = :companyNr",
+        new NVPair("companyNr", companyNr));
   }
 }

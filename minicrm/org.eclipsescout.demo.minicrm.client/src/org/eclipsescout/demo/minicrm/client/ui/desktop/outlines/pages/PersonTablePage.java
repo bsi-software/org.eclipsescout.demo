@@ -22,6 +22,7 @@ import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
 import org.eclipse.scout.service.SERVICES;
 import org.eclipsescout.demo.minicrm.client.ui.desktop.outlines.pages.searchform.PersonSearchForm;
+import org.eclipsescout.demo.minicrm.shared.Icons;
 import org.eclipsescout.demo.minicrm.shared.services.IStandardOutlineService;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.searchform.PersonSearchFormData;
 
@@ -50,6 +51,11 @@ public class PersonTablePage extends AbstractPageWithTable<PersonTablePage.Table
 
   @Order(10.0)
   public class Table extends AbstractExtensibleTable {
+
+    @Override
+    protected String getConfiguredDefaultIconId() {
+      return Icons.User;
+    }
 
     public FirstNameColumn getFirstNameColumn() {
       return getColumnSet().getColumnByClass(FirstNameColumn.class);
@@ -114,6 +120,11 @@ public class PersonTablePage extends AbstractPageWithTable<PersonTablePage.Table
   @FormData
   public void setCompanyNr(Long companyNr) {
     m_companyNr = companyNr;
+  }
+
+  @Override
+  protected String getConfiguredIconId() {
+    return Icons.User;
   }
 
   @Override

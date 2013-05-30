@@ -25,4 +25,6 @@ public interface ICompanyService extends IService2 {
   CompanyFormData load(CompanyFormData formData) throws ProcessingException;
 
   CompanyFormData store(CompanyFormData formData) throws ProcessingException;
+
+  void delete(Long companyNr) throws ProcessingException;
 }

@@ -15,6 +15,7 @@ import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.AbstractCode;
 import org.eclipse.scout.rt.shared.services.common.code.AbstractCodeType;
+import org.eclipsescout.demo.minicrm.shared.Icons;
 
 public class CompanyRatingCodeType extends AbstractCodeType<Long> {
 
@@ -42,6 +43,11 @@ public class CompanyRatingCodeType extends AbstractCodeType<Long> {
     public static final Long ID = 10101L;
 
     @Override
+    protected String getConfiguredIconId() {
+      return Icons.Star;
+    }
+
+    @Override
     protected String getConfiguredText() {
       return TEXTS.get("A");
     }
@@ -54,6 +60,11 @@ public class CompanyRatingCodeType extends AbstractCodeType<Long> {
 
   @Order(20.0)
   public static class BCode extends AbstractCode<Long> {
+
+    @Override
+    protected String getConfiguredIconId() {
+      return Icons.Star;
+    }
 
     private static final long serialVersionUID = 1L;
     public static final Long ID = 10102L;
@@ -71,6 +82,11 @@ public class CompanyRatingCodeType extends AbstractCodeType<Long> {
 
   @Order(30.0)
   public static class CCode extends AbstractCode<Long> {
+
+    @Override
+    protected String getConfiguredIconId() {
+      return Icons.Star;
+    }
 
     private static final long serialVersionUID = 1L;
     public static final Long ID = 10103L;
@@ -91,6 +107,11 @@ public class CompanyRatingCodeType extends AbstractCodeType<Long> {
 
     private static final long serialVersionUID = 1L;
     public static final Long ID = 10104L;
+
+    @Override
+    protected String getConfiguredIconId() {
+      return Icons.Star;
+    }
 
     @Override
     protected String getConfiguredText() {

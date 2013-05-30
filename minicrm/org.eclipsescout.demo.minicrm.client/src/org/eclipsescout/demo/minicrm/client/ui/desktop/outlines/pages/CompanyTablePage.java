@@ -19,6 +19,7 @@ import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithTable;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.ISearchForm;
+import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
 import org.eclipse.scout.rt.extension.client.ui.action.menu.AbstractExtensibleMenu;
 import org.eclipse.scout.rt.extension.client.ui.basic.table.AbstractExtensibleTable;
 import org.eclipse.scout.rt.shared.TEXTS;
@@ -27,8 +28,10 @@ import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
 import org.eclipse.scout.service.SERVICES;
 import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm;
 import org.eclipsescout.demo.minicrm.client.ui.desktop.outlines.pages.searchform.CompanySearchForm;
+import org.eclipsescout.demo.minicrm.shared.Icons;
 import org.eclipsescout.demo.minicrm.shared.services.IStandardOutlineService;
 import org.eclipsescout.demo.minicrm.shared.services.code.CompanyTypeCodeType;
+import org.eclipsescout.demo.minicrm.shared.ui.desktop.form.ICompanyService;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.searchform.CompanySearchFormData;
 
 public class CompanyTablePage extends AbstractPageWithTable<CompanyTablePage.Table> {
@@ -67,6 +70,11 @@ public class CompanyTablePage extends AbstractPageWithTable<CompanyTablePage.Tab
 
     public CompanyTypeColumn getCompanyTypeColumn() {
       return getColumnSet().getColumnByClass(CompanyTypeColumn.class);
+    }
+
+    @Override
+    protected String getConfiguredDefaultIconId() {
+      return Icons.Building;
     }
 
     public CompanyNrColumn getCompanyNrColumn() {
@@ -108,6 +116,11 @@ public class CompanyTablePage extends AbstractPageWithTable<CompanyTablePage.Tab
       protected String getConfiguredHeaderText() {
         return TEXTS.get("Name");
       }
+
+      @Override
+      protected int getConfiguredWidth() {
+        return 200;
+      }
     }
 
     @Order(40.0)
@@ -122,6 +135,11 @@ public class CompanyTablePage extends AbstractPageWithTable<CompanyTablePage.Tab
       protected Class<? extends ICodeType> getConfiguredCodeType() {
         return CompanyTypeCodeType.class;
 
+      }
+
+      @Override
+      protected int getConfiguredWidth() {
+        return 200;
       }
     }
 
@@ -173,6 +191,28 @@ public class CompanyTablePage extends AbstractPageWithTable<CompanyTablePage.Tab
         }
       }
     }
+
+    @Order(30.0)
+    public class DeleteCompanyMenu extends AbstractExtensibleMenu {
+
+      @Override
+      protected String getConfiguredText() {
+        return TEXTS.get("DeleteCompany");
+      }
+
+      @Override
+      protected void execAction() throws ProcessingException {
+        if (MessageBox.showDeleteConfirmationMessage(getNameColumn().getSelectedValue())) {
+          SERVICES.getService(ICompanyService.class).delete(getCompanyNrColumn().getSelectedValue());
+          reloadPage();
+        }
+      }
+    }
+  }
+
+  @Override
+  protected String getConfiguredIconId() {
+    return Icons.Building;
   }
 
   @Override

@@ -11,6 +11,7 @@
 package org.eclipsescout.demo.minicrm.server.services.lookup;
 
 import org.eclipse.scout.rt.server.services.lookup.AbstractSqlLookupService;
+import org.eclipsescout.demo.minicrm.shared.Icons;
 import org.eclipsescout.demo.minicrm.shared.services.lookup.ICompanyLookupService;
 
 public class CompanyLookupService extends AbstractSqlLookupService implements ICompanyLookupService {
@@ -18,7 +19,8 @@ public class CompanyLookupService extends AbstractSqlLookupService implements IC
   @Override
   public String getConfiguredSqlSelect() {
     return "SELECT  C.COMPANY_NR, " +
-        "        C.NAME " +
+        "        C.NAME, " +
+        "        '" + Icons.Building + "' " +
         "FROM    COMPANY C " +
         "WHERE   1=1 " +
         "  AND (C.TYPE_UID = :master OR :master IS NULL) " +

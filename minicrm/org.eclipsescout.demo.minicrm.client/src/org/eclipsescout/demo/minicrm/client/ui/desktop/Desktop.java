@@ -58,12 +58,12 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
 
     // outline tree
     DefaultOutlineTreeForm treeForm = new DefaultOutlineTreeForm();
-    treeForm.setIconId(Icons.EclipseScout);
+    treeForm.setIconId(Icons.VCard);
     treeForm.startView();
 
     //outline table
     DefaultOutlineTableForm tableForm = new DefaultOutlineTableForm();
-    tableForm.setIconId(Icons.EclipseScout);
+    tableForm.setIconId(Icons.VCard);
     tableForm.startView();
 
     if (getAvailableOutlines().length > 0) {
