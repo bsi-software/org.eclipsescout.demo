@@ -14,15 +14,6 @@ import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.commons.annotations.FormData.SdkCommand;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipsescout.demo.ibug.client.ui.forms.DesktopForm.MainBox.DesktopBox;
-import org.eclipsescout.demo.ibug.client.ui.forms.DesktopForm.MainBox.DesktopBox.BugsField;
-import org.eclipsescout.demo.ibug.client.ui.forms.DesktopForm.MainBox.DesktopBox.SearchBox;
-import org.eclipsescout.demo.ibug.client.ui.forms.DesktopForm.MainBox.DesktopBox.SearchBox.AssigneeField;
-import org.eclipsescout.demo.ibug.client.ui.forms.DesktopForm.MainBox.DesktopBox.SearchBox.ProductField;
-import org.eclipsescout.demo.ibug.client.ui.forms.DesktopForm.MainBox.DesktopBox.SearchBox.RefreshButton;
-import org.eclipsescout.demo.ibug.shared.Icons;
-import org.eclipsescout.demo.ibug.shared.services.DesktopFormData;
-import org.eclipsescout.demo.ibug.shared.services.IDesktopService;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractIntegerColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
@@ -38,6 +29,15 @@ import org.eclipse.scout.rt.extension.client.ui.basic.table.AbstractExtensibleTa
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.shell.IShellService;
 import org.eclipse.scout.service.SERVICES;
+import org.eclipsescout.demo.ibug.client.ui.forms.DesktopForm.MainBox.DesktopBox;
+import org.eclipsescout.demo.ibug.client.ui.forms.DesktopForm.MainBox.DesktopBox.BugsField;
+import org.eclipsescout.demo.ibug.client.ui.forms.DesktopForm.MainBox.DesktopBox.SearchBox;
+import org.eclipsescout.demo.ibug.client.ui.forms.DesktopForm.MainBox.DesktopBox.SearchBox.AssigneeField;
+import org.eclipsescout.demo.ibug.client.ui.forms.DesktopForm.MainBox.DesktopBox.SearchBox.ProductField;
+import org.eclipsescout.demo.ibug.client.ui.forms.DesktopForm.MainBox.DesktopBox.SearchBox.RefreshButton;
+import org.eclipsescout.demo.ibug.shared.Icons;
+import org.eclipsescout.demo.ibug.shared.services.DesktopFormData;
+import org.eclipsescout.demo.ibug.shared.services.IDesktopService;
 
 @FormData(value = DesktopFormData.class, sdkCommand = SdkCommand.CREATE)
 public class DesktopForm extends AbstractForm {
@@ -172,6 +172,11 @@ public class DesktopForm extends AbstractForm {
         @Override
         protected boolean getConfiguredLabelVisible() {
           return false;
+        }
+
+        @Override
+        protected boolean getConfiguredTableStatusVisible() {
+          return true;
         }
 
         @Order(10.0)

@@ -42,9 +42,7 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
   }
 
   @Override
-  protected String getConfiguredTitle() {
-    return TEXTS.get("ApplicationTitle");
-  }
+  protected String getConfiguredTitle() {  return TEXTS.get("IBug");}
 
   @Override
   protected void execOpened() throws ProcessingException {
