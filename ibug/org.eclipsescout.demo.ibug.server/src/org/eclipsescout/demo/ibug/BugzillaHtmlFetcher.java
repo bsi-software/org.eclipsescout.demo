@@ -128,6 +128,13 @@ public class BugzillaHtmlFetcher implements IBugFetcher {
     else return bugTable.getElementsByClass("bz_bugitem");
   }
 
+  /**
+   * columns are parsed out or bugzilla html response.
+   * this implies that column list provided in the criteria url and the parsing implemented in this method must
+   * correspond.
+   * see the config.ini entry
+   * org.eclipsescout.demo.ibug.server.services.DesktopService#criteria=https://bugs.eclipse.org/bugs/...
+   */
   private IBug createBugFromElement(Element e, int i) {
     IBug bug = new BugzillaBug();
     Elements columnElements = e.getElementsByTag("td");
