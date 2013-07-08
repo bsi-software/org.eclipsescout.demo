@@ -31,6 +31,7 @@
    </vm>
 
    <plugins>
+      <plugin id="com.bsiag.org.docx4j"/>
       <plugin id="com.ibm.icu"/>
       <plugin id="javax.annotation"/>
       <plugin id="javax.inject"/>
@@ -47,6 +48,9 @@
       <plugin id="org.apache.batik.util"/>
       <plugin id="org.apache.batik.util.gui"/>
       <plugin id="org.apache.batik.xml"/>
+      <plugin id="org.apache.commons.io"/>
+      <plugin id="org.apache.commons.logging"/>
+      <plugin id="org.apache.xmlgraphics"/>
       <plugin id="org.eclipse.compare.core"/>
       <plugin id="org.eclipse.core.commands"/>
       <plugin id="org.eclipse.core.contenttype"/>
@@ -100,11 +104,11 @@
       <plugin id="org.eclipse.osgi.services"/>
       <plugin id="org.eclipse.platform"/>
       <plugin id="org.eclipse.scout.commons"/>
-      <plugin id="org.eclipsescout.demo.ibug.client"/>
-      <plugin id="org.eclipsescout.demo.ibug.shared"/>
-      <plugin id="org.eclipsescout.demo.ibug.ui.swt"/>
+      <plugin id="org.eclipse.scout.commons.log4j.bridge.fragment" fragment="true"/>
+      <plugin id="org.eclipse.scout.docx4j"/>
       <plugin id="org.eclipse.scout.net"/>
       <plugin id="org.eclipse.scout.rt.client"/>
+      <plugin id="org.eclipse.scout.rt.docx4j.client"/>
       <plugin id="org.eclipse.scout.rt.extension.client"/>
       <plugin id="org.eclipse.scout.rt.shared"/>
       <plugin id="org.eclipse.scout.rt.ui.swt"/>
@@ -121,6 +125,9 @@
       <plugin id="org.eclipse.ui.workbench"/>
       <plugin id="org.eclipse.ui.workbench.texteditor"/>
       <plugin id="org.eclipse.update.configurator"/>
+      <plugin id="org.eclipsescout.demo.ibug.client"/>
+      <plugin id="org.eclipsescout.demo.ibug.shared"/>
+      <plugin id="org.eclipsescout.demo.ibug.ui.swt"/>
       <plugin id="org.w3c.css.sac"/>
       <plugin id="org.w3c.dom.smil"/>
       <plugin id="org.w3c.dom.svg"/>

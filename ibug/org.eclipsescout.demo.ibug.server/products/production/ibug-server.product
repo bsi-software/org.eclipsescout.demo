@@ -29,10 +29,14 @@
    </vm>
 
    <plugins>
+      <plugin id="com.bsiag.org.docx4j"/>
       <plugin id="javax.servlet"/>
       <plugin id="javax.xml"/>
       <plugin id="org.apache.commons.codec"/>
+      <plugin id="org.apache.commons.io"/>
+      <plugin id="org.apache.commons.logging"/>
       <plugin id="org.apache.derby.jdbc_1091.fragment" fragment="true"/>
+      <plugin id="org.apache.xmlgraphics"/>
       <plugin id="org.eclipse.core.contenttype"/>
       <plugin id="org.eclipse.core.jobs"/>
       <plugin id="org.eclipse.core.runtime"/>
@@ -49,6 +53,8 @@
       <plugin id="org.eclipse.osgi"/>
       <plugin id="org.eclipse.osgi.services"/>
       <plugin id="org.eclipse.scout.commons"/>
+      <plugin id="org.eclipse.scout.commons.log4j.bridge.fragment" fragment="true"/>
+      <plugin id="org.eclipse.scout.docx4j"/>
       <plugin id="org.eclipse.scout.http.servletfilter"/>
       <plugin id="org.eclipse.scout.jaxws216"/>
       <plugin id="org.eclipse.scout.rt.jdbc.derby"/>
