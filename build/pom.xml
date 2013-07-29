@@ -1,26 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (c) 2013 BSI Business Systems Integration AG.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+  
+  Contributors:
+      BSI Business Systems Integration AG - initial API and implementation
+-->
 <project
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<modelVersion>4.0.0</modelVersion>
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+  xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.eclipsescout.demo</groupId>
-	<artifactId>org.eclipsescout.demo</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
-	<packaging>pom</packaging>
+  <groupId>org.eclipsescout.demo</groupId>
+  <artifactId>org.eclipsescout.demo</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
 
-	<scm>
-		<url>https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.example</url>
-		<connection>${tycho.scmUrl}</connection>
-	</scm>
+  <scm>
+    <url>https://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.example</url>
+    <connection>${tycho.scmUrl}</connection>
+  </scm>
 
-	<properties>
-		<tycho.scmUrl>scm:git:git://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.example.git</tycho.scmUrl>
-	</properties>
+  <properties>
+    <tycho.scmUrl>scm:git:git://github.com/BSI-Business-Systems-Integration-AG/org.eclipse.scout.example.git</tycho.scmUrl>
+  </properties>
 
-	<modules>
-		<module>org.eclipsescout.demo.master</module>
-		<module>org.eclipsescout.demo.target</module>
-		<module>../minifigcreator/org.eclipsescout.demo.minifigcreator.parent</module>
-	</modules>
+  <modules>
+    <module>org.eclipsescout.demo.master</module>
+    <module>org.eclipsescout.demo.target</module>
+    <module>../minifigcreator/org.eclipsescout.demo.minifigcreator.parent</module>
+  </modules>
 </project>
