@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="minicrm" id="org.eclipsescout.demo.minicrm.ui.swt.product" application="org.eclipsescout.demo.minicrm.ui.swt.application" useFeatures="false" includeLaunchers="true">
+<product name="minicrm" uid="org.eclipsescout.demo.minicrm.ui.swt.product" id="org.eclipsescout.demo.minicrm.ui.swt.product" application="org.eclipsescout.demo.minicrm.ui.swt.application" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
-      <linux>/org.eclipsescout.demo.minicrm.ui.swt/products/production/config.ini</linux>
-      <macosx>/org.eclipsescout.demo.minicrm.ui.swt/products/production/config.ini</macosx>
-      <win32>/org.eclipsescout.demo.minicrm.ui.swt/products/production/config.ini</win32>
+      <linux>/org.eclipsescout.demo.minicrm.ui.swt.product/config.ini</linux>
+      <macosx>/org.eclipsescout.demo.minicrm.ui.swt.product/config.ini</macosx>
+      <win32>/org.eclipsescout.demo.minicrm.ui.swt.product/config.ini</win32>
    </configIni>
 
    <launcherArgs>
