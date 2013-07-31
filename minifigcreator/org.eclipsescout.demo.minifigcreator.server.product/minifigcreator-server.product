@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="minifigcreator Server" id="org.eclipsescout.demo.minifigcreator.server.product" application="org.eclipsescout.demo.minifigcreator.server.app" useFeatures="false" includeLaunchers="true">
+<product name="minifigcreator Server" uid="org.eclipsescout.demo.minifigcreator.server.product" id="org.eclipsescout.demo.minifigcreator.server.product" application="org.eclipsescout.demo.minifigcreator.server.app" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
-      <linux>/org.eclipsescout.demo.minifigcreator.server/products/production/config.ini</linux>
-      <macosx>/org.eclipsescout.demo.minifigcreator.server/products/production/config.ini</macosx>
-      <win32>/org.eclipsescout.demo.minifigcreator.server/products/production/config.ini</win32>
+      <linux>/org.eclipsescout.demo.minifigcreator.server.product/config.ini</linux>
+      <macosx>/org.eclipsescout.demo.minifigcreator.server.product/config.ini</macosx>
+      <win32>/org.eclipsescout.demo.minifigcreator.server.product/config.ini</win32>
    </configIni>
 
    <launcherArgs>
