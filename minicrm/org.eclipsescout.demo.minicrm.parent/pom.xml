@@ -29,6 +29,7 @@
     <module>../org.eclipsescout.demo.minicrm.client</module>
     <module>../org.eclipsescout.demo.minicrm.client.mobile</module>
     <module>../org.eclipsescout.demo.minicrm.server</module>
+    <module>../org.eclipsescout.demo.minicrm.server.product</module>
     <module>../org.eclipsescout.demo.minicrm.shared</module>
     <!-- TODO: fix target first <module>../org.eclipsescout.demo.minicrm.ui.rap</module> -->
     <module>../org.eclipsescout.demo.minicrm.ui.swing</module>

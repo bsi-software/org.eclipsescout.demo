@@ -21,13 +21,14 @@
     <relativePath>../org.eclipsescout.demo.minicrm.parent/</relativePath>
   </parent>
   
-  <artifactId>org.eclipsescout.demo.minicrm.ui.swing.product</artifactId>
+  <artifactId>org.eclipsescout.demo.minicrm.server.product</artifactId>
   <packaging>eclipse-repository</packaging>
 
   <properties>
-    <product.finalName>minicrm</product.finalName>
-    <product.id>org.eclipsescout.demo.minicrm.ui.swing.product</product.id>
+    <product.finalName>minicrm_server</product.finalName>
+    <product.id>org.eclipsescout.demo.minicrm.server.product</product.id>
     <product.outputDirectory>${project.build.directory}/products/${product.id}/win32/win32/x86</product.outputDirectory>
+    <product.web-inf.templateDirectory>${basedir}/../../build/org.eclipsescout.demo.webapp/WebContent/WEB-INF</product.web-inf.templateDirectory>
   </properties>
   <build>
     <plugins>

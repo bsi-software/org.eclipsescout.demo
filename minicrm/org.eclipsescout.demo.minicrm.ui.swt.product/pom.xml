@@ -25,9 +25,9 @@
   <packaging>eclipse-repository</packaging>
 
   <properties>
+    <product.finalName>minicrm</product.finalName>
     <product.id>org.eclipsescout.demo.minicrm.ui.swt.product</product.id>
     <product.outputDirectory>${project.build.directory}/products/${product.id}/win32/win32/x86</product.outputDirectory>
-    <product.finalName>minicrm</product.finalName>
   </properties>
   <build>
     <plugins>
@@ -79,7 +79,7 @@
       </plugin>
       
       
-      <!-- Configure the assembly plugin to build the final server war file -->
+      <!-- Configure the assembly plugin to build the final file (war or zip) -->
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
         <configuration>
