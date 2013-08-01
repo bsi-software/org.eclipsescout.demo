@@ -31,6 +31,7 @@
   <modules>
     <module>org.eclipsescout.demo.master</module>
     <module>org.eclipsescout.demo.target</module>
+    <module>../ibug/org.eclipsescout.demo.ibug.parent</module>
     <module>../minicrm/org.eclipsescout.demo.minicrm.parent</module>
     <module>../minifigcreator/org.eclipsescout.demo.minifigcreator.parent</module>
   </modules>
