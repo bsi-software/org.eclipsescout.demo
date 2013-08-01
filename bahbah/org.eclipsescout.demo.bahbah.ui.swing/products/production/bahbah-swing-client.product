@@ -10,7 +10,8 @@
    </configIni>
 
    <launcherArgs>
-      <programArgsMac>--launcher.secondThread</programArgsMac>
+      <programArgsMac>--launcher.secondThread
+-nosplash</programArgsMac>
       <vmArgs>-Xms64m
 -Xmx512m
 -XX:MaxPermSize=256m</vmArgs>
@@ -31,6 +32,7 @@
    <plugins>
       <plugin id="com.bsiag.scout.rt.ui.swing.laf.rayo.fragment" fragment="true"/>
       <plugin id="com.bsiag.scout.rt.ui.swing.rayo"/>
+      <plugin id="javax.xml"/>
       <plugin id="org.apache.batik.bridge"/>
       <plugin id="org.apache.batik.css"/>
       <plugin id="org.apache.batik.dom"/>
@@ -52,11 +54,9 @@
       <plugin id="org.eclipse.equinox.preferences"/>
       <plugin id="org.eclipse.equinox.registry"/>
       <plugin id="org.eclipse.equinox.security"/>
+      <plugin id="org.eclipse.equinox.security.win32.x86" fragment="true"/>
       <plugin id="org.eclipse.osgi"/>
       <plugin id="org.eclipse.osgi.services"/>
-      <plugin id="org.eclipsescout.demo.bahbah.client"/>
-      <plugin id="org.eclipsescout.demo.bahbah.shared"/>
-      <plugin id="org.eclipsescout.demo.bahbah.ui.swing"/>
       <plugin id="org.eclipse.scout.commons"/>
       <plugin id="org.eclipse.scout.net"/>
       <plugin id="org.eclipse.scout.rt.client"/>
@@ -69,6 +69,9 @@
       <plugin id="org.eclipse.swt"/>
       <plugin id="org.eclipse.swt.win32.win32.x86" fragment="true"/>
       <plugin id="org.eclipse.update.configurator"/>
+      <plugin id="org.eclipsescout.demo.bahbah.client"/>
+      <plugin id="org.eclipsescout.demo.bahbah.shared"/>
+      <plugin id="org.eclipsescout.demo.bahbah.ui.swing"/>
       <plugin id="org.w3c.css.sac"/>
       <plugin id="org.w3c.dom.smil"/>
       <plugin id="org.w3c.dom.svg"/>

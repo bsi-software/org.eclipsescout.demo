@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?>
-
-<target name="ScoutRAP" sequenceNumber="8">
-<locations>
-<location path="${eclipse_home}/TARGET_SCOUT39" type="Directory"/>
-<location path="${eclipse_home}" type="Profile"/>
-<location path="${eclipse_home}/TARGET_RAP" type="Directory"/>
-</locations>
-<launcherArgs>
-<vmArgs>-Xms256m -Xmx512m -XX:MaxPermSize=256m</vmArgs>
-</launcherArgs>
+<?pde version="3.6"?>
+<target name="ScoutRAP">
+  <locations>
+    <location path="${scout_rap_target}" type="Directory"/>
+    <location path="${eclipse_home}\" type="Directory"/>
+  </locations>
+  <launcherArgs>
+    <vmArgs>-Xms256m -Xmx512m -XX:MaxPermSize=256m</vmArgs>
+  </launcherArgs>
 </target>

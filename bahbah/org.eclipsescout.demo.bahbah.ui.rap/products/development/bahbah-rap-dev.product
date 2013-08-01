@@ -58,6 +58,9 @@
       <plugin id="org.eclipse.core.jobs"/>
       <plugin id="org.eclipse.core.net"/>
       <plugin id="org.eclipse.core.runtime"/>
+      <plugin id="org.eclipse.emf.common"/>
+      <plugin id="org.eclipse.emf.ecore"/>
+      <plugin id="org.eclipse.emf.ecore.xmi"/>
       <plugin id="org.eclipse.equinox.app"/>
       <plugin id="org.eclipse.equinox.common"/>
       <plugin id="org.eclipse.equinox.http.jetty"/>
@@ -66,6 +69,7 @@
       <plugin id="org.eclipse.equinox.preferences"/>
       <plugin id="org.eclipse.equinox.registry"/>
       <plugin id="org.eclipse.equinox.security"/>
+      <plugin id="org.eclipse.equinox.security.win32.x86" fragment="true"/>
       <plugin id="org.eclipse.help"/>
       <plugin id="org.eclipse.jetty.continuation"/>
       <plugin id="org.eclipse.jetty.http"/>
@@ -79,17 +83,12 @@
       <plugin id="org.eclipse.rap.jface"/>
       <plugin id="org.eclipse.rap.jface.databinding"/>
       <plugin id="org.eclipse.rap.rwt"/>
-      <plugin id="org.eclipse.rap.rwt.bsi.fragment" fragment="true"/>
       <plugin id="org.eclipse.rap.rwt.osgi"/>
       <plugin id="org.eclipse.rap.rwt.supplemental.filedialog"/>
       <plugin id="org.eclipse.rap.rwt.supplemental.fileupload"/>
       <plugin id="org.eclipse.rap.ui"/>
       <plugin id="org.eclipse.rap.ui.forms"/>
       <plugin id="org.eclipse.rap.ui.workbench"/>
-      <plugin id="org.eclipsescout.demo.bahbah.client"/>
-      <plugin id="org.eclipsescout.demo.bahbah.security"/>
-      <plugin id="org.eclipsescout.demo.bahbah.shared"/>
-      <plugin id="org.eclipsescout.demo.bahbah.ui.rap"/>
       <plugin id="org.eclipse.scout.commons"/>
       <plugin id="org.eclipse.scout.http.servletfilter"/>
       <plugin id="org.eclipse.scout.net"/>
@@ -107,6 +106,10 @@
       <plugin id="org.eclipse.scout.svg.client"/>
       <plugin id="org.eclipse.scout.svg.ui.rap"/>
       <plugin id="org.eclipse.update.configurator"/>
+      <plugin id="org.eclipsescout.demo.bahbah.client"/>
+      <plugin id="org.eclipsescout.demo.bahbah.security"/>
+      <plugin id="org.eclipsescout.demo.bahbah.shared"/>
+      <plugin id="org.eclipsescout.demo.bahbah.ui.rap"/>
       <plugin id="org.w3c.css.sac"/>
       <plugin id="org.w3c.dom.smil"/>
       <plugin id="org.w3c.dom.svg"/>

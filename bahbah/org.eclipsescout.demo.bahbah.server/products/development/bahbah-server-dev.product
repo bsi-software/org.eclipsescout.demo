@@ -29,6 +29,7 @@
 
    <plugins>
       <plugin id="javax.servlet"/>
+      <plugin id="javax.xml"/>
       <plugin id="org.apache.commons.codec"/>
       <plugin id="org.apache.derby.jdbc_1091.fragment" fragment="true"/>
       <plugin id="org.eclipse.core.contenttype"/>
@@ -54,16 +55,17 @@
       <plugin id="org.eclipse.jetty.util"/>
       <plugin id="org.eclipse.osgi"/>
       <plugin id="org.eclipse.osgi.services"/>
-      <plugin id="org.eclipsescout.demo.bahbah.security"/>
-      <plugin id="org.eclipsescout.demo.bahbah.server"/>
-      <plugin id="org.eclipsescout.demo.bahbah.shared"/>
       <plugin id="org.eclipse.scout.commons"/>
       <plugin id="org.eclipse.scout.http.servletfilter"/>
+      <plugin id="org.eclipse.scout.jaxws216"/>
       <plugin id="org.eclipse.scout.rt.jdbc.derby"/>
       <plugin id="org.eclipse.scout.rt.server"/>
       <plugin id="org.eclipse.scout.rt.shared"/>
       <plugin id="org.eclipse.scout.service"/>
       <plugin id="org.eclipse.update.configurator"/>
+      <plugin id="org.eclipsescout.demo.bahbah.security"/>
+      <plugin id="org.eclipsescout.demo.bahbah.server"/>
+      <plugin id="org.eclipsescout.demo.bahbah.shared"/>
    </plugins>
 
 
