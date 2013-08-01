@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="bahbah" id="org.eclipsescout.demo.bahbah.ui.rap.product" application="org.eclipsescout.demo.bahbah.ui.rap.app" useFeatures="false" includeLaunchers="true">
+<product name="bahbah" uid="org.eclipsescout.demo.bahbah.ui.rap.product" id="org.eclipsescout.demo.bahbah.ui.rap.product" application="org.eclipsescout.demo.bahbah.ui.rap.app" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
-      <linux>/org.eclipsescout.demo.bahbah.ui.rap/products/production/config.ini</linux>
-      <macosx>/org.eclipsescout.demo.bahbah.ui.rap/products/production/config.ini</macosx>
-      <solaris>/org.eclipsescout.demo.bahbah.ui.rap/products/production/config.ini</solaris>
-      <win32>/org.eclipsescout.demo.bahbah.ui.rap/products/production/config.ini</win32>
+      <linux>/org.eclipsescout.demo.bahbah.ui.rap.product/config.ini</linux>
+      <macosx>/org.eclipsescout.demo.bahbah.ui.rap.product/config.ini</macosx>
+      <win32>/org.eclipsescout.demo.bahbah.ui.rap.product/config.ini</win32>
    </configIni>
 
    <launcherArgs>
