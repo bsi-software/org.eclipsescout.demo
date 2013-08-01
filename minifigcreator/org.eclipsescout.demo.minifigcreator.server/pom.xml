@@ -23,5 +23,6 @@
   
   <artifactId>org.eclipsescout.demo.minifigcreator.server</artifactId>
   <packaging>eclipse-plugin</packaging>
+  <name>minifigcreator - server</name>
 
 </project>

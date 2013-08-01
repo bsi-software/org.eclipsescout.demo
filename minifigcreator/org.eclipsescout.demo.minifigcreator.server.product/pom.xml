@@ -23,6 +23,7 @@
   
   <artifactId>org.eclipsescout.demo.minifigcreator.server.product</artifactId>
   <packaging>eclipse-repository</packaging>
+  <name>minifigcreator - server.product</name>
 
   <properties>
     <product.finalName>minifigcreator_server</product.finalName>

@@ -23,5 +23,6 @@
   
   <artifactId>org.eclipsescout.demo.minicrm.shared</artifactId>
   <packaging>eclipse-plugin</packaging>
+  <name>minicrm - shared</name>
 
 </project>

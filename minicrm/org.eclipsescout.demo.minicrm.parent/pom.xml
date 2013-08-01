@@ -24,6 +24,7 @@
   <groupId>org.eclipsescout.demo.minicrm</groupId>
   <artifactId>org.eclipsescout.demo.minicrm.parent</artifactId>
   <packaging>pom</packaging>
+  <name>minicrm - parent</name>
 
   <modules>
     <module>../org.eclipsescout.demo.minicrm.client</module>

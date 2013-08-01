@@ -23,5 +23,6 @@
   
   <artifactId>org.eclipsescout.demo.minicrm.server</artifactId>
   <packaging>eclipse-plugin</packaging>
+  <name>minicrm - server</name>
 
 </project>

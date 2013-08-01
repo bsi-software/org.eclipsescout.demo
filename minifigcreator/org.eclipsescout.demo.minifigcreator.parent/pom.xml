@@ -24,6 +24,7 @@
   <groupId>org.eclipsescout.demo.minifigcreator</groupId>
   <artifactId>org.eclipsescout.demo.minifigcreator.parent</artifactId>
   <packaging>pom</packaging>
+  <name>minifigcreator - parent</name>
 
   <modules>
     <module>../org.eclipsescout.demo.minifigcreator.client</module>

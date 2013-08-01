@@ -23,5 +23,6 @@
   
   <artifactId>org.eclipsescout.demo.minicrm.ui.rap</artifactId>
   <packaging>eclipse-plugin</packaging>
+  <name>minicrm - ui.rap</name>
 
 </project>

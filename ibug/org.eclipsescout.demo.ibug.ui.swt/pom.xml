@@ -23,5 +23,6 @@
   
   <artifactId>org.eclipsescout.demo.ibug.ui.swt</artifactId>
   <packaging>eclipse-plugin</packaging>
+  <name>ibug - ui.swt</name>
 
 </project>

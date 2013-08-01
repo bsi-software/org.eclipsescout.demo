@@ -23,5 +23,6 @@
   
   <artifactId>org.eclipsescout.demo.minifigcreator.ui.swing</artifactId>
   <packaging>eclipse-plugin</packaging>
+  <name>minifigcreator - ui.swing</name>
 
 </project>

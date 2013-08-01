@@ -23,5 +23,6 @@
   
   <artifactId>org.eclipsescout.demo.ibug.shared</artifactId>
   <packaging>eclipse-plugin</packaging>
+  <name>ibug - shared</name>
 
 </project>

@@ -23,6 +23,7 @@
   
   <artifactId>org.eclipsescout.demo.minicrm.ui.swing.product</artifactId>
   <packaging>eclipse-repository</packaging>
+  <name>minicrm - ui.swing.product</name>
 
   <properties>
     <product.finalName>minicrm</product.finalName>

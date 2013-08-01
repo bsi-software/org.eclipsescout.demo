@@ -23,5 +23,6 @@
   
   <artifactId>org.eclipsescout.demo.ibug.ui.swing</artifactId>
   <packaging>eclipse-plugin</packaging>
+  <name>ibug - ui.swing</name>
 
 </project>

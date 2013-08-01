@@ -23,5 +23,6 @@
   
   <artifactId>org.eclipsescout.demo.minicrm.ui.swing</artifactId>
   <packaging>eclipse-plugin</packaging>
+  <name>minicrm - ui.swing</name>
 
 </project>

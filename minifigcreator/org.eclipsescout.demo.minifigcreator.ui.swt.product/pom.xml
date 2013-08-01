@@ -23,6 +23,7 @@
   
   <artifactId>org.eclipsescout.demo.minifigcreator.ui.swt.product</artifactId>
   <packaging>eclipse-repository</packaging>
+  <name>minifigcreator - ui.swt.product</name>
 
   <properties>
     <product.finalName>minifigcreator</product.finalName>

@@ -23,6 +23,7 @@
   
   <artifactId>org.eclipsescout.demo.ibug.ui.rap.product</artifactId>
   <packaging>eclipse-repository</packaging>
+  <name>ibug - ui.rap.product</name>
 
   <properties>
     <product.finalName>ibug</product.finalName>

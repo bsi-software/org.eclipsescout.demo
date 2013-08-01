@@ -23,5 +23,6 @@
   
   <artifactId>org.eclipsescout.demo.minifigcreator.shared</artifactId>
   <packaging>eclipse-plugin</packaging>
+  <name>minifigcreator - shared</name>
 
 </project>

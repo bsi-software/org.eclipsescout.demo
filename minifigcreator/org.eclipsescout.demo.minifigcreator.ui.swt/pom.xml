@@ -23,5 +23,6 @@
   
   <artifactId>org.eclipsescout.demo.minifigcreator.ui.swt</artifactId>
   <packaging>eclipse-plugin</packaging>
+  <name>minifigcreator - ui.swt</name>
 
 </project>

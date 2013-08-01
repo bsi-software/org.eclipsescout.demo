@@ -24,6 +24,7 @@
   <groupId>org.eclipsescout.demo.ibug</groupId>
   <artifactId>org.eclipsescout.demo.ibug.parent</artifactId>
   <packaging>pom</packaging>
+  <name>ibug - parent</name>
 
   <modules>
     <module>../org.eclipsescout.demo.ibug.client</module>

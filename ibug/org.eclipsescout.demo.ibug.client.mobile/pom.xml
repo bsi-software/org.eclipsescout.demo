@@ -23,5 +23,6 @@
   
   <artifactId>org.eclipsescout.demo.ibug.client.mobile</artifactId>
   <packaging>eclipse-plugin</packaging>
+  <name>ibug - client.mobile</name>
 
 </project>

@@ -23,5 +23,6 @@
   
   <artifactId>org.eclipsescout.demo.minifigcreator.server.test</artifactId>
   <packaging>eclipse-test-plugin</packaging>
+  <name>minifigcreator - server.test</name>
 
 </project>

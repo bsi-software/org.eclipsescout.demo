@@ -23,5 +23,6 @@
   
   <artifactId>org.eclipsescout.demo.minicrm.ui.swt</artifactId>
   <packaging>eclipse-plugin</packaging>
+  <name>minicrm - ui.swt</name>
 
 </project>

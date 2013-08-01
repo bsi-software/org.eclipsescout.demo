@@ -23,5 +23,6 @@
   
   <artifactId>org.eclipsescout.demo.ibug.ui.rap</artifactId>
   <packaging>eclipse-plugin</packaging>
+  <name>ibug - ui.rap</name>
 
 </project>
