@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Scout Widget Demo App" id="org.eclipsescout.demo.widgets.ui.swt.product" application="org.eclipsescout.demo.widgets.ui.swt.application" useFeatures="false" includeLaunchers="true">
+<product name="Scout Widget Demo App" uid="org.eclipsescout.demo.widgets.ui.swt.product" id="org.eclipsescout.demo.widgets.ui.swt.product" application="org.eclipsescout.demo.widgets.ui.swt.application" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
-      <linux>/org.eclipsescout.demo.widgets.ui.swt/products/production/config.ini</linux>
-      <macosx>/org.eclipsescout.demo.widgets.ui.swt/products/production/config.ini</macosx>
-      <win32>/org.eclipsescout.demo.widgets.ui.swt/products/production/config.ini</win32>
+      <linux>/org.eclipsescout.demo.widgets.ui.swt.product/config.ini</linux>
+      <macosx>/org.eclipsescout.demo.widgets.ui.swt.product/config.ini</macosx>
+      <win32>/org.eclipsescout.demo.widgets.ui.swt.product/config.ini</win32>
    </configIni>
 
    <launcherArgs>
@@ -34,7 +34,6 @@
       <plugin id="com.ibm.icu"/>
       <plugin id="javax.annotation"/>
       <plugin id="javax.inject"/>
-      <plugin id="javax.mail"/>
       <plugin id="javax.xml"/>
       <plugin id="org.apache.batik.bridge"/>
       <plugin id="org.apache.batik.css"/>
@@ -110,12 +109,7 @@
       <plugin id="org.eclipse.scout.svg.client"/>
       <plugin id="org.eclipse.scout.svg.ui.swt"/>
       <plugin id="org.eclipse.swt"/>
-      <plugin id="org.eclipse.swt.cocoa.macosx" fragment="true"/>
-      <plugin id="org.eclipse.swt.cocoa.macosx.x86_64" fragment="true"/>
-      <plugin id="org.eclipse.swt.gtk.linux.x86" fragment="true"/>
-      <plugin id="org.eclipse.swt.gtk.linux.x86_64" fragment="true"/>
       <plugin id="org.eclipse.swt.win32.win32.x86" fragment="true"/>
-      <plugin id="org.eclipse.swt.win32.win32.x86_64" fragment="true"/>
       <plugin id="org.eclipse.text"/>
       <plugin id="org.eclipse.ui"/>
       <plugin id="org.eclipse.ui.forms"/>

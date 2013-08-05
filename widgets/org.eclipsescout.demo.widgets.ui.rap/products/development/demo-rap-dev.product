@@ -31,8 +31,6 @@
 
    <plugins>
       <plugin id="com.ibm.icu"/>
-      <plugin id="javax.activation"/>
-      <plugin id="javax.mail"/>
       <plugin id="javax.servlet"/>
       <plugin id="javax.xml"/>
       <plugin id="org.apache.batik.bridge"/>
