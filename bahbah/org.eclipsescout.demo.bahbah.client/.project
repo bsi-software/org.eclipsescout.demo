@@ -53,14 +53,14 @@
 			<locationURI>PARENT-2-PROJECT_LOC/build/org.eclipsescout.demo.settings/org.eclipse.jdt.ui.prefs</locationURI>
 		</link>
 		<link>
-			<name>.settings/org.eclipse.pde.core.prefs</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/build/org.eclipsescout.demo.settings/org.eclipse.pde.core.prefs</locationURI>
-		</link>
-		<link>
 			<name>.settings/org.eclipse.m2e.core.prefs</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/build/org.eclipsescout.demo.settings/org.eclipse.m2e.core.prefs</locationURI>
+		</link>
+		<link>
+			<name>.settings/org.eclipse.pde.core.prefs</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/build/org.eclipsescout.demo.settings/org.eclipse.pde.core.prefs</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>
