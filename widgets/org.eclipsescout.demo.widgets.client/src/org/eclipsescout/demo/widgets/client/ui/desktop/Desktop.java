@@ -20,7 +20,6 @@ import org.eclipse.scout.rt.client.ClientSyncJob;
 import org.eclipse.scout.rt.client.ui.action.keystroke.AbstractKeyStroke;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.action.menu.checkbox.AbstractCheckBoxMenu;
-import org.eclipse.scout.rt.client.ui.desktop.AbstractDesktop;
 import org.eclipse.scout.rt.client.ui.desktop.IDesktop;
 import org.eclipse.scout.rt.client.ui.desktop.outline.AbstractFormToolButton;
 import org.eclipse.scout.rt.client.ui.desktop.outline.AbstractOutlineViewButton;
@@ -30,6 +29,7 @@ import org.eclipse.scout.rt.client.ui.form.ScoutInfoForm;
 import org.eclipse.scout.rt.client.ui.form.outline.DefaultOutlineTableForm;
 import org.eclipse.scout.rt.client.ui.form.outline.DefaultOutlineTreeForm;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
+import org.eclipse.scout.rt.extension.client.ui.desktop.AbstractExtensibleDesktop;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.ClientSession;
 import org.eclipsescout.demo.widgets.client.ui.desktop.outlines.FormFieldsWizardsOutline;
@@ -38,7 +38,7 @@ import org.eclipsescout.demo.widgets.client.ui.forms.ToolButton1Form;
 import org.eclipsescout.demo.widgets.client.ui.forms.ToolButton2Form;
 import org.eclipsescout.demo.widgets.shared.Icons;
 
-public class Desktop extends AbstractDesktop implements IDesktop {
+public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
   private static IScoutLogger logger = ScoutLogManager.getLogger(Desktop.class);
 
   public Desktop() {

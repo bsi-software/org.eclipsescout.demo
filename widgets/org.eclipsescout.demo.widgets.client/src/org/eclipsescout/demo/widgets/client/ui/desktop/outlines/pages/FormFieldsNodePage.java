@@ -52,12 +52,13 @@ import org.eclipsescout.demo.widgets.client.ui.forms.TreeBoxForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.TreeFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.WrappedFormFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.template.menu.AbstractViewSourceOnGitHubMenu;
+import org.eclipsescout.demo.widgets.shared.Icons;
 
 public class FormFieldsNodePage extends AbstractPageWithNodes {
 
   @Override
   protected String getConfiguredIconId() {
-    return org.eclipsescout.demo.widgets.shared.Icons.Forms;
+    return Icons.Forms;
   }
 
   @Override
