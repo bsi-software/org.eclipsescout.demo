@@ -27,6 +27,7 @@
   <name>widgets - parent</name>
 
   <modules>
+    <module>../org.eclipsescout.demo.widgets-feature</module>
     <module>../org.eclipsescout.demo.widgets.client</module>
     <module>../org.eclipsescout.demo.widgets.client.mobile</module>
     <module>../org.eclipsescout.demo.widgets.shared</module>
