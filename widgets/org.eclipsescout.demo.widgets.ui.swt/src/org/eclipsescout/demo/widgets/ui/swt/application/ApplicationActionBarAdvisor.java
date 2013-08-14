@@ -37,11 +37,13 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 
   private static IScoutLogger logger = ScoutLogManager.getLogger(ApplicationActionBarAdvisor.class);
 
-  final static int NUM_OUTLINE_BUTTONS = 0;
+  final static int NUM_OUTLINE_BUTTONS = 10;
   private CoolbarButton[] m_coolbarButton = new CoolbarButton[NUM_OUTLINE_BUTTONS];
+  private IActionBarConfigurer m_configurer;
 
   public ApplicationActionBarAdvisor(IActionBarConfigurer configurer) {
     super(configurer);
+    m_configurer = configurer;
     ((SwtEnvironment) Activator.getDefault().getEnvironment()).setAdvisor(this);
   }
 
@@ -73,6 +75,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
       else {
         b.setEnabled(false);
       }
+      m_configurer.getCoolBarManager().update(true);
     }
 
     IToolButton[] toolButtons = d.getToolButtons();
