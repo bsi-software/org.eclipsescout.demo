@@ -13,7 +13,7 @@
       <unit id="org.eclipse.emf.ecore.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.common.feature.group" version="0.0.0"/>
 
-      <repository id="eclipse_kepler" location="http://download.eclipse.org/releases/maintenance"/>
+      <repository id="eclipse_kepler" location="http://download.eclipse.org/releases/kepler"/>
     </location>
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
@@ -29,13 +29,13 @@
       <unit id="org.eclipse.scout.sdk.rap.source.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.scout.sdk.testing.source.feature.group" version="0.0.0"/>
 
-      <repository id="bsi" location="http://download.eclipse.org/scout/nightly/"/>
+      <repository id="scout_nightly" location="http://download.eclipse.org/scout/nightly/"/>
     </location>
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-      <unit id="org.eclipse.rap.feature.feature.group" version="0.0.0"/>
+      <repository id="rap_2.1" location="http://download.eclipse.org/rt/rap/2.1/R-20130611-2139/"/>
 
-      <repository id="bsi" location="http://download.eclipse.org/rt/rap/2.1/R-20130611-2139/"/>
+      <unit id="org.eclipse.rap.feature.feature.group" version="0.0.0"/>
     </location>
 
     <!--location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">

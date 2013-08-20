@@ -151,10 +151,6 @@
                value="Scout Widget Demo App">
          </property>
          <property
-               name="windowImages"
-               value="resources/icons/eclipseScout16x16.gif,resources/icons/eclipseScout32x32.gif">
-         </property>
-         <property
                name="applicationXMI"
                value="org.eclipse.platform/LegacyIDE.e4xmi">
          </property>

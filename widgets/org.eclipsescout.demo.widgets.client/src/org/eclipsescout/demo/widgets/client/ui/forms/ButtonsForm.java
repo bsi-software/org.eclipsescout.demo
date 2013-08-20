@@ -12,25 +12,25 @@ package org.eclipsescout.demo.widgets.client.ui.forms;
 
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.client.ui.action.keystroke.AbstractKeyStroke;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
+import org.eclipse.scout.rt.client.ui.form.fields.GridData;
+import org.eclipse.scout.rt.client.ui.form.fields.ICompositeField;
+import org.eclipse.scout.rt.client.ui.form.fields.IFormField;
+import org.eclipse.scout.rt.client.ui.form.fields.booleanfield.IBooleanField;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
+import org.eclipse.scout.rt.client.ui.form.fields.button.IButton;
+import org.eclipse.scout.rt.client.ui.form.fields.checkbox.AbstractCheckBox;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
-import org.eclipse.scout.rt.shared.TEXTS;
+import org.eclipsescout.demo.widgets.client.ui.forms.ButtonsForm.MainBox.CheckFieldBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.ButtonsForm.MainBox.CloseButton;
-import org.eclipsescout.demo.widgets.client.ui.forms.ButtonsForm.MainBox.EnabledButton;
-import org.eclipsescout.demo.widgets.client.ui.forms.ButtonsForm.MainBox.GroupBox;
-import org.eclipsescout.demo.widgets.client.ui.forms.ButtonsForm.MainBox.GroupBox.ButtonWithMenusButton;
-import org.eclipsescout.demo.widgets.client.ui.forms.ButtonsForm.MainBox.GroupBox.DefaultButton;
-import org.eclipsescout.demo.widgets.client.ui.forms.ButtonsForm.MainBox.GroupBox.DefaultButtonSelectedButton;
-import org.eclipsescout.demo.widgets.client.ui.forms.ButtonsForm.MainBox.GroupBox.LinkButton;
-import org.eclipsescout.demo.widgets.client.ui.forms.ButtonsForm.MainBox.GroupBox.LinkButtonSelectedButton;
-import org.eclipsescout.demo.widgets.client.ui.forms.ButtonsForm.MainBox.GroupBox.RadioButton;
-import org.eclipsescout.demo.widgets.client.ui.forms.ButtonsForm.MainBox.GroupBox.RadioButtonSelectedButton;
-import org.eclipsescout.demo.widgets.client.ui.forms.ButtonsForm.MainBox.GroupBox.ToggleButton;
-import org.eclipsescout.demo.widgets.client.ui.forms.ButtonsForm.MainBox.GroupBox.ToggleButtonSelectedButton;
+import org.eclipsescout.demo.widgets.client.ui.forms.ButtonsForm.MainBox.LinkButtonBox;
+import org.eclipsescout.demo.widgets.client.ui.forms.ButtonsForm.MainBox.PushButtonBox;
+import org.eclipsescout.demo.widgets.client.ui.forms.ButtonsForm.MainBox.RadioButtonBox;
+import org.eclipsescout.demo.widgets.client.ui.forms.ButtonsForm.MainBox.ToggleButtonBox;
 
 public class ButtonsForm extends AbstractForm implements IPageForm {
 
@@ -39,158 +39,109 @@ public class ButtonsForm extends AbstractForm implements IPageForm {
   }
 
   @Override
-  protected boolean getConfiguredAskIfNeedSave() {
-    return false;
+  protected String getConfiguredTitle() {
+    return "Buttons";
   }
 
   @Override
-  protected String getConfiguredTitle() {
-    return TEXTS.get("Buttons");
+  protected boolean getConfiguredCacheBounds() {
+    return true;
+  }
+
+  @Override
+  protected void execInitForm() throws ProcessingException {
+    decorateButtonList(getFieldByClass(PushButtonBox.class), "Push", IButton.DISPLAY_STYLE_DEFAULT);
+    decorateButtonList(getFieldByClass(ToggleButtonBox.class), "Toggle", IButton.DISPLAY_STYLE_TOGGLE);
+    decorateButtonList(getFieldByClass(LinkButtonBox.class), "Link", IButton.DISPLAY_STYLE_LINK);
+    decorateButtonList(getFieldByClass(RadioButtonBox.class), "Radio", IButton.DISPLAY_STYLE_RADIO);
+    decorateCheckBoxList(getFieldByClass(CheckFieldBox.class), "Check");
+  }
+
+  private void decorateButtonList(ICompositeField box, String label, int displayStyle) {
+    int index = 0;
+    for (IFormField f : box.getFields()) {
+      if (f instanceof IButton) {
+        IButton b = (IButton) f;
+        b.setDisplayStyleInternal(displayStyle);
+        switch (index) {
+          case 0: {
+            b.setLabel("&" + label);
+            break;
+          }
+          case 1: {
+            b.setLabel(label + " selected");
+            b.setSelected(true);
+            break;
+          }
+          case 2: {
+            b.setLabel(label + " disabled");
+            b.setEnabled(false);
+            break;
+          }
+          case 3: {
+            b.setLabel(label + " disabled & selected");
+            b.setSelected(true);
+            b.setEnabled(false);
+            break;
+          }
+        }
+        index++;
+      }
+    }
+  }
+
+  private void decorateCheckBoxList(ICompositeField box, String label) {
+    int index = 0;
+    for (IFormField f : box.getFields()) {
+      if (f instanceof IBooleanField) {
+        IBooleanField b = (IBooleanField) f;
+        b.setLabelVisible(false);
+        GridData g = b.getGridData();
+        g.useUiWidth = true;
+        b.setGridDataInternal(g);
+        switch (index) {
+          case 0: {
+            b.setLabel(label);
+            break;
+          }
+          case 1: {
+            b.setLabel(label + " selected");
+            b.setChecked(true);
+            break;
+          }
+          case 2: {
+            b.setLabel(label + " disabled");
+            b.setEnabled(false);
+            break;
+          }
+          case 3: {
+            b.setLabel(label + " disabled & selected");
+            b.setChecked(true);
+            b.setEnabled(false);
+            break;
+          }
+        }
+        index++;
+      }
+    }
   }
 
   @Override
   public void startPageForm() throws ProcessingException {
-    startInternal(new PageFormHandler());
+    startInternal(new TestHandler());
   }
 
-  public ButtonWithMenusButton getButtonWithMenusButton() {
-    return getFieldByClass(ButtonWithMenusButton.class);
-  }
-
-  @Override
-  public CloseButton getCloseButton() {
-    return getFieldByClass(CloseButton.class);
-  }
-
-  public DefaultButton getDefaultButton() {
-    return getFieldByClass(DefaultButton.class);
-  }
-
-  public DefaultButtonSelectedButton getDefaultButtonSelectedButton() {
-    return getFieldByClass(DefaultButtonSelectedButton.class);
-  }
-
-  public EnabledButton getEnabledButton() {
-    return getFieldByClass(EnabledButton.class);
-  }
-
-  public GroupBox getGroupBox() {
-    return getFieldByClass(GroupBox.class);
-  }
-
-  public LinkButton getLinkButton() {
-    return getFieldByClass(LinkButton.class);
-  }
-
-  public LinkButtonSelectedButton getLinkButtonSelectedButton() {
-    return getFieldByClass(LinkButtonSelectedButton.class);
-  }
-
-  public MainBox getMainBox() {
-    return getFieldByClass(MainBox.class);
-  }
-
-  public RadioButton getRadioButton() {
-    return getFieldByClass(RadioButton.class);
-  }
-
-  public RadioButtonSelectedButton getRadioButtonSelectedButton() {
-    return getFieldByClass(RadioButtonSelectedButton.class);
-  }
-
-  public ToggleButton getToggleButton() {
-    return getFieldByClass(ToggleButton.class);
-  }
-
-  public ToggleButtonSelectedButton getToggleButtonSelectedButton() {
-    return getFieldByClass(ToggleButtonSelectedButton.class);
-  }
-
-  @Order(10.0)
+  @Order(10)
   public class MainBox extends AbstractGroupBox {
-
-    @Order(10.0)
-    public class GroupBox extends AbstractGroupBox {
-
-      @Order(10.0)
-      public class DefaultButton extends AbstractButton {
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("DefaultButton");
-        }
-
-        @Override
-        protected boolean getConfiguredProcessButton() {
-          return false;
-        }
+    @Order(10)
+    public class PushButtonBox extends AbstractGroupBox {
+      @Override
+      protected int getConfiguredGridColumnCount() {
+        return 4;
       }
 
-      @Order(20.0)
-      public class ToggleButton extends AbstractButton {
-
-        @Override
-        protected int getConfiguredDisplayStyle() {
-          return DISPLAY_STYLE_TOGGLE;
-        }
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("ToggleButton");
-        }
-
-        @Override
-        protected boolean getConfiguredProcessButton() {
-          return false;
-        }
-      }
-
-      @Order(30.0)
-      public class LinkButton extends AbstractButton {
-
-        @Override
-        protected int getConfiguredDisplayStyle() {
-          return DISPLAY_STYLE_LINK;
-        }
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("LinkButton");
-        }
-
-        @Override
-        protected boolean getConfiguredProcessButton() {
-          return false;
-        }
-      }
-
-      @Order(40.0)
-      public class RadioButton extends AbstractButton {
-
-        @Override
-        protected int getConfiguredDisplayStyle() {
-          return DISPLAY_STYLE_RADIO;
-        }
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("RadioButton");
-        }
-
-        @Override
-        protected boolean getConfiguredProcessButton() {
-          return false;
-        }
-      }
-
-      @Order(50.0)
-      public class ButtonWithMenusButton extends AbstractButton {
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("ButtonWithMenus");
-        }
-
+      @Order(10)
+      public class PushButton1 extends AbstractButton {
         @Override
         protected boolean getConfiguredProcessButton() {
           return false;
@@ -198,158 +149,291 @@ public class ButtonsForm extends AbstractForm implements IPageForm {
 
         @Override
         protected void execClickAction() throws ProcessingException {
+        }
+
+        @Order(10)
+        public class TestMenu extends AbstractMenu {
+          @Override
+          protected String getConfiguredText() {
+            return "TestMenu";
+          }
+        }
+      }
+
+      @Order(20)
+      public class PushButton2 extends AbstractButton {
+        @Override
+        protected boolean getConfiguredProcessButton() {
+          return false;
+        }
+      }
+
+      @Order(30)
+      public class PushButton3 extends AbstractButton {
+        @Override
+        protected boolean getConfiguredProcessButton() {
+          return false;
+        }
+      }
+
+      @Order(40)
+      public class PushButton4 extends AbstractButton {
+        @Override
+        protected boolean getConfiguredProcessButton() {
+          return false;
+        }
+      }
+    }
+
+    @Order(20)
+    public class ToggleButtonBox extends AbstractGroupBox {
+      @Override
+      protected int getConfiguredGridColumnCount() {
+        return 4;
+      }
+
+      @Order(10)
+      public class ToggleButton1 extends AbstractButton {
+        @Override
+        protected boolean getConfiguredProcessButton() {
+          return false;
+        }
+      }
+
+      @Order(20)
+      public class ToggleButton2 extends AbstractButton {
+        @Override
+        protected boolean getConfiguredProcessButton() {
+          return false;
+        }
+      }
+
+      @Order(30)
+      public class ToggleButton3 extends AbstractButton {
+        @Override
+        protected boolean getConfiguredProcessButton() {
+          return false;
+        }
+      }
+
+      @Order(40)
+      public class ToggleButton4 extends AbstractButton {
+        @Override
+        protected boolean getConfiguredProcessButton() {
+          return false;
+        }
+      }
+    }
+
+    @Order(30)
+    public class LinkButtonBox extends AbstractGroupBox {
+      @Override
+      protected int getConfiguredGridColumnCount() {
+        return 4;
+      }
+
+      @Order(10)
+      public class LinkButton1 extends AbstractButton {
+        @Override
+        protected boolean getConfiguredProcessButton() {
+          return false;
+        }
+      }
+
+      @Order(20)
+      public class LinkButton2 extends AbstractButton {
+        @Override
+        protected boolean getConfiguredProcessButton() {
+          return false;
+        }
+      }
+
+      @Order(30)
+      public class LinkButton3 extends AbstractButton {
+        @Override
+        protected boolean getConfiguredProcessButton() {
+          return false;
+        }
+      }
+
+      @Order(40)
+      public class LinkButton4 extends AbstractButton {
+        @Override
+        protected boolean getConfiguredProcessButton() {
+          return false;
+        }
+      }
+    }
+
+    @Order(40)
+    public class RadioButtonBox extends AbstractGroupBox {
+      @Override
+      protected int getConfiguredGridColumnCount() {
+        return 4;
+      }
+
+      @Order(10)
+      public class RadioButton1 extends AbstractButton {
+        @Override
+        protected boolean getConfiguredProcessButton() {
+          return false;
+        }
+      }
+
+      @Order(20)
+      public class RadioButton2 extends AbstractButton {
+        @Override
+        protected boolean getConfiguredProcessButton() {
+          return false;
+        }
+      }
+
+      @Order(30)
+      public class RadioButton3 extends AbstractButton {
+        @Override
+        protected boolean getConfiguredProcessButton() {
+          return false;
+        }
+      }
+
+      @Order(40)
+      public class RadioButton4 extends AbstractButton {
+        @Override
+        protected boolean getConfiguredProcessButton() {
+          return false;
+        }
+      }
+    }
+
+    @Order(50)
+    public class CheckFieldBox extends AbstractGroupBox {
+      @Override
+      protected int getConfiguredGridColumnCount() {
+        return 4;
+      }
+
+      @Order(10)
+      public class CheckField1 extends AbstractCheckBox {
+      }
+
+      @Order(20)
+      public class CheckField2 extends AbstractCheckBox {
+      }
+
+      @Order(30)
+      public class CheckField3 extends AbstractCheckBox {
+      }
+
+      @Order(40)
+      public class CheckField4 extends AbstractCheckBox {
+      }
+    }
+
+    @Order(100)
+    public class Special1Box extends AbstractGroupBox {
+
+      @Order(40)
+      public class VisibilityButton extends AbstractButton {
+        @Override
+        public String getConfiguredLabel() {
+          return "Set 'Button with menus' invisible/visible (10sec)";
+        }
+
+        @Override
+        public int getConfiguredDisplayStyle() {
+          return DISPLAY_STYLE_DEFAULT;
+        }
+
+        @Override
+        public void execClickAction() throws ProcessingException {
+          try {
+            Thread.sleep(10000L);
+          }
+          catch (InterruptedException e) {
+            e.printStackTrace();
+          }
+
+          ButtonWithMenu buttonWithMenu = getFieldByClass(ButtonWithMenu.class);
+          buttonWithMenu.setView(!buttonWithMenu.isEnabled(), !buttonWithMenu.isVisible(), false);
+        }
+      }
+
+      @Order(50)
+      public class ButtonWithMenu extends AbstractButton {
+        @Override
+        protected String getConfiguredLabel() {
+          return "Button with menu";
+        }
+
+        @Override
+        protected void execClickAction() throws ProcessingException {
           requestPopup();
         }
 
-        @Order(30.0)
-        public class Menu3Menu extends AbstractMenu {
+        @Override
+        public boolean getConfiguredEnabled() {
+          return false;
+        }
 
+        @Override
+        public boolean getConfiguredVisible() {
+          return false;
+        }
+
+        @Order(10)
+        public class Menu1 extends AbstractMenu {
           @Override
           protected String getConfiguredText() {
-            return TEXTS.get("Menu3");
+            return "Menu1";
           }
         }
 
-        @Order(20.0)
-        public class Menu2Menu extends AbstractMenu {
-
+        @Order(20)
+        public class Menu2 extends AbstractMenu {
           @Override
           protected String getConfiguredText() {
-            return TEXTS.get("Menu2");
+            return "Menu2";
           }
         }
 
-        @Order(10.0)
-        public class Menu1Menu extends AbstractMenu {
-
+        @Order(30)
+        public class Menu3 extends AbstractMenu {
           @Override
           protected String getConfiguredText() {
-            return TEXTS.get("Menu1");
+            return "Menu3";
           }
-        }
-      }
-
-      @Order(60.0)
-      public class DefaultButtonSelectedButton extends AbstractButton {
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("DefaultButtonSelected");
-        }
-
-        @Override
-        protected boolean getConfiguredProcessButton() {
-          return false;
-        }
-
-        @Override
-        protected void execInitField() throws ProcessingException {
-          setSelected(true);
-        }
-      }
-
-      @Order(70.0)
-      public class ToggleButtonSelectedButton extends AbstractButton {
-
-        @Override
-        protected int getConfiguredDisplayStyle() {
-          return DISPLAY_STYLE_TOGGLE;
-        }
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("ToggleButtonSelected");
-        }
-
-        @Override
-        protected boolean getConfiguredProcessButton() {
-          return false;
-        }
-
-        @Override
-        protected void execInitField() throws ProcessingException {
-          setSelected(true);
-        }
-      }
-
-      @Order(80.0)
-      public class LinkButtonSelectedButton extends AbstractButton {
-
-        @Override
-        protected int getConfiguredDisplayStyle() {
-          return DISPLAY_STYLE_LINK;
-        }
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("LinkButtonSelected");
-        }
-
-        @Override
-        protected boolean getConfiguredProcessButton() {
-          return false;
-        }
-
-        @Override
-        protected void execInitField() throws ProcessingException {
-          setSelected(true);
-        }
-      }
-
-      @Order(90.0)
-      public class RadioButtonSelectedButton extends AbstractButton {
-
-        @Override
-        protected int getConfiguredDisplayStyle() {
-          return DISPLAY_STYLE_RADIO;
-        }
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("RadioButtonSelected");
-        }
-
-        @Override
-        protected boolean getConfiguredProcessButton() {
-          return false;
-        }
-
-        @Override
-        protected void execInitField() throws ProcessingException {
-          setSelected(true);
         }
       }
     }
 
-    @Order(30.0)
-    public class EnabledButton extends AbstractButton {
-
+    @Order(10)
+    public class KeyStroke extends AbstractKeyStroke {
       @Override
-      protected int getConfiguredDisplayStyle() {
-        return DISPLAY_STYLE_TOGGLE;
+      protected String getConfiguredKeyStroke() {
+        return "shift-f";
       }
 
       @Override
-      protected String getConfiguredLabel() {
-        return TEXTS.get("Enabled");
-      }
-
-      @Override
-      protected void execClickAction() throws ProcessingException {
-        getGroupBox().setEnabled(isSelected());
-      }
-
-      @Override
-      protected void execInitField() throws ProcessingException {
-        setSelected(true);
+      protected void execAction() throws ProcessingException {
       }
     }
 
-    @Order(40.0)
+    @Order(200)
     public class CloseButton extends AbstractCloseButton {
+
+    }
+
+  }
+
+  public class TestHandler extends AbstractFormHandler {
+    @Override
+    protected void execLoad() throws ProcessingException {
     }
   }
 
-  public class PageFormHandler extends AbstractFormHandler {
+  @Override
+  public AbstractCloseButton getCloseButton() throws ProcessingException {
+    return getFieldByClass(CloseButton.class);
   }
+
 }
