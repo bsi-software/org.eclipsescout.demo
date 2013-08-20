@@ -25,6 +25,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.IButton;
 import org.eclipse.scout.rt.client.ui.form.fields.checkbox.AbstractCheckBox;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
+import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.ui.forms.ButtonsForm.MainBox.CheckFieldBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.ButtonsForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.ButtonsForm.MainBox.LinkButtonBox;
@@ -40,7 +41,7 @@ public class ButtonsForm extends AbstractForm implements IPageForm {
 
   @Override
   protected String getConfiguredTitle() {
-    return "Buttons";
+    return TEXTS.get("Buttons");
   }
 
   @Override
@@ -128,7 +129,7 @@ public class ButtonsForm extends AbstractForm implements IPageForm {
 
   @Override
   public void startPageForm() throws ProcessingException {
-    startInternal(new TestHandler());
+    startInternal(new PageFormHandler());
   }
 
   @Order(10)
@@ -425,7 +426,7 @@ public class ButtonsForm extends AbstractForm implements IPageForm {
 
   }
 
-  public class TestHandler extends AbstractFormHandler {
+  public class PageFormHandler extends AbstractFormHandler {
     @Override
     protected void execLoad() throws ProcessingException {
     }
