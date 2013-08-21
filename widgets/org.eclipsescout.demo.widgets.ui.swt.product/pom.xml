@@ -87,6 +87,7 @@
           <descriptors>
             <descriptor>assembly.xml</descriptor>
           </descriptors>
+          <finalName>${product.finalName}</finalName>
           <appendAssemblyId>false</appendAssemblyId>
         </configuration>
         <executions>
