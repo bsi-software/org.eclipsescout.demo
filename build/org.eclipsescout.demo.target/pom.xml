@@ -17,7 +17,7 @@
   <parent>
     <groupId>org.eclipsescout.demo</groupId>
     <artifactId>org.eclipsescout.demo.master</artifactId>
-    <version>3.10.0-SNAPSHOT</version>
+    <version>3.9.0-SNAPSHOT</version>
     <relativePath>../org.eclipsescout.demo.master/</relativePath>
   </parent>
 
@@ -41,9 +41,9 @@
             <configuration>
               <artifacts>
                 <artifact>
-                  <file>s310_e43.target</file>
+                  <file>s39_e43.target</file>
                   <type>target</type>
-                  <classifier>s310_e43</classifier>
+                  <classifier>s39_e43</classifier>
                 </artifact>
               </artifacts>
             </configuration>
