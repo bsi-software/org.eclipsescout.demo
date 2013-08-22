@@ -11,7 +11,7 @@ Export-Package: org.eclipsescout.demo.widgets.client,
  org.eclipsescout.demo.widgets.client.ui.desktop.outlines.pages,
  org.eclipsescout.demo.widgets.client.ui.forms,
  org.eclipsescout.demo.widgets.client.ui.searchforms,
- org.eclipsescout.demo.widgets.client.ui.wizards
+ org.eclipsescout.demo.widgets.client.ui.template.menu
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.scout.rt.client;visibility:=reexport,
  org.eclipse.scout.rt.extension.client;visibility:=reexport,

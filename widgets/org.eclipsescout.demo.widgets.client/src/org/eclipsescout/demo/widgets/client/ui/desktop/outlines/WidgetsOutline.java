@@ -18,20 +18,18 @@ import org.eclipse.scout.rt.extension.client.ui.desktop.outline.AbstractExtensib
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.ui.desktop.outlines.pages.FormFieldsNodePage;
 import org.eclipsescout.demo.widgets.client.ui.desktop.outlines.pages.MenusNodePage;
-import org.eclipsescout.demo.widgets.client.ui.desktop.outlines.pages.WizardsNodePage;
 
-public class FormFieldsWizardsOutline extends AbstractExtensibleOutline {
+public class WidgetsOutline extends AbstractExtensibleOutline {
 
   @Override
   protected String getConfiguredTitle() {
-    return TEXTS.get("FormFieldsWizards");
+    return TEXTS.get("WidgetsOutline");
   }
 
   @Override
   protected void execCreateChildPages(Collection<IPage> pageList) throws ProcessingException {
     FormFieldsNodePage formFieldNodePage = new FormFieldsNodePage();
     pageList.add(formFieldNodePage);
-    pageList.add(new WizardsNodePage());
     pageList.add(new MenusNodePage());
   }
 }

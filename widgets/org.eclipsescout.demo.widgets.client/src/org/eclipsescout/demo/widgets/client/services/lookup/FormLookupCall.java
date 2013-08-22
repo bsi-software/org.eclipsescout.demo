@@ -14,12 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.lookup.LocalLookupCall;
 import org.eclipse.scout.rt.shared.services.lookup.LookupRow;
 import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm;
-import org.eclipsescout.demo.widgets.client.ui.forms.OverviewForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.SmartFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.StatusForm;
+import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm;
 
 public class FormLookupCall extends LocalLookupCall {
 
@@ -28,10 +29,10 @@ public class FormLookupCall extends LocalLookupCall {
   @Override
   protected List<LookupRow> execCreateLookupRows() throws ProcessingException {
     ArrayList<LookupRow> rows = new ArrayList<LookupRow>();
-    rows.add(new LookupRow(new OverviewForm(), "AllFields"));
-    rows.add(new LookupRow(new SmartFieldForm(), "SmartField"));
-    rows.add(new LookupRow(new StatusForm(), "Status"));
-    rows.add(new LookupRow(new ImageFieldForm(), "ImageField"));
+    rows.add(new LookupRow(new SmartFieldForm(), TEXTS.get("SmartField")));
+    rows.add(new LookupRow(new StatusForm(), TEXTS.get("Status")));
+    rows.add(new LookupRow(new ImageFieldForm(), TEXTS.get("ImageField")));
+    rows.add(new LookupRow(new StringFieldForm(), TEXTS.get("StringField")));
     return rows;
   }
 }

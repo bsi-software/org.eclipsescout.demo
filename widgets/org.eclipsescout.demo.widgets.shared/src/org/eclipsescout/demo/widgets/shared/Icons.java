@@ -21,4 +21,6 @@ public class Icons extends AbstractIcons {
   public static final String Wizard = "wizard_icon";
   public static final String Wizards = "wizards_icon";
   public static final String EclipseScout = "eclipse_scout";
+  public static final String StarRed = "star_red";
+  public static final String StarYellow = "star_yellow";
 }

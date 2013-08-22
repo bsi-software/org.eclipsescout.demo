@@ -26,8 +26,9 @@ import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.calendar.CalendarAppointment;
 import org.eclipse.scout.rt.shared.services.common.calendar.ICalendarItem;
-import org.eclipsescout.demo.widgets.client.ui.forms.CalendarFieldForm.MainBox.CalendarField;
 import org.eclipsescout.demo.widgets.client.ui.forms.CalendarFieldForm.MainBox.CloseButton;
+import org.eclipsescout.demo.widgets.client.ui.forms.CalendarFieldForm.MainBox.GroupBox;
+import org.eclipsescout.demo.widgets.client.ui.forms.CalendarFieldForm.MainBox.GroupBox.CalendarField;
 
 public class CalendarFieldForm extends AbstractForm implements IPageForm {
 
@@ -59,6 +60,10 @@ public class CalendarFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(CloseButton.class);
   }
 
+  public GroupBox getGroupBox() {
+    return getFieldByClass(GroupBox.class);
+  }
+
   public MainBox getMainBox() {
     return getFieldByClass(MainBox.class);
   }
@@ -66,61 +71,65 @@ public class CalendarFieldForm extends AbstractForm implements IPageForm {
   @Order(10.0)
   public class MainBox extends AbstractGroupBox {
 
-    @Order(10.0)
-    public class CalendarField extends AbstractCalendarField<CalendarField.Calendar> {
-
-      @Override
-      protected int getConfiguredGridH() {
-        return 20;
-      }
-
-      @Override
-      protected int getConfiguredGridW() {
-        return 0;
-      }
-
-      @Override
-      protected boolean getConfiguredLabelVisible() {
-        return false;
-      }
+    @Order(20.0)
+    public class GroupBox extends AbstractGroupBox {
 
       @Order(10.0)
-      public class Calendar extends AbstractCalendar {
-        @Order(10)
-        public class VisitsOfInternalPersonsItemProducer extends AbstractCalendarItemProvider {
+      public class CalendarField extends AbstractCalendarField<CalendarField.Calendar> {
 
-          @Override
-          protected void execLoadItems(Date minDate, Date maxDate, Holder<ICalendarItem[]> resultHolder) throws ProcessingException {
-            ArrayList<ICalendarItem> items = new ArrayList<ICalendarItem>();
+        @Override
+        protected int getConfiguredGridH() {
+          return 20;
+        }
 
-            java.util.Calendar cal = java.util.Calendar.getInstance();
-            Date start = cal.getTime();
-            Date end = cal.getTime();
-            items.add(new CalendarAppointment(0L, 0L, start, end, true, "FULL DAY", "This appointment takes the full day", "FFFF00"));
-            cal.add(java.util.Calendar.DAY_OF_YEAR, -1);
-            start = cal.getTime();
-            cal.add(java.util.Calendar.HOUR, 2);
-            end = cal.getTime();
-            items.add(new CalendarAppointment(1L, 2L, start, end, false, "app1", "appointment1 body", "44FF00"));
+        @Override
+        protected int getConfiguredGridW() {
+          return 0;
+        }
 
-            cal.add(java.util.Calendar.HOUR, 1);
-            start = cal.getTime();
-            cal.add(java.util.Calendar.MINUTE, 30);
-            end = cal.getTime();
-            items.add(new CalendarAppointment(1L, 2L, start, end, false, "app2", "appointment2 body", "44FF00"));
+        @Override
+        protected boolean getConfiguredLabelVisible() {
+          return false;
+        }
 
-            // future
-            cal.setTime(new Date());
-            cal.add(java.util.Calendar.DAY_OF_YEAR, 1);
-            start = cal.getTime();
-            cal.add(java.util.Calendar.HOUR, 48);
-            end = cal.getTime();
-            items.add(new CalendarAppointment(1L, 2L, start, end, false, "app3", "appointment3 body", "44FF00"));
-            cal.add(java.util.Calendar.HOUR, 2);
-            end = cal.getTime();
-            items.add(new CalendarAppointment(1L, 2L, start, end, false, "app4", "appointment4 body", "44FF00"));
-            resultHolder.setValue(items.toArray(new ICalendarItem[items.size()]));
+        @Order(10.0)
+        public class Calendar extends AbstractCalendar {
+          @Order(10)
+          public class VisitsOfInternalPersonsItemProducer extends AbstractCalendarItemProvider {
 
+            @Override
+            protected void execLoadItems(Date minDate, Date maxDate, Holder<ICalendarItem[]> resultHolder) throws ProcessingException {
+              ArrayList<ICalendarItem> items = new ArrayList<ICalendarItem>();
+
+              java.util.Calendar cal = java.util.Calendar.getInstance();
+              Date start = cal.getTime();
+              Date end = cal.getTime();
+              items.add(new CalendarAppointment(0L, 0L, start, end, true, "FULL DAY", "This appointment takes the full day", "FFFF00"));
+              cal.add(java.util.Calendar.DAY_OF_YEAR, -1);
+              start = cal.getTime();
+              cal.add(java.util.Calendar.HOUR, 2);
+              end = cal.getTime();
+              items.add(new CalendarAppointment(1L, 2L, start, end, false, "app1", "appointment1 body", "44FF00"));
+
+              cal.add(java.util.Calendar.HOUR, 1);
+              start = cal.getTime();
+              cal.add(java.util.Calendar.MINUTE, 30);
+              end = cal.getTime();
+              items.add(new CalendarAppointment(1L, 2L, start, end, false, "app2", "appointment2 body", "44FF00"));
+
+              // future
+              cal.setTime(new Date());
+              cal.add(java.util.Calendar.DAY_OF_YEAR, 1);
+              start = cal.getTime();
+              cal.add(java.util.Calendar.HOUR, 48);
+              end = cal.getTime();
+              items.add(new CalendarAppointment(1L, 2L, start, end, false, "app3", "appointment3 body", "44FF00"));
+              cal.add(java.util.Calendar.HOUR, 2);
+              end = cal.getTime();
+              items.add(new CalendarAppointment(1L, 2L, start, end, false, "app4", "appointment4 body", "44FF00"));
+              resultHolder.setValue(items.toArray(new ICalendarItem[items.size()]));
+
+            }
           }
         }
       }

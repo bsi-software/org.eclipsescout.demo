@@ -88,24 +88,59 @@ public class TreeFieldForm extends AbstractForm implements IPageForm {
           AbstractTreeNode node1 = new AbstractTreeNode() {
             @Override
             protected void execDecorateCell(Cell cell) {
-              cell.setText("Node1");
+              cell.setText("Node 1");
             }
           };
           AbstractTreeNode node2 = new AbstractTreeNode() {
             @Override
             protected void execDecorateCell(Cell cell) {
-              cell.setText("Node2");
+              cell.setText("Node 2");
             }
           };
-          AbstractTreeNode node = new AbstractTreeNode() {
+          AbstractTreeNode node11 = new AbstractTreeNode() {
             @Override
             protected void execDecorateCell(Cell cell) {
-              cell.setText("Node");
+              cell.setText("Node 1.1");
+            }
+          };
+          AbstractTreeNode node12 = new AbstractTreeNode() {
+            @Override
+            protected void execDecorateCell(Cell cell) {
+              cell.setText("Node 1.2");
+            }
+          };
+          AbstractTreeNode node13 = new AbstractTreeNode() {
+            @Override
+            protected void execDecorateCell(Cell cell) {
+              cell.setText("Node 1.3");
+            }
+          };
+          AbstractTreeNode node21 = new AbstractTreeNode() {
+            @Override
+            protected void execDecorateCell(Cell cell) {
+              cell.setText("Node 2.1");
+            }
+          };
+          AbstractTreeNode node211 = new AbstractTreeNode() {
+            @Override
+            protected void execDecorateCell(Cell cell) {
+              cell.setText("Node 2.1.1");
+            }
+          };
+          AbstractTreeNode node2111 = new AbstractTreeNode() {
+            @Override
+            protected void execDecorateCell(Cell cell) {
+              cell.setText("Node 2.1.1.1");
             }
           };
           exampleTree.addChildNode(exampleTree.getRootNode(), node1);
           exampleTree.addChildNode(exampleTree.getRootNode(), node2);
-          exampleTree.addChildNode(node1, node);
+          exampleTree.addChildNode(node1, node11);
+          exampleTree.addChildNode(node1, node12);
+          exampleTree.addChildNode(node1, node13);
+          exampleTree.addChildNode(node2, node21);
+          exampleTree.addChildNode(node21, node211);
+          exampleTree.addChildNode(node211, node2111);
           setTree(exampleTree, false);
         }
 

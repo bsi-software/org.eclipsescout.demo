@@ -33,20 +33,14 @@ public class PageWithNodesNodePage extends AbstractPageWithNodes {
 
   @Override
   protected void execCreateChildPages(Collection<IPage> pageList) throws ProcessingException {
-    PageWithTableTablePage pageWithTableTablePage = new PageWithTableTablePage(TEXTS.get("PageWithTable") + " 1");
+    IPage pageWithTableTablePage = new PageWithTableTablePage(TEXTS.get("PageWithTable") + " 1");
     pageList.add(pageWithTableTablePage);
 
-    PageWithTableTablePage pageWithTableTablePage0 = new PageWithTableTablePage(TEXTS.get("PageWithTable") + " 2");
+    IPage pageWithTableTablePage0 = new SearchFormsNodePage();
     pageList.add(pageWithTableTablePage0);
 
-    PageWithTableTablePage pageWithTableTablePage1 = new PageWithTableTablePage(TEXTS.get("PageWithTable") + " 3");
+    IPage pageWithTableTablePage1 = new PageWithADetailformTablePage();
     pageList.add(pageWithTableTablePage1);
-
-    PageWithTableTablePage pageWithTableTablePage2 = new PageWithTableTablePage(TEXTS.get("PageWithTable") + " 4");
-    pageList.add(pageWithTableTablePage2);
-
-    PageWithTableTablePage pageWithTableTablePage3 = new PageWithTableTablePage(TEXTS.get("PageWithTable") + " 5");
-    pageList.add(pageWithTableTablePage3);
   }
 
   @Order(10.0)

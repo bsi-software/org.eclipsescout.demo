@@ -22,23 +22,18 @@ import org.eclipsescout.demo.widgets.client.ui.forms.BrowserFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.ButtonsForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.CalendarFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.CheckboxForm;
-import org.eclipsescout.demo.widgets.client.ui.forms.ComposerFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.FileChooserFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.FormFieldTreeForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.GroupBoxForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.HTMLFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm;
-import org.eclipsescout.demo.widgets.client.ui.forms.InjectionFileChooserFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.KeyStrokeForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.LabelFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.ListBoxForm;
-import org.eclipsescout.demo.widgets.client.ui.forms.MailFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.MessageBoxesForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.NumberFieldsDecimalFieldsForm;
-import org.eclipsescout.demo.widgets.client.ui.forms.OverviewForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.PageFieldForm;
-import org.eclipsescout.demo.widgets.client.ui.forms.PlannerFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.RadioButtonGroupForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.SVGFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.SequenceBoxForm;
@@ -68,8 +63,6 @@ public class FormFieldsNodePage extends AbstractPageWithNodes {
 
   @Override
   protected void execCreateChildPages(Collection<IPage> pageList) throws ProcessingException {
-    FormPage formPage = new FormPage(OverviewForm.class);
-    pageList.add(formPage);
     FormPage formPage0 = new FormPage(BrowserFieldForm.class);
     pageList.add(formPage0);
     FormPage formPage1 = new FormPage(ButtonsForm.class);
@@ -78,36 +71,30 @@ public class FormFieldsNodePage extends AbstractPageWithNodes {
     pageList.add(formPage2);
     FormPage formPage3 = new FormPage(CheckboxForm.class);
     pageList.add(formPage3);
-    FormPage formPage4 = new FormPage(ComposerFieldForm.class);
-    pageList.add(formPage4);
     FormPage formPage5 = new FormPage(DateFieldForm.class);
     pageList.add(formPage5);
     FormPage formPage6 = new FormPage(FileChooserFieldForm.class);
     pageList.add(formPage6);
-    FormPage formPage6extended = new FormPage(InjectionFileChooserFieldForm.class);
-    pageList.add(formPage6extended);
     FormPage formPage7 = new FormPage(GroupBoxForm.class);
     pageList.add(formPage7);
     FormPage formPage8 = new FormPage(HTMLFieldForm.class);
     pageList.add(formPage8);
     FormPage formPage9 = new FormPage(ImageFieldForm.class);
     pageList.add(formPage9);
-    FormPage formPage10 = new FormPage(KeyStrokeForm.class, UserAgentUtility.isRichClient());
-    pageList.add(formPage10);
+    if (UserAgentUtility.isRichClient()) {
+      FormPage formPage10 = new FormPage(KeyStrokeForm.class);
+      pageList.add(formPage10);
+    }
     FormPage formPage11 = new FormPage(LabelFieldForm.class);
     pageList.add(formPage11);
     FormPage formPage12 = new FormPage(ListBoxForm.class);
     pageList.add(formPage12);
-    FormPage formPage13 = new FormPage(MailFieldForm.class, UserAgentUtility.isSwingUi());
-    pageList.add(formPage13);
     FormPage formPage14 = new FormPage(MessageBoxesForm.class);
     pageList.add(formPage14);
     FormPage formPage15 = new FormPage(NumberFieldsDecimalFieldsForm.class);
     pageList.add(formPage15);
     FormPage formPage16 = new FormPage(PageFieldForm.class);
     pageList.add(formPage16);
-    FormPage formPage17 = new FormPage(PlannerFieldForm.class, UserAgentUtility.isSwingUi());
-    pageList.add(formPage17);
     FormPage formPage18 = new FormPage(RadioButtonGroupForm.class);
     pageList.add(formPage18);
     FormPage formPage19 = new FormPage(SmartFieldForm.class);

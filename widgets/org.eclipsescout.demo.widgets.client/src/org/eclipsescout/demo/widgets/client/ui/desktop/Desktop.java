@@ -30,10 +30,11 @@ import org.eclipse.scout.rt.client.ui.form.outline.DefaultOutlineTableForm;
 import org.eclipse.scout.rt.client.ui.form.outline.DefaultOutlineTreeForm;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
 import org.eclipse.scout.rt.extension.client.ui.desktop.AbstractExtensibleDesktop;
+import org.eclipse.scout.rt.shared.AbstractIcons;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.ClientSession;
-import org.eclipsescout.demo.widgets.client.ui.desktop.outlines.FormFieldsWizardsOutline;
 import org.eclipsescout.demo.widgets.client.ui.desktop.outlines.PagesSearchFormsOutline;
+import org.eclipsescout.demo.widgets.client.ui.desktop.outlines.WidgetsOutline;
 import org.eclipsescout.demo.widgets.client.ui.forms.ToolButton1Form;
 import org.eclipsescout.demo.widgets.client.ui.forms.ToolButton2Form;
 import org.eclipsescout.demo.widgets.shared.Icons;
@@ -48,7 +49,7 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
   @Override
   protected Class<? extends IOutline>[] getConfiguredOutlines() {
     ArrayList<Class> outlines = new ArrayList<Class>();
-    outlines.add(FormFieldsWizardsOutline.class);
+    outlines.add(WidgetsOutline.class);
     outlines.add(PagesSearchFormsOutline.class);
     return outlines.toArray(new Class[outlines.size()]);
   }
@@ -132,7 +133,7 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
 
       @Override
       protected String getConfiguredIconId() {
-        return org.eclipse.scout.rt.shared.AbstractIcons.Gears;
+        return AbstractIcons.Gears;
       }
 
       @Override
@@ -267,13 +268,13 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
   public class ToolButton1Tool extends AbstractFormToolButton<ToolButton1Form> {
 
     @Override
-    protected String getConfiguredIconId() {
-      return org.eclipse.scout.rt.shared.AbstractIcons.Gears;
+    protected String getConfiguredText() {
+      return TEXTS.get("ToolButton1");
     }
 
     @Override
-    protected String getConfiguredText() {
-      return TEXTS.get("ToolButton1");
+    protected String getConfiguredIconId() {
+      return Icons.StarYellow;
     }
 
     @Override
@@ -290,7 +291,7 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
 
     @Override
     protected String getConfiguredIconId() {
-      return org.eclipse.scout.rt.shared.AbstractIcons.Gears;
+      return Icons.StarRed;
     }
 
     @Override
@@ -329,7 +330,7 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
   @Order(10.0)
   public class TestCasesOutlineViewButton extends AbstractOutlineViewButton {
     public TestCasesOutlineViewButton() {
-      super(Desktop.this, FormFieldsWizardsOutline.class);
+      super(Desktop.this, WidgetsOutline.class);
     }
 
     @Override
