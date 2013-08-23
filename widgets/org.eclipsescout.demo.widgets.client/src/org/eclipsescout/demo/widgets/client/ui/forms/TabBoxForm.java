@@ -34,8 +34,8 @@ import org.eclipsescout.demo.widgets.client.services.lookup.TimezonesLookupCall;
 import org.eclipsescout.demo.widgets.client.ui.forms.TabBoxForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.TabBoxForm.MainBox.TabBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.TabBoxForm.MainBox.TabBox.Tab1Box;
-import org.eclipsescout.demo.widgets.client.ui.forms.TabBoxForm.MainBox.TabBox.Tab1Box.MultilineStringField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TabBoxForm.MainBox.TabBox.Tab2Box;
+import org.eclipsescout.demo.widgets.client.ui.forms.TabBoxForm.MainBox.TabBox.Tab2Box.MultilineStringField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TabBoxForm.MainBox.TabBox.Tab3Box;
 import org.eclipsescout.demo.widgets.client.ui.forms.TabBoxForm.MainBox.TabBox.Tab3Box.EnabledButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.TabBoxForm.MainBox.TabBox.Tab3Box.InnerTabBox;
@@ -129,12 +129,12 @@ public class TabBoxForm extends AbstractForm implements IPageForm {
         return false;
       }
 
-      @Order(10.0)
-      public class Tab1Box extends AbstractGroupBox {
+      @Order(20.0)
+      public class Tab2Box extends AbstractGroupBox {
 
         @Override
         protected String getConfiguredLabel() {
-          return TEXTS.get("Tab1");
+          return TEXTS.get("Tab2");
         }
 
         @Override
@@ -169,15 +169,20 @@ public class TabBoxForm extends AbstractForm implements IPageForm {
           protected boolean getConfiguredWrapText() {
             return true;
           }
+
+          @Override
+          protected void execInitField() throws ProcessingException {
+            setValue(TEXTS.get("Lorem"));
+          }
         }
       }
 
-      @Order(20.0)
-      public class Tab2Box extends AbstractGroupBox {
+      @Order(10.0)
+      public class Tab1Box extends AbstractGroupBox {
 
         @Override
         protected String getConfiguredLabel() {
-          return TEXTS.get("Tab2");
+          return TEXTS.get("Tab1");
         }
 
         @Order(10.0)

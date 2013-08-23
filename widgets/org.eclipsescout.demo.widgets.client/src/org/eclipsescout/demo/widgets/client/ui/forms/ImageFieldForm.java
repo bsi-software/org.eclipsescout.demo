@@ -10,36 +10,24 @@
  ******************************************************************************/
 package org.eclipsescout.demo.widgets.client.ui.forms;
 
+import java.net.URL;
+
+import org.eclipse.scout.commons.IOUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.rt.client.ui.action.keystroke.AbstractKeyStroke;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
+import org.eclipse.scout.rt.client.ui.form.fields.IValueField;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
-import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractRadioButton;
-import org.eclipse.scout.rt.client.ui.form.fields.doublefield.AbstractDoubleField;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.imagebox.AbstractImageField;
-import org.eclipse.scout.rt.client.ui.form.fields.labelfield.AbstractLabelField;
-import org.eclipse.scout.rt.client.ui.form.fields.radiobuttongroup.AbstractRadioButtonGroup;
+import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
 import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.CloseButton;
-import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.HorizontalAlignmentBox;
-import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.HorizontalAlignmentBox.CenterField;
-import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.HorizontalAlignmentBox.LeftField;
-import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.HorizontalAlignmentBox.RightField;
-import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.ImageSampleGroup;
-import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.ImageSampleGroup.HorizontalAlignmentButton;
-import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.ImageSampleGroup.RotateButton;
-import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.ImageSampleGroup.ZoomButton;
-import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.RotateBox;
-import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.RotateBox.DegreeOfRotationField;
-import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.RotateBox.RotateField;
-import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.ZoomBox;
-import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.ZoomBox.LabelField;
-import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.ZoomBox.ZoomField;
-import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.ZoomBox.ZoomvalueField;
+import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.ImageBox;
+import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.ImageBox.ImageField;
+import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.ImageBox.ImageURLField;
+import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.ImageBox.ScoutLogoField;
 
 public class ImageFieldForm extends AbstractForm implements IPageForm {
 
@@ -62,189 +50,48 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
     startInternal(new PageFormHandler());
   }
 
-  public CenterField getCenterField() {
-    return getFieldByClass(CenterField.class);
-  }
-
   @Override
   public CloseButton getCloseButton() {
     return getFieldByClass(CloseButton.class);
   }
 
-  public DegreeOfRotationField getDegreeOfRotationField() {
-    return getFieldByClass(DegreeOfRotationField.class);
+  public ImageBox getImageBox() {
+    return getFieldByClass(ImageBox.class);
   }
 
-  public HorizontalAlignmentBox getHorizontalAlignmentBox() {
-    return getFieldByClass(HorizontalAlignmentBox.class);
-  }
-
-  public HorizontalAlignmentButton getHorizontalAlignmentButton() {
-    return getFieldByClass(HorizontalAlignmentButton.class);
-  }
-
-  public ImageSampleGroup getImageSampleGroup() {
-    return getFieldByClass(ImageSampleGroup.class);
-  }
-
-  public LabelField getLabelField() {
-    return getFieldByClass(LabelField.class);
-  }
-
-  public LeftField getLeftField() {
-    return getFieldByClass(LeftField.class);
+  public ImageURLField getImageURLField() {
+    return getFieldByClass(ImageURLField.class);
   }
 
   public MainBox getMainBox() {
     return getFieldByClass(MainBox.class);
   }
 
-  public RightField getRightField() {
-    return getFieldByClass(RightField.class);
+  public ScoutLogoField getScoutLogoField() {
+    return getFieldByClass(ScoutLogoField.class);
   }
 
-  public RotateBox getRotateBox() {
-    return getFieldByClass(RotateBox.class);
-  }
-
-  public RotateButton getRotateButton() {
-    return getFieldByClass(RotateButton.class);
-  }
-
-  public RotateField getRotateField() {
-    return getFieldByClass(RotateField.class);
-  }
-
-  public ZoomBox getZoomBox() {
-    return getFieldByClass(ZoomBox.class);
-  }
-
-  public ZoomButton getZoomButton() {
-    return getFieldByClass(ZoomButton.class);
-  }
-
-  public ZoomField getZoomField() {
-    return getFieldByClass(ZoomField.class);
-  }
-
-  public ZoomvalueField getZoomvalueField() {
-    return getFieldByClass(ZoomvalueField.class);
+  public ImageField getImageField() {
+    return getFieldByClass(ImageField.class);
   }
 
   @Order(10.0)
   public class MainBox extends AbstractGroupBox {
 
     @Order(10.0)
-    public class ImageSampleGroup extends AbstractRadioButtonGroup<Long> {
-
-      @Override
-      protected int getConfiguredGridW() {
-        return 0;
-      }
-
-      @Override
-      protected boolean getConfiguredLabelVisible() {
-        return false;
-      }
+    public class ImageBox extends AbstractGroupBox {
 
       @Order(10.0)
-      public class HorizontalAlignmentButton extends AbstractRadioButton {
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("HorizontalAlignment");
-        }
-
-        @Override
-        protected void execClickAction() throws ProcessingException {
-          getHorizontalAlignmentBox().setVisible(true);
-          getZoomBox().setVisible(false);
-          getRotateBox().setVisible(false);
-        }
-      }
-
-      @Order(20.0)
-      public class ZoomButton extends AbstractRadioButton {
-
-        @Override
-        protected boolean getConfiguredEnabled() {
-          return UserAgentUtility.isSwingUi();
-        }
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("Zoom");
-        }
-
-        @Override
-        protected void execClickAction() throws ProcessingException {
-          getHorizontalAlignmentBox().setVisible(false);
-          getZoomBox().setVisible(true);
-          getRotateBox().setVisible(false);
-        }
-      }
-
-      @Order(30.0)
-      public class RotateButton extends AbstractRadioButton {
-
-        @Override
-        protected boolean getConfiguredEnabled() {
-          return UserAgentUtility.isSwingUi();
-        }
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("Rotate");
-        }
-
-        @Override
-        protected void execClickAction() throws ProcessingException {
-          getHorizontalAlignmentBox().setVisible(false);
-          getZoomBox().setVisible(false);
-          getRotateBox().setVisible(true);
-        }
-      }
-    }
-
-    @Order(20.0)
-    public class HorizontalAlignmentBox extends AbstractGroupBox {
-
-      @Override
-      protected String getConfiguredBorderDecoration() {
-        return "section";
-      }
-
-      @Override
-      protected boolean getConfiguredExpandable() {
-        return true;
-      }
-
-      @Override
-      protected int getConfiguredGridH() {
-        return 2;
-      }
-
-      @Override
-      protected String getConfiguredLabel() {
-        return TEXTS.get("HorizontalAlignment");
-      }
-
-      @Order(10.0)
-      public class LeftField extends AbstractImageField {
+      public class ScoutLogoField extends AbstractImageField {
 
         @Override
         protected int getConfiguredGridH() {
-          return 7;
+          return 8;
         }
 
         @Override
         protected int getConfiguredGridW() {
-          return 2;
-        }
-
-        @Override
-        protected int getConfiguredHorizontalAlignment() {
-          return -1;
+          return 4;
         }
 
         @Override
@@ -254,17 +101,12 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected String getConfiguredLabel() {
-          return TEXTS.get("Left");
+          return TEXTS.get("ScoutLogo");
         }
       }
 
       @Order(20.0)
-      public class CenterField extends AbstractImageField {
-
-        @Override
-        protected int getConfiguredGridH() {
-          return 7;
-        }
+      public class ImageURLField extends AbstractStringField {
 
         @Override
         protected int getConfiguredGridW() {
@@ -272,285 +114,53 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
         }
 
         @Override
-        protected int getConfiguredHorizontalAlignment() {
-          return 0;
-        }
-
-        @Override
-        protected String getConfiguredImageId() {
-          return "scout_logo.jpg";
-        }
-
-        @Override
         protected String getConfiguredLabel() {
-          return TEXTS.get("Center");
+          return TEXTS.get("ImageURL");
         }
+
       }
 
       @Order(30.0)
-      public class RightField extends AbstractImageField {
+      public class ImageField extends AbstractImageField {
 
         @Override
         protected int getConfiguredGridH() {
-          return 7;
+          return 8;
         }
 
         @Override
         protected int getConfiguredGridW() {
-          return 2;
-        }
-
-        @Override
-        protected int getConfiguredHorizontalAlignment() {
-          return 1;
-        }
-
-        @Override
-        protected String getConfiguredImageId() {
-          return "scout_logo.jpg";
+          return 4;
         }
 
         @Override
         protected String getConfiguredLabel() {
-          return TEXTS.get("Right");
-        }
-      }
-    }
-
-    @Order(30.0)
-    public class ZoomBox extends AbstractGroupBox {
-
-      @Override
-      protected String getConfiguredBorderDecoration() {
-        return "section";
-      }
-
-      @Override
-      protected boolean getConfiguredExpandable() {
-        return true;
-      }
-
-      @Override
-      protected String getConfiguredLabel() {
-        return TEXTS.get("Zoom");
-      }
-
-      @Override
-      protected boolean getConfiguredVisible() {
-        return false;
-      }
-
-      @Order(10.0)
-      public class ZoomField extends AbstractImageField {
-
-        @Override
-        protected boolean getConfiguredGridUseUiHeight() {
-          return true;
+          return TEXTS.get("YourImage");
         }
 
         @Override
-        protected boolean getConfiguredGridUseUiWidth() {
-          return true;
+        protected Class<? extends IValueField> getConfiguredMasterField() {
+          return ImageURLField.class;
         }
 
         @Override
-        protected int getConfiguredGridW() {
-          return 2;
-        }
+        protected void execChangedMasterValue(Object newMasterValue) throws ProcessingException {
+          clearErrorStatus();
 
-        @Override
-        protected int getConfiguredHorizontalAlignment() {
-          return -1;
-        }
-
-        @Override
-        protected String getConfiguredImageId() {
-          return "scout_logo.jpg";
-        }
-
-        @Override
-        protected int getConfiguredVerticalAlignment() {
-          return -1;
-        }
-      }
-
-      @Order(20.0)
-      public class ZoomvalueField extends AbstractDoubleField {
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("Zoom");
-        }
-
-        @Override
-        protected void execChangedValue() throws ProcessingException {
-          getZoomField().doZoom(getValue(), getValue());
-        }
-      }
-
-      @Order(30.0)
-      public class LabelField extends AbstractLabelField {
-
-        @Override
-        protected boolean getConfiguredLabelVisible() {
-          return false;
-        }
-
-        @Override
-        protected void execInitField() throws ProcessingException {
-          setValue(TEXTS.get("UseWASAndDToMoveTheImage"));
-        }
-      }
-    }
-
-    @Order(40.0)
-    public class RotateBox extends AbstractGroupBox {
-
-      @Override
-      protected String getConfiguredBorderDecoration() {
-        return "section";
-      }
-
-      @Override
-      protected boolean getConfiguredExpandable() {
-        return true;
-      }
-
-      @Override
-      protected String getConfiguredLabel() {
-        return TEXTS.get("Rotate");
-      }
-
-      @Override
-      protected boolean getConfiguredVisible() {
-        return false;
-      }
-
-      @Order(10.0)
-      public class RotateField extends AbstractImageField {
-
-        @Override
-        protected boolean getConfiguredGridUseUiHeight() {
-          return true;
-        }
-
-        @Override
-        protected boolean getConfiguredGridUseUiWidth() {
-          return true;
-        }
-
-        @Override
-        protected int getConfiguredGridW() {
-          return 2;
-        }
-
-        @Override
-        protected int getConfiguredHorizontalAlignment() {
-          return -1;
-        }
-
-        @Override
-        protected String getConfiguredImageId() {
-          return "scout_logo.jpg";
-        }
-
-        @Override
-        protected int getConfiguredVerticalAlignment() {
-          return -1;
-        }
-      }
-
-      @Order(20.0)
-      public class DegreeOfRotationField extends AbstractDoubleField {
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("DegreeOfRotation");
-        }
-
-        @Override
-        protected Double getConfiguredMaximumValue() {
-          return 360.0;
-        }
-
-        @Override
-        protected Double getConfiguredMinimumValue() {
-          return -360.0;
-        }
-
-        @Override
-        protected void execChangedValue() throws ProcessingException {
-          getRotateField().doRotate(getValue() / 57.3);
+          try {
+            URL url = new URL((String) newMasterValue);
+            setImage(IOUtility.getContent(url.openStream()));
+            setAutoFit(true);
+          }
+          catch (Exception e) {
+            setErrorStatus(e.getMessage());
+          }
         }
       }
     }
 
     @Order(50.0)
     public class CloseButton extends AbstractCloseButton {
-    }
-
-    @Order(10.0)
-    public class DownKeyStroke extends AbstractKeyStroke {
-
-      @Override
-      protected String getConfiguredKeyStroke() {
-        return "S";
-      }
-
-      @Override
-      protected void execAction() throws ProcessingException {
-        if (getZoomButton().isSelected()) {
-          getZoomField().doRelativePan(0, -10);
-        }
-      }
-    }
-
-    @Order(20.0)
-    public class LeftKeyStroke extends AbstractKeyStroke {
-
-      @Override
-      protected String getConfiguredKeyStroke() {
-        return "A";
-      }
-
-      @Override
-      protected void execAction() throws ProcessingException {
-        if (getZoomButton().isSelected()) {
-          getZoomField().doRelativePan(10, 0);
-        }
-      }
-    }
-
-    @Order(30.0)
-    public class RightKeyStroke extends AbstractKeyStroke {
-
-      @Override
-      protected String getConfiguredKeyStroke() {
-        return "D";
-      }
-
-      @Override
-      protected void execAction() throws ProcessingException {
-        if (getZoomButton().isSelected()) {
-          getZoomField().doRelativePan(-10, 0);
-        }
-      }
-    }
-
-    @Order(40.0)
-    public class UpKeyStroke extends AbstractKeyStroke {
-
-      @Override
-      protected String getConfiguredKeyStroke() {
-        return "W";
-      }
-
-      @Override
-      protected void execAction() throws ProcessingException {
-        if (getZoomButton().isSelected()) {
-          getZoomField().doRelativePan(0, 10);
-        }
-      }
     }
   }
 

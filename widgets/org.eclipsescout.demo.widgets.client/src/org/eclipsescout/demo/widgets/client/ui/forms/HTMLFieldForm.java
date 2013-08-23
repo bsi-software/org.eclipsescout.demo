@@ -25,15 +25,14 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractLinkButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.htmlfield.AbstractHtmlField;
-import org.eclipse.scout.rt.shared.AbstractIcons;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.file.RemoteFile;
 import org.eclipsescout.demo.widgets.client.Activator;
-import org.eclipsescout.demo.widgets.client.ui.forms.HTMLFieldForm.MainBox.BlankButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.HTMLFieldForm.MainBox.CloseButton;
+import org.eclipsescout.demo.widgets.client.ui.forms.HTMLFieldForm.MainBox.GroupBox;
+import org.eclipsescout.demo.widgets.client.ui.forms.HTMLFieldForm.MainBox.GroupBox.BlankButton;
+import org.eclipsescout.demo.widgets.client.ui.forms.HTMLFieldForm.MainBox.GroupBox.ScoutHtmlButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.HTMLFieldForm.MainBox.HTMLField;
-import org.eclipsescout.demo.widgets.client.ui.forms.HTMLFieldForm.MainBox.ScoutHtmlButton;
-import org.eclipsescout.demo.widgets.client.ui.forms.HTMLFieldForm.MainBox.WizardStatusButton;
 
 public class HTMLFieldForm extends AbstractForm implements IPageForm {
 
@@ -52,6 +51,11 @@ public class HTMLFieldForm extends AbstractForm implements IPageForm {
   }
 
   @Override
+  protected void execInitForm() throws ProcessingException {
+    loadFile("ScoutHtml.html");
+  }
+
+  @Override
   public void startPageForm() throws ProcessingException {
     startInternal(new PageFormHandler());
   }
@@ -65,6 +69,10 @@ public class HTMLFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(CloseButton.class);
   }
 
+  public GroupBox getGroupBox() {
+    return getFieldByClass(GroupBox.class);
+  }
+
   public HTMLField getHTMLField() {
     return getFieldByClass(HTMLField.class);
   }
@@ -75,10 +83,6 @@ public class HTMLFieldForm extends AbstractForm implements IPageForm {
 
   public ScoutHtmlButton getScoutHtmlButton() {
     return getFieldByClass(ScoutHtmlButton.class);
-  }
-
-  public WizardStatusButton getWizardStatusButton() {
-    return getFieldByClass(WizardStatusButton.class);
   }
 
   private void loadFile(String simpleName, RemoteFile... attachments) throws ProcessingException {
@@ -156,50 +160,48 @@ public class HTMLFieldForm extends AbstractForm implements IPageForm {
     }
 
     @Order(20.0)
-    public class BlankButton extends AbstractLinkButton {
+    public class GroupBox extends AbstractGroupBox {
+      @Order(30.0)
+      public class BlankButton extends AbstractLinkButton {
 
-      @Override
-      protected String getConfiguredLabel() {
-        return TEXTS.get("Blank");
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("Blank");
+        }
+
+        @Override
+        protected void execClickAction() throws ProcessingException {
+          getHTMLField().setAttachments(null);
+          getHTMLField().setValue(null);
+        }
       }
 
-      @Override
-      protected void execClickAction() throws ProcessingException {
-        getHTMLField().setAttachments(null);
-        getHTMLField().setValue(null);
-      }
-    }
+      @Order(60.0)
+      public class CustomHTMLButton extends AbstractLinkButton {
 
-    @Order(30.0)
-    public class WizardStatusButton extends AbstractLinkButton {
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("CustomHTML");
+        }
 
-      @Override
-      protected String getConfiguredLabel() {
-        return TEXTS.get("WizardStatus");
-      }
-
-      @Override
-      protected void execClickAction() throws ProcessingException {
-        loadFile(
-            "wizardStatus.html",
-            loadIcon(AbstractIcons.Empty + ".png"),
-            loadIcon(AbstractIcons.WizardBullet + ".png"),
-            loadIcon(AbstractIcons.WizardBullet + "_disabled.png"),
-            loadIcon(AbstractIcons.WizardBullet + "_selected.png"));
-      }
-    }
-
-    @Order(40.0)
-    public class ScoutHtmlButton extends AbstractLinkButton {
-
-      @Override
-      protected String getConfiguredLabel() {
-        return TEXTS.get("ScoutHtml");
+        @Override
+        protected void execClickAction() throws ProcessingException {
+          loadFile("customHTML.html");
+        }
       }
 
-      @Override
-      protected void execClickAction() throws ProcessingException {
-        loadFile("ScoutHtml.html");
+      @Order(40.0)
+      public class ScoutHtmlButton extends AbstractLinkButton {
+
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("ScoutHtml");
+        }
+
+        @Override
+        protected void execClickAction() throws ProcessingException {
+          loadFile("ScoutHtml.html");
+        }
       }
     }
 

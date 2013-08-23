@@ -10,8 +10,6 @@
  ******************************************************************************/
 package org.eclipsescout.demo.widgets.client.ui.forms;
 
-import java.io.IOException;
-
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
@@ -21,12 +19,10 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractLinkButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.services.common.file.RemoteFile;
 import org.eclipsescout.demo.widgets.client.ui.forms.BrowserFieldForm.MainBox.BrowserField;
 import org.eclipsescout.demo.widgets.client.ui.forms.BrowserFieldForm.MainBox.BsiagButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.BrowserFieldForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.BrowserFieldForm.MainBox.EclipseScoutButton;
-import org.eclipsescout.demo.widgets.client.ui.forms.BrowserFieldForm.MainBox.WizardStatusButton;
 
 public class BrowserFieldForm extends AbstractForm implements IPageForm {
 
@@ -68,10 +64,6 @@ public class BrowserFieldForm extends AbstractForm implements IPageForm {
 
   public MainBox getMainBox() {
     return getFieldByClass(MainBox.class);
-  }
-
-  public WizardStatusButton getWizardStatusButton() {
-    return getFieldByClass(WizardStatusButton.class);
   }
 
   @Order(10.0)
@@ -137,30 +129,6 @@ public class BrowserFieldForm extends AbstractForm implements IPageForm {
       protected void execClickAction() throws ProcessingException {
         getBrowserField().setValue(null);
         getBrowserField().setLocation("http://www.bsiag.com");
-      }
-    }
-
-    @Order(50.0)
-    public class WizardStatusButton extends AbstractLinkButton {
-
-      @Override
-      protected String getConfiguredLabel() {
-        return TEXTS.get("WizardStatus");
-      }
-
-      @Override
-      protected void execClickAction() throws ProcessingException {
-        try {
-          getBrowserField().setLocation(null);
-
-          RemoteFile f = new RemoteFile("wizardStatus.html", 0L);
-          f.readData(org.eclipsescout.demo.widgets.client.Activator.getDefault().getBundle().getResource("resources/html/wizardStatus.html").openStream());
-
-          getBrowserField().setValue(f);
-        }
-        catch (IOException e) {
-          throw new ProcessingException("create RemoteFile", e);
-        }
       }
     }
   }

@@ -27,12 +27,12 @@ public class DateLookupCall extends LocalLookupCall {
     ArrayList<LookupRow> rows = new ArrayList<LookupRow>();
     for (long l = 0L; l <= 5L; l++) {
       LookupRow year = new LookupRow(l * 5, "201" + l);
-      year.setEnabled(false);
+      year.setEnabled(true);
       rows.add(year);
       rows.add(new LookupRow(l * 5 + 1, "Jan", null, null, "FFFFFF", "000000", new FontSpec("Courir", FontSpec.STYLE_PLAIN, 12), true, l * 5));
-      rows.add(new LookupRow(l * 5 + 2, "Mar", null, null, "FFFFFF", "000000", new FontSpec("Courir", FontSpec.STYLE_PLAIN, 12), false, l * 5));
+      rows.add(new LookupRow(l * 5 + 2, "Mar", null, null, "FFFFFF", "000000", new FontSpec("Courir", FontSpec.STYLE_PLAIN, 12), true, l * 5));
       rows.add(new LookupRow(l * 5 + 3, "Sep", null, null, "FFFFFF", "000000", new FontSpec("Courir", FontSpec.STYLE_PLAIN, 12), true, l * 5));
-      rows.add(new LookupRow(l * 5 + 4, "Nov", null, null, "FFFFFF", "000000", new FontSpec("Courir", FontSpec.STYLE_PLAIN, 12), false, l * 5));
+      rows.add(new LookupRow(l * 5 + 4, "Nov", null, null, "FFFFFF", "000000", new FontSpec("Courir", FontSpec.STYLE_PLAIN, 12), true, l * 5));
     }
     return rows;
   }
