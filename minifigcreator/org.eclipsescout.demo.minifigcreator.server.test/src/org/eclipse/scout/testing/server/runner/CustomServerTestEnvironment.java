@@ -8,8 +8,10 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
-package org.eclipse.scout.rt.testing.server.runner;
+package org.eclipse.scout.testing.server.runner;
 
+import org.eclipse.scout.rt.testing.server.runner.IServerTestEnvironment;
+import org.eclipse.scout.rt.testing.server.runner.ScoutServerTestRunner;
 import org.eclipsescout.demo.minifigcreator.server.ServerSession;
 
 public class CustomServerTestEnvironment implements IServerTestEnvironment {
@@ -17,6 +19,7 @@ public class CustomServerTestEnvironment implements IServerTestEnvironment {
   @Override
   public void setupGlobalEnvironment() {
     ScoutServerTestRunner.setDefaultServerSessionClass(ServerSession.class);
+    ScoutServerTestRunner.setDefaultPrincipalName("test_default");
   }
 
   @Override
