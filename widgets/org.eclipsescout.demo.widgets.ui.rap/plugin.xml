@@ -86,7 +86,8 @@
   </extension>
   <extension point="org.eclipse.rap.ui.themes">
     <themeContribution file="theme/application.css" themeId="org.eclipse.scout.rt.ui.rap.theme"/>
-  </extension>
+    <themeContribution file="theme/application.css" themeId="org.eclipse.scout.rt.ui.rap.mobile.theme"/> 
+  </extension> 
   <extension point="org.eclipse.equinox.http.registry.resources">
     <resource alias="/res" base-name="/web-resources"/>
   </extension>
