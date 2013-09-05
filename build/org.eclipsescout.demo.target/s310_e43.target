@@ -17,20 +17,19 @@
     </location>
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-      <unit id="org.eclipse.scout.rt.source.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.scout.rt.testing.source.feature.group" version="0.0.0"/>
-
       <unit id="org.eclipse.scout.rt.rap.source.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.scout.rt.rap.testing.source.feature.group" version="0.0.0"/>
 
       <unit id="org.eclipse.scout.rt.ui.rap.incubator.filechooser.source.feature.group" version="0.0.0"/>
 
-      <unit id="org.eclipse.scout.sdk.source.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.scout.sdk.rap.source.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.scout.sdk.testing.source.feature.group" version="0.0.0"/>
-
-      <repository id="bsi" location="http://download.eclipse.org/scout/nightly/"/>
+      <repository id="bsi" location="https://repo.eclipse.org/content/unzip/snapshots.unzip/org/eclipse/scout/org.eclipse.scout.rap.repository/3.10.0-SNAPSHOT/org.eclipse.scout.rap.repository-3.10.0-SNAPSHOT.zip-unzip"/>
     </location>
+
+	<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+		<unit id="org.eclipse.scout.rt.source.feature.group" version="0.0.0"/>
+		<unit id="org.eclipse.scout.rt.testing.source.feature.group" version="0.0.0"/>
+		<repository location="https://repo.eclipse.org/content/unzip/snapshots.unzip/org/eclipse/scout/org.eclipse.scout.repository/3.10.0-SNAPSHOT/org.eclipse.scout.repository-3.10.0-SNAPSHOT.zip-unzip"/>
+	</location>
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
       <unit id="org.eclipse.rap.feature.feature.group" version="0.0.0"/>
@@ -49,26 +48,26 @@
 
       <repository location="http://tools.bsiag.com/marketplace/docx4j/3.10/"/>
     </location-->
-    
+
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 		<unit id="org.eclipse.scout.docx4j.source.feature.group" version="0.0.0"/>
-		
+
 		<repository location="https://scout.bsiag.com/repository/marketplace.docx4j/"/>
 	</location>
-    
+
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 		<unit id="com.bsiag.scout.rt.ui.swing.laf.rayo.source.feature.group" version="0.0.0"/>
-		
+
 		<repository location="https://scout.bsiag.com/repository/com.bsiag.tools-snapshot-local/com/bsiag/scout/rt/ui/swing/laf/rayo/com.bsiag.scout.rt.ui.swing.laf.rayo.updatesite/3.10.0-SNAPSHOT/com.bsiag.scout.rt.ui.swing.laf.rayo.updatesite-3.10.0-SNAPSHOT.zip!/" id="tools-scout-snapshot"/>
 	</location>
-    
+
 
     <!--location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
       <unit id="org.eclipse.scout.logging.bridges.feature.group" version="0.0.0"/>
 
       <repository location="http://tools.bsiag.com/marketplace/logging_bridge/3.10/"/>
     </location-->
-    
+
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
       <unit id="org.eclipse.scout.logging.bridges.feature.group" version="0.0.0"/>
 

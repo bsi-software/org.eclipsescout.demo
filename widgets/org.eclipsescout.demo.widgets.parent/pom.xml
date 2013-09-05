@@ -34,6 +34,7 @@
     <module>../org.eclipsescout.demo.widgets.ui.rap</module>
     <module>../org.eclipsescout.demo.widgets.ui.rap.product</module>
     <module>../org.eclipsescout.demo.widgets.ui.swing</module>
+    <module>../org.eclipsescout.demo.widgets.ui.swing.rayo</module>    
     <module>../org.eclipsescout.demo.widgets.ui.swing.product</module>
     <module>../org.eclipsescout.demo.widgets.ui.swing.rayo.product</module>
     <module>../org.eclipsescout.demo.widgets.ui.swt</module>

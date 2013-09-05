@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <?pde version="3.6"?>
-<target name="Demo Widget App Scout 3.10 Eclipse 4.3 Target" sequenceNumber="15">
+<target name="Demo Widget App Scout 3.10 Eclipse 4.4 Target" sequenceNumber="15">
   <locations>
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
       <unit id="org.eclipse.equinox.executable.feature.group" version="0.0.0"/>
@@ -13,24 +13,23 @@
       <unit id="org.eclipse.emf.ecore.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.common.feature.group" version="0.0.0"/>
 
-      <repository id="eclipse_kepler" location="http://download.eclipse.org/releases/kepler"/>
+      <repository id="eclipse_luna" location="http://download.eclipse.org/releases/luna"/>
     </location>
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-      <unit id="org.eclipse.scout.rt.source.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.scout.rt.testing.source.feature.group" version="0.0.0"/>
-
       <unit id="org.eclipse.scout.rt.rap.source.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.scout.rt.rap.testing.source.feature.group" version="0.0.0"/>
 
       <unit id="org.eclipse.scout.rt.ui.rap.incubator.filechooser.source.feature.group" version="0.0.0"/>
 
-      <unit id="org.eclipse.scout.sdk.source.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.scout.sdk.rap.source.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.scout.sdk.testing.source.feature.group" version="0.0.0"/>
-
-      <repository id="scout_nightly" location="http://download.eclipse.org/scout/nightly/"/>
+      <repository id="scout_nightly" location="https://repo.eclipse.org/content/unzip/snapshots.unzip/org/eclipse/scout/org.eclipse.scout.rap.repository/3.10.0-SNAPSHOT/org.eclipse.scout.rap.repository-3.10.0-SNAPSHOT.zip-unzip"/>
     </location>
+
+	<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+		<unit id="org.eclipse.scout.rt.source.feature.group" version="0.0.0"/>
+		<unit id="org.eclipse.scout.rt.testing.source.feature.group" version="0.0.0"/>
+		<repository location="https://repo.eclipse.org/content/unzip/snapshots.unzip/org/eclipse/scout/org.eclipse.scout.repository/3.10.0-SNAPSHOT/org.eclipse.scout.repository-3.10.0-SNAPSHOT.zip-unzip"/>
+	</location>
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
       <repository id="rap_2.1" location="http://download.eclipse.org/rt/rap/2.1/R-20130611-2139/"/>
@@ -49,26 +48,26 @@
 
       <repository location="http://tools.bsiag.com/marketplace/docx4j/3.10/"/>
     </location-->
-    
+
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 		<unit id="org.eclipse.scout.docx4j.source.feature.group" version="0.0.0"/>
-		
+
 		<repository location="https://scout.bsiag.com/repository/marketplace.docx4j/"/>
 	</location>
-    
+
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 		<unit id="com.bsiag.scout.rt.ui.swing.laf.rayo.source.feature.group" version="0.0.0"/>
-		
+
 		<repository location="https://scout.bsiag.com/repository/com.bsiag.tools-snapshot-local/com/bsiag/scout/rt/ui/swing/laf/rayo/com.bsiag.scout.rt.ui.swing.laf.rayo.updatesite/3.10.0-SNAPSHOT/com.bsiag.scout.rt.ui.swing.laf.rayo.updatesite-3.10.0-SNAPSHOT.zip!/" id="tools-scout-snapshot"/>
 	</location>
-    
+
 
     <!--location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
       <unit id="org.eclipse.scout.logging.bridges.feature.group" version="0.0.0"/>
 
       <repository location="http://tools.bsiag.com/marketplace/logging_bridge/3.10/"/>
     </location-->
-    
+
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
       <unit id="org.eclipse.scout.logging.bridges.feature.group" version="0.0.0"/>
 

@@ -6,6 +6,7 @@ Bundle-Version: 3.10.0.qualifier
 Bundle-Activator: org.eclipsescout.demo.widgets.client.Activator
 Export-Package: org.eclipsescout.demo.widgets.client,
  org.eclipsescout.demo.widgets.client.services,
+ org.eclipsescout.demo.widgets.client.services.lookup,
  org.eclipsescout.demo.widgets.client.ui.desktop,
  org.eclipsescout.demo.widgets.client.ui.desktop.outlines,
  org.eclipsescout.demo.widgets.client.ui.desktop.outlines.pages,

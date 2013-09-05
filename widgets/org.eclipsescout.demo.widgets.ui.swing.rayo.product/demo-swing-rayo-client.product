@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Scout Widget Demo App Client" uid="org.eclipsescout.demo.widgets.ui.swing.rayo.product" id="org.eclipsescout.demo.widgets.ui.swing.rayo_product" application="org.eclipsescout.demo.widgets.ui.swing.rayo_app" useFeatures="false" includeLaunchers="true">
+<product name="Scout Widget Demo App Client" uid="org.eclipsescout.demo.widgets.ui.swing.rayo.product" id="org.eclipsescout.demo.widgets.ui.swing.rayo_product" application="org.eclipsescout.demo.widgets.ui.swing.app" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
       <linux>/org.eclipsescout.demo.widgets.ui.swing.rayo.product/config.ini</linux>
@@ -72,6 +72,7 @@
       <plugin id="org.eclipsescout.demo.widgets.client"/>
       <plugin id="org.eclipsescout.demo.widgets.shared"/>
       <plugin id="org.eclipsescout.demo.widgets.ui.swing"/>
+      <plugin id="org.eclipsescout.demo.widgets.ui.swing.rayo" fragment="true"/>
       <plugin id="org.w3c.css.sac"/>
       <plugin id="org.w3c.dom.smil"/>
       <plugin id="org.w3c.dom.svg"/>

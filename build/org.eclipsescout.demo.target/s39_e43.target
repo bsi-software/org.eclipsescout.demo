@@ -17,20 +17,19 @@
     </location>
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-      <unit id="org.eclipse.scout.rt.source.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.scout.rt.testing.source.feature.group" version="0.0.0"/>
-
       <unit id="org.eclipse.scout.rt.rap.source.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.scout.rt.rap.testing.source.feature.group" version="0.0.0"/>
 
       <unit id="org.eclipse.scout.rt.ui.rap.incubator.filechooser.source.feature.group" version="0.0.0"/>
 
-      <unit id="org.eclipse.scout.sdk.source.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.scout.sdk.rap.source.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.scout.sdk.testing.source.feature.group" version="0.0.0"/>
-
-      <repository location="http://download.eclipse.org/scout/nightly/3.9/"/>
+      <repository location="https://repo.eclipse.org/content/unzip/snapshots.unzip/org/eclipse/scout/org.eclipse.scout.rap.repository/3.9.1-SNAPSHOT/org.eclipse.scout.rap.repository-3.9.1-SNAPSHOT.zip-unzip"/>
     </location>
+
+	<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+		<unit id="org.eclipse.scout.rt.source.feature.group" version="0.0.0"/>
+		<unit id="org.eclipse.scout.rt.testing.source.feature.group" version="0.0.0"/>
+		<repository location="https://repo.eclipse.org/content/unzip/snapshots.unzip/org/eclipse/scout/org.eclipse.scout.repository/3.9.1-SNAPSHOT/org.eclipse.scout.repository-3.9.1-SNAPSHOT.zip-unzip"/>
+	</location>
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
       <repository id="rap_2.1" location="http://download.eclipse.org/rt/rap/2.1/R-20130611-2139/"/>

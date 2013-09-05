@@ -10,8 +10,7 @@ Scout-Project-Alias: widgets
 Require-Bundle: org.eclipse.scout.rt.ui.swing,
  org.eclipsescout.demo.widgets.client;visibility:=reexport,
  org.eclipsescout.demo.widgets.shared,
- org.eclipse.scout.net,
- com.bsiag.scout.rt.ui.swing.rayo;resolution:=optional
+ org.eclipse.scout.net
 Export-Package: org.eclipsescout.demo.widgets.ui.swing;uses:="org.eclipse.scout.rt.ui.swing,org.eclipse.scout.rt.client.session,org.osgi.framework"
 Bundle-ClassPath: .
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
