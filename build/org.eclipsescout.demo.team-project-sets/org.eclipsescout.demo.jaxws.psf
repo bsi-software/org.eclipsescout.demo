@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<psf version="2.0">
+<provider id="org.eclipse.egit.core.GitProvider">
+<project reference="1.0,https://github.com/BSI-Business-Systems-Integration-AG/org.eclipsescout.demo.git,master,jaxws/org.eclipsescout.demo.jaxws.client"/>
+<project reference="1.0,https://github.com/BSI-Business-Systems-Integration-AG/org.eclipsescout.demo.git,master,jaxws/org.eclipsescout.demo.jaxws.database"/>
+<project reference="1.0,https://github.com/BSI-Business-Systems-Integration-AG/org.eclipsescout.demo.git,master,jaxws/org.eclipsescout.demo.jaxws.server"/>
+<project reference="1.0,https://github.com/BSI-Business-Systems-Integration-AG/org.eclipsescout.demo.git,master,jaxws/org.eclipsescout.demo.jaxws.shared"/>
+<project reference="1.0,https://github.com/BSI-Business-Systems-Integration-AG/org.eclipsescout.demo.git,master,jaxws/org.eclipsescout.demo.jaxws.ui.swing"/>
+<project reference="1.0,https://github.com/BSI-Business-Systems-Integration-AG/org.eclipsescout.demo.git,master,jaxws/org.eclipsescout.demo.jaxws.ui.swt"/>
+</provider>
+</psf>
