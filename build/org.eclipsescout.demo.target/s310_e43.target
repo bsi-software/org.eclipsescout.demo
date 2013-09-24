@@ -17,19 +17,15 @@
     </location>
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+      <unit id="org.eclipse.scout.rt.source.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.scout.rt.rap.source.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.scout.rt.rap.testing.source.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.scout.rt.testing.source.feature.group" version="0.0.0"/>
 
       <unit id="org.eclipse.scout.rt.ui.rap.incubator.filechooser.source.feature.group" version="0.0.0"/>
 
-      <repository id="bsi" location="https://repo.eclipse.org/content/unzip/snapshots.unzip/org/eclipse/scout/org.eclipse.scout.rap.repository/3.10.0-SNAPSHOT/org.eclipse.scout.rap.repository-3.10.0-SNAPSHOT.zip-unzip"/>
+      <repository id="scout_nightly" location="http://download.eclipse.org/scout/nightly/"/>
     </location>
-
-	<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-		<unit id="org.eclipse.scout.rt.source.feature.group" version="0.0.0"/>
-		<unit id="org.eclipse.scout.rt.testing.source.feature.group" version="0.0.0"/>
-		<repository location="https://repo.eclipse.org/content/unzip/snapshots.unzip/org/eclipse/scout/org.eclipse.scout.repository/3.10.0-SNAPSHOT/org.eclipse.scout.repository-3.10.0-SNAPSHOT.zip-unzip"/>
-	</location>
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
       <unit id="org.eclipse.rap.feature.feature.group" version="0.0.0"/>
@@ -37,59 +33,32 @@
       <repository id="bsi" location="http://download.eclipse.org/rt/rap/2.1/R-20130611-2139/"/>
     </location>
 
-    <!--location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-      <unit id="com.bsiag.scout.rt.ui.swing.laf.rayo.feature.group" version="0.0.0"/>
-
-      <repository location="http://tools.bsiag.com/marketplace/rayo/3.10/"/>
-    </location-->
-
-    <!--location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-      <unit id="org.eclipse.scout.docx4j.feature.group" version="0.0.0"/>
-
-      <repository location="http://tools.bsiag.com/marketplace/docx4j/3.10/"/>
-    </location-->
-
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-		<unit id="org.eclipse.scout.docx4j.source.feature.group" version="0.0.0"/>
+      <unit id="com.bsiag.scout.rt.ui.swing.laf.rayo.source.feature.group" version="0.0.0"/>
 
-		<repository location="https://scout.bsiag.com/repository/marketplace.docx4j/"/>
-	</location>
-
-    <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-		<unit id="com.bsiag.scout.rt.ui.swing.laf.rayo.source.feature.group" version="0.0.0"/>
-
-		<repository location="https://scout.bsiag.com/repository/com.bsiag.tools-snapshot-local/com/bsiag/scout/rt/ui/swing/laf/rayo/com.bsiag.scout.rt.ui.swing.laf.rayo.updatesite/3.10.0-SNAPSHOT/com.bsiag.scout.rt.ui.swing.laf.rayo.updatesite-3.10.0-SNAPSHOT.zip!/" id="tools-scout-snapshot"/>
-	</location>
-
-
-    <!--location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-      <unit id="org.eclipse.scout.logging.bridges.feature.group" version="0.0.0"/>
-
-      <repository location="http://tools.bsiag.com/marketplace/logging_bridge/3.10/"/>
-    </location-->
-
-    <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-      <unit id="org.eclipse.scout.logging.bridges.feature.group" version="0.0.0"/>
-
-      <repository location="https://scout.bsiag.com/repository/com.bsiag.tools-snapshot-local/org/eclipse/scout/logging/bridges/org.eclipse.scout.logging.bridges-repository/1.1.0-SNAPSHOT/org.eclipse.scout.logging.bridges-repository-1.1.0-SNAPSHOT.zip!/" id="tools-scout-snapshot"/>
+      <repository location="http://tools.bsiag.com/marketplace/rayo/"/>
     </location>
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-      <repository id="rap_incubator_file_2.0" location="http://download.eclipse.org/rt/rap/incubator/2.0/fileupload/"/>
+      <unit id="org.eclipse.scout.docx4j.source.feature.group" version="0.0.0"/>
 
+      <repository location="http://tools.bsiag.com/marketplace/docx4j/"/>
+    </location>
+
+
+    <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+      <unit id="org.eclipse.scout.logging.bridges.source.feature.group" version="0.0.0"/>
+
+      <repository location="http://tools.bsiag.com/marketplace/logging_bridge/"/>
+    </location>
+
+    <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
       <unit id="org.eclipse.rap.fileupload.feature.feature.group" version="0.0.0"/>
+
+      <repository id="rap_incubator_file_2.0" location="http://download.eclipse.org/rt/rap/incubator/2.0/fileupload/"/>
     </location>
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-      <unit id="org.mockito.feature.group" version="0.0.0"/>
-      <unit id="com.bsiag.tools.3rdParty.feature.group" version="0.0.0"/>
-
-      <repository id="marketplace_bsi" location="https://scout.bsiag.com/repository/tools.3rdParty/"/>
-    </location>
-
-    <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-      <repository id="orbit_R" location="http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/"/>
-
       <unit id="org.apache.commons.logging" version="1.1.1.v201101211721"/>
       <unit id="org.apache.commons.logging.source" version="1.1.1.v201101211721"/>
 
@@ -107,6 +76,8 @@
       <unit id="org.jsoup" version="1.7.2.v201304221138"/>
       <unit id="com.thoughtworks.selenium" version="2.25.0.v201212071504"/>
       <unit id="com.thoughtworks.selenium.source" version="2.25.0.v201212071504"/>
+
+      <repository id="orbit_R" location="http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/"/>
     </location>
   </locations>
 </target>
