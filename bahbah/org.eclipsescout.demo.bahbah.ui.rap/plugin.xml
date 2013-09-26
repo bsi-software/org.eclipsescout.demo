@@ -54,17 +54,16 @@
           path="/tablet">
     </entrypoint>
   </extension>
-
   <extension point="org.eclipse.rap.ui.branding">
-    <branding 
-    body="web-resources/startup-body.html" 
-    favicon="web-resources/bahbah.ico" 
-    id="org.eclipsescout.demo.bahbah.ui.rap.branding.web" 
-    themeId="org.eclipse.scout.rt.ui.rap.theme" 
-    title="BahBah">
-      <additionalHeaders>
-        <link href="res/html-styles.css" rel="stylesheet"/>
-      </additionalHeaders>
+    <branding
+          body="web-resources/startup-body.html"
+          favicon="web-resources/bahbah.ico"
+          id="org.eclipsescout.demo.bahbah.ui.rap.branding.web"
+          themeId="org.eclipse.scout.rt.ui.rap.theme"
+          title="BahBah">
+          <additionalHeaders>
+            <link href="res/html-styles.css" rel="stylesheet"/>
+          </additionalHeaders>
     </branding>
     <branding
           body="web-resources/startup-body.html"

@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
@@ -13,10 +13,10 @@ package org.eclipsescout.demo.bahbah.server;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.eclipsescout.demo.bahbah.server.util.UserUtility;
-import org.eclipsescout.demo.bahbah.shared.services.code.UserRoleCodeType;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.server.services.common.jdbc.SQL;
+import org.eclipsescout.demo.bahbah.server.util.UserUtility;
+import org.eclipsescout.demo.bahbah.shared.services.code.UserRoleCodeType;
 
 /**
  * class that installs the bahbah DB schema
@@ -29,7 +29,7 @@ public class DbSetup {
       SQL.insert(" CREATE TABLE TABUSERS (" +
           " u_id BIGINT NOT NULL GENERATED ALWAYS AS IDENTITY CONSTRAINT USERS_PK PRIMARY KEY, " +
           " username VARCHAR(32) NOT NULL, " +
-          " pass VARCHAR(256) NOT NULL, " +
+          " pass VARCHAR(1024) NOT NULL, " +
           " salt VARCHAR(64) NOT NULL, " +
           " permission_id INT NOT NULL, " +
           " icon BLOB " +

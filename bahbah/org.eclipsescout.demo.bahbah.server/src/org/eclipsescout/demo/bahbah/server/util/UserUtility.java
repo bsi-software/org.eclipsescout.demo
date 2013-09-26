@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
@@ -14,13 +14,15 @@ import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
-import org.eclipsescout.demo.bahbah.shared.services.code.UserRoleCodeType;
-import org.eclipsescout.demo.bahbah.shared.util.SharedUserUtility;
 import org.eclipse.scout.commons.Base64Utility;
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.commons.exception.VetoException;
 import org.eclipse.scout.commons.holders.NVPair;
 import org.eclipse.scout.commons.holders.StringHolder;
 import org.eclipse.scout.rt.server.services.common.jdbc.SQL;
+import org.eclipsescout.demo.bahbah.server.ServerSession;
+import org.eclipsescout.demo.bahbah.shared.services.code.UserRoleCodeType;
+import org.eclipsescout.demo.bahbah.shared.util.SharedUserUtility;
 
 public class UserUtility extends SharedUserUtility {
 
@@ -34,6 +36,7 @@ public class UserUtility extends SharedUserUtility {
     try {
       checkUsername(username);
       checkPassword(password);
+      checkPermissionId(permission);
 
       byte[] bSalt = HashUtility.createSalt();
       byte[] bHash = HashUtility.hash(password.getBytes(ENCODING), bSalt);
@@ -60,6 +63,13 @@ public class UserUtility extends SharedUserUtility {
   public static void resetPassword(Long u_Id, String newPassword) throws ProcessingException {
     try {
       checkPassword(newPassword);
+      if (!UserRoleCodeType.AdministratorCode.ID.equals(ServerSession.get().getPermission().getId())) {
+        // I am not an administrator -> can only reset my own password
+        Long myUserId = Long.parseLong(ServerSession.get().getUserId());
+        if (!myUserId.equals(u_Id)) {
+          throw new VetoException();
+        }
+      }
 
       byte[] bSalt = HashUtility.createSalt();
       byte[] bHash = HashUtility.hash(newPassword.getBytes(ENCODING), bSalt);
@@ -91,7 +101,9 @@ public class UserUtility extends SharedUserUtility {
       if (pass == null || salt == null) {
         // user was not found: to prevent time attacks even though check the passwords
         // will always return false
-        return areEqual("c29tZXRoaW5n", "dummy", "c29tZXNhbHQ=");
+        pass = "c29tZXRoaW5n";
+        password = "dummy";
+        salt = "c29tZXNhbHQ=";
       }
       return areEqual(pass, password, salt);
     }
@@ -103,6 +115,19 @@ public class UserUtility extends SharedUserUtility {
     }
   }
 
+  /**
+   * Checks if the given two passwords have equal hashes using the given salt.
+   * 
+   * @param pass1
+   *          String containing the Base64 encoded password hash to check against.
+   * @param pass2
+   *          String containing the clear text password to check.
+   * @param salt
+   *          The salt (Base64 encoded) to use for hashing.
+   * @return True if the hash of pass2 is equal with pass1 using the given salt.
+   * @throws UnsupportedEncodingException
+   * @throws NoSuchAlgorithmException
+   */
   private static boolean areEqual(String pass1, String pass2, String salt) throws UnsupportedEncodingException, NoSuchAlgorithmException {
     byte[] bPass = Base64Utility.decode(pass1);
     byte[] bSalt = Base64Utility.decode(salt);

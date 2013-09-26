@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
@@ -14,6 +14,17 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.commons.exception.VetoException;
+import org.eclipse.scout.commons.holders.IntegerHolder;
+import org.eclipse.scout.commons.holders.NVPair;
+import org.eclipse.scout.rt.server.services.common.jdbc.SQL;
+import org.eclipse.scout.rt.shared.TEXTS;
+import org.eclipse.scout.rt.shared.services.common.code.CODES;
+import org.eclipse.scout.rt.shared.services.common.code.ICode;
+import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
+import org.eclipse.scout.service.AbstractService;
+import org.eclipse.scout.service.SERVICES;
 import org.eclipsescout.demo.bahbah.server.ServerSession;
 import org.eclipsescout.demo.bahbah.server.util.UserUtility;
 import org.eclipsescout.demo.bahbah.shared.security.CreateUserPermission;
@@ -26,17 +37,6 @@ import org.eclipsescout.demo.bahbah.shared.services.code.UserRoleCodeType;
 import org.eclipsescout.demo.bahbah.shared.services.process.INotificationProcessService;
 import org.eclipsescout.demo.bahbah.shared.services.process.IUserProcessService;
 import org.eclipsescout.demo.bahbah.shared.services.process.UserFormData;
-import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.exception.VetoException;
-import org.eclipse.scout.commons.holders.IntegerHolder;
-import org.eclipse.scout.commons.holders.NVPair;
-import org.eclipse.scout.rt.server.services.common.jdbc.SQL;
-import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.services.common.code.CODES;
-import org.eclipse.scout.rt.shared.services.common.code.ICode;
-import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
-import org.eclipse.scout.service.AbstractService;
-import org.eclipse.scout.service.SERVICES;
 import org.osgi.framework.ServiceRegistration;
 
 public class UserProcessService extends AbstractService implements IUserProcessService {
@@ -78,7 +78,7 @@ public class UserProcessService extends AbstractService implements IUserProcessS
   }
 
   @Override
-  public void deleteUser(Long[] u_id) throws ProcessingException {
+  public void deleteUsers(Long[] u_id) throws ProcessingException {
     if (!ACCESS.check(new DeleteUserPermission())) {
       throw new VetoException(TEXTS.get("AuthorizationFailed"));
     }
@@ -86,8 +86,9 @@ public class UserProcessService extends AbstractService implements IUserProcessS
     // check that we are not deleting ourselves
     IntegerHolder holder = new IntegerHolder();
     SQL.selectInto("SELECT u_id FROM TABUSERS WHERE username = :username INTO :myId", new NVPair("myId", holder), new NVPair("username", ServerSession.get().getUserId()));
+    Long myId = Long.valueOf(holder.getValue());
     for (Long uid : u_id) {
-      if (uid.equals(holder.getValue().longValue())) {
+      if (uid.equals(myId)) {
         throw new VetoException(TEXTS.get("CannotDeleteYourself"));
       }
     }
@@ -102,6 +103,8 @@ public class UserProcessService extends AbstractService implements IUserProcessS
     if (!ACCESS.check(new UpdateUserPermission())) {
       throw new VetoException(TEXTS.get("AuthorizationFailed"));
     }
+    UserUtility.checkUsername(formData.getUsername().getValue());
+    UserUtility.checkPermissionId(formData.getUserRole().getValue());
 
     SQL.update("UPDATE TABUSERS SET username = :newUsername, permission_id = :newPermId WHERE u_id = :uid",
         new NVPair("newUsername", formData.getUsername().getValue()), new NVPair("newPermId", formData.getUserRole().getValue()), new NVPair("uid", formData.getUserId()));
@@ -122,14 +125,14 @@ public class UserProcessService extends AbstractService implements IUserProcessS
       throw new VetoException(TEXTS.get("AuthorizationFailed"));
     }
 
-    return m_users;
+    return Collections.unmodifiableSet(m_users);
   }
 
   @SuppressWarnings("unchecked")
   @Override
-  public ICode<Integer> getUserPermission(String userName) throws ProcessingException {
+  public ICode<Integer> getUserPermission() throws ProcessingException {
     IntegerHolder ih = new IntegerHolder(0);
-    SQL.selectInto("SELECT permission_id FROM TABUSERS WHERE username = :username INTO :permission", new NVPair("username", userName), new NVPair("permission", ih));
+    SQL.selectInto("SELECT permission_id FROM TABUSERS WHERE username = :username INTO :permission", new NVPair("username", ServerSession.get().getUserId()), new NVPair("permission", ih));
 
     return CODES.getCodeType(UserRoleCodeType.class).getCode(ih.getValue());
   }

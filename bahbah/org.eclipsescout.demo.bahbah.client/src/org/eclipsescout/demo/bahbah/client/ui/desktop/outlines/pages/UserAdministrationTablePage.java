@@ -276,7 +276,7 @@ public class UserAdministrationTablePage extends AbstractPageWithTable<UserAdmin
       @Override
       protected void execAction() throws ProcessingException {
         if (MessageBox.showDeleteConfirmationMessage(TEXTS.get("Users"), getUsernameColumn().getValues(getSelectedRows()))) {
-          SERVICES.getService(IUserProcessService.class).deleteUser(getUserIdColumn().getValues(getSelectedRows()));
+          SERVICES.getService(IUserProcessService.class).deleteUsers(getUserIdColumn().getValues(getSelectedRows()));
           reloadPage();
         }
       }

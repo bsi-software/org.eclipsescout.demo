@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
@@ -18,7 +18,9 @@ import org.eclipse.scout.service.IService;
 @InputValidation(IValidationStrategy.NO_CHECK.class)
 public interface INotificationProcessService extends IService {
 
-  public void sendRefreshBuddies() throws ProcessingException;
+  int MESSAGE_MAX_LENGTH = 5000;
 
-  public void sendMessage(String buddyName, String message) throws ProcessingException;
+  void sendRefreshBuddies() throws ProcessingException;
+
+  void sendMessage(String buddyName, String message) throws ProcessingException;
 }

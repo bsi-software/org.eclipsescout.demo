@@ -4,24 +4,12 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
 package org.eclipsescout.demo.bahbah.client.ui.forms;
 
-import org.eclipsescout.demo.bahbah.client.ui.forms.UserForm.MainBox.UserBox.CancelButton;
-import org.eclipsescout.demo.bahbah.client.ui.forms.UserForm.MainBox.UserBox.OkButton;
-import org.eclipsescout.demo.bahbah.client.ui.forms.UserForm.MainBox.UserBox.PasswordField;
-import org.eclipsescout.demo.bahbah.client.ui.forms.UserForm.MainBox.UserBox.UserRoleField;
-import org.eclipsescout.demo.bahbah.client.ui.forms.UserForm.MainBox.UserBox.UsernameField;
-import org.eclipsescout.demo.bahbah.shared.security.CreateUserPermission;
-import org.eclipsescout.demo.bahbah.shared.security.UpdateUserPermission;
-import org.eclipsescout.demo.bahbah.shared.services.code.UserRoleCodeType;
-import org.eclipsescout.demo.bahbah.shared.services.code.UserRoleCodeType.UserCode;
-import org.eclipsescout.demo.bahbah.shared.services.process.IUserProcessService;
-import org.eclipsescout.demo.bahbah.shared.services.process.UserFormData;
-import org.eclipsescout.demo.bahbah.shared.util.SharedUserUtility;
 import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.commons.annotations.FormData.SdkCommand;
 import org.eclipse.scout.commons.annotations.Order;
@@ -36,6 +24,18 @@ import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringFiel
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.service.SERVICES;
+import org.eclipsescout.demo.bahbah.client.ui.forms.UserForm.MainBox.UserBox.CancelButton;
+import org.eclipsescout.demo.bahbah.client.ui.forms.UserForm.MainBox.UserBox.OkButton;
+import org.eclipsescout.demo.bahbah.client.ui.forms.UserForm.MainBox.UserBox.PasswordField;
+import org.eclipsescout.demo.bahbah.client.ui.forms.UserForm.MainBox.UserBox.UserRoleField;
+import org.eclipsescout.demo.bahbah.client.ui.forms.UserForm.MainBox.UserBox.UsernameField;
+import org.eclipsescout.demo.bahbah.shared.security.CreateUserPermission;
+import org.eclipsescout.demo.bahbah.shared.security.UpdateUserPermission;
+import org.eclipsescout.demo.bahbah.shared.services.code.UserRoleCodeType;
+import org.eclipsescout.demo.bahbah.shared.services.code.UserRoleCodeType.UserCode;
+import org.eclipsescout.demo.bahbah.shared.services.process.IUserProcessService;
+import org.eclipsescout.demo.bahbah.shared.services.process.UserFormData;
+import org.eclipsescout.demo.bahbah.shared.util.SharedUserUtility;
 
 @FormData(value = UserFormData.class, sdkCommand = SdkCommand.CREATE)
 public class UserForm extends AbstractForm {
@@ -124,7 +124,7 @@ public class UserForm extends AbstractForm {
 
         @Override
         protected int getConfiguredMaxLength() {
-          return 32;
+          return SharedUserUtility.MAX_USERNAME_LENGTH;
         }
 
         @Override
@@ -154,7 +154,7 @@ public class UserForm extends AbstractForm {
 
         @Override
         protected int getConfiguredMaxLength() {
-          return 64;
+          return SharedUserUtility.MAX_PASSWORD_LENGTH;
         }
 
         @Override

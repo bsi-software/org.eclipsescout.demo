@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
@@ -18,8 +18,6 @@ import java.io.ByteArrayOutputStream;
 
 import javax.imageio.ImageIO;
 
-import org.eclipsescout.demo.bahbah.shared.security.UpdateIconPermission;
-import org.eclipsescout.demo.bahbah.shared.services.process.IIconProcessService;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.exception.VetoException;
 import org.eclipse.scout.commons.holders.ByteArrayHolder;
@@ -28,6 +26,9 @@ import org.eclipse.scout.rt.server.services.common.jdbc.SQL;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
 import org.eclipse.scout.service.AbstractService;
+import org.eclipsescout.demo.bahbah.server.ServerSession;
+import org.eclipsescout.demo.bahbah.shared.security.UpdateIconPermission;
+import org.eclipsescout.demo.bahbah.shared.services.process.IIconProcessService;
 
 public class IconProcessService extends AbstractService implements IIconProcessService {
   public final static int MAX_SIZE = 16;
@@ -68,23 +69,24 @@ public class IconProcessService extends AbstractService implements IIconProcessS
   @Override
   public byte[] loadIcon(String name) throws ProcessingException {
     ByteArrayHolder iconHolder = new ByteArrayHolder();
-    SQL.selectInto("SELECT icon INTO :icon FROM TABUSERS WHERE username = :name",
-        new NVPair("icon", iconHolder), new NVPair("name", name));
+    SQL.selectInto("SELECT icon INTO :icon FROM TABUSERS WHERE username = :name", new NVPair("icon", iconHolder), new NVPair("name", name));
     return iconHolder.getValue();
   }
 
   @Override
-  public void saveIcon(String name, byte[] icon) throws ProcessingException {
+  public void saveIcon(byte[] icon) throws ProcessingException {
+    // permission validation
     if (!ACCESS.check(new UpdateIconPermission())) {
       throw new VetoException(TEXTS.get("AuthorizationFailed"));
     }
+
+    // input validation
     byte[] resizedIcon = resize(icon);
     if (resizedIcon == null) {
-      throw new VetoException("Icon is invalid and could not save icon.");
+      throw new VetoException();
     }
 
     //store in database
-    SQL.update("UPDATE TABUSERS SET icon = :icon WHERE username = :userId",
-        new NVPair("name", name), new NVPair("icon", resizedIcon));
+    SQL.update("UPDATE TABUSERS SET icon = :icon WHERE username = :userId", new NVPair("name", ServerSession.get().getUserId()), new NVPair("icon", resizedIcon));
   }
 }

@@ -4,17 +4,12 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
 package org.eclipsescout.demo.bahbah.client.ui.forms;
 
-import org.eclipsescout.demo.bahbah.client.ClientSession;
-import org.eclipsescout.demo.bahbah.client.ui.forms.IconChooserForm.MainBox.CancelButton;
-import org.eclipsescout.demo.bahbah.client.ui.forms.IconChooserForm.MainBox.IconField;
-import org.eclipsescout.demo.bahbah.client.ui.forms.IconChooserForm.MainBox.OkButton;
-import org.eclipsescout.demo.bahbah.shared.services.process.IIconProcessService;
 import org.eclipse.scout.commons.IOUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
@@ -26,6 +21,10 @@ import org.eclipse.scout.rt.client.ui.form.fields.filechooserfield.AbstractFileC
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.service.SERVICES;
+import org.eclipsescout.demo.bahbah.client.ui.forms.IconChooserForm.MainBox.CancelButton;
+import org.eclipsescout.demo.bahbah.client.ui.forms.IconChooserForm.MainBox.IconField;
+import org.eclipsescout.demo.bahbah.client.ui.forms.IconChooserForm.MainBox.OkButton;
+import org.eclipsescout.demo.bahbah.shared.services.process.IIconProcessService;
 
 public class IconChooserForm extends AbstractForm {
 
@@ -96,7 +95,7 @@ public class IconChooserForm extends AbstractForm {
     protected void execStore() throws ProcessingException {
       String filename = getIconField().getValue();
       byte[] content = IOUtility.getContent(filename);
-      SERVICES.getService(IIconProcessService.class).saveIcon(ClientSession.get().getUserId(), content);
+      SERVICES.getService(IIconProcessService.class).saveIcon(content);
     }
   }
 }

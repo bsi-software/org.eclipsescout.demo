@@ -14,7 +14,6 @@ import java.security.AccessController;
 
 import javax.security.auth.Subject;
 
-import org.eclipsescout.demo.bahbah.shared.services.process.IUserProcessService;
 import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
@@ -23,6 +22,7 @@ import org.eclipse.scout.rt.server.AbstractServerSession;
 import org.eclipse.scout.rt.server.ServerJob;
 import org.eclipse.scout.rt.shared.services.common.code.ICode;
 import org.eclipse.scout.service.SERVICES;
+import org.eclipsescout.demo.bahbah.shared.services.process.IUserProcessService;
 
 public class ServerSession extends AbstractServerSession {
 
@@ -55,7 +55,7 @@ public class ServerSession extends AbstractServerSession {
     if (getUserId() != null && Subject.getSubject(AccessController.getContext()) != Activator.getDefault().getBackendSubject()) {
       logger.info("created a new session for " + getUserId());
 
-      setPermission(SERVICES.getService(IUserProcessService.class).getUserPermission(getUserId()));
+      setPermission(SERVICES.getService(IUserProcessService.class).getUserPermission());
 
       SERVICES.getService(IUserProcessService.class).registerUser();
     }

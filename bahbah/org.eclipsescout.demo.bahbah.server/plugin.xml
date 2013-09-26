@@ -98,7 +98,7 @@
          name=""
          point="org.eclipse.scout.http.servletfilter.filters">
       <filter
-            aliases="/process"
+            aliases="/process /remotefiles /updatesite"
             class="org.eclipsescout.demo.bahbah.server.security.BasicForwardSecurityFilter"
             ranking="20">
       </filter>
@@ -139,5 +139,4 @@
          </property>
       </product>
    </extension>
-
 </plugin>

@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
@@ -12,11 +12,6 @@ package org.eclipsescout.demo.bahbah.client.ui.forms;
 
 import java.util.Date;
 
-import org.eclipsescout.demo.bahbah.client.services.BuddyIconProviderService;
-import org.eclipsescout.demo.bahbah.client.ui.forms.ChatForm.MainBox.HistoryField;
-import org.eclipsescout.demo.bahbah.client.ui.forms.ChatForm.MainBox.MessageField;
-import org.eclipsescout.demo.bahbah.shared.services.process.ChatFormData;
-import org.eclipsescout.demo.bahbah.shared.services.process.INotificationProcessService;
 import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.commons.annotations.FormData.SdkCommand;
@@ -38,8 +33,12 @@ import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.data.basic.FontSpec;
 import org.eclipse.scout.service.SERVICES;
+import org.eclipsescout.demo.bahbah.client.services.BuddyIconProviderService;
+import org.eclipsescout.demo.bahbah.client.ui.forms.ChatForm.MainBox.HistoryField;
+import org.eclipsescout.demo.bahbah.client.ui.forms.ChatForm.MainBox.MessageField;
+import org.eclipsescout.demo.bahbah.shared.services.process.INotificationProcessService;
 
-@FormData(value = ChatFormData.class, sdkCommand = SdkCommand.CREATE)
+@FormData(sdkCommand = SdkCommand.IGNORE)
 public class ChatForm extends AbstractForm {
 
   private String m_buddyName;
@@ -114,6 +113,11 @@ public class ChatForm extends AbstractForm {
       @Override
       protected boolean getConfiguredLabelVisible() {
         return false;
+      }
+
+      @Override
+      protected int getConfiguredMaxLength() {
+        return INotificationProcessService.MESSAGE_MAX_LENGTH;
       }
     }
 
@@ -239,6 +243,11 @@ public class ChatForm extends AbstractForm {
 
         @Order(50.0)
         public class TimeColumn extends AbstractTimeColumn {
+
+          @Override
+          protected boolean getConfiguredAlwaysIncludeSortAtBegin() {
+            return true;
+          }
 
           @Override
           protected String getConfiguredFormat() {
