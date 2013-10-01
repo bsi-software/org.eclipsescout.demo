@@ -23,10 +23,12 @@ import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractSmartColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithTable;
+import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
 import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
 import org.eclipsescout.demo.widgets.client.services.lookup.CompanyTypeLookupCall;
+import org.eclipsescout.demo.widgets.client.ui.template.menu.AbstractExportToExcelMenu;
 import org.eclipsescout.demo.widgets.client.ui.template.menu.AbstractViewSourceOnGitHubMenu;
 
 public class PageWithTableTablePage extends AbstractPageWithTable<PageWithTableTablePage.Table> {
@@ -198,24 +200,23 @@ public class PageWithTableTablePage extends AbstractPageWithTable<PageWithTableT
         return CompanyTypeLookupCall.class;
       }
     }
+  }
 
-    @Order(10.0)
-    public class ViewSourceOnGitHubMenu extends AbstractViewSourceOnGitHubMenu {
+  @Order(10.0)
+  public class ViewSourceOnGitHubMenu extends AbstractViewSourceOnGitHubMenu {
 
-      @Override
-      protected boolean getConfiguredEmptySpaceAction() {
-        return true;
-      }
+    @Override
+    protected Class<?> provideSourceClass() {
+      return PageWithTableTablePage.class;
+    }
+  }
 
-      @Override
-      protected boolean getConfiguredSingleSelectionAction() {
-        return false;
-      }
+  @Order(20.0)
+  public class ExportToExcelMenu extends AbstractExportToExcelMenu {
 
-      @Override
-      protected Class<?> provideSourceClass() {
-        return PageWithTableTablePage.class;
-      }
+    @Override
+    protected IPage providePage() {
+      return PageWithTableTablePage.this;
     }
   }
 }

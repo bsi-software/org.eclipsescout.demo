@@ -12,11 +12,13 @@ package org.eclipsescout.demo.widgets.client.ui.desktop.outlines.pages;
 
 import java.util.Collection;
 
+import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNodes;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
-import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.AbstractIcons;
+import org.eclipse.scout.rt.shared.TEXTS;
+import org.eclipsescout.demo.widgets.client.ui.template.menu.AbstractExportToExcelMenu;
 
 public class PagesNodePage extends AbstractPageWithNodes {
 
@@ -39,5 +41,14 @@ public class PagesNodePage extends AbstractPageWithNodes {
     pageList.add(pageWithNodesNodePage);
     PageWithADetailformTablePage pageWithADetailformPage = new PageWithADetailformTablePage();
     pageList.add(pageWithADetailformPage);
+  }
+
+  @Order(10.0)
+  public class ExportToExcelMenu extends AbstractExportToExcelMenu {
+
+    @Override
+    protected IPage providePage() {
+      return PagesNodePage.this;
+    }
   }
 }
