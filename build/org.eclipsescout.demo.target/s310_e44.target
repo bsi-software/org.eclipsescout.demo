@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <?pde version="3.6"?>
-<target name="Demo Widget App Scout 3.10 (Nightly Builds) Eclipse 4.4 Target" sequenceNumber="15">
+<target name="Demo Widget App Scout 3.10 (Release Builds) Eclipse 4.4 Target" sequenceNumber="15">
   <locations>
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
       <unit id="org.eclipse.equinox.executable.feature.group" version="0.0.0"/>
@@ -24,7 +24,7 @@
 
       <unit id="org.eclipse.scout.rt.ui.rap.incubator.filechooser.source.feature.group" version="0.0.0"/>
 
-      <repository id="scout_nightly" location="http://download.eclipse.org/scout/nightly/"/>
+      <repository location="http://download.eclipse.org/scout/releases/3.10"/>
     </location>
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
@@ -36,20 +36,20 @@
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
       <unit id="com.bsiag.scout.rt.ui.swing.laf.rayo.source.feature.group" version="0.0.0"/>
 
-      <repository location="http://tools.bsiag.com/marketplace/rayo/"/>
+      <repository location="http://tools.bsiag.com/marketplace/rayo/3.10"/>
     </location>
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
       <unit id="org.eclipse.scout.docx4j.source.feature.group" version="0.0.0"/>
 
-      <repository location="http://tools.bsiag.com/marketplace/docx4j/"/>
+      <repository location="http://tools.bsiag.com/marketplace/docx4j/3.10"/>
     </location>
 
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
       <unit id="org.eclipse.scout.logging.bridges.source.feature.group" version="0.0.0"/>
 
-      <repository location="http://tools.bsiag.com/marketplace/logging_bridge/"/>
+      <repository location="http://tools.bsiag.com/marketplace/logging_bridge/3.10"/>
     </location>
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
