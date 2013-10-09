@@ -12,13 +12,14 @@ package org.eclipsescout.demo.widgets.client;
 
 import java.util.Locale;
 
+import org.eclipse.scout.commons.UriUtility;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.client.AbstractClientSession;
 import org.eclipse.scout.rt.client.ClientJob;
 import org.eclipse.scout.rt.client.services.common.bookmark.IBookmarkService;
-import org.eclipse.scout.rt.client.servicetunnel.http.HttpServiceTunnel;
+import org.eclipse.scout.rt.client.servicetunnel.http.ClientHttpServiceTunnel;
 import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipse.scout.rt.shared.services.common.ping.IPingService;
 import org.eclipse.scout.service.SERVICES;
@@ -55,7 +56,7 @@ public class ClientSession extends AbstractClientSession {
       logger.warn("starting client without a server!");
     }
     else {
-      setServiceTunnel(new HttpServiceTunnel(this, getBundle().getBundleContext().getProperty("server.url"), (String) getBundle().getHeaders().get("Bundle-Version")));
+      setServiceTunnel(new ClientHttpServiceTunnel(this, UriUtility.toUrl(getBundle().getBundleContext().getProperty("server.url")), (String) getBundle().getHeaders().get("Bundle-Version")));
     }
 
     CODES.getAllCodeTypes(org.eclipsescout.demo.widgets.shared.Activator.PLUGIN_ID);

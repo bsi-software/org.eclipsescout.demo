@@ -10,9 +10,7 @@
  ******************************************************************************/
 package org.eclipsescout.demo.bahbah.client;
 
-import org.eclipsescout.demo.bahbah.client.services.IBahBahNotificationConsumerService;
-import org.eclipsescout.demo.bahbah.client.ui.desktop.Desktop;
-import org.eclipsescout.demo.bahbah.shared.services.process.IUserProcessService;
+import org.eclipse.scout.commons.UriUtility;
 import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
@@ -20,10 +18,13 @@ import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.client.AbstractClientSession;
 import org.eclipse.scout.rt.client.ClientJob;
 import org.eclipse.scout.rt.client.services.common.clientnotification.IClientNotificationConsumerService;
-import org.eclipse.scout.rt.client.servicetunnel.http.HttpServiceTunnel;
+import org.eclipse.scout.rt.client.servicetunnel.http.ClientHttpServiceTunnel;
 import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipse.scout.rt.shared.services.common.code.ICode;
 import org.eclipse.scout.service.SERVICES;
+import org.eclipsescout.demo.bahbah.client.services.IBahBahNotificationConsumerService;
+import org.eclipsescout.demo.bahbah.client.ui.desktop.Desktop;
+import org.eclipsescout.demo.bahbah.shared.services.process.IUserProcessService;
 
 public class ClientSession extends AbstractClientSession {
   private static IScoutLogger logger = ScoutLogManager.getLogger(ClientSession.class);
@@ -47,7 +48,7 @@ public class ClientSession extends AbstractClientSession {
 
   @Override
   public void execLoadSession() throws ProcessingException {
-    setServiceTunnel(new HttpServiceTunnel(this, getBundle().getBundleContext().getProperty("server.url")));
+    setServiceTunnel(new ClientHttpServiceTunnel(this, UriUtility.toUrl(getBundle().getBundleContext().getProperty("server.url"))));
 
     //pre-load all known code types
     CODES.getAllCodeTypes(org.eclipsescout.demo.bahbah.shared.Activator.PLUGIN_ID);
