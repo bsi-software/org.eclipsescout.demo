@@ -10,11 +10,20 @@
  ******************************************************************************/
 package org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.searchform;
 
+import java.util.Map;
+
 import org.eclipse.scout.rt.shared.data.form.AbstractFormData;
 import org.eclipse.scout.rt.shared.data.form.ValidationRule;
 import org.eclipse.scout.rt.shared.data.form.fields.AbstractValueFieldData;
 
+/**
+ * <b>NOTE:</b><br>
+ * This class is auto generated, no manual modifications recommended.
+ * 
+ * @generated
+ */
 public class CompanySearchFormData extends AbstractFormData {
+
   private static final long serialVersionUID = 1L;
 
   public CompanySearchFormData() {
@@ -29,6 +38,7 @@ public class CompanySearchFormData extends AbstractFormData {
   }
 
   public static class Name extends AbstractValueFieldData<String> {
+
     private static final long serialVersionUID = 1L;
 
     public Name() {
@@ -38,13 +48,14 @@ public class CompanySearchFormData extends AbstractFormData {
      * list of derived validation rules.
      */
     @Override
-    protected void initValidationRules(java.util.Map<String, Object> ruleMap) {
+    protected void initValidationRules(Map<String, Object> ruleMap) {
       super.initValidationRules(ruleMap);
       ruleMap.put(ValidationRule.MAX_LENGTH, 4000);
     }
   }
 
   public static class ShortName extends AbstractValueFieldData<String> {
+
     private static final long serialVersionUID = 1L;
 
     public ShortName() {
@@ -54,7 +65,7 @@ public class CompanySearchFormData extends AbstractFormData {
      * list of derived validation rules.
      */
     @Override
-    protected void initValidationRules(java.util.Map<String, Object> ruleMap) {
+    protected void initValidationRules(Map<String, Object> ruleMap) {
       super.initValidationRules(ruleMap);
       ruleMap.put(ValidationRule.MAX_LENGTH, 4000);
     }

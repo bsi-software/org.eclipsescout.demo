@@ -14,7 +14,14 @@ import org.eclipse.scout.rt.shared.data.form.AbstractFormData;
 import org.eclipse.scout.rt.shared.data.form.fields.tablefield.AbstractTableFieldData;
 import org.eclipsescout.demo.minifigcreator.shared.minifig.part.Part;
 
+/**
+ * <b>NOTE:</b><br>
+ * This class is auto generated, no manual modifications recommended.
+ * 
+ * @generated
+ */
 public class ServerFormData extends AbstractFormData {
+
   private static final long serialVersionUID = 1L;
 
   public ServerFormData() {
@@ -25,46 +32,46 @@ public class ServerFormData extends AbstractFormData {
   }
 
   public static class Table extends AbstractTableFieldData {
+
     private static final long serialVersionUID = 1L;
-
-    public Table() {
-    }
-
     public static final int PART_COLUMN_ID = 0;
     public static final int TYPE_COLUMN_ID = 1;
     public static final int NAME_COLUMN_ID = 2;
     public static final int QUANTITY_COLUMN_ID = 3;
 
-    public void setPart(int row, Part part) {
-      setValueInternal(row, PART_COLUMN_ID, part);
-    }
-
-    public Part getPart(int row) {
-      return (Part) getValueInternal(row, PART_COLUMN_ID);
-    }
-
-    public void setType(int row, String type) {
-      setValueInternal(row, TYPE_COLUMN_ID, type);
-    }
-
-    public String getType(int row) {
-      return (String) getValueInternal(row, TYPE_COLUMN_ID);
-    }
-
-    public void setName(int row, String name) {
-      setValueInternal(row, NAME_COLUMN_ID, name);
+    public Table() {
     }
 
     public String getName(int row) {
       return (String) getValueInternal(row, NAME_COLUMN_ID);
     }
 
-    public void setQuantity(int row, Integer quantity) {
-      setValueInternal(row, QUANTITY_COLUMN_ID, quantity);
+    public void setName(int row, String name) {
+      setValueInternal(row, NAME_COLUMN_ID, name);
+    }
+
+    public Part getPart(int row) {
+      return (Part) getValueInternal(row, PART_COLUMN_ID);
+    }
+
+    public void setPart(int row, Part part) {
+      setValueInternal(row, PART_COLUMN_ID, part);
     }
 
     public Integer getQuantity(int row) {
       return (Integer) getValueInternal(row, QUANTITY_COLUMN_ID);
+    }
+
+    public void setQuantity(int row, Integer quantity) {
+      setValueInternal(row, QUANTITY_COLUMN_ID, quantity);
+    }
+
+    public String getType(int row) {
+      return (String) getValueInternal(row, TYPE_COLUMN_ID);
+    }
+
+    public void setType(int row, String type) {
+      setValueInternal(row, TYPE_COLUMN_ID, type);
     }
 
     @Override
