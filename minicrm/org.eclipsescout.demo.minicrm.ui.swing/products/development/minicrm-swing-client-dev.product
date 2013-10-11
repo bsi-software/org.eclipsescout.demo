@@ -10,7 +10,8 @@
    </configIni>
 
    <launcherArgs>
-      <programArgsMac>--launcher.secondThread</programArgsMac>
+      <programArgsMac>--launcher.secondThread
+-nosplash</programArgsMac>
       <vmArgs>-Xms64m
 -Xmx512m
 -XX:MaxPermSize=256m</vmArgs>

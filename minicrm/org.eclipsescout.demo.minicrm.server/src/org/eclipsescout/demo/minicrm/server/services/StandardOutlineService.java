@@ -11,17 +11,22 @@
 package org.eclipsescout.demo.minicrm.server.services;
 
 import org.eclipse.scout.commons.StringUtility;
+import org.eclipse.scout.commons.TypeCastUtility;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.server.services.common.jdbc.SQL;
 import org.eclipse.scout.service.AbstractService;
 import org.eclipsescout.demo.minicrm.shared.services.IStandardOutlineService;
+import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.CompanyTablePageData;
+import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.CompanyTablePageData.CompanyTablePageRowData;
+import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.PersonTablePageData;
+import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.PersonTablePageData.PersonTablePageRowData;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.searchform.CompanySearchFormData;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.searchform.PersonSearchFormData;
 
 public class StandardOutlineService extends AbstractService implements IStandardOutlineService {
 
   @Override
-  public Object[][] getCompanyTableData(CompanySearchFormData formData) throws ProcessingException {
+  public CompanyTablePageData getCompanyTableData(CompanySearchFormData formData) throws ProcessingException {
     StringBuilder statement = new StringBuilder();
     statement.append(
         "SELECT COMPANY_NR, " +
@@ -36,11 +41,23 @@ public class StandardOutlineService extends AbstractService implements IStandard
     if (!StringUtility.isNullOrEmpty(formData.getName().getValue())) {
       statement.append("AND UPPER(NAME) LIKE UPPER(:name || '%')");
     }
-    return SQL.select(statement.toString(), formData);
+
+    Object[][] data = SQL.select(statement.toString(), formData);
+
+    //Workaround Bug 419140:
+    CompanyTablePageData pageData = new CompanyTablePageData();
+    for (Object[] sqlDataRow : data) {
+      CompanyTablePageRowData r = pageData.addRow();
+      r.setCompanyNr(TypeCastUtility.castValue(sqlDataRow[0], Long.class));
+      r.setShortName(TypeCastUtility.castValue(sqlDataRow[1], String.class));
+      r.setName(TypeCastUtility.castValue(sqlDataRow[2], String.class));
+      r.setCompanyType(TypeCastUtility.castValue(sqlDataRow[3], Long.class));
+    }
+    return pageData;
   }
 
   @Override
-  public Object[][] getPersonTableData(PersonSearchFormData formData) throws ProcessingException {
+  public PersonTablePageData getPersonTableData(PersonSearchFormData formData) throws ProcessingException {
 
     StringBuilder statement = new StringBuilder();
     statement.append("SELECT PERSON_NR, LAST_NAME, FIRST_NAME FROM PERSON WHERE 1=1 ");
@@ -57,6 +74,16 @@ public class StandardOutlineService extends AbstractService implements IStandard
     else if (formData.getEmployerType().getValue() != null) {
       statement.append("AND COMPANY_NR IN (SELECT COMPANY_NR FROM COMPANY WHERE TYPE_UID = :employerType) ");
     }
-    return SQL.select(statement.toString(), formData);
+
+    //Workaround Bug 419140:
+    Object[][] data = SQL.select(statement.toString(), formData);
+    PersonTablePageData pageData = new PersonTablePageData();
+    for (Object[] sqlDataRow : data) {
+      PersonTablePageRowData r = pageData.addRow();
+      r.setPersonNr(TypeCastUtility.castValue(sqlDataRow[0], Long.class));
+      r.setLastName(TypeCastUtility.castValue(sqlDataRow[1], String.class));
+      r.setFirstName(TypeCastUtility.castValue(sqlDataRow[2], String.class));
+    }
+    return pageData;
   }
 }

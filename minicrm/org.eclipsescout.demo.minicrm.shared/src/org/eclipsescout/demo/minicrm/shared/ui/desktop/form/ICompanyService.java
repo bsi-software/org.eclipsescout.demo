@@ -18,11 +18,11 @@ import org.eclipse.scout.service.IService2;
 @InputValidation(IValidationStrategy.PROCESS.class)
 public interface ICompanyService extends IService2 {
 
-  CompanyFormData prepareCreate(CompanyFormData formData) throws ProcessingException;
-
   CompanyFormData create(CompanyFormData formData) throws ProcessingException;
 
   CompanyFormData load(CompanyFormData formData) throws ProcessingException;
+
+  CompanyFormData prepareCreate(CompanyFormData formData) throws ProcessingException;
 
   CompanyFormData store(CompanyFormData formData) throws ProcessingException;
 

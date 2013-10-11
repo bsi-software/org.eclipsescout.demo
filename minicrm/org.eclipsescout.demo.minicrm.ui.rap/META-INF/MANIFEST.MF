@@ -1,4 +1,3 @@
-Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: RAP Bundle
 Bundle-SymbolicName: org.eclipsescout.demo.minicrm.ui.rap;singleton:=true
@@ -18,3 +17,4 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.scout.rt.client.mobile
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
+Manifest-Version: 1.0
