@@ -27,40 +27,40 @@ public class PersonTablePageData extends AbstractTablePageData {
   }
 
   @Override
-  public PersonTablePageRowData addRow() {
-    return (PersonTablePageRowData) super.addRow();
+  public PersonTableRowData addRow() {
+    return (PersonTableRowData) super.addRow();
   }
 
   @Override
-  public PersonTablePageRowData addRow(int rowState) {
-    return (PersonTablePageRowData) super.addRow(rowState);
+  public PersonTableRowData addRow(int rowState) {
+    return (PersonTableRowData) super.addRow(rowState);
   }
 
   @Override
-  public PersonTablePageRowData createRow() {
-    return new PersonTablePageRowData();
+  public PersonTableRowData createRow() {
+    return new PersonTableRowData();
   }
 
   @Override
   public Class<? extends AbstractTableRowData> getRowType() {
-    return PersonTablePageRowData.class;
+    return PersonTableRowData.class;
   }
 
   @Override
-  public PersonTablePageRowData[] getRows() {
-    return (PersonTablePageRowData[]) super.getRows();
+  public PersonTableRowData[] getRows() {
+    return (PersonTableRowData[]) super.getRows();
   }
 
   @Override
-  public PersonTablePageRowData rowAt(int index) {
-    return (PersonTablePageRowData) super.rowAt(index);
+  public PersonTableRowData rowAt(int index) {
+    return (PersonTableRowData) super.rowAt(index);
   }
 
-  public void setRows(PersonTablePageRowData[] rows) {
+  public void setRows(PersonTableRowData[] rows) {
     super.setRows(rows);
   }
 
-  public static class PersonTablePageRowData extends AbstractTableRowData {
+  public static class PersonTableRowData extends AbstractTableRowData {
 
     private static final long serialVersionUID = 1L;
     public static final String personNr = "personNr";
@@ -70,7 +70,7 @@ public class PersonTablePageData extends AbstractTablePageData {
     private String m_lastName;
     private String m_firstName;
 
-    public PersonTablePageRowData() {
+    public PersonTableRowData() {
     }
 
     public Long getPersonNr() {

@@ -17,9 +17,9 @@ import org.eclipse.scout.rt.server.services.common.jdbc.SQL;
 import org.eclipse.scout.service.AbstractService;
 import org.eclipsescout.demo.minicrm.shared.services.IStandardOutlineService;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.CompanyTablePageData;
-import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.CompanyTablePageData.CompanyTablePageRowData;
+import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.CompanyTablePageData.CompanyTableRowData;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.PersonTablePageData;
-import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.PersonTablePageData.PersonTablePageRowData;
+import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.PersonTablePageData.PersonTableRowData;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.searchform.CompanySearchFormData;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.searchform.PersonSearchFormData;
 
@@ -47,7 +47,7 @@ public class StandardOutlineService extends AbstractService implements IStandard
     //Workaround Bug 419140:
     CompanyTablePageData pageData = new CompanyTablePageData();
     for (Object[] sqlDataRow : data) {
-      CompanyTablePageRowData r = pageData.addRow();
+      CompanyTableRowData r = pageData.addRow();
       r.setCompanyNr(TypeCastUtility.castValue(sqlDataRow[0], Long.class));
       r.setShortName(TypeCastUtility.castValue(sqlDataRow[1], String.class));
       r.setName(TypeCastUtility.castValue(sqlDataRow[2], String.class));
@@ -79,7 +79,7 @@ public class StandardOutlineService extends AbstractService implements IStandard
     Object[][] data = SQL.select(statement.toString(), formData);
     PersonTablePageData pageData = new PersonTablePageData();
     for (Object[] sqlDataRow : data) {
-      PersonTablePageRowData r = pageData.addRow();
+      PersonTableRowData r = pageData.addRow();
       r.setPersonNr(TypeCastUtility.castValue(sqlDataRow[0], Long.class));
       r.setLastName(TypeCastUtility.castValue(sqlDataRow[1], String.class));
       r.setFirstName(TypeCastUtility.castValue(sqlDataRow[2], String.class));

@@ -27,40 +27,40 @@ public class CompanyTablePageData extends AbstractTablePageData {
   }
 
   @Override
-  public CompanyTablePageRowData addRow() {
-    return (CompanyTablePageRowData) super.addRow();
+  public CompanyTableRowData addRow() {
+    return (CompanyTableRowData) super.addRow();
   }
 
   @Override
-  public CompanyTablePageRowData addRow(int rowState) {
-    return (CompanyTablePageRowData) super.addRow(rowState);
+  public CompanyTableRowData addRow(int rowState) {
+    return (CompanyTableRowData) super.addRow(rowState);
   }
 
   @Override
-  public CompanyTablePageRowData createRow() {
-    return new CompanyTablePageRowData();
+  public CompanyTableRowData createRow() {
+    return new CompanyTableRowData();
   }
 
   @Override
   public Class<? extends AbstractTableRowData> getRowType() {
-    return CompanyTablePageRowData.class;
+    return CompanyTableRowData.class;
   }
 
   @Override
-  public CompanyTablePageRowData[] getRows() {
-    return (CompanyTablePageRowData[]) super.getRows();
+  public CompanyTableRowData[] getRows() {
+    return (CompanyTableRowData[]) super.getRows();
   }
 
   @Override
-  public CompanyTablePageRowData rowAt(int index) {
-    return (CompanyTablePageRowData) super.rowAt(index);
+  public CompanyTableRowData rowAt(int index) {
+    return (CompanyTableRowData) super.rowAt(index);
   }
 
-  public void setRows(CompanyTablePageRowData[] rows) {
+  public void setRows(CompanyTableRowData[] rows) {
     super.setRows(rows);
   }
 
-  public static class CompanyTablePageRowData extends AbstractTableRowData {
+  public static class CompanyTableRowData extends AbstractTableRowData {
 
     private static final long serialVersionUID = 1L;
     public static final String companyNr = "companyNr";
@@ -72,7 +72,7 @@ public class CompanyTablePageData extends AbstractTablePageData {
     private String m_name;
     private Long m_companyType;
 
-    public CompanyTablePageRowData() {
+    public CompanyTableRowData() {
     }
 
     public Long getCompanyNr() {
