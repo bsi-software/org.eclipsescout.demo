@@ -11,15 +11,13 @@
 package org.eclipsescout.demo.minicrm.server.services;
 
 import org.eclipse.scout.commons.StringUtility;
-import org.eclipse.scout.commons.TypeCastUtility;
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.commons.holders.NVPair;
 import org.eclipse.scout.rt.server.services.common.jdbc.SQL;
 import org.eclipse.scout.service.AbstractService;
 import org.eclipsescout.demo.minicrm.shared.services.IStandardOutlineService;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.CompanyTablePageData;
-import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.CompanyTablePageData.CompanyTableRowData;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.PersonTablePageData;
-import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.PersonTablePageData.PersonTableRowData;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.searchform.CompanySearchFormData;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.searchform.PersonSearchFormData;
 
@@ -41,18 +39,11 @@ public class StandardOutlineService extends AbstractService implements IStandard
     if (!StringUtility.isNullOrEmpty(formData.getName().getValue())) {
       statement.append("AND UPPER(NAME) LIKE UPPER(:name || '%')");
     }
+    statement.append("INTO :{page.companyNr}, :{page.shortName}, :{page.name}, :{page.companyType}");
 
-    Object[][] data = SQL.select(statement.toString(), formData);
-
-    //Workaround Bug 419140:
     CompanyTablePageData pageData = new CompanyTablePageData();
-    for (Object[] sqlDataRow : data) {
-      CompanyTableRowData r = pageData.addRow();
-      r.setCompanyNr(TypeCastUtility.castValue(sqlDataRow[0], Long.class));
-      r.setShortName(TypeCastUtility.castValue(sqlDataRow[1], String.class));
-      r.setName(TypeCastUtility.castValue(sqlDataRow[2], String.class));
-      r.setCompanyType(TypeCastUtility.castValue(sqlDataRow[3], Long.class));
-    }
+    SQL.selectInto(statement.toString(), formData, new NVPair("page", pageData));
+
     return pageData;
   }
 
@@ -74,16 +65,11 @@ public class StandardOutlineService extends AbstractService implements IStandard
     else if (formData.getEmployerType().getValue() != null) {
       statement.append("AND COMPANY_NR IN (SELECT COMPANY_NR FROM COMPANY WHERE TYPE_UID = :employerType) ");
     }
+    statement.append("INTO :{page.personNr}, :{page.lastName}, :{page.firstName}");
 
-    //Workaround Bug 419140:
-    Object[][] data = SQL.select(statement.toString(), formData);
     PersonTablePageData pageData = new PersonTablePageData();
-    for (Object[] sqlDataRow : data) {
-      PersonTableRowData r = pageData.addRow();
-      r.setPersonNr(TypeCastUtility.castValue(sqlDataRow[0], Long.class));
-      r.setLastName(TypeCastUtility.castValue(sqlDataRow[1], String.class));
-      r.setFirstName(TypeCastUtility.castValue(sqlDataRow[2], String.class));
-    }
+    SQL.select(statement.toString(), formData, new NVPair("page", pageData));
+
     return pageData;
   }
 }
