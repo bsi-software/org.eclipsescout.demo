@@ -33,6 +33,7 @@ import org.eclipsescout.demo.bahbah.shared.security.ReadUsersPermission;
 import org.eclipsescout.demo.bahbah.shared.security.RegisterUserPermission;
 import org.eclipsescout.demo.bahbah.shared.security.UnregisterUserPermission;
 import org.eclipsescout.demo.bahbah.shared.security.UpdateUserPermission;
+import org.eclipsescout.demo.bahbah.shared.services.UserAdministrationTablePageData;
 import org.eclipsescout.demo.bahbah.shared.services.code.UserRoleCodeType;
 import org.eclipsescout.demo.bahbah.shared.services.process.INotificationProcessService;
 import org.eclipsescout.demo.bahbah.shared.services.process.IUserProcessService;
@@ -111,12 +112,13 @@ public class UserProcessService extends AbstractService implements IUserProcessS
   }
 
   @Override
-  public Object[][] getUsers() throws ProcessingException {
+  public UserAdministrationTablePageData getUserAdministrationTableData(UserFormData formData) throws ProcessingException {
     if (!ACCESS.check(new ReadUsersPermission())) {
       throw new VetoException(TEXTS.get("AuthorizationFailed"));
     }
-
-    return SQL.select("SELECT u_id, username, permission_id FROM TABUSERS");
+    UserAdministrationTablePageData pageData = new UserAdministrationTablePageData();
+    SQL.selectInto("SELECT u_id, username, permission_id FROM TABUSERS INTO :userId, :username, :role", pageData);
+    return pageData;
   }
 
   @Override
