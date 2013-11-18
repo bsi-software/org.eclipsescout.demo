@@ -17,6 +17,7 @@ import org.eclipse.scout.rt.shared.services.common.code.ICode;
 import org.eclipse.scout.rt.shared.validate.IValidationStrategy;
 import org.eclipse.scout.rt.shared.validate.InputValidation;
 import org.eclipse.scout.service.IService;
+import org.eclipsescout.demo.bahbah.shared.services.UserAdministrationTablePageData;
 
 @InputValidation(IValidationStrategy.PROCESS.class)
 public interface IUserProcessService extends IService {
@@ -31,11 +32,11 @@ public interface IUserProcessService extends IService {
 
   ICode<Integer> getUserPermission() throws ProcessingException;
 
-  Object[][] getUsers() throws ProcessingException;
-
   void deleteUsers(Long[] u_id) throws ProcessingException;
 
   void createUser(UserFormData formData) throws ProcessingException;
 
   void updateUser(UserFormData formData) throws ProcessingException;
+
+  UserAdministrationTablePageData getUserAdministrationTableData(UserFormData formData) throws ProcessingException;
 }

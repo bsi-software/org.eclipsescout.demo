@@ -10,33 +10,24 @@
  ******************************************************************************/
 package org.eclipse.scout.tutorial.jaxws.shared.services.process;
 
+import java.util.Map;
+
+import org.eclipse.scout.rt.shared.data.form.AbstractFormData;
 import org.eclipse.scout.rt.shared.data.form.ValidationRule;
 import org.eclipse.scout.rt.shared.data.form.fields.AbstractValueFieldData;
-import org.eclipse.scout.rt.shared.data.form.AbstractFormData;
 import org.eclipse.scout.rt.shared.data.form.properties.AbstractPropertyData;
 
+/**
+ * <b>NOTE:</b><br>
+ * This class is auto generated, no manual modifications recommended.
+ * 
+ * @generated
+ */
 public class WSLogFormData extends AbstractFormData {
+
   private static final long serialVersionUID = 1L;
 
   public WSLogFormData() {
-  }
-
-  public WSLogNrProperty getWSLogNrProperty() {
-    return getPropertyByClass(WSLogNrProperty.class);
-  }
-
-  /**
-   * access method for property WSLogNr.
-   */
-  public Long getWSLogNr() {
-    return getWSLogNrProperty().getValue();
-  }
-
-  /**
-   * access method for property WSLogNr.
-   */
-  public void setWSLogNr(Long wSLogNr) {
-    getWSLogNrProperty().setValue(wSLogNr);
   }
 
   public Date getDate() {
@@ -63,14 +54,26 @@ public class WSLogFormData extends AbstractFormData {
     return getFieldByClass(Service.class);
   }
 
-  public class WSLogNrProperty extends AbstractPropertyData<Long> {
-    private static final long serialVersionUID = 1L;
+  /**
+   * access method for property WSLogNr.
+   */
+  public Long getWSLogNr() {
+    return getWSLogNrProperty().getValue();
+  }
 
-    public WSLogNrProperty() {
-    }
+  /**
+   * access method for property WSLogNr.
+   */
+  public void setWSLogNr(Long wSLogNr) {
+    getWSLogNrProperty().setValue(wSLogNr);
+  }
+
+  public WSLogNrProperty getWSLogNrProperty() {
+    return getPropertyByClass(WSLogNrProperty.class);
   }
 
   public static class Date extends AbstractValueFieldData<java.util.Date> {
+
     private static final long serialVersionUID = 1L;
 
     public Date() {
@@ -78,6 +81,7 @@ public class WSLogFormData extends AbstractFormData {
   }
 
   public static class Operation extends AbstractValueFieldData<String> {
+
     private static final long serialVersionUID = 1L;
 
     public Operation() {
@@ -87,13 +91,14 @@ public class WSLogFormData extends AbstractFormData {
      * list of derived validation rules.
      */
     @Override
-    protected void initValidationRules(java.util.Map<String, Object> ruleMap) {
+    protected void initValidationRules(Map<String, Object> ruleMap) {
       super.initValidationRules(ruleMap);
       ruleMap.put(ValidationRule.MAX_LENGTH, 4000);
     }
   }
 
   public static class Port extends AbstractValueFieldData<String> {
+
     private static final long serialVersionUID = 1L;
 
     public Port() {
@@ -103,13 +108,14 @@ public class WSLogFormData extends AbstractFormData {
      * list of derived validation rules.
      */
     @Override
-    protected void initValidationRules(java.util.Map<String, Object> ruleMap) {
+    protected void initValidationRules(Map<String, Object> ruleMap) {
       super.initValidationRules(ruleMap);
       ruleMap.put(ValidationRule.MAX_LENGTH, 4000);
     }
   }
 
   public static class Request extends AbstractValueFieldData<String> {
+
     private static final long serialVersionUID = 1L;
 
     public Request() {
@@ -119,13 +125,14 @@ public class WSLogFormData extends AbstractFormData {
      * list of derived validation rules.
      */
     @Override
-    protected void initValidationRules(java.util.Map<String, Object> ruleMap) {
+    protected void initValidationRules(Map<String, Object> ruleMap) {
       super.initValidationRules(ruleMap);
       ruleMap.put(ValidationRule.MAX_LENGTH, Integer.MAX_VALUE);
     }
   }
 
   public static class Response extends AbstractValueFieldData<String> {
+
     private static final long serialVersionUID = 1L;
 
     public Response() {
@@ -135,13 +142,14 @@ public class WSLogFormData extends AbstractFormData {
      * list of derived validation rules.
      */
     @Override
-    protected void initValidationRules(java.util.Map<String, Object> ruleMap) {
+    protected void initValidationRules(Map<String, Object> ruleMap) {
       super.initValidationRules(ruleMap);
       ruleMap.put(ValidationRule.MAX_LENGTH, Integer.MAX_VALUE);
     }
   }
 
   public static class Service extends AbstractValueFieldData<String> {
+
     private static final long serialVersionUID = 1L;
 
     public Service() {
@@ -151,9 +159,17 @@ public class WSLogFormData extends AbstractFormData {
      * list of derived validation rules.
      */
     @Override
-    protected void initValidationRules(java.util.Map<String, Object> ruleMap) {
+    protected void initValidationRules(Map<String, Object> ruleMap) {
       super.initValidationRules(ruleMap);
       ruleMap.put(ValidationRule.MAX_LENGTH, 4000);
+    }
+  }
+
+  public static class WSLogNrProperty extends AbstractPropertyData<Long> {
+
+    private static final long serialVersionUID = 1L;
+
+    public WSLogNrProperty() {
     }
   }
 }

@@ -38,8 +38,8 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
   public Desktop() {
   }
 
-  @SuppressWarnings("unchecked")
   @Override
+  @SuppressWarnings("unchecked")
   protected Class<? extends IOutline>[] getConfiguredOutlines() {
     return new Class[]{StandardOutline.class};
   }

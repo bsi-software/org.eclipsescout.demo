@@ -14,6 +14,7 @@
       <vmArgs>-Xms32m
 -Xmx512m
 -XX:MaxPermSize=256m
+-Dorg.eclipse.rap.rwt.developmentMode=true
 </vmArgs>
    </launcherArgs>
 
@@ -91,6 +92,7 @@
       <plugin id="org.eclipse.scout.rt.client"/>
       <plugin id="org.eclipse.scout.rt.client.mobile"/>
       <plugin id="org.eclipse.scout.rt.extension.client"/>
+      <plugin id="org.eclipse.scout.rt.servicetunnel"/>
       <plugin id="org.eclipse.scout.rt.shared"/>
       <plugin id="org.eclipse.scout.rt.ui.rap"/>
       <plugin id="org.eclipse.scout.rt.ui.rap.mobile"/>
@@ -106,8 +108,10 @@
       <plugin id="org.eclipsescout.demo.minicrm.shared"/>
       <plugin id="org.eclipsescout.demo.minicrm.ui.rap"/>
       <plugin id="org.w3c.css.sac"/>
+      <plugin id="org.w3c.dom.events"/>
       <plugin id="org.w3c.dom.smil"/>
       <plugin id="org.w3c.dom.svg"/>
+      <plugin id="org.w3c.dom.svg.fragment" fragment="true"/>
    </plugins>
 
 

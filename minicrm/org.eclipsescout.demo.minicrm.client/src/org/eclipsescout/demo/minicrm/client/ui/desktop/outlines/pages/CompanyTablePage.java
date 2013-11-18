@@ -4,13 +4,14 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
 package org.eclipsescout.demo.minicrm.client.ui.desktop.outlines.pages;
 
 import org.eclipse.scout.commons.annotations.Order;
+import org.eclipse.scout.commons.annotations.PageData;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
@@ -27,14 +28,17 @@ import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
 import org.eclipse.scout.service.SERVICES;
 import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm;
+import org.eclipsescout.demo.minicrm.client.ui.desktop.outlines.pages.CompanyTablePage.Table;
 import org.eclipsescout.demo.minicrm.client.ui.desktop.outlines.pages.searchform.CompanySearchForm;
 import org.eclipsescout.demo.minicrm.shared.Icons;
 import org.eclipsescout.demo.minicrm.shared.services.IStandardOutlineService;
 import org.eclipsescout.demo.minicrm.shared.services.code.CompanyTypeCodeType;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.form.ICompanyService;
+import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.CompanyTablePageData;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.searchform.CompanySearchFormData;
 
-public class CompanyTablePage extends AbstractPageWithTable<CompanyTablePage.Table> {
+@PageData(CompanyTablePageData.class)
+public class CompanyTablePage extends AbstractPageWithTable<Table> {
 
   @Override
   protected String getConfiguredTitle() {
@@ -49,12 +53,13 @@ public class CompanyTablePage extends AbstractPageWithTable<CompanyTablePage.Tab
   }
 
   @Override
-  protected Object[][] execLoadTableData(SearchFilter filter) throws ProcessingException {
+  protected void execLoadData(SearchFilter filter) throws ProcessingException {
     CompanySearchFormData formData = (CompanySearchFormData) filter.getFormData();
     if (formData == null) {
       formData = new CompanySearchFormData();
     }
-    return SERVICES.getService(IStandardOutlineService.class).getCompanyTableData(formData);
+    CompanyTablePageData pageData = SERVICES.getService(IStandardOutlineService.class).getCompanyTableData(formData);
+    importPageData(pageData);
   }
 
   @Order(10.0)

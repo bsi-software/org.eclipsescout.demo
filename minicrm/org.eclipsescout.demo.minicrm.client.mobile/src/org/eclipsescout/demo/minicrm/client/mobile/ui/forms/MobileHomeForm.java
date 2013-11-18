@@ -32,6 +32,7 @@ import org.eclipse.scout.rt.shared.AbstractIcons;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.minicrm.client.mobile.ui.forms.MobileHomeForm.MainBox.LogoutButton;
 import org.eclipsescout.demo.minicrm.client.mobile.ui.forms.MobileHomeForm.MainBox.OutlinesTableField;
+import org.eclipsescout.demo.minicrm.client.mobile.ui.forms.MobileHomeForm.MainBox.OutlinesTableField.Table;
 
 public class MobileHomeForm extends AbstractMobileForm implements IOutlineChooserForm {
 
@@ -55,13 +56,17 @@ public class MobileHomeForm extends AbstractMobileForm implements IOutlineChoose
   }
 
   @Override
+  protected boolean getConfiguredFooterVisible() {
+    return true;
+  }
+
+  @Override
   protected String getConfiguredTitle() {
     return TEXTS.get("MobileOutlineChooserTitle");
   }
 
-  @Override
-  protected boolean getConfiguredFooterVisible() {
-    return true;
+  public void startView() throws ProcessingException {
+    startInternal(new ViewHandler());
   }
 
   public LogoutButton getLogoutButton() {
@@ -94,15 +99,20 @@ public class MobileHomeForm extends AbstractMobileForm implements IOutlineChoose
     }
 
     @Order(10.0)
-    public class OutlinesTableField extends AbstractTableField<OutlinesTableField.Table> {
+    public class OutlinesTableField extends AbstractTableField<Table> {
+
+      @Override
+      protected int getConfiguredGridH() {
+        return 2;
+      }
+
+      @Override
+      protected boolean getConfiguredLabelVisible() {
+        return false;
+      }
 
       @Order(10.0)
       public class Table extends AbstractMobileTable {
-
-        @Override
-        protected boolean execIsAutoCreateTableRowForm() {
-          return false;
-        }
 
         @Override
         protected boolean getConfiguredAutoDiscardOnDelete() {
@@ -110,13 +120,13 @@ public class MobileHomeForm extends AbstractMobileForm implements IOutlineChoose
         }
 
         @Override
-        protected String getConfiguredDefaultIconId() {
-          return AbstractIcons.TreeNode;
+        protected boolean getConfiguredAutoResizeColumns() {
+          return true;
         }
 
         @Override
-        protected boolean getConfiguredAutoResizeColumns() {
-          return true;
+        protected String getConfiguredDefaultIconId() {
+          return AbstractIcons.TreeNode;
         }
 
         @Override
@@ -130,6 +140,11 @@ public class MobileHomeForm extends AbstractMobileForm implements IOutlineChoose
           if (outlineIcon != null) {
             row.setIconId(outlineIcon);
           }
+        }
+
+        @Override
+        protected boolean execIsAutoCreateTableRowForm() {
+          return false;
         }
 
         @Override
@@ -164,16 +179,6 @@ public class MobileHomeForm extends AbstractMobileForm implements IOutlineChoose
         public class LabelColumn extends AbstractStringColumn {
         }
       }
-
-      @Override
-      protected boolean getConfiguredLabelVisible() {
-        return false;
-      }
-
-      @Override
-      protected int getConfiguredGridH() {
-        return 2;
-      }
     }
 
     @Order(20.0)
@@ -189,14 +194,19 @@ public class MobileHomeForm extends AbstractMobileForm implements IOutlineChoose
         ClientJob.getCurrentSession().stopSession();
       }
     }
-
   }
 
   public class ViewHandler extends AbstractFormHandler {
 
     @Override
+    protected void execFinally() throws ProcessingException {
+      Table table = getOutlinesTableField().getTable();
+      table.discardAllRows();
+    }
+
+    @Override
     protected void execLoad() throws ProcessingException {
-      OutlinesTableField.Table table = getOutlinesTableField().getTable();
+      Table table = getOutlinesTableField().getTable();
       IOutline[] outlines = getDesktop().getAvailableOutlines();
       for (IOutline outline : outlines) {
         if (outline.isVisible() && outline.getRootNode() != null) {
@@ -205,16 +215,7 @@ public class MobileHomeForm extends AbstractMobileForm implements IOutlineChoose
           table.addRow(row);
         }
       }
-    }
 
-    @Override
-    protected void execFinally() throws ProcessingException {
-      OutlinesTableField.Table table = getOutlinesTableField().getTable();
-      table.discardAllRows();
     }
-  }
-
-  public void startView() throws ProcessingException {
-    startInternal(new ViewHandler());
   }
 }

@@ -4,20 +4,14 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
 package org.eclipsescout.demo.bahbah.client.ui.desktop.outlines.pages;
 
-import org.eclipsescout.demo.bahbah.client.ui.forms.UserForm;
-import org.eclipsescout.demo.bahbah.shared.security.CreateUserPermission;
-import org.eclipsescout.demo.bahbah.shared.security.DeleteUserPermission;
-import org.eclipsescout.demo.bahbah.shared.security.ResetPasswordPermission;
-import org.eclipsescout.demo.bahbah.shared.security.UpdateUserPermission;
-import org.eclipsescout.demo.bahbah.shared.services.code.UserRoleCodeType;
-import org.eclipsescout.demo.bahbah.shared.services.process.IUserProcessService;
 import org.eclipse.scout.commons.annotations.Order;
+import org.eclipse.scout.commons.annotations.PageData;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
@@ -32,7 +26,17 @@ import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
 import org.eclipse.scout.service.SERVICES;
+import org.eclipsescout.demo.bahbah.client.ui.forms.UserForm;
+import org.eclipsescout.demo.bahbah.shared.security.CreateUserPermission;
+import org.eclipsescout.demo.bahbah.shared.security.DeleteUserPermission;
+import org.eclipsescout.demo.bahbah.shared.security.ResetPasswordPermission;
+import org.eclipsescout.demo.bahbah.shared.security.UpdateUserPermission;
+import org.eclipsescout.demo.bahbah.shared.services.UserAdministrationTablePageData;
+import org.eclipsescout.demo.bahbah.shared.services.code.UserRoleCodeType;
+import org.eclipsescout.demo.bahbah.shared.services.process.IUserProcessService;
+import org.eclipsescout.demo.bahbah.shared.services.process.UserFormData;
 
+@PageData(UserAdministrationTablePageData.class)
 public class UserAdministrationTablePage extends AbstractPageWithTable<UserAdministrationTablePage.Table> {
 
   @Override
@@ -46,8 +50,14 @@ public class UserAdministrationTablePage extends AbstractPageWithTable<UserAdmin
   }
 
   @Override
-  protected Object[][] execLoadTableData(SearchFilter filter) throws ProcessingException {
-    return SERVICES.getService(IUserProcessService.class).getUsers();
+  protected void execLoadData(SearchFilter filter) throws ProcessingException {
+    UserFormData formData = (UserFormData) filter.getFormData();
+    if (formData == null) {
+      formData = new UserFormData();
+    }
+
+    UserAdministrationTablePageData pageData = SERVICES.getService(IUserProcessService.class).getUserAdministrationTableData(formData);
+    importPageData(pageData);
   }
 
   @Order(10.0)

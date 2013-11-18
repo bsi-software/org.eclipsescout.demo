@@ -30,6 +30,6 @@ public class StandardOutline extends AbstractExtensibleOutline {
   protected void execCreateChildPages(Collection<IPage> pageList) throws ProcessingException {
     CompanyTablePage companyTablePage = new CompanyTablePage();
     pageList.add(companyTablePage);
-pageList.add(new PersonTablePage());
+    pageList.add(new PersonTablePage());
   }
 }

@@ -10,13 +10,14 @@
  ******************************************************************************/
 package org.eclipsescout.demo.minifigcreator.client;
 
+import org.eclipse.scout.commons.UriUtility;
 import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.client.AbstractClientSession;
 import org.eclipse.scout.rt.client.ClientJob;
-import org.eclipse.scout.rt.client.servicetunnel.http.HttpServiceTunnel;
+import org.eclipse.scout.rt.client.servicetunnel.http.ClientHttpServiceTunnel;
 import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipsescout.demo.minifigcreator.client.ui.desktop.Desktop;
 
@@ -41,7 +42,7 @@ public class ClientSession extends AbstractClientSession {
 
   @Override
   public void execLoadSession() throws ProcessingException {
-    setServiceTunnel(new HttpServiceTunnel(this, getBundle().getBundleContext().getProperty("server.url")));
+    setServiceTunnel(new ClientHttpServiceTunnel(this, UriUtility.toUrl(getBundle().getBundleContext().getProperty("server.url"))));
 
     //pre-load all known code types
     CODES.getAllCodeTypes(org.eclipsescout.demo.minifigcreator.shared.Activator.PLUGIN_ID);

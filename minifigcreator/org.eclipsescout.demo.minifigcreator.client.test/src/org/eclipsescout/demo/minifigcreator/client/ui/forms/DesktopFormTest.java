@@ -1,12 +1,20 @@
-/**
- *
- */
+/*******************************************************************************
+ * Copyright (c) 2013 BSI Business Systems Integration AG.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     BSI Business Systems Integration AG - initial API and implementation
+ ******************************************************************************/
 package org.eclipsescout.demo.minifigcreator.client.ui.forms;
 
 import java.util.List;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.testing.shared.TestingUtility;
+import org.eclipse.scout.service.AbstractService;
 import org.eclipse.scout.testing.client.ScoutClientAssert;
 import org.eclipse.scout.testing.client.runner.ScoutClientTestRunner;
 import org.eclipsescout.demo.minifigcreator.client.Activator;
@@ -24,7 +32,6 @@ import org.osgi.framework.ServiceRegistration;
  * 
  * @author jbr
  */
-//...
 @RunWith(ScoutClientTestRunner.class)
 public class DesktopFormTest {
 
@@ -116,13 +123,9 @@ public class DesktopFormTest {
     return form;
   }
 
-  public static class P_DesktopProcessService implements IDesktopProcessService {
+  public static class P_DesktopProcessService extends AbstractService implements IDesktopProcessService {
 
     private DesktopFormData m_loadFormData;
-
-    @Override
-    public void initializeService() {
-    }
 
     @Override
     public DesktopFormData load(DesktopFormData formData) throws ProcessingException {

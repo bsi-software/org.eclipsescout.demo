@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
@@ -12,6 +12,7 @@ package org.eclipsescout.demo.minicrm.client.ui.desktop.outlines.pages;
 
 import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.commons.annotations.Order;
+import org.eclipse.scout.commons.annotations.PageData;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
@@ -21,12 +22,15 @@ import org.eclipse.scout.rt.extension.client.ui.basic.table.AbstractExtensibleTa
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
 import org.eclipse.scout.service.SERVICES;
+import org.eclipsescout.demo.minicrm.client.ui.desktop.outlines.pages.PersonTablePage.Table;
 import org.eclipsescout.demo.minicrm.client.ui.desktop.outlines.pages.searchform.PersonSearchForm;
 import org.eclipsescout.demo.minicrm.shared.Icons;
 import org.eclipsescout.demo.minicrm.shared.services.IStandardOutlineService;
+import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.PersonTablePageData;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.searchform.PersonSearchFormData;
 
-public class PersonTablePage extends AbstractPageWithTable<PersonTablePage.Table> {
+@PageData(PersonTablePageData.class)
+public class PersonTablePage extends AbstractPageWithTable<Table> {
 
   private Long m_companyNr;
 
@@ -41,12 +45,14 @@ public class PersonTablePage extends AbstractPageWithTable<PersonTablePage.Table
   }
 
   @Override
-  protected Object[][] execLoadTableData(SearchFilter filter) throws ProcessingException {
+  protected void execLoadData(SearchFilter filter) throws ProcessingException {
     PersonSearchFormData formData = (PersonSearchFormData) filter.getFormData();
     if (formData == null) {
       formData = new PersonSearchFormData();
     }
-    return SERVICES.getService(IStandardOutlineService.class).getPersonTableData(formData);
+
+    PersonTablePageData pageData = SERVICES.getService(IStandardOutlineService.class).getPersonTableData(formData);
+    importPageData(pageData);
   }
 
   @Order(10.0)

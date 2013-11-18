@@ -12,16 +12,19 @@ package org.eclipsescout.demo.minicrm.server.services;
 
 import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.commons.holders.NVPair;
 import org.eclipse.scout.rt.server.services.common.jdbc.SQL;
 import org.eclipse.scout.service.AbstractService;
 import org.eclipsescout.demo.minicrm.shared.services.IStandardOutlineService;
+import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.CompanyTablePageData;
+import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.PersonTablePageData;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.searchform.CompanySearchFormData;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.searchform.PersonSearchFormData;
 
 public class StandardOutlineService extends AbstractService implements IStandardOutlineService {
 
   @Override
-  public Object[][] getCompanyTableData(CompanySearchFormData formData) throws ProcessingException {
+  public CompanyTablePageData getCompanyTableData(CompanySearchFormData formData) throws ProcessingException {
     StringBuilder statement = new StringBuilder();
     statement.append(
         "SELECT COMPANY_NR, " +
@@ -36,11 +39,16 @@ public class StandardOutlineService extends AbstractService implements IStandard
     if (!StringUtility.isNullOrEmpty(formData.getName().getValue())) {
       statement.append("AND UPPER(NAME) LIKE UPPER(:name || '%')");
     }
-    return SQL.select(statement.toString(), formData);
+    statement.append("INTO :{page.companyNr}, :{page.shortName}, :{page.name}, :{page.companyType}");
+
+    CompanyTablePageData pageData = new CompanyTablePageData();
+    SQL.selectInto(statement.toString(), formData, new NVPair("page", pageData));
+
+    return pageData;
   }
 
   @Override
-  public Object[][] getPersonTableData(PersonSearchFormData formData) throws ProcessingException {
+  public PersonTablePageData getPersonTableData(PersonSearchFormData formData) throws ProcessingException {
 
     StringBuilder statement = new StringBuilder();
     statement.append("SELECT PERSON_NR, LAST_NAME, FIRST_NAME FROM PERSON WHERE 1=1 ");
@@ -57,6 +65,11 @@ public class StandardOutlineService extends AbstractService implements IStandard
     else if (formData.getEmployerType().getValue() != null) {
       statement.append("AND COMPANY_NR IN (SELECT COMPANY_NR FROM COMPANY WHERE TYPE_UID = :employerType) ");
     }
-    return SQL.select(statement.toString(), formData);
+    statement.append("INTO :{page.personNr}, :{page.lastName}, :{page.firstName}");
+
+    PersonTablePageData pageData = new PersonTablePageData();
+    SQL.select(statement.toString(), formData, new NVPair("page", pageData));
+
+    return pageData;
   }
 }

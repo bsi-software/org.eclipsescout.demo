@@ -11,19 +11,28 @@
 package org.eclipse.scout.tutorial.jaxws.shared.services.process;
 
 import java.util.Date;
+import java.util.Map;
+
+import org.eclipse.scout.rt.shared.data.form.AbstractFormData;
 import org.eclipse.scout.rt.shared.data.form.ValidationRule;
 import org.eclipse.scout.rt.shared.data.form.fields.AbstractValueFieldData;
-import org.eclipse.scout.rt.shared.data.form.AbstractFormData;
 import org.eclipse.scout.rt.shared.data.form.properties.AbstractPropertyData;
 
+/**
+ * <b>NOTE:</b><br>
+ * This class is auto generated, no manual modifications recommended.
+ * 
+ * @generated
+ */
 public class CompanyFormData extends AbstractFormData {
+
   private static final long serialVersionUID = 1L;
 
   public CompanyFormData() {
   }
 
-  public CompanyNrProperty getCompanyNrProperty() {
-    return getPropertyByClass(CompanyNrProperty.class);
+  public Change getChange() {
+    return getFieldByClass(Change.class);
   }
 
   /**
@@ -40,8 +49,8 @@ public class CompanyFormData extends AbstractFormData {
     getCompanyNrProperty().setValue(companyNr);
   }
 
-  public Change getChange() {
-    return getFieldByClass(Change.class);
+  public CompanyNrProperty getCompanyNrProperty() {
+    return getPropertyByClass(CompanyNrProperty.class);
   }
 
   public Name getName() {
@@ -76,21 +85,24 @@ public class CompanyFormData extends AbstractFormData {
     return getFieldByClass(Volume.class);
   }
 
-  public class CompanyNrProperty extends AbstractPropertyData<Long> {
-    private static final long serialVersionUID = 1L;
-
-    public CompanyNrProperty() {
-    }
-  }
-
   public static class Change extends AbstractValueFieldData<Double> {
+
     private static final long serialVersionUID = 1L;
 
     public Change() {
     }
   }
 
+  public static class CompanyNrProperty extends AbstractPropertyData<Long> {
+
+    private static final long serialVersionUID = 1L;
+
+    public CompanyNrProperty() {
+    }
+  }
+
   public static class Name extends AbstractValueFieldData<String> {
+
     private static final long serialVersionUID = 1L;
 
     public Name() {
@@ -100,13 +112,14 @@ public class CompanyFormData extends AbstractFormData {
      * list of derived validation rules.
      */
     @Override
-    protected void initValidationRules(java.util.Map<String, Object> ruleMap) {
+    protected void initValidationRules(Map<String, Object> ruleMap) {
       super.initValidationRules(ruleMap);
       ruleMap.put(ValidationRule.MAX_LENGTH, 4000);
     }
   }
 
   public static class Symbol extends AbstractValueFieldData<String> {
+
     private static final long serialVersionUID = 1L;
 
     public Symbol() {
@@ -116,13 +129,14 @@ public class CompanyFormData extends AbstractFormData {
      * list of derived validation rules.
      */
     @Override
-    protected void initValidationRules(java.util.Map<String, Object> ruleMap) {
+    protected void initValidationRules(Map<String, Object> ruleMap) {
       super.initValidationRules(ruleMap);
       ruleMap.put(ValidationRule.MAX_LENGTH, 5);
     }
   }
 
   public static class TradeTime extends AbstractValueFieldData<Date> {
+
     private static final long serialVersionUID = 1L;
 
     public TradeTime() {
@@ -130,6 +144,7 @@ public class CompanyFormData extends AbstractFormData {
   }
 
   public static class ValueHigh extends AbstractValueFieldData<Double> {
+
     private static final long serialVersionUID = 1L;
 
     public ValueHigh() {
@@ -137,6 +152,7 @@ public class CompanyFormData extends AbstractFormData {
   }
 
   public static class ValueLast extends AbstractValueFieldData<Double> {
+
     private static final long serialVersionUID = 1L;
 
     public ValueLast() {
@@ -144,6 +160,7 @@ public class CompanyFormData extends AbstractFormData {
   }
 
   public static class ValueLow extends AbstractValueFieldData<Double> {
+
     private static final long serialVersionUID = 1L;
 
     public ValueLow() {
@@ -151,6 +168,7 @@ public class CompanyFormData extends AbstractFormData {
   }
 
   public static class ValueOpen extends AbstractValueFieldData<Double> {
+
     private static final long serialVersionUID = 1L;
 
     public ValueOpen() {
@@ -158,6 +176,7 @@ public class CompanyFormData extends AbstractFormData {
   }
 
   public static class Volume extends AbstractValueFieldData<Long> {
+
     private static final long serialVersionUID = 1L;
 
     public Volume() {
