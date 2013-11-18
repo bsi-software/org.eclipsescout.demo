@@ -108,8 +108,10 @@
       <plugin id="org.eclipsescout.demo.minicrm.shared"/>
       <plugin id="org.eclipsescout.demo.minicrm.ui.rap"/>
       <plugin id="org.w3c.css.sac"/>
+      <plugin id="org.w3c.dom.events"/>
       <plugin id="org.w3c.dom.smil"/>
       <plugin id="org.w3c.dom.svg"/>
+      <plugin id="org.w3c.dom.svg.fragment" fragment="true"/>
    </plugins>
 
 
