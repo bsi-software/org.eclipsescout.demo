@@ -16,12 +16,13 @@ import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
+import org.eclipse.scout.service.AbstractService;
 import org.eclipsescout.demo.ibug.BugzillaHtmlFetcher;
 import org.eclipsescout.demo.ibug.IBug;
 import org.eclipsescout.demo.ibug.IBugFetcher;
 import org.eclipsescout.demo.ibug.shared.services.DesktopFormData;
+import org.eclipsescout.demo.ibug.shared.services.DesktopFormData.Bugs;
 import org.eclipsescout.demo.ibug.shared.services.IDesktopService;
-import org.eclipse.scout.service.AbstractService;
 
 public class DesktopService extends AbstractService implements IDesktopService {
 
@@ -60,24 +61,25 @@ public class DesktopService extends AbstractService implements IDesktopService {
     verifySearchCriteria(formData, m_bugFetcher, "Scout");
 
     List<IBug> bugs = m_bugFetcher.fetchBugs();
-    formData.getBugs().clearRows();
+
+    Bugs table = formData.getBugs();
+    table.clearRows();
 
     for (IBug bug : bugs) {
       LOG.info("adding bug " + bug);
 
-      formData.getBugs().addRow(new Object[]{
-          bug.getId(),
-          bug.getSummary(),
-          bug.getChanged(),
-          bug.getSeverety(),
-          bug.getPriority(),
-          bug.getTargetMilestone(),
-          bug.getStatus(),
-          bug.getResolution(),
-          bug.getComponent(),
-          bug.getAssignee(),
-          bug.getSortValue()
-      });
+      int row = table.addRow();
+      table.setID(row, bug.getId());
+      table.setSummary(row, bug.getSummary());
+      table.setLastChanged(row, bug.getChanged());
+      table.setSeverety(row, bug.getSeverety());
+      table.setPriority(row, bug.getPriority());
+      table.setTargetMilestone(row, bug.getTargetMilestone());
+      table.setStatus(row, bug.getStatus());
+      table.setResolution(row, bug.getResolution());
+      table.setComponent(row, bug.getComponent());
+      table.setAssignee(row, bug.getAssignee());
+      table.setSortValue(row, bug.getSortValue());
     }
 
     return formData;
