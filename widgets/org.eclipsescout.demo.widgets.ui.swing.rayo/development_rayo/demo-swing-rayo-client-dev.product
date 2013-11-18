@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Scout Widget Demo App Client" id="org.eclipsescout.demo.widgets.ui.swing.rayo_product" application="org.eclipsescout.demo.widgets.ui.swing.app" useFeatures="false" includeLaunchers="true">
+<product name="Scout Widget Demo App Client" id="org.eclipsescout.demo.widgets.ui.swing.product" application="org.eclipsescout.demo.widgets.ui.swing.app" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
       <linux>/org.eclipsescout.demo.widgets.ui.swing.rayo/development_rayo/config.ini</linux>
@@ -26,6 +26,7 @@
    </launcher>
 
    <vm>
+      <windows include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7</windows>
    </vm>
 
    <plugins>
