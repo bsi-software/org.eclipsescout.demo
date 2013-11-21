@@ -11,4 +11,4 @@ Require-Bundle: org.eclipse.scout.rt.ui.swing,
  org.eclipse.scout.net
 Export-Package: org.eclipsescout.demo.minicrm.ui.swing;uses:="org.eclipse.scout.rt.ui.swing,org.eclipse.scout.rt.client.session,org.osgi.framework"
 Bundle-ClassPath: .
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
