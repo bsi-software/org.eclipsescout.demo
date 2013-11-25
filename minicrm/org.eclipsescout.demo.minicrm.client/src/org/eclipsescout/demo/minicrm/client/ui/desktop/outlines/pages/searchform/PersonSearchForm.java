@@ -10,6 +10,8 @@
  ******************************************************************************/
 package org.eclipsescout.demo.minicrm.client.ui.desktop.outlines.pages.searchform;
 
+import java.math.BigDecimal;
+
 import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.commons.annotations.FormData.SdkCommand;
 import org.eclipse.scout.commons.annotations.Order;
@@ -149,7 +151,7 @@ public class PersonSearchForm extends AbstractSearchForm {
         }
 
         @Order(40.0)
-        public class EmployerField extends AbstractSmartField<Long> {
+        public class EmployerField extends AbstractSmartField<BigDecimal> {
 
           @Override
           protected String getConfiguredLabel() {
@@ -184,7 +186,7 @@ public class PersonSearchForm extends AbstractSearchForm {
     @Override
     public void execLoad() {
       if (m_companyNr != null) {
-        getEmployerField().setValue(m_companyNr);
+        getEmployerField().setValue(BigDecimal.valueOf(m_companyNr));
         getEmployerField().setEnabled(false);
         getEmployerTypeField().setVisible(false);
       }
