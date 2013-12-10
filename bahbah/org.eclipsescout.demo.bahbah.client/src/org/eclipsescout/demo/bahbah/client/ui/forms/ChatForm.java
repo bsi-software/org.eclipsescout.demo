@@ -239,6 +239,11 @@ public class ChatForm extends AbstractForm {
           protected boolean getConfiguredTextWrap() {
             return true;
           }
+
+          @Override
+          protected boolean getConfiguredHtmlMarkup() {
+            return true;
+          }
         }
 
         @Order(50.0)

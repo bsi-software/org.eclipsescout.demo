@@ -111,6 +111,7 @@
       <plugin id="org.eclipsescout.demo.bahbah.security"/>
       <plugin id="org.eclipsescout.demo.bahbah.shared"/>
       <plugin id="org.eclipsescout.demo.bahbah.ui.rap"/>
+      <plugin id="org.jsoup"/>
       <plugin id="org.w3c.css.sac"/>
       <plugin id="org.w3c.dom.events"/>
       <plugin id="org.w3c.dom.smil"/>

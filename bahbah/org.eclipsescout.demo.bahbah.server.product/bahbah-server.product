@@ -50,7 +50,6 @@
       <plugin id="org.eclipse.osgi.services"/>
       <plugin id="org.eclipse.scout.commons"/>
       <plugin id="org.eclipse.scout.http.servletfilter"/>
-      <plugin id="org.eclipse.scout.jaxws216"/>
       <plugin id="org.eclipse.scout.rt.jdbc.derby"/>
       <plugin id="org.eclipse.scout.rt.server"/>
       <plugin id="org.eclipse.scout.rt.shared"/>
@@ -59,6 +58,7 @@
       <plugin id="org.eclipsescout.demo.bahbah.security"/>
       <plugin id="org.eclipsescout.demo.bahbah.server"/>
       <plugin id="org.eclipsescout.demo.bahbah.shared"/>
+      <plugin id="org.jsoup"/>
    </plugins>
 
 

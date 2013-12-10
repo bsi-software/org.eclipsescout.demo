@@ -65,6 +65,7 @@
       <plugin id="org.eclipsescout.demo.bahbah.security"/>
       <plugin id="org.eclipsescout.demo.bahbah.server"/>
       <plugin id="org.eclipsescout.demo.bahbah.shared"/>
+      <plugin id="org.jsoup"/>
    </plugins>
 
 
