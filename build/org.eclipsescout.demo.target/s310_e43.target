@@ -80,7 +80,7 @@
       <unit id="com.thoughtworks.selenium" version="2.25.0.v201212071504"/>
       <unit id="com.thoughtworks.selenium.source" version="2.25.0.v201212071504"/>
 
-      <repository id="orbit_S" location="http://download.eclipse.org/tools/orbit/downloads/drops/S20131024145017/repository/"/>
+      <repository id="orbit_S" location="http://download.eclipse.org/tools/orbit/downloads/drops/S20131206110810/repository/"/>
     </location>
   </locations>
 </target>
