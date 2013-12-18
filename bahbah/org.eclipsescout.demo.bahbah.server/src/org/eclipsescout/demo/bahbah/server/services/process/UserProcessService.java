@@ -26,7 +26,7 @@ import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
 import org.eclipse.scout.service.AbstractService;
 import org.eclipse.scout.service.SERVICES;
 import org.eclipsescout.demo.bahbah.server.ServerSession;
-import org.eclipsescout.demo.bahbah.server.util.UserUtility;
+import org.eclipsescout.demo.bahbah.server.util.UserMd5Utility;
 import org.eclipsescout.demo.bahbah.shared.security.CreateUserPermission;
 import org.eclipsescout.demo.bahbah.shared.security.DeleteUserPermission;
 import org.eclipsescout.demo.bahbah.shared.security.ReadUsersPermission;
@@ -75,7 +75,7 @@ public class UserProcessService extends AbstractService implements IUserProcessS
       throw new VetoException(TEXTS.get("AuthorizationFailed"));
     }
 
-    UserUtility.createNewUser(formData.getUsername().getValue(), formData.getPassword().getValue(), formData.getUserRole().getValue());
+    UserMd5Utility.createNewUser(formData.getUsername().getValue(), formData.getPassword().getValue(), formData.getUserRole().getValue());
   }
 
   @Override
@@ -104,8 +104,8 @@ public class UserProcessService extends AbstractService implements IUserProcessS
     if (!ACCESS.check(new UpdateUserPermission())) {
       throw new VetoException(TEXTS.get("AuthorizationFailed"));
     }
-    UserUtility.checkUsername(formData.getUsername().getValue());
-    UserUtility.checkPermissionId(formData.getUserRole().getValue());
+    UserMd5Utility.checkUsername(formData.getUsername().getValue());
+    UserMd5Utility.checkPermissionId(formData.getUserRole().getValue());
 
     SQL.update("UPDATE TABUSERS SET username = :newUsername, permission_id = :newPermId WHERE u_id = :uid",
         new NVPair("newUsername", formData.getUsername().getValue()), new NVPair("newPermId", formData.getUserRole().getValue()), new NVPair("uid", formData.getUserId()));

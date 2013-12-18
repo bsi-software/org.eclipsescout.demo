@@ -49,13 +49,19 @@
             class="org.eclipsescout.demo.bahbah.server.services.process.PasswordProcessService"
             session="org.eclipsescout.demo.bahbah.server.ServerSession">
       </service>
+      <service
+            class="org.eclipsescout.demo.bahbah.server.services.custom.security.UserMapService"
+            createImmediately="false"
+            factory="org.eclipse.scout.rt.server.services.ServerServiceFactory"
+            session="org.eclipsescout.demo.bahbah.server.ServerSession">
+      </service>
    </extension>
    <extension
          name=""
          point="org.eclipse.equinox.http.registry.servlets">
       <servlet
             alias="/auth"
-            class="org.eclipsescout.demo.bahbah.server.servlet.BahBahAuthenticationServlet">
+            class="org.eclipsescout.demo.bahbah.server.services.custom.security.CoreAuthenticationServlet">
       </servlet>
       <servlet
             alias="/process"
@@ -98,22 +104,14 @@
          name=""
          point="org.eclipse.scout.http.servletfilter.filters">
       <filter
-            aliases="/process /remotefiles /updatesite"
-            class="org.eclipsescout.demo.bahbah.server.security.BasicForwardSecurityFilter"
-            ranking="20">
+            aliases="/process /updatesite /diagnostics"
+            class="org.eclipse.scout.http.servletfilter.helper.DevelopmentAuthFilter"
+            ranking="10">
       </filter>
       <filter
-            aliases="/"
-            class="org.eclipse.scout.rt.server.ServerJobServletFilter"
-            ranking="30">
-         <init-param
-               name="active"
-               value="true">
-         </init-param>
-         <init-param
-               name="session"
-               value="org.eclipsescout.demo.bahbah.server.ServerSession">
-         </init-param>
+            aliases="/process /updatesite /diagnostics"
+            class="org.eclipse.scout.http.servletfilter.helper.HttpAuthJaasFilter"
+            ranking="20">
       </filter>
    </extension>
    <extension

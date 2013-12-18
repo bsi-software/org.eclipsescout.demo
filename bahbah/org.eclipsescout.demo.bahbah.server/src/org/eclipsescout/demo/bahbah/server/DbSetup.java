@@ -15,7 +15,7 @@ import java.util.Set;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.server.services.common.jdbc.SQL;
-import org.eclipsescout.demo.bahbah.server.util.UserUtility;
+import org.eclipsescout.demo.bahbah.server.util.UserMd5Utility;
 import org.eclipsescout.demo.bahbah.shared.services.code.UserRoleCodeType;
 
 /**
@@ -30,7 +30,7 @@ public class DbSetup {
           " u_id BIGINT NOT NULL GENERATED ALWAYS AS IDENTITY CONSTRAINT USERS_PK PRIMARY KEY, " +
           " username VARCHAR(32) NOT NULL, " +
           " pass VARCHAR(1024) NOT NULL, " +
-          " salt VARCHAR(64) NOT NULL, " +
+          //          " salt VARCHAR(64) NOT NULL, " +
           " permission_id INT NOT NULL, " +
           " icon BLOB " +
           ")");
@@ -40,7 +40,7 @@ public class DbSetup {
       SQL.commit();
 
       // create first admin account
-      UserUtility.createNewUser("admin", "admin", UserRoleCodeType.AdministratorCode.ID);
+      UserMd5Utility.createNewUser("admin", "admin", UserRoleCodeType.AdministratorCode.ID);
       SQL.commit();
     }
 

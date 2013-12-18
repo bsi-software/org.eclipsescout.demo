@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>BSI CRM</title>
+    <link rel="stylesheet" type="text/css" href="res/style.css" media="all" />
+    <link rel="icon" type="image/png" href="res/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="res/mobile/homescreen_icon_144x144.png"/>
+    <script src="res/jquery_1.8.0.js" type="text/javascript"></script>
+    <script src="res/site.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <noscript>
+      <div id="noscriptbox" class="messagebox-outer">
+        <div class="messagebox">
+          <h1>Javascript is deactivated.</h1>
+          <p>Please activate javascript and reload the page.</p>
+          <img src="res/img/logo.png" class="messagebox-logo"/>
+        </div>
+      </div>
+    </noscript>
+
+    <div id="nocookiebox" class="messagebox-outer">
+      <div class="messagebox">
+        <h1>Cookies are deactivated.</h1>
+        <p>Please activate cookies and reload the page.</p>
+        <img src="res/img/logo.png" class="messagebox-logo"/>
+      </div>
+    </div>
+
+    <div id="mainbox">
+      <div id="copyright">&copy; BSI Business Systems Integration AG</div>
+      <div id="bg" class="bg">
+        <img src="res/img/background.png" />
+      </div>
+      <div id="formbox">
+        <form method="post" action="j_security_check">
+          <fieldset>
+            <input type="text" name="j_username" value="Benutzername" id="name" autocapitalize="off" autocorrect="off"/>
+            <input type="text" name="fakepassword" value="Passwort" id="fakepassword"/>
+            <input type="password" name="j_password" value="" id="password" class="active"/>
+            <input type="submit" value="Login" name="login" class="loginbutton" alt="login" id="button" value="Go"/>
+            <br/>
+          </fieldset>
+        </form>
+      </div>
+      <div>
+        <img src="res/img/bsilogo.png" alt="bsi - meet your clients" id="bsilogo" />
+      </div>
+  </div>
+
+  <div id="mainbox-mobile">
+    <div id="bgoverlay-mobile" class="bgoverlay">
+        <div id="bg-mobile" class="bg">
+          <img src="res/mobile/background.png" />
+        </div>
+      </div>
+    <div id="formbox-outer-mobile">
+        <div id="formbox-mobile">
+        <form method="post" action="j_security_check">
+          <div class="info">Authentication required</div>
+          <fieldset>
+            <input type="text" name="j_username" placeholder="Username" id="name-mobile" class="textfield" autocapitalize="off" autocorrect="off"/>
+            <br/>
+            <input type="password" name="j_password" placeholder="Password" id="password-mobile" class="textfield"/>
+            <br/>
+            <input type="submit" name="login" value="Login" alt="Login" id="loginbutton-mobile" class="button"/>
+            <br/>
+          </fieldset>
+        </form>
+        </div>
+    </div>
+    </div>
+
+  </body>
+</html>

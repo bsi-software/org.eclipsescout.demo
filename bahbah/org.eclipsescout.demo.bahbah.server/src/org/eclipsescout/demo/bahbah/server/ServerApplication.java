@@ -12,6 +12,7 @@ package org.eclipsescout.demo.bahbah.server;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
@@ -20,6 +21,7 @@ import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.server.ServerJob;
 import org.eclipse.scout.rt.server.services.common.session.IServerSessionRegistryService;
 import org.eclipse.scout.service.SERVICES;
+import org.eclipsescout.demo.bahbah.server.services.custom.security.IUserMapService;
 
 public class ServerApplication implements IApplication {
   private static IScoutLogger logger = ScoutLogManager.getLogger(ServerApplication.class);
@@ -52,6 +54,20 @@ public class ServerApplication implements IApplication {
     };
     dbInstallJob.schedule();
     dbInstallJob.join(20000);
+
+    ServerJob initUserMapJob = new ServerJob("Init user map", serverSession) {
+      @Override
+      protected IStatus runTransaction(IProgressMonitor monitor) {
+        try {
+          SERVICES.getService(IUserMapService.class).publishUserMapInternal();
+        }
+        catch (Throwable t) {
+          return new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Error while installing the bahbah server Db schema", t);
+        }
+        return Status.OK_STATUS;
+      }
+    };
+    initUserMapJob.runNow(new NullProgressMonitor());
 
     logger.info("bahbah server initialized");
 

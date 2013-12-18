@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
@@ -13,10 +13,6 @@ package org.eclipsescout.demo.bahbah.server.services.process;
 import java.util.Calendar;
 import java.util.Date;
 
-import org.eclipsescout.demo.bahbah.server.util.UserUtility;
-import org.eclipsescout.demo.bahbah.shared.security.ResetPasswordPermission;
-import org.eclipsescout.demo.bahbah.shared.services.process.IPasswordProcessService;
-import org.eclipsescout.demo.bahbah.shared.util.SharedUserUtility;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.exception.VetoException;
 import org.eclipse.scout.commons.holders.NVPair;
@@ -26,6 +22,10 @@ import org.eclipse.scout.rt.server.services.common.pwd.AbstractPasswordManagemen
 import org.eclipse.scout.rt.server.services.common.pwd.IPasswordPolicy;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
+import org.eclipsescout.demo.bahbah.server.util.UserMd5Utility;
+import org.eclipsescout.demo.bahbah.shared.security.ResetPasswordPermission;
+import org.eclipsescout.demo.bahbah.shared.services.process.IPasswordProcessService;
+import org.eclipsescout.demo.bahbah.shared.util.SharedUserUtility;
 import org.osgi.framework.ServiceRegistration;
 
 public class PasswordProcessService extends AbstractPasswordManagementService implements IPasswordProcessService {
@@ -77,6 +77,6 @@ public class PasswordProcessService extends AbstractPasswordManagementService im
   @Override
   protected void resetPasswordInternal(String userId, String newPassword) throws ProcessingException {
     Long u_id = Long.parseLong(userId);
-    UserUtility.resetPassword(u_id, newPassword);
+    UserMd5Utility.resetPassword(u_id, newPassword);
   }
 }

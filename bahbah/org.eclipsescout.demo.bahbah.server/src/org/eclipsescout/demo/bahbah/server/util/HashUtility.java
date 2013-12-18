@@ -53,7 +53,7 @@ public class HashUtility {
    * @param salt
    *          the salt to use
    * @param cycles
-   *          the number of cycles to re-hash. There is always at least one cylce executed.
+   *          the number of cycles to re-hash. There is always at least one cycle executed.
    * @return the hash
    * @throws NoSuchAlgorithmException
    */

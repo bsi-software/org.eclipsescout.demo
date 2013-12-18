@@ -14,7 +14,7 @@
       <vmArgs>-Xms32m
 -Xmx512m
 -XX:MaxPermSize=256m
-</vmArgs>
+-Duser.name=admin</vmArgs>
    </launcherArgs>
 
    <windowImages/>

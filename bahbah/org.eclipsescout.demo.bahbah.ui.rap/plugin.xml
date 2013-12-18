@@ -100,13 +100,6 @@
   <extension point="org.eclipse.equinox.http.registry.resources">
     <resource alias="/res" base-name="/web-resources"/>
   </extension>
-  <extension point="org.eclipse.scout.http.servletfilter.filters">
-    <filter
-      aliases="/"
-      class="org.eclipsescout.demo.bahbah.server.security.BasicForwardSecurityFilter"
-      ranking="20">
-    </filter>
-  </extension>
   <extension point="org.eclipse.scout.rt.extension.client.desktopExtensions">
       <desktopExtension
             active="true"

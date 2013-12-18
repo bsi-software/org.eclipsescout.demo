@@ -1,0 +1,252 @@
+* {
+  padding:0;
+  margin:0;
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+
+body {
+  background-color: white;
+  color: #777777;
+}
+
+a {
+  text-decoration: none;
+  color: #fe9915;
+}
+
+p {
+  padding-top: 5px;
+}
+
+.bg {
+  z-index: -100;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  overflow: hidden;
+  width: 100%;
+  line-height: 0px;
+}
+
+.bgoverlay {
+  position: absolute;
+  background-color: rgba(0,0,0,0.3);
+  width:100%;
+  height:100%;
+}
+
+.messagebox-outer{
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  margin-top: -90px;
+  margin-bottom: 0px;
+}
+
+.messagebox {
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 280px;
+  text-align: center;
+}
+
+.messagebox-logo{
+  margin-top: 20px;
+  width: 130px;
+}
+
+#nocookiebox {
+  display:none;
+}
+
+#mainbox {
+  /* will be activated by javascript, if enabled */
+  display: none;
+}
+
+#formbox {
+  width: 475px;
+  padding-left: 250px;
+  padding-right: 184px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 23px;
+  position: relative;
+}
+
+#formbox fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+#copyright {
+  position: absolute;
+  left: 23px;
+  top: 23px;
+  font-size: 10px;
+}
+
+#bsilogo {
+  position: absolute;
+  left: 0px;
+  top: 23px;
+}
+
+#loading {
+  text-align: center;
+  position: absolute;
+  top: 310px;
+  width: 100%;
+}
+
+#formbox input.loginbutton {
+  font-size:12px;
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  font-weight:bold;
+  color:white;
+  width:86px;
+  height:22px;
+  background-color:#FE9915;
+  background-image:url(img/button_empty.png);
+  border-style:none;
+}
+
+#name, #password, #fakepassword {
+  border: 1px solid #777777;
+  color: #777777;
+  font-size: 12px;
+  height: 19px;
+  line-height: 19px;
+  background-image: url(img/formbg.png);
+  width: 140px;
+  padding-left: 1px;
+  padding-right: 1px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+#name {
+  position: absolute;
+  top: 23px;
+  left: 250px;
+}
+
+#password, #fakepassword {
+  position: absolute;
+  top: 23px;
+  left: 405px;
+}
+
+#password {
+  display: none;
+}
+
+#button {
+  position: absolute;
+  top: 23px;
+  left: 560px;
+}
+
+#pwlink {
+  position: absolute;
+  top: 60px;
+  left: 405px;
+}
+
+#crmintern {
+  margin-left: 0;
+}
+
+#crmintern-outer {
+  position: absolute;
+  top: 60px;
+  left: 560px;
+  width: 250px;
+}
+
+#infotext {
+  display: none;
+}
+
+label {
+  color: black;
+}
+
+#password.active, #name.active {
+  color: black;
+}
+
+/*
+==============
+mobile style
+==============
+*/
+#mainbox-mobile{
+  display: none;
+}
+
+#formbox-outer-mobile {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  margin-top: -90px;
+  margin-bottom: 0px;
+}
+
+#formbox-mobile {
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  max-width: 280px;
+  border: 1px solid #3a7597;
+  -webkit-border-radius: 3px 3px 3px 3px;
+  border-radius: 3px 3px 3px 3px;
+  background-color: #67a8ce;
+}
+
+#formbox-mobile div.info {
+  height: 26px;
+  font-weight: bold;
+}
+
+#formbox-mobile fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+#formbox-mobile input {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 100%;
+  height: 34px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -webkit-border-radius: 3px 3px 3px 3px;
+  border-radius: 3px 3px 3px 3px;
+}
+
+#formbox-mobile input.textfield {
+  border: 1px solid #c9dadf;
+}
+
+#formbox-mobile input.button {
+  font-weight:bold;
+  color:white;
+  border: 1px solid #3a7597;
+  background-color: #4890ba;
+  background: -webkit-gradient( linear, left top, left bottom, from(#53a4d3), to(#4890ba));
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#53a4d3), to(#4890ba));
+
+}
+
+#formbox-mobile input.button:hover{
+  background-color: #fe9915;
+  background: -webkit-gradient( linear, left top, left bottom, from(#fe9915), to(#be7414));
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fe9915), to(#be7414));
+}
