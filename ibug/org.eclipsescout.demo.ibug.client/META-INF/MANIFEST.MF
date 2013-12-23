@@ -15,6 +15,6 @@ Require-Bundle: org.eclipse.core.runtime,
  com.bsiag.org.docx4j,
  org.eclipse.scout.docx4j,
  org.eclipse.scout.rt.docx4j.client
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: org.w3c.dom.svg;version="[1.1.0,2.0.0)"
 Bundle-ActivationPolicy: lazy

@@ -63,7 +63,9 @@ public class SwtEnvironment extends AbstractSwtEnvironment {
       @Override
       public void environmentChanged(SwtEnvironmentEvent e) {
         if (e.getType() == SwtEnvironmentEvent.STOPPED) {
-          PlatformUI.getWorkbench().close();
+          if (!PlatformUI.getWorkbench().isClosing()) {
+            PlatformUI.getWorkbench().close();
+          }
         }
       }
     });

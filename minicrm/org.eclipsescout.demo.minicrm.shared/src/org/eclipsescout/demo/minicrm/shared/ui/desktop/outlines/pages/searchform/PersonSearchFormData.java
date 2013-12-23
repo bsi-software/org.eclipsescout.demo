@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.searchform;
 
+import java.math.BigDecimal;
 import java.util.Map;
 
 import org.eclipse.scout.rt.shared.data.form.AbstractFormData;
@@ -74,7 +75,7 @@ public class PersonSearchFormData extends AbstractFormData {
     }
   }
 
-  public static class Employer extends AbstractValueFieldData<Long> {
+  public static class Employer extends AbstractValueFieldData<BigDecimal> {
 
     private static final long serialVersionUID = 1L;
 
