@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
@@ -12,8 +12,13 @@ package org.eclipsescout.demo.widgets.client.ui.forms;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStreamReader;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import org.eclipse.scout.commons.IOUtility;
+import org.eclipse.scout.commons.UriBuilder;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ClientSyncJob;
@@ -25,14 +30,18 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractLinkButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.htmlfield.AbstractHtmlField;
+import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.file.RemoteFile;
+import org.eclipse.scout.rt.shared.services.common.shell.IShellService;
+import org.eclipse.scout.service.SERVICES;
 import org.eclipsescout.demo.widgets.client.Activator;
 import org.eclipsescout.demo.widgets.client.ui.forms.HTMLFieldForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.HTMLFieldForm.MainBox.GroupBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.HTMLFieldForm.MainBox.GroupBox.BlankButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.HTMLFieldForm.MainBox.GroupBox.ScoutHtmlButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.HTMLFieldForm.MainBox.HTMLField;
+import org.osgi.framework.Bundle;
 
 public class HTMLFieldForm extends AbstractForm implements IPageForm {
 
@@ -157,6 +166,21 @@ public class HTMLFieldForm extends AbstractForm implements IPageForm {
       protected boolean getConfiguredScrollBarEnabled() {
         return true;
       }
+
+      @Override
+      protected void execHyperlinkAction(URL url, String path, boolean local) throws ProcessingException {
+        if (local) {
+          Map<String, String> parameters = new UriBuilder(url).getParameters();
+          String paramStr = "";
+          if (parameters != null) {
+            paramStr = parameters.toString();
+          }
+          MessageBox.showOkMessage(null, TEXTS.get("LocalUrlClicked"), TEXTS.get("Parameters") + ":\n" + paramStr);
+        }
+        else {
+          SERVICES.getService(IShellService.class).shellOpen(url.toExternalForm());
+        }
+      }
     }
 
     @Order(20.0)
@@ -181,12 +205,16 @@ public class HTMLFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected String getConfiguredLabel() {
-          return TEXTS.get("CustomHTML");
+          return TEXTS.get("CustomHtml");
         }
 
         @Override
         protected void execClickAction() throws ProcessingException {
-          loadFile("customHTML.html");
+          List<RemoteFile> attachments = new ArrayList<RemoteFile>();
+          Bundle clientBundle = Activator.getDefault().getBundle();
+          RemoteFile iconFile = new RemoteFile(clientBundle.getResource("/resources/icons/scout_logo.jpg"), true);
+          attachments.add(iconFile);
+          loadFile("HtmlFieldCustomHtml.html", attachments.toArray(new RemoteFile[attachments.size()]));
         }
       }
 

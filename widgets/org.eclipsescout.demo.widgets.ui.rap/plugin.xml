@@ -102,6 +102,14 @@
       class="org.eclipse.scout.http.servletfilter.security.BasicSecurityFilter"
       ranking="20">
     </filter>
+    <filter
+          aliases="/"
+          class="org.eclipse.scout.rt.ui.rap.servletfilter.LogoutFilter">
+       <init-param
+             name="active"
+             value="true">
+       </init-param>
+    </filter>
   </extension>
   <extension point="org.eclipse.equinox.http.registry.servlets">
     <servlet
