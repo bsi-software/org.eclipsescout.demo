@@ -1,8 +1,9 @@
 /**
- * 
+ *
  */
 package org.eclipsescout.demo.ibug.ui.rap;
 
+import org.eclipse.scout.rt.client.ui.desktop.IUrlTarget;
 import org.eclipse.scout.rt.ui.rap.window.BrowserWindowHandler;
 
 /**
@@ -10,7 +11,7 @@ import org.eclipse.scout.rt.ui.rap.window.BrowserWindowHandler;
  */
 public class IBugMobileBrowserWindowHandler extends BrowserWindowHandler {
   @Override
-  public void openLink(String link) {
+  public void openLink(String link, IUrlTarget urlTarget) {
     openLinkInSameBrowserWindow(link);
   }
 }
