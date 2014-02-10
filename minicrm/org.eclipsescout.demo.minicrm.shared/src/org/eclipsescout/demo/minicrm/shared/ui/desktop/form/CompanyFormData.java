@@ -1,16 +1,4 @@
-/*******************************************************************************
- * Copyright (c) 2013 BSI Business Systems Integration AG.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     BSI Business Systems Integration AG - initial API and implementation
- ******************************************************************************/
 package org.eclipsescout.demo.minicrm.shared.ui.desktop.form;
-
-import java.util.Map;
 
 import org.eclipse.scout.rt.shared.data.form.AbstractFormData;
 import org.eclipse.scout.rt.shared.data.form.ValidationRule;
@@ -19,17 +7,14 @@ import org.eclipse.scout.rt.shared.data.form.properties.AbstractPropertyData;
 import org.eclipsescout.demo.minicrm.shared.services.code.CompanyRatingCodeType;
 import org.eclipsescout.demo.minicrm.shared.services.code.CompanyTypeCodeType;
 
-/**
- * <b>NOTE:</b><br>
- * This class is auto generated, no manual modifications recommended.
- * 
- * @generated
- */
 public class CompanyFormData extends AbstractFormData {
-
   private static final long serialVersionUID = 1L;
 
   public CompanyFormData() {
+  }
+
+  public CompanyNrProperty getCompanyNrProperty() {
+    return getPropertyByClass(CompanyNrProperty.class);
   }
 
   /**
@@ -44,10 +29,6 @@ public class CompanyFormData extends AbstractFormData {
    */
   public void setCompanyNr(Long companyNr) {
     getCompanyNrProperty().setValue(companyNr);
-  }
-
-  public CompanyNrProperty getCompanyNrProperty() {
-    return getPropertyByClass(CompanyNrProperty.class);
   }
 
   public CompanyRating getCompanyRating() {
@@ -66,8 +47,7 @@ public class CompanyFormData extends AbstractFormData {
     return getFieldByClass(ShortName.class);
   }
 
-  public static class CompanyNrProperty extends AbstractPropertyData<Long> {
-
+  public class CompanyNrProperty extends AbstractPropertyData<Long> {
     private static final long serialVersionUID = 1L;
 
     public CompanyNrProperty() {
@@ -75,7 +55,6 @@ public class CompanyFormData extends AbstractFormData {
   }
 
   public static class CompanyRating extends AbstractValueFieldData<Long> {
-
     private static final long serialVersionUID = 1L;
 
     public CompanyRating() {
@@ -85,7 +64,7 @@ public class CompanyFormData extends AbstractFormData {
      * list of derived validation rules.
      */
     @Override
-    protected void initValidationRules(Map<String, Object> ruleMap) {
+    protected void initValidationRules(java.util.Map<String, Object> ruleMap) {
       super.initValidationRules(ruleMap);
       ruleMap.put(ValidationRule.CODE_TYPE, CompanyRatingCodeType.class);
       ruleMap.put(ValidationRule.MASTER_VALUE_FIELD, CompanyTypeGroup.class);
@@ -95,7 +74,6 @@ public class CompanyFormData extends AbstractFormData {
   }
 
   public static class CompanyTypeGroup extends AbstractValueFieldData<Long> {
-
     private static final long serialVersionUID = 1L;
 
     public CompanyTypeGroup() {
@@ -105,14 +83,13 @@ public class CompanyFormData extends AbstractFormData {
      * list of derived validation rules.
      */
     @Override
-    protected void initValidationRules(Map<String, Object> ruleMap) {
+    protected void initValidationRules(java.util.Map<String, Object> ruleMap) {
       super.initValidationRules(ruleMap);
       ruleMap.put(ValidationRule.CODE_TYPE, CompanyTypeCodeType.class);
     }
   }
 
   public static class Name extends AbstractValueFieldData<String> {
-
     private static final long serialVersionUID = 1L;
 
     public Name() {
@@ -122,14 +99,13 @@ public class CompanyFormData extends AbstractFormData {
      * list of derived validation rules.
      */
     @Override
-    protected void initValidationRules(Map<String, Object> ruleMap) {
+    protected void initValidationRules(java.util.Map<String, Object> ruleMap) {
       super.initValidationRules(ruleMap);
       ruleMap.put(ValidationRule.MAX_LENGTH, 4000);
     }
   }
 
   public static class ShortName extends AbstractValueFieldData<String> {
-
     private static final long serialVersionUID = 1L;
 
     public ShortName() {
@@ -139,7 +115,7 @@ public class CompanyFormData extends AbstractFormData {
      * list of derived validation rules.
      */
     @Override
-    protected void initValidationRules(Map<String, Object> ruleMap) {
+    protected void initValidationRules(java.util.Map<String, Object> ruleMap) {
       super.initValidationRules(ruleMap);
       ruleMap.put(ValidationRule.MAX_LENGTH, 4000);
     }

@@ -1,17 +1,6 @@
-/*******************************************************************************
- * Copyright (c) 2013 BSI Business Systems Integration AG.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     BSI Business Systems Integration AG - initial API and implementation
- ******************************************************************************/
 package org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.searchform;
 
 import java.math.BigDecimal;
-import java.util.Map;
 
 import org.eclipse.scout.rt.shared.data.form.AbstractFormData;
 import org.eclipse.scout.rt.shared.data.form.ValidationRule;
@@ -20,17 +9,14 @@ import org.eclipse.scout.rt.shared.data.form.properties.AbstractPropertyData;
 import org.eclipsescout.demo.minicrm.shared.services.code.CompanyTypeCodeType;
 import org.eclipsescout.demo.minicrm.shared.services.lookup.CompanyLookupCall;
 
-/**
- * <b>NOTE:</b><br>
- * This class is auto generated, no manual modifications recommended.
- * 
- * @generated
- */
 public class PersonSearchFormData extends AbstractFormData {
-
   private static final long serialVersionUID = 1L;
 
   public PersonSearchFormData() {
+  }
+
+  public CompanyNrProperty getCompanyNrProperty() {
+    return getPropertyByClass(CompanyNrProperty.class);
   }
 
   /**
@@ -45,10 +31,6 @@ public class PersonSearchFormData extends AbstractFormData {
    */
   public void setCompanyNr(Long companyNr) {
     getCompanyNrProperty().setValue(companyNr);
-  }
-
-  public CompanyNrProperty getCompanyNrProperty() {
-    return getPropertyByClass(CompanyNrProperty.class);
   }
 
   public Employer getEmployer() {
@@ -67,8 +49,7 @@ public class PersonSearchFormData extends AbstractFormData {
     return getFieldByClass(LastName.class);
   }
 
-  public static class CompanyNrProperty extends AbstractPropertyData<Long> {
-
+  public class CompanyNrProperty extends AbstractPropertyData<Long> {
     private static final long serialVersionUID = 1L;
 
     public CompanyNrProperty() {
@@ -76,7 +57,6 @@ public class PersonSearchFormData extends AbstractFormData {
   }
 
   public static class Employer extends AbstractValueFieldData<BigDecimal> {
-
     private static final long serialVersionUID = 1L;
 
     public Employer() {
@@ -86,7 +66,7 @@ public class PersonSearchFormData extends AbstractFormData {
      * list of derived validation rules.
      */
     @Override
-    protected void initValidationRules(Map<String, Object> ruleMap) {
+    protected void initValidationRules(java.util.Map<String, Object> ruleMap) {
       super.initValidationRules(ruleMap);
       ruleMap.put(ValidationRule.LOOKUP_CALL, CompanyLookupCall.class);
       ruleMap.put(ValidationRule.MASTER_VALUE_FIELD, EmployerType.class);
@@ -95,7 +75,6 @@ public class PersonSearchFormData extends AbstractFormData {
   }
 
   public static class EmployerType extends AbstractValueFieldData<Long> {
-
     private static final long serialVersionUID = 1L;
 
     public EmployerType() {
@@ -105,7 +84,7 @@ public class PersonSearchFormData extends AbstractFormData {
      * list of derived validation rules.
      */
     @Override
-    protected void initValidationRules(Map<String, Object> ruleMap) {
+    protected void initValidationRules(java.util.Map<String, Object> ruleMap) {
       super.initValidationRules(ruleMap);
       ruleMap.put(ValidationRule.CODE_TYPE, CompanyTypeCodeType.class);
       ruleMap.put(ValidationRule.ZERO_NULL_EQUALITY, true);
@@ -113,7 +92,6 @@ public class PersonSearchFormData extends AbstractFormData {
   }
 
   public static class FirstName extends AbstractValueFieldData<String> {
-
     private static final long serialVersionUID = 1L;
 
     public FirstName() {
@@ -123,14 +101,13 @@ public class PersonSearchFormData extends AbstractFormData {
      * list of derived validation rules.
      */
     @Override
-    protected void initValidationRules(Map<String, Object> ruleMap) {
+    protected void initValidationRules(java.util.Map<String, Object> ruleMap) {
       super.initValidationRules(ruleMap);
       ruleMap.put(ValidationRule.MAX_LENGTH, 4000);
     }
   }
 
   public static class LastName extends AbstractValueFieldData<String> {
-
     private static final long serialVersionUID = 1L;
 
     public LastName() {
@@ -140,7 +117,7 @@ public class PersonSearchFormData extends AbstractFormData {
      * list of derived validation rules.
      */
     @Override
-    protected void initValidationRules(Map<String, Object> ruleMap) {
+    protected void initValidationRules(java.util.Map<String, Object> ruleMap) {
       super.initValidationRules(ruleMap);
       ruleMap.put(ValidationRule.MAX_LENGTH, 4000);
     }
