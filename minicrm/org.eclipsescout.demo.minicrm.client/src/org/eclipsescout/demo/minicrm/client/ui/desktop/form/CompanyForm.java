@@ -4,13 +4,14 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
 package org.eclipsescout.demo.minicrm.client.ui.desktop.form;
 
 import org.eclipse.scout.commons.CompareUtility;
+import org.eclipse.scout.commons.annotations.ClassId;
 import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.commons.annotations.FormData.SdkCommand;
 import org.eclipse.scout.commons.annotations.Order;
@@ -39,6 +40,7 @@ import org.eclipsescout.demo.minicrm.shared.ui.desktop.form.CompanyFormData;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.form.ICompanyService;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.form.UpdateCompanyPermission;
 
+@ClassId("721c3f5f-bd28-41e4-a5f0-d78891034485")
 @FormData(value = CompanyFormData.class, sdkCommand = SdkCommand.CREATE)
 public class CompanyForm extends AbstractForm {
 

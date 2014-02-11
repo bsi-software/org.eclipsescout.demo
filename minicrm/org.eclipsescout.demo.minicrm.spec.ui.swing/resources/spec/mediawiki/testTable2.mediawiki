@@ -1,4 +1,7 @@
-== Test table 2 ==
+== Test table 2 {{test.table.2}} ==
+
+* [[test.table.1|Test table 1]]
+
 {|border="1"
 !Foo
 !Gugus
