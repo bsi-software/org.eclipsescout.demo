@@ -28,26 +28,26 @@
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
       <unit id="org.eclipse.rap.feature.feature.group" version="0.0.0"/>
 
-      <repository location="http://download.eclipse.org/rt/rap/2.3/M0-20131212-1644/"/>
+      <repository location="http://download.eclipse.org/rt/rap/2.3/M1-20140127-1357/"/>
     </location>
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
       <unit id="com.bsiag.scout.rt.ui.swing.laf.rayo.source.feature.group" version="0.0.0"/>
 
-      <repository location="http://tools.bsiag.com/marketplace/rayo/3.10"/>
+      <repository location="http://tools.bsiag.com/marketplace/rayo/3.10/"/>
     </location>
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
       <unit id="org.eclipse.scout.docx4j.source.feature.group" version="0.0.0"/>
 
-      <repository location="http://tools.bsiag.com/marketplace/docx4j/3.10"/>
+      <repository location="http://tools.bsiag.com/marketplace/docx4j/3.10/"/>
     </location>
 
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
       <unit id="org.eclipse.scout.logging.bridges.source.feature.group" version="0.0.0"/>
 
-      <repository location="http://tools.bsiag.com/marketplace/logging_bridge/3.10"/>
+      <repository location="http://tools.bsiag.com/marketplace/logging_bridge/3.10/"/>
     </location>
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
