@@ -16,6 +16,8 @@ import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.commons.annotations.FormData.SdkCommand;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
+import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.IValueField;
@@ -25,6 +27,9 @@ import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.radiobuttongroup.AbstractRadioButtonGroup;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
+import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
+import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
+import org.eclipse.scout.rt.extension.client.ui.basic.table.AbstractExtensibleTable;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.service.SERVICES;
@@ -34,6 +39,7 @@ import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm.MainBox.
 import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm.MainBox.NameField;
 import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm.MainBox.OkButton;
 import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm.MainBox.ShortNameField;
+import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm.MainBox.TableField;
 import org.eclipsescout.demo.minicrm.shared.services.code.CompanyRatingCodeType;
 import org.eclipsescout.demo.minicrm.shared.services.code.CompanyTypeCodeType;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.form.CompanyFormData;
@@ -99,6 +105,10 @@ public class CompanyForm extends AbstractForm {
 
   public ShortNameField getShortNameField() {
     return getFieldByClass(ShortNameField.class);
+  }
+
+  public TableField getTableField() {
+    return getFieldByClass(TableField.class);
   }
 
   @Order(10.0)
@@ -177,13 +187,74 @@ public class CompanyForm extends AbstractForm {
           setValue(null);
         }
       }
+
+      public class ShowCodePopupMenu extends AbstractMenu {
+        @Override
+        protected boolean getConfiguredInheritAccessibility() {
+          return false;
+        }
+
+        @Override
+        protected String getConfiguredText() {
+          return TEXTS.get("ShowCode_");
+        }
+
+        @Override
+        protected void execAction() throws ProcessingException {
+          MessageBox.showOkMessage("Code", "", "Code is: " + getCompanyRatingField().getValue());
+        }
+      }
     }
 
     @Order(50.0)
-    public class OkButton extends AbstractOkButton {
+    public class TableField extends AbstractTableField {
+
+      @Override
+      protected String getConfiguredLabel() {
+        return TEXTS.get("Table");
+      }
+
+      @Override
+      protected int getConfiguredGridH() {
+        return 3;
+      }
+
+      @Order(10.0)
+      public class Table extends AbstractExtensibleTable {
+
+        public BColumn getBColumn() {
+          return getColumnSet().getColumnByClass(BColumn.class);
+        }
+
+        public AColumn getAColumn() {
+          return getColumnSet().getColumnByClass(AColumn.class);
+        }
+
+        @Order(10.0)
+        public class AColumn extends AbstractStringColumn {
+
+          @Override
+          protected String getConfiguredHeaderText() {
+            return TEXTS.get("A");
+          }
+        }
+
+        @Order(20.0)
+        public class BColumn extends AbstractStringColumn {
+
+          @Override
+          protected String getConfiguredHeaderText() {
+            return TEXTS.get("B");
+          }
+        }
+      }
     }
 
     @Order(60.0)
+    public class OkButton extends AbstractOkButton {
+    }
+
+    @Order(70.0)
     public class CancelButton extends AbstractCancelButton {
     }
   }

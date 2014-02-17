@@ -144,15 +144,11 @@
          name=""
          point="org.eclipse.core.runtime.products">
       <product
-            name=""
+            name="minicrm"
             application="org.eclipsescout.demo.minicrm.ui.swt.application">
          <property
                name="appName"
                value="minicrm">
-         </property>
-         <property
-               name="windowImages"
-               value="resources/icons/eclipseScout16x16.gif,resources/icons/eclipseScout32x32.gif">
          </property>
          <property
                name="applicationXMI"

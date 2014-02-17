@@ -10,6 +10,7 @@
       <unit id="org.eclipse.platform.source.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.ecore.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.common.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.mylyn.wikitext_feature.feature.group" version="0.0.0" />
 
       <repository id="eclipse_luna" location="http://download.eclipse.org/releases/luna"/>
     </location>

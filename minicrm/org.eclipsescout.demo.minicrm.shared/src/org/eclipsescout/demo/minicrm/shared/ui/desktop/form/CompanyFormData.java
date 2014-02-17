@@ -17,6 +17,7 @@ import javax.annotation.Generated;
 import org.eclipse.scout.rt.shared.data.form.AbstractFormData;
 import org.eclipse.scout.rt.shared.data.form.ValidationRule;
 import org.eclipse.scout.rt.shared.data.form.fields.AbstractValueFieldData;
+import org.eclipse.scout.rt.shared.data.form.fields.tablefield.AbstractTableFieldData;
 import org.eclipse.scout.rt.shared.data.form.properties.AbstractPropertyData;
 import org.eclipsescout.demo.minicrm.shared.services.code.CompanyRatingCodeType;
 import org.eclipsescout.demo.minicrm.shared.services.code.CompanyTypeCodeType;
@@ -67,6 +68,10 @@ public class CompanyFormData extends AbstractFormData {
 
   public ShortName getShortName() {
     return getFieldByClass(ShortName.class);
+  }
+
+  public Table getTable() {
+    return getFieldByClass(Table.class);
   }
 
   public static class CompanyNrProperty extends AbstractPropertyData<Long> {
@@ -145,6 +150,61 @@ public class CompanyFormData extends AbstractFormData {
     protected void initValidationRules(Map<String, Object> ruleMap) {
       super.initValidationRules(ruleMap);
       ruleMap.put(ValidationRule.MAX_LENGTH, 4000);
+    }
+  }
+
+  public static class Table extends AbstractTableFieldData {
+
+    private static final long serialVersionUID = 1L;
+    public static final int A_COLUMN_ID = 0;
+    public static final int B_COLUMN_ID = 1;
+
+    public Table() {
+    }
+
+    public String getA(int row) {
+      return (String) getValueInternal(row, A_COLUMN_ID);
+    }
+
+    public void setA(int row, String a) {
+      setValueInternal(row, A_COLUMN_ID, a);
+    }
+
+    public String getB(int row) {
+      return (String) getValueInternal(row, B_COLUMN_ID);
+    }
+
+    public void setB(int row, String b) {
+      setValueInternal(row, B_COLUMN_ID, b);
+    }
+
+    @Override
+    public int getColumnCount() {
+      return 2;
+    }
+
+    @Override
+    public Object getValueAt(int row, int column) {
+      switch (column) {
+        case A_COLUMN_ID:
+          return getA(row);
+        case B_COLUMN_ID:
+          return getB(row);
+        default:
+          return null;
+      }
+    }
+
+    @Override
+    public void setValueAt(int row, int column, Object value) {
+      switch (column) {
+        case A_COLUMN_ID:
+          setA(row, (String) value);
+          break;
+        case B_COLUMN_ID:
+          setB(row, (String) value);
+          break;
+      }
     }
   }
 }

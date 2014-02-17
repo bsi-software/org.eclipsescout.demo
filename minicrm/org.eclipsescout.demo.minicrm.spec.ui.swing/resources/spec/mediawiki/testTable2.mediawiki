@@ -1,4 +1,4 @@
-== Test table 2 {{test.table.2}} ==
+== Test table 2 {{a:test.table.2}} ==
 
 * [[test.table.1|Test table 1]]
 
