@@ -122,6 +122,11 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
       }
 
       @Override
+      protected void execPrepareAction() throws ProcessingException {
+        super.execPrepareAction();
+      }
+
+      @Override
       protected void execAction() throws ProcessingException {
         String menuname = this.getClass().getSimpleName();
         MessageBox.showOkMessage("Clicked on Menu", "You have clicked on \"" + TEXTS.get(menuname.substring(0, menuname.length() - 4)) + "\"", null);
@@ -130,10 +135,17 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
 
     @Order(20.0)
     public class MenuWithIconMenu extends AbstractMenu {
+      private int counter = 0;
 
       @Override
       protected String getConfiguredIconId() {
         return AbstractIcons.Gears;
+      }
+
+      @Override
+      protected void execPrepareAction() throws ProcessingException {
+        super.execPrepareAction();
+        setText(getConfiguredText() + " " + (counter++));
       }
 
       @Override
@@ -157,11 +169,17 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
       }
 
       @Override
+      protected void execAction() {
+        System.out.println("execAction");
+      }
+
+      @Override
       protected void execToggleAction(boolean selected) throws ProcessingException {
-        super.execToggleAction(selected);
-        if (selected == true) {
-          MessageBox.showOkMessage("Checked the Menu", "You have checked the \"" + TEXTS.get(this.getClass().getSimpleName()) + "\"", null);
-        }
+        System.out.println("execToggleAction");
+//        super.execToggleAction(selected);
+//        if (selected == true) {
+//          MessageBox.showOkMessage("Checked the Menu", "You have checked the \"" + TEXTS.get(this.getClass().getSimpleName()) + "\"", null);
+//        }
       }
     }
 
@@ -171,6 +189,12 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
       @Override
       protected String getConfiguredText() {
         return TEXTS.get("MenuWithMenus");
+      }
+
+      @Override
+      protected void execAction() throws ProcessingException {
+        String menuname = this.getClass().getSimpleName();
+        MessageBox.showOkMessage("Clicked on Menu", "You have clicked on \"" + TEXTS.get(menuname.substring(0, menuname.length() - 4)) + "\"", null);
       }
 
       @Order(10.0)
