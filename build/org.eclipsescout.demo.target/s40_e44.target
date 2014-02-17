@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <?pde version="3.6"?>
-<target name="Demo Widget App Scout 3.10 (Nightly Builds) Eclipse 4.4 Target" sequenceNumber="15">
+<target name="Demo Widget App Scout 4.0 (Nightly Builds) Eclipse 4.4 Target" sequenceNumber="15">
   <locations>
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
       <unit id="org.eclipse.equinox.executable.feature.group" version="0.0.0"/>
@@ -28,7 +28,7 @@
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
       <unit id="org.eclipse.rap.feature.feature.group" version="0.0.0"/>
 
-      <repository location="http://download.eclipse.org/rt/rap/2.3/M0-20131212-1644/"/>
+      <repository location="http://download.eclipse.org/rt/rap/2.3/M1-20140127-1357/"/>
     </location>
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
@@ -38,7 +38,9 @@
     </location>
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-      <unit id="org.eclipse.scout.docx4j.source.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.scout.docx4j.core.source.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.scout.rt.docx4j.client.source.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.scout.docx4j.libs.feature.group" version="0.0.0"/>
 
       <repository location="http://tools.bsiag.com/marketplace/docx4j/"/>
     </location>

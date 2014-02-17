@@ -41,9 +41,9 @@
             <configuration>
               <artifacts>
                 <artifact>
-                  <file>s310_e44.target</file>
+                  <file>s40_e44.target</file>
                   <type>target</type>
-                  <classifier>s310_e44</classifier>
+                  <classifier>s40_e44</classifier>
                 </artifact>
               </artifacts>
             </configuration>
