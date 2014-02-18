@@ -146,6 +146,7 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
       protected void execPrepareAction() throws ProcessingException {
         super.execPrepareAction();
         setText(getConfiguredText() + " " + (counter++));
+
       }
 
       @Override
@@ -175,11 +176,10 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
 
       @Override
       protected void execToggleAction(boolean selected) throws ProcessingException {
-        System.out.println("execToggleAction");
-//        super.execToggleAction(selected);
-//        if (selected == true) {
-//          MessageBox.showOkMessage("Checked the Menu", "You have checked the \"" + TEXTS.get(this.getClass().getSimpleName()) + "\"", null);
-//        }
+        super.execToggleAction(selected);
+        if (selected == true) {
+          MessageBox.showOkMessage("Checked the Menu", "You have checked the \"" + TEXTS.get(this.getClass().getSimpleName()) + "\"", null);
+        }
       }
     }
 
@@ -357,10 +357,6 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
       super(Desktop.this, WidgetsOutline.class);
     }
 
-    @Override
-    protected String getConfiguredText() {
-      return TEXTS.get("TestCases");
-    }
   }
 
   @Order(20.0)
@@ -369,9 +365,5 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
       super(Desktop.this, PagesSearchFormsOutline.class);
     }
 
-    @Override
-    protected String getConfiguredText() {
-      return TEXTS.get("PagesSearchForms");
-    }
   }
 }

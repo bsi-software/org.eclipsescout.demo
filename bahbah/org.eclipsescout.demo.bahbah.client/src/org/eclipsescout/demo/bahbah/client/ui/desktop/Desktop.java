@@ -12,11 +12,6 @@ package org.eclipsescout.demo.bahbah.client.ui.desktop;
 
 import java.util.ArrayList;
 
-import org.eclipsescout.demo.bahbah.client.ClientSession;
-import org.eclipsescout.demo.bahbah.client.ui.desktop.outlines.AdministrationOutline;
-import org.eclipsescout.demo.bahbah.client.ui.desktop.outlines.ChatOutline;
-import org.eclipsescout.demo.bahbah.client.ui.desktop.outlines.pages.UserNodePage;
-import org.eclipsescout.demo.bahbah.shared.Icons;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ClientSyncJob;
@@ -31,6 +26,11 @@ import org.eclipse.scout.rt.client.ui.form.outline.DefaultOutlineTreeForm;
 import org.eclipse.scout.rt.extension.client.ui.desktop.AbstractExtensibleDesktop;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
+import org.eclipsescout.demo.bahbah.client.ClientSession;
+import org.eclipsescout.demo.bahbah.client.ui.desktop.outlines.AdministrationOutline;
+import org.eclipsescout.demo.bahbah.client.ui.desktop.outlines.ChatOutline;
+import org.eclipsescout.demo.bahbah.client.ui.desktop.outlines.pages.UserNodePage;
+import org.eclipsescout.demo.bahbah.shared.Icons;
 
 public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
 
@@ -133,10 +133,6 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
       super(Desktop.this, ChatOutline.class);
     }
 
-    @Override
-    protected String getConfiguredText() {
-      return TEXTS.get("Chat");
-    }
   }
 
   @Order(20.0)
@@ -145,9 +141,5 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
       super(Desktop.this, AdministrationOutline.class);
     }
 
-    @Override
-    protected String getConfiguredText() {
-      return TEXTS.get("Administration");
-    }
   }
 }

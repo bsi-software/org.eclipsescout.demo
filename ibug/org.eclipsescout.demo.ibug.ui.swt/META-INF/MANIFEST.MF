@@ -7,7 +7,6 @@ Bundle-ClassPath: .
 Bundle-Activator: org.eclipsescout.demo.ibug.ui.swt.Activator
 Export-Package: org.eclipsescout.demo.ibug.ui.swt;uses:="org.eclipse.scout.rt.ui.swt,org.eclipse.scout.rt.client.session,org.osgi.framework",
  org.eclipsescout.demo.ibug.ui.swt.application,
- org.eclipsescout.demo.ibug.ui.swt.application.button,
  org.eclipsescout.demo.ibug.ui.swt.application.menu,
  org.eclipsescout.demo.ibug.ui.swt.editor,
  org.eclipsescout.demo.ibug.ui.swt.perspective,

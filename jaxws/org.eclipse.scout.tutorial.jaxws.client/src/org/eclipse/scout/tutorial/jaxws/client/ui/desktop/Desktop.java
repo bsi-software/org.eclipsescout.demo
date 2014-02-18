@@ -10,7 +10,6 @@
  ******************************************************************************/
 package org.eclipse.scout.tutorial.jaxws.client.ui.desktop;
 
-
 import java.util.ArrayList;
 
 import org.eclipse.scout.commons.annotations.Order;
@@ -159,9 +158,5 @@ public class Desktop extends AbstractDesktop implements IDesktop {
       super(Desktop.this, StandardOutline.class);
     }
 
-    @Override
-    protected String getConfiguredText() {
-      return TEXTS.get("StandardOutline");
-    }
   }
 }
