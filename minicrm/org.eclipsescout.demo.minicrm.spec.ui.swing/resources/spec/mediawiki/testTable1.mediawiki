@@ -1,10 +1,10 @@
-== Test table 1 {{a:test.table.1}} ==
+== {{a:test.table.1}}Test table 1 ==
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent lacus enim, hendrerit id erat eu, lobortis volutpat tortor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus dignissim blandit erat, eu condimentum metus aliquam vitae. Etiam pharetra nisi massa, id aliquet lorem pretium sit amet. Integer ut metus at quam varius eleifend. Phasellus id ante accumsan, varius erat sed, lacinia tortor. Integer tempor augue elit, eu adipiscing justo luctus sit amet. Ut ac nisl iaculis odio ultrices mollis a vel leo. Phasellus gravida justo sed mauris tincidunt vestibulum. Quisque eros ipsum, rutrum auctor auctor quis, interdum nec nulla. Integer laoreet in tellus et posuere. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean blandit, leo vehicula interdum tristique, elit neque laoreet nunc, malesuada viverra sem dolor id felis. Fusce turpis enim, lacinia nec nulla ut, tempor volutpat nisl.
 
 Vivamus placerat libero ut nunc cursus, in mattis sem aliquam. Cras enim sapien, tristique dapibus lorem sed, vehicula ultrices sem. Aenean nec nunc urna. Aenean ut posuere leo. Maecenas gravida elit et erat euismod bibendum. Nulla et risus at augue hendrerit suscipit sed a ante. Proin convallis et augue ut gravida. Integer vitae dictum dolor. Aliquam commodo odio nec sodales suscipit. Vestibulum sollicitudin ipsum a mi semper lacinia. Etiam interdum lectus eget pretium faucibus. Suspendisse faucibus, risus nec luctus semper, arcu nisl tempor massa, nec interdum nibh purus non dui. Ut quis nisl consectetur, gravida lectus eget, tristique ipsum. Pellentesque nec tincidunt lorem.
 
-* [[CompanyForm|Company Form Heuristic: simple Name]]
-* [[org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm|Company Form Heuristic: fully qualified Name]]
+* [[CompanyForm|Company Form Heuristic: simple name]]
+* [[org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm|Company Form Heuristic: fully qualified name]]
 * [[c_721c3f5f-bd28-41e4-a5f0-d78891034485|Company Form classId]]
 * [[test.table.2|Test table 2]]
 
