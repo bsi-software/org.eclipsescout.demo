@@ -11,6 +11,7 @@
 package org.eclipse.scout.tutorial.jaxws.client.ui.desktop;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.scout.commons.CollectionUtility;
 import org.eclipse.scout.commons.annotations.Order;
@@ -40,12 +41,11 @@ public class Desktop extends AbstractDesktop implements IDesktop {
   public Desktop() {
   }
 
-  @SuppressWarnings("unchecked")
   @Override
-  protected Class<? extends IOutline>[] getConfiguredOutlines() {
-    ArrayList<Class> outlines = new ArrayList<Class>();
+  protected List<Class<? extends IOutline>> getConfiguredOutlines() {
+    List<Class<? extends IOutline>> outlines = new ArrayList<Class<? extends IOutline>>();
     outlines.add(StandardOutline.class);
-    return outlines.toArray(new Class[outlines.size()]);
+    return outlines;
   }
 
   @Override

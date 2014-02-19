@@ -10,6 +10,9 @@
  ******************************************************************************/
 package org.eclipsescout.demo.minicrm.client.ui.desktop;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.scout.commons.CollectionUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
@@ -40,9 +43,10 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
   }
 
   @Override
-  @SuppressWarnings("unchecked")
-  protected Class<? extends IOutline>[] getConfiguredOutlines() {
-    return new Class[]{StandardOutline.class};
+  protected List<Class<? extends IOutline>> getConfiguredOutlines() {
+    List<Class<? extends IOutline>> outlines = new ArrayList<Class<? extends IOutline>>();
+    outlines.add(StandardOutline.class);
+    return outlines;
   }
 
   @Override
