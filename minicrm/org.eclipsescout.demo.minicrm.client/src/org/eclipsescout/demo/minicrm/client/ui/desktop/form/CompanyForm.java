@@ -34,12 +34,12 @@ import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.service.SERVICES;
 import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm.MainBox.CancelButton;
-import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm.MainBox.CompanyRatingField;
 import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm.MainBox.CompanyTypeGroup;
+import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm.MainBox.FooGroup.CompanyRatingField;
+import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm.MainBox.FooGroup.TableField;
 import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm.MainBox.NameField;
 import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm.MainBox.OkButton;
 import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm.MainBox.ShortNameField;
-import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm.MainBox.TableField;
 import org.eclipsescout.demo.minicrm.shared.services.code.CompanyRatingCodeType;
 import org.eclipsescout.demo.minicrm.shared.services.code.CompanyTypeCodeType;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.form.CompanyFormData;
@@ -146,105 +146,116 @@ public class CompanyForm extends AbstractForm {
       }
     }
 
-    @Order(40.0)
-    public class CompanyRatingField extends AbstractSmartField<Long> {
+    @ClassId("e1a0d097-e8c6-4d41-b394-20d6318a27cf")
+    @Order(35.0)
+    public class FooGroup extends AbstractGroupBox {
 
       @Override
       protected String getConfiguredLabel() {
-        return TEXTS.get("CompanyRating");
+        return "Foo";
       }
 
-      @Override
-      protected Class<? extends ICodeType<?>> getConfiguredCodeType() {
-        return CompanyRatingCodeType.class;
-      }
+      @ClassId("5e9a1c6a-3cb0-4b03-975e-c4878cf070a7")
+      @Order(40.0)
+      public class CompanyRatingField extends AbstractSmartField<Long> {
 
-      @Override
-      protected Class<? extends IValueField> getConfiguredMasterField() {
-        return CompanyTypeGroup.class;
-      }
-
-      @Override
-      protected boolean getConfiguredMasterRequired() {
-        return true;
-      }
-
-      @Override
-      protected boolean getConfiguredVisible() {
-        return false;
-      }
-
-      @Override
-      protected void execChangedMasterValue(Object newMasterValue) throws ProcessingException {
-
-        if (CompareUtility.equals(getCompanyTypeGroup().getValue(), CompanyTypeCodeType.CustomerCode.ID)) {
-          setEnabled(true);
-          setVisible(true);
-        }
-        else {
-          setEnabled(false);
-          setVisible(false);
-          setValue(null);
-        }
-      }
-
-      public class ShowCodePopupMenu extends AbstractMenu {
         @Override
-        protected boolean getConfiguredInheritAccessibility() {
+        protected String getConfiguredLabel() {
+          return TEXTS.get("CompanyRating");
+        }
+
+        @Override
+        protected Class<? extends ICodeType<?>> getConfiguredCodeType() {
+          return CompanyRatingCodeType.class;
+        }
+
+        @Override
+        protected Class<? extends IValueField> getConfiguredMasterField() {
+          return CompanyTypeGroup.class;
+        }
+
+        @Override
+        protected boolean getConfiguredMasterRequired() {
+          return true;
+        }
+
+        @Override
+        protected boolean getConfiguredVisible() {
           return false;
         }
 
         @Override
-        protected String getConfiguredText() {
-          return TEXTS.get("ShowCode_");
-        }
+        protected void execChangedMasterValue(Object newMasterValue) throws ProcessingException {
 
-        @Override
-        protected void execAction() throws ProcessingException {
-          MessageBox.showOkMessage("Code", "", "Code is: " + getCompanyRatingField().getValue());
-        }
-      }
-    }
-
-    @Order(50.0)
-    public class TableField extends AbstractTableField {
-
-      @Override
-      protected String getConfiguredLabel() {
-        return TEXTS.get("Table");
-      }
-
-      @Override
-      protected int getConfiguredGridH() {
-        return 3;
-      }
-
-      @Order(10.0)
-      public class Table extends AbstractExtensibleTable {
-
-        public BColumn getBColumn() {
-          return getColumnSet().getColumnByClass(BColumn.class);
-        }
-
-        public AColumn getAColumn() {
-          return getColumnSet().getColumnByClass(AColumn.class);
-        }
-
-        @Order(10.0)
-        public class AColumn extends AbstractStringColumn {
-
-          @Override
-          protected String getConfiguredHeaderText() {
-            return TEXTS.get("A");
+          if (CompareUtility.equals(getCompanyTypeGroup().getValue(), CompanyTypeCodeType.CustomerCode.ID)) {
+            setEnabled(true);
+            setVisible(true);
+          }
+          else {
+            setEnabled(false);
+            setVisible(false);
+            setValue(null);
           }
         }
 
-        @Order(20.0)
-        public class BColumn extends AbstractStringColumn {
+        public class ShowCodePopupMenu extends AbstractMenu {
+          @Override
+          protected boolean getConfiguredInheritAccessibility() {
+            return false;
+          }
 
           @Override
-          protected String getConfiguredHeaderText() {
-            return TEXTS.get("B");
+          protected String getConfiguredText() {
+            return TEXTS.get("ShowCode_");
+          }
+
+          @Override
+          protected void execAction() throws ProcessingException {
+            MessageBox.showOkMessage("Code", "", "Code is: " + getCompanyRatingField().getValue());
+          }
+        }
+      }
+
+      @Order(50.0)
+      public class TableField extends AbstractTableField {
+
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("AorB");
+        }
+
+        @Override
+        protected int getConfiguredGridH() {
+          return 3;
+        }
+
+        @Order(10.0)
+        public class Table extends AbstractExtensibleTable {
+
+          public BColumn getBColumn() {
+            return getColumnSet().getColumnByClass(BColumn.class);
+          }
+
+          public AColumn getAColumn() {
+            return getColumnSet().getColumnByClass(AColumn.class);
+          }
+
+          @Order(10.0)
+          public class AColumn extends AbstractStringColumn {
+
+            @Override
+            protected String getConfiguredHeaderText() {
+              return TEXTS.get("A");
+            }
+          }
+
+          @Order(20.0)
+          public class BColumn extends AbstractStringColumn {
+
+            @Override
+            protected String getConfiguredHeaderText() {
+              return TEXTS.get("B");
+            }
           }
         }
       }
