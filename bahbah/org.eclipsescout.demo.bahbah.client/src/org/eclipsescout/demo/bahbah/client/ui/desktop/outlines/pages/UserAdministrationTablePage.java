@@ -152,7 +152,7 @@ public class UserAdministrationTablePage extends AbstractPageWithTable<UserAdmin
       }
 
       @Override
-      protected Class<? extends ICodeType> getConfiguredCodeType() {
+      protected Class<? extends ICodeType<?, Integer>> getConfiguredCodeType() {
         return UserRoleCodeType.class;
 
       }
@@ -282,6 +282,7 @@ public class UserAdministrationTablePage extends AbstractPageWithTable<UserAdmin
       protected String getConfiguredText() {
         return TEXTS.get("DeleteUser");
       }
+      
 
       @Override
       protected void execAction() throws ProcessingException {

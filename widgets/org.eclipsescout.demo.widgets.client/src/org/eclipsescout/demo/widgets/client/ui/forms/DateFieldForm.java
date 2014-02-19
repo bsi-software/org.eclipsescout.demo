@@ -25,7 +25,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.datefield.AbstractTimeField;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
+import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
 import org.eclipsescout.demo.widgets.client.services.lookup.TimezonesLookupCall;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateFieldForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateFieldForm.MainBox.GroupBox;
@@ -99,7 +99,7 @@ public class DateFieldForm extends AbstractForm implements IPageForm {
         }
 
         @Override
-        protected Class<? extends LookupCall> getConfiguredLookupCall() {
+        protected Class<? extends ILookupCall<TimeZone>> getConfiguredLookupCall() {
           return TimezonesLookupCall.class;
         }
 

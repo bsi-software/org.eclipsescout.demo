@@ -173,7 +173,7 @@ public class UserForm extends AbstractForm {
         }
 
         @Override
-        protected Class<? extends ICodeType<Integer>> getConfiguredCodeType() {
+        protected Class<? extends ICodeType<?, Integer>> getConfiguredCodeType() {
           return UserRoleCodeType.class;
         }
 

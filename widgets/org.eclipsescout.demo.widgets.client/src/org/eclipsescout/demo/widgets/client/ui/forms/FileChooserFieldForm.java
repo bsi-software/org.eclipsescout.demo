@@ -4,14 +4,16 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
 package org.eclipsescout.demo.widgets.client.ui.forms;
 
 import java.io.File;
+import java.util.List;
 
+import org.eclipse.scout.commons.CollectionUtility;
 import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
@@ -117,8 +119,8 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
         public class ChooseAnImageField extends AbstractFileChooserField {
 
           @Override
-          protected String[] getConfiguredFileExtensions() {
-            return new String[]{"png", "bmp", "jpg", "jpeg", "gif"};
+          protected List<String> getConfiguredFileExtensions() {
+            return CollectionUtility.arrayList("png", "bmp", "jpg", "jpeg", "gif");
           }
 
           @Override

@@ -29,7 +29,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.client.ui.form.fields.tabbox.AbstractTabBox;
 import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
+import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
 import org.eclipsescout.demo.widgets.client.services.lookup.TimezonesLookupCall;
 import org.eclipsescout.demo.widgets.client.ui.forms.TabBoxForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.TabBoxForm.MainBox.TabBox;
@@ -194,7 +194,7 @@ public class TabBoxForm extends AbstractForm implements IPageForm {
           }
 
           @Override
-          protected Class<? extends LookupCall> getConfiguredLookupCall() {
+          protected Class<? extends ILookupCall<TimeZone>> getConfiguredLookupCall() {
             return TimezonesLookupCall.class;
           }
 

@@ -11,7 +11,6 @@
 package org.eclipse.scout.tutorial.jaxws.ui.swt.application.menu;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.jface.action.IContributionItem;
@@ -29,8 +28,8 @@ public class DesktopMenuBar extends CompoundContributionItem {
     ISwtEnvironment env = Activator.getDefault().getEnvironment();
     if (env != null && env.isInitialized()) {
       if (env.getClientSession() != null && env.getClientSession().getDesktop() != null) {
-        IMenu[] menus = env.getClientSession().getDesktop().getMenus();
-        List<IMenu> consolidatedMenus = SwtMenuUtility.consolidateMenus(Arrays.asList(menus));
+        List<IMenu> menus = env.getClientSession().getDesktop().getMenus();
+        List<IMenu> consolidatedMenus = SwtMenuUtility.consolidateMenus(menus);
         List<IContributionItem> swtContributionItems = new ArrayList<IContributionItem>();
         for (IMenu menu : consolidatedMenus) {
           swtContributionItems.add(new SwtScoutMenuContributionItem(menu, env));

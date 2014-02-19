@@ -4,14 +4,16 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
 package org.eclipsescout.demo.widgets.client.ui.desktop.outlines.pages;
 
+import org.eclipse.scout.commons.CollectionUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.client.ui.action.tool.IToolButton;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
@@ -66,15 +68,18 @@ public class SearchFormTablePage extends AbstractPageWithTable<SearchFormTablePa
   @Override
   protected void execPageActivated() throws ProcessingException {
     setSearchActive(true);
-    if (m_displayViewId == ISearchForm.VIEW_ID_NE || m_displayViewId == ISearchForm.VIEW_ID_SE) {
-      ClientSession.get().getDesktop().getToolButtons()[0].setSelected(true);
-      ClientSession.get().getDesktop().getToolButtons()[0].setToggleAction(true);
-      ClientSession.get().getDesktop().getToolButtons()[0].doAction();
-    }
-    else {
-      ClientSession.get().getDesktop().getToolButtons()[0].setSelected(false);
-      ClientSession.get().getDesktop().getToolButtons()[0].setToggleAction(false);
-      ClientSession.get().getDesktop().getToolButtons()[0].doAction();
+    IToolButton firstToolButton = CollectionUtility.firstElement(ClientSession.get().getDesktop().getToolButtons());
+    if (firstToolButton != null) {
+      if (m_displayViewId == ISearchForm.VIEW_ID_NE || m_displayViewId == ISearchForm.VIEW_ID_SE) {
+        firstToolButton.setSelected(true);
+        firstToolButton.setToggleAction(true);
+        firstToolButton.doAction();
+      }
+      else {
+        firstToolButton.setSelected(false);
+        firstToolButton.setToggleAction(false);
+        firstToolButton.doAction();
+      }
     }
   }
 

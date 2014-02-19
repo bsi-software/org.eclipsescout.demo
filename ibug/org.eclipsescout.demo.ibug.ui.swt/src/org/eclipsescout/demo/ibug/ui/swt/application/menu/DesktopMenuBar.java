@@ -4,19 +4,22 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
 package org.eclipsescout.demo.ibug.ui.swt.application.menu;
 
+import java.util.List;
+
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IMenuManager;
-import org.eclipsescout.demo.ibug.ui.swt.Activator;
+import org.eclipse.scout.commons.CollectionUtility;
 import org.eclipse.scout.rt.client.ui.action.menu.IMenu;
 import org.eclipse.scout.rt.ui.swt.ISwtEnvironment;
 import org.eclipse.scout.rt.ui.swt.SwtMenuUtility;
 import org.eclipse.ui.actions.CompoundContributionItem;
+import org.eclipsescout.demo.ibug.ui.swt.Activator;
 
 public class DesktopMenuBar extends CompoundContributionItem {
 
@@ -25,8 +28,8 @@ public class DesktopMenuBar extends CompoundContributionItem {
     ISwtEnvironment env = Activator.getDefault().getEnvironment();
     if (env != null && env.isInitialized()) {
       if (env.getClientSession() != null && env.getClientSession().getDesktop() != null) {
-        IMenu[] menus = env.getClientSession().getDesktop().getMenus();
-        if (menus != null && menus.length > 0) {
+        List<IMenu> menus = env.getClientSession().getDesktop().getMenus();
+        if (CollectionUtility.hasElements(menus)) {
           return SwtMenuUtility.getMenuContribution(menus, env);
         }
       }

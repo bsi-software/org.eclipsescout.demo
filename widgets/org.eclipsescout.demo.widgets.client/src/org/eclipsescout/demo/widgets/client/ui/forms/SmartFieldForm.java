@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
@@ -19,7 +19,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
-import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
+import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
 import org.eclipsescout.demo.widgets.client.services.lookup.CompanyTypeLookupCall;
 import org.eclipsescout.demo.widgets.client.services.lookup.ProductLookupCall;
 import org.eclipsescout.demo.widgets.client.services.lookup.StatusTextLookupCall;
@@ -140,7 +140,7 @@ public class SmartFieldForm extends AbstractForm implements IPageForm {
           }
 
           @Override
-          protected Class<? extends ICodeType<Long>> getConfiguredCodeType() {
+          protected Class<? extends ICodeType<?, Long>> getConfiguredCodeType() {
             return DateCodeType.class;
           }
 
@@ -170,9 +170,8 @@ public class SmartFieldForm extends AbstractForm implements IPageForm {
           }
 
           @Override
-          protected Class<? extends LookupCall> getConfiguredLookupCall() {
+          protected Class<? extends ILookupCall<Long>> getConfiguredLookupCall() {
             return ProductLookupCall.class;
-
           }
         }
 
@@ -200,7 +199,7 @@ public class SmartFieldForm extends AbstractForm implements IPageForm {
           }
 
           @Override
-          protected Class<? extends LookupCall> getConfiguredLookupCall() {
+          protected Class<? extends ILookupCall<Long>> getConfiguredLookupCall() {
             return ProductLookupCall.class;
 
           }
@@ -220,7 +219,7 @@ public class SmartFieldForm extends AbstractForm implements IPageForm {
         public class ListWithCodeTypeField extends AbstractSmartField<Long> {
 
           @Override
-          protected Class<? extends ICodeType<Long>> getConfiguredCodeType() {
+          protected Class<? extends ICodeType<?, Long>> getConfiguredCodeType() {
             return CountryCodeType.class;
           }
 
@@ -240,7 +239,7 @@ public class SmartFieldForm extends AbstractForm implements IPageForm {
           }
 
           @Override
-          protected Class<? extends LookupCall> getConfiguredLookupCall() {
+          protected Class<? extends ILookupCall<Long>> getConfiguredLookupCall() {
             return CompanyTypeLookupCall.class;
           }
         }
@@ -268,7 +267,7 @@ public class SmartFieldForm extends AbstractForm implements IPageForm {
           }
 
           @Override
-          protected Class<? extends LookupCall> getConfiguredLookupCall() {
+          protected Class<? extends ILookupCall<Long>> getConfiguredLookupCall() {
             return StatusTextLookupCall.class;
           }
         }

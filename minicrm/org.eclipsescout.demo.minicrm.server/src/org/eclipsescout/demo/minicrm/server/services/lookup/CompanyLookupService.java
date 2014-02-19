@@ -4,17 +4,19 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
 package org.eclipsescout.demo.minicrm.server.services.lookup;
 
+import java.math.BigDecimal;
+
 import org.eclipse.scout.rt.server.services.lookup.AbstractSqlLookupService;
 import org.eclipsescout.demo.minicrm.shared.Icons;
 import org.eclipsescout.demo.minicrm.shared.services.lookup.ICompanyLookupService;
 
-public class CompanyLookupService extends AbstractSqlLookupService implements ICompanyLookupService {
+public class CompanyLookupService extends AbstractSqlLookupService<BigDecimal> implements ICompanyLookupService {
 
   @Override
   public String getConfiguredSqlSelect() {

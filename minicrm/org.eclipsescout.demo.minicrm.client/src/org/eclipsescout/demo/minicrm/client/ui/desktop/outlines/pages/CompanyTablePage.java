@@ -137,7 +137,7 @@ public class CompanyTablePage extends AbstractPageWithTable<Table> {
       }
 
       @Override
-      protected Class<? extends ICodeType> getConfiguredCodeType() {
+      protected Class<? extends ICodeType<?, Long>> getConfiguredCodeType() {
         return CompanyTypeCodeType.class;
 
       }

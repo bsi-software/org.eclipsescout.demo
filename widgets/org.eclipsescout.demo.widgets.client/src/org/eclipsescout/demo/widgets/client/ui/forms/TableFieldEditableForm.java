@@ -10,12 +10,16 @@
  ******************************************************************************/
 package org.eclipsescout.demo.widgets.client.ui.forms;
 
+import java.util.Date;
+
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
+import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractDateColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
+import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractProposalColumn;
+import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractSmartColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
@@ -23,14 +27,17 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
 import org.eclipse.scout.rt.shared.TEXTS;
+import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
+import org.eclipsescout.demo.widgets.client.services.lookup.CompanyLookupCall;
+import org.eclipsescout.demo.widgets.client.services.lookup.GenderLookupCall;
 import org.eclipsescout.demo.widgets.client.ui.forms.DetailForm.MainBox.GroupBox.ValueLastField;
-import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.CloseButton;
-import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.GroupBox;
-import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.GroupBox.EditableTableField;
+import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldEditableForm.MainBox.CloseButton;
+import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldEditableForm.MainBox.GroupBox;
+import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldEditableForm.MainBox.GroupBox.EditableTableField;
 
-public class TableFieldForm extends AbstractForm implements IPageForm {
+public class TableFieldEditableForm extends AbstractForm implements IPageForm {
 
-  public TableFieldForm() throws ProcessingException {
+  public TableFieldEditableForm() throws ProcessingException {
     super();
   }
 
@@ -41,7 +48,7 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
 
   @Override
   protected String getConfiguredTitle() {
-    return TEXTS.get("TableField");
+    return TEXTS.get("TableFieldEditable");
   }
 
   @Override
@@ -97,10 +104,11 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
         @Override
         protected void execInitField() throws ProcessingException {
           Object data[][] = new Object[][]{
-              {1L, "Exxon Mobil Corporation", "XOM"},
-              {2L, "IBM", "IBM"},
-              {3L, "UBS", "UBS"},
-              {4L, "Coca-Cola Company", "KO"}};
+              {1L, "Ralph Mueller", new Date(), "Eclipse", 2l},
+              {2L, "Andreas Hoegger", new Date(), "Business Systems Integration AG", 2l},
+              {3L, "Matthias Zimmermann", new Date(), "BSI AG", null},
+              {4L, "Homer Simpson", new Date(), null, 2l},
+              {5L, "Mart Simpson", new Date(), null, 1l}};
           getTable().addRowsByMatrix(data);
         }
 
@@ -108,30 +116,32 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
         public class Table extends AbstractTable {
 
           @Override
-          protected boolean getConfiguredAutoResizeColumns() {
-            return true;
-          }
-
-          @Override
           protected boolean getConfiguredMultiSelect() {
             return false;
           }
 
-          public CompanyNrColumn getCompanyNrColumn() {
-            return getColumnSet().getColumnByClass(CompanyNrColumn.class);
+          public PersonNrColumn getCompanyNrColumn() {
+            return getColumnSet().getColumnByClass(PersonNrColumn.class);
           }
 
           public NameColumn getNameColumn() {
             return getColumnSet().getColumnByClass(NameColumn.class);
           }
 
-          public SymbolColumn getSymbolColumn() {
-            return getColumnSet().getColumnByClass(SymbolColumn.class);
+          public BirthdayColumn getBirthdayColumn() {
+            return getColumnSet().getColumnByClass(BirthdayColumn.class);
+          }
+
+          public CompanyColumn getCompanyColumn() {
+            return getColumnSet().getColumnByClass(CompanyColumn.class);
+          }
+
+          public GenderColumn getGenderColumn() {
+            return getColumnSet().getColumnByClass(GenderColumn.class);
           }
 
           @Order(10.0)
-          public class CompanyNrColumn extends AbstractLongColumn {
-
+          public class PersonNrColumn extends AbstractLongColumn {
             @Override
             protected boolean getConfiguredDisplayable() {
               return false;
@@ -153,7 +163,7 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
 
             @Override
             protected boolean execIsEditable(ITableRow row) throws ProcessingException {
-              if (getCompanyNrColumn().getValue(row) >= 5L) {
+              if (getCompanyNrColumn().getValue(row) % 2 == 0) {
                 return super.execIsEditable(row);
               }
               return false;
@@ -161,7 +171,7 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
           }
 
           @Order(30.0)
-          public class SymbolColumn extends AbstractStringColumn {
+          public class BirthdayColumn extends AbstractDateColumn {
 
             @Override
             protected boolean getConfiguredEditable() {
@@ -173,37 +183,46 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
               return TEXTS.get("Symbol");
             }
 
-            @Override
-            protected boolean execIsEditable(ITableRow row) throws ProcessingException {
-              if (getCompanyNrColumn().getValue(row) >= 5L) {
-                return super.execIsEditable(row);
-              }
-              return false;
-            }
           }
 
-          @Order(10.0)
-          public class NewCompanyMenu extends AbstractMenu {
+          @Order(30.0)
+          public class CompanyColumn extends AbstractProposalColumn<Long> {
 
             @Override
-            protected boolean getConfiguredEmptySpaceAction() {
+            protected boolean getConfiguredEditable() {
               return true;
             }
 
             @Override
-            protected boolean getConfiguredSingleSelectionAction() {
-              return false;
+            protected Class<? extends ILookupCall<Long>> getConfiguredLookupCall() {
+              return CompanyLookupCall.class;
             }
 
             @Override
-            protected String getConfiguredText() {
-              return TEXTS.get("NewCompany");
+            protected String getConfiguredHeaderText() {
+              return TEXTS.get("Company");
+            }
+
+          }
+
+          @Order(30.0)
+          public class GenderColumn extends AbstractSmartColumn<Long> {
+
+            @Override
+            protected boolean getConfiguredEditable() {
+              return true;
             }
 
             @Override
-            protected void execAction() throws ProcessingException {
-              getEditableTableField().getTable().addRowByArray(new Object[]{getEditableTableField().getTable().getCompanyNrColumn().getValues().size() + 1, "New Company", ""});
+            protected Class<? extends ILookupCall<Long>> getConfiguredLookupCall() {
+              return GenderLookupCall.class;
             }
+
+            @Override
+            protected String getConfiguredHeaderText() {
+              return TEXTS.get("Gender");
+            }
+
           }
         }
       }

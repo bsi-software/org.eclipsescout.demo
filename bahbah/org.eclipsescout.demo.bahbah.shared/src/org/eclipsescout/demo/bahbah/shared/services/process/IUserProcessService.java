@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.eclipsescout.demo.bahbah.shared.services.process;
 
+import java.util.List;
 import java.util.Set;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
@@ -23,6 +24,7 @@ import org.eclipsescout.demo.bahbah.shared.services.UserAdministrationTablePageD
 public interface IUserProcessService extends IService {
 
   String PERMISSION_KEY = "permission_id";
+  
 
   void registerUser() throws ProcessingException;
 
@@ -32,7 +34,7 @@ public interface IUserProcessService extends IService {
 
   ICode<Integer> getUserPermission() throws ProcessingException;
 
-  void deleteUsers(Long[] u_id) throws ProcessingException;
+  void deleteUsers(List<Long> u_id) throws ProcessingException;
 
   void createUser(UserFormData formData) throws ProcessingException;
 

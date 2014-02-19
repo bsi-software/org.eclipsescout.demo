@@ -12,6 +12,7 @@ package org.eclipsescout.demo.widgets.client.ui.desktop;
 
 import java.util.ArrayList;
 
+import org.eclipse.scout.commons.CollectionUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
@@ -76,8 +77,9 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
     tableForm.setIconId(Icons.EclipseScout);
     tableForm.startView();
 
-    if (getAvailableOutlines().length > 0) {
-      setOutline(getAvailableOutlines()[0]);
+    IOutline firstOutline = CollectionUtility.firstElement(getAvailableOutlines());
+    if (firstOutline != null) {
+      setOutline(firstOutline);
     }
 
   }

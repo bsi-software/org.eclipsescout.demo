@@ -14,6 +14,8 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -61,7 +63,7 @@ public class HTMLFieldForm extends AbstractForm implements IPageForm {
 
   @Override
   protected void execInitForm() throws ProcessingException {
-    loadFile("ScoutHtml.html");
+    loadFile("ScoutHtml.html", Collections.<RemoteFile> emptySet());
   }
 
   @Override
@@ -94,7 +96,7 @@ public class HTMLFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(ScoutHtmlButton.class);
   }
 
-  private void loadFile(String simpleName, RemoteFile... attachments) throws ProcessingException {
+  private void loadFile(String simpleName, Collection<? extends RemoteFile> attachments) throws ProcessingException {
     try {
       String s = IOUtility.getContent(new InputStreamReader(Activator.getDefault().getBundle().getResource("resources/html/" + simpleName).openStream()));
       getHTMLField().setValue(null);
@@ -212,9 +214,8 @@ public class HTMLFieldForm extends AbstractForm implements IPageForm {
         protected void execClickAction() throws ProcessingException {
           List<RemoteFile> attachments = new ArrayList<RemoteFile>();
           Bundle clientBundle = Activator.getDefault().getBundle();
-          RemoteFile iconFile = new RemoteFile(clientBundle.getResource("/resources/icons/scout_logo.jpg"), true);
-          attachments.add(iconFile);
-          loadFile("HtmlFieldCustomHtml.html", attachments.toArray(new RemoteFile[attachments.size()]));
+          attachments.add(new RemoteFile(clientBundle.getResource("/resources/icons/scout_logo.jpg"), true));
+          loadFile("HtmlFieldCustomHtml.html", attachments);
         }
       }
 
@@ -228,7 +229,7 @@ public class HTMLFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected void execClickAction() throws ProcessingException {
-          loadFile("ScoutHtml.html");
+          loadFile("ScoutHtml.html", Collections.<RemoteFile> emptySet());
         }
       }
     }

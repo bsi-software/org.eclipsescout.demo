@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
@@ -21,7 +21,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.radiobuttongroup.AbstractRadio
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
+import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
 import org.eclipsescout.demo.widgets.client.services.lookup.DateLookupCall;
 import org.eclipsescout.demo.widgets.client.services.lookup.YearLookupCall;
 import org.eclipsescout.demo.widgets.client.ui.forms.RadioButtonGroupForm.MainBox.CloseButton;
@@ -147,7 +147,7 @@ public class RadioButtonGroupForm extends AbstractForm implements IPageForm {
           }
 
           @Override
-          protected Class<? extends LookupCall> getConfiguredLookupCall() {
+          protected Class<? extends ILookupCall<Long>> getConfiguredLookupCall() {
             return YearLookupCall.class;
           }
         }
@@ -182,7 +182,7 @@ public class RadioButtonGroupForm extends AbstractForm implements IPageForm {
           }
 
           @Override
-          protected Class<? extends LookupCall> getConfiguredLookupCall() {
+          protected Class<? extends ILookupCall<Long>> getConfiguredLookupCall() {
             return DateLookupCall.class;
           }
         }

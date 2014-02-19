@@ -4,11 +4,13 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
 package org.eclipsescout.demo.minifigcreator.client.ui.forms;
+
+import java.util.List;
 
 import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.commons.annotations.FormData.SdkCommand;
@@ -243,7 +245,7 @@ public class ServerForm extends AbstractForm {
       @Override
       protected void execClickAction() throws ProcessingException {
         Table table = getTableField().getTable();
-        ITableRow[] rows = table.getRows();
+        List<ITableRow> rows = table.getRows();
         for (ITableRow r : rows) {
           int q = (int) (Math.random() * 10) + 1;
           table.getQuantityColumn().setValue(r, Integer.valueOf(q));

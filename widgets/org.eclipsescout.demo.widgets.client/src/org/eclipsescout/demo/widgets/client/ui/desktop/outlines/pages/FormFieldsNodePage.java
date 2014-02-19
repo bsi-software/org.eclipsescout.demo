@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
@@ -42,6 +42,7 @@ import org.eclipsescout.demo.widgets.client.ui.forms.SplitBoxForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.StatusForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.TabBoxForm;
+import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldEditableForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.TreeBoxForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.TreeFieldForm;
@@ -112,6 +113,8 @@ public class FormFieldsNodePage extends AbstractPageWithNodes {
     FormPage formPage25 = new FormPage(TabBoxForm.class);
     pageList.add(formPage25);
     FormPage formPage26 = new FormPage(TableFieldForm.class);
+    pageList.add(formPage26);
+    formPage26 = new FormPage(TableFieldEditableForm.class);
     pageList.add(formPage26);
     FormPage formPage27 = new FormPage(TreeBoxForm.class);
     pageList.add(formPage27);

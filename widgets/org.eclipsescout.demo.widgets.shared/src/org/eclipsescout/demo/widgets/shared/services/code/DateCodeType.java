@@ -16,7 +16,7 @@ import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.AbstractCode;
 import org.eclipse.scout.rt.shared.services.common.code.AbstractCodeType;
 
-public class DateCodeType extends AbstractCodeType<Long> {
+public class DateCodeType extends AbstractCodeType<Long, Long> {
 
   private static final long serialVersionUID = 1L;
   public static final Long ID = 10000L;

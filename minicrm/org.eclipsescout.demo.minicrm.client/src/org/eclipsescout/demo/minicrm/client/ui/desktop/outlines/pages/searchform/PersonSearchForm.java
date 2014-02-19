@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
@@ -28,7 +28,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.tabbox.AbstractTabBox;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
-import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
+import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
 import org.eclipsescout.demo.minicrm.client.ui.desktop.outlines.pages.searchform.PersonSearchForm.MainBox.ResetButton;
 import org.eclipsescout.demo.minicrm.client.ui.desktop.outlines.pages.searchform.PersonSearchForm.MainBox.SearchButton;
 import org.eclipsescout.demo.minicrm.client.ui.desktop.outlines.pages.searchform.PersonSearchForm.MainBox.TabBox;
@@ -145,7 +145,7 @@ public class PersonSearchForm extends AbstractSearchForm {
           }
 
           @Override
-          protected Class<? extends ICodeType<?>> getConfiguredCodeType() {
+          protected Class<? extends ICodeType<?, Long>> getConfiguredCodeType() {
             return CompanyTypeCodeType.class;
           }
         }
@@ -159,7 +159,7 @@ public class PersonSearchForm extends AbstractSearchForm {
           }
 
           @Override
-          protected Class<? extends LookupCall> getConfiguredLookupCall() {
+          protected Class<? extends ILookupCall<BigDecimal>> getConfiguredLookupCall() {
             return CompanyLookupCall.class;
 
           }

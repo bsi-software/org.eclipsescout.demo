@@ -4,18 +4,17 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
 package org.eclipsescout.demo.widgets.client.ui.forms;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.Set;
 
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.holders.Holder;
 import org.eclipse.scout.rt.client.ui.basic.calendar.AbstractCalendar;
 import org.eclipse.scout.rt.client.ui.basic.calendar.provider.AbstractCalendarItemProvider;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
@@ -98,24 +97,23 @@ public class CalendarFieldForm extends AbstractForm implements IPageForm {
           public class VisitsOfInternalPersonsItemProducer extends AbstractCalendarItemProvider {
 
             @Override
-            protected void execLoadItems(Date minDate, Date maxDate, Holder<ICalendarItem[]> resultHolder) throws ProcessingException {
-              ArrayList<ICalendarItem> items = new ArrayList<ICalendarItem>();
+            protected void execLoadItems(Date minDate, Date maxDate, final Set<ICalendarItem> result) throws ProcessingException {
 
               java.util.Calendar cal = java.util.Calendar.getInstance();
               Date start = cal.getTime();
               Date end = cal.getTime();
-              items.add(new CalendarAppointment(0L, 0L, start, end, true, "FULL DAY", "This appointment takes the full day", "FFFF00"));
+              result.add(new CalendarAppointment(0L, 0L, start, end, true, "FULL DAY", "This appointment takes the full day", "FFFF00"));
               cal.add(java.util.Calendar.DAY_OF_YEAR, -1);
               start = cal.getTime();
               cal.add(java.util.Calendar.HOUR, 2);
               end = cal.getTime();
-              items.add(new CalendarAppointment(1L, 2L, start, end, false, "app1", "appointment1 body", "44FF00"));
+              result.add(new CalendarAppointment(1L, 2L, start, end, false, "app1", "appointment1 body", "44FF00"));
 
               cal.add(java.util.Calendar.HOUR, 1);
               start = cal.getTime();
               cal.add(java.util.Calendar.MINUTE, 30);
               end = cal.getTime();
-              items.add(new CalendarAppointment(1L, 2L, start, end, false, "app2", "appointment2 body", "44FF00"));
+              result.add(new CalendarAppointment(1L, 2L, start, end, false, "app2", "appointment2 body", "44FF00"));
 
               // future
               cal.setTime(new Date());
@@ -123,11 +121,10 @@ public class CalendarFieldForm extends AbstractForm implements IPageForm {
               start = cal.getTime();
               cal.add(java.util.Calendar.HOUR, 48);
               end = cal.getTime();
-              items.add(new CalendarAppointment(1L, 2L, start, end, false, "app3", "appointment3 body", "44FF00"));
+              result.add(new CalendarAppointment(1L, 2L, start, end, false, "app3", "appointment3 body", "44FF00"));
               cal.add(java.util.Calendar.HOUR, 2);
               end = cal.getTime();
-              items.add(new CalendarAppointment(1L, 2L, start, end, false, "app4", "appointment4 body", "44FF00"));
-              resultHolder.setValue(items.toArray(new ICalendarItem[items.size()]));
+              result.add(new CalendarAppointment(1L, 2L, start, end, false, "app4", "appointment4 body", "44FF00"));
 
             }
           }

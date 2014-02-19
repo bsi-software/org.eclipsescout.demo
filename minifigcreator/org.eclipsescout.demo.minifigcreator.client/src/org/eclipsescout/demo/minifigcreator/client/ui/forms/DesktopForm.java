@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
@@ -23,7 +23,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.labelfield.AbstractLabelField;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.services.lookup.LookupCall;
+import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
 import org.eclipse.scout.service.SERVICES;
 import org.eclipsescout.demo.minifigcreator.client.ui.forms.DesktopForm.MainBox.ContainerBox;
 import org.eclipsescout.demo.minifigcreator.client.ui.forms.DesktopForm.MainBox.ContainerBox.NameField;
@@ -201,7 +201,7 @@ public class DesktopForm extends AbstractForm {
         public class HeadField extends AbstractSmartField<Part> {
 
           @Override
-          protected Class<? extends LookupCall> getConfiguredLookupCall() {
+          protected Class<? extends ILookupCall<Part>> getConfiguredLookupCall() {
             return HeadLookupCall.class;
           }
 
@@ -237,7 +237,7 @@ public class DesktopForm extends AbstractForm {
           }
 
           @Override
-          protected Class<? extends LookupCall> getConfiguredLookupCall() {
+          protected Class<? extends ILookupCall<Part>> getConfiguredLookupCall() {
             return TorsoLookupCall.class;
           }
 
@@ -262,7 +262,7 @@ public class DesktopForm extends AbstractForm {
           }
 
           @Override
-          protected Class<? extends LookupCall> getConfiguredLookupCall() {
+          protected Class<? extends ILookupCall<Part>> getConfiguredLookupCall() {
             return LegsLookupCall.class;
           }
 

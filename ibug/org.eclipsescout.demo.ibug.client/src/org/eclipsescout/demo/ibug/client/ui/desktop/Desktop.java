@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
@@ -42,7 +42,9 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
   }
 
   @Override
-  protected String getConfiguredTitle() {  return TEXTS.get("IBug");}
+  protected String getConfiguredTitle() {
+    return TEXTS.get("IBug");
+  }
 
   @Override
   protected void execOpened() throws ProcessingException {
@@ -96,7 +98,7 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
 
       @Override
       protected void execAction() throws ProcessingException {
-        BugsField bugs = getViewStack()[0].getFieldByClass(BugsField.class);
+        BugsField bugs = getViewStack().get(0).getFieldByClass(BugsField.class);
         if (bugs != null) {
           ScoutXlsxSpreadsheetAdapter s = new ScoutXlsxSpreadsheetAdapter();
           File xlsx = s.exportTable(null, "Bugs", bugs.getTable());

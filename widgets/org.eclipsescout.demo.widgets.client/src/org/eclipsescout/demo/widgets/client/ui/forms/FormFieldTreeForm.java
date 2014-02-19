@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
@@ -171,10 +171,10 @@ public class FormFieldTreeForm extends AbstractForm {
       @Override
       protected void execReloadTableData() throws ProcessingException {
         getTable().deleteAllRows();
-        Object[][] rows = new Object[m_page.getChildNodes().length][2];
-        for (int index = 0; index < m_page.getChildNodes().length; index++) {
-          rows[index][0] = m_page.getChildNodes()[index];
-          rows[index][1] = m_page.getChildNodes()[index].getCellForUpdate().getText();
+        Object[][] rows = new Object[m_page.getChildNodes().size()][2];
+        for (int index = 0; index < m_page.getChildNodes().size(); index++) {
+          rows[index][0] = m_page.getChildNodes().get(index);
+          rows[index][1] = m_page.getChildNodes().get(index).getCellForUpdate().getText();
         }
         getTable().addRowsByMatrix(rows);
       }

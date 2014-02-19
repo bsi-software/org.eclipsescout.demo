@@ -10,7 +10,10 @@
  ******************************************************************************/
 package org.eclipse.scout.testing.client.runner;
 
+import java.util.Collections;
+
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.rt.testing.shared.TestingUtility;
 import org.eclipse.scout.rt.testing.shared.services.common.code.TestingCodeService;
 import org.eclipse.scout.service.AbstractService;
@@ -24,7 +27,7 @@ public class CustomClientTestEnvironment implements IClientTestEnvironment {
   @Override
   public void setupGlobalEnvironment() {
     //Register a service for code types:
-    TestingUtility.registerServices(Activator.getDefault().getBundle(), 500, new TestingCodeService(), new P_DefaultDesktopProcessService());
+    TestingUtility.registerServices(Activator.getDefault().getBundle(), 500, new TestingCodeService(Collections.<ICodeType<?, ?>> emptyList()), new P_DefaultDesktopProcessService());
 
     //Set client session
     ScoutClientTestRunner.setDefaultClientSessionClass(ClientSession.class);
