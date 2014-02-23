@@ -56,7 +56,7 @@ public class Desktop extends AbstractDesktop implements IDesktop {
     }
 
     @Override
-    public void execAction() throws ProcessingException {
+    protected void execAction() throws ProcessingException {
       ScoutInfoForm form = new ScoutInfoForm();
       form.startModify();
     }
@@ -70,7 +70,7 @@ public class Desktop extends AbstractDesktop implements IDesktop {
     }
 
     @Override
-    public void execAction() throws ProcessingException {
+    protected void execAction() throws ProcessingException {
       ServerForm form = new ServerForm();
       form.startModify();
       form.waitFor();
@@ -89,7 +89,7 @@ public class Desktop extends AbstractDesktop implements IDesktop {
     }
 
     @Override
-    public void execAction() throws ProcessingException {
+    protected void execAction() throws ProcessingException {
       ClientSyncJob.getCurrentSession(ClientSession.class).stopSession();
     }
   }

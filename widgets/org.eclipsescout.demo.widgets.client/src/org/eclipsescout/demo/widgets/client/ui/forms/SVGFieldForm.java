@@ -101,7 +101,7 @@ public class SVGFieldForm extends AbstractForm implements IPageForm {
   public class PageFormHandler extends AbstractFormHandler {
 
     @Override
-    public void execLoad() throws ProcessingException {
+    protected void execLoad() throws ProcessingException {
       try {
         getSVGField().setSvgDocument(SVGUtility.readSVGDocument(Activator.getDefault().getBundle().getResource("/resources/svg/demo.svg").openStream()));
       }

@@ -189,7 +189,7 @@ public class CompanyForm extends AbstractForm {
   public class ModifyHandler extends AbstractFormHandler {
 
     @Override
-    public void execLoad() throws ProcessingException {
+    protected void execLoad() throws ProcessingException {
       ICompanyService service = SERVICES.getService(ICompanyService.class);
       CompanyFormData formData = new CompanyFormData();
       exportFormData(formData);
@@ -199,7 +199,7 @@ public class CompanyForm extends AbstractForm {
     }
 
     @Override
-    public void execStore() throws ProcessingException {
+    protected void execStore() throws ProcessingException {
       ICompanyService service = SERVICES.getService(ICompanyService.class);
       CompanyFormData formData = new CompanyFormData();
       exportFormData(formData);
@@ -210,7 +210,7 @@ public class CompanyForm extends AbstractForm {
   public class NewHandler extends AbstractFormHandler {
 
     @Override
-    public void execLoad() throws ProcessingException {
+    protected void execLoad() throws ProcessingException {
       ICompanyService service = SERVICES.getService(ICompanyService.class);
       CompanyFormData formData = new CompanyFormData();
       exportFormData(formData);
@@ -219,7 +219,7 @@ public class CompanyForm extends AbstractForm {
     }
 
     @Override
-    public void execStore() throws ProcessingException {
+    protected void execStore() throws ProcessingException {
       ICompanyService service = SERVICES.getService(ICompanyService.class);
       CompanyFormData formData = new CompanyFormData();
       exportFormData(formData);

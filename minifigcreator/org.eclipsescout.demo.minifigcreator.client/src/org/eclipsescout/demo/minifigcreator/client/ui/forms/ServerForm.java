@@ -257,7 +257,7 @@ public class ServerForm extends AbstractForm {
   public class ModifyHandler extends AbstractFormHandler {
 
     @Override
-    public void execLoad() throws ProcessingException {
+    protected void execLoad() throws ProcessingException {
       IServerProcessService service = SERVICES.getService(IServerProcessService.class);
       ServerFormData formData = new ServerFormData();
       exportFormData(formData);
@@ -266,7 +266,7 @@ public class ServerForm extends AbstractForm {
     }
 
     @Override
-    public void execStore() throws ProcessingException {
+    protected void execStore() throws ProcessingException {
       IServerProcessService service = SERVICES.getService(IServerProcessService.class);
       ServerFormData formData = new ServerFormData();
       exportFormData(formData);

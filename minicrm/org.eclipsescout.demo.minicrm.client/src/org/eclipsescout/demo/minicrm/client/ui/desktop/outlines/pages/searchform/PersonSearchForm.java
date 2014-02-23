@@ -184,7 +184,7 @@ public class PersonSearchForm extends AbstractSearchForm {
   public class SearchHandler extends AbstractFormHandler {
 
     @Override
-    public void execLoad() {
+    protected void execLoad() {
       if (m_companyNr != null) {
         getEmployerField().setValue(BigDecimal.valueOf(m_companyNr));
         getEmployerField().setEnabled(false);

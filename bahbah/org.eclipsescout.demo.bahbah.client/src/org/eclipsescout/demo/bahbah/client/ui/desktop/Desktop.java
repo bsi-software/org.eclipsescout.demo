@@ -104,7 +104,7 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
     }
 
     @Override
-    public void execAction() throws ProcessingException {
+    protected void execAction() throws ProcessingException {
       ScoutInfoForm form = new ScoutInfoForm();
       form.startModify();
     }

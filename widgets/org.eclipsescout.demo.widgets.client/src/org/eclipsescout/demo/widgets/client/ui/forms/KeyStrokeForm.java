@@ -156,7 +156,7 @@ public class KeyStrokeForm extends AbstractForm implements IPageForm {
   public class PageFormHandler extends AbstractFormHandler {
 
     @Override
-    public void execLoad() throws ProcessingException {
+    protected void execLoad() throws ProcessingException {
     }
   }
 }

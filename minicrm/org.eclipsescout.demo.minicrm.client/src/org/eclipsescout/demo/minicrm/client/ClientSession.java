@@ -35,7 +35,7 @@ public class ClientSession extends AbstractClientSession {
   }
 
   @Override
-  public void execLoadSession() throws ProcessingException {
+  protected void execLoadSession() throws ProcessingException {
     setServiceTunnel(new ClientHttpServiceTunnel(this, UriUtility.toUrl(getBundle().getBundleContext().getProperty("server.url"))));
 
     //pre-load all known code types
@@ -48,6 +48,6 @@ public class ClientSession extends AbstractClientSession {
   }
 
   @Override
-  public void execStoreSession() throws ProcessingException {
+  protected void execStoreSession() throws ProcessingException {
   }
 }

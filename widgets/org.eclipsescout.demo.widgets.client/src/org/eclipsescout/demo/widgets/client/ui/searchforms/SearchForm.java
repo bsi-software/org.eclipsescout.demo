@@ -348,7 +348,7 @@ public class SearchForm extends AbstractSearchForm {
   public class SearchHandler extends AbstractFormHandler {
 
     @Override
-    public void execLoad() {
+    protected void execLoad() {
     }
   }
 }

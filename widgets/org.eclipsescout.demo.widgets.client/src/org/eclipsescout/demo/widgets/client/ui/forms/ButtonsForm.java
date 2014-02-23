@@ -336,17 +336,17 @@ public class ButtonsForm extends AbstractForm implements IPageForm {
       @Order(40)
       public class VisibilityButton extends AbstractButton {
         @Override
-        public String getConfiguredLabel() {
+        protected String getConfiguredLabel() {
           return "Set 'Button with menus' invisible/visible (10sec)";
         }
 
         @Override
-        public int getConfiguredDisplayStyle() {
+        protected int getConfiguredDisplayStyle() {
           return DISPLAY_STYLE_DEFAULT;
         }
 
         @Override
-        public void execClickAction() throws ProcessingException {
+        protected void execClickAction() throws ProcessingException {
           try {
             Thread.sleep(10000L);
           }
@@ -372,12 +372,12 @@ public class ButtonsForm extends AbstractForm implements IPageForm {
         }
 
         @Override
-        public boolean getConfiguredEnabled() {
+        protected boolean getConfiguredEnabled() {
           return false;
         }
 
         @Override
-        public boolean getConfiguredVisible() {
+        protected boolean getConfiguredVisible() {
           return false;
         }
 

@@ -19,7 +19,7 @@ import org.eclipsescout.demo.minicrm.shared.services.lookup.ICompanyLookupServic
 public class CompanyLookupService extends AbstractSqlLookupService<BigDecimal> implements ICompanyLookupService {
 
   @Override
-  public String getConfiguredSqlSelect() {
+  protected String getConfiguredSqlSelect() {
     return "SELECT  C.COMPANY_NR, " +
         "        C.NAME, " +
         "        '" + Icons.Building + "' " +
