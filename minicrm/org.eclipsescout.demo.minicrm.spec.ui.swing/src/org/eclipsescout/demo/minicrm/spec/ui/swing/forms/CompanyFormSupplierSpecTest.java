@@ -8,7 +8,7 @@ import org.eclipse.scout.rt.client.ui.form.IForm;
 import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm;
 import org.eclipsescout.demo.minicrm.spec.ui.swing.AbstractMiniCRMFormSpec;
 
-public class CompanyFormSpecTest extends AbstractMiniCRMFormSpec {
+public class CompanyFormSupplierSpecTest extends AbstractMiniCRMFormSpec {
 
   @Override
   protected IForm createAndStartForm(List<FormListener> formListeners) throws ProcessingException {
@@ -16,8 +16,9 @@ public class CompanyFormSpecTest extends AbstractMiniCRMFormSpec {
     for (FormListener listener : formListeners) {
       form.addFormListener(listener);
     }
+    form.setClassId("721c3f5f-bd28-41e4-a5f0-d78891034485_supplier");
     form.startNew();
-    form.getCompanyTypeGroup().setValue(10001L);
+    form.getCompanyTypeGroup().setValue(10002L);
     return form;
   }
 

@@ -6,7 +6,9 @@ Vivamus placerat libero ut nunc cursus, in mattis sem aliquam. Cras enim sapien,
 * [[CompanyForm|Company Form Heuristic: simple name]]
 * [[org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm|Company Form Heuristic: fully qualified name]]
 * [[c_721c3f5f-bd28-41e4-a5f0-d78891034485|Company Form classId]]
+* [[c_721c3f5f-bd28-41e4-a5f0-d78891034485_supplier|Company Form Supplier classId]]
 * [[test.table.2|Test table 2]]
+* [[CompanyTablePage|Company Table Page Heuristic: simple name]]
 
 {|border="1"
 !Foo
@@ -33,3 +35,5 @@ Vivamus placerat libero ut nunc cursus, in mattis sem aliquam. Cras enim sapien,
 | Lorem ipsum
 | Lorem ipsum sit amet...
 |}
+
+[[Image:../images/testImage.png|Test Image]]
