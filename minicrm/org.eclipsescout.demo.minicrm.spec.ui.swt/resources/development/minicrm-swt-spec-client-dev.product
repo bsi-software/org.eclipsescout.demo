@@ -34,7 +34,6 @@
    </vm>
 
    <plugins>
-      <plugin id="com.bsiag.scout.rt.ui.swing.laf.rayo.fragment" fragment="true"/>
       <plugin id="com.bsiag.widgets.logger.fragment" fragment="true"/>
       <plugin id="com.ibm.db2.jdbc_97.fragment" fragment="true"/>
       <plugin id="com.ibm.icu"/>
@@ -100,31 +99,17 @@
       <plugin id="org.eclipse.scout.rt.extension.client.test" fragment="true"/>
       <plugin id="org.eclipse.scout.rt.servicetunnel"/>
       <plugin id="org.eclipse.scout.rt.shared"/>
-      <plugin id="org.eclipse.scout.rt.shared.test" fragment="true"/>
       <plugin id="org.eclipse.scout.rt.shared.win32.x86"/>
       <plugin id="org.eclipse.scout.rt.spec.client"/>
-      <plugin id="org.eclipse.scout.rt.spec.client.test" fragment="true"/>
       <plugin id="org.eclipse.scout.rt.testing.client"/>
-      <plugin id="org.eclipse.scout.rt.testing.client.test" fragment="true"/>
       <plugin id="org.eclipse.scout.rt.testing.common.ant.optional.junit.fragment" fragment="true"/>
       <plugin id="org.eclipse.scout.rt.testing.commons"/>
-      <plugin id="org.eclipse.scout.rt.testing.commons.test" fragment="true"/>
       <plugin id="org.eclipse.scout.rt.testing.shared"/>
-      <plugin id="org.eclipse.scout.rt.testing.shared.test" fragment="true"/>
-      <plugin id="org.eclipse.scout.rt.testing.ui.swing"/>
       <plugin id="org.eclipse.scout.rt.testing.ui.swt"/>
-      <plugin id="org.eclipse.scout.rt.ui.swing"/>
-      <plugin id="org.eclipse.scout.rt.ui.swing.browser.swt.fragment" fragment="true"/>
-      <plugin id="org.eclipse.scout.rt.ui.swing.bsi.fragment" fragment="true"/>
-      <plugin id="org.eclipse.scout.rt.ui.swing.test" fragment="true"/>
-      <plugin id="org.eclipse.scout.rt.ui.swing.win32.x86.fragment" fragment="true"/>
       <plugin id="org.eclipse.scout.rt.ui.swt"/>
-      <plugin id="org.eclipse.scout.rt.ui.swt.bsi.fragment" fragment="true"/>
-      <plugin id="org.eclipse.scout.rt.ui.swt.test" fragment="true"/>
       <plugin id="org.eclipse.scout.service"/>
       <plugin id="org.eclipse.scout.service.test" fragment="true"/>
       <plugin id="org.eclipse.scout.svg.client"/>
-      <plugin id="org.eclipse.scout.svg.ui.swing"/>
       <plugin id="org.eclipse.swt"/>
       <plugin id="org.eclipse.swt.win32.win32.x86" fragment="true"/>
       <plugin id="org.eclipse.text"/>
