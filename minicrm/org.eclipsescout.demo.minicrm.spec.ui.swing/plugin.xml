@@ -5,7 +5,7 @@
          id="app"
          point="org.eclipse.core.runtime.applications">
       <application cardinality="singleton-global" thread="main" visible="true">
-         <run class="org.eclipsescout.demo.minicrm.spec.ui.swing.MinicrmSpecApplication"/>
+         <run class="org.eclipsescout.demo.minicrm.spec.ui.swing.MinicrmSwingSpecApplication"/>
       </application>
    </extension>
    <extension id="product" point="org.eclipse.core.runtime.products">

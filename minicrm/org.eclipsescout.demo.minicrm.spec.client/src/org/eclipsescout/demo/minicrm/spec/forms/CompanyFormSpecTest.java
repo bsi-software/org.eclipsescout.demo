@@ -1,4 +1,4 @@
-package org.eclipsescout.demo.minicrm.spec.ui.swing.forms;
+package org.eclipsescout.demo.minicrm.spec.forms;
 
 import java.util.List;
 
@@ -6,7 +6,6 @@ import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.form.FormListener;
 import org.eclipse.scout.rt.client.ui.form.IForm;
 import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm;
-import org.eclipsescout.demo.minicrm.spec.ui.swing.AbstractMiniCRMFormSpec;
 
 public class CompanyFormSpecTest extends AbstractMiniCRMFormSpec {
 

@@ -15,9 +15,9 @@ import org.eclipse.scout.testing.client.runner.ScoutClientTestRunner;
 import org.eclipsescout.demo.minicrm.client.ClientSession;
 import org.eclipsescout.demo.minicrm.ui.swing.SwingEnvironment;
 
-public class MinicrmSpecApplication extends AbstractSwingApplication {
+public class MinicrmSwingSpecApplication extends AbstractSwingApplication {
   private static IScoutLogger LOG = ScoutLogManager
-      .getLogger(MinicrmSpecApplication.class);
+      .getLogger(MinicrmSwingSpecApplication.class);
   private TestingClientSessionRegistryService m_testingClientSessionRegistryService = null;
 
   @Override

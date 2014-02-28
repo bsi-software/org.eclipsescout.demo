@@ -95,6 +95,7 @@
       <plugin id="org.eclipse.update.configurator"/>
       <plugin id="org.eclipsescout.demo.minicrm.client"/>
       <plugin id="org.eclipsescout.demo.minicrm.shared"/>
+      <plugin id="org.eclipsescout.demo.minicrm.spec.client"/>
       <plugin id="org.eclipsescout.demo.minicrm.spec.ui.swing"/>
       <plugin id="org.eclipsescout.demo.minicrm.ui.swing"/>
       <plugin id="org.hamcrest.core"/>

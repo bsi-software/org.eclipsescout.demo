@@ -1,4 +1,4 @@
-package org.eclipsescout.demo.minicrm.spec.ui.swing;
+package org.eclipsescout.demo.minicrm.spec.forms;
 
 import java.util.Locale;
 

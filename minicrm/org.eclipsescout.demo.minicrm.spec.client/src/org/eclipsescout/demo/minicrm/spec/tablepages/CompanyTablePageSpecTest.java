@@ -1,4 +1,4 @@
-package org.eclipsescout.demo.minicrm.spec.ui.swing.tablepages;
+package org.eclipsescout.demo.minicrm.spec.tablepages;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.basic.table.ITable;
