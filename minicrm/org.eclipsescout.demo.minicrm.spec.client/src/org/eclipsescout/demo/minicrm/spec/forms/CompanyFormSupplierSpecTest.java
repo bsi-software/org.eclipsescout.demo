@@ -6,7 +6,9 @@ import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.form.FormListener;
 import org.eclipse.scout.rt.client.ui.form.IForm;
 import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm;
+import org.junit.Ignore;
 
+@Ignore
 public class CompanyFormSupplierSpecTest extends AbstractMiniCRMFormSpec {
 
 	  @Override

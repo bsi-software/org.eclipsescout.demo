@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="MiniCRM SWT Spec Client" id="org.eclipsescout.demo.minicrm.spec.ui.swt.product" application="org.eclipsescout.demo.minicrm.spec.ui.swt.app" useFeatures="false" includeLaunchers="true">
+
+   <configIni use="default">
+      <linux>/org.eclipsescout.demo.minicrm.spec.ui.swt/resources/development/config.ini</linux>
+      <macosx>/org.eclipsescout.demo.minicrm.spec.ui.swt/resources/development/config.ini</macosx>
+      <win32>/org.eclipsescout.demo.minicrm.spec.ui.swt/resources/development/config.ini</win32>
+   </configIni>
+
+   <launcherArgs>
+      <programArgs>-consolelog
+-console
+-bundleNameIncludeFilter=*.spec*
+-additionalSourcePlugins=org.eclipsescout.demo.minicrm.spec.client</programArgs>
+      <programArgsMac>--launcher.secondThread
+-nosplash</programArgsMac>
+      <vmArgs>-Xms64m
+-Xmx512m
+-XX:MaxPermSize=256m</vmArgs>
+   </launcherArgs>
+
+   <windowImages/>
+
+   <launcher name="minicrm">
+      <solaris/>
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+   <vm>
+   </vm>
+
+   <plugins>
+      <plugin id="com.bsiag.scout.rt.ui.swing.laf.rayo.fragment" fragment="true"/>
+      <plugin id="com.bsiag.widgets.logger.fragment" fragment="true"/>
+      <plugin id="com.ibm.db2.jdbc_97.fragment" fragment="true"/>
+      <plugin id="com.ibm.icu"/>
+      <plugin id="com.microsoft.mssql2005.jdbc.fragment" fragment="true"/>
+      <plugin id="com.mysql.jdbc_5117.fragment" fragment="true"/>
+      <plugin id="com.oracle.oracle10g.jdbc.fragment" fragment="true"/>
+      <plugin id="com.oracle.oracle11g2.jdbc.fragment" fragment="true"/>
+      <plugin id="javax.xml"/>
+      <plugin id="jre16.fragment" fragment="true"/>
+      <plugin id="org.apache.ant"/>
+      <plugin id="org.apache.batik.bridge"/>
+      <plugin id="org.apache.batik.css"/>
+      <plugin id="org.apache.batik.dom"/>
+      <plugin id="org.apache.batik.dom.svg"/>
+      <plugin id="org.apache.batik.ext.awt"/>
+      <plugin id="org.apache.batik.parser"/>
+      <plugin id="org.apache.batik.svggen"/>
+      <plugin id="org.apache.batik.swing"/>
+      <plugin id="org.apache.batik.transcoder"/>
+      <plugin id="org.apache.batik.util"/>
+      <plugin id="org.apache.batik.util.gui"/>
+      <plugin id="org.apache.batik.xml"/>
+      <plugin id="org.apache.derby.jdbc_1091.fragment" fragment="true"/>
+      <plugin id="org.easymock"/>
+      <plugin id="org.eclipse.core.commands"/>
+      <plugin id="org.eclipse.core.contenttype"/>
+      <plugin id="org.eclipse.core.databinding"/>
+      <plugin id="org.eclipse.core.databinding.observable"/>
+      <plugin id="org.eclipse.core.databinding.property"/>
+      <plugin id="org.eclipse.core.expressions"/>
+      <plugin id="org.eclipse.core.jobs"/>
+      <plugin id="org.eclipse.core.net"/>
+      <plugin id="org.eclipse.core.net.sun.win32.x86" fragment="true"/>
+      <plugin id="org.eclipse.core.net.win32.x86" fragment="true"/>
+      <plugin id="org.eclipse.core.runtime"/>
+      <plugin id="org.eclipse.core.runtime.compatibility"/>
+      <plugin id="org.eclipse.core.runtime.compatibility.registry" fragment="true"/>
+      <plugin id="org.eclipse.equinox.app"/>
+      <plugin id="org.eclipse.equinox.common"/>
+      <plugin id="org.eclipse.equinox.preferences"/>
+      <plugin id="org.eclipse.equinox.registry"/>
+      <plugin id="org.eclipse.equinox.security"/>
+      <plugin id="org.eclipse.equinox.security.win32.x86" fragment="true"/>
+      <plugin id="org.eclipse.equinox.servletbridge.extensionbundle" fragment="true"/>
+      <plugin id="org.eclipse.help"/>
+      <plugin id="org.eclipse.jface"/>
+      <plugin id="org.eclipse.jface.databinding"/>
+      <plugin id="org.eclipse.jface.text"/>
+      <plugin id="org.eclipse.mylyn.wikitext.core"/>
+      <plugin id="org.eclipse.mylyn.wikitext.mediawiki.core"/>
+      <plugin id="org.eclipse.osgi"/>
+      <plugin id="org.eclipse.osgi.services"/>
+      <plugin id="org.eclipse.scout.commons"/>
+      <plugin id="org.eclipse.scout.commons.log4j.bridge.fragment" fragment="true"/>
+      <plugin id="org.eclipse.scout.commons.test" fragment="true"/>
+      <plugin id="org.eclipse.scout.net"/>
+      <plugin id="org.eclipse.scout.net.test" fragment="true"/>
+      <plugin id="org.eclipse.scout.rt.client"/>
+      <plugin id="org.eclipse.scout.rt.client.test" fragment="true"/>
+      <plugin id="org.eclipse.scout.rt.client.testenvironment"/>
+      <plugin id="org.eclipse.scout.rt.client.win32.x86"/>
+      <plugin id="org.eclipse.scout.rt.extension.client"/>
+      <plugin id="org.eclipse.scout.rt.extension.client.test" fragment="true"/>
+      <plugin id="org.eclipse.scout.rt.servicetunnel"/>
+      <plugin id="org.eclipse.scout.rt.shared"/>
+      <plugin id="org.eclipse.scout.rt.shared.test" fragment="true"/>
+      <plugin id="org.eclipse.scout.rt.shared.win32.x86"/>
+      <plugin id="org.eclipse.scout.rt.spec.client"/>
+      <plugin id="org.eclipse.scout.rt.spec.client.test" fragment="true"/>
+      <plugin id="org.eclipse.scout.rt.testing.client"/>
+      <plugin id="org.eclipse.scout.rt.testing.client.test" fragment="true"/>
+      <plugin id="org.eclipse.scout.rt.testing.common.ant.optional.junit.fragment" fragment="true"/>
+      <plugin id="org.eclipse.scout.rt.testing.commons"/>
+      <plugin id="org.eclipse.scout.rt.testing.commons.test" fragment="true"/>
+      <plugin id="org.eclipse.scout.rt.testing.shared"/>
+      <plugin id="org.eclipse.scout.rt.testing.shared.test" fragment="true"/>
+      <plugin id="org.eclipse.scout.rt.testing.ui.swing"/>
+      <plugin id="org.eclipse.scout.rt.testing.ui.swt"/>
+      <plugin id="org.eclipse.scout.rt.ui.swing"/>
+      <plugin id="org.eclipse.scout.rt.ui.swing.browser.swt.fragment" fragment="true"/>
+      <plugin id="org.eclipse.scout.rt.ui.swing.bsi.fragment" fragment="true"/>
+      <plugin id="org.eclipse.scout.rt.ui.swing.test" fragment="true"/>
+      <plugin id="org.eclipse.scout.rt.ui.swing.win32.x86.fragment" fragment="true"/>
+      <plugin id="org.eclipse.scout.rt.ui.swt"/>
+      <plugin id="org.eclipse.scout.rt.ui.swt.bsi.fragment" fragment="true"/>
+      <plugin id="org.eclipse.scout.rt.ui.swt.test" fragment="true"/>
+      <plugin id="org.eclipse.scout.service"/>
+      <plugin id="org.eclipse.scout.service.test" fragment="true"/>
+      <plugin id="org.eclipse.scout.svg.client"/>
+      <plugin id="org.eclipse.scout.svg.ui.swing"/>
+      <plugin id="org.eclipse.swt"/>
+      <plugin id="org.eclipse.swt.win32.win32.x86" fragment="true"/>
+      <plugin id="org.eclipse.text"/>
+      <plugin id="org.eclipse.ui"/>
+      <plugin id="org.eclipse.ui.forms"/>
+      <plugin id="org.eclipse.ui.views"/>
+      <plugin id="org.eclipse.ui.workbench"/>
+      <plugin id="org.eclipse.update.configurator"/>
+      <plugin id="org.eclipsescout.demo.minicrm.client"/>
+      <plugin id="org.eclipsescout.demo.minicrm.shared"/>
+      <plugin id="org.eclipsescout.demo.minicrm.spec.client"/>
+      <plugin id="org.eclipsescout.demo.minicrm.spec.ui.swt"/>
+      <plugin id="org.eclipsescout.demo.minicrm.ui.swt"/>
+      <plugin id="org.hamcrest.core"/>
+      <plugin id="org.junit"/>
+      <plugin id="org.mockito.mockito-all"/>
+      <plugin id="org.postgres.postgresql9.jdbc.fragment" fragment="true"/>
+      <plugin id="org.w3c.css.sac"/>
+      <plugin id="org.w3c.dom.events"/>
+      <plugin id="org.w3c.dom.smil"/>
+      <plugin id="org.w3c.dom.svg"/>
+      <plugin id="org.w3c.dom.svg.fragment" fragment="true"/>
+   </plugins>
+
+
+</product>
