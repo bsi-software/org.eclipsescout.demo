@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
@@ -24,8 +24,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.eclipse.scout.commons.Base64Utility;
 import org.eclipse.scout.commons.ConfigIniUtility;
 import org.eclipse.scout.commons.security.SimplePrincipal;
-import org.eclipse.scout.http.servletfilter.security.AbstractChainableSecurityFilter;
-import org.eclipse.scout.http.servletfilter.security.PrincipalHolder;
+import org.eclipse.scout.rt.server.commons.servletfilter.security.AbstractChainableSecurityFilter;
+import org.eclipse.scout.rt.server.commons.servletfilter.security.PrincipalHolder;
 
 public class BasicForwardSecurityFilter extends AbstractChainableSecurityFilter {
 

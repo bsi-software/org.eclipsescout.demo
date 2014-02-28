@@ -4,7 +4,7 @@ Bundle-Name: BahBah Security Filter
 Bundle-SymbolicName: org.eclipsescout.demo.bahbah.security;singleton:=true
 Bundle-Version: 4.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Require-Bundle: org.eclipse.scout.http.servletfilter,
+Require-Bundle: org.eclipse.scout.rt.server.commons,
  org.eclipse.scout.commons
 Import-Package: javax.servlet;version="2.4.0",
  javax.servlet.http;version="2.4.0"

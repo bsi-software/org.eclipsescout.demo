@@ -96,7 +96,7 @@
    </extension>
    <extension
          name=""
-         point="org.eclipse.scout.http.servletfilter.filters">
+         point="org.eclipse.scout.rt.server.commons.filters">
       <filter
             aliases="/process /remotefiles /updatesite"
             class="org.eclipsescout.demo.bahbah.server.security.BasicForwardSecurityFilter"

@@ -12,15 +12,6 @@ package org.eclipsescout.demo.ibug.ui.swt;
 
 import org.eclipse.scout.rt.client.AbstractClientSession;
 import org.eclipse.scout.rt.client.ui.form.IForm;
-import org.eclipse.scout.rt.client.AbstractClientSession;
-import org.eclipse.scout.rt.client.ui.desktop.IDesktop;
-import org.eclipse.scout.rt.client.ui.form.IForm;
-import org.eclipse.scout.rt.ui.swt.AbstractSwtEnvironment;
-import org.eclipse.scout.rt.ui.swt.ISwtEnvironmentListener;
-import org.eclipse.scout.rt.ui.swt.SwtEnvironmentEvent;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.scout.rt.ui.swt.AbstractSwtEnvironment;
 import org.eclipse.scout.rt.ui.swt.ISwtEnvironmentListener;
 import org.eclipse.scout.rt.ui.swt.SwtEnvironmentEvent;

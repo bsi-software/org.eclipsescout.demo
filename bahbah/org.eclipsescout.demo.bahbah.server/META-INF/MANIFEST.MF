@@ -13,7 +13,7 @@ Export-Package: org.eclipsescout.demo.bahbah.server,
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipsescout.demo.bahbah.shared,
  org.eclipse.scout.rt.server,
- org.eclipse.scout.http.servletfilter,
+ org.eclipse.scout.rt.server.commons,
  org.eclipse.equinox.http.registry,
  org.eclipse.scout.rt.jdbc.derby,
  org.eclipsescout.demo.bahbah.security
