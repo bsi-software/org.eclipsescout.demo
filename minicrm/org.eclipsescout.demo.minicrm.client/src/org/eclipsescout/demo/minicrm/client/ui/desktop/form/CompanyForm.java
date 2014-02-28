@@ -99,27 +99,27 @@ public class CompanyForm extends AbstractForm {
     return getFieldByClass(CompanyTypeGroup.class);
   }
 
-  public DetailsBox getDetailsBox(){
+  public DetailsBox getDetailsBox() {
     return getFieldByClass(DetailsBox.class);
   }
 
-  public EBox getEBox(){
+  public EBox getEBox() {
     return getFieldByClass(EBox.class);
   }
 
-  public FBox getFBox(){
+  public FBox getFBox() {
     return getFieldByClass(FBox.class);
   }
 
-  public GField getGField(){
+  public GField getGField() {
     return getFieldByClass(GField.class);
   }
 
-  public HField getHField(){
+  public HField getHField() {
     return getFieldByClass(HField.class);
   }
 
-  public IField getIField(){
+  public IField getIField() {
     return getFieldByClass(IField.class);
   }
 
@@ -146,6 +146,7 @@ public class CompanyForm extends AbstractForm {
   @Order(10.0)
   public class MainBox extends AbstractGroupBox {
 
+    @ClassId("cef2e8e8-1bee-4907-98c0-2985fab513c8")
     @Order(10.0)
     public class NameField extends AbstractStringField {
 
@@ -155,6 +156,7 @@ public class CompanyForm extends AbstractForm {
       }
     }
 
+    @ClassId("da0f056f-370d-4bc9-815b-886e4b39bf1b")
     @Order(20.0)
     public class ShortNameField extends AbstractStringField {
 
