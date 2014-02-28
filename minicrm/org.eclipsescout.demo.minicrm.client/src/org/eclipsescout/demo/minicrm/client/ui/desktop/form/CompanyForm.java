@@ -17,6 +17,7 @@ import org.eclipse.scout.commons.annotations.FormData.SdkCommand;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
+import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractBooleanColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
@@ -27,6 +28,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.radiobuttongroup.AbstractRadioButtonGroup;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
+import org.eclipse.scout.rt.client.ui.form.fields.tabbox.AbstractTabBox;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
 import org.eclipse.scout.rt.extension.client.ui.basic.table.AbstractExtensibleTable;
@@ -35,6 +37,12 @@ import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.service.SERVICES;
 import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm.MainBox.CancelButton;
 import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm.MainBox.CompanyTypeGroup;
+import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm.MainBox.DetailsBox;
+import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm.MainBox.DetailsBox.EBox;
+import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm.MainBox.DetailsBox.EBox.GField;
+import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm.MainBox.DetailsBox.FBox;
+import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm.MainBox.DetailsBox.FBox.HField;
+import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm.MainBox.DetailsBox.FBox.IField;
 import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm.MainBox.FooGroup.CompanyRatingField;
 import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm.MainBox.FooGroup.TableField;
 import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm.MainBox.NameField;
@@ -89,6 +97,30 @@ public class CompanyForm extends AbstractForm {
 
   public CompanyTypeGroup getCompanyTypeGroup() {
     return getFieldByClass(CompanyTypeGroup.class);
+  }
+
+  public DetailsBox getDetailsBox(){
+    return getFieldByClass(DetailsBox.class);
+  }
+
+  public EBox getEBox(){
+    return getFieldByClass(EBox.class);
+  }
+
+  public FBox getFBox(){
+    return getFieldByClass(FBox.class);
+  }
+
+  public GField getGField(){
+    return getFieldByClass(GField.class);
+  }
+
+  public HField getHField(){
+    return getFieldByClass(HField.class);
+  }
+
+  public IField getIField(){
+    return getFieldByClass(IField.class);
   }
 
   public MainBox getMainBox() {
@@ -147,7 +179,7 @@ public class CompanyForm extends AbstractForm {
     }
 
     @ClassId("e1a0d097-e8c6-4d41-b394-20d6318a27cf")
-    @Order(35.0)
+    @Order(40.0)
     public class FooGroup extends AbstractGroupBox {
 
       @Override
@@ -236,6 +268,10 @@ public class CompanyForm extends AbstractForm {
             return getColumnSet().getColumnByClass(BColumn.class);
           }
 
+          public GColumn getGColumn() {
+            return getColumnSet().getColumnByClass(GColumn.class);
+          }
+
           public AColumn getAColumn() {
             return getColumnSet().getColumnByClass(AColumn.class);
           }
@@ -256,6 +292,79 @@ public class CompanyForm extends AbstractForm {
             protected String getConfiguredHeaderText() {
               return TEXTS.get("B");
             }
+          }
+
+          @Order(30.0)
+          public class GColumn extends AbstractBooleanColumn {
+
+            @Override
+            protected String getConfiguredHeaderText() {
+              return TEXTS.get("G");
+            }
+          }
+        }
+      }
+    }
+
+    @Order(50.0)
+    public class DetailsBox extends AbstractTabBox {
+
+      @Override
+      protected String getConfiguredLabel() {
+        return TEXTS.get("Details");
+      }
+
+      @Order(10.0)
+      public class EBox extends AbstractGroupBox {
+
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("E");
+        }
+
+        @Order(10.0)
+        public class GField extends AbstractStringField {
+
+          @Override
+          protected int getConfiguredGridH() {
+            return 2;
+          }
+
+          @Override
+          protected int getConfiguredGridW() {
+            return 2;
+          }
+
+          @Override
+          protected String getConfiguredLabel() {
+            return TEXTS.get("G");
+          }
+        }
+      }
+
+      @Order(20.0)
+      public class FBox extends AbstractGroupBox {
+
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("F");
+        }
+
+        @Order(10.0)
+        public class HField extends AbstractStringField {
+
+          @Override
+          protected String getConfiguredLabel() {
+            return TEXTS.get("H");
+          }
+        }
+
+        @Order(20.0)
+        public class IField extends AbstractStringField {
+
+          @Override
+          protected String getConfiguredLabel() {
+            return TEXTS.get("I");
           }
         }
       }

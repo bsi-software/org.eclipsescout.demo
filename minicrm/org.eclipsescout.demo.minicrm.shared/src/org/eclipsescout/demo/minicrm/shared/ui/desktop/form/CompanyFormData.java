@@ -62,6 +62,18 @@ public class CompanyFormData extends AbstractFormData {
     return getFieldByClass(CompanyTypeGroup.class);
   }
 
+  public G getG() {
+    return getFieldByClass(G.class);
+  }
+
+  public H getH() {
+    return getFieldByClass(H.class);
+  }
+
+  public I getI() {
+    return getFieldByClass(I.class);
+  }
+
   public Name getName() {
     return getFieldByClass(Name.class);
   }
@@ -119,6 +131,57 @@ public class CompanyFormData extends AbstractFormData {
     }
   }
 
+  public static class G extends AbstractValueFieldData<String> {
+
+    private static final long serialVersionUID = 1L;
+
+    public G() {
+    }
+
+    /**
+     * list of derived validation rules.
+     */
+    @Override
+    protected void initValidationRules(Map<String, Object> ruleMap) {
+      super.initValidationRules(ruleMap);
+      ruleMap.put(ValidationRule.MAX_LENGTH, 4000);
+    }
+  }
+
+  public static class H extends AbstractValueFieldData<String> {
+
+    private static final long serialVersionUID = 1L;
+
+    public H() {
+    }
+
+    /**
+     * list of derived validation rules.
+     */
+    @Override
+    protected void initValidationRules(Map<String, Object> ruleMap) {
+      super.initValidationRules(ruleMap);
+      ruleMap.put(ValidationRule.MAX_LENGTH, 4000);
+    }
+  }
+
+  public static class I extends AbstractValueFieldData<String> {
+
+    private static final long serialVersionUID = 1L;
+
+    public I() {
+    }
+
+    /**
+     * list of derived validation rules.
+     */
+    @Override
+    protected void initValidationRules(Map<String, Object> ruleMap) {
+      super.initValidationRules(ruleMap);
+      ruleMap.put(ValidationRule.MAX_LENGTH, 4000);
+    }
+  }
+
   public static class Name extends AbstractValueFieldData<String> {
 
     private static final long serialVersionUID = 1L;
@@ -158,6 +221,7 @@ public class CompanyFormData extends AbstractFormData {
     private static final long serialVersionUID = 1L;
     public static final int A_COLUMN_ID = 0;
     public static final int B_COLUMN_ID = 1;
+    public static final int G_COLUMN_ID = 2;
 
     public Table() {
     }
@@ -178,9 +242,17 @@ public class CompanyFormData extends AbstractFormData {
       setValueInternal(row, B_COLUMN_ID, b);
     }
 
+    public Boolean getG(int row) {
+      return (Boolean) getValueInternal(row, G_COLUMN_ID);
+    }
+
+    public void setG(int row, Boolean g) {
+      setValueInternal(row, G_COLUMN_ID, g);
+    }
+
     @Override
     public int getColumnCount() {
-      return 2;
+      return 3;
     }
 
     @Override
@@ -190,6 +262,8 @@ public class CompanyFormData extends AbstractFormData {
           return getA(row);
         case B_COLUMN_ID:
           return getB(row);
+        case G_COLUMN_ID:
+          return getG(row);
         default:
           return null;
       }
@@ -203,6 +277,9 @@ public class CompanyFormData extends AbstractFormData {
           break;
         case B_COLUMN_ID:
           setB(row, (String) value);
+          break;
+        case G_COLUMN_ID:
+          setG(row, (Boolean) value);
           break;
       }
     }
