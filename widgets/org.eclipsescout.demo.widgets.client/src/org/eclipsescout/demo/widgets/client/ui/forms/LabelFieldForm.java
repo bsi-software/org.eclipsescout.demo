@@ -23,7 +23,6 @@ import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringFiel
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.data.basic.FontSpec;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
-import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
 import org.eclipsescout.demo.widgets.client.services.lookup.FontstyleLookupCall;
 import org.eclipsescout.demo.widgets.client.ui.forms.LabelFieldForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.LabelFieldForm.MainBox.GroupBox;
@@ -226,11 +225,7 @@ public class LabelFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected void execInitField() {
-          String value = TEXTS.get("Lorem");
-          if (UserAgentUtility.isSwingUi()) {
-            value = "<html>" + value + "</html>";
-          }
-          this.setValue(value);
+          this.setValue(TEXTS.get("Lorem"));
         }
       }
     }
