@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
@@ -18,6 +18,7 @@ import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractLinkButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
+import org.eclipse.scout.rt.client.ui.form.fields.labelfield.AbstractLabelField;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
@@ -26,6 +27,8 @@ import org.eclipsescout.demo.widgets.client.ui.forms.MessageBoxesForm.MainBox.Cu
 import org.eclipsescout.demo.widgets.client.ui.forms.MessageBoxesForm.MainBox.CustomMessageBox.DeleteConfirmationMessageButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.MessageBoxesForm.MainBox.CustomMessageBox.ProcessingExceptionButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.MessageBoxesForm.MainBox.CustomMessageBox.VetoExceptionButton;
+import org.eclipsescout.demo.widgets.client.ui.forms.MessageBoxesForm.MainBox.ResultBox;
+import org.eclipsescout.demo.widgets.client.ui.forms.MessageBoxesForm.MainBox.ResultBox.ResultField;
 import org.eclipsescout.demo.widgets.client.ui.forms.MessageBoxesForm.MainBox.StandardMessageBoxesBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.MessageBoxesForm.MainBox.StandardMessageBoxesBox.MessageBoxWithHiddenTextButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.MessageBoxesForm.MainBox.StandardMessageBoxesBox.MessageBoxWithOkButton;
@@ -90,6 +93,14 @@ public class MessageBoxesForm extends AbstractForm implements IPageForm {
     return getFieldByClass(ProcessingExceptionButton.class);
   }
 
+  public ResultBox getResultBox() {
+    return getFieldByClass(ResultBox.class);
+  }
+
+  public ResultField getResultField() {
+    return getFieldByClass(ResultField.class);
+  }
+
   public StandardMessageBoxesBox getStandardMessageBoxesBox() {
     return getFieldByClass(StandardMessageBoxesBox.class);
   }
@@ -129,7 +140,8 @@ public class MessageBoxesForm extends AbstractForm implements IPageForm {
 
         @Override
         protected void execClickAction() throws ProcessingException {
-          MessageBox.showOkMessage("Ok", null, "This is a MessageBox with an Ok-Button");
+          int result = MessageBox.showOkMessage("Ok", null, "This is a MessageBox with an Ok-Button");
+          getResultField().setValue(resultToString(result));
         }
       }
 
@@ -153,7 +165,8 @@ public class MessageBoxesForm extends AbstractForm implements IPageForm {
 
         @Override
         protected void execClickAction() throws ProcessingException {
-          MessageBox.showYesNoMessage("Yes-No-Option", "This is a MessageBox with a Yes-No-Option", "Press \"Yes\" or \"No\"");
+          int result = MessageBox.showYesNoMessage("Yes-No-Option", "This is a MessageBox with a Yes-No-Option", "Press \"Yes\" or \"No\"");
+          getResultField().setValue(resultToString(result));
         }
       }
 
@@ -177,7 +190,8 @@ public class MessageBoxesForm extends AbstractForm implements IPageForm {
 
         @Override
         protected void execClickAction() throws ProcessingException {
-          MessageBox.showYesNoCancelMessage("Yes-No-Cancel-Option", "This is a MessageBox with a Yes-No-Option", "Press \"Yes\", \"No\" or \"Cancel\"");
+          int result = MessageBox.showYesNoCancelMessage("Yes-No-Cancel-Option", "This is a MessageBox with a Yes-No-Option", "Press \"Yes\", \"No\" or \"Cancel\"");
+          getResultField().setValue(resultToString(result));
         }
       }
 
@@ -207,7 +221,8 @@ public class MessageBoxesForm extends AbstractForm implements IPageForm {
         @Override
         protected void execClickAction() throws ProcessingException {
           MessageBox msgbox = new MessageBox("MessageBox with hidden text", "This MessageBox has a hidden text", "click on copy or press ctrl+c to get the hidden text in your clipboard", TEXTS.get("YesButton"), TEXTS.get("NoButton"), TEXTS.get("CloseButton"), TEXTS.get("Lorem"), null);
-          msgbox.startMessageBox();
+          int result = msgbox.startMessageBox();
+          getResultField().setValue(resultToString(result));
         }
       }
     }
@@ -240,7 +255,8 @@ public class MessageBoxesForm extends AbstractForm implements IPageForm {
 
         @Override
         protected void execClickAction() throws ProcessingException {
-          MessageBox.showDeleteConfirmationMessage("Option", new String[]{"Item1", "Item2", "Item3"});
+          boolean result = MessageBox.showDeleteConfirmationMessage("items", new String[]{"Item1", "Item2", "Item3"});
+          getResultField().setValue(resultToString(result ? 0 : 1));
         }
       }
 
@@ -264,6 +280,7 @@ public class MessageBoxesForm extends AbstractForm implements IPageForm {
 
         @Override
         protected void execClickAction() throws ProcessingException {
+          getResultField().setValue(null);
           throw new VetoException("This is a VetoException");
         }
       }
@@ -288,14 +305,52 @@ public class MessageBoxesForm extends AbstractForm implements IPageForm {
 
         @Override
         protected void execClickAction() throws ProcessingException {
+          getResultField().setValue(null);
           throw new ProcessingException("This is a ProcessingException");
         }
       }
 
     }
 
-    @Order(100.0)
+    @Order(30.0)
+    public class ResultBox extends AbstractGroupBox {
+
+      @Override
+      protected String getConfiguredLabel() {
+        return TEXTS.get("Result");
+      }
+
+      @Order(10.0)
+      public class ResultField extends AbstractLabelField {
+
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("Result");
+        }
+
+        @Override
+        protected boolean getConfiguredLabelVisible() {
+          return false;
+        }
+      }
+
+    }
+
+    @Order(40.0)
     public class CloseButton extends AbstractCloseButton {
+    }
+  }
+
+  private static String resultToString(int result) {
+    switch (result) {
+      case 0:
+        return "Yes/Ok";
+      case 1:
+        return "No";
+      case 2:
+        return "Cancel";
+      default:
+        return "Unknown";
     }
   }
 
