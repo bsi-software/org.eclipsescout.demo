@@ -1,5 +1,7 @@
 package org.eclipsescout.demo.minicrm.spec.ui.swing;
 
+import java.util.Locale;
+
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.scout.commons.logger.IScoutLogger;
@@ -21,9 +23,9 @@ public class MinicrmSwingSpecApplication extends AbstractSwingApplication {
   private TestingClientSessionRegistryService m_testingClientSessionRegistryService = null;
 
   @Override
-  protected Object startInSubject(IApplicationContext context)
-      throws Exception {
+  protected Object startInSubject(IApplicationContext context) throws Exception {
     LOG.info("Starting App");
+    Locale.setDefault(new Locale("en"));
     ScoutClientTestRunner.setDefaultClientSessionClass(ClientSession.class);
     m_testingClientSessionRegistryService = TestingClientSessionRegistryService
         .registerTestingClientSessionRegistryService();

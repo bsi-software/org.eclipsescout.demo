@@ -9,10 +9,10 @@
       </application>
    </extension>
    <extension id="product" point="org.eclipse.core.runtime.products">
-      <product application="org.eclipsescout.demo.minicrm.spec.ui.swt.app" name="MiniCRM SWT Spec Client">
+      <product application="org.eclipsescout.demo.minicrm.spec.ui.swing.app" name="MiniCRM Spec Client">
          <property
                name="appName"
-               value="MiniCRM SWT Spec Client">
+               value="MiniCRM Spec Client">
          </property>
       </product>
    </extension>
