@@ -15,6 +15,7 @@ import java.util.Set;
 
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.basic.calendar.AbstractCalendar;
 import org.eclipse.scout.rt.client.ui.basic.calendar.provider.AbstractCalendarItemProvider;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
@@ -126,6 +127,42 @@ public class CalendarFieldForm extends AbstractForm implements IPageForm {
               end = cal.getTime();
               result.add(new CalendarAppointment(1L, 2L, start, end, false, "app4", "appointment4 body", "44FF00"));
 
+            }
+
+            @Order(200)
+            public class ItemProducerMenu extends AbstractMenu {
+              @Override
+              protected String getConfiguredText() {
+                return "Item producer Menu";
+              }
+
+              @Override
+              protected boolean getConfiguredSingleSelectionAction() {
+                return true;
+              }
+
+              @Override
+              protected boolean getConfiguredEmptySpaceAction() {
+                return false;
+              }
+            }
+          }
+
+          @Order(200)
+          public class TestMenuCalendar extends AbstractMenu {
+            @Override
+            protected String getConfiguredText() {
+              return "Calendar Menu";
+            }
+
+            @Override
+            protected boolean getConfiguredEmptySpaceAction() {
+              return true;
+            }
+
+            @Override
+            protected boolean getConfiguredSingleSelectionAction() {
+              return false;
             }
           }
         }

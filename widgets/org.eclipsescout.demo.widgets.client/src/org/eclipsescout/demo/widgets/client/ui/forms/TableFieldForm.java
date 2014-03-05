@@ -10,9 +10,11 @@
  ******************************************************************************/
 package org.eclipsescout.demo.widgets.client.ui.forms;
 
+import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
+import org.eclipse.scout.rt.client.ui.action.menu.checkbox.AbstractCheckBoxMenu;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
@@ -22,6 +24,7 @@ import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
+import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.ui.forms.DetailForm.MainBox.GroupBox.ValueLastField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.CloseButton;
@@ -204,6 +207,95 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
             protected void execAction() throws ProcessingException {
               getEditableTableField().getTable().addRowByArray(new Object[]{getEditableTableField().getTable().getCompanyNrColumn().getValues().size() + 1, "New Company", ""});
             }
+          }
+
+          @Order(20.0)
+          public class ShowDetailsMenu extends AbstractMenu {
+
+            @Override
+            protected String getConfiguredText() {
+              return TEXTS.get("ShowDetail");
+            }
+
+            @Override
+            protected void execAction() throws ProcessingException {
+              String selectedName = getTable().getNameColumn().getSelectedValue();
+              if (StringUtility.hasText(selectedName)) {
+                MessageBox.showOkMessage(selectedName + " Details", "Some header information", "some more informations...");
+              }
+            }
+          }
+
+          @Order(30.0)
+          public class Menu03 extends AbstractMenu {
+
+            @Override
+            protected String getConfiguredText() {
+              return "Menu03";
+            }
+
+            @Override
+            protected void execAction() throws ProcessingException {
+              MessageBox.showOkMessage(getText(), "Menu clicked", "some more informations...");
+            }
+
+            @Order(10.0)
+            public class Menu03_01 extends AbstractMenu {
+
+              @Override
+              protected String getConfiguredText() {
+                return getClass().getSimpleName();
+              }
+
+              @Override
+              protected void execAction() throws ProcessingException {
+                MessageBox.showOkMessage(getText(), "Menu clicked", "some more informations...");
+              }
+            }
+
+            @Order(20.0)
+            public class Menu03_02 extends AbstractMenu {
+
+              @Override
+              protected String getConfiguredText() {
+                return getClass().getSimpleName();
+              }
+
+              @Override
+              protected void execInitAction() throws ProcessingException {
+                setSelected(true);
+              }
+
+              @Override
+              protected boolean getConfiguredToggleAction() {
+                return true;
+              }
+
+              @Override
+              protected void execAction() throws ProcessingException {
+                MessageBox.showOkMessage(getText(), "Menu clicked", "some more informations...");
+              }
+            }
+
+            @Order(20.0)
+            public class Menu03_03 extends AbstractCheckBoxMenu {
+
+              @Override
+              protected String getConfiguredText() {
+                return getClass().getSimpleName();
+              }
+
+              @Override
+              protected void execInitAction() throws ProcessingException {
+                setSelected(true);
+              }
+
+              @Override
+              protected void execAction() throws ProcessingException {
+                MessageBox.showOkMessage(getText(), "Menu clicked", "some more informations...");
+              }
+            }
+
           }
         }
       }

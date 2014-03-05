@@ -17,7 +17,7 @@ import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.scout.rt.client.ui.action.menu.IMenu;
 import org.eclipse.scout.rt.ui.swt.ISwtEnvironment;
 import org.eclipse.scout.rt.ui.swt.SwtMenuUtility;
-import org.eclipse.scout.rt.ui.swt.menu.SwtScoutMenuContributionItem;
+import org.eclipse.scout.rt.ui.swt.action.SwtScoutMenuContributionItem;
 import org.eclipse.ui.actions.CompoundContributionItem;
 import org.eclipsescout.demo.bahbah.ui.swt.Activator;
 
