@@ -55,7 +55,7 @@
       <plugin id="org.eclipse.osgi.services"/>
       <plugin id="org.eclipse.scout.commons"/>
       <plugin id="org.eclipse.scout.jaxws216"/>
-      <plugin id="org.eclipse.scout.rt.jdbc.derby"/>
+      <plugin id="org.eclipse.scout.rt.jdbc.derby10"/>
       <plugin id="org.eclipse.scout.rt.server"/>
       <plugin id="org.eclipse.scout.rt.server.commons"/>
       <plugin id="org.eclipse.scout.rt.shared"/>
