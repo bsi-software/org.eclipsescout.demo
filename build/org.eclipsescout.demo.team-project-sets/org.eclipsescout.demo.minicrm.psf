@@ -7,6 +7,7 @@
 <project reference="1.0,https://github.com/BSI-Business-Systems-Integration-AG/org.eclipsescout.demo.git,master,minicrm/org.eclipsescout.demo.minicrm.server"/>
 <project reference="1.0,https://github.com/BSI-Business-Systems-Integration-AG/org.eclipsescout.demo.git,master,minicrm/org.eclipsescout.demo.minicrm.server.product"/>
 <project reference="1.0,https://github.com/BSI-Business-Systems-Integration-AG/org.eclipsescout.demo.git,master,minicrm/org.eclipsescout.demo.minicrm.shared"/>
+<project reference="1.0,https://github.com/BSI-Business-Systems-Integration-AG/org.eclipsescout.demo.git,master,minicrm/org.eclipsescout.demo.minicrm.spec.ui.swing"/>
 <project reference="1.0,https://github.com/BSI-Business-Systems-Integration-AG/org.eclipsescout.demo.git,master,minicrm/org.eclipsescout.demo.minicrm.ui.rap"/>
 <project reference="1.0,https://github.com/BSI-Business-Systems-Integration-AG/org.eclipsescout.demo.git,master,minicrm/org.eclipsescout.demo.minicrm.ui.rap.product"/>
 <project reference="1.0,https://github.com/BSI-Business-Systems-Integration-AG/org.eclipsescout.demo.git,master,minicrm/org.eclipsescout.demo.minicrm.ui.swing"/>
