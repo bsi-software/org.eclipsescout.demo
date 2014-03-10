@@ -234,11 +234,11 @@ public class CompanyFormData extends AbstractFormData {
       setValueInternal(row, A_COLUMN_ID, a);
     }
 
-    public String getB(int row) {
-      return (String) getValueInternal(row, B_COLUMN_ID);
+    public Long getB(int row) {
+      return (Long) getValueInternal(row, B_COLUMN_ID);
     }
 
-    public void setB(int row, String b) {
+    public void setB(int row, Long b) {
       setValueInternal(row, B_COLUMN_ID, b);
     }
 
@@ -276,7 +276,7 @@ public class CompanyFormData extends AbstractFormData {
           setA(row, (String) value);
           break;
         case B_COLUMN_ID:
-          setB(row, (String) value);
+          setB(row, (Long) value);
           break;
         case G_COLUMN_ID:
           setG(row, (Boolean) value);

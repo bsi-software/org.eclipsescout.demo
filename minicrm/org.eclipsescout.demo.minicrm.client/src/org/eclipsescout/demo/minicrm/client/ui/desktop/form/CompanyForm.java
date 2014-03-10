@@ -18,6 +18,7 @@ import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractBooleanColumn;
+import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractSmartColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
@@ -288,11 +289,16 @@ public class CompanyForm extends AbstractForm {
           }
 
           @Order(20.0)
-          public class BColumn extends AbstractStringColumn {
+          public class BColumn extends AbstractSmartColumn<Long> {
 
             @Override
             protected String getConfiguredHeaderText() {
               return TEXTS.get("B");
+            }
+
+            @Override
+            protected Class<? extends ICodeType> getConfiguredCodeType() {
+              return CompanyRatingCodeType.class;
             }
           }
 
