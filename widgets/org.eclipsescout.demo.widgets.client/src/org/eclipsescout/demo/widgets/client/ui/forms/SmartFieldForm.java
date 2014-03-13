@@ -12,14 +12,23 @@ package org.eclipsescout.demo.widgets.client.ui.forms;
 
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
+import org.eclipse.scout.rt.client.ui.basic.cell.Cell;
+import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
+import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractSmartColumn;
+import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
+import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractOkButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
+import org.eclipse.scout.rt.client.ui.form.fields.smartfield.ContentAssistFieldTable;
+import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
+import org.eclipsescout.demo.widgets.client.services.lookup.CompanyLookupCall;
 import org.eclipsescout.demo.widgets.client.services.lookup.CompanyTypeLookupCall;
 import org.eclipsescout.demo.widgets.client.services.lookup.ProductLookupCall;
 import org.eclipsescout.demo.widgets.client.services.lookup.StatusTextLookupCall;
@@ -33,6 +42,7 @@ import org.eclipsescout.demo.widgets.client.ui.forms.SmartFieldForm.MainBox.Grou
 import org.eclipsescout.demo.widgets.client.ui.forms.SmartFieldForm.MainBox.GroupBox.LeftBox.TreeWithLookupCallIncrementalField;
 import org.eclipsescout.demo.widgets.client.ui.forms.SmartFieldForm.MainBox.GroupBox.RightBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.SmartFieldForm.MainBox.GroupBox.RightBox.CodeAssistField;
+import org.eclipsescout.demo.widgets.shared.Icons;
 import org.eclipsescout.demo.widgets.shared.services.code.CountryCodeType;
 import org.eclipsescout.demo.widgets.shared.services.code.DateCodeType;
 
@@ -243,6 +253,133 @@ public class SmartFieldForm extends AbstractForm implements IPageForm {
             return CompanyTypeLookupCall.class;
           }
         }
+
+        @Order(60.0)
+        public class CompanySmartField extends AbstractSmartField<Long> {
+
+          @Override
+          protected String getConfiguredLabel() {
+            return TEXTS.get("Company");
+          }
+
+          @Override
+          protected int getConfiguredBrowseMaxRowCount() {
+            return 50;
+          }
+
+          @Override
+          protected Class<? extends ILookupCall<Long>> getConfiguredLookupCall() {
+            return CompanyLookupCall.class;
+          }
+
+        }
+
+        @Order(70.0)
+        public class ListWithTableProposalField extends AbstractSmartField<Long> {
+
+          @Override
+          protected String getConfiguredLabel() {
+            return TEXTS.get("ListWithTableProposal");
+          }
+
+          @Override
+          protected Class<? extends ContentAssistFieldTable<Long>> getConfiguredContentAssistTable() {
+            return CompanySmartTable.class;
+          }
+
+          @Override
+          protected int getConfiguredBrowseMaxRowCount() {
+            return 50;
+          }
+
+          @Override
+          protected Class<? extends ILookupCall<Long>> getConfiguredLookupCall() {
+            return CompanyLookupCall.class;
+          }
+
+          @Order(100)
+          public class SmartFieldMenu extends AbstractMenu {
+            @Override
+            protected String getConfiguredText() {
+              return "A Menu";
+            }
+
+            @Override
+            protected boolean getConfiguredSingleSelectionAction() {
+              return true;
+            }
+
+            @Override
+            protected void execAction() throws ProcessingException {
+              MessageBox.showOkMessage("Menu clicked", "some detail", "some info");
+            }
+          }
+
+        }
+
+        @Order(80.0)
+        public class ListWithInnerTableProposalField extends AbstractSmartField<Long> {
+
+          @Override
+          protected String getConfiguredLabel() {
+            return TEXTS.get("ListWithInnerTableProposal");
+          }
+
+          @Override
+          protected Class<? extends ILookupCall<Long>> getConfiguredLookupCall() {
+            return CompanyLookupCall.class;
+          }
+
+          public class Table extends ContentAssistFieldTable<Long> {
+
+            @Override
+            protected String getConfiguredDefaultIconId() {
+              return Icons.WeatherSnow;
+            }
+
+            @Override
+            protected boolean getConfiguredHeaderVisible() {
+              return true;
+            }
+
+            @Order(40)
+            public class AdditionalInfoColumn extends AbstractStringColumn {
+              @Override
+              protected String getConfiguredHeaderText() {
+                return TEXTS.get("AdditionalInfo");
+              }
+
+              @Override
+              protected int getConfiguredWidth() {
+                return 200;
+              }
+            }
+
+            @Order(50)
+            public class CompanyTypeColumn extends AbstractSmartColumn<Long> {
+              @Override
+              protected String getConfiguredHeaderText() {
+                return TEXTS.get("CompanyType");
+              }
+
+              @Override
+              protected int getConfiguredWidth() {
+                return 200;
+              }
+
+              @Override
+              protected Class<? extends ILookupCall<Long>> getConfiguredLookupCall() {
+                return CompanyTypeLookupCall.class;
+              }
+
+              @Override
+              protected void execDecorateCell(Cell cell, ITableRow row) throws ProcessingException {
+                decorateCellWithLookupRow(cell, row);
+              }
+            }
+          }
+
+        }
       }
 
       @Order(30.0)
@@ -274,11 +411,64 @@ public class SmartFieldForm extends AbstractForm implements IPageForm {
       }
     }
 
-    @Order(30.0)
+    @Order(90.0)
+    public class OkButton extends AbstractOkButton {
+    }
+
+    @Order(100.0)
     public class CloseButton extends AbstractCloseButton {
     }
   }
 
   public class PageFormHandler extends AbstractFormHandler {
+  }
+
+  public static class CompanySmartTable extends ContentAssistFieldTable<Long> {
+
+    @Override
+    protected String getConfiguredDefaultIconId() {
+      return Icons.WeatherSnow;
+    }
+
+    @Override
+    protected boolean getConfiguredHeaderVisible() {
+      return true;
+    }
+
+    @Order(40)
+    public class AdditionalInfoColumn extends AbstractStringColumn {
+      @Override
+      protected String getConfiguredHeaderText() {
+        return TEXTS.get("AdditionalInfo");
+      }
+
+      @Override
+      protected int getConfiguredWidth() {
+        return 200;
+      }
+    }
+
+    @Order(50)
+    public class CompanyTypeColumn extends AbstractSmartColumn<Long> {
+      @Override
+      protected String getConfiguredHeaderText() {
+        return TEXTS.get("CompanyType");
+      }
+
+      @Override
+      protected int getConfiguredWidth() {
+        return 200;
+      }
+
+      @Override
+      protected Class<? extends ILookupCall<Long>> getConfiguredLookupCall() {
+        return CompanyTypeLookupCall.class;
+      }
+
+      @Override
+      protected void execDecorateCell(Cell cell, ITableRow row) throws ProcessingException {
+        decorateCellWithLookupRow(cell, row);
+      }
+    }
   }
 }

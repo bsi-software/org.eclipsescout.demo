@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
@@ -23,4 +23,9 @@ public class Icons extends AbstractIcons {
   public static final String EclipseScout = "eclipse_scout";
   public static final String StarRed = "star_red";
   public static final String StarYellow = "star_yellow";
+  public static final String WeatherCloudy = "weather_cloudy";
+  public static final String WeatherLightning = "weather_lightning";
+  public static final String WeatherRain = "weather_rain";
+  public static final String WeatherSnow = "weather_snow";
+  public static final String WeatherSun = "weather_sun";
 }

@@ -250,7 +250,7 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
 
       @Override
       protected String getConfiguredKeyStroke() {
-        return "m";
+        return "alt-m";
       }
 
       @Override
