@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
@@ -22,6 +22,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.IFormField;
 import org.eclipse.scout.rt.client.ui.form.fields.booleanfield.IBooleanField;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
+import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractRadioButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.IButton;
 import org.eclipse.scout.rt.client.ui.form.fields.checkbox.AbstractCheckBox;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
@@ -274,7 +275,7 @@ public class ButtonsForm extends AbstractForm implements IPageForm {
       }
 
       @Order(10)
-      public class RadioButton1 extends AbstractButton {
+      public class RadioButton1 extends AbstractRadioButton {
         @Override
         protected boolean getConfiguredProcessButton() {
           return false;
@@ -282,7 +283,7 @@ public class ButtonsForm extends AbstractForm implements IPageForm {
       }
 
       @Order(20)
-      public class RadioButton2 extends AbstractButton {
+      public class RadioButton2 extends AbstractRadioButton {
         @Override
         protected boolean getConfiguredProcessButton() {
           return false;
@@ -290,7 +291,7 @@ public class ButtonsForm extends AbstractForm implements IPageForm {
       }
 
       @Order(30)
-      public class RadioButton3 extends AbstractButton {
+      public class RadioButton3 extends AbstractRadioButton {
         @Override
         protected boolean getConfiguredProcessButton() {
           return false;
@@ -298,7 +299,7 @@ public class ButtonsForm extends AbstractForm implements IPageForm {
       }
 
       @Order(40)
-      public class RadioButton4 extends AbstractButton {
+      public class RadioButton4 extends AbstractRadioButton {
         @Override
         protected boolean getConfiguredProcessButton() {
           return false;
