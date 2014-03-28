@@ -111,6 +111,7 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
           return true;
         }
 
+        @Order(10.0)
         public class ImageContextMenu extends AbstractMenu {
           @Override
           protected String getConfiguredText() {
