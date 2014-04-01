@@ -140,12 +140,12 @@ public class FormWithToolbuttonsForm extends AbstractForm implements IPageForm {
 
     @Override
     protected void execInitAction() throws ProcessingException {
-      setSelected(getToolbuttonByClass(Toolbutton01.class).isEnabled());
+      setSelected(getToolButtonByClass(Toolbutton01.class).isEnabled());
     }
 
     @Override
     protected void execAction() throws ProcessingException {
-      getToolbuttonByClass(Toolbutton01.class).setEnabled(Toolbutton02.this.isSelected());
+      getToolButtonByClass(Toolbutton01.class).setEnabled(Toolbutton02.this.isSelected());
     }
 
     @Override
