@@ -16,18 +16,18 @@ import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
-import org.eclipse.scout.rt.client.ui.form.fields.colorpickerfield.AbstractColorPickerField;
+import org.eclipse.scout.rt.client.ui.form.fields.colorpickerfield.AbstractColorField;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
 import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipsescout.demo.widgets.client.ui.forms.ColorPickerFieldForm.MainBox.CloseButton;
-import org.eclipsescout.demo.widgets.client.ui.forms.ColorPickerFieldForm.MainBox.GroupBox;
+import org.eclipsescout.demo.widgets.client.ui.forms.ColorFieldForm.MainBox.CloseButton;
+import org.eclipsescout.demo.widgets.client.ui.forms.ColorFieldForm.MainBox.GroupBox;
 import org.eclipsescout.demo.widgets.shared.Icons;
 
-public class ColorPickerFieldForm extends AbstractForm implements IPageForm {
+public class ColorFieldForm extends AbstractForm implements IPageForm {
 
-  public ColorPickerFieldForm() throws ProcessingException {
+  public ColorFieldForm() throws ProcessingException {
     super();
   }
 
@@ -38,7 +38,7 @@ public class ColorPickerFieldForm extends AbstractForm implements IPageForm {
 
   @Override
   protected String getConfiguredTitle() {
-    return TEXTS.get("ColorPickerField");
+    return TEXTS.get("ColorField");
   }
 
   @Override
@@ -71,7 +71,7 @@ public class ColorPickerFieldForm extends AbstractForm implements IPageForm {
       }
 
       @Order(10.0)
-      public class ColorPickerField01 extends AbstractColorPickerField {
+      public class ColorField01 extends AbstractColorField {
         @Override
         protected void execInitField() throws ProcessingException {
           setValue("#FF0000");
@@ -89,7 +89,7 @@ public class ColorPickerFieldForm extends AbstractForm implements IPageForm {
       }
 
       @Order(20.0)
-      public class ColorPickerField02 extends AbstractColorPickerField {
+      public class ColorField02 extends AbstractColorField {
 
         @Override
         protected String getConfiguredLabel() {

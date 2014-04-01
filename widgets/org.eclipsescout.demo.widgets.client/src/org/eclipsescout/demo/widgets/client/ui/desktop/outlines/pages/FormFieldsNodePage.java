@@ -22,7 +22,7 @@ import org.eclipsescout.demo.widgets.client.ui.forms.BrowserFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.ButtonsForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.CalendarFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.CheckboxForm;
-import org.eclipsescout.demo.widgets.client.ui.forms.ColorPickerFieldForm;
+import org.eclipsescout.demo.widgets.client.ui.forms.ColorFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.FileChooserFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.FormFieldTreeForm;
@@ -74,7 +74,7 @@ public class FormFieldsNodePage extends AbstractPageWithNodes {
     pageList.add(formPage2);
     FormPage formPage3 = new FormPage(CheckboxForm.class);
     pageList.add(formPage3);
-    FormPage formPage4 = new FormPage(ColorPickerFieldForm.class);
+    FormPage formPage4 = new FormPage(ColorFieldForm.class);
     pageList.add(formPage4);
     FormPage formPage5 = new FormPage(DateFieldForm.class);
     pageList.add(formPage5);
