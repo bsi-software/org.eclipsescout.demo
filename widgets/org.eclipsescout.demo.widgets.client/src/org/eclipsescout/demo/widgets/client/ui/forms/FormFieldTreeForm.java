@@ -146,7 +146,7 @@ public class FormFieldTreeForm extends AbstractForm {
     }
 
     @Order(20.0)
-    public class FormFieldTableField extends AbstractTableField {
+    public class FormFieldTableField extends AbstractTableField<FormFieldTableField.Table> {
 
       @Override
       protected int getConfiguredGridH() {
