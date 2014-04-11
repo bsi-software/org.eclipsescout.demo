@@ -96,11 +96,10 @@
       aliases="/"
       class="org.eclipse.scout.rt.server.commons.servletfilter.security.AnonymousSecurityFilter"
       ranking="10">
-    </filter>
-    <filter
-      aliases="/web"
-      class="org.eclipse.scout.rt.server.commons.servletfilter.security.BasicSecurityFilter"
-      ranking="20">
+       <init-param
+             name="active"
+             value="true">
+       </init-param>
     </filter>
     <filter
           aliases="/"
