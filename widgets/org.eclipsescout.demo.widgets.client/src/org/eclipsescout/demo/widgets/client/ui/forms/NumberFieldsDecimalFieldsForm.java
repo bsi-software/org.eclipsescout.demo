@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
@@ -55,6 +55,11 @@ public class NumberFieldsDecimalFieldsForm extends AbstractForm implements IPage
 
   public NumberFieldsDecimalFieldsForm() throws ProcessingException {
     super();
+  }
+
+  @Override
+  protected boolean getConfiguredAskIfNeedSave() {
+    return false;
   }
 
   @Override
@@ -302,6 +307,11 @@ public class NumberFieldsDecimalFieldsForm extends AbstractForm implements IPage
           protected int getConfiguredMinFractionDigits() {
             return 0;
           }
+
+          @Override
+          protected int getConfiguredFractionDigits() {
+            return 10;
+          }
         }
 
         @Order(20.0)
@@ -314,6 +324,11 @@ public class NumberFieldsDecimalFieldsForm extends AbstractForm implements IPage
 
           @Override
           protected int getConfiguredMaxFractionDigits() {
+            return 10;
+          }
+
+          @Override
+          protected int getConfiguredFractionDigits() {
             return 10;
           }
 
@@ -437,7 +452,7 @@ public class NumberFieldsDecimalFieldsForm extends AbstractForm implements IPage
         getBigIntegerField().setDisplayText("can get as small as you want");
         getLongField().setValue(Long.MIN_VALUE);
 
-        getDoubleField().setValue(Double.MIN_VALUE);
+        getDoubleField().setValue(-Double.MAX_VALUE);
         getBigDecimalField().setDisplayText("can get as small as you want");
       }
     }
