@@ -10,12 +10,17 @@
  ******************************************************************************/
 package org.eclipsescout.demo.widgets.client.ui.forms;
 
+import org.eclipse.scout.commons.LocaleThreadLocal;
+import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.client.ui.basic.tree.ITreeNode;
+import org.eclipse.scout.rt.client.ui.basic.tree.ITreeNodeFilter;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
+import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.client.ui.form.fields.treebox.AbstractTreeBox;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
@@ -68,7 +73,48 @@ public class TreeBoxForm extends AbstractForm implements IPageForm {
     @Order(10.0)
     public class GroupBox extends AbstractGroupBox {
 
+      @Override
+      protected int getConfiguredGridColumnCount() {
+        return 1;
+      }
+
       @Order(10.0)
+      public class TreeSearchField extends AbstractStringField implements ITreeNodeFilter {
+
+        @Override
+        protected String getConfiguredLabel() {
+          return "Search";
+        }
+
+        @Override
+        protected boolean getConfiguredValidateOnAnyKey() {
+          return true;
+        }
+
+        @Override
+        protected void execChangedValue() throws ProcessingException {
+          String s = StringUtility.emptyIfNull(getValue()).trim();
+          if (s.length() > 0) {
+            getTreeBoxField().getTree().addNodeFilter(this);
+          }
+          else {
+            getTreeBoxField().getTree().removeNodeFilter(this);
+          }
+          getTreeBoxField().getTree().expandAll(getTreeBoxField().getTree().getRootNode());
+        }
+
+        /**
+         * Implementation of ITreeNodeFilter
+         */
+        @Override
+        public boolean accept(ITreeNode node, int level) {
+          String text = node.getCell().getText();
+          String filter = getValue();
+          return text == null || filter == null || text.toLowerCase(LocaleThreadLocal.get()).contains(filter.toLowerCase(LocaleThreadLocal.get()));
+        }
+      }
+
+      @Order(20.0)
       public class TreeBoxField extends AbstractTreeBox<Long> {
 
         @Override
@@ -77,8 +123,9 @@ public class TreeBoxForm extends AbstractForm implements IPageForm {
         }
 
         @Override
-        protected int getConfiguredGridW() {
-          return 2;
+        protected void execInitField() throws ProcessingException {
+          super.execInitField();
+          getTree().setMultiSelect(true);
         }
 
         @Override
