@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
@@ -35,6 +35,14 @@ public class FormPage extends AbstractPageWithNodes {
     m_formType = c;
     m_enabled = enabled;
     callInitializer();
+  }
+
+  @Override
+  public String getNodeId() {
+    String s = m_formType.getClass().getName();
+    int i = Math.max(s.lastIndexOf('$'), s.lastIndexOf('.'));
+    s = s.substring(i + 1);
+    return s;
   }
 
   @Override

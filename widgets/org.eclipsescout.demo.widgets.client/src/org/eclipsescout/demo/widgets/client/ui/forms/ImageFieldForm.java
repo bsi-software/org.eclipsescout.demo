@@ -119,6 +119,11 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
           }
 
           @Override
+          public boolean isEmptySpaceAction() {
+            return true;
+          }
+
+          @Override
           protected void execAction() throws ProcessingException {
             MessageBox.showOkMessage("Image clicked", "Context menu on ImageField fired", null);
           }

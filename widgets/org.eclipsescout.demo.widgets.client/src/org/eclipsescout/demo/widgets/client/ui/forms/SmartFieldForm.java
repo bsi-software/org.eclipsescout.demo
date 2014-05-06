@@ -24,6 +24,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractOkButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.ContentAssistFieldTable;
+import org.eclipse.scout.rt.client.ui.form.fields.smartfield.IContentAssistFieldTable;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
@@ -283,7 +284,7 @@ public class SmartFieldForm extends AbstractForm implements IPageForm {
           }
 
           @Override
-          protected Class<? extends ContentAssistFieldTable<Long>> getConfiguredContentAssistTable() {
+          protected Class<? extends IContentAssistFieldTable<Long>> getConfiguredContentAssistTable() {
             return CompanySmartTable.class;
           }
 
