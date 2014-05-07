@@ -541,6 +541,7 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
         @Override
         protected void execClickAction() throws ProcessingException {
           System.out.println("button selected");
+          requestPopup();
         }
 
         @Order(10)
