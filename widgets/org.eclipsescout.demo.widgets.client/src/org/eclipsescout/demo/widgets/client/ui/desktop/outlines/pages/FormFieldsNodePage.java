@@ -48,6 +48,7 @@ import org.eclipsescout.demo.widgets.client.ui.forms.TabBoxForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldEditableForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.TreeBoxForm;
+import org.eclipsescout.demo.widgets.client.ui.forms.TreeDNDForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.TreeFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.WrappedFormFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.template.menu.AbstractViewSourceOnGitHubMenu;
@@ -127,10 +128,12 @@ public class FormFieldsNodePage extends AbstractPageWithNodes {
     pageList.add(formPage27);
     FormPage formPage28 = new FormPage(TreeFieldForm.class);
     pageList.add(formPage28);
-    FormPage formPage29 = new FormPage(WrappedFormFieldForm.class);
+    FormPage formPage29 = new FormPage(TreeDNDForm.class);
     pageList.add(formPage29);
-    FormPage formPage30 = new FormPage(FormWithToolbuttonsForm.class);
+    FormPage formPage30 = new FormPage(WrappedFormFieldForm.class);
     pageList.add(formPage30);
+    FormPage formPage31 = new FormPage(FormWithToolbuttonsForm.class);
+    pageList.add(formPage31);
   }
 
   @Override
