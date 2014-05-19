@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.eclipsescout.demo.widgets.client.ui.forms;
 
+import java.util.EnumSet;
 import java.util.List;
 
 import org.eclipse.scout.commons.CollectionUtility;
@@ -17,11 +18,16 @@ import org.eclipse.scout.commons.CompareUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
+import org.eclipse.scout.rt.client.ui.action.menu.AbstractTableMenu;
+import org.eclipse.scout.rt.client.ui.action.menu.AbstractValueFieldMenu;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
+import org.eclipse.scout.rt.client.ui.form.IFormFieldVisitor;
+import org.eclipse.scout.rt.client.ui.form.fields.IFormField;
+import org.eclipse.scout.rt.client.ui.form.fields.IValueField;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractOkButton;
@@ -83,608 +89,693 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
   @Order(10.0)
   public class MainBox extends AbstractGroupBox {
 
+    @Order(5.0)
+    public class TableField extends AbstractTableField<TableField.Table> {
+      @Override
+      protected int getConfiguredGridW() {
+        return 2;
+      }
+
+      @Override
+      protected int getConfiguredGridH() {
+        return 3;
+      }
+
+      @Override
+      protected void execInitField() throws ProcessingException {
+        super.execInitField();
+        getTable().addRowByArray(new Object[]{"Baluu", "Boralimon"});
+        getTable().addRowByArray(new Object[]{"Baluu1", "Boralimon"});
+        getTable().addRowByArray(new Object[]{"Baluu2", "Boralimon"});
+        getTable().addRowByArray(new Object[]{"Baluu3", "Boralimon"});
+      }
+
+      @Order(10)
+      public class Table extends AbstractTable {
+        @Override
+        protected String getConfiguredDefaultIconId() {
+          return Icons.StarRed;
+        }
+
+        @Override
+        protected void execRowsSelected(List<? extends ITableRow> rows) throws ProcessingException {
+//            super.execRowsSelected(rows);
+        }
+
+        public NameColumn getNameColumn() {
+          return getColumnSet().getColumnByClass(NameColumn.class);
+        }
+
+        @Order(10)
+        public class NameColumn extends AbstractStringColumn {
+          @Override
+          protected String getConfiguredHeaderText() {
+            return "Name (editable)";
+          }
+
+          @Override
+          protected int getConfiguredWidth() {
+            return 250;
+          }
+        }
+
+        @Order(20)
+        public class PrenameColumn extends AbstractStringColumn {
+          @Override
+          protected String getConfiguredHeaderText() {
+            return "Name (!editable)";
+          }
+
+          @Override
+          protected int getConfiguredWidth() {
+            return 250;
+          }
+        }
+
+        @Order(90)
+        public class EditMenuGroup extends AbstractTableMenu {
+          @Override
+          protected String getConfiguredText() {
+            return "Edit group (single)";
+          }
+
+          @Order(10)
+          public class EditSingle01 extends AbstractTableMenu {
+            @Override
+            protected String getConfiguredText() {
+              return "single selection m1";
+            }
+
+            @Override
+            protected EnumSet<TableMenuType> getConfiguredMenuType() {
+              return EnumSet.<TableMenuType> of(TableMenuType.SingleSelection);
+            }
+          }
+
+          @Order(20)
+          public class EditSingle02 extends AbstractTableMenu {
+            @Override
+            protected String getConfiguredText() {
+              return "single selection m2";
+            }
+
+            @Override
+            protected EnumSet<TableMenuType> getConfiguredMenuType() {
+              return EnumSet.<TableMenuType> of(TableMenuType.SingleSelection);
+            }
+          }
+
+          @Order(20)
+          public class EditSingle03 extends AbstractMenu {
+            @Override
+            protected String getConfiguredText() {
+              return "single selection m3";
+            }
+
+            @Override
+            protected boolean getConfiguredSingleSelectionAction() {
+              return true;
+            }
+          }
+
+        }
+
+        @Order(91)
+        public class EditMultiMenuGroup extends AbstractTableMenu {
+          @Override
+          protected String getConfiguredText() {
+            return "Edit multi group";
+          }
+
+          @Order(10)
+          public class EditMulti01 extends AbstractTableMenu {
+            @Override
+            protected String getConfiguredText() {
+              return "delete multi selection";
+            }
+
+            @Override
+            protected EnumSet<TableMenuType> getConfiguredMenuType() {
+              return EnumSet.<TableMenuType> of(TableMenuType.MultiSelection);
+            }
+          }
+
+          @Order(10)
+          public class EditMulti02 extends AbstractTableMenu {
+            @Override
+            protected String getConfiguredText() {
+              return "multi action (permission)";
+            }
+
+            @Override
+            protected void execInitAction() throws ProcessingException {
+              super.execInitAction();
+              setVisibleGranted(false);
+            }
+
+            @Override
+            protected EnumSet<TableMenuType> getConfiguredMenuType() {
+              return EnumSet.<TableMenuType> of(TableMenuType.MultiSelection);
+            }
+          }
+
+        }
+
+        @Order(92)
+        public class EditEmptyMenuGroup extends AbstractTableMenu {
+          @Override
+          protected String getConfiguredText() {
+            return "Edit empty group";
+          }
+
+          @Order(10)
+          public class EditEmpty01 extends AbstractTableMenu {
+            @Override
+            protected String getConfiguredText() {
+              return "empty 01";
+            }
+
+            @Override
+            protected EnumSet<TableMenuType> getConfiguredMenuType() {
+              return EnumSet.<TableMenuType> of(TableMenuType.EmptySpace);
+            }
+          }
+
+          @Order(10)
+          public class EditEmpty02 extends AbstractTableMenu {
+            @Override
+            protected String getConfiguredText() {
+              return "empty 02 (permission)";
+            }
+
+            @Override
+            protected void execInitAction() throws ProcessingException {
+              super.execInitAction();
+              setVisibleGranted(false);
+            }
+
+            @Override
+            protected EnumSet<TableMenuType> getConfiguredMenuType() {
+              return EnumSet.<TableMenuType> of(TableMenuType.EmptySpace);
+            }
+          }
+
+        }
+
+        @Order(100)
+        public class SingleSelectionMenu extends AbstractTableMenu {
+          @Override
+          protected String getConfiguredText() {
+            return "Single selection";
+          }
+
+          @Override
+          protected boolean getConfiguredSingleSelectionAction() {
+            return true;
+          }
+
+          @Override
+          protected void execAction() throws ProcessingException {
+            System.out.println("Menu: '" + getClass().getSimpleName() + "'");
+          }
+        }
+
+        @Order(110)
+        public class MultiSelectionMenu extends AbstractTableMenu {
+          @Override
+          protected String getConfiguredText() {
+            return getClass().getSimpleName();
+          }
+
+          @Override
+          protected boolean getConfiguredMultiSelectionAction() {
+            return true;
+          }
+
+          @Override
+          protected boolean getConfiguredSingleSelectionAction() {
+            return false;
+          }
+
+          @Override
+          protected void execAction() throws ProcessingException {
+            System.out.println("Menu: '" + getClass().getSimpleName() + "'");
+          }
+        }
+
+        @Order(120)
+        public class EmptySpaceMenu extends AbstractTableMenu {
+          @Override
+          protected String getConfiguredText() {
+            return getClass().getSimpleName();
+          }
+
+          @Override
+          protected boolean getConfiguredSingleSelectionAction() {
+            return false;
+          }
+
+          @Override
+          protected boolean getConfiguredEmptySpaceAction() {
+            return true;
+          }
+
+          @Override
+          protected void execAction() throws ProcessingException {
+            System.out.println("Menu: '" + getClass().getSimpleName() + "'");
+          }
+        }
+      }
+    }
+
     @Order(10.0)
-    public class LegacySupportGroupBox extends AbstractGroupBox {
+    public class CountrySmartField extends AbstractSmartField<Long> {
 
       @Override
       protected String getConfiguredLabel() {
-        return "Legacy support";
+        return TEXTS.get("Country");
       }
 
       @Override
-      protected String getConfiguredBorderDecoration() {
-        return BORDER_DECORATION_LINE;
+      protected Class<? extends ICodeType<?, Long>> getConfiguredCodeType() {
+        return CountryCodeType.class;
       }
 
+      // context menus
       @Order(10.0)
-      public class CountrySmartField extends AbstractSmartField<Long> {
-
+      public class EditMenuGroup extends AbstractMenu {
         @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("Country");
+        protected String getConfiguredText() {
+          return TEXTS.get("Edit");
         }
 
         @Override
-        protected Class<? extends ICodeType<?, Long>> getConfiguredCodeType() {
-          return CountryCodeType.class;
+        protected boolean getConfiguredInheritAccessibility() {
+          return true;
         }
 
-        // context menus
+        @Override
+        protected String getConfiguredIconId() {
+          return Icons.StarYellow;
+        }
+
+        @Override
+        protected void execAction() throws ProcessingException {
+          MessageBox.showOkMessage("Menu action", "Menu: '" + getLabel() + "'", "");
+        }
+
         @Order(10.0)
         public class Edit01Menu extends AbstractMenu {
 
           @Override
           protected String getConfiguredText() {
-            return "Edit (not empty)";
+            return "Edit (not empty and not France)";
           }
 
           @Override
-          protected boolean getConfiguredSingleSelectionAction() {
-            return super.getConfiguredSingleSelectionAction();
+          protected void execOwnerValueChanged(Object newOwnerValue) throws ProcessingException {
+            setVisible(newOwnerValue != null && !CompareUtility.equals(newOwnerValue, FranceCode.ID));
+          }
+        }
+
+        @Order(20.0)
+        public class Edit02Menu extends AbstractValueFieldMenu {
+
+          @Override
+          protected String getConfiguredText() {
+            return "Edit (empty)";
           }
 
           @Override
-          protected void execOwnerValueChanged(Object newMasterValue) throws ProcessingException {
-            super.execOwnerValueChanged(newMasterValue);
+          protected EnumSet<ValueFieldMenuType> getConfiguredMenuType() {
+            return EnumSet.of(ValueFieldMenuType.Empty);
           }
-
-        }
-//
-//        @Order(10.0)
-//        public class EditMenuGroup extends AbstractMenu {
-//          @Override
-//          protected String getConfiguredText() {
-//            return TEXTS.get("Edit");
-//          }
-//
-//          @Override
-//          protected String getConfiguredIconId() {
-//            return Icons.StarYellow;
-//          }
-//
-//          @Override
-//          protected void execAction() throws ProcessingException {
-//            MessageBox.showOkMessage("Menu action", "Menu: '" + getLabel() + "'", "");
-//          }
-//
-//        }
-
-      }
-
-      @Order(20.0)
-      public class TableField extends AbstractTableField<TableField.Table> {
-        @Override
-        protected int getConfiguredGridW() {
-          return 2;
         }
 
-        @Override
-        protected int getConfiguredGridH() {
-          return 3;
-        }
+        @Order(30.0)
+        public class Edit03Menu extends AbstractMenu {
 
-        @Override
-        protected void execInitField() throws ProcessingException {
-          super.execInitField();
-          getTable().addRowByArray(new Object[]{"Baluu", "Boralimon"});
-          getTable().addRowByArray(new Object[]{"Baluu1", "Boralimon"});
-          getTable().addRowByArray(new Object[]{"Baluu2", "Boralimon"});
-          getTable().addRowByArray(new Object[]{"Baluu3", "Boralimon"});
-        }
-
-        @Order(10)
-        public class Table extends AbstractTable {
           @Override
-          protected String getConfiguredDefaultIconId() {
-            return Icons.StarRed;
+          protected String getConfiguredText() {
+            return "Edit (USA)";
           }
 
           @Override
-          protected void execRowsSelected(List<? extends ITableRow> rows) throws ProcessingException {
-//            super.execRowsSelected(rows);
-          }
-
-          public NameColumn getNameColumn() {
-            return getColumnSet().getColumnByClass(NameColumn.class);
-          }
-
-          @Order(10)
-          public class NameColumn extends AbstractStringColumn {
-            @Override
-            protected String getConfiguredHeaderText() {
-              return "Name (editable)";
-            }
-
-            @Override
-            protected int getConfiguredWidth() {
-              return 250;
-            }
-          }
-
-          @Order(20)
-          public class PrenameColumn extends AbstractStringColumn {
-            @Override
-            protected String getConfiguredHeaderText() {
-              return "Name (!editable)";
-            }
-
-            @Override
-            protected int getConfiguredWidth() {
-              return 250;
-            }
-          }
-
-          @Order(100)
-          public class SingleSelectionMenu extends AbstractMenu {
-            @Override
-            protected String getConfiguredText() {
-              return "Single selection";
-            }
-
-            @Override
-            protected boolean getConfiguredSingleSelectionAction() {
-              return true;
-            }
-
-            @Override
-            protected void execAction() throws ProcessingException {
-              System.out.println("Menu: '" + getClass().getSimpleName() + "'");
-            }
-          }
-
-          @Order(110)
-          public class MultiSelectionMenu extends AbstractMenu {
-            @Override
-            protected String getConfiguredText() {
-              return getClass().getSimpleName();
-            }
-
-            @Override
-            protected boolean getConfiguredMultiSelectionAction() {
-              return true;
-            }
-
-            @Override
-            protected boolean getConfiguredSingleSelectionAction() {
-              return false;
-            }
-
-            @Override
-            protected void execAction() throws ProcessingException {
-              System.out.println("Menu: '" + getClass().getSimpleName() + "'");
-            }
-          }
-
-          @Order(120)
-          public class EmptySpaceMenu extends AbstractMenu {
-            @Override
-            protected String getConfiguredText() {
-              return getClass().getSimpleName();
-            }
-
-            @Override
-            protected boolean getConfiguredEmptySpaceAction() {
-              return true;
-            }
-
-            @Override
-            protected void execAction() throws ProcessingException {
-              System.out.println("Menu: '" + getClass().getSimpleName() + "'");
-            }
+          protected void execOwnerValueChanged(Object newOwnerValue) throws ProcessingException {
+            setVisible(CompareUtility.equals(newOwnerValue, USACode.ID));
           }
         }
       }
 
     }
 
-    @Order(20.0)
-    public class ContextMenuGroupBox extends AbstractGroupBox {
+    @Order(50.0)
+    public class CompanySmartField extends AbstractSmartField<Long> {
 
       @Override
       protected String getConfiguredLabel() {
-        return "Context menu";
+        return TEXTS.get("Company");
       }
 
       @Override
-      protected String getConfiguredBorderDecoration() {
-        return BORDER_DECORATION_LINE;
+      protected Class<? extends ILookupCall<Long>> getConfiguredLookupCall() {
+        return CompanyTypeLookupCall.class;
+      }
+    }
+
+    @Order(60)
+    public class StringField extends AbstractStringField {
+      @Override
+      protected String getConfiguredLabel() {
+        return "String field";
       }
 
-      @Order(10.0)
-      public class CountrySmartField extends AbstractSmartField<Long> {
+      @Override
+      protected int getConfiguredHorizontalAlignment() {
+        return 1;
+      }
 
+      @Order(10)
+      public class ContextMenuItem extends AbstractMenu {
         @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("Country");
+        protected String getConfiguredText() {
+          return "Context menu (only empty)";
         }
 
         @Override
-        protected Class<? extends ICodeType<?, Long>> getConfiguredCodeType() {
-          return CountryCodeType.class;
+        protected boolean getConfiguredEmptySpaceAction() {
+          return true;
         }
 
-        // context menus
-        @Order(10.0)
-        public class EditMenuGroup extends AbstractMenu {
-          @Override
-          protected String getConfiguredText() {
-            return TEXTS.get("Edit");
-          }
+        @Override
+        protected void execOwnerValueChanged(Object newOwnerValue) throws ProcessingException {
+          setVisible(newOwnerValue == null);
+        }
+      }
+    }
+
+    @Order(65)
+    public class PasswordField extends AbstractStringField {
+      @Override
+      protected String getConfiguredLabel() {
+        return "Password field";
+      }
+
+      @Override
+      protected boolean getConfiguredInputMasked() {
+        return true;
+      }
+
+      @Override
+      protected int getConfiguredHorizontalAlignment() {
+        return -1;
+      }
+
+      @Order(10)
+      public class ContextMenuItem extends AbstractMenu {
+        @Override
+        protected String getConfiguredText() {
+          return "Context menu (only empty)";
+        }
+
+        @Override
+        protected boolean getConfiguredEmptySpaceAction() {
+          return true;
+        }
+
+        @Override
+        protected void execOwnerValueChanged(Object newOwnerValue) throws ProcessingException {
+          setVisible(newOwnerValue == null);
+        }
+      }
+    }
+
+    @Order(70)
+    public class DateField extends AbstractDateField {
+      @Override
+      protected String getConfiguredLabel() {
+        return "Date field";
+      }
+
+      @Override
+      protected boolean getConfiguredHasTime() {
+        return true;
+      }
+
+      @Order(10)
+      public class ContextMenuItem extends AbstractMenu {
+        @Override
+        protected String getConfiguredText() {
+          return "Context menu (not empty)";
+        }
+
+        @Override
+        protected void execOwnerValueChanged(Object newOwnerValue) throws ProcessingException {
+          setVisible(newOwnerValue != null);
+        }
+
+        @Override
+        protected void execInitAction() throws ProcessingException {
+          System.out.println("init action");
+        }
+      }
+    }
+
+    @Order(80)
+    public class IntegerField extends AbstractIntegerField {
+      @Override
+      protected String getConfiguredLabel() {
+        return "Integer field";
+      }
+
+      @Override
+      protected int getConfiguredHorizontalAlignment() {
+        return 1;
+      }
+
+      @Order(10)
+      public class ContextMenuItem extends AbstractValueFieldMenu {
+        @Override
+        protected String getConfiguredText() {
+          return "Context menu (not empty)";
+        }
+
+        @Override
+        protected EnumSet<ValueFieldMenuType> getConfiguredMenuType() {
+          return EnumSet.of(ValueFieldMenuType.NotEmpty);
+        }
+//          @Override
+//          protected void execOwnerValueChanged(Object newOwnerValue) throws ProcessingException {
+//            setVisible(newOwnerValue != null);
+//          }
+      }
+    }
+
+    @Order(90.0)
+    public class FileChooserField extends AbstractFileChooserField {
+
+      @Override
+      protected List<String> getConfiguredFileExtensions() {
+        return CollectionUtility.arrayList("png", "bmp", "jpg", "jpeg", "gif");
+      }
+
+      @Override
+      protected String getConfiguredLabel() {
+        return "File chooser";
+      }
+
+      @Override
+      protected boolean getConfiguredTypeLoad() {
+        return true;
+      }
+
+      @Order(10)
+      public class ContextMenuItem extends AbstractMenu {
+        @Override
+        protected String getConfiguredText() {
+          return "Context menu (not abc)";
+        }
+
+        @Override
+        protected void execOwnerValueChanged(Object newOwnerValue) throws ProcessingException {
+          setVisible(!CompareUtility.equals("abc", newOwnerValue));
+        }
+      }
+    }
+
+    @Order(100)
+    public class Button extends AbstractButton {
+      @Override
+      protected String getConfiguredLabel() {
+        return "Button";
+      }
+
+      @Override
+      protected boolean getConfiguredProcessButton() {
+        return false;
+      }
+
+      @Override
+      protected void execClickAction() throws ProcessingException {
+        System.out.println("button selected");
+//        requestPopup();
+      }
+
+      @Order(10)
+      public class ContextMenuItem extends AbstractMenu {
+        @Override
+        protected String getConfiguredText() {
+          return "Context menu";
+        }
+
+        @Override
+        protected boolean getConfiguredEmptySpaceAction() {
+          return true;
+        }
+
+      }
+    }
+
+    @Order(110)
+    public class LinkButton extends AbstractButton {
+      @Override
+      protected String getConfiguredLabel() {
+        return "Link";
+      }
+
+      @Override
+      protected int getConfiguredDisplayStyle() {
+        return DISPLAY_STYLE_LINK;
+      }
+
+      @Override
+      protected boolean getConfiguredProcessButton() {
+        return false;
+      }
+
+      @Order(10)
+      public class ContextMenuItem extends AbstractMenu {
+        @Override
+        protected String getConfiguredText() {
+          return "Context menu";
+        }
+
+      }
+    }
+
+    @Order(120)
+    public class RadioButton extends AbstractButton {
+      @Override
+      protected String getConfiguredLabel() {
+        return "Radio";
+      }
+
+      @Override
+      protected int getConfiguredDisplayStyle() {
+        return DISPLAY_STYLE_RADIO;
+      }
+
+      @Override
+      protected boolean getConfiguredProcessButton() {
+        return false;
+      }
+
+      @Order(10)
+      public class ContextMenuItem extends AbstractMenu {
+        @Override
+        protected String getConfiguredText() {
+          return "Context menu";
+        }
+
+      }
+    }
+
+    @Order(130)
+    public class ToggleButton extends AbstractButton {
+      @Override
+      protected String getConfiguredLabel() {
+        return "Disable all fields";
+      }
+
+      @Override
+      protected int getConfiguredDisplayStyle() {
+        return DISPLAY_STYLE_TOGGLE;
+      }
+
+      @Override
+      protected boolean getConfiguredProcessButton() {
+        return false;
+      }
+
+      @Override
+      protected void execClickAction() throws ProcessingException {
+        getMainBox().visitFields(new IFormFieldVisitor() {
 
           @Override
-          protected boolean getConfiguredInheritAccessibility() {
+          public boolean visitField(IFormField field, int level, int fieldIndex) {
+            if (field instanceof IValueField<?>) {
+              field.setEnabled(!isSelected());
+            }
             return true;
           }
+        }, 0);
+//        getFieldByClass(CountrySmartField.class).setEnabled(isSelected());
+      }
 
-          @Override
-          protected String getConfiguredIconId() {
-            return Icons.StarYellow;
-          }
-
-          @Override
-          protected void execAction() throws ProcessingException {
-            MessageBox.showOkMessage("Menu action", "Menu: '" + getLabel() + "'", "");
-          }
-
-          @Order(10.0)
-          public class Edit01Menu extends AbstractMenu {
-
-            @Override
-            protected String getConfiguredText() {
-              return "Edit (not empty and not France)";
-            }
-
-            @Override
-            protected void execOwnerValueChanged(Object newOwnerValue) throws ProcessingException {
-              setVisible(newOwnerValue != null && !CompareUtility.equals(newOwnerValue, FranceCode.ID));
-            }
-          }
-
-          @Order(20.0)
-          public class Edit02Menu extends AbstractMenu {
-
-            @Override
-            protected String getConfiguredText() {
-              return "Edit (empty)";
-            }
-
-            @Override
-            protected void execOwnerValueChanged(Object newOwnerValue) throws ProcessingException {
-              setVisible(newOwnerValue == null);
-            }
-          }
-
-          @Order(30.0)
-          public class Edit03Menu extends AbstractMenu {
-
-            @Override
-            protected String getConfiguredText() {
-              return "Edit (USA)";
-            }
-
-            @Override
-            protected void execOwnerValueChanged(Object newOwnerValue) throws ProcessingException {
-              setVisible(CompareUtility.equals(newOwnerValue, USACode.ID));
-            }
-          }
+      @Order(10)
+      public class ContextMenuItem extends AbstractMenu {
+        @Override
+        protected String getConfiguredText() {
+          return "Context menu";
         }
 
       }
+    }
 
-      @Order(50.0)
-      public class CompanySmartField extends AbstractSmartField<Long> {
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("Company");
-        }
-
-        @Override
-        protected Class<? extends ILookupCall<Long>> getConfiguredLookupCall() {
-          return CompanyTypeLookupCall.class;
-        }
+    @Order(140)
+    public class ColorField extends AbstractColorField {
+      @Override
+      protected String getConfiguredLabel() {
+        return "Color field";
       }
 
-      @Order(60)
-      public class StringField extends AbstractStringField {
+      @Order(10)
+      public class ContextMenuItem extends AbstractMenu {
         @Override
-        protected String getConfiguredLabel() {
-          return "String field";
-        }
-
-        @Override
-        protected int getConfiguredHorizontalAlignment() {
-          return 1;
-        }
-
-        @Order(10)
-        public class ContextMenuItem extends AbstractMenu {
-          @Override
-          protected String getConfiguredText() {
-            return "Context menu (only empty)";
-          }
-
-          @Override
-          protected void execOwnerValueChanged(Object newOwnerValue) throws ProcessingException {
-            setVisible(newOwnerValue == null);
-          }
-        }
-      }
-
-      @Order(65)
-      public class PasswordField extends AbstractStringField {
-        @Override
-        protected String getConfiguredLabel() {
-          return "Password field";
+        protected String getConfiguredText() {
+          return "Context menu";
         }
 
         @Override
-        protected boolean getConfiguredInputMasked() {
-          return true;
-        }
-
-        @Override
-        protected int getConfiguredHorizontalAlignment() {
-          return -1;
-        }
-
-        @Order(10)
-        public class ContextMenuItem extends AbstractMenu {
-          @Override
-          protected String getConfiguredText() {
-            return "Context menu (only empty)";
-          }
-
-          @Override
-          protected void execOwnerValueChanged(Object newOwnerValue) throws ProcessingException {
-            setVisible(newOwnerValue == null);
-          }
-        }
-      }
-
-      @Order(70)
-      public class DateField extends AbstractDateField {
-        @Override
-        protected String getConfiguredLabel() {
-          return "Date field";
-        }
-
-        @Override
-        protected boolean getConfiguredHasTime() {
-          return true;
-        }
-
-        @Order(10)
-        public class ContextMenuItem extends AbstractMenu {
-          @Override
-          protected String getConfiguredText() {
-            return "Context menu (not empty)";
-          }
-
-          @Override
-          protected void execOwnerValueChanged(Object newOwnerValue) throws ProcessingException {
-            setVisible(newOwnerValue != null);
-          }
-        }
-      }
-
-      @Order(80)
-      public class IntegerField extends AbstractIntegerField {
-        @Override
-        protected String getConfiguredLabel() {
-          return "Integer field";
-        }
-
-        @Override
-        protected int getConfiguredHorizontalAlignment() {
-          return -1;
-        }
-
-        @Order(10)
-        public class ContextMenuItem extends AbstractMenu {
-          @Override
-          protected String getConfiguredText() {
-            return "Context menu (not empty)";
-          }
-
-          @Override
-          protected void execOwnerValueChanged(Object newOwnerValue) throws ProcessingException {
-            setVisible(newOwnerValue != null);
-          }
-        }
-      }
-
-      @Order(90.0)
-      public class FileChooserField extends AbstractFileChooserField {
-
-        @Override
-        protected List<String> getConfiguredFileExtensions() {
-          return CollectionUtility.arrayList("png", "bmp", "jpg", "jpeg", "gif");
-        }
-
-        @Override
-        protected String getConfiguredLabel() {
-          return "File chooser";
-        }
-
-        @Override
-        protected boolean getConfiguredTypeLoad() {
-          return true;
-        }
-
-        @Order(10)
-        public class ContextMenuItem extends AbstractMenu {
-          @Override
-          protected String getConfiguredText() {
-            return "Context menu (not abc)";
-          }
-
-          @Override
-          protected void execOwnerValueChanged(Object newOwnerValue) throws ProcessingException {
-            setVisible(!CompareUtility.equals("abc", newOwnerValue));
-          }
-        }
-      }
-
-      @Order(100)
-      public class Button extends AbstractButton {
-        @Override
-        protected String getConfiguredLabel() {
-          return "Button";
-        }
-
-        @Override
-        protected boolean getConfiguredProcessButton() {
-          return false;
-        }
-
-        @Override
-        protected void execClickAction() throws ProcessingException {
-          System.out.println("button selected");
-          requestPopup();
-        }
-
-        @Order(10)
-        public class ContextMenuItem extends AbstractMenu {
-          @Override
-          protected String getConfiguredText() {
-            return "Context menu";
-          }
+        protected void execOwnerValueChanged(Object newOwnerValue) throws ProcessingException {
+          setVisible(newOwnerValue != null);
 
         }
       }
+    }
 
-      @Order(110)
-      public class LinkButton extends AbstractButton {
-        @Override
-        protected String getConfiguredLabel() {
-          return "Link";
-        }
-
-        @Override
-        protected int getConfiguredDisplayStyle() {
-          return DISPLAY_STYLE_LINK;
-        }
-
-        @Override
-        protected boolean getConfiguredProcessButton() {
-          return false;
-        }
-
-        @Order(10)
-        public class ContextMenuItem extends AbstractMenu {
-          @Override
-          protected String getConfiguredText() {
-            return "Context menu";
-          }
-
-        }
+    @Order(150)
+    public class ColorField2 extends AbstractColorField {
+      @Override
+      protected String getConfiguredLabel() {
+        return "Color field (no icon)";
       }
 
-      @Order(120)
-      public class RadioButton extends AbstractButton {
-        @Override
-        protected String getConfiguredLabel() {
-          return "Radio";
-        }
-
-        @Override
-        protected int getConfiguredDisplayStyle() {
-          return DISPLAY_STYLE_RADIO;
-        }
-
-        @Override
-        protected boolean getConfiguredProcessButton() {
-          return false;
-        }
-
-        @Order(10)
-        public class ContextMenuItem extends AbstractMenu {
-          @Override
-          protected String getConfiguredText() {
-            return "Context menu";
-          }
-
-        }
+      @Override
+      protected String getConfiguredIconId() {
+        return null;
       }
 
-      @Order(130)
-      public class ToggleButton extends AbstractButton {
+      @Order(10)
+      public class ContextMenuItem extends AbstractMenu {
         @Override
-        protected String getConfiguredLabel() {
-          return "Toggle";
-        }
-
-        @Override
-        protected int getConfiguredDisplayStyle() {
-          return DISPLAY_STYLE_TOGGLE;
+        protected String getConfiguredText() {
+          return "Context menu";
         }
 
         @Override
-        protected boolean getConfiguredProcessButton() {
-          return false;
-        }
+        protected void execOwnerValueChanged(Object newOwnerValue) throws ProcessingException {
 
-        @Override
-        protected void execClickAction() throws ProcessingException {
-          getFieldByClass(CountrySmartField.class).setEnabled(isSelected());
-        }
-
-        @Order(10)
-        public class ContextMenuItem extends AbstractMenu {
-          @Override
-          protected String getConfiguredText() {
-            return "Context menu";
-          }
-
-        }
-      }
-
-      @Order(140)
-      public class ColorField extends AbstractColorField {
-        @Override
-        protected String getConfiguredLabel() {
-          return "Color field";
-        }
-
-        @Order(10)
-        public class ContextMenuItem extends AbstractMenu {
-          @Override
-          protected String getConfiguredText() {
-            return "Context menu";
-          }
-
-          @Override
-          protected void execOwnerValueChanged(Object newOwnerValue) throws ProcessingException {
-            setVisible(newOwnerValue != null);
-
-          }
-        }
-      }
-
-      @Order(150)
-      public class ColorField2 extends AbstractColorField {
-        @Override
-        protected String getConfiguredLabel() {
-          return "Color field (no icon)";
-        }
-
-        @Override
-        protected String getConfiguredIconId() {
-          return null;
-        }
-
-        @Order(10)
-        public class ContextMenuItem extends AbstractMenu {
-          @Override
-          protected String getConfiguredText() {
-            return "Context menu";
-          }
-
-          @Override
-          protected void execOwnerValueChanged(Object newOwnerValue) throws ProcessingException {
-
-          }
         }
       }
     }

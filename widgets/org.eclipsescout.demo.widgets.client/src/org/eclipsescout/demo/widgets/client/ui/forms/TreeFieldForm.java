@@ -10,12 +10,16 @@
  ******************************************************************************/
 package org.eclipsescout.demo.widgets.client.ui.forms;
 
+import java.util.EnumSet;
 import java.util.regex.Pattern;
 
 import org.eclipse.scout.commons.LocaleThreadLocal;
 import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
+import org.eclipse.scout.rt.client.ui.action.menu.AbstractTreeMenu;
+import org.eclipse.scout.rt.client.ui.action.menu.ITreeMenu;
 import org.eclipse.scout.rt.client.ui.basic.cell.Cell;
 import org.eclipse.scout.rt.client.ui.basic.tree.AbstractTree;
 import org.eclipse.scout.rt.client.ui.basic.tree.AbstractTreeNode;
@@ -174,6 +178,26 @@ public class TreeFieldForm extends AbstractForm implements IPageForm {
 
         @Order(10.0)
         public class Tree extends AbstractTree {
+          @Order(10.0)
+          public class EditMenu extends AbstractMenu {
+            @Override
+            protected String getConfiguredText() {
+              return "edit";
+            }
+          }
+
+          @Order(20.0)
+          public class EmptySpaceMenu extends AbstractTreeMenu {
+            @Override
+            protected String getConfiguredText() {
+              return getClass().getSimpleName();
+            }
+
+            @Override
+            protected EnumSet<TreeMenuType> getConfiguredMenuType() {
+              return EnumSet.<ITreeMenu.TreeMenuType> of(TreeMenuType.EmptySpace);
+            }
+          }
         }
       }
 
