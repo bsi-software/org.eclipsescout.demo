@@ -11,6 +11,7 @@
 package org.eclipsescout.demo.widgets.client.ui.forms;
 
 import java.io.File;
+import java.util.EnumSet;
 import java.util.List;
 
 import org.eclipse.scout.commons.CollectionUtility;
@@ -18,6 +19,7 @@ import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
+import org.eclipse.scout.rt.client.ui.action.menu.AbstractTableMenu;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
@@ -285,16 +287,11 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
             }
 
             @Order(20.0)
-            public class UpOneLevelMenu extends AbstractMenu {
+            public class UpOneLevelMenu extends AbstractTableMenu {
 
               @Override
-              protected boolean getConfiguredEmptySpaceAction() {
-                return true;
-              }
-
-              @Override
-              protected boolean getConfiguredSingleSelectionAction() {
-                return false;
+              protected EnumSet<TableMenuType> getConfiguredMenuType() {
+                return EnumSet.<TableMenuType> of(TableMenuType.EmptySpace);
               }
 
               @Override

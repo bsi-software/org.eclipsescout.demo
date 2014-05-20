@@ -118,10 +118,10 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
             return TEXTS.get("ScoutLogo");
           }
 
-          @Override
-          public boolean isEmptySpaceAction() {
-            return true;
-          }
+//          @Override
+//          public boolean isEmptySpaceAction() {
+//            return true;
+//          }
 
           @Override
           protected void execAction() throws ProcessingException {

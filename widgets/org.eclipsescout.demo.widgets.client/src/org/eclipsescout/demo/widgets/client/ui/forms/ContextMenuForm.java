@@ -186,15 +186,15 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
           }
 
           @Order(20)
-          public class EditSingle03 extends AbstractMenu {
+          public class EditSingle03 extends AbstractTableMenu {
             @Override
             protected String getConfiguredText() {
               return "single selection m3";
             }
 
             @Override
-            protected boolean getConfiguredSingleSelectionAction() {
-              return true;
+            protected EnumSet<TableMenuType> getConfiguredMenuType() {
+              return EnumSet.<TableMenuType> of(TableMenuType.SingleSelection);
             }
           }
 
@@ -290,8 +290,8 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
           }
 
           @Override
-          protected boolean getConfiguredSingleSelectionAction() {
-            return true;
+          protected EnumSet<TableMenuType> getConfiguredMenuType() {
+            return EnumSet.<TableMenuType> of(TableMenuType.SingleSelection);
           }
 
           @Override
@@ -308,13 +308,8 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
           }
 
           @Override
-          protected boolean getConfiguredMultiSelectionAction() {
-            return true;
-          }
-
-          @Override
-          protected boolean getConfiguredSingleSelectionAction() {
-            return false;
+          protected EnumSet<TableMenuType> getConfiguredMenuType() {
+            return EnumSet.<TableMenuType> of(TableMenuType.MultiSelection);
           }
 
           @Override
@@ -331,13 +326,8 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
           }
 
           @Override
-          protected boolean getConfiguredSingleSelectionAction() {
-            return false;
-          }
-
-          @Override
-          protected boolean getConfiguredEmptySpaceAction() {
-            return true;
+          protected EnumSet<TableMenuType> getConfiguredMenuType() {
+            return EnumSet.<TableMenuType> of(TableMenuType.EmptySpace);
           }
 
           @Override
@@ -363,7 +353,7 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
 
       // context menus
       @Order(10.0)
-      public class EditMenuGroup extends AbstractMenu {
+      public class EditMenuGroup extends AbstractValueFieldMenu {
         @Override
         protected String getConfiguredText() {
           return TEXTS.get("Edit");
@@ -385,7 +375,7 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
         }
 
         @Order(10.0)
-        public class Edit01Menu extends AbstractMenu {
+        public class Edit01Menu extends AbstractValueFieldMenu {
 
           @Override
           protected String getConfiguredText() {
@@ -393,13 +383,13 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
           }
 
           @Override
-          protected void setAvailableInternal(boolean available) {
-            super.setAvailableInternal(available);
+          protected EnumSet<ValueFieldMenuType> getConfiguredMenuType() {
+            return EnumSet.<ValueFieldMenuType> of(ValueFieldMenuType.NotEmpty);
           }
 
           @Override
           protected void execOwnerValueChanged(Object newOwnerValue) throws ProcessingException {
-            setVisible(newOwnerValue != null && !CompareUtility.equals(newOwnerValue, FranceCode.ID));
+            setVisible(!CompareUtility.equals(newOwnerValue, FranceCode.ID));
           }
         }
 
@@ -423,11 +413,16 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
         }
 
         @Order(30.0)
-        public class Edit03Menu extends AbstractMenu {
+        public class Edit03Menu extends AbstractValueFieldMenu {
 
           @Override
           protected String getConfiguredText() {
             return "Edit (USA)";
+          }
+
+          @Override
+          protected EnumSet<ValueFieldMenuType> getConfiguredMenuType() {
+            return EnumSet.of(ValueFieldMenuType.NotEmpty);
           }
 
           @Override
@@ -466,15 +461,15 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
       }
 
       @Order(10)
-      public class ContextMenuItem extends AbstractMenu {
+      public class ContextMenuItem extends AbstractValueFieldMenu {
         @Override
         protected String getConfiguredText() {
           return "Context menu (only empty)";
         }
 
         @Override
-        protected boolean getConfiguredEmptySpaceAction() {
-          return true;
+        protected EnumSet<ValueFieldMenuType> getConfiguredMenuType() {
+          return EnumSet.<ValueFieldMenuType> of(ValueFieldMenuType.Empty);
         }
 
         @Override
@@ -502,7 +497,7 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
       }
 
       @Order(10)
-      public class ContextMenuItem extends AbstractMenu {
+      public class ContextMenuItem extends AbstractValueFieldMenu {
         @Override
         protected String getConfiguredText() {
           return "Context menu (only empty)";
@@ -519,8 +514,8 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
         }
 
         @Override
-        protected boolean getConfiguredEmptySpaceAction() {
-          return true;
+        protected EnumSet<ValueFieldMenuType> getConfiguredMenuType() {
+          return EnumSet.<ValueFieldMenuType> of(ValueFieldMenuType.Empty);
         }
 
         @Override
@@ -543,15 +538,10 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
       }
 
       @Order(10)
-      public class ContextMenuItem extends AbstractMenu {
+      public class ContextMenuItem extends AbstractValueFieldMenu {
         @Override
         protected String getConfiguredText() {
           return "Context menu (not empty)";
-        }
-
-        @Override
-        protected void execOwnerValueChanged(Object newOwnerValue) throws ProcessingException {
-          setVisible(newOwnerValue != null);
         }
 
         @Override
@@ -584,10 +574,6 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
         protected EnumSet<ValueFieldMenuType> getConfiguredMenuType() {
           return EnumSet.of(ValueFieldMenuType.NotEmpty);
         }
-//          @Override
-//          protected void execOwnerValueChanged(Object newOwnerValue) throws ProcessingException {
-//            setVisible(newOwnerValue != null);
-//          }
       }
     }
 
@@ -610,15 +596,10 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
       }
 
       @Order(10)
-      public class ContextMenuItem extends AbstractMenu {
+      public class ContextMenuItem extends AbstractValueFieldMenu {
         @Override
         protected String getConfiguredText() {
           return "Context menu (not abc)";
-        }
-
-        @Override
-        protected void execOwnerValueChanged(Object newOwnerValue) throws ProcessingException {
-          setVisible(!CompareUtility.equals("abc", newOwnerValue));
         }
       }
     }
@@ -638,7 +619,6 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
       @Override
       protected void execClickAction() throws ProcessingException {
         System.out.println("button selected");
-//        requestPopup();
       }
 
       @Order(10)
@@ -646,11 +626,6 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
         @Override
         protected String getConfiguredText() {
           return "Context menu";
-        }
-
-        @Override
-        protected boolean getConfiguredEmptySpaceAction() {
-          return true;
         }
 
       }
@@ -760,16 +735,10 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
       }
 
       @Order(10)
-      public class ContextMenuItem extends AbstractMenu {
+      public class ContextMenuItem extends AbstractValueFieldMenu {
         @Override
         protected String getConfiguredText() {
           return "Context menu";
-        }
-
-        @Override
-        protected void execOwnerValueChanged(Object newOwnerValue) throws ProcessingException {
-          setVisible(newOwnerValue != null);
-
         }
       }
     }
@@ -787,15 +756,10 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
       }
 
       @Order(10)
-      public class ContextMenuItem extends AbstractMenu {
+      public class ContextMenuItem extends AbstractValueFieldMenu {
         @Override
         protected String getConfiguredText() {
           return "Context menu";
-        }
-
-        @Override
-        protected void execOwnerValueChanged(Object newOwnerValue) throws ProcessingException {
-
         }
       }
     }
