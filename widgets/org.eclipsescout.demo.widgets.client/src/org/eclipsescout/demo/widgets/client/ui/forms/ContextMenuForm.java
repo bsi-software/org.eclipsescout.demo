@@ -393,6 +393,11 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
           }
 
           @Override
+          protected void setAvailableInternal(boolean available) {
+            super.setAvailableInternal(available);
+          }
+
+          @Override
           protected void execOwnerValueChanged(Object newOwnerValue) throws ProcessingException {
             setVisible(newOwnerValue != null && !CompareUtility.equals(newOwnerValue, FranceCode.ID));
           }
@@ -404,6 +409,11 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
           @Override
           protected String getConfiguredText() {
             return "Edit (empty)";
+          }
+
+          @Override
+          protected void setAvailableInternal(boolean available) {
+            super.setAvailableInternal(available);
           }
 
           @Override
@@ -496,6 +506,16 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
         @Override
         protected String getConfiguredText() {
           return "Context menu (only empty)";
+        }
+
+        @Override
+        protected void initConfig() {
+          super.initConfig();
+        }
+
+        @Override
+        protected void setAvailableInternal(boolean available) {
+          super.setAvailableInternal(available);
         }
 
         @Override
