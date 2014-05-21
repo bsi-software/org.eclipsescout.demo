@@ -21,7 +21,6 @@ import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractTableMenu;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractValueFieldMenu;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
-import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
@@ -115,11 +114,6 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
         @Override
         protected String getConfiguredDefaultIconId() {
           return Icons.StarRed;
-        }
-
-        @Override
-        protected void execRowsSelected(List<? extends ITableRow> rows) throws ProcessingException {
-//            super.execRowsSelected(rows);
         }
 
         public NameColumn getNameColumn() {
@@ -404,6 +398,11 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
           @Override
           protected void setAvailableInternal(boolean available) {
             super.setAvailableInternal(available);
+          }
+
+          @Override
+          protected void execOwnerValueChanged(Object newOwnerValue) throws ProcessingException {
+            super.execOwnerValueChanged(newOwnerValue);
           }
 
           @Override
