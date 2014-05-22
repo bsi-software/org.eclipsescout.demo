@@ -332,6 +332,24 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
       }
     }
 
+    @Order(7)
+    public class TableDisableButton extends AbstractButton {
+      @Override
+      protected String getConfiguredLabel() {
+        return "Disable Table";
+      }
+
+      @Override
+      protected int getConfiguredDisplayStyle() {
+        return DISPLAY_STYLE_TOGGLE;
+      }
+
+      @Override
+      protected void execClickAction() throws ProcessingException {
+        getFieldByClass(TableField.class).setEnabled(!isSelected());
+      }
+    }
+
     @Order(10.0)
     public class CountrySmartField extends AbstractSmartField<Long> {
 
