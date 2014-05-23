@@ -124,11 +124,6 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
       }
 
       @Override
-      protected void execPrepareAction() throws ProcessingException {
-        super.execPrepareAction();
-      }
-
-      @Override
       protected void execAction() throws ProcessingException {
         String menuname = this.getClass().getSimpleName();
         MessageBox.showOkMessage("Clicked on Menu", "You have clicked on \"" + TEXTS.get(menuname.substring(0, menuname.length() - 4)) + "\"", null);
@@ -145,8 +140,7 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
       }
 
       @Override
-      protected void execPrepareAction() throws ProcessingException {
-        super.execPrepareAction();
+      protected void execAboutToShow() throws ProcessingException {
         setText(getConfiguredText() + " " + (counter++));
 
       }

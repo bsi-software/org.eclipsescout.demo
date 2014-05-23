@@ -119,7 +119,7 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
     }
 
     @Override
-    protected void execPrepareAction() throws ProcessingException {
+    protected void execInitAction() throws ProcessingException {
       setVisible(UserAgentUtility.isDesktopDevice());
     }
 
