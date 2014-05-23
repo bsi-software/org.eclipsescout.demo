@@ -24,19 +24,19 @@
 
       <unit id="org.eclipse.scout.rt.ui.rap.incubator.filechooser.source.feature.group" version="0.0.0"/>
 
-      <repository id="scout_nightly" location="http://download.eclipse.org/scout/nightly/"/>
+      <repository id="scout_nightly_4.0" location="http://download.eclipse.org/scout/nightly/4.0/"/>
     </location>
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
       <unit id="org.eclipse.rap.feature.feature.group" version="0.0.0"/>
 
-      <repository location="http://download.eclipse.org/rt/rap/2.3/M3-20140506-1410/"/>
+      <repository location="http://download.eclipse.org/rt/rap/2.3/RC1-20140520-1615/"/>
     </location>
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
       <unit id="com.bsiag.scout.rt.ui.swing.laf.rayo.source.feature.group" version="0.0.0"/>
 
-      <repository location="http://tools.bsiag.com/marketplace/rayo/"/>
+      <repository location="http://tools.bsiag.com/marketplace/rayo/4.0/"/>
     </location>
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
@@ -44,14 +44,14 @@
       <unit id="org.eclipse.scout.rt.docx4j.client.source.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.scout.docx4j.libs.feature.group" version="0.0.0"/>
 
-      <repository location="http://tools.bsiag.com/marketplace/docx4j/"/>
+      <repository location="http://tools.bsiag.com/marketplace/docx4j/4.0/"/>
     </location>
 
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
       <unit id="org.eclipse.scout.logging.bridges.source.feature.group" version="0.0.0"/>
 
-      <repository location="http://tools.bsiag.com/marketplace/logging_bridge/"/>
+      <repository location="http://tools.bsiag.com/marketplace/logging_bridge/4.0/"/>
     </location>
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
