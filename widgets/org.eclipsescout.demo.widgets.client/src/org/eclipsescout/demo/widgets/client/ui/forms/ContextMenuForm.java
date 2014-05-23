@@ -10,16 +10,17 @@
  ******************************************************************************/
 package org.eclipsescout.demo.widgets.client.ui.forms;
 
-import java.util.EnumSet;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.scout.commons.CollectionUtility;
 import org.eclipse.scout.commons.CompareUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
-import org.eclipse.scout.rt.client.ui.action.menu.AbstractTableMenu;
-import org.eclipse.scout.rt.client.ui.action.menu.AbstractValueFieldMenu;
+import org.eclipse.scout.rt.client.ui.action.menu.IMenuType;
+import org.eclipse.scout.rt.client.ui.action.menu.TableMenuType;
+import org.eclipse.scout.rt.client.ui.action.menu.ValueFieldMenuType;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
@@ -147,75 +148,76 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
         }
 
         @Order(90)
-        public class EditMenuGroup extends AbstractTableMenu {
+        public class EditMenuGroup extends AbstractMenu {
           @Override
           protected String getConfiguredText() {
             return "Edit group (single)";
           }
 
           @Order(10)
-          public class EditSingle01 extends AbstractTableMenu {
+          public class EditSingle01 extends AbstractMenu {
             @Override
             protected String getConfiguredText() {
               return "single selection m1";
             }
 
             @Override
-            protected EnumSet<TableMenuType> getConfiguredMenuType() {
-              return EnumSet.<TableMenuType> of(TableMenuType.SingleSelection);
+            protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+              return CollectionUtility.hashSet(TableMenuType.SingleSelection);
             }
+
           }
 
           @Order(20)
-          public class EditSingle02 extends AbstractTableMenu {
+          public class EditSingle02 extends AbstractMenu {
             @Override
             protected String getConfiguredText() {
               return "single selection m2";
             }
 
             @Override
-            protected EnumSet<TableMenuType> getConfiguredMenuType() {
-              return EnumSet.<TableMenuType> of(TableMenuType.SingleSelection);
+            protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+              return CollectionUtility.hashSet(TableMenuType.SingleSelection);
             }
           }
 
           @Order(20)
-          public class EditSingle03 extends AbstractTableMenu {
+          public class EditSingle03 extends AbstractMenu {
             @Override
             protected String getConfiguredText() {
               return "single selection m3";
             }
 
             @Override
-            protected EnumSet<TableMenuType> getConfiguredMenuType() {
-              return EnumSet.<TableMenuType> of(TableMenuType.SingleSelection);
+            protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+              return CollectionUtility.hashSet(TableMenuType.SingleSelection);
             }
           }
 
         }
 
         @Order(91)
-        public class EditMultiMenuGroup extends AbstractTableMenu {
+        public class EditMultiMenuGroup extends AbstractMenu {
           @Override
           protected String getConfiguredText() {
             return "Edit multi group";
           }
 
           @Order(10)
-          public class EditMulti01 extends AbstractTableMenu {
+          public class EditMulti01 extends AbstractMenu {
             @Override
             protected String getConfiguredText() {
               return "delete multi selection";
             }
 
             @Override
-            protected EnumSet<TableMenuType> getConfiguredMenuType() {
-              return EnumSet.<TableMenuType> of(TableMenuType.MultiSelection);
+            protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+              return CollectionUtility.hashSet(TableMenuType.MultiSelection);
             }
           }
 
           @Order(10)
-          public class EditMulti02 extends AbstractTableMenu {
+          public class EditMulti02 extends AbstractMenu {
             @Override
             protected String getConfiguredText() {
               return "multi action (permission)";
@@ -228,35 +230,35 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
             }
 
             @Override
-            protected EnumSet<TableMenuType> getConfiguredMenuType() {
-              return EnumSet.<TableMenuType> of(TableMenuType.MultiSelection);
+            protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+              return CollectionUtility.hashSet(TableMenuType.MultiSelection);
             }
           }
 
         }
 
         @Order(92)
-        public class EditEmptyMenuGroup extends AbstractTableMenu {
+        public class EditEmptyMenuGroup extends AbstractMenu {
           @Override
           protected String getConfiguredText() {
             return "Edit empty group";
           }
 
           @Order(10)
-          public class EditEmpty01 extends AbstractTableMenu {
+          public class EditEmpty01 extends AbstractMenu {
             @Override
             protected String getConfiguredText() {
               return "empty 01";
             }
 
             @Override
-            protected EnumSet<TableMenuType> getConfiguredMenuType() {
-              return EnumSet.<TableMenuType> of(TableMenuType.EmptySpace);
+            protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+              return CollectionUtility.hashSet(TableMenuType.EmptySpace);
             }
           }
 
           @Order(10)
-          public class EditEmpty02 extends AbstractTableMenu {
+          public class EditEmpty02 extends AbstractMenu {
             @Override
             protected String getConfiguredText() {
               return "empty 02 (permission)";
@@ -269,23 +271,23 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
             }
 
             @Override
-            protected EnumSet<TableMenuType> getConfiguredMenuType() {
-              return EnumSet.<TableMenuType> of(TableMenuType.EmptySpace);
+            protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+              return CollectionUtility.hashSet(TableMenuType.EmptySpace);
             }
           }
 
         }
 
         @Order(100)
-        public class SingleSelectionMenu extends AbstractTableMenu {
+        public class SingleSelectionMenu extends AbstractMenu {
           @Override
           protected String getConfiguredText() {
             return "Single selection";
           }
 
           @Override
-          protected EnumSet<TableMenuType> getConfiguredMenuType() {
-            return EnumSet.<TableMenuType> of(TableMenuType.SingleSelection);
+          protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+            return CollectionUtility.hashSet(TableMenuType.SingleSelection);
           }
 
           @Override
@@ -295,15 +297,15 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
         }
 
         @Order(110)
-        public class MultiSelectionMenu extends AbstractTableMenu {
+        public class MultiSelectionMenu extends AbstractMenu {
           @Override
           protected String getConfiguredText() {
             return getClass().getSimpleName();
           }
 
           @Override
-          protected EnumSet<TableMenuType> getConfiguredMenuType() {
-            return EnumSet.<TableMenuType> of(TableMenuType.MultiSelection);
+          protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+            return CollectionUtility.hashSet(TableMenuType.MultiSelection);
           }
 
           @Override
@@ -313,15 +315,15 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
         }
 
         @Order(120)
-        public class EmptySpaceMenu extends AbstractTableMenu {
+        public class EmptySpaceMenu extends AbstractMenu {
           @Override
           protected String getConfiguredText() {
             return getClass().getSimpleName();
           }
 
           @Override
-          protected EnumSet<TableMenuType> getConfiguredMenuType() {
-            return EnumSet.<TableMenuType> of(TableMenuType.EmptySpace);
+          protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+            return CollectionUtility.hashSet(TableMenuType.EmptySpace);
           }
 
           @Override
@@ -365,7 +367,7 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
 
       // context menus
       @Order(10.0)
-      public class EditMenuGroup extends AbstractValueFieldMenu {
+      public class EditMenuGroup extends AbstractMenu {
         @Override
         protected String getConfiguredText() {
           return TEXTS.get("Edit");
@@ -387,7 +389,7 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
         }
 
         @Order(10.0)
-        public class Edit01Menu extends AbstractValueFieldMenu {
+        public class Edit01Menu extends AbstractMenu {
 
           @Override
           protected String getConfiguredText() {
@@ -395,8 +397,8 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
           }
 
           @Override
-          protected EnumSet<ValueFieldMenuType> getConfiguredMenuType() {
-            return EnumSet.<ValueFieldMenuType> of(ValueFieldMenuType.NotEmpty);
+          protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+            return CollectionUtility.hashSet(ValueFieldMenuType.NotNull);
           }
 
           @Override
@@ -406,16 +408,11 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
         }
 
         @Order(20.0)
-        public class Edit02Menu extends AbstractValueFieldMenu {
+        public class Edit02Menu extends AbstractMenu {
 
           @Override
           protected String getConfiguredText() {
             return "Edit (empty)";
-          }
-
-          @Override
-          protected void setAvailableInternal(boolean available) {
-            super.setAvailableInternal(available);
           }
 
           @Override
@@ -424,13 +421,13 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
           }
 
           @Override
-          protected EnumSet<ValueFieldMenuType> getConfiguredMenuType() {
-            return EnumSet.of(ValueFieldMenuType.Empty);
+          protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+            return CollectionUtility.hashSet(ValueFieldMenuType.Null);
           }
         }
 
         @Order(30.0)
-        public class Edit03Menu extends AbstractValueFieldMenu {
+        public class Edit03Menu extends AbstractMenu {
 
           @Override
           protected String getConfiguredText() {
@@ -438,8 +435,8 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
           }
 
           @Override
-          protected EnumSet<ValueFieldMenuType> getConfiguredMenuType() {
-            return EnumSet.of(ValueFieldMenuType.NotEmpty);
+          protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+            return CollectionUtility.hashSet(ValueFieldMenuType.NotNull);
           }
 
           @Override
@@ -478,15 +475,15 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
       }
 
       @Order(10)
-      public class ContextMenuItem extends AbstractValueFieldMenu {
+      public class ContextMenuItem extends AbstractMenu {
         @Override
         protected String getConfiguredText() {
           return "Context menu (only empty)";
         }
 
         @Override
-        protected EnumSet<ValueFieldMenuType> getConfiguredMenuType() {
-          return EnumSet.<ValueFieldMenuType> of(ValueFieldMenuType.Empty);
+        protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+          return CollectionUtility.hashSet(ValueFieldMenuType.Null);
         }
 
         @Override
@@ -514,7 +511,7 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
       }
 
       @Order(10)
-      public class ContextMenuItem extends AbstractValueFieldMenu {
+      public class ContextMenuItem extends AbstractMenu {
         @Override
         protected String getConfiguredText() {
           return "Context menu (only empty)";
@@ -526,13 +523,8 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
         }
 
         @Override
-        protected void setAvailableInternal(boolean available) {
-          super.setAvailableInternal(available);
-        }
-
-        @Override
-        protected EnumSet<ValueFieldMenuType> getConfiguredMenuType() {
-          return EnumSet.<ValueFieldMenuType> of(ValueFieldMenuType.Empty);
+        protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+          return CollectionUtility.hashSet(ValueFieldMenuType.Null);
         }
 
         @Override
@@ -555,7 +547,7 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
       }
 
       @Order(10)
-      public class ContextMenuItem extends AbstractValueFieldMenu {
+      public class ContextMenuItem extends AbstractMenu {
         @Override
         protected String getConfiguredText() {
           return "Context menu (not empty)";
@@ -581,15 +573,15 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
       }
 
       @Order(10)
-      public class ContextMenuItem extends AbstractValueFieldMenu {
+      public class ContextMenuItem extends AbstractMenu {
         @Override
         protected String getConfiguredText() {
           return "Context menu (not empty)";
         }
 
         @Override
-        protected EnumSet<ValueFieldMenuType> getConfiguredMenuType() {
-          return EnumSet.of(ValueFieldMenuType.NotEmpty);
+        protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+          return CollectionUtility.hashSet(ValueFieldMenuType.NotNull);
         }
       }
     }
@@ -613,7 +605,7 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
       }
 
       @Order(10)
-      public class ContextMenuItem extends AbstractValueFieldMenu {
+      public class ContextMenuItem extends AbstractMenu {
         @Override
         protected String getConfiguredText() {
           return "Context menu (not abc)";
@@ -752,7 +744,7 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
       }
 
       @Order(10)
-      public class ContextMenuItem extends AbstractValueFieldMenu {
+      public class ContextMenuItem extends AbstractMenu {
         @Override
         protected String getConfiguredText() {
           return "Context menu";
@@ -773,7 +765,7 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
       }
 
       @Order(10)
-      public class ContextMenuItem extends AbstractValueFieldMenu {
+      public class ContextMenuItem extends AbstractMenu {
         @Override
         protected String getConfiguredText() {
           return "Context menu";

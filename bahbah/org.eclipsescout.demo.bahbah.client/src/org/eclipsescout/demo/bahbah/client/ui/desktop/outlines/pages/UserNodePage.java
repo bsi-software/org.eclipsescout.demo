@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
@@ -14,12 +14,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 
-import org.eclipsescout.demo.bahbah.client.ClientSession;
-import org.eclipsescout.demo.bahbah.client.services.BuddyIconProviderService;
-import org.eclipsescout.demo.bahbah.client.ui.forms.ChatForm;
-import org.eclipsescout.demo.bahbah.client.ui.forms.IconChooserForm;
-import org.eclipsescout.demo.bahbah.shared.security.UpdateIconPermission;
-import org.eclipsescout.demo.bahbah.shared.services.outline.IStandardOutlineService;
 import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
@@ -32,6 +26,12 @@ import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
 import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
 import org.eclipse.scout.service.SERVICES;
+import org.eclipsescout.demo.bahbah.client.ClientSession;
+import org.eclipsescout.demo.bahbah.client.services.BuddyIconProviderService;
+import org.eclipsescout.demo.bahbah.client.ui.forms.ChatForm;
+import org.eclipsescout.demo.bahbah.client.ui.forms.IconChooserForm;
+import org.eclipsescout.demo.bahbah.shared.security.UpdateIconPermission;
+import org.eclipsescout.demo.bahbah.shared.services.outline.IStandardOutlineService;
 
 public class UserNodePage extends AbstractPageWithNodes {
 
@@ -125,7 +125,7 @@ public class UserNodePage extends AbstractPageWithNodes {
     }
 
     @Override
-    protected void execPrepareAction() throws ProcessingException {
+    protected void execInitAction() throws ProcessingException {
       setVisible(UserAgentUtility.isDesktopDevice() && ACCESS.check(new UpdateIconPermission()));
     }
 

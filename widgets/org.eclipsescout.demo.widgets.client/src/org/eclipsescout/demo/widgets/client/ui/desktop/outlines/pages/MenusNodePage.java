@@ -4,15 +4,20 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
 package org.eclipsescout.demo.widgets.client.ui.desktop.outlines.pages;
 
+import java.util.Set;
+
+import org.eclipse.scout.commons.CollectionUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
+import org.eclipse.scout.rt.client.ui.action.menu.IMenuType;
+import org.eclipse.scout.rt.client.ui.action.menu.TreeMenuType;
 import org.eclipse.scout.rt.client.ui.action.menu.checkbox.AbstractCheckBoxMenu;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNodes;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
@@ -117,8 +122,8 @@ public class MenusNodePage extends AbstractPageWithNodes {
     public class Menu1Menu extends AbstractMenu {
 
       @Override
-      protected boolean getConfiguredEmptySpaceAction() {
-        return true;
+      protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+        return CollectionUtility.hashSet(TreeMenuType.EmptySpace);
       }
 
       @Override
@@ -137,8 +142,8 @@ public class MenusNodePage extends AbstractPageWithNodes {
     public class Menu2Menu extends AbstractMenu {
 
       @Override
-      protected boolean getConfiguredEmptySpaceAction() {
-        return true;
+      protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+        return CollectionUtility.hashSet(TreeMenuType.EmptySpace);
       }
 
       @Override
@@ -157,8 +162,8 @@ public class MenusNodePage extends AbstractPageWithNodes {
     public class Menu3Menu extends AbstractMenu {
 
       @Override
-      protected boolean getConfiguredEmptySpaceAction() {
-        return true;
+      protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+        return CollectionUtility.hashSet(TreeMenuType.EmptySpace);
       }
 
       @Override
