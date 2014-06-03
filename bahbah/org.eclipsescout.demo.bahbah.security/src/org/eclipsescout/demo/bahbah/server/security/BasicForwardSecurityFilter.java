@@ -24,8 +24,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.eclipse.scout.commons.Base64Utility;
 import org.eclipse.scout.commons.ConfigIniUtility;
 import org.eclipse.scout.commons.security.SimplePrincipal;
+import org.eclipse.scout.rt.server.commons.cache.IHttpSessionCacheService;
 import org.eclipse.scout.rt.server.commons.servletfilter.security.AbstractChainableSecurityFilter;
 import org.eclipse.scout.rt.server.commons.servletfilter.security.PrincipalHolder;
+import org.eclipse.scout.service.SERVICES;
 
 public class BasicForwardSecurityFilter extends AbstractChainableSecurityFilter {
 
@@ -69,28 +71,28 @@ public class BasicForwardSecurityFilter extends AbstractChainableSecurityFilter 
         }
       }
     }
-    int attempts = getBasicAttempt(req);
+    int attempts = getBasicAttempt(req, resp);
     if (attempts > 2) {
       return STATUS_CONTINUE_CHAIN;
     }
     else {
-      setBasicAttept(req, attempts + 1);
+      setBasicAttept(req, resp, attempts + 1);
       resp.setHeader("WWW-Authenticate", "Basic realm=\"" + getRealm() + "\"");
       return STATUS_CONTINUE_CHAIN;
     }
   }
 
-  private int getBasicAttempt(HttpServletRequest req) {
+  private int getBasicAttempt(HttpServletRequest req, HttpServletResponse res) {
     int basicAtttempt = 0;
-    Object attribute = req.getSession().getAttribute(PROP_BASIC_ATTEMPT);
+    Object attribute = SERVICES.getService(IHttpSessionCacheService.class).getAndTouch(PROP_BASIC_ATTEMPT, req, res);
     if (attribute instanceof Integer) {
       basicAtttempt = ((Integer) attribute).intValue();
     }
     return basicAtttempt;
   }
 
-  private void setBasicAttept(HttpServletRequest req, int attempts) {
-    req.getSession().setAttribute(PROP_BASIC_ATTEMPT, attempts);
+  private void setBasicAttept(HttpServletRequest req, HttpServletResponse res, int attempts) {
+    SERVICES.getService(IHttpSessionCacheService.class).put(PROP_BASIC_ATTEMPT, attempts, req, res);
   }
 
   protected boolean validateUser(String user, String pass) throws ServletException {
