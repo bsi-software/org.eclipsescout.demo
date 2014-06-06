@@ -30,7 +30,7 @@
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
       <unit id="org.eclipse.rap.feature.feature.group" version="0.0.0"/>
 
-      <repository location="http://download.eclipse.org/rt/rap/2.3/RC1-20140520-1615/"/>
+      <repository location="http://download.eclipse.org/rt/rap/2.3/RC3-20140602-1108/"/>
     </location>
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
@@ -91,6 +91,7 @@
       <unit id="org.eclipse.scout.rt.server.activemq.source.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.scout.rt.server.redis.source.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.scout.rt.server.memcached.source.feature.group" version="0.0.0"/>
+
       <repository location="http://tools.bsiag.com/marketplace/cloud/4.0"/>
     </location>
     </locations>
