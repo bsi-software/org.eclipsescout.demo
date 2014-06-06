@@ -36,7 +36,7 @@
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
       <unit id="com.bsiag.scout.rt.ui.swing.laf.rayo.source.feature.group" version="0.0.0"/>
 
-      <repository location="http://tools.bsiag.com/marketplace/rayo/"/>
+      <repository location="http://tools.bsiag.com/marketplace/rayo/4.1/"/>
     </location>
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
@@ -44,14 +44,14 @@
       <unit id="org.eclipse.scout.rt.docx4j.client.source.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.scout.docx4j.libs.feature.group" version="0.0.0"/>
 
-      <repository location="http://tools.bsiag.com/marketplace/docx4j/"/>
+      <repository location="http://tools.bsiag.com/marketplace/docx4j/4.1/"/>
     </location>
 
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
       <unit id="org.eclipse.scout.logging.bridges.source.feature.group" version="0.0.0"/>
 
-      <repository location="http://tools.bsiag.com/marketplace/logging_bridge/"/>
+      <repository location="http://tools.bsiag.com/marketplace/logging_bridge/4.1/"/>
     </location>
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
@@ -64,10 +64,10 @@
       <unit id="org.apache.commons.logging" version="1.1.1.v201101211721"/>
       <unit id="org.apache.commons.logging.source" version="1.1.1.v201101211721"/>
 
-      <unit id="org.apache.httpcomponents.httpclient" version="4.2.5.v201305222326"/>
-      <unit id="org.apache.httpcomponents.httpclient.source" version="4.2.5.v201305222326"/>
-      <unit id="org.apache.httpcomponents.httpcore" version="4.2.4.v201310231540"/>
-      <unit id="org.apache.httpcomponents.httpcore.source" version="4.2.4.v201310231540"/>
+      <unit id="org.apache.httpcomponents.httpclient" version="4.2.6.v201311072007"/>
+      <unit id="org.apache.httpcomponents.httpclient.source" version="4.2.6.v201311072007"/>
+      <unit id="org.apache.httpcomponents.httpcore" version="4.2.5.v201311072007"/>
+      <unit id="org.apache.httpcomponents.httpcore.source" version="4.2.5.v201311072007"/>
 
       <unit id="org.apache.commons.codec" version="1.6.0.v201305230611"/>
       <unit id="org.apache.commons.codec.source" version="1.6.0.v201305230611"/>
@@ -91,7 +91,8 @@
       <unit id="org.eclipse.scout.rt.server.activemq.source.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.scout.rt.server.redis.source.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.scout.rt.server.memcached.source.feature.group" version="0.0.0"/>
+
       <repository location="http://tools.bsiag.com/marketplace/cloud"/>
     </location>
-    </locations>
+  </locations>
 </target>
