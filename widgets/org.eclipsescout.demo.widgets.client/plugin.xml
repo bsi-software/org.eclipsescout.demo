@@ -9,5 +9,10 @@
             class="org.eclipsescout.demo.widgets.client.services.LocalCodeService"
             session="org.eclipsescout.demo.widgets.client.ClientSession">
       </service>
+      <service
+            class="org.eclipsescout.demo.widgets.client.services.LocalAccessControlService"
+            createImmediately="false"
+            session="org.eclipsescout.demo.widgets.client.ClientSession">
+      </service>
    </extension>
 </plugin>
