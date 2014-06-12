@@ -12,6 +12,7 @@
       <service
             class="org.eclipsescout.demo.widgets.client.services.LocalAccessControlService"
             createImmediately="false"
+            factory="org.eclipse.scout.rt.client.services.ClientServiceFactory"
             session="org.eclipsescout.demo.widgets.client.ClientSession">
       </service>
    </extension>
