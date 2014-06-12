@@ -24,7 +24,6 @@ import org.eclipsescout.demo.bahbah.shared.services.UserAdministrationTablePageD
 public interface IUserProcessService extends IService {
 
   String PERMISSION_KEY = "permission_id";
-  
 
   void registerUser() throws ProcessingException;
 
@@ -41,4 +40,8 @@ public interface IUserProcessService extends IService {
   void updateUser(UserFormData formData) throws ProcessingException;
 
   UserAdministrationTablePageData getUserAdministrationTableData(UserFormData formData) throws ProcessingException;
+
+  void registerUserInternal(String userId) throws ProcessingException;
+
+  void unregisterUserInternal(String userName) throws ProcessingException;
 }

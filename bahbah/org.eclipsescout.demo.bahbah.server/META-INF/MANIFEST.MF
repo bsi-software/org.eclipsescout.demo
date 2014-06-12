@@ -8,8 +8,10 @@ Bundle-Activator: org.eclipsescout.demo.bahbah.server.Activator
 Export-Package: org.eclipsescout.demo.bahbah.server,
  org.eclipsescout.demo.bahbah.server.services.common.sql,
  org.eclipsescout.demo.bahbah.server.services.custom.security,
+ org.eclipsescout.demo.bahbah.server.services.db,
  org.eclipsescout.demo.bahbah.server.services.outline,
- org.eclipsescout.demo.bahbah.server.services.process
+ org.eclipsescout.demo.bahbah.server.services.process,
+ org.eclipsescout.demo.bahbah.server.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipsescout.demo.bahbah.shared,
  org.eclipse.scout.rt.server,

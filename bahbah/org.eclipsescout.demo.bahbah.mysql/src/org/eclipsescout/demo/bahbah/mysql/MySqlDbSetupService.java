@@ -8,32 +8,36 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
-package org.eclipsescout.demo.bahbah.server;
+package org.eclipsescout.demo.bahbah.mysql;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.server.services.common.jdbc.SQL;
+import org.eclipse.scout.service.AbstractService;
+import org.eclipsescout.demo.bahbah.server.services.db.IDbSetupService;
 import org.eclipsescout.demo.bahbah.server.util.UserUtility;
 import org.eclipsescout.demo.bahbah.shared.services.code.UserRoleCodeType;
 
 /**
  * class that installs the bahbah DB schema
  */
-public class DbSetup {
-  public static void installDb() throws ProcessingException {
+public class MySqlDbSetupService extends AbstractService implements IDbSetupService {
+  @Override
+  public void installDb() throws ProcessingException {
     Set<String> existingTables = getExistingTables();
 
-    if (!existingTables.contains("TABUSERS")) {
+    if (!existingTables.contains("tabusers")) {
       SQL.insert(" CREATE TABLE TABUSERS (" +
-          " u_id BIGINT NOT NULL GENERATED ALWAYS AS IDENTITY CONSTRAINT USERS_PK PRIMARY KEY, " +
+          " u_id BIGINT NOT NULL AUTO_INCREMENT, " +
           " username VARCHAR(32) NOT NULL, " +
           " pass VARCHAR(1024) NOT NULL, " +
           " salt VARCHAR(64) NOT NULL, " +
           " permission_id INT NOT NULL, " +
-          " icon BLOB " +
-          ")");
+          " icon BLOB, " +
+          " PRIMARY KEY (u_id)"
+          + ")");
       SQL.commit();
 
       SQL.insert(" CREATE UNIQUE INDEX IX_USERNAME ON TABUSERS (username) ");
@@ -46,8 +50,8 @@ public class DbSetup {
 
   }
 
-  private static Set<String> getExistingTables() throws ProcessingException {
-    Object[][] existingTables = SQL.select("SELECT tablename FROM sys.systables");
+  private Set<String> getExistingTables() throws ProcessingException {
+    Object[][] existingTables = SQL.select("SHOW TABLES");
     HashSet<String> result = new HashSet<String>(existingTables.length);
     for (Object[] row : existingTables) {
       result.add(row[0] + "");

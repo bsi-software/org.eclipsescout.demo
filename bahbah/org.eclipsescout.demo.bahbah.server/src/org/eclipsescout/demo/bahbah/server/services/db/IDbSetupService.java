@@ -8,21 +8,14 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
-package org.eclipsescout.demo.bahbah.shared.services.process;
+package org.eclipsescout.demo.bahbah.server.services.db;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.rt.shared.validate.IValidationStrategy;
-import org.eclipse.scout.rt.shared.validate.InputValidation;
 import org.eclipse.scout.service.IService;
 
-@InputValidation(IValidationStrategy.NO_CHECK.class)
-public interface INotificationProcessService extends IService {
-
-  int MESSAGE_MAX_LENGTH = 5000;
-
-  void sendRefreshBuddies() throws ProcessingException;
-
-  void sendMessage(String buddyName, String message) throws ProcessingException;
-
-  void sendRefreshBuddiesInternal() throws ProcessingException;
+/**
+ *
+ */
+public interface IDbSetupService extends IService {
+  public void installDb() throws ProcessingException;
 }
