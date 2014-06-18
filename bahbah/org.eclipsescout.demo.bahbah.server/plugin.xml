@@ -54,6 +54,11 @@
             factory="org.eclipse.scout.rt.server.services.ServerServiceFactory"
             session="org.eclipsescout.demo.bahbah.server.ServerSession">
       </service>
+      <service
+            class="org.eclipsescout.demo.bahbah.server.services.common.sql.DerbySqlService"
+            factory="org.eclipse.scout.rt.server.services.ServerServiceFactory"
+            session="org.eclipsescout.demo.bahbah.server.ServerSession">
+      </service>
    </extension>
    <extension
          name=""
