@@ -4,13 +4,13 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
 package org.eclipsescout.demo.widgets.client.ui.desktop.outlines;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
@@ -27,7 +27,7 @@ public class PagesSearchFormsOutline extends AbstractExtensibleOutline {
   }
 
   @Override
-  protected void execCreateChildPages(Collection<IPage> pageList) throws ProcessingException {
+  protected void execCreateChildPages(List<IPage> pageList) throws ProcessingException {
     PagesNodePage pagesNodePage = new PagesNodePage();
     pageList.add(pagesNodePage);
     pageList.add(new SearchFormsNodePage());

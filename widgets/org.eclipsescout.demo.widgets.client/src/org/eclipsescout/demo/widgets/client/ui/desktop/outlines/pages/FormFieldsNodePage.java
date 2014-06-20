@@ -10,7 +10,7 @@
  ******************************************************************************/
 package org.eclipsescout.demo.widgets.client.ui.desktop.outlines.pages;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
@@ -67,7 +67,7 @@ public class FormFieldsNodePage extends AbstractPageWithNodes {
   }
 
   @Override
-  protected void execCreateChildPages(Collection<IPage> pageList) throws ProcessingException {
+  protected void execCreateChildPages(List<IPage> pageList) throws ProcessingException {
     FormPage formPage0 = new FormPage(BrowserFieldForm.class);
     pageList.add(formPage0);
     FormPage formPage1 = new FormPage(ButtonsForm.class);
