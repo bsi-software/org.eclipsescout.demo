@@ -13,9 +13,12 @@ package org.eclipsescout.demo.widgets.client.ui.forms;
 import java.util.Date;
 import java.util.Set;
 
+import org.eclipse.scout.commons.CollectionUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
+import org.eclipse.scout.rt.client.ui.action.menu.CalendarMenuType;
+import org.eclipse.scout.rt.client.ui.action.menu.IMenuType;
 import org.eclipse.scout.rt.client.ui.basic.calendar.AbstractCalendar;
 import org.eclipse.scout.rt.client.ui.basic.calendar.provider.AbstractCalendarItemProvider;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
@@ -95,26 +98,26 @@ public class CalendarFieldForm extends AbstractForm implements IPageForm {
         @Order(10.0)
         public class Calendar extends AbstractCalendar {
           @Order(10)
-          public class VisitsOfInternalPersonsItemProducer extends AbstractCalendarItemProvider {
+          public class ItemProvdider01 extends AbstractCalendarItemProvider {
 
             @Override
             protected void execLoadItems(Date minDate, Date maxDate, final Set<ICalendarItem> result) throws ProcessingException {
-
+              String appColor = "7fff72";
               java.util.Calendar cal = java.util.Calendar.getInstance();
               Date start = cal.getTime();
               Date end = cal.getTime();
-              result.add(new CalendarAppointment(0L, 0L, start, end, true, "FULL DAY", "This appointment takes the full day", "FFFF00"));
+              result.add(new CalendarAppointment(0L, 0L, start, end, true, "FULL DAY [P1]", "This appointment takes the full day", appColor));
               cal.add(java.util.Calendar.DAY_OF_YEAR, -1);
               start = cal.getTime();
               cal.add(java.util.Calendar.HOUR, 2);
               end = cal.getTime();
-              result.add(new CalendarAppointment(1L, 2L, start, end, false, "app1", "appointment1 body", "44FF00"));
+              result.add(new CalendarAppointment(1L, 2L, start, end, false, "app1 [P1]", "appointment1 body", appColor));
 
               cal.add(java.util.Calendar.HOUR, 1);
               start = cal.getTime();
               cal.add(java.util.Calendar.MINUTE, 30);
               end = cal.getTime();
-              result.add(new CalendarAppointment(1L, 2L, start, end, false, "app2", "appointment2 body", "44FF00"));
+              result.add(new CalendarAppointment(1L, 2L, start, end, false, "app2 [P1]", "appointment2 body", appColor));
 
               // future
               cal.setTime(new Date());
@@ -122,48 +125,117 @@ public class CalendarFieldForm extends AbstractForm implements IPageForm {
               start = cal.getTime();
               cal.add(java.util.Calendar.HOUR, 48);
               end = cal.getTime();
-              result.add(new CalendarAppointment(1L, 2L, start, end, false, "app3", "appointment3 body", "44FF00"));
+              result.add(new CalendarAppointment(1L, 2L, start, end, false, "app3 [P1]", "appointment3 body", appColor));
               cal.add(java.util.Calendar.HOUR, 2);
               end = cal.getTime();
-              result.add(new CalendarAppointment(1L, 2L, start, end, false, "app4", "appointment4 body", "44FF00"));
+              result.add(new CalendarAppointment(1L, 2L, start, end, false, "app4 [P1]", "appointment4 body", appColor));
 
             }
 
             @Order(200)
-            public class ItemProducerMenu extends AbstractMenu {
+            public class Provider1ComponentMenu extends AbstractMenu {
               @Override
               protected String getConfiguredText() {
-                return "Item producer Menu";
+                return getClass().getSimpleName();
               }
 
               @Override
-              protected boolean getConfiguredSingleSelectionAction() {
-                return true;
+              protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+                return CollectionUtility.hashSet(CalendarMenuType.CalendarComponent);
+              }
+            }
+
+            @Order(210)
+            public class Provider1EmptySpaceMenu extends AbstractMenu {
+              @Override
+              protected String getConfiguredText() {
+                return getClass().getSimpleName();
               }
 
               @Override
-              protected boolean getConfiguredEmptySpaceAction() {
-                return false;
+              protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+                return CollectionUtility.hashSet(CalendarMenuType.EmptySpace);
               }
+
+            }
+
+          }
+
+          @Order(20)
+          public class ItemProvdider02 extends AbstractCalendarItemProvider {
+
+            @Override
+            protected void execLoadItems(Date minDate, Date maxDate, final Set<ICalendarItem> result) throws ProcessingException {
+              String appColor = "ffcc00";
+              java.util.Calendar cal = java.util.Calendar.getInstance();
+              Date start = cal.getTime();
+              Date end = cal.getTime();
+              result.add(new CalendarAppointment(0L, 0L, start, end, true, "FULL DAY [P2]", "This appointment takes the full day", appColor));
+              cal.add(java.util.Calendar.DAY_OF_YEAR, -1);
+              start = cal.getTime();
+              cal.add(java.util.Calendar.HOUR, 2);
+              end = cal.getTime();
+              result.add(new CalendarAppointment(1L, 2L, start, end, false, "app1 [P2]", "appointment1 body", appColor));
+
+              cal.add(java.util.Calendar.HOUR, 1);
+              start = cal.getTime();
+              cal.add(java.util.Calendar.MINUTE, 30);
+              end = cal.getTime();
+              result.add(new CalendarAppointment(1L, 2L, start, end, false, "app2 [P2]", "appointment2 body", appColor));
+
+              // future
+              cal.setTime(new Date());
+              cal.add(java.util.Calendar.DAY_OF_YEAR, 1);
+              start = cal.getTime();
+              cal.add(java.util.Calendar.HOUR, 48);
+              end = cal.getTime();
+              result.add(new CalendarAppointment(1L, 2L, start, end, false, "app3 [P2]", "appointment3 body", appColor));
+              cal.add(java.util.Calendar.HOUR, 2);
+              end = cal.getTime();
+              result.add(new CalendarAppointment(1L, 2L, start, end, false, "app4 [P2]", "appointment4 body", appColor));
+
+            }
+
+            @Order(200)
+            public class Provider2ComponentMenu extends AbstractMenu {
+              @Override
+              protected String getConfiguredText() {
+                return getClass().getSimpleName();
+              }
+
+              @Override
+              protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+                return CollectionUtility.hashSet(CalendarMenuType.CalendarComponent);
+              }
+            }
+
+            @Order(210)
+            public class Provider2EmptySpaceMenu extends AbstractMenu {
+              @Override
+              protected String getConfiguredText() {
+                return getClass().getSimpleName();
+              }
+
+              @Override
+              protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+                return CollectionUtility.hashSet(CalendarMenuType.EmptySpace);
+              }
+
             }
           }
 
           @Order(200)
-          public class TestMenuCalendar extends AbstractMenu {
+          public class CalendarEmptySpaceMenu extends AbstractMenu {
             @Override
             protected String getConfiguredText() {
-              return "Calendar Menu";
+              return getClass().getSimpleName();
             }
 
             @Override
-            protected boolean getConfiguredEmptySpaceAction() {
-              return true;
+            protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+              return CollectionUtility.hashSet(CalendarMenuType.EmptySpace);
             }
 
-            @Override
-            protected boolean getConfiguredSingleSelectionAction() {
-              return false;
-            }
           }
         }
       }
