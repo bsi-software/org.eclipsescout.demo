@@ -11,9 +11,14 @@
 package org.eclipsescout.demo.widgets.client.ui.forms;
 
 import java.util.Date;
+import java.util.Set;
 
+import org.eclipse.scout.commons.CollectionUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
+import org.eclipse.scout.rt.client.ui.action.menu.IMenuType;
+import org.eclipse.scout.rt.client.ui.action.menu.ValueFieldMenuType;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractDateColumn;
@@ -23,8 +28,11 @@ import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractSmartColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
+import org.eclipse.scout.rt.client.ui.form.fields.IFormField;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
+import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
+import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
@@ -223,8 +231,76 @@ public class TableFieldEditableForm extends AbstractForm implements IPageForm {
               return TEXTS.get("Gender");
             }
 
+            @Override
+            protected IFormField prepareEditInternal(ITableRow row) throws ProcessingException {
+              return new GenderSmartField();
+            }
+
+            @Override
+            protected IFormField execPrepareEdit(ITableRow row) throws ProcessingException {
+              IFormField f = super.execPrepareEdit(row);
+              return f;
+            }
+
+            @Order(10)
+            public class GenderSmartField extends AbstractSmartField<Long> {
+              @Override
+              protected boolean getConfiguredLabelVisible() {
+                return true;
+              }
+
+              @Override
+              protected Class<? extends ILookupCall<Long>> getConfiguredLookupCall() {
+                return GenderLookupCall.class;
+              }
+
+              @Order(10)
+              public class EditMenu extends AbstractMenu {
+                @Override
+                protected String getConfiguredText() {
+                  return getClass().getSimpleName();
+                }
+
+                @Override
+                protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+                  return CollectionUtility.hashSet(ValueFieldMenuType.NotNull);
+                }
+
+                @Override
+                protected boolean getConfiguredInheritAccessibility() {
+                  return false;
+                }
+              }
+
+              @Order(10)
+              public class NewMenu extends AbstractMenu {
+                @Override
+                protected String getConfiguredText() {
+                  return getClass().getSimpleName();
+                }
+
+                @Override
+                protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+                  return CollectionUtility.hashSet(ValueFieldMenuType.Null);
+                }
+
+                @Override
+                protected boolean getConfiguredInheritAccessibility() {
+                  return false;
+                }
+              }
+            }
+
           }
         }
+      }
+    }
+
+    @Order(20)
+    public class MyStringField extends AbstractStringField {
+      @Override
+      protected String getConfiguredLabel() {
+        return "Baluuu";
       }
     }
 
