@@ -482,6 +482,11 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
         }
 
         @Override
+        protected void execInitAction() throws ProcessingException {
+          setVisibleGranted(false);
+        }
+
+        @Override
         protected Set<? extends IMenuType> getConfiguredMenuTypes() {
           return CollectionUtility.hashSet(ValueFieldMenuType.Null);
         }
@@ -553,10 +558,6 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
           return "Context menu (not empty)";
         }
 
-        @Override
-        protected void execInitAction() throws ProcessingException {
-          System.out.println("init action");
-        }
       }
     }
 
