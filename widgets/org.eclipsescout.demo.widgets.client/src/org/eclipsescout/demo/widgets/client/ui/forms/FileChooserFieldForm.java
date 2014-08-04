@@ -11,6 +11,7 @@
 package org.eclipsescout.demo.widgets.client.ui.forms;
 
 import java.io.File;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -21,9 +22,13 @@ import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.action.menu.IMenuType;
 import org.eclipse.scout.rt.client.ui.action.menu.TableMenuType;
+import org.eclipse.scout.rt.client.ui.action.menu.ValueFieldMenuType;
+import org.eclipse.scout.rt.client.ui.basic.filechooser.FileChooser;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
+import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
+import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractTimeColumn;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractButton;
@@ -33,18 +38,26 @@ import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.tabbox.AbstractTabBox;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
+import org.eclipse.scout.rt.extension.client.ui.action.menu.AbstractExtensibleMenu;
+import org.eclipse.scout.rt.extension.client.ui.basic.table.AbstractExtensibleTable;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.shell.IShellService;
 import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
 import org.eclipse.scout.service.SERVICES;
 import org.eclipsescout.demo.widgets.client.ui.forms.FileChooserFieldForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.FileChooserFieldForm.MainBox.TabBox;
+import org.eclipsescout.demo.widgets.client.ui.forms.FileChooserFieldForm.MainBox.TabBox.FileUploadBox;
+import org.eclipsescout.demo.widgets.client.ui.forms.FileChooserFieldForm.MainBox.TabBox.FileUploadBox.FileChooserFieldBox;
+import org.eclipsescout.demo.widgets.client.ui.forms.FileChooserFieldForm.MainBox.TabBox.FileUploadBox.FileChooserFieldBox.ChooseAnImageField;
+import org.eclipsescout.demo.widgets.client.ui.forms.FileChooserFieldForm.MainBox.TabBox.FileUploadBox.FileChooserFieldBox.OpenFileButton;
+import org.eclipsescout.demo.widgets.client.ui.forms.FileChooserFieldForm.MainBox.TabBox.FileUploadBox.FileDialogBox;
+import org.eclipsescout.demo.widgets.client.ui.forms.FileChooserFieldForm.MainBox.TabBox.FileUploadBox.FileDialogBox.UploadMultipleFilesButton;
+import org.eclipsescout.demo.widgets.client.ui.forms.FileChooserFieldForm.MainBox.TabBox.FileUploadBox.FileDialogBox.UploadSingleFileButton;
+import org.eclipsescout.demo.widgets.client.ui.forms.FileChooserFieldForm.MainBox.TabBox.FileUploadBox.ServerLogBox;
+import org.eclipsescout.demo.widgets.client.ui.forms.FileChooserFieldForm.MainBox.TabBox.FileUploadBox.ServerLogBox.ServerLogField;
 import org.eclipsescout.demo.widgets.client.ui.forms.FileChooserFieldForm.MainBox.TabBox.FolderContentsBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.FileChooserFieldForm.MainBox.TabBox.FolderContentsBox.ContentField;
 import org.eclipsescout.demo.widgets.client.ui.forms.FileChooserFieldForm.MainBox.TabBox.FolderContentsBox.SelectAFolderField;
-import org.eclipsescout.demo.widgets.client.ui.forms.FileChooserFieldForm.MainBox.TabBox.OpenImageBox;
-import org.eclipsescout.demo.widgets.client.ui.forms.FileChooserFieldForm.MainBox.TabBox.OpenImageBox.ChooseAnImageField;
-import org.eclipsescout.demo.widgets.client.ui.forms.FileChooserFieldForm.MainBox.TabBox.OpenImageBox.OpenFileButton;
 
 public class FileChooserFieldForm extends AbstractForm implements IPageForm {
 
@@ -80,6 +93,14 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(ContentField.class);
   }
 
+  public FileChooserFieldBox getFileChooserFieldBox() {
+    return getFieldByClass(FileChooserFieldBox.class);
+  }
+
+  public FileDialogBox getFileDialogBox() {
+    return getFieldByClass(FileDialogBox.class);
+  }
+
   public FolderContentsBox getFolderContentsBox() {
     return getFieldByClass(FolderContentsBox.class);
   }
@@ -92,16 +113,32 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(OpenFileButton.class);
   }
 
-  public OpenImageBox getOpenImageBox() {
-    return getFieldByClass(OpenImageBox.class);
+  public FileUploadBox getFileUploadBox() {
+    return getFieldByClass(FileUploadBox.class);
   }
 
   public SelectAFolderField getSelectAFolderField() {
     return getFieldByClass(SelectAFolderField.class);
   }
 
+  public ServerLogBox getServerLogBox() {
+    return getFieldByClass(ServerLogBox.class);
+  }
+
+  public ServerLogField getServerLogField() {
+    return getFieldByClass(ServerLogField.class);
+  }
+
   public TabBox getTabBox() {
     return getFieldByClass(TabBox.class);
+  }
+
+  public UploadMultipleFilesButton getUploadMultipleFilesButton() {
+    return getFieldByClass(UploadMultipleFilesButton.class);
+  }
+
+  public UploadSingleFileButton getUploadSingleFileButton() {
+    return getFieldByClass(UploadSingleFileButton.class);
   }
 
   @Order(10.0)
@@ -111,62 +148,232 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
     public class TabBox extends AbstractTabBox {
 
       @Order(10.0)
-      public class OpenImageBox extends AbstractGroupBox {
+      public class FileUploadBox extends AbstractGroupBox {
+
+        @Override
+        protected int getConfiguredGridColumnCount() {
+          return 1;
+        }
 
         @Override
         protected String getConfiguredLabel() {
-          return TEXTS.get("OpenImage");
+          return TEXTS.get("FileUpload");
         }
 
         @Order(10.0)
-        public class ChooseAnImageField extends AbstractFileChooserField {
-
-          @Override
-          protected List<String> getConfiguredFileExtensions() {
-            return CollectionUtility.arrayList("png", "bmp", "jpg", "jpeg", "gif");
-          }
+        public class FileChooserFieldBox extends AbstractGroupBox {
 
           @Override
           protected String getConfiguredLabel() {
-            return TEXTS.get("ChooseAnImage");
+            return TEXTS.get("FileChooserField");
           }
 
-          @Override
-          protected boolean getConfiguredTypeLoad() {
-            return true;
+          @Order(20.0)
+          public class ChooseAnImageField extends AbstractFileChooserField {
+
+            @Override
+            protected List<String> getConfiguredFileExtensions() {
+              return CollectionUtility.arrayList("png", "bmp", "jpg", "jpeg", "gif");
+            }
+
+            @Override
+            protected String getConfiguredLabel() {
+              return TEXTS.get("ChooseAnImage");
+            }
+
+            @Override
+            protected boolean getConfiguredTypeLoad() {
+              return true;
+            }
+
+            @Override
+            protected void execChangedValue() throws ProcessingException {
+              getServerLogField().addLine("received " + getValueAsFile().getName());
+              getOpenFileButton().setVisible(true);
+            }
+
+          }
+
+          @Order(30.0)
+          public class OpenFileButton extends AbstractButton {
+
+            @Override
+            protected boolean getConfiguredVisible() {
+              return false;
+            }
+
+            @Override
+            protected String getConfiguredLabel() {
+              return TEXTS.get("OpenFile");
+            }
+
+            @Override
+            protected void execClickAction() throws ProcessingException {
+              SERVICES.getService(IShellService.class).shellOpen(getChooseAnImageField().getValue());
+            }
           }
         }
 
-        @Order(20.0)
-        public class OpenFileButton extends AbstractButton {
+        @Order(30.0)
+        public class FileDialogBox extends AbstractGroupBox {
 
           @Override
           protected String getConfiguredLabel() {
-            return TEXTS.get("OpenFile");
+            return TEXTS.get("FileDialogBox");
           }
 
+          @Order(40.0)
+          public class UploadSingleFileButton extends AbstractButton {
+
+            @Override
+            protected String getConfiguredLabel() {
+              return TEXTS.get("UploadSingleFile");
+            }
+
+            @Override
+            protected void execClickAction() throws ProcessingException {
+              FileChooser fc = new FileChooser();
+              fc.setTypeLoad(true);
+              fc.setMultiSelect(false);
+              List<File> files = fc.startChooser();
+              for (File file : files) {
+                getServerLogField().addLine("received " + file.getName());
+              }
+            }
+          }
+
+          @Order(50.0)
+          public class UploadMultipleFilesButton extends AbstractButton {
+
+            @Override
+            protected String getConfiguredLabel() {
+              return TEXTS.get("UploadMultipleFiles");
+            }
+
+            @Override
+            protected boolean getConfiguredVisible() {
+              return !UserAgentUtility.isSwingUi();
+            }
+
+            @Override
+            protected void execClickAction() throws ProcessingException {
+              FileChooser fc = new FileChooser();
+              fc.setTypeLoad(true);
+              fc.setMultiSelect(true);
+              List<File> files = fc.startChooser();
+              for (File file : files) {
+                getServerLogField().addLine("received " + file.getName());
+              }
+            }
+          }
+        }
+
+        @Order(60.0)
+        public class ServerLogBox extends AbstractGroupBox {
+
           @Override
-          protected void execClickAction() throws ProcessingException {
-            SERVICES.getService(IShellService.class).shellOpen(getChooseAnImageField().getValue());
+          protected String getConfiguredLabel() {
+            return TEXTS.get("ServerLog");
+          }
+
+          @Order(1000.0)
+          public class ServerLogField extends AbstractTableField<ServerLogField.Table> {
+
+            @Override
+            protected int getConfiguredGridH() {
+              return 3;
+            }
+
+            public void addLine(String text) throws ProcessingException {
+              ITableRow row = getTable().addRow(getTable().createRow());
+              getTable().getTimeColumn().setValue(row, new Date());
+              getTable().getActionColumn().setValue(row, text);
+              getTable().selectLastRow();
+              getTable().scrollToSelection();
+            }
+
+            @Override
+            protected boolean getConfiguredLabelVisible() {
+              return false;
+            }
+
+            @Order(70.0)
+            public class Table extends AbstractExtensibleTable {
+
+              public TimeColumn getTimeColumn() {
+                return getColumnSet().getColumnByClass(FileChooserFieldForm.MainBox.TabBox.FileUploadBox.ServerLogBox.ServerLogField.Table.TimeColumn.class);
+              }
+
+              public ActionColumn getActionColumn() {
+                return getColumnSet().getColumnByClass(ActionColumn.class);
+              }
+
+              @Order(0.0)
+              public class TimeColumn extends AbstractTimeColumn {
+
+                @Override
+                protected String getConfiguredHeaderText() {
+                  return TEXTS.get("Time");
+                }
+
+                @Override
+                protected int getConfiguredWidth() {
+                  return 120;
+                }
+              }
+
+              @Order(80.0)
+              public class ActionColumn extends AbstractStringColumn {
+
+                @Override
+                protected String getConfiguredHeaderText() {
+                  return TEXTS.get("Action");
+                }
+
+                @Override
+                protected int getConfiguredWidth() {
+                  return 120;
+                }
+              }
+
+              @Order(90.0)
+              public class ClearMenu extends AbstractExtensibleMenu {
+
+                @Override
+                protected String getConfiguredText() {
+                  return TEXTS.get("Clear");
+                }
+
+                @Override
+                protected void execAction() throws ProcessingException {
+                  getTable().deleteAllRows();
+                }
+
+                @Override
+                protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+                  return CollectionUtility.<IMenuType> hashSet(TableMenuType.SingleSelection, ValueFieldMenuType.NotNull, TableMenuType.MultiSelection, TableMenuType.EmptySpace);
+                }
+              }
+            }
           }
         }
       }
 
-      @Order(20.0)
+      @Order(100.0)
       public class FolderContentsBox extends AbstractGroupBox {
+
+        @Override
+        protected boolean getConfiguredVisible() {
+          return UserAgentUtility.isRichClient();
+        }
 
         @Override
         protected String getConfiguredLabel() {
           return TEXTS.get("FolderContents");
         }
 
-        @Order(10.0)
+        @Order(110.0)
         public class SelectAFolderField extends AbstractFileChooserField {
-
-          @Override
-          protected boolean getConfiguredEnabled() {
-            return UserAgentUtility.isRichClient();
-          }
 
           @Override
           protected boolean getConfiguredFolderMode() {
@@ -208,7 +415,7 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
           }
         }
 
-        @Order(20.0)
+        @Order(120.0)
         public class ContentField extends AbstractTableField<ContentField.Table> {
 
           @Override
@@ -221,7 +428,7 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
             return 2;
           }
 
-          @Order(10.0)
+          @Order(130.0)
           public class Table extends AbstractTable {
 
             @Override
@@ -250,7 +457,7 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
               }
             }
 
-            @Order(20.0)
+            @Order(140.0)
             public class FileNameColumn extends AbstractStringColumn {
 
               @Override
@@ -259,7 +466,7 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
               }
             }
 
-            @Order(30.0)
+            @Order(150.0)
             public class PathColumn extends AbstractStringColumn {
 
               @Override
@@ -268,7 +475,7 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
               }
             }
 
-            @Order(10.0)
+            @Order(160.0)
             public class OpenMenu extends AbstractMenu {
 
               @Override
@@ -287,7 +494,7 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
               }
             }
 
-            @Order(20.0)
+            @Order(170.0)
             public class UpOneLevelMenu extends AbstractMenu {
 
               @Override
@@ -312,7 +519,7 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
       }
     }
 
-    @Order(30.0)
+    @Order(180.0)
     public class CloseButton extends AbstractCloseButton {
     }
   }
