@@ -102,9 +102,8 @@ public class MenusNodePage extends AbstractPageWithNodes {
     }
 
     @Override
-    protected void execToggleAction(boolean selected) throws ProcessingException {
-      super.execToggleAction(selected);
-      if (selected == true) {
+    protected void execSelectionChanged(boolean selection) throws ProcessingException {
+      if (selection == true) {
         MessageBox.showOkMessage("Checked the Menu", "You have checked the \"" + TEXTS.get(this.getClass().getSimpleName()) + "\"", null);
       }
     }

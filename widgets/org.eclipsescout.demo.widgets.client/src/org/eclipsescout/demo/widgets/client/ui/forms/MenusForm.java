@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
@@ -113,9 +113,8 @@ public class MenusForm extends AbstractForm implements IPageForm {
         }
 
         @Override
-        protected void execToggleAction(boolean selected) throws ProcessingException {
-          super.execToggleAction(selected);
-          if (selected == true) {
+        protected void execSelectionChanged(boolean selection) throws ProcessingException {
+          if (selection == true) {
             MessageBox.showOkMessage("Checked the Menu", "You have checked the \"" + TEXTS.get(this.getClass().getSimpleName()) + "\"", null);
           }
         }
