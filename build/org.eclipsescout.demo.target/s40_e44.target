@@ -30,7 +30,7 @@
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
       <unit id="org.eclipse.rap.feature.feature.group" version="0.0.0"/>
 
-      <repository location="http://download.eclipse.org/rt/rap/2.3/RC3-20140602-1108/"/>
+      <repository location="http://download.eclipse.org/rt/rap/2.3/R-20140610-0925/"/>
     </location>
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
