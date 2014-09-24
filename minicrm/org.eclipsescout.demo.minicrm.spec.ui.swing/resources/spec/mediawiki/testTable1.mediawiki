@@ -1,4 +1,23 @@
-== Test table 1 ==
+== Erster Teil ==
+
+=== Wichtig ===
+Plaintext ausserhalb der Tabelle.
+
+Zweiter Abschnitt.
+
+=== Dringend ===
+Foo blah blah
+
+== Zweiter Teil ==
+=== auch wichtig ===
+Lorem ipsum
+
+Zweiter Abschnitt.
+
+=== noch dringender ===
+Gugus Foo blah blah
+
+
 {|border="1"
 !Foo
 !Gugus
