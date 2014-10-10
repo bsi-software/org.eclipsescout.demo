@@ -38,6 +38,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.integerfield.AbstractIntegerField;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
+import org.eclipse.scout.rt.client.ui.form.fields.tabbox.AbstractTabBox;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
 import org.eclipse.scout.rt.shared.TEXTS;
@@ -45,6 +46,8 @@ import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
 import org.eclipsescout.demo.widgets.client.services.lookup.CompanyTypeLookupCall;
 import org.eclipsescout.demo.widgets.client.ui.forms.ContextMenuForm.MainBox.CloseButton;
+import org.eclipsescout.demo.widgets.client.ui.forms.ContextMenuForm.MainBox.TableTabBox.TableFieldBox.TableField;
+import org.eclipsescout.demo.widgets.client.ui.forms.internal.AbstractTableFieldWithDisabledRows;
 import org.eclipsescout.demo.widgets.shared.Icons;
 import org.eclipsescout.demo.widgets.shared.services.code.CountryCodeType;
 import org.eclipsescout.demo.widgets.shared.services.code.CountryCodeType.FranceCode;
@@ -89,249 +92,281 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
   @Order(10.0)
   public class MainBox extends AbstractGroupBox {
 
-    @Order(5.0)
-    public class TableField extends AbstractTableField<TableField.Table> {
-      @Override
-      protected int getConfiguredGridW() {
-        return 2;
-      }
-
-      @Override
-      protected int getConfiguredGridH() {
-        return 3;
-      }
-
-      @Override
-      protected void execInitField() throws ProcessingException {
-        super.execInitField();
-        getTable().addRowByArray(new Object[]{"Baluu", "Boralimon"});
-        getTable().addRowByArray(new Object[]{"Baluu1", "Boralimon"});
-        getTable().addRowByArray(new Object[]{"Baluu2", "Boralimon"});
-        getTable().addRowByArray(new Object[]{"Baluu3", "Boralimon"});
-      }
+    @Order(10.0)
+    public class TableTabBox extends AbstractTabBox {
 
       @Order(10)
-      public class Table extends AbstractTable {
+      public class TableFieldBox extends AbstractGroupBox {
         @Override
-        protected String getConfiguredDefaultIconId() {
-          return Icons.StarRed;
+        protected String getConfiguredLabel() {
+          return TEXTS.get("TableField");
         }
 
-        public NameColumn getNameColumn() {
-          return getColumnSet().getColumnByClass(NameColumn.class);
+        @Order(5.0)
+        public class TableField extends AbstractTableField<TableField.Table> {
+
+          @Override
+          protected boolean getConfiguredLabelVisible() {
+            return false;
+          }
+
+          @Override
+          protected int getConfiguredGridW() {
+            return 2;
+          }
+
+          @Override
+          protected int getConfiguredGridH() {
+            return 3;
+          }
+
+          @Override
+          protected void execInitField() throws ProcessingException {
+            super.execInitField();
+            getTable().addRowByArray(new Object[]{"Baluu", "Boralimon"});
+            getTable().addRowByArray(new Object[]{"Baluu1", "Boralimon"});
+            getTable().addRowByArray(new Object[]{"Baluu2", "Boralimon"});
+            getTable().addRowByArray(new Object[]{"Baluu3", "Boralimon"});
+          }
+
+          @Order(10)
+          public class Table extends AbstractTable {
+            @Override
+            protected String getConfiguredDefaultIconId() {
+              return Icons.StarRed;
+            }
+
+            public NameColumn getNameColumn() {
+              return getColumnSet().getColumnByClass(NameColumn.class);
+            }
+
+            @Order(10)
+            public class NameColumn extends AbstractStringColumn {
+              @Override
+              protected String getConfiguredHeaderText() {
+                return "Name (editable)";
+              }
+
+              @Override
+              protected int getConfiguredWidth() {
+                return 250;
+              }
+            }
+
+            @Order(20)
+            public class PrenameColumn extends AbstractStringColumn {
+              @Override
+              protected String getConfiguredHeaderText() {
+                return "Name (!editable)";
+              }
+
+              @Override
+              protected int getConfiguredWidth() {
+                return 250;
+              }
+            }
+
+            @Order(90)
+            public class EditMenuGroup extends AbstractMenu {
+              @Override
+              protected String getConfiguredText() {
+                return "Edit group (single)";
+              }
+
+              @Order(10)
+              public class EditSingle01 extends AbstractMenu {
+                @Override
+                protected String getConfiguredText() {
+                  return "single selection m1";
+                }
+
+                @Override
+                protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+                  return CollectionUtility.hashSet(TableMenuType.SingleSelection);
+                }
+
+              }
+
+              @Order(20)
+              public class EditSingle02 extends AbstractMenu {
+                @Override
+                protected String getConfiguredText() {
+                  return "single selection m2";
+                }
+
+                @Override
+                protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+                  return CollectionUtility.hashSet(TableMenuType.SingleSelection);
+                }
+              }
+
+              @Order(20)
+              public class EditSingle03 extends AbstractMenu {
+                @Override
+                protected String getConfiguredText() {
+                  return "single selection m3";
+                }
+
+                @Override
+                protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+                  return CollectionUtility.hashSet(TableMenuType.SingleSelection);
+                }
+              }
+
+            }
+
+            @Order(91)
+            public class EditMultiMenuGroup extends AbstractMenu {
+              @Override
+              protected String getConfiguredText() {
+                return "Edit multi group";
+              }
+
+              @Order(10)
+              public class EditMulti01 extends AbstractMenu {
+                @Override
+                protected String getConfiguredText() {
+                  return "delete multi selection";
+                }
+
+                @Override
+                protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+                  return CollectionUtility.hashSet(TableMenuType.MultiSelection);
+                }
+              }
+
+              @Order(10)
+              public class EditMulti02 extends AbstractMenu {
+                @Override
+                protected String getConfiguredText() {
+                  return "multi action (permission)";
+                }
+
+                @Override
+                protected void execInitAction() throws ProcessingException {
+                  super.execInitAction();
+                  setVisibleGranted(false);
+                }
+
+                @Override
+                protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+                  return CollectionUtility.hashSet(TableMenuType.MultiSelection);
+                }
+              }
+
+            }
+
+            @Order(92)
+            public class EditEmptyMenuGroup extends AbstractMenu {
+              @Override
+              protected String getConfiguredText() {
+                return "Edit empty group";
+              }
+
+              @Order(10)
+              public class EditEmpty01 extends AbstractMenu {
+                @Override
+                protected String getConfiguredText() {
+                  return "empty 01";
+                }
+
+                @Override
+                protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+                  return CollectionUtility.hashSet(TableMenuType.EmptySpace);
+                }
+              }
+
+              @Order(10)
+              public class EditEmpty02 extends AbstractMenu {
+                @Override
+                protected String getConfiguredText() {
+                  return "empty 02 (permission)";
+                }
+
+                @Override
+                protected void execInitAction() throws ProcessingException {
+                  super.execInitAction();
+                  setVisibleGranted(false);
+                }
+
+                @Override
+                protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+                  return CollectionUtility.hashSet(TableMenuType.EmptySpace);
+                }
+              }
+
+            }
+
+            @Order(100)
+            public class SingleSelectionMenu extends AbstractMenu {
+              @Override
+              protected String getConfiguredText() {
+                return "Single selection";
+              }
+
+              @Override
+              protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+                return CollectionUtility.hashSet(TableMenuType.SingleSelection);
+              }
+
+              @Override
+              protected void execAction() throws ProcessingException {
+                System.out.println("Menu: '" + getClass().getSimpleName() + "'");
+              }
+            }
+
+            @Order(110)
+            public class MultiSelectionMenu extends AbstractMenu {
+              @Override
+              protected String getConfiguredText() {
+                return getClass().getSimpleName();
+              }
+
+              @Override
+              protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+                return CollectionUtility.hashSet(TableMenuType.MultiSelection);
+              }
+
+              @Override
+              protected void execAction() throws ProcessingException {
+                System.out.println("Menu: '" + getClass().getSimpleName() + "'");
+              }
+            }
+
+            @Order(120)
+            public class EmptySpaceMenu extends AbstractMenu {
+              @Override
+              protected String getConfiguredText() {
+                return getClass().getSimpleName();
+              }
+
+              @Override
+              protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+                return CollectionUtility.hashSet(TableMenuType.EmptySpace);
+              }
+
+              @Override
+              protected void execAction() throws ProcessingException {
+                System.out.println("Menu: '" + getClass().getSimpleName() + "'");
+              }
+            }
+          }
+        }
+      }
+
+      @Order(20)
+      public class DisabledRowBox extends AbstractGroupBox {
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("DisabledRows");
         }
 
         @Order(10)
-        public class NameColumn extends AbstractStringColumn {
-          @Override
-          protected String getConfiguredHeaderText() {
-            return "Name (editable)";
-          }
+        public class TableField extends AbstractTableFieldWithDisabledRows {
 
-          @Override
-          protected int getConfiguredWidth() {
-            return 250;
-          }
-        }
-
-        @Order(20)
-        public class PrenameColumn extends AbstractStringColumn {
-          @Override
-          protected String getConfiguredHeaderText() {
-            return "Name (!editable)";
-          }
-
-          @Override
-          protected int getConfiguredWidth() {
-            return 250;
-          }
-        }
-
-        @Order(90)
-        public class EditMenuGroup extends AbstractMenu {
-          @Override
-          protected String getConfiguredText() {
-            return "Edit group (single)";
-          }
-
-          @Order(10)
-          public class EditSingle01 extends AbstractMenu {
-            @Override
-            protected String getConfiguredText() {
-              return "single selection m1";
-            }
-
-            @Override
-            protected Set<? extends IMenuType> getConfiguredMenuTypes() {
-              return CollectionUtility.hashSet(TableMenuType.SingleSelection);
-            }
-
-          }
-
-          @Order(20)
-          public class EditSingle02 extends AbstractMenu {
-            @Override
-            protected String getConfiguredText() {
-              return "single selection m2";
-            }
-
-            @Override
-            protected Set<? extends IMenuType> getConfiguredMenuTypes() {
-              return CollectionUtility.hashSet(TableMenuType.SingleSelection);
-            }
-          }
-
-          @Order(20)
-          public class EditSingle03 extends AbstractMenu {
-            @Override
-            protected String getConfiguredText() {
-              return "single selection m3";
-            }
-
-            @Override
-            protected Set<? extends IMenuType> getConfiguredMenuTypes() {
-              return CollectionUtility.hashSet(TableMenuType.SingleSelection);
-            }
-          }
-
-        }
-
-        @Order(91)
-        public class EditMultiMenuGroup extends AbstractMenu {
-          @Override
-          protected String getConfiguredText() {
-            return "Edit multi group";
-          }
-
-          @Order(10)
-          public class EditMulti01 extends AbstractMenu {
-            @Override
-            protected String getConfiguredText() {
-              return "delete multi selection";
-            }
-
-            @Override
-            protected Set<? extends IMenuType> getConfiguredMenuTypes() {
-              return CollectionUtility.hashSet(TableMenuType.MultiSelection);
-            }
-          }
-
-          @Order(10)
-          public class EditMulti02 extends AbstractMenu {
-            @Override
-            protected String getConfiguredText() {
-              return "multi action (permission)";
-            }
-
-            @Override
-            protected void execInitAction() throws ProcessingException {
-              super.execInitAction();
-              setVisibleGranted(false);
-            }
-
-            @Override
-            protected Set<? extends IMenuType> getConfiguredMenuTypes() {
-              return CollectionUtility.hashSet(TableMenuType.MultiSelection);
-            }
-          }
-
-        }
-
-        @Order(92)
-        public class EditEmptyMenuGroup extends AbstractMenu {
-          @Override
-          protected String getConfiguredText() {
-            return "Edit empty group";
-          }
-
-          @Order(10)
-          public class EditEmpty01 extends AbstractMenu {
-            @Override
-            protected String getConfiguredText() {
-              return "empty 01";
-            }
-
-            @Override
-            protected Set<? extends IMenuType> getConfiguredMenuTypes() {
-              return CollectionUtility.hashSet(TableMenuType.EmptySpace);
-            }
-          }
-
-          @Order(10)
-          public class EditEmpty02 extends AbstractMenu {
-            @Override
-            protected String getConfiguredText() {
-              return "empty 02 (permission)";
-            }
-
-            @Override
-            protected void execInitAction() throws ProcessingException {
-              super.execInitAction();
-              setVisibleGranted(false);
-            }
-
-            @Override
-            protected Set<? extends IMenuType> getConfiguredMenuTypes() {
-              return CollectionUtility.hashSet(TableMenuType.EmptySpace);
-            }
-          }
-
-        }
-
-        @Order(100)
-        public class SingleSelectionMenu extends AbstractMenu {
-          @Override
-          protected String getConfiguredText() {
-            return "Single selection";
-          }
-
-          @Override
-          protected Set<? extends IMenuType> getConfiguredMenuTypes() {
-            return CollectionUtility.hashSet(TableMenuType.SingleSelection);
-          }
-
-          @Override
-          protected void execAction() throws ProcessingException {
-            System.out.println("Menu: '" + getClass().getSimpleName() + "'");
-          }
-        }
-
-        @Order(110)
-        public class MultiSelectionMenu extends AbstractMenu {
-          @Override
-          protected String getConfiguredText() {
-            return getClass().getSimpleName();
-          }
-
-          @Override
-          protected Set<? extends IMenuType> getConfiguredMenuTypes() {
-            return CollectionUtility.hashSet(TableMenuType.MultiSelection);
-          }
-
-          @Override
-          protected void execAction() throws ProcessingException {
-            System.out.println("Menu: '" + getClass().getSimpleName() + "'");
-          }
-        }
-
-        @Order(120)
-        public class EmptySpaceMenu extends AbstractMenu {
-          @Override
-          protected String getConfiguredText() {
-            return getClass().getSimpleName();
-          }
-
-          @Override
-          protected Set<? extends IMenuType> getConfiguredMenuTypes() {
-            return CollectionUtility.hashSet(TableMenuType.EmptySpace);
-          }
-
-          @Override
-          protected void execAction() throws ProcessingException {
-            System.out.println("Menu: '" + getClass().getSimpleName() + "'");
-          }
         }
       }
+
     }
 
     @Order(7)
@@ -483,7 +518,12 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
 
         @Override
         protected void execInitAction() throws ProcessingException {
-          setVisibleGranted(false);
+//          setVisibleGranted(false);
+        }
+
+        @Override
+        protected boolean getConfiguredInheritAccessibility() {
+          return false;
         }
 
         @Override
