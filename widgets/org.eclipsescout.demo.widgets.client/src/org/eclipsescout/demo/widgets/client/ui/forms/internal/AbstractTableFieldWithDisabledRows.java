@@ -10,8 +10,10 @@
  ******************************************************************************/
 package org.eclipsescout.demo.widgets.client.ui.forms.internal;
 
+import org.eclipse.scout.commons.CollectionUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.client.ui.action.keystroke.AbstractKeyStroke;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
@@ -112,5 +114,21 @@ public abstract class AbstractTableFieldWithDisabledRows extends AbstractTableFi
       }
     }
 
+  }
+
+  @Order(2000)
+  public class ToggleEnableStateKeyStroke extends AbstractKeyStroke {
+    @Override
+    protected String getConfiguredKeyStroke() {
+      return "alt-e";
+    }
+
+    @Override
+    protected void execAction() throws ProcessingException {
+      ITableRow cleoRow = getTable().findRowByKey(CollectionUtility.arrayList(2L));
+      boolean newEnableState = !cleoRow.isEnabled();
+      cleoRow.setEnabled(newEnableState);
+      System.out.println("set enable state of cleo row to: " + newEnableState);
+    }
   }
 }
