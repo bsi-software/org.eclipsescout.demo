@@ -350,6 +350,35 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
                 System.out.println("Menu: '" + getClass().getSimpleName() + "'");
               }
             }
+
+            @Order(150)
+            public class NotFirstRowGroup extends AbstractMenu {
+              @Override
+              protected String getConfiguredText() {
+                return getClass().getSimpleName();
+              }
+
+              @Override
+              protected void execOwnerValueChanged(Object newOwnerValue) throws ProcessingException {
+                setVisible(!CompareUtility.equals(getNameColumn().getValue(getSelectedRow()), "Baluu"));
+              }
+
+              @Order(10)
+              public class Menu01 extends AbstractMenu {
+                @Override
+                protected String getConfiguredText() {
+                  return getClass().getSimpleName();
+                }
+              }
+
+              @Order(20)
+              public class Menu02 extends AbstractMenu {
+                @Override
+                protected String getConfiguredText() {
+                  return getClass().getSimpleName();
+                }
+              }
+            }
           }
         }
       }
