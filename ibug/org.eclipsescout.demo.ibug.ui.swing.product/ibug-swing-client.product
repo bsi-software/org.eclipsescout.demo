@@ -3,6 +3,7 @@
 
 <product name="ibug Client" uid="org.eclipsescout.demo.ibug.ui.swing.product" id="org.eclipsescout.demo.ibug.ui.swing.product" application="org.eclipsescout.demo.ibug.ui.swing.app" useFeatures="false" includeLaunchers="true">
 
+
    <configIni use="default">
       <linux>/org.eclipsescout.demo.ibug.ui.swing.product/config.ini</linux>
       <macosx>/org.eclipsescout.demo.ibug.ui.swing.product/config.ini</macosx>
@@ -16,14 +17,17 @@
 -XX:MaxPermSize=256m</vmArgs>
    </launcherArgs>
 
-   <windowImages/>
+   <windowImages i16="/org.eclipsescout.demo.ibug.ui.swing/resources/icons/application_icon16.png" i32="/org.eclipsescout.demo.ibug.ui.swing/resources/icons/application_icon32.png" i48="/org.eclipsescout.demo.ibug.ui.swing/resources/icons/application_icon48.png"/>
+
 
    <launcher name="ibug">
       <solaris/>
       <win useIco="false">
-         <bmp/>
+         <bmp
+            winSmallLow="/org.eclipsescout.demo.ibug.ui.swing/resources/icons/application_icon16_8b.bmp"/>
       </win>
    </launcher>
+
 
    <vm>
    </vm>
