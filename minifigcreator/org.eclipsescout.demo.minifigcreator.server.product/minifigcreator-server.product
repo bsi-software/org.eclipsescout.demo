@@ -10,12 +10,16 @@
    </configIni>
 
    <launcherArgs>
-      <programArgsLin>-os ${target.os} -ws ${target.ws} -arch ${target.arch} -nl ${target.nl}</programArgsLin>
-      <programArgsMac>-os ${target.os}  -arch ${target.arch} -nl ${target.nl}</programArgsMac>
-      <programArgsWin>-os ${target.os} -ws ${target.ws} -arch ${target.arch} -nl ${target.nl}</programArgsWin>
+      <programArgsLin>-os ${target.os} -ws ${target.ws} -arch ${target.arch} -nl ${target.nl}
+      </programArgsLin>
+      <programArgsMac>-os ${target.os}  -arch ${target.arch} -nl ${target.nl}
+      </programArgsMac>
+      <programArgsWin>-os ${target.os} -ws ${target.ws} -arch ${target.arch} -nl ${target.nl}
+      </programArgsWin>
       <vmArgs>-Xms64m
 -Xmx512m
--XX:MaxPermSize=256m</vmArgs>
+-XX:MaxPermSize=256m
+      </vmArgs>
    </launcherArgs>
 
    <launcher>
@@ -29,6 +33,7 @@
    </vm>
 
    <plugins>
+      <plugin id="javax.servlet"/>
       <plugin id="javax.xml"/>
       <plugin id="org.apache.commons.codec"/>
       <plugin id="org.eclipse.core.contenttype"/>
