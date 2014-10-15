@@ -119,11 +119,11 @@ public class DesktopForm extends AbstractForm {
     return getFieldByClass(TorsoField.class);
   }
 
-  public SummaryField getValueField() {
+  public SummaryField getSummaryField() {
     return getFieldByClass(SummaryField.class);
   }
 
-  private void updateImage() {
+  protected void updateImage() {
     getPreviewField().setImageId(PartUtility.calculateImageId(
         getHeadField().getValue(),
         getTorsoField().getValue(),
@@ -131,8 +131,8 @@ public class DesktopForm extends AbstractForm {
         ));
   }
 
-  private void updateSummary() {
-    getValueField().setValue(PartUtility.calculateSummary(
+  protected void updateSummary() {
+    getSummaryField().setValue(PartUtility.calculateSummary(
         getNameField().getValue(),
         getHeadField().getValue(),
         getTorsoField().getValue(),
