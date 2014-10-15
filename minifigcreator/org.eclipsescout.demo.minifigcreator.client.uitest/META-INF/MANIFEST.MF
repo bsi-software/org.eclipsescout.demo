@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Client Test
-Bundle-SymbolicName: org.eclipsescout.demo.minifigcreator.client.test
+Bundle-Name: Client UiTest
+Bundle-SymbolicName: org.eclipsescout.demo.minifigcreator.client.uitest
 Bundle-Version: 4.0.100.qualifier
 Fragment-Host: org.eclipsescout.demo.minifigcreator.client
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
