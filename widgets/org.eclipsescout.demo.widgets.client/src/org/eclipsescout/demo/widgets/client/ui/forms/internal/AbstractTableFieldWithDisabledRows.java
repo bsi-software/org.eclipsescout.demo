@@ -99,6 +99,11 @@ public abstract class AbstractTableFieldWithDisabledRows extends AbstractTableFi
       protected String getConfiguredText() {
         return getClass().getSimpleName();
       }
+
+      @Override
+      protected void execOwnerValueChanged(Object newOwnerValue) throws ProcessingException {
+        setEnabled(false);
+      }
     }
 
     @Order(1010)
