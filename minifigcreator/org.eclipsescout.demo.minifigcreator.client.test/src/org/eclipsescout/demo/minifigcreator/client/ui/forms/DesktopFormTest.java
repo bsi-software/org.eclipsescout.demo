@@ -21,6 +21,7 @@ import org.eclipsescout.demo.minifigcreator.shared.services.process.DesktopFormD
 import org.eclipsescout.demo.minifigcreator.shared.services.process.FormState;
 import org.eclipsescout.demo.minifigcreator.shared.services.process.IDesktopProcessService;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -128,6 +129,19 @@ public class DesktopFormTest {
 
     orderCheck.verify(form).updateImage();
     orderCheck.verify(form).updateSummary();
+  }
+
+  /**
+   * Ensure the behavior is correct when the name is set in the {@link DesktopForm#getNameField()}
+   */
+  @Test
+  public void testSetName() throws Exception {
+    DesktopForm form = createFormWithState(true, true, true);
+    form.startView();
+
+    form.getNameField().setValue("Bob");
+
+    Assert.assertEquals("Bob - value: 0", form.getSummaryField().getValue());
   }
 
   private DesktopForm createFormWithState(final boolean headEnabled, final boolean torsoEnabled, final boolean legsEnabled) throws ProcessingException {
