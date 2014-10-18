@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.eclipsescout.demo.minifigcreator.client.ui.forms;
 
+import org.eclipse.scout.commons.annotations.ClassId;
 import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.commons.annotations.FormData.SdkCommand;
 import org.eclipse.scout.commons.annotations.Order;
@@ -141,11 +142,15 @@ public class DesktopForm extends AbstractForm {
   }
 
   @Order(10.0)
+  @ClassId("DSKTFORM_MAIN_GRPBOX")
   public class MainBox extends AbstractGroupBox {
 
     @Order(10.0)
+    @ClassId("DSKTFORM_CONTAINER_GRPBOX")
     public class ContainerBox extends AbstractGroupBox {
+
       @Order(10.0)
+      @ClassId("DSKTFORM_NAME_TXTFLD")
       public class NameField extends AbstractStringField {
 
         @Override
@@ -170,6 +175,7 @@ public class DesktopForm extends AbstractForm {
       }
 
       @Order(20.0)
+      @ClassId("DSKTFORM_PARTS_GRPBOX")
       public class PartsBox extends AbstractGroupBox {
 
         @Override
@@ -198,6 +204,7 @@ public class DesktopForm extends AbstractForm {
         }
 
         @Order(10.0)
+        @ClassId("DSKTFORM_HEAD_SMRFLD")
         public class HeadField extends AbstractSmartField<Part> {
 
           @Override
@@ -224,6 +231,7 @@ public class DesktopForm extends AbstractForm {
         }
 
         @Order(20.0)
+        @ClassId("DSKTFORM_TORSO_SMRFLD")
         public class TorsoField extends AbstractSmartField<Part> {
 
           @Override
@@ -249,6 +257,7 @@ public class DesktopForm extends AbstractForm {
         }
 
         @Order(30.0)
+        @ClassId("DSKTFORM_LEGS_SMRFLD")
         public class LegsField extends AbstractSmartField<Part> {
 
           @Override
@@ -289,6 +298,7 @@ public class DesktopForm extends AbstractForm {
       }
 
       @Order(30.0)
+      @ClassId("DSKTFORM_PREVIEW_IMGFLD")
       public class PreviewField extends AbstractImageField {
 
         @Override
@@ -318,6 +328,7 @@ public class DesktopForm extends AbstractForm {
       }
 
       @Order(40.0)
+      @ClassId("DSKTFORM_SUMMARY_TXTFLD")
       public class SummaryField extends AbstractStringField {
 
         @Override
@@ -348,6 +359,7 @@ public class DesktopForm extends AbstractForm {
     }
 
     @Order(110.0)
+    @ClassId("DSKTFORM_EXPORT_BUTFLD")
     public class ExportButton extends AbstractButton {
 
       @Override
