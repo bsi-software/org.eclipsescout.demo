@@ -56,6 +56,10 @@ public class DesktopForm extends AbstractForm {
     super();
   }
 
+  protected DesktopForm(boolean callInitializer) throws ProcessingException {
+    super(callInitializer);
+  }
+
   @Override
   protected boolean getConfiguredAskIfNeedSave() {
     return false;

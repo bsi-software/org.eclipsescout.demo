@@ -54,7 +54,7 @@ public class DesktopFormTest {
    */
   @Test
   public void testAllEnabled() throws Exception {
-    DesktopForm form = createFormWithState(true, true, true);
+    DesktopForm form = createFormWithState(true, true, true, false);
     form.startView();
 
     ScoutClientAssert.assertEnabled(form.getHeadField());
@@ -67,7 +67,7 @@ public class DesktopFormTest {
    */
   @Test
   public void testAllDisabled() throws Exception {
-    DesktopForm form = createFormWithState(false, false, false);
+    DesktopForm form = createFormWithState(false, false, false, false);
     form.startView();
 
     ScoutClientAssert.assertDisabled(form.getHeadField());
@@ -80,7 +80,7 @@ public class DesktopFormTest {
    */
   @Test
   public void testHeadDisabled() throws Exception {
-    DesktopForm form = createFormWithState(false, true, true);
+    DesktopForm form = createFormWithState(false, true, true, false);
     form.startView();
 
     ScoutClientAssert.assertDisabled(form.getHeadField());
@@ -93,7 +93,7 @@ public class DesktopFormTest {
    */
   @Test
   public void testTorsoDisabled() throws Exception {
-    DesktopForm form = createFormWithState(true, false, true);
+    DesktopForm form = createFormWithState(true, false, true, false);
     form.startView();
 
     ScoutClientAssert.assertEnabled(form.getHeadField());
@@ -106,7 +106,7 @@ public class DesktopFormTest {
    */
   @Test
   public void testLegsDisabled() throws Exception {
-    DesktopForm form = createFormWithState(true, true, false);
+    DesktopForm form = createFormWithState(true, true, false, false);
     form.startView();
 
     ScoutClientAssert.assertEnabled(form.getHeadField());
@@ -119,7 +119,7 @@ public class DesktopFormTest {
    */
   @Test
   public void testAllMethodsAreCalled() throws Exception {
-    DesktopForm form = Mockito.spy(createFormWithState(true, true, true));
+    DesktopForm form = createFormWithState(true, true, true, true);
     form.startView();
 
     InOrder orderCheck = Mockito.inOrder(form);
@@ -136,15 +136,18 @@ public class DesktopFormTest {
    */
   @Test
   public void testSetName() throws Exception {
-    DesktopForm form = createFormWithState(true, true, true);
+    DesktopForm form = createFormWithState(true, true, true, true);
     form.startView();
 
     form.getNameField().setValue("Bob");
 
     Assert.assertEquals("Bob - value: 0", form.getSummaryField().getValue());
+
+    Mockito.verify(form, Mockito.times(1)).updateImage();
+    Mockito.verify(form, Mockito.times(2)).updateSummary();
   }
 
-  private DesktopForm createFormWithState(final boolean headEnabled, final boolean torsoEnabled, final boolean legsEnabled) throws ProcessingException {
+  private DesktopForm createFormWithState(final boolean headEnabled, final boolean torsoEnabled, final boolean legsEnabled, final boolean asSpy) throws ProcessingException {
     DesktopFormData loadFormData = new DesktopFormData();
     FormState state = new FormState();
     state.setHeadEnabled(headEnabled);
@@ -154,7 +157,25 @@ public class DesktopFormTest {
     loadFormData.setState(state);
     Mockito.when(m_mockService.load(Mockito.any(DesktopFormData.class))).thenReturn(loadFormData);
 
-    DesktopForm form = new DesktopForm();
-    return form;
+    if (asSpy) {
+      P_DesktopForm form = Mockito.spy(new P_DesktopForm());
+      form.doCallInitializer();
+      return form;
+    }
+    else {
+      DesktopForm form;
+      form = new DesktopForm();
+      return form;
+    }
+  }
+
+  public static class P_DesktopForm extends DesktopForm {
+    public P_DesktopForm() throws ProcessingException {
+      super(false);
+    }
+
+    public void doCallInitializer() throws ProcessingException {
+      super.callInitializer();
+    }
   }
 }
