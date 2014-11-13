@@ -19,6 +19,7 @@ import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.server.AbstractServerSession;
+import org.eclipse.scout.rt.server.IServerJobService;
 import org.eclipse.scout.rt.server.ServerJob;
 import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipse.scout.rt.shared.services.common.code.ICode;
@@ -55,7 +56,8 @@ public class ServerSession extends AbstractServerSession {
   @Override
   protected void execLoadSession() throws ProcessingException {
     if (getUserId() != null) {
-      if (Subject.getSubject(AccessController.getContext()) == Activator.getDefault().getBackendSubject()) {
+      final Subject serverSubject = SERVICES.getService(IServerJobService.class).getServerSubject();
+      if (Subject.getSubject(AccessController.getContext()) == serverSubject) {
         setPermission(CODES.getCode(UserRoleCodeType.UserCode.class));
       }
       else {
