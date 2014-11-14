@@ -29,30 +29,4 @@ public class SwingEnvironment extends com.bsiag.scout.rt.ui.swing.rayo.RayoSwing
       }
     }
   }
-
-  //------ Workaround for Bug 447765 ------
-  @Override
-  protected void decorate(Object scoutObject, Object swingScoutComposite) {
-    if (scoutObject instanceof IGroupBox) {
-      callAssignWidgetId(scoutObject, swingScoutComposite);
-    }
-    else if (scoutObject instanceof IStringField
-        && !((IStringField) scoutObject).isInputMasked()
-        && !((IStringField) scoutObject).isMultilineText()) {
-      callAssignWidgetId(scoutObject, swingScoutComposite);
-    }
-    else if (scoutObject instanceof IBooleanField) {
-      callAssignWidgetId(scoutObject, swingScoutComposite);
-    }
-    super.decorate(scoutObject, swingScoutComposite);
-  }
-
-  private void callAssignWidgetId(Object scoutObject, Object swingScoutComposite) {
-    if (scoutObject instanceof ITypeWithClassId && swingScoutComposite instanceof ISwingScoutComposite) {
-      ITypeWithClassId model = (ITypeWithClassId) scoutObject;
-      ISwingScoutComposite uiField = (ISwingScoutComposite) swingScoutComposite;
-      assignWidgetId(model, uiField);
-    }
-  }
-  // ------ end workaround ------
 }
