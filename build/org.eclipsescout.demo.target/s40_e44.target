@@ -84,7 +84,7 @@
 
       
 
-      <repository location="https://scout.bsiag.com/repository/marketplace-scout-4.2"/>
+      <repository location="https://scout.bsiag.com/repository/marketplace-scout-4.3"/>
     </location>
   </locations>
 </target>
