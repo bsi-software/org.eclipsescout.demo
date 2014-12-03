@@ -24,7 +24,7 @@
 
       <unit id="org.eclipse.scout.rt.ui.rap.incubator.filechooser.source.feature.group" version="0.0.0"/>
 
-      <repository id="scout_nightly_5.2" location="http://download.eclipse.org/scout/nightly/5.2"/>
+      <repository id="scout_nightly_5.1" location="http://download.eclipse.org/scout/nightly/5.1"/>
     </location>
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
