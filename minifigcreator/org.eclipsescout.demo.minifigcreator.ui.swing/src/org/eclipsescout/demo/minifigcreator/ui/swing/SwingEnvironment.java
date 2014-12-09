@@ -13,9 +13,6 @@ package org.eclipsescout.demo.minifigcreator.ui.swing;
 import javax.swing.JComponent;
 
 import org.eclipse.scout.commons.ITypeWithClassId;
-import org.eclipse.scout.rt.client.ui.form.fields.booleanfield.IBooleanField;
-import org.eclipse.scout.rt.client.ui.form.fields.groupbox.IGroupBox;
-import org.eclipse.scout.rt.client.ui.form.fields.stringfield.IStringField;
 import org.eclipse.scout.rt.ui.swing.basic.ISwingScoutComposite;
 
 public class SwingEnvironment extends com.bsiag.scout.rt.ui.swing.rayo.RayoSwingEnvironment {
