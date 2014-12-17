@@ -61,8 +61,8 @@ public class SearchFormTablePage extends AbstractPageWithTable<SearchFormTablePa
   }
 
   @Override
-  protected Object[][] execLoadTableData(SearchFilter filter) throws ProcessingException {
-    return new Object[][]{{0L, "Administrator", "RWX"}, {1L, "Manager", "RX"}, {2L, "Employer", "R"}, {3L, "External", ""}};
+  protected void execLoadData(SearchFilter filter) throws ProcessingException {
+    importTableData(new Object[][]{{0L, "Administrator", "RWX"}, {1L, "Manager", "RX"}, {2L, "Employer", "R"}, {3L, "External", ""}});
   }
 
   @Override

@@ -53,12 +53,12 @@ public class PageWithADetailformTablePage extends AbstractPageWithTable<PageWith
   }
 
   @Override
-  protected Object[][] execLoadTableData(SearchFilter filter) throws ProcessingException {
-    return new Object[][]{
+  protected void execLoadData(SearchFilter filter) throws ProcessingException {
+    importTableData(new Object[][]{
         {1, "Exxon Mobil Corporation", "XOM"},
         {2, "IBM", "IBM"},
         {3, "UBS", "UBS"},
-        {4, "Coca-Cola Company", "KO"}};
+        {4, "Coca-Cola Company", "KO"}});
   }
 
   @Order(10.0)

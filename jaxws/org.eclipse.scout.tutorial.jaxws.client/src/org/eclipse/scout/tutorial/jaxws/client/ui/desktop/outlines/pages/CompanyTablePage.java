@@ -36,8 +36,8 @@ public class CompanyTablePage extends AbstractPageWithTable<CompanyTablePage.Tab
   }
 
   @Override
-  protected Object[][] execLoadTableData(SearchFilter filter) throws ProcessingException {
-    return SERVICES.getService(IStandardOutlineService.class).getCompanyTableData();
+  protected void execLoadData(SearchFilter filter) throws ProcessingException {
+    importTableData(SERVICES.getService(IStandardOutlineService.class).getCompanyTableData());
 
   }
 
