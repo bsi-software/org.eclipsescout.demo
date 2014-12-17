@@ -31,8 +31,8 @@ public class WSLogTablePage extends AbstractPageWithTable<WSLogTablePage.Table> 
   }
 
   @Override
-  protected Object[][] execLoadTableData(SearchFilter filter) throws ProcessingException {
-    return SERVICES.getService(IStandardOutlineService.class).getWsLogTableData();
+  protected void execLoadData(SearchFilter filter) throws ProcessingException {
+    importTableData(SERVICES.getService(IStandardOutlineService.class).getWsLogTableData());
   }
 
   @Order(10.0)
