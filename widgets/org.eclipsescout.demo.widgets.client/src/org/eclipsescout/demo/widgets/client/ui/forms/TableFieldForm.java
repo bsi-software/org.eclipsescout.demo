@@ -35,6 +35,7 @@ import org.eclipsescout.demo.widgets.client.ui.forms.DetailForm.MainBox.GroupBox
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.GroupBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.GroupBox.EditableTableField;
+import org.eclipsescout.demo.widgets.shared.Icons;
 
 public class TableFieldForm extends AbstractForm implements IPageForm {
 
@@ -123,6 +124,11 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
           @Override
           protected boolean getConfiguredMultiSelect() {
             return false;
+          }
+
+          @Override
+          protected String getConfiguredDefaultIconId() {
+            return Icons.House;
           }
 
           public CompanyNrColumn getCompanyNrColumn() {

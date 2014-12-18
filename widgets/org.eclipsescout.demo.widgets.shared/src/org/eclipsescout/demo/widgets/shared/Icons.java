@@ -28,4 +28,5 @@ public class Icons extends AbstractIcons {
   public static final String WeatherRain = "weather_rain";
   public static final String WeatherSnow = "weather_snow";
   public static final String WeatherSun = "weather_sun";
+  public static final String House = "house";
 }
