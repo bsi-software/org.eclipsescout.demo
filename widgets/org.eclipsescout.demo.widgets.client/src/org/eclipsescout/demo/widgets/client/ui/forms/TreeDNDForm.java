@@ -27,7 +27,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.labelfield.AbstractLabelField;
-import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
+import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractArrayTableField;
 import org.eclipse.scout.rt.client.ui.form.fields.treefield.AbstractTreeField;
 import org.eclipse.scout.rt.extension.client.ui.basic.table.AbstractExtensibleTable;
 import org.eclipse.scout.rt.extension.client.ui.basic.tree.AbstractExtensibleTree;
@@ -372,7 +372,7 @@ public class TreeDNDForm extends AbstractForm implements IPageForm {
       }
 
       @Order(40.0)
-      public class DNDStatusField extends AbstractTableField<DNDStatusField.Table> {
+      public class DNDStatusField extends AbstractArrayTableField<DNDStatusField.Table> {
 
         public void addLine(String text) throws ProcessingException {
           ITableRow row = getTable().addRow(getTable().createRow());

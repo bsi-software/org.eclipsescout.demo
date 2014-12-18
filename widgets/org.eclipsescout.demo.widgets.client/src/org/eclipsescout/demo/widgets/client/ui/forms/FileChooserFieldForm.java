@@ -36,7 +36,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.filechooserfield.AbstractFileChooserField;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.tabbox.AbstractTabBox;
-import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
+import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractArrayTableField;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
 import org.eclipse.scout.rt.extension.client.ui.action.menu.AbstractExtensibleMenu;
 import org.eclipse.scout.rt.extension.client.ui.basic.table.AbstractExtensibleTable;
@@ -277,7 +277,7 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
           }
 
           @Order(1000.0)
-          public class ServerLogField extends AbstractTableField<ServerLogField.Table> {
+          public class ServerLogField extends AbstractArrayTableField<ServerLogField.Table> {
 
             @Override
             protected int getConfiguredGridH() {
@@ -416,7 +416,7 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
         }
 
         @Order(120.0)
-        public class ContentField extends AbstractTableField<ContentField.Table> {
+        public class ContentField extends AbstractArrayTableField<ContentField.Table> {
 
           @Override
           protected int getConfiguredGridH() {

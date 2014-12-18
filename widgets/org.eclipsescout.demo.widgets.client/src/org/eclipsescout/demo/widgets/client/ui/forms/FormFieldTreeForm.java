@@ -27,7 +27,7 @@ import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractLinkButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
-import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
+import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractArrayTableField;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.svg.client.SVGUtility;
 import org.eclipse.scout.svg.client.svgfield.AbstractSvgField;
@@ -146,7 +146,7 @@ public class FormFieldTreeForm extends AbstractForm {
     }
 
     @Order(20.0)
-    public class FormFieldTableField extends AbstractTableField<FormFieldTableField.Table> {
+    public class FormFieldTableField extends AbstractArrayTableField<FormFieldTableField.Table> {
 
       @Override
       protected int getConfiguredGridH() {
