@@ -19,12 +19,12 @@ import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
-import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
+import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractArrayTableField;
 
 /**
  *
  */
-public abstract class AbstractTableFieldWithDisabledRows extends AbstractTableField<AbstractTableFieldWithDisabledRows.Table> {
+public abstract class AbstractTableFieldWithDisabledRows extends AbstractArrayTableField<AbstractTableFieldWithDisabledRows.Table> {
 
   @Override
   protected boolean getConfiguredLabelVisible() {

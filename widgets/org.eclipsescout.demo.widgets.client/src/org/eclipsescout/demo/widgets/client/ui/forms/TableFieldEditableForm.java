@@ -33,7 +33,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
-import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
+import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractArrayTableField;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
 import org.eclipsescout.demo.widgets.client.services.lookup.CompanyLookupCall;
@@ -92,7 +92,7 @@ public class TableFieldEditableForm extends AbstractForm implements IPageForm {
     public class GroupBox extends AbstractGroupBox {
 
       @Order(10.0)
-      public class EditableTableField extends AbstractTableField<EditableTableField.Table> {
+      public class EditableTableField extends AbstractArrayTableField<EditableTableField.Table> {
 
         @Override
         protected int getConfiguredGridH() {

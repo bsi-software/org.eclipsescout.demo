@@ -28,7 +28,7 @@ import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.desktop.outline.IOutline;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
-import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
+import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractArrayTableField;
 import org.eclipse.scout.rt.extension.client.ui.form.fields.button.AbstractExtensibleButton;
 import org.eclipse.scout.rt.shared.AbstractIcons;
 import org.eclipse.scout.rt.shared.TEXTS;
@@ -97,7 +97,7 @@ public class MobileHomeForm extends AbstractMobileForm implements IOutlineChoose
     }
 
     @Order(10.0)
-    public class OutlinesTableField extends AbstractTableField<OutlinesTableField.Table> {
+    public class OutlinesTableField extends AbstractArrayTableField<OutlinesTableField.Table> {
 
       @Order(10.0)
       public class Table extends AbstractMobileTable {

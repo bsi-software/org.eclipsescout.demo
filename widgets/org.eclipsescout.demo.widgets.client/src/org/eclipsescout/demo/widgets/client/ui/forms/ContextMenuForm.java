@@ -39,7 +39,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.integerfield.AbstractIntegerFi
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.client.ui.form.fields.tabbox.AbstractTabBox;
-import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
+import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractArrayTableField;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
@@ -103,7 +103,7 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
         }
 
         @Order(5.0)
-        public class TableField extends AbstractTableField<TableField.Table> {
+        public class TableField extends AbstractArrayTableField<TableField.Table> {
 
           @Override
           protected boolean getConfiguredLabelVisible() {
@@ -391,7 +391,7 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
         }
 
         @Order(10)
-        public class TableField extends AbstractTableFieldWithDisabledRows {
+        public class TableField extends AbstractArrayTableFieldWithDisabledRows {
 
         }
       }
