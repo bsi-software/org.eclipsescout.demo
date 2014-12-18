@@ -391,7 +391,7 @@ public class ContextMenuForm extends AbstractForm implements IPageForm {
         }
 
         @Order(10)
-        public class TableField extends AbstractArrayTableFieldWithDisabledRows {
+        public class TableField extends AbstractTableFieldWithDisabledRows {
 
         }
       }
