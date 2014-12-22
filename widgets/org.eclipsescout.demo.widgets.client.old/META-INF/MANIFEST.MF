@@ -6,7 +6,8 @@ Bundle-Version: 4.0.100.qualifier
 Bundle-Activator: org.eclipsescout.demo.widgets.client.old.Activator
 Export-Package: org.eclipsescout.demo.widgets.client.old,
  org.eclipsescout.demo.widgets.client.old.ui.desktop,
- org.eclipsescout.demo.widgets.client.old.ui.desktop.outlines
+ org.eclipsescout.demo.widgets.client.old.ui.desktop.outlines,
+ org.eclipsescout.demo.widgets.client.old.ui.forms
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.scout.rt.client;visibility:=reexport,
  org.eclipse.scout.rt.extension.client;visibility:=reexport,
