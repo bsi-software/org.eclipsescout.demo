@@ -52,7 +52,7 @@ import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.template.formfield.AbstractFileTableField.Table.DeleteMenu;
 import org.eclipsescout.demo.widgets.shared.FileCodeType;
 
-public abstract class AbstractFileTableField extends AbstractTableField {
+public abstract class AbstractFileTableField extends AbstractTableField<AbstractFileTableField.Table> {
   protected static final String FILE_SIZE_FORMAT = "#,### KB";
   protected static final long FILE_SIZE_FACTOR = 1024;
 

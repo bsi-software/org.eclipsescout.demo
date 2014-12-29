@@ -10,14 +10,12 @@
  ******************************************************************************/
 package org.eclipsescout.demo.widgets.client.ui.forms;
 
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.util.List;
-import java.util.Locale;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.scout.commons.CollectionUtility;
+import org.eclipse.scout.commons.DateUtility;
 import org.eclipse.scout.commons.NumberUtility;
 import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.annotations.Order;
@@ -237,7 +235,7 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
       }
 
       @Order(10.0)
-      public class TableField extends AbstractTableField {
+      public class TableField extends AbstractTableField<TableField.Table> {
 
         private static final String EDITABLE_CELL_BACKGROUND_COLOR = "EFEFFF";
 
@@ -263,13 +261,28 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
         }
 
         public void addExampleRows() throws ProcessingException {
-          try {
-            getTable().addRowByArray(new Object[]{getNextId(), "Eclipsecon USA", "San Francisco, USA", DateFormat.getDateInstance(DateFormat.SHORT, Locale.GERMANY).parse("18.03.14"), IndustryICBCodeType.ICB9000.ICB9500.ICB9530.ICB9537.ID, 680L, "http://www.eclipsecon.org"});
-            getTable().addRowByArray(new Object[]{getNextId(), "Javaland", "Br�hl, Germany", DateFormat.getDateInstance(DateFormat.SHORT, Locale.GERMANY).parse("25.03.14"), IndustryICBCodeType.ICB9000.ICB9500.ICB9530.ICB9537.ID, 810L, "http://www.javaland.eu"});
-          }
-          catch (ParseException e) {
-            throw new ProcessingException(e.getMessage());
-          }
+          Table table = getTable();
+          ITableRow r;
+
+          //First Row:
+          r = table.addRow(getTable().createRow());
+          table.getIdColumn().setValue(r, getNextId());
+          table.getNameColumn().setValue(r, "Eclipsecon USA");
+          table.getLocationColumn().setValue(r, "San Francisco, USA");
+          table.getDateColumn().setValue(r, DateUtility.parse("18.03.2014", "dd.MM.yyyy"));
+          table.getIndustryColumn().setValue(r, IndustryICBCodeType.ICB9000.ICB9500.ICB9530.ICB9537.ID);
+          table.getParticipantsColumn().setValue(r, 680L);
+          table.getWebPageColumn().setValue(r, "http://www.eclipsecon.org");
+
+          //Second Row:
+          r = table.addRow(getTable().createRow());
+          table.getIdColumn().setValue(r, getNextId());
+          table.getNameColumn().setValue(r, "Javaland");
+          table.getLocationColumn().setValue(r, "Bruehl, Germany");
+          table.getDateColumn().setValue(r, DateUtility.parse("25.03.2014", "dd.MM.yyyy"));
+          table.getIndustryColumn().setValue(r, IndustryICBCodeType.ICB9000.ICB9500.ICB9530.ICB9537.ID);
+          table.getParticipantsColumn().setValue(r, 810L);
+          table.getWebPageColumn().setValue(r, "http://www.javaland.eu");
         }
 
         @Override
@@ -374,6 +387,11 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
             }
 
             @Override
+            protected int getConfiguredWidth() {
+              return 120;
+            }
+
+            @Override
             protected boolean execIsEditable(ITableRow row) throws ProcessingException {
               if (Table.this.isEditable(row)) {
                 row.getCellForUpdate(getNameColumn()).setBackgroundColor(EDITABLE_CELL_BACKGROUND_COLOR);
@@ -413,6 +431,11 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
             }
 
             @Override
+            protected int getConfiguredWidth() {
+              return 150;
+            }
+
+            @Override
             protected boolean execIsEditable(ITableRow row) throws ProcessingException {
               if (Table.this.isEditable(row)) {
                 row.getCellForUpdate(getLocationColumn()).setBackgroundColor(EDITABLE_CELL_BACKGROUND_COLOR);
@@ -433,6 +456,11 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
             @Override
             protected String getConfiguredHeaderText() {
               return TEXTS.get("Date");
+            }
+
+            @Override
+            protected int getConfiguredWidth() {
+              return 110;
             }
 
             @Override
@@ -469,6 +497,11 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
             }
 
             @Override
+            protected int getConfiguredWidth() {
+              return 80;
+            }
+
+            @Override
             protected boolean execIsEditable(ITableRow row) throws ProcessingException {
               if (Table.this.isEditable(row)) {
                 row.getCellForUpdate(getIndustryColumn()).setBackgroundColor(EDITABLE_CELL_BACKGROUND_COLOR);
@@ -489,6 +522,11 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
             @Override
             protected String getConfiguredHeaderText() {
               return TEXTS.get("Participans");
+            }
+
+            @Override
+            protected int getConfiguredWidth() {
+              return 100;
             }
 
             @Override
@@ -533,6 +571,11 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
             @Override
             protected boolean getConfiguredVisible() {
               return false;
+            }
+
+            @Override
+            protected int getConfiguredWidth() {
+              return 120;
             }
 
             @Override
