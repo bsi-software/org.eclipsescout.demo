@@ -85,9 +85,9 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
   }
 
   public UserNodePage getUserNodePage() {
-    IPage invisibleRootPage = getChatOutline().getRootPage();
+    IPage<?> invisibleRootPage = getChatOutline().getRootPage();
     if (invisibleRootPage != null && invisibleRootPage.getChildNodeCount() > 0) {
-      IPage p = invisibleRootPage.getChildPage(0);
+      IPage<?> p = invisibleRootPage.getChildPage(0);
       if (p instanceof UserNodePage) {
         return (UserNodePage) p;
       }

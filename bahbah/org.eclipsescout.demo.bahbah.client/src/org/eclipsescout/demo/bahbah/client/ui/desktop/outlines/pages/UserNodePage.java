@@ -86,8 +86,8 @@ public class UserNodePage extends AbstractPageWithNodes {
 
   @SuppressWarnings("unchecked")
   public void updateBuddyPages() throws ProcessingException {
-    HashSet<String> newBuddy = new HashSet();
-    ArrayList<String> updatedList = new ArrayList();
+    HashSet<String> newBuddy = new HashSet<String>();
+    ArrayList<String> updatedList = new ArrayList<String>();
     String[] buddies = SERVICES.getService(IStandardOutlineService.class).getOnlineUsers();
 
     for (String buddy : buddies) {
@@ -95,7 +95,8 @@ public class UserNodePage extends AbstractPageWithNodes {
     }
 
     // keep track of known buddies and remove buddies that are no longer here
-    for (IPage page : getChildPages()) {
+    List<IPage<?>> childPages = getChildPages();
+    for (IPage<?> page : childPages) {
       BuddyNodePage buddyPage = (BuddyNodePage) page;
 
       if (newBuddy.contains(buddyPage.getName())) {
