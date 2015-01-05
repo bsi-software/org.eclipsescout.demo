@@ -15,7 +15,7 @@
       </service>
       <service
             factory="org.eclipse.scout.rt.client.services.ClientServiceFactory"
-            class="org.eclipsescout.demo.widgets.client.services.LocalAccessControlService"
+            class="org.eclipsescout.demo.widgets.client.services.ClientAccessControlService"
             session="org.eclipsescout.demo.widgets.client.ClientSession">
       </service>
    </extension>
