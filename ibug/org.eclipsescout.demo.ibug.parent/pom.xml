@@ -32,8 +32,6 @@
     <module>../org.eclipsescout.demo.ibug.server</module>
     <module>../org.eclipsescout.demo.ibug.server.product</module>
     <module>../org.eclipsescout.demo.ibug.shared</module>
-    <module>../org.eclipsescout.demo.ibug.ui.rap</module>
-    <module>../org.eclipsescout.demo.ibug.ui.rap.product</module>
     <module>../org.eclipsescout.demo.ibug.ui.swing</module>
     <module>../org.eclipsescout.demo.ibug.ui.swing.product</module>
     <module>../org.eclipsescout.demo.ibug.ui.swt</module>
