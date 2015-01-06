@@ -36,7 +36,7 @@ public class AdvancedWidgetsOutline extends AbstractExtensibleOutline {
   }
 
   @Override
-  protected void execCreateChildPages(List<IPage> pageList) throws ProcessingException {
+  protected void execCreateChildPages(List<IPage<?>> pageList) throws ProcessingException {
 
     FormPage listBoxFieldPage = new FormPage(ListBoxForm.class);
     pageList.add(listBoxFieldPage);

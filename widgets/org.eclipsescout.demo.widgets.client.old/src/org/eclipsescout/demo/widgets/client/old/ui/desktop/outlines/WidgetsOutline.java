@@ -30,7 +30,7 @@ public class WidgetsOutline extends AbstractExtensibleOutline {
   }
 
   @Override
-  protected void execCreateChildPages(List<IPage> pageList) throws ProcessingException {
+  protected void execCreateChildPages(List<IPage<?>> pageList) throws ProcessingException {
     FormFieldsNodePage formFieldsNodePage = new FormFieldsNodePage();
     pageList.add(formFieldsNodePage);
     MenusNodePage menusNodePage = new MenusNodePage();

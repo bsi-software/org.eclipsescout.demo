@@ -48,7 +48,7 @@ public class FormFieldsNodePage extends AbstractExtensiblePageWithNodes {
   }
 
   @Override
-  protected void execCreateChildPages(List<IPage> pageList) throws ProcessingException {
+  protected void execCreateChildPages(List<IPage<?>> pageList) throws ProcessingException {
     FormPage formPage0 = new FormPage(BrowserFieldForm.class);
     pageList.add(formPage0);
 

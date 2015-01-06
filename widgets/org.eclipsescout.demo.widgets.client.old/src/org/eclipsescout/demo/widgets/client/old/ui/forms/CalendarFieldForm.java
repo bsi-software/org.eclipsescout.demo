@@ -96,8 +96,14 @@ public class CalendarFieldForm extends AbstractForm implements IPageForm {
           return false;
         }
 
+        @Override
+        protected boolean getConfiguredStatusVisible() {
+          return false;
+        }
+
         @Order(10.0)
         public class Calendar extends AbstractCalendar {
+
           @Order(10)
           public class ItemProvdider01 extends AbstractCalendarItemProvider {
 
@@ -130,11 +136,11 @@ public class CalendarFieldForm extends AbstractForm implements IPageForm {
               cal.add(java.util.Calendar.HOUR, 2);
               end = cal.getTime();
               result.add(new CalendarAppointment(1L, 2L, start, end, false, "app4 [P1]", "appointment4 body", appColor));
-
             }
 
             @Order(200)
             public class Provider1ComponentMenu extends AbstractMenu {
+
               @Override
               protected String getConfiguredText() {
                 return getClass().getSimpleName();
@@ -148,6 +154,7 @@ public class CalendarFieldForm extends AbstractForm implements IPageForm {
 
             @Order(210)
             public class Provider1EmptySpaceMenu extends AbstractMenu {
+
               @Override
               protected String getConfiguredText() {
                 return getClass().getSimpleName();
@@ -157,9 +164,7 @@ public class CalendarFieldForm extends AbstractForm implements IPageForm {
               protected Set<? extends IMenuType> getConfiguredMenuTypes() {
                 return CollectionUtility.hashSet(CalendarMenuType.EmptySpace);
               }
-
             }
-
           }
 
           @Order(20)
@@ -194,11 +199,11 @@ public class CalendarFieldForm extends AbstractForm implements IPageForm {
               cal.add(java.util.Calendar.HOUR, 2);
               end = cal.getTime();
               result.add(new CalendarAppointment(1L, 2L, start, end, false, "app4 [P2]", "appointment4 body", appColor));
-
             }
 
             @Order(200)
             public class Provider2ComponentMenu extends AbstractMenu {
+
               @Override
               protected String getConfiguredText() {
                 return getClass().getSimpleName();
@@ -212,6 +217,7 @@ public class CalendarFieldForm extends AbstractForm implements IPageForm {
 
             @Order(210)
             public class Provider2EmptySpaceMenu extends AbstractMenu {
+
               @Override
               protected String getConfiguredText() {
                 return getClass().getSimpleName();
@@ -221,12 +227,12 @@ public class CalendarFieldForm extends AbstractForm implements IPageForm {
               protected Set<? extends IMenuType> getConfiguredMenuTypes() {
                 return CollectionUtility.hashSet(CalendarMenuType.EmptySpace);
               }
-
             }
           }
 
           @Order(200)
           public class CalendarEmptySpaceMenu extends AbstractMenu {
+
             @Override
             protected String getConfiguredText() {
               return getClass().getSimpleName();
@@ -236,7 +242,6 @@ public class CalendarFieldForm extends AbstractForm implements IPageForm {
             protected Set<? extends IMenuType> getConfiguredMenuTypes() {
               return CollectionUtility.hashSet(CalendarMenuType.EmptySpace);
             }
-
           }
         }
       }

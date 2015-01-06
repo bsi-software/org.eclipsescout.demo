@@ -33,7 +33,7 @@ public class LayoutWidgetsOutline extends AbstractExtensibleOutline {
   }
 
   @Override
-  protected void execCreateChildPages(List<IPage> pageList) throws ProcessingException {
+  protected void execCreateChildPages(List<IPage<?>> pageList) throws ProcessingException {
 
     FormPage groupBoxPage = new FormPage(GroupBoxForm.class);
     pageList.add(groupBoxPage);

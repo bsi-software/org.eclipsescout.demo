@@ -38,7 +38,7 @@ public class SimpleWidgetsOutline extends AbstractExtensibleOutline {
   }
 
   @Override
-  protected void execCreateChildPages(List<IPage> pageList) throws ProcessingException {
+  protected void execCreateChildPages(List<IPage<?>> pageList) throws ProcessingException {
 
     FormPage labelFieldPage = new FormPage(LabelFieldForm.class);
     pageList.add(labelFieldPage);

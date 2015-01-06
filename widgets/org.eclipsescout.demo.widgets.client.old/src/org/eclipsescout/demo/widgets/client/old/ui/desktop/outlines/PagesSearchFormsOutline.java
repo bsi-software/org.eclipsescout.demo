@@ -30,7 +30,7 @@ public class PagesSearchFormsOutline extends AbstractExtensibleOutline {
   }
 
   @Override
-  protected void execCreateChildPages(List<IPage> pageList) throws ProcessingException {
+  protected void execCreateChildPages(List<IPage<?>> pageList) throws ProcessingException {
     PagesNodePage pagesNodePage = new PagesNodePage();
     pageList.add(pagesNodePage);
     SearchFormsNodePage searchFormsNodePage = new SearchFormsNodePage();

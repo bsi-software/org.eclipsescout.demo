@@ -33,7 +33,7 @@ public class PageWithNodesNodePage extends AbstractPageWithNodes {
   }
 
   @Override
-  protected void execCreateChildPages(List<IPage> pageList) throws ProcessingException {
+  protected void execCreateChildPages(List<IPage<?>> pageList) throws ProcessingException {
     IPage<?> pageWithTableTablePage = new PageWithTableTablePage(TEXTS.get("PageWithTable") + " 1");
     pageList.add(pageWithTableTablePage);
 

@@ -37,7 +37,7 @@ public class SearchFormsNodePage extends AbstractExtensiblePageWithNodes {
   }
 
   @Override
-  protected void execCreateChildPages(List<IPage> pageList) throws ProcessingException {
+  protected void execCreateChildPages(List<IPage<?>> pageList) throws ProcessingException {
     SearchFormTablePage searchFormTablePage = new SearchFormTablePage();
     pageList.add(searchFormTablePage);
     SearchFormTablePage searchFormTablePage0 = new SearchFormTablePage(ISearchForm.VIEW_ID_OUTLINE, "Outline");
