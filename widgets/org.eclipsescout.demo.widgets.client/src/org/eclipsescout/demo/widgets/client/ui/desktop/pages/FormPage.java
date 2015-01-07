@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
@@ -67,30 +67,30 @@ public class FormPage extends AbstractPageWithNodes {
   }
 
   @Override
-  protected void execPageActivated() throws ProcessingException {
-    if (getDetailForm() == null && m_enabled) {
-      IPageForm form = execCreateDetailForm();
-      setDetailForm(form);
-      form.getCloseButton().setVisible(false);
-      form.startPageForm();
-    }
-  }
-
-  protected IPageForm execCreateDetailForm() throws ProcessingException {
-    try {
-      return m_formType.newInstance();
-    }
-    catch (Exception e) {
-      throw new ProcessingException("create " + m_formType, e);
+  protected void ensureDetailFormCreated() throws ProcessingException {
+    if (m_enabled) {
+      super.ensureDetailFormCreated();
     }
   }
 
   @Override
-  protected void execPageDeactivated() throws ProcessingException {
-    if (getDetailForm() != null) {
-      getDetailForm().doClose();
-      setDetailForm(null);
-    }
+  public IPageForm getDetailForm() {
+    return (IPageForm) super.getDetailForm();
+  }
+
+  @Override
+  protected Class<? extends IForm> getConfiguredDetailForm() {
+    return m_formType;
+  }
+
+  @Override
+  protected void execInitDetailForm() throws ProcessingException {
+    getDetailForm().getCloseButton().setVisible(false);
+  }
+
+  @Override
+  protected void startDetailForm() throws ProcessingException {
+    getDetailForm().startPageForm();
   }
 
   @Order(10.0)
@@ -103,7 +103,7 @@ public class FormPage extends AbstractPageWithNodes {
 
     @Override
     protected void execAction() throws ProcessingException {
-      IPageForm form = execCreateDetailForm();
+      IPageForm form = (IPageForm) createDetailForm();
       form.setDisplayHint(IForm.DISPLAY_HINT_DIALOG);
       form.setAskIfNeedSave(false);
       form.startPageForm();

@@ -68,7 +68,7 @@ public class DesktopExtension extends AbstractDesktopExtension {
     @Override
     protected void execAction() throws ProcessingException {
       ToolButton1Form form = new ToolButton1Form();
-      decorateForm(form);
+      decorateForm();
       form.startTool();
       setForm(form);
     }
@@ -90,7 +90,7 @@ public class DesktopExtension extends AbstractDesktopExtension {
     @Override
     protected void execAction() throws ProcessingException {
       ToolButton2Form form = new ToolButton2Form();
-      decorateForm(form);
+      decorateForm();
       form.startTool();
       setForm(form);
     }
