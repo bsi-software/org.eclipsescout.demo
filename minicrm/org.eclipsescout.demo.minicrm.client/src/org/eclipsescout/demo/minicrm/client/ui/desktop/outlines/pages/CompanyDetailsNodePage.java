@@ -22,7 +22,7 @@ public class CompanyDetailsNodePage extends AbstractPageWithNodes {
   private Long m_companyNr;
 
   @Override
-  protected void execCreateChildPages(List<IPage> pageList) throws ProcessingException {
+  protected void execCreateChildPages(List<IPage<?>> pageList) throws ProcessingException {
     PersonTablePage personTablePage = new PersonTablePage();
     personTablePage.setCompanyNr(getCompanyNr());
     pageList.add(personTablePage);

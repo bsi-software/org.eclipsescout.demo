@@ -27,7 +27,7 @@ public class StandardOutline extends AbstractExtensibleOutline {
   }
 
   @Override
-  protected void execCreateChildPages(List<IPage> pageList) throws ProcessingException {
+  protected void execCreateChildPages(List<IPage<?>> pageList) throws ProcessingException {
     CompanyTablePage companyTablePage = new CompanyTablePage();
     pageList.add(companyTablePage);
     pageList.add(new PersonTablePage());
