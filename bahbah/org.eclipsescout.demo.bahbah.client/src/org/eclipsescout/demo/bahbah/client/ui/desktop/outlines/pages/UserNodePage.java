@@ -75,7 +75,7 @@ public class UserNodePage extends AbstractPageWithNodes {
   }
 
   @Override
-  protected void execCreateChildPages(List<IPage> pageList) throws ProcessingException {
+  protected void execCreateChildPages(List<IPage<?>> pageList) throws ProcessingException {
     String[] buddies = SERVICES.getService(IStandardOutlineService.class).getOnlineUsers();
     for (String buddy : buddies) {
       BuddyNodePage buddyPage = new BuddyNodePage();
@@ -84,7 +84,6 @@ public class UserNodePage extends AbstractPageWithNodes {
     }
   }
 
-  @SuppressWarnings("unchecked")
   public void updateBuddyPages() throws ProcessingException {
     HashSet<String> newBuddy = new HashSet<String>();
     ArrayList<String> updatedList = new ArrayList<String>();

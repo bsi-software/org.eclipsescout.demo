@@ -32,7 +32,7 @@ public class AdministrationOutline extends AbstractOutline {
   }
 
   @Override
-  protected void execCreateChildPages(List<IPage> pageList) throws ProcessingException {
+  protected void execCreateChildPages(List<IPage<?>> pageList) throws ProcessingException {
     UserAdministrationTablePage usersTablePage = new UserAdministrationTablePage();
     pageList.add(usersTablePage);
   }

@@ -26,7 +26,7 @@ public class ChatOutline extends AbstractOutline {
   }
 
   @Override
-  protected void execCreateChildPages(List<IPage> pageList) throws ProcessingException {
+  protected void execCreateChildPages(List<IPage<?>> pageList) throws ProcessingException {
     UserNodePage buddiesNodePage = new UserNodePage();
     pageList.add(buddiesNodePage);
   }
