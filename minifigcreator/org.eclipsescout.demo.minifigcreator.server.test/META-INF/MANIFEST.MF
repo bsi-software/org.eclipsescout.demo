@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Server Test
 Bundle-SymbolicName: org.eclipsescout.demo.minifigcreator.server.test
-Bundle-Version: 4.0.100.qualifier
+Bundle-Version: 4.0.200.qualifier
 Fragment-Host: org.eclipsescout.demo.minifigcreator.server
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.eclipse.scout.rt.testing.server
