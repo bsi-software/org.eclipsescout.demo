@@ -49,7 +49,6 @@ import org.eclipse.scout.rt.extension.client.ui.basic.table.AbstractExtensibleTa
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
-import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
 import org.eclipsescout.demo.widgets.client.services.lookup.IconIdLookupCall;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox;
@@ -820,11 +819,6 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
         protected void execInitField() throws ProcessingException {
           setValue(getTableField().getTable().isMultiSelect());
           setValue(getTableField().getTable().isHeaderVisible());
-
-          if (!UserAgentUtility.isSwingUi()) {
-            setTooltipText(TEXTS.get("ThisPropertyCannotBeChangedAtRuntime"));
-            setEnabled(false);
-          }
         }
       }
 
@@ -879,11 +873,6 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
         @Override
         protected void execInitField() throws ProcessingException {
           setValue(getTableField().getTable().isHeaderVisible());
-
-          if (UserAgentUtility.isSwingUi()) {
-            setTooltipText(TEXTS.get("SwingUIRestriction") + TEXTS.get("ThisPropertyCannotBeChangedAtRuntime"));
-            setEnabled(false);
-          }
         }
       }
     }

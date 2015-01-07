@@ -252,11 +252,6 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
             }
 
             @Override
-            protected boolean getConfiguredVisible() {
-              return !UserAgentUtility.isSwingUi();
-            }
-
-            @Override
             protected void execClickAction() throws ProcessingException {
               FileChooser fc = new FileChooser();
               fc.setTypeLoad(true);
