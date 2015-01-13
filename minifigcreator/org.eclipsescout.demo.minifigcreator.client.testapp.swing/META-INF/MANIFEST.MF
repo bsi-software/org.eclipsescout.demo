@@ -14,7 +14,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipsescout.demo.minifigcreator.shared,
  org.eclipsescout.demo.minifigcreator.client,
  com.bsiag.scout.rt.ui.swing.rayo
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Import-Package: org.junit;version="[4.9.0,5.0.0)",
  org.junit.runner;version="[4.9.0,5.0.0)",

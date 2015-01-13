@@ -9,5 +9,5 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.scout.rt.client;bundle-version="[4.3.0,4.4.0)";visibility:=reexport,
  org.eclipsescout.demo.minifigcreator.shared,
  org.eclipse.scout.rt.testing.shared;bundle-version="[4.3.0,4.4.0)"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
