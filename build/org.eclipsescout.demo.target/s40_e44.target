@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <?pde version="3.6"?>
-<target name="Demo Widget App Scout 4.0 (Nightly Builds) Eclipse 4.4 Target" sequenceNumber="16">
+<target name="Demo Widget App Scout 4.0 (Nightly Builds) Eclipse 4.4 Target" sequenceNumber="18">
   <locations>
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
       <unit id="org.eclipse.equinox.executable.feature.group" version="0.0.0"/>
@@ -30,7 +30,7 @@
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
       <unit id="org.eclipse.rap.feature.feature.group" version="0.0.0"/>
 
-      <repository  id="rap_2.3" location="http://download.eclipse.org/rt/rap/2.3/RC4-20140610-0925/"/>
+      <repository  id="rap_2.3" location="http://download.eclipse.org/rt/rap/2.3/R-20140610-0925/"/>
     </location>
 
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
@@ -68,7 +68,7 @@
       <unit id="org.mockito.mockito-all" version="0.0.0"/>
 
       <repository location="http://download.eclipse.org/scout/releases/4.0/testing"/>
-    
+
     </location>
     <location includeAllPlatforms="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
       <unit id="com.bsiag.scout.rt.server.jdbc.mysql5117.source.feature.group" version="0.0.0"/>
@@ -82,7 +82,7 @@
       <unit id="org.eclipse.scout.rt.server.memcached.source.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.scout.logging.bridges.source.feature.group" version="0.0.0"/>
 
-      
+
 
       <repository location="https://scout.bsiag.com/repository/marketplace-scout-4.3"/>
     </location>
