@@ -26,6 +26,7 @@ import org.eclipse.scout.rt.client.ui.desktop.IDesktop;
 import org.eclipse.scout.rt.client.ui.desktop.outline.AbstractOutlineViewButton;
 import org.eclipse.scout.rt.client.ui.desktop.outline.IOutline;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
+import org.eclipse.scout.rt.client.ui.form.IForm;
 import org.eclipse.scout.rt.client.ui.form.ScoutInfoForm;
 import org.eclipse.scout.rt.client.ui.form.outline.DefaultOutlineTableForm;
 import org.eclipse.scout.rt.client.ui.form.outline.DefaultOutlineTreeForm;
@@ -33,6 +34,7 @@ import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
 import org.eclipse.scout.rt.extension.client.ui.desktop.AbstractExtensibleDesktop;
 import org.eclipse.scout.rt.shared.AbstractIcons;
 import org.eclipse.scout.rt.shared.TEXTS;
+import org.eclipse.scout.rt.shared.ui.UiLayer;
 import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
 import org.eclipsescout.demo.widgets.client.ClientSession;
 import org.eclipsescout.demo.widgets.client.ui.desktop.outlines.AdvancedWidgetsOutline;
@@ -87,6 +89,19 @@ public class Desktop extends AbstractExtensibleDesktop implements IDesktop {
       setOutline(firstOutline);
     }
 
+  }
+
+  @Override
+  protected void execPageDetailFormChanged(IForm oldForm, IForm newForm) throws ProcessingException {
+    super.execPageDetailFormChanged(oldForm, newForm);
+    if (UiLayer.SWING.equals(UserAgentUtility.getCurrentUiLayer())) {
+      if (oldForm != null) {
+        removeForm(oldForm);
+      }
+      if (newForm != null) {
+        addForm(newForm);
+      }
+    }
   }
 
   @Order(10.0)
