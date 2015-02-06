@@ -10,23 +10,21 @@
  ******************************************************************************/
 package org.eclipse.scout.tutorial.jaxws.server.services.ws.handler;
 
-import java.io.ByteArrayOutputStream;
 import java.util.Date;
 import java.util.UUID;
 
 import javax.xml.ws.handler.soap.SOAPMessageContext;
 
 import org.eclipse.scout.commons.StringUtility;
+import org.eclipse.scout.commons.XmlUtility;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.holders.NVPair;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
-import org.eclipse.scout.commons.xmlparser.ScoutXmlDocument;
 import org.eclipse.scout.jaxws.annotation.ScoutTransaction;
 import org.eclipse.scout.jaxws.handler.LogHandler;
 import org.eclipse.scout.rt.server.services.common.jdbc.SQL;
 
-@SuppressWarnings("deprecation")
 @ScoutTransaction
 public class DatabaseLogHandler extends LogHandler {
 
@@ -90,11 +88,7 @@ public class DatabaseLogHandler extends LogHandler {
 
   private String wellformXml(String rawXml) {
     try {
-      ScoutXmlDocument doc = new ScoutXmlDocument(rawXml);
-      doc.setPrettyPrint(true);
-      ByteArrayOutputStream os = new ByteArrayOutputStream();
-      doc.write(os);
-      return new String(os.toByteArray(), doc.getXmlEncoding());
+      return XmlUtility.wellformXml(rawXml);
     }
     catch (Exception e) {
       LOG.warn("failed to wellform XML", e);
