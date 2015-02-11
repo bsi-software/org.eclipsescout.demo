@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.scout.commons.annotations.Order;
-import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.desktop.AbstractDesktopExtension;
 import org.eclipse.scout.rt.client.ui.desktop.outline.AbstractFormToolButton;
 import org.eclipse.scout.rt.client.ui.desktop.outline.AbstractOutlineViewButton;
@@ -66,11 +65,8 @@ public class DesktopExtension extends AbstractDesktopExtension {
     }
 
     @Override
-    protected void execAction() throws ProcessingException {
-      ToolButton1Form form = new ToolButton1Form();
-      decorateForm();
-      form.startTool();
-      setForm(form);
+    protected Class<ToolButton1Form> getConfiguredForm() {
+      return ToolButton1Form.class;
     }
   }
 
@@ -88,11 +84,8 @@ public class DesktopExtension extends AbstractDesktopExtension {
     }
 
     @Override
-    protected void execAction() throws ProcessingException {
-      ToolButton2Form form = new ToolButton2Form();
-      decorateForm();
-      form.startTool();
-      setForm(form);
+    protected Class<ToolButton2Form> getConfiguredForm() {
+      return ToolButton2Form.class;
     }
   }
 }

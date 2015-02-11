@@ -38,7 +38,8 @@ public class ToolButton1Form extends AbstractForm {
     return TEXTS.get("ToolButton1");
   }
 
-  public void startTool() throws ProcessingException {
+  @Override
+  public void start() throws ProcessingException {
     startInternal(new ToolHandler());
   }
 
