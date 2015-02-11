@@ -15,6 +15,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
 import org.eclipse.scout.commons.Base64Utility;
+import org.eclipse.scout.commons.EncryptionUtility2;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.exception.VetoException;
 import org.eclipse.scout.commons.holders.NVPair;
@@ -38,8 +39,8 @@ public class UserUtility extends SharedUserUtility {
       checkPassword(password);
       checkPermissionId(permission);
 
-      byte[] bSalt = HashUtility.createSalt();
-      byte[] bHash = HashUtility.hash(password.getBytes(ENCODING), bSalt);
+      byte[] bSalt = EncryptionUtility2.createRandomBytes();
+      byte[] bHash = EncryptionUtility2.hash(password.getBytes(ENCODING), bSalt);
 
       String salt = Base64Utility.encode(bSalt);
       String digest = Base64Utility.encode(bHash);
@@ -52,7 +53,7 @@ public class UserUtility extends SharedUserUtility {
 
       return true;
     }
-    catch (NoSuchAlgorithmException e) {
+    catch (ProcessingException e) {
       throw new ProcessingException("hash algorithm not found", e);
     }
     catch (UnsupportedEncodingException e) {
@@ -71,16 +72,13 @@ public class UserUtility extends SharedUserUtility {
         }
       }
 
-      byte[] bSalt = HashUtility.createSalt();
-      byte[] bHash = HashUtility.hash(newPassword.getBytes(ENCODING), bSalt);
+      byte[] bSalt = EncryptionUtility2.createRandomBytes();
+      byte[] bHash = EncryptionUtility2.hash(newPassword.getBytes(ENCODING), bSalt);
 
       String salt = Base64Utility.encode(bSalt);
       String digest = Base64Utility.encode(bHash);
 
       SQL.update("UPDATE TABUSERS SET pass = :newPass, salt = :newSalt WHERE u_id = :uid", new NVPair("newPass", digest), new NVPair("newSalt", salt), new NVPair("uid", u_Id));
-    }
-    catch (NoSuchAlgorithmException e) {
-      throw new ProcessingException("hash algorithm not found", e);
     }
     catch (UnsupportedEncodingException e) {
       throw new ProcessingException("unknown string encoding: " + ENCODING, e);
@@ -107,9 +105,6 @@ public class UserUtility extends SharedUserUtility {
       }
       return areEqual(pass, password, salt);
     }
-    catch (NoSuchAlgorithmException e) {
-      throw new ProcessingException("hash algorithm not found", e);
-    }
     catch (UnsupportedEncodingException e) {
       throw new ProcessingException("unknown string encoding: " + ENCODING, e);
     }
@@ -117,7 +112,7 @@ public class UserUtility extends SharedUserUtility {
 
   /**
    * Checks if the given two passwords have equal hashes using the given salt.
-   * 
+   *
    * @param pass1
    *          String containing the Base64 encoded password hash to check against.
    * @param pass2
@@ -127,11 +122,12 @@ public class UserUtility extends SharedUserUtility {
    * @return True if the hash of pass2 is equal with pass1 using the given salt.
    * @throws UnsupportedEncodingException
    * @throws NoSuchAlgorithmException
+   * @throws ProcessingException
    */
-  private static boolean areEqual(String pass1, String pass2, String salt) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+  private static boolean areEqual(String pass1, String pass2, String salt) throws UnsupportedEncodingException, ProcessingException {
     byte[] bPass = Base64Utility.decode(pass1);
     byte[] bSalt = Base64Utility.decode(salt);
-    byte[] bInput = HashUtility.hash(pass2.getBytes(ENCODING), bSalt);
+    byte[] bInput = EncryptionUtility2.hash(pass2.getBytes(ENCODING), bSalt);
 
     return Arrays.equals(bInput, bPass);
   }
