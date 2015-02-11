@@ -566,10 +566,16 @@ public class DateTimeFieldsForm extends AbstractForm implements IPageForm {
 
         @Override
         protected void execChangedValue() throws ProcessingException {
-          LocaleThreadLocal.set(getValue());
-          getInputField().setFormat(getDateFieldFormatField().getValue());
-          getTimeInputField().setFormat(getTimeFieldFormatField().getValue());
-          getDateTimeInputField().setFormat(getDateTimeFieldFormatField().getValue());
+          Locale oldLocale = LocaleThreadLocal.get(false);
+          try {
+            LocaleThreadLocal.set(getValue());
+            getInputField().setFormat(getDateFieldFormatField().getValue());
+            getTimeInputField().setFormat(getTimeFieldFormatField().getValue());
+            getDateTimeInputField().setFormat(getDateTimeFieldFormatField().getValue());
+          }
+          finally {
+            LocaleThreadLocal.set(oldLocale);
+          }
         }
 
         @Override
@@ -719,10 +725,16 @@ public class DateTimeFieldsForm extends AbstractForm implements IPageForm {
         getDateTimeInputField().setValue(d);
       }
 
-      LocaleThreadLocal.set(getConfigLocaleField().getValue());
-      getInputField().setFormat(getDateFieldFormatField().getValue());
-      getTimeInputField().setFormat(getTimeFieldFormatField().getValue());
-      getDateTimeInputField().setFormat(getDateTimeFieldFormatField().getValue());
+      Locale oldLocale = LocaleThreadLocal.get(false);
+      try {
+        LocaleThreadLocal.set(getConfigLocaleField().getValue());
+        getInputField().setFormat(getDateFieldFormatField().getValue());
+        getTimeInputField().setFormat(getTimeFieldFormatField().getValue());
+        getDateTimeInputField().setFormat(getDateTimeFieldFormatField().getValue());
+      }
+      finally {
+        LocaleThreadLocal.set(oldLocale);
+      }
     }
 
     @Order(30.0)
