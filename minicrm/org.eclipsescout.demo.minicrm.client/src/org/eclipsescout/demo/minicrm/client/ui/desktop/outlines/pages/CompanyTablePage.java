@@ -51,7 +51,7 @@ public class CompanyTablePage extends AbstractPageWithTable<Table> {
   }
 
   @Override
-  protected IPage execCreateChildPage(ITableRow row) throws ProcessingException {
+  protected IPage<?> execCreateChildPage(ITableRow row) throws ProcessingException {
     CompanyDetailsNodePage childPage = new CompanyDetailsNodePage();
     childPage.setCompanyNr(getTable().getCompanyNrColumn().getValue(row));
     return childPage;
