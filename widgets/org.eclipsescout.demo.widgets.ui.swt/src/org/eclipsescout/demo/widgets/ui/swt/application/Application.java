@@ -18,6 +18,7 @@ import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.scout.commons.security.SimplePrincipal;
 import org.eclipse.scout.net.NetActivator;
+import org.eclipse.scout.rt.platform.Platform;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
@@ -30,6 +31,7 @@ public class Application implements IApplication {
 
   @Override
   public Object start(final IApplicationContext context) throws Exception {
+
     m_display = getApplicationDisplay();
     try {
       Subject subject = new Subject();
@@ -51,6 +53,7 @@ public class Application implements IApplication {
   public Integer startSecure(final IApplicationContext context) throws Exception {
     Display display = PlatformUI.createDisplay();
     NetActivator.install();
+    Platform.get().start();
     if (PlatformUI.createAndRunWorkbench(display, new ApplicationWorkbenchAdvisor()) == PlatformUI.RETURN_RESTART) {
       return EXIT_RESTART;
     }

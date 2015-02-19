@@ -16,8 +16,10 @@ import org.eclipse.scout.commons.CollectionUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.annotations.PageData;
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.action.menu.IMenuType;
 import org.eclipse.scout.rt.client.ui.action.menu.TableMenuType;
+import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractSmartColumn;
@@ -26,8 +28,6 @@ import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithTabl
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.ISearchForm;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
-import org.eclipse.scout.rt.extension.client.ui.action.menu.AbstractExtensibleMenu;
-import org.eclipse.scout.rt.extension.client.ui.basic.table.AbstractExtensibleTable;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
@@ -68,7 +68,7 @@ public class CompanyTablePage extends AbstractPageWithTable<Table> {
   }
 
   @Order(10.0)
-  public class Table extends AbstractExtensibleTable {
+  public class Table extends AbstractTable {
 
     public ShortNameColumn getShortNameColumn() {
       return getColumnSet().getColumnByClass(ShortNameColumn.class);
@@ -154,7 +154,7 @@ public class CompanyTablePage extends AbstractPageWithTable<Table> {
     }
 
     @Order(10.0)
-    public class NewCompanyMenu extends AbstractExtensibleMenu {
+    public class NewCompanyMenu extends AbstractMenu {
 
       @Override
       protected String getConfiguredText() {
@@ -178,7 +178,7 @@ public class CompanyTablePage extends AbstractPageWithTable<Table> {
     }
 
     @Order(20.0)
-    public class EditCompanyMenu extends AbstractExtensibleMenu {
+    public class EditCompanyMenu extends AbstractMenu {
 
       @Override
       protected String getConfiguredText() {
@@ -203,7 +203,7 @@ public class CompanyTablePage extends AbstractPageWithTable<Table> {
     }
 
     @Order(30.0)
-    public class DeleteCompanyMenu extends AbstractExtensibleMenu {
+    public class DeleteCompanyMenu extends AbstractMenu {
 
       @Override
       protected String getConfiguredText() {

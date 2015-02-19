@@ -14,7 +14,9 @@ import java.util.List;
 
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.basic.cell.Cell;
+import org.eclipse.scout.rt.client.ui.basic.tree.AbstractTree;
 import org.eclipse.scout.rt.client.ui.basic.tree.AbstractTreeNode;
 import org.eclipse.scout.rt.client.ui.basic.tree.ITree;
 import org.eclipse.scout.rt.client.ui.basic.tree.ITreeNode;
@@ -25,8 +27,6 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.treefield.AbstractTreeField;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
-import org.eclipse.scout.rt.extension.client.ui.action.menu.AbstractExtensibleMenu;
-import org.eclipse.scout.rt.extension.client.ui.basic.tree.AbstractExtensibleTree;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.ICode;
 import org.eclipsescout.demo.widgets.client.ui.forms.TreeFieldForm.MainBox.CloseButton;
@@ -139,10 +139,10 @@ public class TreeFieldForm extends AbstractForm implements IPageForm {
         }
 
         @Order(10.0)
-        public class Tree extends AbstractExtensibleTree {
+        public class Tree extends AbstractTree {
 
           @Order(10.0)
-          public class ExpandNodeMenu extends AbstractExtensibleMenu {
+          public class ExpandNodeMenu extends AbstractMenu {
 
             @Override
             protected String getConfiguredText() {
@@ -163,7 +163,7 @@ public class TreeFieldForm extends AbstractForm implements IPageForm {
           }
 
           @Order(20.0)
-          public class CollapseNodeMenu extends AbstractExtensibleMenu {
+          public class CollapseNodeMenu extends AbstractMenu {
 
             @Override
             protected String getConfiguredText() {
@@ -183,7 +183,7 @@ public class TreeFieldForm extends AbstractForm implements IPageForm {
           }
 
           @Order(30.0)
-          public class Info_Menu extends AbstractExtensibleMenu {
+          public class Info_Menu extends AbstractMenu {
 
             @Override
             protected String getConfiguredText() {
@@ -235,7 +235,7 @@ public class TreeFieldForm extends AbstractForm implements IPageForm {
         }
 
         @Order(10.0)
-        public class Tree extends AbstractExtensibleTree {
+        public class Tree extends AbstractTree {
         }
       }
 
@@ -307,7 +307,7 @@ public class TreeFieldForm extends AbstractForm implements IPageForm {
     /**
      * recursive function to convert codes (enumerations) into an abstract tree.
      */
-    private void addCodesToTree(List<? extends ICode<Long>> list, ITreeNode parent, AbstractExtensibleTree tree) {
+    private void addCodesToTree(List<? extends ICode<Long>> list, ITreeNode parent, AbstractTree tree) {
       // create a tree node for each code
       for (final ICode<Long> code : list) {
         AbstractTreeNode node = new AbstractTreeNode() {

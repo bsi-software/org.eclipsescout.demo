@@ -28,9 +28,9 @@ import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.desktop.outline.IOutline;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
+import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractArrayTableField;
-import org.eclipse.scout.rt.extension.client.ui.form.fields.button.AbstractExtensibleButton;
 import org.eclipse.scout.rt.shared.AbstractIcons;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.minicrm.client.mobile.ui.forms.MobileHomeForm.MainBox.LogoutButton;
@@ -184,7 +184,7 @@ public class MobileHomeForm extends AbstractMobileForm implements IOutlineChoose
     }
 
     @Order(20.0)
-    public class LogoutButton extends AbstractExtensibleButton {
+    public class LogoutButton extends AbstractButton {
 
       @Override
       protected String getConfiguredLabel() {

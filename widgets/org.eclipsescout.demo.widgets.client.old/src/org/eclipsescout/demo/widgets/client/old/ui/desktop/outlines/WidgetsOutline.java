@@ -13,8 +13,8 @@ package org.eclipsescout.demo.widgets.client.old.ui.desktop.outlines;
 import java.util.List;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.client.ui.desktop.outline.AbstractOutline;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
-import org.eclipse.scout.rt.extension.client.ui.desktop.outline.AbstractExtensibleOutline;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.old.FormFieldsNodePage;
 import org.eclipsescout.demo.widgets.client.old.MenusNodePage;
@@ -22,7 +22,7 @@ import org.eclipsescout.demo.widgets.client.old.MenusNodePage;
 /**
  * @author mzi
  */
-public class WidgetsOutline extends AbstractExtensibleOutline {
+public class WidgetsOutline extends AbstractOutline {
 
   @Override
   protected String getConfiguredTitle() {

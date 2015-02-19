@@ -12,7 +12,6 @@ Export-Package: org.eclipsescout.demo.bahbah.client,
  org.eclipsescout.demo.bahbah.client.ui.forms
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.scout.rt.client;visibility:=reexport,
- org.eclipsescout.demo.bahbah.shared,
- org.eclipse.scout.rt.extension.client
+ org.eclipsescout.demo.bahbah.shared
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy

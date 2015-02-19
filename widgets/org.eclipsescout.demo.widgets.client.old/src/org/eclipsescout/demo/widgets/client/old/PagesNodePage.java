@@ -13,8 +13,8 @@ package org.eclipsescout.demo.widgets.client.old;
 import java.util.List;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNodes;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
-import org.eclipse.scout.rt.extension.client.ui.desktop.outline.pages.AbstractExtensiblePageWithNodes;
 import org.eclipse.scout.rt.shared.AbstractIcons;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.old.ui.desktop.pages.PageWithADetailformTablePage;
@@ -24,7 +24,7 @@ import org.eclipsescout.demo.widgets.client.old.ui.desktop.pages.PageWithTableTa
 /**
  * @author mzi
  */
-public class PagesNodePage extends AbstractExtensiblePageWithNodes {
+public class PagesNodePage extends AbstractPageWithNodes {
 
   @Override
   protected String getConfiguredIconId() {

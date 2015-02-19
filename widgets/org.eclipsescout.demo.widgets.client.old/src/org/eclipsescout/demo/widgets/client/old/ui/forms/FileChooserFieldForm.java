@@ -38,8 +38,6 @@ import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.tabbox.AbstractTabBox;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
-import org.eclipse.scout.rt.extension.client.ui.action.menu.AbstractExtensibleMenu;
-import org.eclipse.scout.rt.extension.client.ui.basic.table.AbstractExtensibleTable;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.shell.IShellService;
 import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
@@ -294,7 +292,7 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
             }
 
             @Order(70.0)
-            public class Table extends AbstractExtensibleTable {
+            public class Table extends AbstractTable {
 
               public TimeColumn getTimeColumn() {
                 return getColumnSet().getColumnByClass(FileChooserFieldForm.MainBox.TabBox.FileUploadBox.ServerLogBox.ServerLogField.Table.TimeColumn.class);
@@ -333,7 +331,7 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
               }
 
               @Order(90.0)
-              public class ClearMenu extends AbstractExtensibleMenu {
+              public class ClearMenu extends AbstractMenu {
 
                 @Override
                 protected String getConfiguredText() {

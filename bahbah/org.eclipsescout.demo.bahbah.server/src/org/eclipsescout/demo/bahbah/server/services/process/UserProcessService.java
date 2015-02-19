@@ -42,14 +42,13 @@ import org.eclipsescout.demo.bahbah.shared.services.code.UserRoleCodeType;
 import org.eclipsescout.demo.bahbah.shared.services.process.INotificationProcessService;
 import org.eclipsescout.demo.bahbah.shared.services.process.IUserProcessService;
 import org.eclipsescout.demo.bahbah.shared.services.process.UserFormData;
-import org.osgi.framework.ServiceRegistration;
 
 public class UserProcessService extends AbstractService implements IUserProcessService {
   private Set<String> m_users;
 
   @Override
-  public void initializeService(ServiceRegistration registration) {
-    super.initializeService(registration);
+  public void initializeService() {
+    super.initializeService();
     m_users = Collections.synchronizedSet(new HashSet<String>());
   }
 

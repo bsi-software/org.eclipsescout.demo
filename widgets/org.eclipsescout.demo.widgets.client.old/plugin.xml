@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin>
-
-   <extension
-         name=""
-         point="org.eclipse.scout.service.services">
-   </extension>
    <extension
          point="org.eclipse.scout.rt.extension.client.desktopExtensions">
       <desktopExtension
@@ -12,5 +7,4 @@
             active="true">
       </desktopExtension>
    </extension>
-
 </plugin>

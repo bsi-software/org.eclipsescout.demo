@@ -12,6 +12,7 @@ package org.eclipsescout.demo.widgets.client;
 
 import java.util.Locale;
 
+import org.eclipse.scout.commons.ConfigIniUtility;
 import org.eclipse.scout.commons.UriUtility;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
@@ -51,12 +52,12 @@ public class ClientSession extends AbstractClientSession {
 
   @Override
   protected void execLoadSession() throws ProcessingException {
-    m_footless = !Boolean.valueOf(getBundle().getBundleContext().getProperty("server.available"));
+    m_footless = !ConfigIniUtility.getPropertyBoolean("server.available", true);
     if (isFootless()) {
       logger.warn("starting client without a server!");
     }
     else {
-      setServiceTunnel(new ClientHttpServiceTunnel(this, UriUtility.toUrl(getBundle().getBundleContext().getProperty("server.url")), (String) getBundle().getHeaders().get("Bundle-Version")));
+      setServiceTunnel(new ClientHttpServiceTunnel(this, UriUtility.toUrl(ConfigIniUtility.getProperty("server.url")), (String) getBundle().getHeaders().get("Bundle-Version")));
     }
 
     CODES.getAllCodeTypes(org.eclipsescout.demo.widgets.shared.Activator.PLUGIN_ID);

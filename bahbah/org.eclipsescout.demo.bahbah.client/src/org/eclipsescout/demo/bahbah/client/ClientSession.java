@@ -4,12 +4,13 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
 package org.eclipsescout.demo.bahbah.client;
 
+import org.eclipse.scout.commons.ConfigIniUtility;
 import org.eclipse.scout.commons.UriUtility;
 import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.commons.exception.ProcessingException;
@@ -48,7 +49,7 @@ public class ClientSession extends AbstractClientSession {
 
   @Override
   protected void execLoadSession() throws ProcessingException {
-    setServiceTunnel(new ClientHttpServiceTunnel(this, UriUtility.toUrl(getBundle().getBundleContext().getProperty("server.url"))));
+    setServiceTunnel(new ClientHttpServiceTunnel(this, UriUtility.toUrl(ConfigIniUtility.getProperty("server.url"))));
 
     //pre-load all known code types
     CODES.getAllCodeTypes(org.eclipsescout.demo.bahbah.shared.Activator.PLUGIN_ID);

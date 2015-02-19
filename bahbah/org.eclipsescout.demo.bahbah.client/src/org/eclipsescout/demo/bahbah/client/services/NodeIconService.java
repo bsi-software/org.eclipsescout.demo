@@ -7,7 +7,6 @@ import java.util.Map;
 
 import org.eclipse.scout.service.AbstractService;
 import org.eclipsescout.demo.bahbah.shared.Icons;
-import org.osgi.framework.ServiceRegistration;
 
 /**
  * Service providing icons for a given node
@@ -19,7 +18,7 @@ public class NodeIconService extends AbstractService implements INodeIconService
   private final Object m_lockObject = new Object();
 
   @Override
-  public void initializeService(ServiceRegistration registration) {
+  public void initializeService() {
     synchronized (m_lockObject) {
       m_icons.add(Icons.DotBlue);
       m_icons.add(Icons.DotOrgange);

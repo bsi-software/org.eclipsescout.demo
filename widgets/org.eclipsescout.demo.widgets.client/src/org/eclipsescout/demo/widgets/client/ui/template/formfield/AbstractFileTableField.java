@@ -28,9 +28,11 @@ import org.eclipse.scout.commons.dnd.TransferObject;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.MouseButton;
 import org.eclipse.scout.rt.client.ui.action.keystroke.AbstractKeyStroke;
+import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.action.menu.IMenuType;
 import org.eclipse.scout.rt.client.ui.action.menu.TableMenuType;
 import org.eclipse.scout.rt.client.ui.basic.filechooser.FileChooser;
+import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractBooleanColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractDateTimeColumn;
@@ -39,8 +41,6 @@ import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractObjectColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractSmartColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
-import org.eclipse.scout.rt.extension.client.ui.action.menu.AbstractExtensibleMenu;
-import org.eclipse.scout.rt.extension.client.ui.basic.table.AbstractExtensibleTable;
 import org.eclipse.scout.rt.shared.AbstractIcons;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.CODES;
@@ -114,7 +114,7 @@ public abstract class AbstractFileTableField extends AbstractTableField<Abstract
   }
 
   @Order(10.0)
-  public class Table extends AbstractExtensibleTable {
+  public class Table extends AbstractTable {
 
     private Set<File> m_keys = new HashSet<File>();
 
@@ -300,7 +300,7 @@ public abstract class AbstractFileTableField extends AbstractTableField<Abstract
     }
 
     @Order(10.0)
-    public class OpenMenu extends AbstractExtensibleMenu {
+    public class OpenMenu extends AbstractMenu {
 
       @Override
       protected String getConfiguredText() {
@@ -317,7 +317,7 @@ public abstract class AbstractFileTableField extends AbstractTableField<Abstract
     }
 
     @Order(20.0)
-    public class AddMenu extends AbstractExtensibleMenu {
+    public class AddMenu extends AbstractMenu {
 
       @Override
       protected Set<? extends IMenuType> getConfiguredMenuTypes() {
@@ -345,7 +345,7 @@ public abstract class AbstractFileTableField extends AbstractTableField<Abstract
     }
 
     @Order(30.0)
-    public class DeleteMenu extends AbstractExtensibleMenu {
+    public class DeleteMenu extends AbstractMenu {
 
       @Override
       protected Set<? extends IMenuType> getConfiguredMenuTypes() {

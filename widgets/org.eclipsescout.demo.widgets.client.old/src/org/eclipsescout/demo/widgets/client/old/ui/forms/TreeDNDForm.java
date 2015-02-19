@@ -15,6 +15,7 @@ import org.eclipse.scout.commons.dnd.TextTransferObject;
 import org.eclipse.scout.commons.dnd.TransferObject;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.basic.cell.Cell;
+import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractIntegerColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
@@ -29,8 +30,6 @@ import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.labelfield.AbstractLabelField;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractArrayTableField;
 import org.eclipse.scout.rt.client.ui.form.fields.treefield.AbstractTreeField;
-import org.eclipse.scout.rt.extension.client.ui.basic.table.AbstractExtensibleTable;
-import org.eclipse.scout.rt.extension.client.ui.basic.tree.AbstractExtensibleTree;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.old.ui.forms.TreeDNDForm.MainBox.ClearButton;
 import org.eclipsescout.demo.widgets.client.old.ui.forms.TreeDNDForm.MainBox.CloseButton;
@@ -335,7 +334,7 @@ public class TreeDNDForm extends AbstractForm implements IPageForm {
         }
 
         @Order(10.0)
-        public class Tree extends AbstractExtensibleTree {
+        public class Tree extends AbstractTree {
           @Override
           protected boolean getConfiguredDragEnabled() {
             return true;
@@ -399,7 +398,7 @@ public class TreeDNDForm extends AbstractForm implements IPageForm {
         }
 
         @Order(10.0)
-        public class Table extends AbstractExtensibleTable {
+        public class Table extends AbstractTable {
 
           public IdColumn getIdColumn() {
             return getColumnSet().getColumnByClass(IdColumn.class);

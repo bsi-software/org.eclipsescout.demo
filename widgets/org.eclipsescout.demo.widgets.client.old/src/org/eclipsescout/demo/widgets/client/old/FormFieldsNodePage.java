@@ -13,8 +13,8 @@ package org.eclipsescout.demo.widgets.client.old;
 import java.util.List;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNodes;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
-import org.eclipse.scout.rt.extension.client.ui.desktop.outline.pages.AbstractExtensiblePageWithNodes;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
 import org.eclipsescout.demo.widgets.client.old.ui.forms.BrowserFieldForm;
@@ -30,12 +30,12 @@ import org.eclipsescout.demo.widgets.client.old.ui.forms.StatusForm;
 import org.eclipsescout.demo.widgets.client.old.ui.forms.TreeDNDForm;
 import org.eclipsescout.demo.widgets.client.old.ui.forms.WrappedFormFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.desktop.pages.FormPage;
-import org.eclipsescout.demo.widgets.shared.old.Icons;
+import org.eclipsescout.demo.widgets.shared.Icons;
 
 /**
  * @author mzi
  */
-public class FormFieldsNodePage extends AbstractExtensiblePageWithNodes {
+public class FormFieldsNodePage extends AbstractPageWithNodes {
 
   @Override
   protected String getConfiguredIconId() {

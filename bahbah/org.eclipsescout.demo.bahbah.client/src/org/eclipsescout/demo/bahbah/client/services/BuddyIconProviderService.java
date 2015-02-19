@@ -4,15 +4,13 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
 package org.eclipsescout.demo.bahbah.client.services;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipsescout.demo.bahbah.client.ClientSession;
-import org.eclipsescout.demo.bahbah.shared.services.process.IIconProcessService;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
@@ -20,7 +18,8 @@ import org.eclipse.scout.rt.client.ClientJob;
 import org.eclipse.scout.rt.client.services.common.icon.IconProviderService;
 import org.eclipse.scout.rt.client.services.common.icon.IconSpec;
 import org.eclipse.scout.service.SERVICES;
-import org.osgi.framework.ServiceRegistration;
+import org.eclipsescout.demo.bahbah.client.ClientSession;
+import org.eclipsescout.demo.bahbah.shared.services.process.IIconProcessService;
 
 /**
  * provider of buddy icons, extends IconProviderService from scout runtime client classes
@@ -34,8 +33,8 @@ public class BuddyIconProviderService extends IconProviderService implements IBu
   private ClientSession m_session;
 
   @Override
-  public void initializeService(ServiceRegistration registration) {
-    super.initializeService(registration);
+  public void initializeService() {
+    super.initializeService();
 
     // remember the client session because the icon lookup (getIconSpec()) is invoked from the UI thread where no session is present.
     m_session = ClientSession.get();

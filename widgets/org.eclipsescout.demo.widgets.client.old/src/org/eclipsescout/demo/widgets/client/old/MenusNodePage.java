@@ -19,8 +19,8 @@ import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.action.menu.IMenuType;
 import org.eclipse.scout.rt.client.ui.action.menu.TreeMenuType;
 import org.eclipse.scout.rt.client.ui.action.menu.checkbox.AbstractCheckBoxMenu;
+import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNodes;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
-import org.eclipse.scout.rt.extension.client.ui.desktop.outline.pages.AbstractExtensiblePageWithNodes;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.old.ui.forms.MenusForm;
 import org.eclipsescout.demo.widgets.client.ui.desktop.menu.AbstractViewSourceOnGitHubMenu;
@@ -28,7 +28,7 @@ import org.eclipsescout.demo.widgets.client.ui.desktop.menu.AbstractViewSourceOn
 /**
  * @author mzi
  */
-public class MenusNodePage extends AbstractExtensiblePageWithNodes {
+public class MenusNodePage extends AbstractPageWithNodes {
   public MenusNodePage() {
     super(true, MenusForm.class.getSimpleName());
   }

@@ -21,9 +21,11 @@ import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.exception.ProcessingStatus;
+import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.action.menu.IMenuType;
 import org.eclipse.scout.rt.client.ui.action.menu.TableMenuType;
 import org.eclipse.scout.rt.client.ui.basic.cell.Cell;
+import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
 import org.eclipse.scout.rt.client.ui.basic.table.ColumnSet;
 import org.eclipse.scout.rt.client.ui.basic.table.ITable;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
@@ -44,8 +46,6 @@ import org.eclipse.scout.rt.client.ui.form.fields.placeholder.AbstractPlaceholde
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
-import org.eclipse.scout.rt.extension.client.ui.action.menu.AbstractExtensibleMenu;
-import org.eclipse.scout.rt.extension.client.ui.basic.table.AbstractExtensibleTable;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
@@ -313,7 +313,7 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
         }
 
         @Order(10.0)
-        public class Table extends AbstractExtensibleTable {
+        public class Table extends AbstractTable {
 
           // TODO: [BUG] Table bug: organize columns throws null pointer exception
 
@@ -593,7 +593,7 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
           }
 
           @Order(10.0)
-          public class NewEventMenu extends AbstractExtensibleMenu {
+          public class NewEventMenu extends AbstractMenu {
 
             @Override
             protected Set<? extends IMenuType> getConfiguredMenuTypes() {
@@ -618,7 +618,7 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
           }
 
           @Order(20.0)
-          public class DeleteEventMenu extends AbstractExtensibleMenu {
+          public class DeleteEventMenu extends AbstractMenu {
 
             @Override
             protected Set<? extends IMenuType> getConfiguredMenuTypes() {
