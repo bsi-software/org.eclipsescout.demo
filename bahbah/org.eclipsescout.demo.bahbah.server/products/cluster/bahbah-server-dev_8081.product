@@ -12,7 +12,8 @@
    <launcherArgs>
       <vmArgs>-Xms64m
 -Xmx512m
--XX:MaxPermSize=256m</vmArgs>
+-XX:MaxPermSize=256m
+      </vmArgs>
    </launcherArgs>
 
    <windowImages/>
@@ -28,7 +29,10 @@
    </vm>
 
    <plugins>
+      <plugin id="com.bsiag.com.rabbitmq.client"/>
       <plugin id="com.bsiag.net.spy.memcached"/>
+      <plugin id="com.bsiag.scout.rt.server.jdbc.mysql5117"/>
+      <plugin id="com.mysql.jdbc_5117.fragment" fragment="true"/>
       <plugin id="javax.servlet"/>
       <plugin id="javax.xml"/>
       <plugin id="org.apache.commons.codec"/>
@@ -64,9 +68,11 @@
       <plugin id="org.eclipse.scout.rt.server"/>
       <plugin id="org.eclipse.scout.rt.server.commons"/>
       <plugin id="org.eclipse.scout.rt.server.memcached"/>
+      <plugin id="org.eclipse.scout.rt.server.rabbitmq"/>
       <plugin id="org.eclipse.scout.rt.shared"/>
       <plugin id="org.eclipse.scout.service"/>
       <plugin id="org.eclipse.update.configurator"/>
+      <plugin id="org.eclipsescout.demo.bahbah.mysql"/>
       <plugin id="org.eclipsescout.demo.bahbah.security"/>
       <plugin id="org.eclipsescout.demo.bahbah.server"/>
       <plugin id="org.eclipsescout.demo.bahbah.shared"/>

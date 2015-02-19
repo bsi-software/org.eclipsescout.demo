@@ -11,8 +11,8 @@
 package org.eclipsescout.demo.bahbah.client.ui.desktop.outlines.pages;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 
 import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.annotations.Order;
@@ -75,7 +75,7 @@ public class UserNodePage extends AbstractPageWithNodes {
   }
 
   @Override
-  protected void execCreateChildPages(Collection<IPage> pageList) throws ProcessingException {
+  protected void execCreateChildPages(List<IPage> pageList) throws ProcessingException {
     String[] buddies = SERVICES.getService(IStandardOutlineService.class).getOnlineUsers();
     for (String buddy : buddies) {
       BuddyNodePage buddyPage = new BuddyNodePage();

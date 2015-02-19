@@ -4,15 +4,20 @@
    <extension
          name=""
          point="org.eclipse.scout.service.services">
+      <proxy
+            factory="org.eclipse.scout.rt.client.services.ClientProxyServiceFactory"
+            class="org.eclipsescout.demo.widgets.shared.services.IStandardOutlineService">
+      </proxy>
       <service
             factory="org.eclipse.scout.rt.client.services.ClientServiceFactory"
             class="org.eclipsescout.demo.widgets.client.services.LocalCodeService"
             session="org.eclipsescout.demo.widgets.client.ClientSession">
       </service>
       <service
+            factory="org.eclipse.scout.rt.client.services.ClientServiceFactory"
             class="org.eclipsescout.demo.widgets.client.services.LocalAccessControlService"
-            createImmediately="false"
             session="org.eclipsescout.demo.widgets.client.ClientSession">
       </service>
    </extension>
+
 </plugin>

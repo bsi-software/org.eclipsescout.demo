@@ -64,4 +64,10 @@ public class NotificationProcessService extends AbstractService implements INoti
     IClientNotificationService service = SERVICES.getService(IClientNotificationService.class);
     service.putNotification(new MessageNotification(ServerSession.get().getUserId(), message), new SingleUserFilter(buddyName, TIMEOUT));
   }
+
+  @Override
+  public void sendRefreshBuddiesInternal() throws ProcessingException {
+    IClientNotificationService service = SERVICES.getService(IClientNotificationService.class);
+    service.putNonClusterDistributedNotification(new RefreshBuddiesNotification(), new AllUserFilter(TIMEOUT));
+  }
 }
