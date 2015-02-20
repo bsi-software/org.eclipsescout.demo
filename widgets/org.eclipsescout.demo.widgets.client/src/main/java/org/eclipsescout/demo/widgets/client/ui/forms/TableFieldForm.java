@@ -13,14 +13,12 @@ package org.eclipsescout.demo.widgets.client.ui.forms;
 import java.util.List;
 import java.util.Set;
 
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.scout.commons.CollectionUtility;
 import org.eclipse.scout.commons.DateUtility;
 import org.eclipse.scout.commons.NumberUtility;
 import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.exception.ProcessingStatus;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.action.menu.IMenuType;
 import org.eclipse.scout.rt.client.ui.action.menu.TableMenuType;
@@ -409,7 +407,7 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
               Cell cell = row.getCellForUpdate(getNameColumn());
 
               if (StringUtility.isNullOrEmpty(rawValue)) {
-                cell.setErrorStatus(new ProcessingStatus(TEXTS.get("NoEmptyName"), IStatus.ERROR));
+                cell.setErrorStatus(TEXTS.get("NoEmptyName"));
                 cell.setIconId(Icons.StatusError);
               }
               else {
@@ -551,7 +549,7 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
                 cell.setIconId(null);
               }
               else {
-                cell.setErrorStatus(new ProcessingStatus(TEXTS.get("NoNegNumber"), IStatus.ERROR));
+                cell.setErrorStatus(TEXTS.get("NoNegNumber"));
                 cell.setIconId(Icons.StatusError);
               }
 
