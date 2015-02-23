@@ -15,7 +15,7 @@ import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.client.ClientJob;
-import org.eclipse.scout.rt.client.services.common.icon.IconProviderService;
+import org.eclipse.scout.rt.client.services.common.icon.AbstractIconProviderService;
 import org.eclipse.scout.rt.client.services.common.icon.IconSpec;
 import org.eclipse.scout.service.SERVICES;
 import org.eclipsescout.demo.bahbah.client.ClientSession;
@@ -24,7 +24,7 @@ import org.eclipsescout.demo.bahbah.shared.services.process.IIconProcessService;
 /**
  * provider of buddy icons, extends IconProviderService from scout runtime client classes
  */
-public class BuddyIconProviderService extends IconProviderService implements IBuddyIconProviderService {
+public class BuddyIconProviderService extends AbstractIconProviderService implements IBuddyIconProviderService {
   private static IScoutLogger logger = ScoutLogManager.getLogger(BuddyIconProviderService.class);
 
   public static final String BUDDY_ICON_PREFIX = "@@BUDDY_ICON@@_";
