@@ -23,6 +23,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.checkbox.AbstractCheckBox;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.integerfield.AbstractIntegerField;
 import org.eclipse.scout.rt.client.ui.form.fields.placeholder.AbstractPlaceholderField;
+import org.eclipse.scout.rt.client.ui.form.fields.sequencebox.AbstractSequenceBox;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.shared.TEXTS;
@@ -32,6 +33,9 @@ import org.eclipsescout.demo.widgets.client.services.lookup.FontStyleLookupCall;
 import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.ConfigurationBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.ConfigurationBox.BackgroundColorField;
+import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.ConfigurationBox.CharCountBox;
+import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.ConfigurationBox.CharCountBox.CountWhileTypingField;
+import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.ConfigurationBox.CharCountBox.NumCharsField;
 import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.ConfigurationBox.FontNameField;
 import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.ConfigurationBox.FontSizeField;
 import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.ConfigurationBox.FontStyleField;
@@ -76,12 +80,20 @@ public class StringFieldForm extends AbstractForm implements IPageForm {
     startInternal(new PageFormHandler());
   }
 
+  public CountWhileTypingField getAlwaysSyncDisplayTextField() {
+    return getFieldByClass(CountWhileTypingField.class);
+  }
+
   public BackgroundColorField getBackgroundColorField() {
     return getFieldByClass(BackgroundColorField.class);
   }
 
   public WrapTextField getWrapTextField() {
     return getFieldByClass(WrapTextField.class);
+  }
+
+  public CharCountBox getCharCountBox() {
+    return getFieldByClass(CharCountBox.class);
   }
 
   @Override
@@ -131,6 +143,10 @@ public class StringFieldForm extends AbstractForm implements IPageForm {
    */
   public ForegroundColorField getForegroundColorField() {
     return getFieldByClass(ForegroundColorField.class);
+  }
+
+  public NumCharsField getNumCharsField() {
+    return getFieldByClass(NumCharsField.class);
   }
 
   /**
@@ -378,8 +394,15 @@ public class StringFieldForm extends AbstractForm implements IPageForm {
       public class TextInputField extends AbstractStringField {
 
         @Override
+        protected void execChangedDisplayText() {
+          String displayText = getDisplayText();
+          int length = displayText != null ? displayText.length() : 0;
+          getNumCharsField().setValue(length);
+        }
+
+        @Override
         protected int getConfiguredGridH() {
-          return 6;
+          return 5;
         }
 
         @Override
@@ -391,6 +414,12 @@ public class StringFieldForm extends AbstractForm implements IPageForm {
         protected boolean getConfiguredMultilineText() {
           return true;
         }
+
+        @Override
+        protected boolean getConfiguredUpdateDisplayTextOnModify() {
+          return true;
+        }
+
       }
 
       private void updateFontAndColors() {
@@ -406,6 +435,43 @@ public class StringFieldForm extends AbstractForm implements IPageForm {
 
         getTextInputField().setForegroundColor(foreground);
         getTextInputField().setBackgroundColor(background);
+      }
+
+      @Order(61.0)
+      public class CharCountBox extends AbstractSequenceBox {
+
+        @Order(1000.0)
+        public class NumCharsField extends AbstractIntegerField {
+
+          @Override
+          protected String getConfiguredLabel() {
+            return TEXTS.get("NumChars");
+          }
+
+          @Override
+          protected boolean getConfiguredEnabled() {
+            return false;
+          }
+        }
+
+        @Order(2000.0)
+        public class CountWhileTypingField extends AbstractCheckBox {
+
+          @Override
+          protected String getConfiguredLabel() {
+            return TEXTS.get("CountWhileTyping");
+          }
+
+          @Override
+          protected void execInitField() throws ProcessingException {
+            setValue(getTextInputField().isUpdateDisplayTextOnModify());
+          }
+
+          @Override
+          protected void execChangedValue() throws ProcessingException {
+            getTextInputField().setUpdateDisplayTextOnModify(isChecked());
+          }
+        }
       }
 
       @Order(70.0)
