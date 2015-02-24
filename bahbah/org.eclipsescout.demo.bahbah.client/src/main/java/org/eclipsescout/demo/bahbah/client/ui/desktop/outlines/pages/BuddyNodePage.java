@@ -4,20 +4,20 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
 package org.eclipsescout.demo.bahbah.client.ui.desktop.outlines.pages;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipsescout.demo.bahbah.client.ClientSession;
-import org.eclipsescout.demo.bahbah.client.services.BuddyIconProviderService;
-import org.eclipsescout.demo.bahbah.client.ui.forms.ChatForm;
 import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ClientJob;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNodes;
+import org.eclipsescout.demo.bahbah.client.BuddyAvatarIconLocator;
+import org.eclipsescout.demo.bahbah.client.ClientSession;
+import org.eclipsescout.demo.bahbah.client.ui.forms.ChatForm;
 
 public class BuddyNodePage extends AbstractPageWithNodes {
 
@@ -31,7 +31,7 @@ public class BuddyNodePage extends AbstractPageWithNodes {
 
   @Override
   protected String getConfiguredIconId() {
-    return BuddyIconProviderService.BUDDY_ICON_PREFIX + getName();
+    return BuddyAvatarIconLocator.BUDDY_ICON_PREFIX + getName();
   }
 
   @Override

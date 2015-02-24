@@ -33,7 +33,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractArrayTableF
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.data.basic.FontSpec;
 import org.eclipse.scout.service.SERVICES;
-import org.eclipsescout.demo.bahbah.client.services.BuddyIconProviderService;
+import org.eclipsescout.demo.bahbah.client.BuddyAvatarIconLocator;
 import org.eclipsescout.demo.bahbah.client.services.INodeIconService;
 import org.eclipsescout.demo.bahbah.client.ui.forms.ChatForm.MainBox.HistoryField;
 import org.eclipsescout.demo.bahbah.client.ui.forms.ChatForm.MainBox.MessageField;
@@ -154,7 +154,7 @@ public class ChatForm extends AbstractForm {
           row.setForegroundColor("000000");
 
           // set icon id of the sender of the message (user icons have a specific prefix)
-          row.setIconId(BuddyIconProviderService.BUDDY_ICON_PREFIX + getSenderColumn().getValue(row));
+          row.setIconId(BuddyAvatarIconLocator.BUDDY_ICON_PREFIX + getSenderColumn().getValue(row));
 
           // set font style and background color depending whether the message is from myself or not
           boolean isMessageFromMe = MESSAGE_TYPE_LOCAL.equals(getTypeColumn().getValue(row));

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 BSI Business Systems Integration AG.
+ * Copyright (c) 2015 BSI Business Systems Integration AG.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,66 +8,68 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
-package org.eclipsescout.demo.bahbah.client.services;
+package org.eclipsescout.demo.bahbah.client;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.scout.commons.Assertions;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.client.ClientJob;
-import org.eclipse.scout.rt.client.services.common.icon.AbstractIconProviderService;
 import org.eclipse.scout.rt.client.services.common.icon.IconSpec;
+import org.eclipse.scout.rt.client.ui.IIconLocator;
 import org.eclipse.scout.service.SERVICES;
-import org.eclipsescout.demo.bahbah.client.ClientSession;
 import org.eclipsescout.demo.bahbah.shared.services.process.IIconProcessService;
 
 /**
- * provider of buddy icons, extends IconProviderService from scout runtime client classes
+ * Icon locator wrapper that loads buddy icons from a session-scoped service.
  */
-public class BuddyIconProviderService extends AbstractIconProviderService implements IBuddyIconProviderService {
-  private static IScoutLogger logger = ScoutLogManager.getLogger(BuddyIconProviderService.class);
+public class BuddyAvatarIconLocator implements IIconLocator {
 
+  private static final IScoutLogger logger = ScoutLogManager.getLogger(BuddyAvatarIconLocator.class);
+
+  /**
+   * the default buddy icon used when the user has not uploaded an icon yet. icon must be located in client plugin
+   * under resources/icons
+   */
+  public static final String BUDDY_DEFAULT_ICON = "default_buddy_icon";
   public static final String BUDDY_ICON_PREFIX = "@@BUDDY_ICON@@_";
   public static final String OPT_BUDDY_ICON_SUFFIX = "_open";
 
-  private ClientSession m_session;
+  private final IIconLocator m_delegate;
+  private final ClientSession m_session;
 
-  @Override
-  public void initializeService() {
-    super.initializeService();
-
-    // remember the client session because the icon lookup (getIconSpec()) is invoked from the UI thread where no session is present.
-    m_session = ClientSession.get();
+  public BuddyAvatarIconLocator(ClientSession clientSession, IIconLocator delegate) {
+    Assertions.assertNotNull(delegate);
+    Assertions.assertNotNull(clientSession);
+    m_session = clientSession;
+    m_delegate = delegate;
   }
 
   @Override
   public IconSpec getIconSpec(String iconName) {
     if (iconName.startsWith(BUDDY_ICON_PREFIX)) {
-      // it is a buddy icon
-      if (iconName.endsWith(OPT_BUDDY_ICON_SUFFIX)) {
-        // special case for tables: they may add a suffix for open tree nodes -> remove as we only have one icon for expanded & not expanded folders
-        iconName = iconName.substring(0, iconName.length() - OPT_BUDDY_ICON_SUFFIX.length());
-      }
-      P_LoadDbIconJob job = new P_LoadDbIconJob(m_session, iconName.substring(BUDDY_ICON_PREFIX.length()));
-      job.schedule();
-      try {
-        job.join();
-      }
-      catch (InterruptedException e1) {
-        logger.warn("interrupted waiting on buddy icon load job. ", e1);
-      }
+      return getBuddyAvatarIconSpec(iconName);
+    }
+    return m_delegate.getIconSpec(iconName);
+  }
 
-      if (job.getIconSpec().getContent() == null) {
-        // but the user has no icon uploaded yet
-        return super.getIconSpec(BUDDY_DEFAULT_ICON);
-      }
-      else {
-        // return the icon from the database
-        return job.getIconSpec();
-      }
+  protected IconSpec getBuddyAvatarIconSpec(String iconName) {
+    // it is a buddy icon
+    if (iconName.endsWith(OPT_BUDDY_ICON_SUFFIX)) {
+      // special case for tables: they may add a suffix for open tree nodes -> remove as we only have one icon for expanded & not expanded folders
+      iconName = iconName.substring(0, iconName.length() - OPT_BUDDY_ICON_SUFFIX.length());
+    }
+
+    P_LoadDbIconJob job = new P_LoadDbIconJob(m_session, iconName.substring(BUDDY_ICON_PREFIX.length()));
+    job.runNow(null);
+    if (job.getIconSpec().getContent() == null) {
+      // but the user has no icon uploaded yet
+      return m_delegate.getIconSpec(BUDDY_DEFAULT_ICON);
     }
     else {
-      return super.getIconSpec(iconName);
+      // return the icon from the database
+      return job.getIconSpec();
     }
   }
 

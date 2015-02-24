@@ -26,8 +26,8 @@ import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
 import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
 import org.eclipse.scout.service.SERVICES;
+import org.eclipsescout.demo.bahbah.client.BuddyAvatarIconLocator;
 import org.eclipsescout.demo.bahbah.client.ClientSession;
-import org.eclipsescout.demo.bahbah.client.services.BuddyIconProviderService;
 import org.eclipsescout.demo.bahbah.client.ui.forms.ChatForm;
 import org.eclipsescout.demo.bahbah.client.ui.forms.IconChooserForm;
 import org.eclipsescout.demo.bahbah.shared.security.UpdateIconPermission;
@@ -42,7 +42,7 @@ public class UserNodePage extends AbstractPageWithNodes {
 
   @Override
   protected String getConfiguredIconId() {
-    return BuddyIconProviderService.BUDDY_ICON_PREFIX + ClientSession.get().getUserId();
+    return BuddyAvatarIconLocator.BUDDY_ICON_PREFIX + ClientSession.get().getUserId();
   }
 
   @Override

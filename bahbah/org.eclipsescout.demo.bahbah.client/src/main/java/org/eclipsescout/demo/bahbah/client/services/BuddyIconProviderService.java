@@ -4,18 +4,19 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
 package org.eclipsescout.demo.bahbah.client.services;
 
-import org.eclipse.scout.service.IService;
+import org.eclipse.scout.rt.client.services.common.icon.AbstractIconProviderService;
 
-public interface IBuddyIconProviderService extends IService {
-  /**
-   * the default buddy icon used when the user has not uploaded an icon yet. icon must be located in client plugin
-   * under resources/icons
-   */
-  final static String BUDDY_DEFAULT_ICON = "default_buddy_icon";
+public class BuddyIconProviderService extends AbstractIconProviderService {
+
+  private static final String FOLDER_NAME = "org.eclipsescout.demo.bahbah.client.icons";
+
+  public BuddyIconProviderService() {
+    setFolderName(FOLDER_NAME);
+  }
 }

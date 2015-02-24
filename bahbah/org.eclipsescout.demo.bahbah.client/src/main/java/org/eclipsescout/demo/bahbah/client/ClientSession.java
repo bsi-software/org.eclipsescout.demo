@@ -20,6 +20,7 @@ import org.eclipse.scout.rt.client.AbstractClientSession;
 import org.eclipse.scout.rt.client.ClientJob;
 import org.eclipse.scout.rt.client.services.common.clientnotification.IClientNotificationConsumerService;
 import org.eclipse.scout.rt.client.servicetunnel.http.ClientHttpServiceTunnel;
+import org.eclipse.scout.rt.client.ui.IIconLocator;
 import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipse.scout.rt.shared.services.common.code.ICode;
 import org.eclipse.scout.service.SERVICES;
@@ -69,5 +70,11 @@ public class ClientSession extends AbstractClientSession {
     // disable notification polling with -1
     ClientSession.get().getServiceTunnel().setClientNotificationPollInterval(-1);
     SERVICES.getService(IUserProcessService.class).unregisterUser();
+  }
+
+  @Override
+  protected IIconLocator createIconLocator() {
+    IIconLocator defaultIconLocator = super.createIconLocator();
+    return new BuddyAvatarIconLocator(this, defaultIconLocator);
   }
 }
