@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 BSI Business Systems Integration AG.
+ * Copyright (c) 2013 BSI Business Systems Integration AG.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,25 +8,20 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
-package org.eclipsescout.demo.bahbah.client;
+package org.eclipsescout.demo.bahbah.client.services;
 
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.scout.commons.Assertions;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
-import org.eclipse.scout.rt.client.ClientJob;
+import org.eclipse.scout.rt.client.services.common.icon.IIconProviderService;
 import org.eclipse.scout.rt.client.services.common.icon.IconSpec;
 import org.eclipse.scout.rt.client.ui.IIconLocator;
 import org.eclipse.scout.service.SERVICES;
+import org.eclipsescout.demo.bahbah.client.ClientSession;
 import org.eclipsescout.demo.bahbah.shared.services.process.IIconProcessService;
 
-/**
- * Icon locator wrapper that loads buddy icons from a session-scoped service.
- */
-public class BuddyAvatarIconLocator implements IIconLocator {
-
-  private static final IScoutLogger logger = ScoutLogManager.getLogger(BuddyAvatarIconLocator.class);
+public class BuddyAvatarIconProviderService implements IIconProviderService {
+  private static final IScoutLogger logger = ScoutLogManager.getLogger(BuddyAvatarIconProviderService.class);
 
   /**
    * the default buddy icon used when the user has not uploaded an icon yet. icon must be located in client plugin
@@ -36,14 +31,7 @@ public class BuddyAvatarIconLocator implements IIconLocator {
   public static final String BUDDY_ICON_PREFIX = "@@BUDDY_ICON@@_";
   public static final String OPT_BUDDY_ICON_SUFFIX = "_open";
 
-  private final IIconLocator m_delegate;
-  private final ClientSession m_session;
-
-  public BuddyAvatarIconLocator(ClientSession clientSession, IIconLocator delegate) {
-    Assertions.assertNotNull(delegate);
-    Assertions.assertNotNull(clientSession);
-    m_session = clientSession;
-    m_delegate = delegate;
+  public BuddyAvatarIconProviderService() {
   }
 
   @Override
@@ -51,7 +39,7 @@ public class BuddyAvatarIconLocator implements IIconLocator {
     if (iconName.startsWith(BUDDY_ICON_PREFIX)) {
       return getBuddyAvatarIconSpec(iconName);
     }
-    return m_delegate.getIconSpec(iconName);
+    return null;
   }
 
   protected IconSpec getBuddyAvatarIconSpec(String iconName) {
@@ -61,40 +49,28 @@ public class BuddyAvatarIconLocator implements IIconLocator {
       iconName = iconName.substring(0, iconName.length() - OPT_BUDDY_ICON_SUFFIX.length());
     }
 
-    P_LoadDbIconJob job = new P_LoadDbIconJob(m_session, iconName.substring(BUDDY_ICON_PREFIX.length()));
-    job.runNow(null);
-    if (job.getIconSpec().getContent() == null) {
-      // but the user has no icon uploaded yet
-      return m_delegate.getIconSpec(BUDDY_DEFAULT_ICON);
+    IconSpec spec = loadBuddyAvatarIconSpec(iconName.substring(BUDDY_ICON_PREFIX.length()));
+    if (spec.getContent() != null) {
+      // return the icon from the database
+      return spec;
     }
     else {
-      // return the icon from the database
-      return job.getIconSpec();
+      // but the user has no icon uploaded yet
+      return IIconLocator.INSTANCE.getIconSpec(BUDDY_DEFAULT_ICON);
     }
   }
 
-  private static class P_LoadDbIconJob extends ClientJob {
-    private IconSpec m_result;
-    private final String m_iconName;
-
-    public P_LoadDbIconJob(ClientSession session, String iconName) {
-      super("get buddy icon image", session, false, true);
-      m_iconName = iconName;
-    }
-
-    @Override
-    protected void runVoid(IProgressMonitor monitor) throws Throwable {
-      try {
+  protected IconSpec loadBuddyAvatarIconSpec(String m_iconName) {
+    try {
+      if (ClientSession.get() != null) {
         byte[] data = SERVICES.getService(IIconProcessService.class).loadIcon(m_iconName);
-        m_result = new IconSpec(m_iconName, data);
-      }
-      catch (ProcessingException e) {
-        logger.error("unable to get buddy icon '" + m_iconName + "' from the database", e);
+        return new IconSpec(m_iconName, data);
       }
     }
-
-    public IconSpec getIconSpec() {
-      return m_result;
+    catch (ProcessingException e) {
+      logger.error("unable to get buddy icon '" + m_iconName + "' from the database", e);
     }
+    return null;
   }
+
 }

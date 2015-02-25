@@ -15,8 +15,8 @@ import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ClientJob;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNodes;
-import org.eclipsescout.demo.bahbah.client.BuddyAvatarIconLocator;
 import org.eclipsescout.demo.bahbah.client.ClientSession;
+import org.eclipsescout.demo.bahbah.client.services.BuddyAvatarIconProviderService;
 import org.eclipsescout.demo.bahbah.client.ui.forms.ChatForm;
 
 public class BuddyNodePage extends AbstractPageWithNodes {
@@ -31,7 +31,7 @@ public class BuddyNodePage extends AbstractPageWithNodes {
 
   @Override
   protected String getConfiguredIconId() {
-    return BuddyAvatarIconLocator.BUDDY_ICON_PREFIX + getName();
+    return BuddyAvatarIconProviderService.BUDDY_ICON_PREFIX + getName();
   }
 
   @Override

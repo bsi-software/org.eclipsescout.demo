@@ -23,9 +23,8 @@ import org.eclipse.scout.commons.IOUtility;
 import org.eclipse.scout.commons.UriBuilder;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.rt.client.ClientSyncJob;
-import org.eclipse.scout.rt.client.IClientSession;
 import org.eclipse.scout.rt.client.services.common.icon.IconSpec;
+import org.eclipse.scout.rt.client.ui.IIconLocator;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
@@ -124,10 +123,9 @@ public class HTMLFieldForm extends AbstractForm implements IPageForm {
       }
 
       // load icon
-      IClientSession clientSession = ClientSyncJob.getCurrentSession();
-      IconSpec iconSpec = clientSession.getIconLocator().getIconSpec(iconName);
+      IconSpec iconSpec = IIconLocator.INSTANCE.getIconSpec(iconName);
       if (iconSpec == null && !iconName.equals(baseIconName)) {
-        iconSpec = clientSession.getIconLocator().getIconSpec(baseIconName);
+        iconSpec = IIconLocator.INSTANCE.getIconSpec(baseIconName);
       }
 
       if (iconSpec != null) {
