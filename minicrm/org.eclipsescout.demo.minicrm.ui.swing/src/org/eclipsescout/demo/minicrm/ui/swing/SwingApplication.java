@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
@@ -18,7 +18,6 @@ import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.commons.security.SimplePrincipal;
-import org.eclipse.scout.net.NetActivator;
 import org.eclipse.scout.rt.client.IClientSession;
 import org.eclipse.scout.rt.client.services.common.session.IClientSessionRegistryService;
 import org.eclipse.scout.rt.ui.swing.AbstractSwingApplication;
@@ -47,13 +46,6 @@ public class SwingApplication extends AbstractSwingApplication {
   }
 
   private Object startSecure(IApplicationContext context) throws Exception {
-    try {
-      NetActivator.install();
-    }
-    catch (Throwable t) {
-      // no net handler found
-      logger.warn("NetActivator is not available", t);
-    }
     return super.start(context);
   }
 

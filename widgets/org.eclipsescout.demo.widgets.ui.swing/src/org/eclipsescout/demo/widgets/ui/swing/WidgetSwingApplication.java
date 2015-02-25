@@ -14,7 +14,6 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
-import org.eclipse.scout.net.NetActivator;
 import org.eclipse.scout.rt.client.IClientSession;
 import org.eclipse.scout.rt.client.services.common.session.IClientSessionRegistryService;
 import org.eclipse.scout.rt.shared.ScoutTexts;
@@ -35,13 +34,6 @@ public class WidgetSwingApplication extends AbstractSwingApplication {
   @Override
   protected Object startInSubject(IApplicationContext context) throws Exception {
     LOG.info("Starting {0} {1} application...", Platform.getProduct().getName(), Platform.getProduct().getDefiningBundle().getVersion().toString());
-    try {
-      NetActivator.install();
-    }
-    catch (Exception e) {
-      // no net handler found
-      LOG.warn("NetActivator is not available", e);
-    }
     return super.startInSubject(context);
   }
 
