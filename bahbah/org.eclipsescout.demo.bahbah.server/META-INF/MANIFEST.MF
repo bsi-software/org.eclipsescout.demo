@@ -4,7 +4,6 @@ Bundle-Name: org.eclipsescout.demo.bahbah.server
 Bundle-SymbolicName: org.eclipsescout.demo.bahbah.server;singleton:=true
 Bundle-Version: 5.1.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: org.eclipsescout.demo.bahbah.server.Activator
 Export-Package: org.eclipsescout.demo.bahbah.server,
  org.eclipsescout.demo.bahbah.server.services.common.sql,
  org.eclipsescout.demo.bahbah.server.services.custom.security,

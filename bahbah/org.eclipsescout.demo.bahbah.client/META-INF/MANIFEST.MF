@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: org.eclipsescout.demo.bahbah.client
 Bundle-SymbolicName: org.eclipsescout.demo.bahbah.client;singleton:=true
 Bundle-Version: 5.1.0.qualifier
-Bundle-Activator: org.eclipsescout.demo.bahbah.client.Activator
 Export-Package: org.eclipsescout.demo.bahbah.client,
  org.eclipsescout.demo.bahbah.client.services,
  org.eclipsescout.demo.bahbah.client.ui.desktop,

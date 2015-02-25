@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: My Application
 Bundle-SymbolicName: org.eclipsescout.demo.minicrm.ui.swing;singleton:=true
 Bundle-Version: 5.1.0.qualifier
-Bundle-Activator: org.eclipsescout.demo.minicrm.ui.swing.Activator
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.scout.rt.ui.swing,
  org.eclipsescout.demo.minicrm.client;visibility:=reexport,

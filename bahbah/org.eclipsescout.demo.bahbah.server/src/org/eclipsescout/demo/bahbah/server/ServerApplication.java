@@ -42,7 +42,7 @@ public class ServerApplication implements IApplication {
           SERVICES.getService(IDbSetupService.class).installDb();
         }
         catch (Throwable t) {
-          return new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Error while installing the bahbah server Db schema", t);
+          return new Status(IStatus.ERROR, "org.eclipsescout.demo.bahbah.server", "Error while installing the bahbah server Db schema", t);
         }
 
         SERVICES.getService(IClusterSynchronizationService.class).addListener(new RegisterUserNotificationListener());

@@ -40,7 +40,7 @@ public class ClientSession extends AbstractClientSession {
     setServiceTunnel(new ClientHttpServiceTunnel(this, UriUtility.toUrl(ConfigIniUtility.getProperty("server.url"))));
 
     //pre-load all known code types
-    CODES.getAllCodeTypes(org.eclipsescout.demo.minicrm.shared.Activator.PLUGIN_ID);
+    CODES.getAllCodeTypes("org.eclipsescout.demo.minicrm.shared");
 
     setDesktop(new Desktop());
 
