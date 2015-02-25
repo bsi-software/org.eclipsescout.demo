@@ -34,7 +34,5 @@
     <module>../org.eclipsescout.demo.minicrm.shared</module>
     <module>../org.eclipsescout.demo.minicrm.ui.swing</module>
     <module>../org.eclipsescout.demo.minicrm.ui.swing.product</module>
-    <module>../org.eclipsescout.demo.minicrm.ui.swt</module>
-    <module>../org.eclipsescout.demo.minicrm.ui.swt.product</module>
   </modules>
 </project>

@@ -22,7 +22,6 @@ import org.eclipse.scout.rt.client.ui.form.fields.placeholder.AbstractPlaceholde
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.client.ui.form.fields.tabbox.AbstractTabBox;
 import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
 import org.eclipsescout.demo.widgets.client.ui.forms.TabBoxForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.TabBoxForm.MainBox.ExamplesBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.TabBoxForm.MainBox.FieldVisibilityBox;
@@ -165,13 +164,6 @@ public class TabBoxForm extends AbstractForm implements IPageForm {
       @Override
       protected String getConfiguredLabel() {
         return TEXTS.get("Examples");
-      }
-
-      @Override
-      protected void execInitField() throws ProcessingException {
-        if (UserAgentUtility.isSwtUi()) {
-          setBorderVisible(false);
-        }
       }
 
     }

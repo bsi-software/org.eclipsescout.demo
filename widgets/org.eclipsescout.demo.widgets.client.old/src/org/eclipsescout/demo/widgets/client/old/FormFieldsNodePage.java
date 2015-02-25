@@ -84,7 +84,7 @@ public class FormFieldsNodePage extends AbstractPageWithNodes {
     FormPage formPage30 = new FormPage(WrappedFormFieldForm.class);
     pageList.add(formPage30);
 
-    if (UserAgentUtility.isSwtUi() || UserAgentUtility.isWebClient()) {
+    if (UserAgentUtility.isWebClient()) {
       FormPage formPage31 = new FormPage(FormWithToolbuttonsForm.class);
       pageList.add(formPage31);
     }

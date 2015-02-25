@@ -9,7 +9,5 @@
 <project reference="1.0,https://github.com/BSI-Business-Systems-Integration-AG/org.eclipsescout.demo.git,master,bahbah/org.eclipsescout.demo.bahbah.shared"/>
 <project reference="1.0,https://github.com/BSI-Business-Systems-Integration-AG/org.eclipsescout.demo.git,master,bahbah/org.eclipsescout.demo.bahbah.ui.swing"/>
 <project reference="1.0,https://github.com/BSI-Business-Systems-Integration-AG/org.eclipsescout.demo.git,master,bahbah/org.eclipsescout.demo.bahbah.ui.swing.product"/>
-<project reference="1.0,https://github.com/BSI-Business-Systems-Integration-AG/org.eclipsescout.demo.git,master,bahbah/org.eclipsescout.demo.bahbah.ui.swt"/>
-<project reference="1.0,https://github.com/BSI-Business-Systems-Integration-AG/org.eclipsescout.demo.git,master,bahbah/org.eclipsescout.demo.bahbah.ui.swt.product"/>
 </provider>
 </psf>

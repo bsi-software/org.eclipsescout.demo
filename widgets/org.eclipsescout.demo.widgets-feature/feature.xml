@@ -54,13 +54,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipsescout.demo.widgets.ui.swt"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipsescout.demo.widgets.client.old"
          download-size="0"
          install-size="0"

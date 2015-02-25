@@ -28,7 +28,6 @@ import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.data.basic.FontSpec;
 import org.eclipse.scout.rt.shared.services.lookup.LookupRow;
-import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
 
 /**
  * @author mzi
@@ -124,10 +123,6 @@ public abstract class AbstractUserTreeField extends AbstractStringField {
     }
 
     FontSpec f = new FontSpec("Arial", 0, 12);
-
-    if (UserAgentUtility.isSwtUi()) {
-      f = new FontSpec("Arial", 0, 8);
-    }
 
     if (font.equals("italic")) {
       f = f.getItalicCopy();
