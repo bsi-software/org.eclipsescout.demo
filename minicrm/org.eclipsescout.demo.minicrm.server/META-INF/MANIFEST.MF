@@ -3,7 +3,6 @@ Bundle-Name: org.eclipsescout.demo.minicrm.server
 Bundle-SymbolicName: org.eclipsescout.demo.minicrm.server;singleton:=true
 Bundle-Version: 5.1.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: org.eclipsescout.demo.minicrm.server.Activator
 Export-Package: org.eclipsescout.demo.minicrm.server,
  org.eclipsescout.demo.minicrm.server.services,
  org.eclipsescout.demo.minicrm.server.services.common.security,
