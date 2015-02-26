@@ -10,13 +10,14 @@
  ******************************************************************************/
 package org.eclipsescout.demo.bahbah.client.services;
 
+import java.net.URL;
+
 import org.eclipse.scout.rt.client.services.common.icon.AbstractIconProviderService;
 
 public class BuddyIconProviderService extends AbstractIconProviderService {
 
-  private static final String FOLDER_NAME = "org.eclipsescout.demo.bahbah.client.icons";
-
-  public BuddyIconProviderService() {
-    setFolderName(FOLDER_NAME);
+  @Override
+  protected URL findResource(String relativePath) {
+    return org.eclipsescout.demo.bahbah.client.ResourceBase.class.getResource("icons/" + relativePath);
   }
 }

@@ -14,8 +14,8 @@ import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.client.services.common.icon.IIconProviderService;
+import org.eclipse.scout.rt.client.services.common.icon.IconLocator;
 import org.eclipse.scout.rt.client.services.common.icon.IconSpec;
-import org.eclipse.scout.rt.client.ui.IIconLocator;
 import org.eclipse.scout.service.SERVICES;
 import org.eclipsescout.demo.bahbah.client.ClientSession;
 import org.eclipsescout.demo.bahbah.shared.services.process.IIconProcessService;
@@ -56,7 +56,7 @@ public class BuddyAvatarIconProviderService implements IIconProviderService {
     }
     else {
       // but the user has no icon uploaded yet
-      return IIconLocator.INSTANCE.getIconSpec(BUDDY_DEFAULT_ICON);
+      return IconLocator.instance().getIconSpec(BUDDY_DEFAULT_ICON);
     }
   }
 
