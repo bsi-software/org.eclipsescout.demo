@@ -35,7 +35,7 @@ public class SwingRayoApplication extends AbstractSwingApplication {
   @Override
   protected IClientSession getClientSession() {
     IClientSessionRegistryService service = SERVICES.getService(IClientSessionRegistryService.class);
-    return service.newClientSession(ClientSession.class, null, initUserAgent());
+    return service.newClientSession(ClientSession.class, initUserAgent());
   }
 
   @Override
