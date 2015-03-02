@@ -39,7 +39,7 @@ public class WidgetSwingApplication extends AbstractSwingApplication {
 
   @Override
   protected IClientSession getClientSession() {
-    return SERVICES.getService(IClientSessionRegistryService.class).newClientSession(ClientSession.class, initUserAgent());
+    return SERVICES.getService(IClientSessionRegistryService.class).newClientSession(ClientSession.class, null, initUserAgent());
   }
 
   @Override
