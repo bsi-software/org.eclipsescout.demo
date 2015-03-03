@@ -104,6 +104,9 @@ public class WrappedFormFieldForm extends AbstractForm implements IPageForm {
           if (getValue() instanceof AbstractForm) {
             getWrappedFormField().setInnerForm((AbstractForm) getValue());
           }
+          else {
+            getWrappedFormField().setInnerForm(null);
+          }
         }
       }
     }
