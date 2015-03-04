@@ -23,16 +23,15 @@ import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.SmartFieldForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm;
 
-public class FormLookupCall extends LocalLookupCall<IPageForm> {
-
+public class FormLookupCall extends LocalLookupCall<Class<? extends IPageForm>> {
   private static final long serialVersionUID = 1L;
 
   @Override
-  protected List<ILookupRow<IPageForm>> execCreateLookupRows() throws ProcessingException {
-    List<ILookupRow<IPageForm>> rows = new ArrayList<ILookupRow<IPageForm>>();
-    rows.add(new LookupRow<IPageForm>(new StringFieldForm(), TEXTS.get("StringField")));
-    rows.add(new LookupRow<IPageForm>(new SmartFieldForm(), TEXTS.get("SmartField")));
-    rows.add(new LookupRow<IPageForm>(new ImageFieldForm(), TEXTS.get("ImageField")));
+  protected List<ILookupRow<Class<? extends IPageForm>>> execCreateLookupRows() throws ProcessingException {
+    List<ILookupRow<Class<? extends IPageForm>>> rows = new ArrayList<ILookupRow<Class<? extends IPageForm>>>();
+    rows.add(new LookupRow<Class<? extends IPageForm>>(StringFieldForm.class, TEXTS.get("StringField")));
+    rows.add(new LookupRow<Class<? extends IPageForm>>(SmartFieldForm.class, TEXTS.get("SmartField")));
+    rows.add(new LookupRow<Class<? extends IPageForm>>(ImageFieldForm.class, TEXTS.get("ImageField")));
     return rows;
   }
 }

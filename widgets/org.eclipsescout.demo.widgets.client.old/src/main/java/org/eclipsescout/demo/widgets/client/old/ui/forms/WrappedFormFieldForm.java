@@ -82,7 +82,7 @@ public class WrappedFormFieldForm extends AbstractForm implements IPageForm {
     public class GroupBox extends AbstractGroupBox {
 
       @Order(10.0)
-      public class InnerFormsField extends AbstractSmartField<IPageForm> {
+      public class InnerFormsField extends AbstractSmartField<Class<? extends IPageForm>> {
 
         @Override
         protected int getConfiguredGridW() {
@@ -95,17 +95,31 @@ public class WrappedFormFieldForm extends AbstractForm implements IPageForm {
         }
 
         @Override
-        protected Class<? extends ILookupCall<IPageForm>> getConfiguredLookupCall() {
+        protected Class<? extends ILookupCall<Class<? extends IPageForm>>> getConfiguredLookupCall() {
           return FormLookupCall.class;
         }
 
         @Override
+        protected void execInitField() throws ProcessingException {
+          setValue(ImageFieldForm.class);
+          fireValueChanged(); // because events are not fired by default in execInitField()
+        }
+
+        @Override
         protected void execChangedValue() throws ProcessingException {
-          if (getValue() instanceof AbstractForm) {
-            getWrappedFormField().setInnerForm((AbstractForm) getValue());
+          Class<? extends IPageForm> value = getValue();
+          if (value == null) {
+            getWrappedFormField().setInnerForm(null);
           }
           else {
-            getWrappedFormField().setInnerForm(null);
+            IPageForm form;
+            try {
+              form = value.newInstance();
+            }
+            catch (Exception e) {
+              throw new ProcessingException("Error while creating instance of " + value.getName());
+            }
+            getWrappedFormField().setInnerForm(form, true);
           }
         }
       }
@@ -120,16 +134,11 @@ public class WrappedFormFieldForm extends AbstractForm implements IPageForm {
       }
 
       @Order(10.0)
-      public class WrappedFormField extends AbstractWrappedFormField<AbstractForm> {
+      public class WrappedFormField extends AbstractWrappedFormField<IPageForm> {
 
         @Override
         protected int getConfiguredGridW() {
           return 3;
-        }
-
-        @Override
-        protected void execInitField() throws ProcessingException {
-          setInnerForm(new ImageFieldForm());
         }
       }
     }
