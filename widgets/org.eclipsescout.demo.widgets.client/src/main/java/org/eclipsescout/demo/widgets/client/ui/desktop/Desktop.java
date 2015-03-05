@@ -69,11 +69,6 @@ public class Desktop extends AbstractDesktop implements IDesktop {
 
   @Override
   protected void execOpened() throws ProcessingException {
-    //If it is a mobile or tablet device, the DesktopExtension in the mobile plugin takes care of starting the correct forms.
-    if (!UserAgentUtility.isDesktopDevice()) {
-      return;
-    }
-
     // outline tree
     DefaultOutlineTreeForm treeForm = new DefaultOutlineTreeForm();
     treeForm.setIconId(Icons.EclipseScout);
