@@ -20,7 +20,8 @@ import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.server.AbstractServerSession;
 import org.eclipse.scout.rt.server.IServerJobService;
-import org.eclipse.scout.rt.server.ServerJob;
+import org.eclipse.scout.rt.server.IServerSession;
+import org.eclipse.scout.rt.shared.ISession;
 import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipse.scout.rt.shared.services.common.code.ICode;
 import org.eclipse.scout.service.SERVICES;
@@ -38,8 +39,9 @@ public class ServerSession extends AbstractServerSession {
   /**
    * @return session in current ThreadContext
    */
-  public static ServerSession get() {
-    return ServerJob.getCurrentSession(ServerSession.class);
+  public static IServerSession get() {
+    ISession session = ISession.CURRENT.get();
+    return (IServerSession) (session instanceof IServerSession ? session : null);
   }
 
   @SuppressWarnings("unchecked")
