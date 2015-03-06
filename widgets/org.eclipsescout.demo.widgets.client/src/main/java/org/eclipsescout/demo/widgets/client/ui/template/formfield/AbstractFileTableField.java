@@ -26,7 +26,6 @@ import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.dnd.FileListTransferObject;
 import org.eclipse.scout.commons.dnd.TransferObject;
 import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.rt.client.ui.MouseButton;
 import org.eclipse.scout.rt.client.ui.action.keystroke.AbstractKeyStroke;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.action.menu.IMenuType;
@@ -136,6 +135,11 @@ public abstract class AbstractFileTableField extends AbstractTableField<Abstract
     }
 
     @Override
+    protected boolean getConfiguredMultiSelect() {
+      return false;
+    }
+
+    @Override
     protected String getConfiguredDefaultIconId() {
       return AbstractIcons.ComposerFieldEntity;
     }
@@ -204,8 +208,8 @@ public abstract class AbstractFileTableField extends AbstractTableField<Abstract
     }
 
     @Override
-    protected void execRowClick(ITableRow row, MouseButton mouseButton) throws ProcessingException {
-      execFileRowClick((File) row.getKeyValues().get(0));
+    protected void execRowsSelected(List<? extends ITableRow> rows) throws ProcessingException {
+      execFileRowClick((File) getFileColumn().getSelectedValue());
     }
 
     public DateModifiedColumn getDateModifiedColumn() {

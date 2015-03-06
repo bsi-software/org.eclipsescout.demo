@@ -15,6 +15,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Date;
 
+import org.eclipse.scout.commons.CompareUtility;
 import org.eclipse.scout.commons.IOUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
@@ -277,20 +278,26 @@ public class SplitBoxForm extends AbstractForm implements IPageForm {
               }
 
               private boolean isImage(File file) {
+                if (file == null) {
+                  return false;
+                }
                 String ext = IOUtility.getFileExtension(file.getName()).toLowerCase();
-
-                if (ext.equals("jpg")) return true;
-                if (ext.equals("jpeg")) return true;
-                if (ext.equals("png")) return true;
-
-                return false;
+                return CompareUtility.isOneOf(ext, "jpg", "jpeg", "png");
               }
 
               private void reloadDetails(File file) {
-                getNameField().setValue(file.getName());
-                getSizeField().setValue(file.length());
-                getModifiedField().setValue(new Date(file.lastModified()));
-                getReadOnlyField().setValue(!file.canWrite());
+                if (file == null) {
+                  getNameField().resetValue();
+                  getSizeField().resetValue();
+                  getModifiedField().resetValue();
+                  getReadOnlyField().resetValue();
+                }
+                else {
+                  getNameField().setValue(file.getName());
+                  getSizeField().setValue(file.length());
+                  getModifiedField().setValue(new Date(file.lastModified()));
+                  getReadOnlyField().setValue(!file.canWrite());
+                }
               }
             }
           }
