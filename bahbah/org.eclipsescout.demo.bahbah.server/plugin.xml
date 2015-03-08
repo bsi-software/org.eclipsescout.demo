@@ -45,11 +45,6 @@
             session="org.eclipsescout.demo.bahbah.server.ServerSession">
       </service>
       <service
-            factory="org.eclipse.scout.rt.server.services.ServerServiceFactory"
-            class="org.eclipse.scout.rt.server.services.common.clustersync.BahbahClusterSynchronizationService"
-            session="org.eclipsescout.demo.bahbah.server.ServerSession">
-      </service>
-      <service
             class="org.eclipsescout.demo.bahbah.server.services.db.DerbyDbSetupService"
             factory="org.eclipse.scout.rt.server.services.ServerServiceFactory"
             session="org.eclipsescout.demo.bahbah.server.ServerSession">
