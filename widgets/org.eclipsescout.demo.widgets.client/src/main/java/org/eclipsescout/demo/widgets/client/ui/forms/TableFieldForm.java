@@ -53,14 +53,15 @@ import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.Conf
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.AutoResizeColumnsField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.DefaultIconIdField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.DeletedRowsField;
-import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.HeaderRowVisibleField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.InsertedRowsField;
+import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.IsCheckableField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.IsEditableField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.MultiSelectField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.PlaceholderField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.SelectedRowsField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.TableField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.TableField.Table.LocationColumn;
+import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.TableHeaderVisibleField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.TableStatusVisibleField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.UpdatedRowsField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ExamplesBox;
@@ -118,10 +119,10 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
   }
 
   /**
-   * @return the HeaderRowVisibleField
+   * @return the TableHeaderVisibleField
    */
-  public HeaderRowVisibleField getHeaderRowVisibleField() {
-    return getFieldByClass(HeaderRowVisibleField.class);
+  public TableHeaderVisibleField getTableHeaderVisibleField() {
+    return getFieldByClass(TableHeaderVisibleField.class);
   }
 
   /**
@@ -136,6 +137,13 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
    */
   public IsEditableField getIsEditableField() {
     return getFieldByClass(IsEditableField.class);
+  }
+
+  /**
+   * @return the getFieldByClass
+   */
+  public IsCheckableField getIsCheckableField() {
+    return getFieldByClass(IsCheckableField.class);
   }
 
   public MainBox getMainBox() {
@@ -240,7 +248,7 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected int getConfiguredGridH() {
-          return 4;
+          return 5;
         }
 
         @Override
@@ -725,6 +733,15 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
 
       @Order(70.0)
       public class PlaceholderField extends AbstractPlaceholderField {
+        @Override
+        protected int getConfiguredGridH() {
+          return 2;
+        }
+
+        @Override
+        protected double getConfiguredGridWeightY() {
+          return 0;
+        }
       }
 
       @Order(80.0)
@@ -821,6 +838,31 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
       }
 
       @Order(120.0)
+      public class IsCheckableField extends AbstractCheckBox {
+
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("IsCheckable");
+        }
+
+        @Override
+        protected String getConfiguredFont() {
+          return "ITALIC";
+        }
+
+        @Override
+        protected void execChangedValue() throws ProcessingException {
+          getTableField().getTable().setCheckable(getValue());
+        }
+
+        @Override
+        protected void execInitField() throws ProcessingException {
+          setValue(getTableField().getTable().isCheckable());
+        }
+
+      }
+
+      @Order(130.0)
       public class TableStatusVisibleField extends AbstractBooleanField {
 
         @Override
@@ -850,12 +892,12 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
         }
       }
 
-      @Order(130.0)
-      public class HeaderRowVisibleField extends AbstractCheckBox {
+      @Order(140.0)
+      public class TableHeaderVisibleField extends AbstractCheckBox {
 
         @Override
         protected String getConfiguredLabel() {
-          return TEXTS.get("HeaderRowVisible");
+          return TEXTS.get("TableHeaderVisible");
         }
 
         @Override
