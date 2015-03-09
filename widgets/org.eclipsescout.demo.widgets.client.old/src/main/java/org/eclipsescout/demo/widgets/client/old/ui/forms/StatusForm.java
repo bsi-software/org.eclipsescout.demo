@@ -252,7 +252,7 @@ public class StatusForm extends AbstractForm implements IPageForm {
           getINFOStatusButton().setSelected(false);
           for (IFormField f : getAllFields()) {
             if (f instanceof IValueField<?>) {
-              f.setErrorStatus(new ScoutFieldStatus("Error on " + f.getClass().getSimpleName(), ScoutFieldStatus.ERROR));
+              f.addErrorStatus(new ScoutFieldStatus("Error on " + f.getClass().getSimpleName(), ScoutFieldStatus.ERROR));
             }
           }
         }
@@ -284,7 +284,7 @@ public class StatusForm extends AbstractForm implements IPageForm {
           getINFOStatusButton().setSelected(false);
           for (IFormField f : getAllFields()) {
             if (f instanceof IValueField<?>) {
-              f.setErrorStatus(new ScoutFieldStatus("Warning on " + f.getClass().getSimpleName(), ScoutFieldStatus.WARNING));
+              f.addErrorStatus(new ScoutFieldStatus("Warning on " + f.getClass().getSimpleName(), ScoutFieldStatus.WARNING));
             }
           }
         }
@@ -316,7 +316,7 @@ public class StatusForm extends AbstractForm implements IPageForm {
           getWARNINGStatusButton().setSelected(false);
           for (IFormField f : getAllFields()) {
             if (f instanceof IValueField<?>) {
-              f.setErrorStatus(new ScoutFieldStatus("Info on " + f.getClass().getSimpleName(), ScoutFieldStatus.INFO));
+              f.addErrorStatus(new ScoutFieldStatus("Info on " + f.getClass().getSimpleName(), ScoutFieldStatus.INFO));
             }
           }
         }

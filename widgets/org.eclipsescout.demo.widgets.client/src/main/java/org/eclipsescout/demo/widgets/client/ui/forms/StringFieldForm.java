@@ -573,7 +573,7 @@ public class StringFieldForm extends AbstractForm implements IPageForm {
           }
 
           if (!rawValue.matches("[0-9A-Fa-f]{6}")) {
-            this.setErrorStatus("\"" + rawValue + "\" " + TEXTS.get("NoColor"));
+            this.addErrorStatus("\"" + rawValue + "\" " + TEXTS.get("NoColor"));
           }
 
           return rawValue;
@@ -607,7 +607,7 @@ public class StringFieldForm extends AbstractForm implements IPageForm {
           }
 
           if (!rawValue.matches("[0-9A-Fa-f]{6}")) {
-            this.setErrorStatus("\"" + rawValue + "\" " + TEXTS.get("NoColor"));
+            this.addErrorStatus("\"" + rawValue + "\" " + TEXTS.get("NoColor"));
           }
 
           return rawValue;

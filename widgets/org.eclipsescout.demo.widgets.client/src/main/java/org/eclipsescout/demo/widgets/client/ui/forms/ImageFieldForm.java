@@ -221,7 +221,7 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
               }
               catch (Exception e) {
                 e.printStackTrace();
-                setErrorStatus(e.getMessage());
+                addErrorStatus(e.getMessage());
               }
             }
           }
@@ -237,7 +237,7 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
           }
           catch (Exception e) {
             e.printStackTrace();
-            setErrorStatus(e.getMessage());
+            addErrorStatus(e.getMessage());
           }
         }
       }
@@ -347,7 +347,7 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
           }
           catch (Exception e) {
             e.printStackTrace();
-            getImageURLField().setErrorStatus(e.getMessage());
+            getImageURLField().addErrorStatus(e.getMessage());
           }
         }
       }

@@ -234,7 +234,7 @@ public class SvgFieldForm extends AbstractForm implements IPageForm {
           }
           catch (Exception e) {
             e.printStackTrace();
-            getSvgSourceField().setErrorStatus(e.getMessage());
+            getSvgSourceField().addErrorStatus(e.getMessage());
           }
         }
 

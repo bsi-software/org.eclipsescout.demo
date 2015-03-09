@@ -57,7 +57,7 @@ public abstract class AbstractUserTreeField extends AbstractStringField {
         Node node = parseLine(line, isTree);
 
         if (node.isInvalid()) {
-          setErrorStatus(node.invalidMessage() + ". Line: '" + line + "'");
+          addErrorStatus(node.invalidMessage() + ". Line: '" + line + "'");
           break;
         }
 
