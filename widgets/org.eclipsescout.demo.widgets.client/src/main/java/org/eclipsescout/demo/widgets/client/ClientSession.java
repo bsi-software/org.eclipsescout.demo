@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.eclipsescout.demo.widgets.client;
 
+import java.net.URL;
 import java.util.Locale;
 
 import org.eclipse.scout.commons.ConfigIniUtility;
@@ -54,10 +55,11 @@ public class ClientSession extends AbstractClientSession {
   protected void execLoadSession() throws ProcessingException {
     m_footless = !ConfigIniUtility.getPropertyBoolean("server.available", true);
     if (isFootless()) {
-      logger.warn("starting client without a server!");
+      logger.info("starting client without a server!");
     }
     else {
-      setServiceTunnel(new ClientHttpServiceTunnel(this, UriUtility.toUrl(ConfigIniUtility.getProperty("server.url")), (String) getBundle().getHeaders().get("Bundle-Version")));
+      URL url = UriUtility.toUrl(ConfigIniUtility.getProperty("server.url"));
+      setServiceTunnel(new ClientHttpServiceTunnel(this, url));
     }
 
     CODES.getAllCodeTypes("org.eclipsescout.demo.widgets.shared");

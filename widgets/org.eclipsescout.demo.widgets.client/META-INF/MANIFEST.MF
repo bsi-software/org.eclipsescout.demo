@@ -12,8 +12,7 @@ Export-Package: org.eclipsescout.demo.widgets.client,
  org.eclipsescout.demo.widgets.client.ui.desktop.pages,
  org.eclipsescout.demo.widgets.client.ui.forms,
  org.eclipsescout.demo.widgets.client.ui.template.formfield
-Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.scout.rt.client;visibility:=reexport,
+Require-Bundle: org.eclipse.scout.rt.client;visibility:=reexport,
  org.eclipsescout.demo.widgets.shared,
  org.eclipse.scout.svg.client
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

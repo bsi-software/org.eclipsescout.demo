@@ -7,8 +7,7 @@ Export-Package: org.eclipsescout.demo.widgets.client.old,
  org.eclipsescout.demo.widgets.client.old.ui.desktop,
  org.eclipsescout.demo.widgets.client.old.ui.desktop.outlines,
  org.eclipsescout.demo.widgets.client.old.ui.forms
-Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.scout.rt.client;visibility:=reexport,
+Require-Bundle: org.eclipse.scout.rt.client;visibility:=reexport,
  org.eclipsescout.demo.widgets.shared.old,
  org.eclipse.scout.svg.client,
  org.eclipsescout.demo.widgets.client;visibility:=reexport

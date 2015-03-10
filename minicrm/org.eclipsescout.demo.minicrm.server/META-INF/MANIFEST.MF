@@ -9,11 +9,9 @@ Export-Package: org.eclipsescout.demo.minicrm.server,
  org.eclipsescout.demo.minicrm.server.services.common.sql,
  org.eclipsescout.demo.minicrm.server.services.lookup,
  org.eclipsescout.demo.minicrm.server.ui.desktop.form
-Require-Bundle: org.eclipse.core.runtime,
- org.eclipsescout.demo.minicrm.shared,
+Require-Bundle: org.eclipsescout.demo.minicrm.shared,
  org.eclipse.scout.rt.server,
  org.eclipse.scout.rt.server.commons,
- org.eclipse.equinox.http.registry,
  org.eclipse.scout.rt.jdbc.derby10,
  org.eclipse.scout.jaxws216
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

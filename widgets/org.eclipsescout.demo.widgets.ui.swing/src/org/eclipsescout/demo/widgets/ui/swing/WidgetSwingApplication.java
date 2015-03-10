@@ -12,8 +12,6 @@ package org.eclipsescout.demo.widgets.ui.swing;
 
 import javax.security.auth.Subject;
 
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
@@ -47,9 +45,9 @@ public class WidgetSwingApplication extends AbstractSwingApplication {
   }
 
   @Override
-  protected Object startInSubject(IApplicationContext context) throws Exception {
-    LOG.info("Starting {0} {1} application...", Platform.getProduct().getName(), Platform.getProduct().getDefiningBundle().getVersion().toString());
-    return super.startInSubject(context);
+  protected void startInSubject() throws Exception {
+    LOG.info("Starting widget application...");
+    super.startInSubject();
   }
 
   @Override

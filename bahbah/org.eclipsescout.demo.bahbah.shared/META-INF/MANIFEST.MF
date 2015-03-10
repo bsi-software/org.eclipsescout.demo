@@ -12,7 +12,6 @@ Export-Package: org.eclipsescout.demo.bahbah.shared,
  org.eclipsescout.demo.bahbah.shared.services.outline,
  org.eclipsescout.demo.bahbah.shared.services.process,
  org.eclipsescout.demo.bahbah.shared.util
-Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.scout.rt.shared;visibility:=reexport
+Require-Bundle: org.eclipse.scout.rt.shared;visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy

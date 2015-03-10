@@ -14,7 +14,6 @@ import java.security.PrivilegedExceptionAction;
 
 import javax.security.auth.Subject;
 
-import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
@@ -42,13 +41,19 @@ public class SwingApplication extends AbstractSwingApplication {
   }
 
   @Override
-  public Object start(final IApplicationContext context) throws Exception {
+  public void start() throws PlatformException {
+    try {
     return Subject.doAs(m_subject, new PrivilegedExceptionAction<Object>() {
-      @Override
-      public Object run() throws Exception {
-        return startSecure(context);
-      }
-    });
+        @Override
+        public Object run() throws Exception {
+          startSecure();
+          return null;
+        }
+      });
+    }
+    catch (Exception e) {
+      throw new PlatformException("Unable to start application.", e);
+    }
   }
 
   @Override
@@ -56,8 +61,8 @@ public class SwingApplication extends AbstractSwingApplication {
     return new SwingEnvironment();
   }
 
-  private Object startSecure(IApplicationContext context) throws Exception {
-    return super.start(context);
+  private void startSecure() throws Exception {
+    super.start();
   }
 
   @Override

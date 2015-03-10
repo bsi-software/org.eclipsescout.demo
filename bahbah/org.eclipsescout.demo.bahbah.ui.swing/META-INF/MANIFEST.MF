@@ -8,7 +8,6 @@ Export-Package: org.eclipsescout.demo.bahbah.ui.swing;uses:="org.eclipse.scout.r
 Require-Bundle: org.eclipse.scout.rt.ui.swing,
  org.eclipsescout.demo.bahbah.client;visibility:=reexport,
  org.eclipsescout.demo.bahbah.shared,
- org.eclipse.scout.net,
  com.bsiag.scout.rt.ui.swing.rayo
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy

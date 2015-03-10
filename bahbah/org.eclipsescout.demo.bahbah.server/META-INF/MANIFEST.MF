@@ -11,11 +11,9 @@ Export-Package: org.eclipsescout.demo.bahbah.server,
  org.eclipsescout.demo.bahbah.server.services.outline,
  org.eclipsescout.demo.bahbah.server.services.process,
  org.eclipsescout.demo.bahbah.server.util
-Require-Bundle: org.eclipse.core.runtime,
- org.eclipsescout.demo.bahbah.shared,
+Require-Bundle: org.eclipsescout.demo.bahbah.shared,
  org.eclipse.scout.rt.server,
  org.eclipse.scout.rt.server.commons,
- org.eclipse.equinox.http.registry,
  org.eclipse.scout.rt.jdbc.derby10,
  org.eclipsescout.demo.bahbah.security
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

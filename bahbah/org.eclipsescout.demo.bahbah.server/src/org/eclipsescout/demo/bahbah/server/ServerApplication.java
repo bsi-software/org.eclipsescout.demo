@@ -12,14 +12,15 @@ package org.eclipsescout.demo.bahbah.server;
 
 import javax.security.auth.Subject;
 
-import org.eclipse.equinox.app.IApplication;
-import org.eclipse.equinox.app.IApplicationContext;
+import org.eclipse.scout.commons.ConfigIniUtility;
 import org.eclipse.scout.commons.IRunnable;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.commons.security.SimplePrincipal;
 import org.eclipse.scout.rt.platform.Bean;
+import org.eclipse.scout.rt.platform.IApplication;
 import org.eclipse.scout.rt.platform.OBJ;
+import org.eclipse.scout.rt.platform.PlatformException;
 import org.eclipse.scout.rt.server.context.ServerRunContext;
 import org.eclipse.scout.rt.server.context.ServerRunContexts;
 import org.eclipse.scout.rt.server.services.common.clustersync.IClusterSynchronizationService;
@@ -41,22 +42,29 @@ public class ServerApplication implements IApplication {
   }
 
   @Override
-  public Object start(IApplicationContext context) throws Exception {
+  public void start() throws PlatformException {
+    try {
     ServerRunContext serverRunContext = ServerRunContexts.empty();
     serverRunContext.subject(s_subject);
     serverRunContext.session(OBJ.get(ServerSessionProviderWithCache.class).provide(serverRunContext.copy()));
     serverRunContext.run(new IRunnable() {
 
-      @Override
-      public void run() throws Exception {
-        SERVICES.getService(IDbSetupService.class).installDb();
-        SERVICES.getService(IClusterSynchronizationService.class).addListener(new RegisterUserNotificationListener());
-        SERVICES.getService(IClusterSynchronizationService.class).addListener(new UnregisterUserNotificationListener());
-      }
+      // Run initialization jobs.
+      ServerJobs.runNow(new IRunnable() {
+
+        @Override
+        public void run() throws Exception {
+          SERVICES.getService(IDbSetupService.class).installDb();
+          SERVICES.getService(IClusterSynchronizationService.class).addListener(new RegisterUserNotificationListener());
+          SERVICES.getService(IClusterSynchronizationService.class).addListener(new UnregisterUserNotificationListener());
+        }
     });
+    }
+    catch (Exception e) {
+      throw new PlatformException("Unable to start server application.", e);
+    }
 
     LOG.info("bahbah server initialized");
-    return EXIT_OK;
   }
 
   @Override
@@ -65,5 +73,15 @@ public class ServerApplication implements IApplication {
 
   public static Subject getSubject() {
     return s_subject;
+  }
+
+  @Override
+  public String getName() {
+    return ConfigIniUtility.getProperty(CONFIG_KEY_NAME);
+  }
+
+  @Override
+  public String getVersion() {
+    return ConfigIniUtility.getProperty(CONFIG_KEY_VERSION);
   }
 }
