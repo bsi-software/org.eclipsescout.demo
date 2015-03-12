@@ -15,7 +15,7 @@ import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.server.AbstractServerSession;
 import org.eclipse.scout.rt.server.IServerSession;
-import org.eclipse.scout.rt.shared.ISession;
+import org.eclipse.scout.rt.server.session.ServerSessionProvider;
 
 public class ServerSession extends AbstractServerSession {
   private static final long serialVersionUID = 47025786503269671L;
@@ -26,11 +26,10 @@ public class ServerSession extends AbstractServerSession {
   }
 
   /**
-   * @return session in current ThreadContext
+   * @return The {@link IServerSession} which is associated with the current thread, or <code>null</code> if not found.
    */
   public static IServerSession get() {
-    ISession session = ISession.CURRENT.get();
-    return (IServerSession) (session instanceof IServerSession ? session : null);
+    return ServerSessionProvider.currentSession();
   }
 
   @Override

@@ -19,7 +19,7 @@ import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.server.AbstractServerSession;
-import org.eclipse.scout.rt.shared.ISession;
+import org.eclipse.scout.rt.server.session.ServerSessionProvider;
 import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipse.scout.rt.shared.services.common.code.ICode;
 import org.eclipse.scout.service.SERVICES;
@@ -35,11 +35,10 @@ public class ServerSession extends AbstractServerSession {
   }
 
   /**
-   * @return session in current ThreadContext
+   * @return The {@link ServerSession} which is associated with the current thread, or <code>null</code> if not found.
    */
   public static ServerSession get() {
-    ISession session = ISession.CURRENT.get();
-    return (ServerSession) (session instanceof ServerSession ? session : null);
+    return ServerSessionProvider.currentSession(ServerSession.class);
   }
 
   @SuppressWarnings("unchecked")
