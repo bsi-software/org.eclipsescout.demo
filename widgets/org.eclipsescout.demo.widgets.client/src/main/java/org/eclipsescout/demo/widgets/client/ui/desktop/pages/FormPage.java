@@ -54,15 +54,16 @@ public class FormPage extends AbstractPageWithNodes {
   }
 
   @Override
-  protected String getConfiguredTitle() {
-    return TEXTS.get("Labels");
-  }
-
-  @Override
   protected void execInitPage() throws ProcessingException {
-    String s = m_formType.getSimpleName();
-    s = s.substring(0, s.length() - 4);
-    getCellForUpdate().setText(TEXTS.get(s));
+    if (getCellForUpdate().getText() == null) {
+      String s = m_formType.getSimpleName();
+      s = s.replaceAll("Form$", "");
+      String t = TEXTS.getWithFallback(s, null);
+      if (t == null) {
+        s = s.replaceAll("([a-z0-9])([A-Z])", "$1 $2");
+      }
+      getCellForUpdate().setText(s);
+    }
     setTableVisible(false);
   }
 
