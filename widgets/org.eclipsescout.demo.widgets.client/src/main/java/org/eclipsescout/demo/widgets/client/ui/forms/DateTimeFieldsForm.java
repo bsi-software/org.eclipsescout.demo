@@ -39,37 +39,33 @@ import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.
 import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ConfigurationBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ConfigurationBox.ConfigLocaleField;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ConfigurationBox.DateFieldFormatField;
+import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ConfigurationBox.DateTimeDisplayTextField;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ConfigurationBox.DateTimeFieldFormatField;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ConfigurationBox.DateTimeInputField;
+import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ConfigurationBox.DisplayTextField;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ConfigurationBox.GetValueField;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ConfigurationBox.InputField;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ConfigurationBox.Placeholder1Field;
+import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ConfigurationBox.TimeDisplayTextField;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ConfigurationBox.TimeFieldFormatField;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ConfigurationBox.TimeInputField;
+import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ConfigurationBox.TimeUpdateDisplayTextOnModifyField;
+import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ConfigurationBox.UpdateDisplayTextOnModifyField;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ExamplesBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ExamplesBox.DateColumnField;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ExamplesBox.DateTimeColumnField;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ExamplesBox.DateTimeDisabledField;
-import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ExamplesBox.DateTimeDisplayTextField;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ExamplesBox.DateTimeField;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ExamplesBox.DateTimeMandatoryField;
-import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ExamplesBox.DateTimeUpdateDisplayTextOnModifyField;
-import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ExamplesBox.DateTimeValueField;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ExamplesBox.DefaultField;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ExamplesBox.DisabledField;
-import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ExamplesBox.DisplayTextField;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ExamplesBox.LocaleField;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ExamplesBox.MandatoryField;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ExamplesBox.PlaceholderField;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ExamplesBox.TimeColumnField;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ExamplesBox.TimeDisabledField;
-import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ExamplesBox.TimeDisplayTextField;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ExamplesBox.TimeField;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ExamplesBox.TimeMandatoryField;
-import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ExamplesBox.TimeUpdateDisplayTextOnModifyField;
-import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ExamplesBox.TimeValueField;
-import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ExamplesBox.UpdateDisplayTextOnModifyField;
-import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.ExamplesBox.ValueField;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.NineteenSeventyButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.NowButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.DateTimeFieldsForm.MainBox.SampleFormatButton;
@@ -138,14 +134,6 @@ public class DateTimeFieldsForm extends AbstractForm implements IPageForm {
     return getFieldByClass(DateTimeField.class);
   }
 
-  public DateTimeUpdateDisplayTextOnModifyField getDateTimeUpdateDisplayTextOnModifyField() {
-    return getFieldByClass(DateTimeUpdateDisplayTextOnModifyField.class);
-  }
-
-  public DateTimeValueField getDateTimeValueField() {
-    return getFieldByClass(DateTimeValueField.class);
-  }
-
   /**
    * @return the DefaultField
    */
@@ -183,23 +171,7 @@ public class DateTimeFieldsForm extends AbstractForm implements IPageForm {
     return getFieldByClass(TimeColumnField.class);
   }
 
-  public TimeUpdateDisplayTextOnModifyField getTimeUpdateDisplayTextOnModifyField() {
-    return getFieldByClass(TimeUpdateDisplayTextOnModifyField.class);
-  }
-
-  public TimeValueField getTimeValueField() {
-    return getFieldByClass(TimeValueField.class);
-  }
-
-  public UpdateDisplayTextOnModifyField getUpdateDisplayTextOnModifyField() {
-    return getFieldByClass(UpdateDisplayTextOnModifyField.class);
-  }
-
-  public ValueField getValueField() {
-    return getFieldByClass(ValueField.class);
-  }
-
-  public TimeDisabledField getLongDisabledField() {
+  public TimeDisabledField getTimeDisabledField() {
     return getFieldByClass(TimeDisabledField.class);
   }
 
@@ -221,7 +193,7 @@ public class DateTimeFieldsForm extends AbstractForm implements IPageForm {
     return getFieldByClass(TimeInputField.class);
   }
 
-  public TimeMandatoryField getLongMandatoryField() {
+  public TimeMandatoryField getTimeMandatoryField() {
     return getFieldByClass(TimeMandatoryField.class);
   }
 
@@ -283,6 +255,14 @@ public class DateTimeFieldsForm extends AbstractForm implements IPageForm {
     return getFieldByClass(ConfigurationBox.class);
   }
 
+  public TimeUpdateDisplayTextOnModifyField getTimeUpdateDisplayTextOnModifyField() {
+    return getFieldByClass(TimeUpdateDisplayTextOnModifyField.class);
+  }
+
+  public UpdateDisplayTextOnModifyField getUpdateDisplayTextOnModifyField() {
+    return getFieldByClass(UpdateDisplayTextOnModifyField.class);
+  }
+
   @Order(10.0)
   public class MainBox extends AbstractGroupBox {
 
@@ -336,15 +316,6 @@ public class DateTimeFieldsForm extends AbstractForm implements IPageForm {
           return TEXTS.get("DateFieldKeyboardControl");
         }
 
-        @Override
-        protected void execChangedDisplayText() {
-          getDisplayTextField().setValue(getDisplayText());
-        }
-
-        @Override
-        protected void execChangedValue() throws ProcessingException {
-          getValueField().setValue(interceptFormatValue(getValue()));
-        }
       }
 
       @Order(30.0)
@@ -378,39 +349,6 @@ public class DateTimeFieldsForm extends AbstractForm implements IPageForm {
         @Override
         protected void execInitField() throws ProcessingException {
           setValue(new Date());
-        }
-      }
-
-      @Order(45.0)
-      public class ValueField extends AbstractStringField {
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("Value");
-        }
-      }
-
-      @Order(47.0)
-      public class DisplayTextField extends AbstractStringField {
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("DisplayText");
-        }
-      }
-
-      @Order(48.0)
-      public class UpdateDisplayTextOnModifyField extends AbstractCheckBox {
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("UpdateDisplayTextOnModify");
-        }
-
-        @Override
-        protected void execChangedValue() throws ProcessingException {
-          getDefaultField().setUpdateDisplayTextOnModify(getValue());
-          getMandatoryField().setValidateOnAnyKey(getValue());
         }
       }
 
@@ -455,15 +393,6 @@ public class DateTimeFieldsForm extends AbstractForm implements IPageForm {
           return TEXTS.get("Default");
         }
 
-        @Override
-        protected void execChangedDisplayText() {
-          getTimeDisplayTextField().setValue(getDisplayText());
-        }
-
-        @Override
-        protected void execChangedValue() throws ProcessingException {
-          getTimeValueField().setValue(interceptFormatValue(getValue()));
-        }
       }
 
       @Order(80.0)
@@ -499,38 +428,6 @@ public class DateTimeFieldsForm extends AbstractForm implements IPageForm {
         }
       }
 
-      @Order(95.0)
-      public class TimeValueField extends AbstractStringField {
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("Value");
-        }
-      }
-
-      @Order(97.0)
-      public class TimeDisplayTextField extends AbstractStringField {
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("DisplayText");
-        }
-      }
-
-      @Order(98.0)
-      public class TimeUpdateDisplayTextOnModifyField extends AbstractCheckBox {
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("UpdateDisplayTextOnModify");
-        }
-
-        @Override
-        protected void execChangedValue() throws ProcessingException {
-          getTimeField().setUpdateDisplayTextOnModify(getValue());
-        }
-      }
-
       @Order(100.0)
       public class PlaceholderField extends AbstractPlaceholderField {
       }
@@ -562,15 +459,6 @@ public class DateTimeFieldsForm extends AbstractForm implements IPageForm {
           return TEXTS.get("Default");
         }
 
-        @Override
-        protected void execChangedDisplayText() {
-          getDateTimeDisplayTextField().setValue(getDisplayText());
-        }
-
-        @Override
-        protected void execChangedValue() throws ProcessingException {
-          getDateTimeValueField().setValue(interceptFormatValue(getValue()));
-        }
       }
 
       @Order(130.0)
@@ -605,38 +493,6 @@ public class DateTimeFieldsForm extends AbstractForm implements IPageForm {
           setValue(new Date());
         }
       }
-
-      @Order(2000.0)
-      public class DateTimeValueField extends AbstractStringField {
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("Value");
-        }
-      }
-
-      @Order(3000.0)
-      public class DateTimeDisplayTextField extends AbstractStringField {
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("DisplayText");
-        }
-      }
-
-      @Order(4000.0)
-      public class DateTimeUpdateDisplayTextOnModifyField extends AbstractCheckBox {
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("UpdateDisplayTextOnModify");
-        }
-
-        @Override
-        protected void execChangedValue() throws ProcessingException {
-          getDateTimeField().setUpdateDisplayTextOnModify(getValue());
-        }
-      }
     }
 
     @Order(20.0)
@@ -658,6 +514,14 @@ public class DateTimeFieldsForm extends AbstractForm implements IPageForm {
         @Override
         protected String getConfiguredLabel() {
           return TEXTS.get("DateFieldInput");
+        }
+
+        @Override
+        protected void execChangedDisplayText() {
+          getDisplayTextField().setValue(getDisplayText());
+          if ("May 23, 1981".equals(getDisplayText())) {
+            getUpdateDisplayTextOnModifyField().setValue(false);
+          }
         }
       }
 
@@ -715,6 +579,29 @@ public class DateTimeFieldsForm extends AbstractForm implements IPageForm {
 
       }
 
+      @Order(37.0)
+      public class DisplayTextField extends AbstractStringField {
+
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("DisplayText");
+        }
+      }
+
+      @Order(38.0)
+      public class UpdateDisplayTextOnModifyField extends AbstractCheckBox {
+
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("UpdateDisplayTextOnModify");
+        }
+
+        @Override
+        protected void execChangedValue() throws ProcessingException {
+          getInputField().setUpdateDisplayTextOnModify(getValue());
+        }
+      }
+
       @Order(40.0)
       public class ConfigLocaleField extends AbstractSmartField<Locale> {
 
@@ -768,6 +655,14 @@ public class DateTimeFieldsForm extends AbstractForm implements IPageForm {
         @Override
         protected String getConfiguredLabel() {
           return TEXTS.get("TimeFieldInput");
+        }
+
+        @Override
+        protected void execChangedDisplayText() {
+          getTimeDisplayTextField().setValue(getDisplayText());
+          if ("5:23 PM".equals(getDisplayText())) {
+            getTimeUpdateDisplayTextOnModifyField().setValue(false);
+          }
         }
       }
 
@@ -824,6 +719,29 @@ public class DateTimeFieldsForm extends AbstractForm implements IPageForm {
         }
       }
 
+      @Order(77.0)
+      public class TimeDisplayTextField extends AbstractStringField {
+
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("DisplayText");
+        }
+      }
+
+      @Order(78.0)
+      public class TimeUpdateDisplayTextOnModifyField extends AbstractCheckBox {
+
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("UpdateDisplayTextOnModify");
+        }
+
+        @Override
+        protected void execChangedValue() throws ProcessingException {
+          getTimeInputField().setUpdateDisplayTextOnModify(getValue());
+        }
+      }
+
       @Order(80.0)
       public class Placeholder1Field extends AbstractPlaceholderField {
       }
@@ -834,6 +752,11 @@ public class DateTimeFieldsForm extends AbstractForm implements IPageForm {
         @Override
         protected String getConfiguredLabel() {
           return TEXTS.get("DateTimeFieldInput");
+        }
+
+        @Override
+        protected void execChangedDisplayText() {
+          getDateTimeDisplayTextField().setValue(getDisplayText());
         }
       }
 
@@ -890,6 +813,15 @@ public class DateTimeFieldsForm extends AbstractForm implements IPageForm {
         }
       }
 
+      @Order(2000.0)
+      public class DateTimeDisplayTextField extends AbstractStringField {
+
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("DisplayText");
+        }
+      }
+
     }
 
     private void updateDateTimeFields(Date d) {
@@ -897,6 +829,12 @@ public class DateTimeFieldsForm extends AbstractForm implements IPageForm {
         getInputField().setValue(d);
         getTimeInputField().setValue(d);
         getDateTimeInputField().setValue(d);
+        getDefaultField().setValue(d);
+        getMandatoryField().setValue(d);
+        getTimeField().setValue(d);
+        getTimeMandatoryField().setValue(d);
+        getDateTimeField().setValue(d);
+        getDateTimeMandatoryField().setValue(d);
       }
 
       Locale oldLocale = LocaleThreadLocal.get(false);
