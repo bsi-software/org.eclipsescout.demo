@@ -13,9 +13,9 @@ package org.eclipsescout.demo.widgets.client.ui.forms;
 import java.util.Date;
 import java.util.Locale;
 
-import org.eclipse.scout.commons.LocaleThreadLocal;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.commons.nls.NlsLocale;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.IValueField;
@@ -627,15 +627,15 @@ public class DateTimeFieldsForm extends AbstractForm implements IPageForm {
 
         @Override
         protected void execChangedValue() throws ProcessingException {
-          Locale oldLocale = LocaleThreadLocal.get(false);
+          Locale oldLocale = NlsLocale.get(false);
           try {
-            LocaleThreadLocal.set(getValue());
+            NlsLocale.set(getValue());
             getInputField().setFormat(getDateFieldFormatField().getValue());
             getTimeInputField().setFormat(getTimeFieldFormatField().getValue());
             getDateTimeInputField().setFormat(getDateTimeFieldFormatField().getValue());
           }
           finally {
-            LocaleThreadLocal.set(oldLocale);
+            NlsLocale.set(oldLocale);
           }
         }
 
@@ -837,15 +837,15 @@ public class DateTimeFieldsForm extends AbstractForm implements IPageForm {
         getDateTimeMandatoryField().setValue(d);
       }
 
-      Locale oldLocale = LocaleThreadLocal.get(false);
+      Locale oldLocale = NlsLocale.get(false);
       try {
-        LocaleThreadLocal.set(getConfigLocaleField().getValue());
+        NlsLocale.set(getConfigLocaleField().getValue());
         getInputField().setFormat(getDateFieldFormatField().getValue());
         getTimeInputField().setFormat(getTimeFieldFormatField().getValue());
         getDateTimeInputField().setFormat(getDateTimeFieldFormatField().getValue());
       }
       finally {
-        LocaleThreadLocal.set(oldLocale);
+        NlsLocale.set(oldLocale);
       }
     }
 

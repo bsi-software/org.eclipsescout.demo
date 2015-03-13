@@ -18,9 +18,9 @@ import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.client.AbstractClientSession;
-import org.eclipse.scout.rt.client.ClientJob;
 import org.eclipse.scout.rt.client.services.common.bookmark.IBookmarkService;
 import org.eclipse.scout.rt.client.servicetunnel.http.ClientHttpServiceTunnel;
+import org.eclipse.scout.rt.client.session.ClientSessionProvider;
 import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipse.scout.rt.shared.services.common.ping.IPingService;
 import org.eclipse.scout.service.SERVICES;
@@ -47,7 +47,7 @@ public class ClientSession extends AbstractClientSession {
    * @return session in current ThreadContext
    */
   public static ClientSession get() {
-    return ClientJob.getCurrentSession(ClientSession.class);
+    return ClientSessionProvider.currentSession(ClientSession.class);
   }
 
   @Override

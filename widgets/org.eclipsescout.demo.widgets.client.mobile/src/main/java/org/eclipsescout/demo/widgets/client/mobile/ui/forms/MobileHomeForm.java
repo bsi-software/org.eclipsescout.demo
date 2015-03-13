@@ -15,13 +15,13 @@ import java.util.List;
 import org.eclipse.scout.commons.CollectionUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.rt.client.ClientJob;
 import org.eclipse.scout.rt.client.mobile.transformation.IDeviceTransformationService;
 import org.eclipse.scout.rt.client.mobile.transformation.MobileDeviceTransformation;
 import org.eclipse.scout.rt.client.mobile.ui.basic.table.AbstractMobileTable;
 import org.eclipse.scout.rt.client.mobile.ui.desktop.MobileDesktopUtility;
 import org.eclipse.scout.rt.client.mobile.ui.form.AbstractMobileForm;
 import org.eclipse.scout.rt.client.mobile.ui.form.outline.IOutlineChooserForm;
+import org.eclipse.scout.rt.client.session.ClientSessionProvider;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
@@ -188,7 +188,7 @@ public class MobileHomeForm extends AbstractMobileForm implements IOutlineChoose
 
       @Override
       protected void execClickAction() throws ProcessingException {
-        ClientJob.getCurrentSession().stopSession();
+        ClientSessionProvider.currentSession().stopSession();
       }
     }
 

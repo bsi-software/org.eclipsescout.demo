@@ -12,13 +12,17 @@ package org.eclipsescout.demo.bahbah.client.services;
 
 import java.util.Date;
 
-import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.scout.commons.job.IRunnable;
+import org.eclipse.scout.commons.job.JobExecutionException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
-import org.eclipse.scout.rt.client.ClientAsyncJob;
-import org.eclipse.scout.rt.client.ClientSyncJob;
 import org.eclipse.scout.rt.client.IClientSession;
+import org.eclipse.scout.rt.client.job.ClientJobInput;
+import org.eclipse.scout.rt.client.job.IClientJobManager;
+import org.eclipse.scout.rt.client.job.IModelJobManager;
 import org.eclipse.scout.rt.client.services.common.clientnotification.ClientNotificationConsumerEvent;
+import org.eclipse.scout.rt.client.session.ClientSessionProvider;
+import org.eclipse.scout.rt.platform.cdi.OBJ;
 import org.eclipse.scout.rt.shared.services.common.clientnotification.IClientNotification;
 import org.eclipse.scout.service.AbstractService;
 import org.eclipsescout.demo.bahbah.client.ui.desktop.Desktop;
@@ -28,7 +32,7 @@ import org.eclipsescout.demo.bahbah.shared.notification.MessageNotification;
 import org.eclipsescout.demo.bahbah.shared.notification.RefreshBuddiesNotification;
 
 public class BahBahNotificationConsumerService extends AbstractService implements IBahBahNotificationConsumerService {
-  private static IScoutLogger logger = ScoutLogManager.getLogger(BahBahNotificationConsumerService.class);
+  private static IScoutLogger LOG = ScoutLogManager.getLogger(BahBahNotificationConsumerService.class);
 
   private void handleMessage(MessageNotification notification) {
     UserNodePage userPage = getUserNodePage();
@@ -42,44 +46,49 @@ public class BahBahNotificationConsumerService extends AbstractService implement
         }
       }
       catch (Throwable t) {
-        logger.error("handling of remote message failed.", t);
+        LOG.error("handling of remote message failed.", t);
       }
     }
   }
 
   @Override
   public void handleEvent(ClientNotificationConsumerEvent e, boolean sync) {
-    logger.info("received client notification event for user '" + ClientSyncJob.getCurrentSession().getUserId() + "'");
+    LOG.info("received client notification event for user '" + ClientSessionProvider.currentSession().getUserId() + "'");
 
     final IClientNotification notification = e.getClientNotification();
-    final IClientSession session = ClientSyncJob.getCurrentSession();
+    final IClientSession session = ClientSessionProvider.currentSession();
 
-    // deal with notification in async jobs to prevent blocking of the model thread
-    if (notification instanceof RefreshBuddiesNotification) {
-      new ClientAsyncJob("async wrapper (refresh buddies)", session) {
-        @Override
-        protected void runVoid(IProgressMonitor monitor) throws Throwable {
-          new ClientSyncJob("refresh buddies", session) {
-            @Override
-            protected void runVoid(IProgressMonitor monitor1) throws Throwable {
-              handleRefreshBuddies();
-            }
-          }.schedule();
-        }
-      }.schedule();
+    try {
+      // deal with notification in async jobs to prevent blocking of the model thread
+      if (notification instanceof RefreshBuddiesNotification) {
+        OBJ.one(IClientJobManager.class).schedule(new IRunnable() {
+          @Override
+          public void run() throws Exception {
+            OBJ.one(IModelJobManager.class).schedule(new IRunnable() {
+              @Override
+              public void run() throws Exception {
+                handleRefreshBuddies();
+              }
+            }, ClientJobInput.defaults().session(session));
+          }
+        }, ClientJobInput.defaults().session(session));
+      }
+      else if (notification instanceof MessageNotification) {
+        OBJ.one(IClientJobManager.class).schedule(new IRunnable() {
+          @Override
+          public void run() throws Exception {
+            OBJ.one(IModelJobManager.class).schedule(new IRunnable() {
+              @Override
+              public void run() throws Exception {
+                handleMessage((MessageNotification) notification);
+              }
+            }, ClientJobInput.defaults().session(session));
+          }
+        }, ClientJobInput.defaults().session(session));
+      }
     }
-    else if (notification instanceof MessageNotification) {
-      new ClientAsyncJob("async wrapper (message)", session) {
-        @Override
-        protected void runVoid(IProgressMonitor monitor) throws Throwable {
-          new ClientSyncJob("message", session) {
-            @Override
-            protected void runVoid(IProgressMonitor monitor1) throws Throwable {
-              handleMessage((MessageNotification) notification);
-            }
-          }.schedule();
-        }
-      }.schedule();
+    catch (JobExecutionException e1) {
+      LOG.error("Unable to schedule new job.", e1);
     }
   }
 
@@ -97,11 +106,11 @@ public class BahBahNotificationConsumerService extends AbstractService implement
 
     if (userPage != null) {
       try {
-        logger.info("refreshing buddies on client");
+        LOG.info("refreshing buddies on client");
         userPage.updateBuddyPages();
       }
       catch (Throwable t) {
-        logger.error("handling of remote message failed.", t);
+        LOG.error("handling of remote message failed.", t);
       }
     }
   }
