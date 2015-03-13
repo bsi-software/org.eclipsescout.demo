@@ -23,9 +23,11 @@ import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
 import org.eclipsescout.demo.widgets.client.old.ui.forms.WrappedFormFieldForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.old.ui.forms.WrappedFormFieldForm.MainBox.GroupBox;
 import org.eclipsescout.demo.widgets.client.old.ui.forms.WrappedFormFieldForm.MainBox.GroupBox.InnerFormsField;
+import org.eclipsescout.demo.widgets.client.old.ui.forms.WrappedFormFieldForm.MainBox.GroupBox.StaticInnerFormsField;
 import org.eclipsescout.demo.widgets.client.old.ui.forms.WrappedFormFieldForm.MainBox.WrappedFormFieldBox;
 import org.eclipsescout.demo.widgets.client.old.ui.forms.WrappedFormFieldForm.MainBox.WrappedFormFieldBox.WrappedFormField;
 import org.eclipsescout.demo.widgets.client.services.lookup.FormLookupCall;
+import org.eclipsescout.demo.widgets.client.services.lookup.StaticFormLookupCall;
 import org.eclipsescout.demo.widgets.client.ui.forms.IPageForm;
 import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm;
 
@@ -63,6 +65,10 @@ public class WrappedFormFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(InnerFormsField.class);
   }
 
+  public StaticInnerFormsField getStaticInnerFormsField() {
+    return getFieldByClass(StaticInnerFormsField.class);
+  }
+
   public MainBox getMainBox() {
     return getFieldByClass(MainBox.class);
   }
@@ -86,12 +92,12 @@ public class WrappedFormFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected int getConfiguredGridW() {
-          return 4;
+          return 1;
         }
 
         @Override
         protected String getConfiguredLabel() {
-          return TEXTS.get("InnerForms");
+          return TEXTS.get("InnerForms") + " (dynamic)";
         }
 
         @Override
@@ -107,6 +113,16 @@ public class WrappedFormFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected void execChangedValue() throws ProcessingException {
+          // Clear other field
+          getStaticInnerFormsField().setValueChangeTriggerEnabled(false);
+          try {
+            getStaticInnerFormsField().setValue(null);
+          }
+          finally {
+            getStaticInnerFormsField().setValueChangeTriggerEnabled(true);
+          }
+
+          // Set inner form
           Class<? extends IPageForm> value = getValue();
           if (value == null) {
             getWrappedFormField().setInnerForm(null);
@@ -123,6 +139,49 @@ public class WrappedFormFieldForm extends AbstractForm implements IPageForm {
           }
         }
       }
+
+      @Order(20.0)
+      public class StaticInnerFormsField extends AbstractSmartField<IPageForm> {
+
+        private StaticFormLookupCall m_lookupCall = null;
+
+        @Override
+        protected int getConfiguredGridW() {
+          return 1;
+        }
+
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("InnerForms") + " (static)";
+        }
+
+        @Override
+        protected void execInitField() throws ProcessingException {
+          m_lookupCall = new StaticFormLookupCall();
+          setLookupCall(m_lookupCall);
+        }
+
+        @Override
+        protected void execChangedValue() throws ProcessingException {
+          // Clear other field
+          getInnerFormsField().setValueChangeTriggerEnabled(false);
+          try {
+            getInnerFormsField().setValue(null);
+          }
+          finally {
+            getInnerFormsField().setValueChangeTriggerEnabled(true);
+          }
+
+          // Set inner form
+          IPageForm form = getValue();
+          if (form == null) {
+            getWrappedFormField().setInnerForm(null);
+          }
+          else {
+            getWrappedFormField().setInnerForm(form);
+          }
+        }
+      }
     }
 
     @Order(30.0)
@@ -130,7 +189,7 @@ public class WrappedFormFieldForm extends AbstractForm implements IPageForm {
 
       @Override
       protected String getConfiguredBorderDecoration() {
-        return "empty";
+        return BORDER_DECORATION_EMPTY;
       }
 
       @Order(10.0)
@@ -138,7 +197,7 @@ public class WrappedFormFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected int getConfiguredGridW() {
-          return 3;
+          return 2;
         }
       }
     }
