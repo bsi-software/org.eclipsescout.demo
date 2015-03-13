@@ -36,16 +36,21 @@ import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.Con
 import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.ConfigurationBox.CharCountBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.ConfigurationBox.CharCountBox.CountWhileTypingField;
 import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.ConfigurationBox.CharCountBox.NumCharsField;
+import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.ConfigurationBox.DisplayTextField;
 import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.ConfigurationBox.FontNameField;
 import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.ConfigurationBox.FontSizeField;
 import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.ConfigurationBox.FontStyleField;
 import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.ConfigurationBox.ForegroundColorField;
 import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.ConfigurationBox.InputMaskedField;
 import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.ConfigurationBox.MaxLengthField;
+import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.ConfigurationBox.Placeholder1Field;
 import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.ConfigurationBox.PlaceholderField;
+import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.ConfigurationBox.StringField;
 import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.ConfigurationBox.StringInputField;
 import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.ConfigurationBox.TextInputField;
+import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.ConfigurationBox.UpdateDisplayTextOnModifyField;
 import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.ConfigurationBox.UpperCaseField;
+import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.ConfigurationBox.ValueField;
 import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.ConfigurationBox.WrapTextField;
 import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.ExamplesBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.StringFieldForm.MainBox.ExamplesBox.DefaultField;
@@ -88,6 +93,10 @@ public class StringFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(BackgroundColorField.class);
   }
 
+  public ValueField getValueField() {
+    return getFieldByClass(ValueField.class);
+  }
+
   public WrapTextField getWrapTextField() {
     return getFieldByClass(WrapTextField.class);
   }
@@ -99,6 +108,10 @@ public class StringFieldForm extends AbstractForm implements IPageForm {
   @Override
   public CloseButton getCloseButton() {
     return getFieldByClass(CloseButton.class);
+  }
+
+  public DisplayTextField getDisplayTextField() {
+    return getFieldByClass(DisplayTextField.class);
   }
 
   public ExamplesBox getExamplesBox() {
@@ -200,6 +213,10 @@ public class StringFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(MaxLengthField.class);
   }
 
+  public Placeholder1Field getPlaceholder1Field() {
+    return getFieldByClass(Placeholder1Field.class);
+  }
+
   /**
    * @return the PlaceholderField
    */
@@ -214,6 +231,10 @@ public class StringFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(SampleFormatButton.class);
   }
 
+  public StringField getStringField() {
+    return getFieldByClass(StringField.class);
+  }
+
   public StringInputField getStringInputField() {
     return getFieldByClass(StringInputField.class);
   }
@@ -224,6 +245,10 @@ public class StringFieldForm extends AbstractForm implements IPageForm {
 
   public TextInputField getTextInputField() {
     return getFieldByClass(TextInputField.class);
+  }
+
+  public UpdateDisplayTextOnModifyField getUpdateDisplayTextOnModifyField() {
+    return getFieldByClass(UpdateDisplayTextOnModifyField.class);
   }
 
   public UpperCaseField getUpperCaseField() {
@@ -412,11 +437,6 @@ public class StringFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected boolean getConfiguredMultilineText() {
-          return true;
-        }
-
-        @Override
-        protected boolean getConfiguredUpdateDisplayTextOnModify() {
           return true;
         }
 
@@ -699,7 +719,69 @@ public class StringFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected int getConfiguredGridH() {
-          return 7;
+          return 1;
+        }
+      }
+
+      @Order(2000.0)
+      public class StringField extends AbstractStringField {
+
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("StringField");
+        }
+
+        @Override
+        protected void execChangedValue() throws ProcessingException {
+          getValueField().setValue(getValue());
+        }
+
+        @Override
+        protected void execChangedDisplayText() {
+          getDisplayTextField().setValue(getDisplayText());
+          if ("disable".equals(getDisplayText())) {
+            getUpdateDisplayTextOnModifyField().setValue(false);
+          }
+        }
+      }
+
+      @Order(3000.0)
+      public class ValueField extends AbstractStringField {
+
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("Value");
+        }
+      }
+
+      @Order(4000.0)
+      public class DisplayTextField extends AbstractStringField {
+
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("DisplayText");
+        }
+      }
+
+      @Order(5000.0)
+      public class UpdateDisplayTextOnModifyField extends AbstractCheckBox {
+
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("UpdateDisplayTextOnModify");
+        }
+
+        @Override
+        protected void execChangedValue() throws ProcessingException {
+          getStringField().setUpdateDisplayTextOnModify(getValue());
+        }
+      }
+
+      @Order(6000.0)
+      public class Placeholder1Field extends AbstractPlaceholderField {
+        @Override
+        protected int getConfiguredGridH() {
+          return 3;
         }
       }
     }
