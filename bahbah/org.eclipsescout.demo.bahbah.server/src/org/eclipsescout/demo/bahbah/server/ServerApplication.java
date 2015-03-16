@@ -18,6 +18,7 @@ import org.eclipse.scout.commons.job.IRunnable;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.commons.security.SimplePrincipal;
+import org.eclipse.scout.rt.platform.cdi.Bean;
 import org.eclipse.scout.rt.platform.cdi.OBJ;
 import org.eclipse.scout.rt.server.job.IServerJobManager;
 import org.eclipse.scout.rt.server.job.ServerJobInput;
@@ -28,6 +29,7 @@ import org.eclipsescout.demo.bahbah.server.services.db.IDbSetupService;
 import org.eclipsescout.demo.bahbah.server.services.notification.RegisterUserNotificationListener;
 import org.eclipsescout.demo.bahbah.server.services.notification.UnregisterUserNotificationListener;
 
+@Bean
 public class ServerApplication implements IApplication {
   private static IScoutLogger LOG = ScoutLogManager.getLogger(ServerApplication.class);
 
