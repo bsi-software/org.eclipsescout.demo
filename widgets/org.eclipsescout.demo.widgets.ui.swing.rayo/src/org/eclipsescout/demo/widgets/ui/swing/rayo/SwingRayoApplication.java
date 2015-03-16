@@ -12,16 +12,17 @@ package org.eclipsescout.demo.widgets.ui.swing.rayo;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.equinox.app.IApplicationContext;
+import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.client.IClientSession;
-import org.eclipse.scout.rt.client.services.common.session.IClientSessionRegistryService;
+import org.eclipse.scout.rt.client.job.ClientJobInput;
+import org.eclipse.scout.rt.client.session.ClientSessionProvider;
+import org.eclipse.scout.rt.platform.cdi.OBJ;
 import org.eclipse.scout.rt.shared.ScoutTexts;
 import org.eclipse.scout.rt.ui.swing.AbstractSwingApplication;
 import org.eclipse.scout.rt.ui.swing.ISwingEnvironment;
 import org.eclipse.scout.rt.ui.swing.SwingUtility;
-import org.eclipse.scout.service.SERVICES;
-import org.eclipsescout.demo.widgets.client.ClientSession;
 
 public class SwingRayoApplication extends AbstractSwingApplication {
   private static final IScoutLogger LOG = ScoutLogManager.getLogger(SwingRayoApplication.class);
@@ -34,8 +35,13 @@ public class SwingRayoApplication extends AbstractSwingApplication {
 
   @Override
   protected IClientSession getClientSession() {
-    IClientSessionRegistryService service = SERVICES.getService(IClientSessionRegistryService.class);
-    return service.newClientSession(ClientSession.class, null, initUserAgent());
+    try {
+      return OBJ.one(ClientSessionProvider.class).provide(ClientJobInput.empty().userAgent(initUserAgent()));
+    }
+    catch (ProcessingException e) {
+      LOG.error("Unable to load client session", e);
+      return null;
+    }
   }
 
   @Override
