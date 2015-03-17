@@ -468,11 +468,6 @@ public class GroupBoxForm extends AbstractForm implements IPageForm {
         public class SectionBox extends AbstractGroupBox {
 
           @Override
-          protected String getConfiguredBorderDecoration() {
-            return BORDER_DECORATION_SECTION;
-          }
-
-          @Override
           protected boolean getConfiguredExpandable() {
             return true;
           }
