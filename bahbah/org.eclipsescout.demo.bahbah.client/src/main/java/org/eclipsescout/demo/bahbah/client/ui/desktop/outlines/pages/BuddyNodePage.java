@@ -18,7 +18,7 @@ import org.eclipse.scout.commons.job.IRunnable;
 import org.eclipse.scout.rt.client.job.ClientJobInput;
 import org.eclipse.scout.rt.client.job.IModelJobManager;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNodes;
-import org.eclipse.scout.rt.platform.cdi.OBJ;
+import org.eclipse.scout.rt.platform.OBJ;
 import org.eclipsescout.demo.bahbah.client.ClientSession;
 import org.eclipsescout.demo.bahbah.client.services.BuddyAvatarIconProviderService;
 import org.eclipsescout.demo.bahbah.client.ui.forms.ChatForm;

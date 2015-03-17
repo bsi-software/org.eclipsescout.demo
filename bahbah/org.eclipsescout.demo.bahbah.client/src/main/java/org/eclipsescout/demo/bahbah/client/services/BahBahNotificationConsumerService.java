@@ -22,7 +22,7 @@ import org.eclipse.scout.rt.client.job.IClientJobManager;
 import org.eclipse.scout.rt.client.job.IModelJobManager;
 import org.eclipse.scout.rt.client.services.common.clientnotification.ClientNotificationConsumerEvent;
 import org.eclipse.scout.rt.client.session.ClientSessionProvider;
-import org.eclipse.scout.rt.platform.cdi.OBJ;
+import org.eclipse.scout.rt.platform.OBJ;
 import org.eclipse.scout.rt.shared.services.common.clientnotification.IClientNotification;
 import org.eclipse.scout.service.AbstractService;
 import org.eclipsescout.demo.bahbah.client.ui.desktop.Desktop;
