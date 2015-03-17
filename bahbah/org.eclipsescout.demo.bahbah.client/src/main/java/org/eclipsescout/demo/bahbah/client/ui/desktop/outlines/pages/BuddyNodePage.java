@@ -54,7 +54,7 @@ public class BuddyNodePage extends AbstractPageWithNodes {
   }
 
   public void setDefaultFocus() {
-    OBJ.one(IModelJobManager.class).schedule(new IRunnable() {
+    OBJ.get(IModelJobManager.class).schedule(new IRunnable() {
       @Override
       public void run() throws Exception {
         getChatForm().getMessageField().requestFocus();

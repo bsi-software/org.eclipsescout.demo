@@ -36,7 +36,7 @@ public class SwingRayoApplication extends AbstractSwingApplication {
   @Override
   protected IClientSession getClientSession() {
     try {
-      return OBJ.one(ClientSessionProvider.class).provide(ClientJobInput.empty().userAgent(initUserAgent()));
+      return OBJ.get(ClientSessionProvider.class).provide(ClientJobInput.empty().userAgent(initUserAgent()));
     }
     catch (ProcessingException e) {
       LOG.error("Unable to load client session", e);

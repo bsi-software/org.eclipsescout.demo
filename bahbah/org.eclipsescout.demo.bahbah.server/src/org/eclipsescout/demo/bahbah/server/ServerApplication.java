@@ -45,10 +45,10 @@ public class ServerApplication implements IApplication {
     ServerJobInput input = ServerJobInput.empty();
     input.name("Install Db schema if necessary");
     input.subject(s_subject);
-    input.session(OBJ.one(ServerSessionProviderWithCache.class).provide(input.copy()));
+    input.session(OBJ.get(ServerSessionProviderWithCache.class).provide(input.copy()));
 
     // Run initialization jobs.
-    OBJ.one(IServerJobManager.class).runNow(new IRunnable() {
+    OBJ.get(IServerJobManager.class).runNow(new IRunnable() {
 
       @Override
       public void run() throws Exception {

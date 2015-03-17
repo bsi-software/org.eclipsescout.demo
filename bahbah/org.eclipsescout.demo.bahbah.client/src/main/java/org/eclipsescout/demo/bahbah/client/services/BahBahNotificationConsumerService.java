@@ -61,10 +61,10 @@ public class BahBahNotificationConsumerService extends AbstractService implement
     try {
       // deal with notification in async jobs to prevent blocking of the model thread
       if (notification instanceof RefreshBuddiesNotification) {
-        OBJ.one(IClientJobManager.class).schedule(new IRunnable() {
+        OBJ.get(IClientJobManager.class).schedule(new IRunnable() {
           @Override
           public void run() throws Exception {
-            OBJ.one(IModelJobManager.class).schedule(new IRunnable() {
+            OBJ.get(IModelJobManager.class).schedule(new IRunnable() {
               @Override
               public void run() throws Exception {
                 handleRefreshBuddies();
@@ -74,10 +74,10 @@ public class BahBahNotificationConsumerService extends AbstractService implement
         }, ClientJobInput.defaults().session(session));
       }
       else if (notification instanceof MessageNotification) {
-        OBJ.one(IClientJobManager.class).schedule(new IRunnable() {
+        OBJ.get(IClientJobManager.class).schedule(new IRunnable() {
           @Override
           public void run() throws Exception {
-            OBJ.one(IModelJobManager.class).schedule(new IRunnable() {
+            OBJ.get(IModelJobManager.class).schedule(new IRunnable() {
               @Override
               public void run() throws Exception {
                 handleMessage((MessageNotification) notification);
