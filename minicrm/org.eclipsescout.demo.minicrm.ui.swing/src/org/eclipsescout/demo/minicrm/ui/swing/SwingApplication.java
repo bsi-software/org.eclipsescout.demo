@@ -20,7 +20,7 @@ import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.commons.security.SimplePrincipal;
 import org.eclipse.scout.rt.client.IClientSession;
-import org.eclipse.scout.rt.client.job.ClientJobInput;
+import org.eclipse.scout.rt.client.job.ModelJobInput;
 import org.eclipse.scout.rt.client.session.ClientSessionProvider;
 import org.eclipse.scout.rt.platform.OBJ;
 import org.eclipse.scout.rt.ui.swing.AbstractSwingApplication;
@@ -53,7 +53,7 @@ public class SwingApplication extends AbstractSwingApplication {
   @Override
   protected IClientSession getClientSession() {
     try {
-      return OBJ.get(ClientSessionProvider.class).provide(ClientJobInput.empty().userAgent(initUserAgent()));
+      return OBJ.get(ClientSessionProvider.class).provide(ModelJobInput.empty().setUserAgent(initUserAgent()));
     }
     catch (ProcessingException e) {
       LOG.error("Unable to load client session", e);

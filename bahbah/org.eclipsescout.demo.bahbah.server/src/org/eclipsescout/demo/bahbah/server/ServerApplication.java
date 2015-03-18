@@ -14,14 +14,14 @@ import javax.security.auth.Subject;
 
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
-import org.eclipse.scout.commons.job.IRunnable;
+import org.eclipse.scout.commons.IRunnable;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.commons.security.SimplePrincipal;
 import org.eclipse.scout.rt.platform.Bean;
 import org.eclipse.scout.rt.platform.OBJ;
-import org.eclipse.scout.rt.server.job.IServerJobManager;
 import org.eclipse.scout.rt.server.job.ServerJobInput;
+import org.eclipse.scout.rt.server.job.ServerJobs;
 import org.eclipse.scout.rt.server.services.common.clustersync.IClusterSynchronizationService;
 import org.eclipse.scout.rt.server.session.ServerSessionProviderWithCache;
 import org.eclipse.scout.service.SERVICES;
@@ -43,12 +43,12 @@ public class ServerApplication implements IApplication {
   @Override
   public Object start(IApplicationContext context) throws Exception {
     ServerJobInput input = ServerJobInput.empty();
-    input.name("Install Db schema if necessary");
-    input.subject(s_subject);
-    input.session(OBJ.get(ServerSessionProviderWithCache.class).provide(input.copy()));
+    input.setName("Install Db schema if necessary");
+    input.setSubject(s_subject);
+    input.setSession(OBJ.get(ServerSessionProviderWithCache.class).provide(input.copy()));
 
     // Run initialization jobs.
-    OBJ.get(IServerJobManager.class).runNow(new IRunnable() {
+    ServerJobs.runNow(new IRunnable() {
 
       @Override
       public void run() throws Exception {

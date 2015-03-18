@@ -12,13 +12,12 @@ package org.eclipsescout.demo.bahbah.client.ui.desktop.outlines.pages;
 
 import java.util.concurrent.TimeUnit;
 
+import org.eclipse.scout.commons.IRunnable;
 import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.commons.job.IRunnable;
-import org.eclipse.scout.rt.client.job.ClientJobInput;
-import org.eclipse.scout.rt.client.job.IModelJobManager;
+import org.eclipse.scout.rt.client.job.ModelJobInput;
+import org.eclipse.scout.rt.client.job.ModelJobs;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNodes;
-import org.eclipse.scout.rt.platform.OBJ;
 import org.eclipsescout.demo.bahbah.client.ClientSession;
 import org.eclipsescout.demo.bahbah.client.services.BuddyAvatarIconProviderService;
 import org.eclipsescout.demo.bahbah.client.ui.forms.ChatForm;
@@ -54,12 +53,12 @@ public class BuddyNodePage extends AbstractPageWithNodes {
   }
 
   public void setDefaultFocus() {
-    OBJ.get(IModelJobManager.class).schedule(new IRunnable() {
+    ModelJobs.schedule(new IRunnable() {
       @Override
       public void run() throws Exception {
         getChatForm().getMessageField().requestFocus();
       }
-    }, 200, TimeUnit.MILLISECONDS, ClientJobInput.defaults().name("set focus to message field"));
+    }, 200, TimeUnit.MILLISECONDS, ModelJobInput.defaults().setName("set focus to message field"));
   }
 
   public ChatForm getChatForm() throws ProcessingException {

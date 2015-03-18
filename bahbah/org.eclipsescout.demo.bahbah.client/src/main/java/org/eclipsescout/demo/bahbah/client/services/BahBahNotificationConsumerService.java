@@ -12,17 +12,16 @@ package org.eclipsescout.demo.bahbah.client.services;
 
 import java.util.Date;
 
-import org.eclipse.scout.commons.job.IRunnable;
-import org.eclipse.scout.commons.job.JobExecutionException;
+import org.eclipse.scout.commons.IRunnable;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.client.IClientSession;
 import org.eclipse.scout.rt.client.job.ClientJobInput;
-import org.eclipse.scout.rt.client.job.IClientJobManager;
-import org.eclipse.scout.rt.client.job.IModelJobManager;
+import org.eclipse.scout.rt.client.job.ClientJobs;
+import org.eclipse.scout.rt.client.job.ModelJobInput;
+import org.eclipse.scout.rt.client.job.ModelJobs;
 import org.eclipse.scout.rt.client.services.common.clientnotification.ClientNotificationConsumerEvent;
 import org.eclipse.scout.rt.client.session.ClientSessionProvider;
-import org.eclipse.scout.rt.platform.OBJ;
 import org.eclipse.scout.rt.shared.services.common.clientnotification.IClientNotification;
 import org.eclipse.scout.service.AbstractService;
 import org.eclipsescout.demo.bahbah.client.ui.desktop.Desktop;
@@ -58,37 +57,32 @@ public class BahBahNotificationConsumerService extends AbstractService implement
     final IClientNotification notification = e.getClientNotification();
     final IClientSession session = ClientSessionProvider.currentSession();
 
-    try {
-      // deal with notification in async jobs to prevent blocking of the model thread
-      if (notification instanceof RefreshBuddiesNotification) {
-        OBJ.get(IClientJobManager.class).schedule(new IRunnable() {
-          @Override
-          public void run() throws Exception {
-            OBJ.get(IModelJobManager.class).schedule(new IRunnable() {
-              @Override
-              public void run() throws Exception {
-                handleRefreshBuddies();
-              }
-            }, ClientJobInput.defaults().session(session));
-          }
-        }, ClientJobInput.defaults().session(session));
-      }
-      else if (notification instanceof MessageNotification) {
-        OBJ.get(IClientJobManager.class).schedule(new IRunnable() {
-          @Override
-          public void run() throws Exception {
-            OBJ.get(IModelJobManager.class).schedule(new IRunnable() {
-              @Override
-              public void run() throws Exception {
-                handleMessage((MessageNotification) notification);
-              }
-            }, ClientJobInput.defaults().session(session));
-          }
-        }, ClientJobInput.defaults().session(session));
-      }
+    // deal with notification in async jobs to prevent blocking of the model thread
+    if (notification instanceof RefreshBuddiesNotification) {
+      ClientJobs.schedule(new IRunnable() {
+        @Override
+        public void run() throws Exception {
+          ModelJobs.schedule(new IRunnable() {
+            @Override
+            public void run() throws Exception {
+              handleRefreshBuddies();
+            }
+          }, ModelJobInput.defaults().setSession(session));
+        }
+      }, ClientJobInput.defaults().setSession(session));
     }
-    catch (JobExecutionException e1) {
-      LOG.error("Unable to schedule new job.", e1);
+    else if (notification instanceof MessageNotification) {
+      ClientJobs.schedule(new IRunnable() {
+        @Override
+        public void run() throws Exception {
+          ModelJobs.schedule(new IRunnable() {
+            @Override
+            public void run() throws Exception {
+              handleMessage((MessageNotification) notification);
+            }
+          }, ModelJobInput.defaults().setSession(session));
+        }
+      }, ClientJobInput.defaults().setSession(session));
     }
   }
 
