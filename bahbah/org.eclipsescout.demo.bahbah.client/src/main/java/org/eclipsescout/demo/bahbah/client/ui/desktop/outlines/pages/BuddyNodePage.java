@@ -58,7 +58,7 @@ public class BuddyNodePage extends AbstractPageWithNodes {
       public void run() throws Exception {
         getChatForm().getMessageField().requestFocus();
       }
-    }, 200, TimeUnit.MILLISECONDS, ModelJobInput.defaults().setName("set focus to message field"));
+    }, 200, TimeUnit.MILLISECONDS, ModelJobInput.defaults().name("set focus to message field"));
   }
 
   public ChatForm getChatForm() throws ProcessingException {

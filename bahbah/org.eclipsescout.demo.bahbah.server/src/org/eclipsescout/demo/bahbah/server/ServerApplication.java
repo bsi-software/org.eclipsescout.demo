@@ -43,9 +43,9 @@ public class ServerApplication implements IApplication {
   @Override
   public Object start(IApplicationContext context) throws Exception {
     ServerJobInput input = ServerJobInput.empty();
-    input.setName("Install Db schema if necessary");
-    input.setSubject(s_subject);
-    input.setSession(OBJ.get(ServerSessionProviderWithCache.class).provide(input.copy()));
+    input.name("Install Db schema if necessary");
+    input.subject(s_subject);
+    input.session(OBJ.get(ServerSessionProviderWithCache.class).provide(input.copy()));
 
     // Run initialization jobs.
     ServerJobs.runNow(new IRunnable() {
