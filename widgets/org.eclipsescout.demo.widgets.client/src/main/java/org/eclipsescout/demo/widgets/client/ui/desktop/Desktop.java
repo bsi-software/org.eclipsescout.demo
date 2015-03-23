@@ -20,6 +20,7 @@ import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.client.session.ClientSessionProvider;
 import org.eclipse.scout.rt.client.ui.action.keystroke.AbstractKeyStroke;
+import org.eclipse.scout.rt.client.ui.action.keystroke.IKeyStroke;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.action.menu.checkbox.AbstractCheckBoxMenu;
 import org.eclipse.scout.rt.client.ui.desktop.AbstractDesktop;
@@ -303,7 +304,7 @@ public class Desktop extends AbstractDesktop implements IDesktop {
 
     @Override
     protected String getConfiguredKeyStroke() {
-      return "f5";
+      return IKeyStroke.F5;
     }
 
     @Override
@@ -322,12 +323,22 @@ public class Desktop extends AbstractDesktop implements IDesktop {
     public SimpleWidgetsOutlineViewButton() {
       super(Desktop.this, SimpleWidgetsOutline.class);
     }
+
+    @Override
+    protected String getConfiguredKeyStroke() {
+      return IKeyStroke.F6;
+    }
   }
 
   @Order(20.0)
   public class AdvancedWidgetsOutlineViewButton extends AbstractOutlineViewButton {
     public AdvancedWidgetsOutlineViewButton() {
       super(Desktop.this, AdvancedWidgetsOutline.class);
+    }
+
+    @Override
+    protected String getConfiguredKeyStroke() {
+      return IKeyStroke.F4;
     }
   }
 
