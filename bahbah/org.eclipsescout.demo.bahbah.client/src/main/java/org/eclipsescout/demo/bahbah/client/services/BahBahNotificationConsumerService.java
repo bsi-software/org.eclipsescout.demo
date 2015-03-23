@@ -67,9 +67,9 @@ public class BahBahNotificationConsumerService extends AbstractService implement
             public void run() throws Exception {
               handleRefreshBuddies();
             }
-          }, ModelJobInput.defaults().session(session));
+          }, ModelJobInput.fillCurrent().session(session));
         }
-      }, ClientJobInput.defaults().session(session));
+      }, ClientJobInput.fillCurrent().session(session));
     }
     else if (notification instanceof MessageNotification) {
       ClientJobs.schedule(new IRunnable() {
@@ -80,9 +80,9 @@ public class BahBahNotificationConsumerService extends AbstractService implement
             public void run() throws Exception {
               handleMessage((MessageNotification) notification);
             }
-          }, ModelJobInput.defaults().session(session));
+          }, ModelJobInput.fillCurrent().session(session));
         }
-      }, ClientJobInput.defaults().session(session));
+      }, ClientJobInput.fillCurrent().session(session));
     }
   }
 

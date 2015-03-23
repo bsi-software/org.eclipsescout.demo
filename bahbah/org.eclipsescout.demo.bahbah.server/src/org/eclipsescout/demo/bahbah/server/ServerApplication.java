@@ -42,7 +42,7 @@ public class ServerApplication implements IApplication {
 
   @Override
   public Object start(IApplicationContext context) throws Exception {
-    ServerJobInput input = ServerJobInput.empty();
+    ServerJobInput input = ServerJobInput.fillEmpty();
     input.name("Install Db schema if necessary");
     input.subject(s_subject);
     input.session(OBJ.get(ServerSessionProviderWithCache.class).provide(input.copy()));
