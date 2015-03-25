@@ -10,7 +10,7 @@
       </proxy>
       <service
             factory="org.eclipse.scout.rt.client.services.ClientServiceFactory"
-            class="org.eclipse.scout.rt.shared.services.common.code.SharedCodeService"
+            class="org.eclipsescout.demo.widgets.client.services.SimpleCodeService"
             session="org.eclipsescout.demo.widgets.client.ClientSession">
       </service>
       <service
