@@ -14,14 +14,17 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.server.Server;
 import org.eclipse.scout.rt.server.services.common.jdbc.SQL;
 import org.eclipse.scout.service.AbstractService;
+import org.eclipsescout.demo.bahbah.server.ServerSession;
 import org.eclipsescout.demo.bahbah.server.util.UserUtility;
 import org.eclipsescout.demo.bahbah.shared.services.code.UserRoleCodeType;
 
 /**
  * class that installs the bahbah DB schema
  */
+@Server(ServerSession.class) /* XXX mvi check requirement of session class */
 public class DerbyDbSetupService extends AbstractService implements IDbSetupService {
 
   @Override

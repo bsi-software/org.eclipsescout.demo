@@ -10,10 +10,12 @@
  ******************************************************************************/
 package org.eclipsescout.demo.widgets.shared.services;
 
+import org.eclipse.scout.rt.shared.TunnelToServer;
 import org.eclipse.scout.service.IService;
 
 /**
  * @author mzi
  */
+@TunnelToServer
 public interface IStandardOutlineService extends IService {
 }

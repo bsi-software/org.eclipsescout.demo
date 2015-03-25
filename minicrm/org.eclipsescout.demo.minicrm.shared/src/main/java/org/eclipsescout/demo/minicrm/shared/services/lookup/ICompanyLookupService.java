@@ -12,7 +12,9 @@ package org.eclipsescout.demo.minicrm.shared.services.lookup;
 
 import java.math.BigDecimal;
 
+import org.eclipse.scout.rt.shared.TunnelToServer;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupService;
 
+@TunnelToServer
 public interface ICompanyLookupService extends ILookupService<BigDecimal> {
 }

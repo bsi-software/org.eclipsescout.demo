@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.shared.TunnelToServer;
 import org.eclipse.scout.rt.shared.services.common.code.ICode;
 import org.eclipse.scout.rt.shared.validate.IValidationStrategy;
 import org.eclipse.scout.rt.shared.validate.InputValidation;
@@ -21,6 +22,7 @@ import org.eclipse.scout.service.IService;
 import org.eclipsescout.demo.bahbah.shared.services.UserAdministrationTablePageData;
 
 @InputValidation(IValidationStrategy.PROCESS.class)
+@TunnelToServer
 public interface IUserProcessService extends IService {
 
   String PERMISSION_KEY = "permission_id";

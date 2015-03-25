@@ -13,16 +13,19 @@ package org.eclipsescout.demo.minicrm.server.ui.desktop.form;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.exception.VetoException;
 import org.eclipse.scout.commons.holders.NVPair;
+import org.eclipse.scout.rt.server.Server;
 import org.eclipse.scout.rt.server.services.common.jdbc.SQL;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
 import org.eclipse.scout.service.AbstractService;
+import org.eclipsescout.demo.minicrm.server.ServerSession;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.form.CompanyFormData;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.form.CreateCompanyPermission;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.form.ICompanyService;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.form.ReadCompanyPermission;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.form.UpdateCompanyPermission;
 
+@Server(ServerSession.class) /* XXX mvi check requirement of session class */
 public class CompanyService extends AbstractService implements ICompanyService {
 
   @Override

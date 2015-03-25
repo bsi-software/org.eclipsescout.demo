@@ -13,9 +13,12 @@ package org.eclipsescout.demo.minicrm.server.services.common.security;
 import java.security.AllPermission;
 import java.security.Permissions;
 
+import org.eclipse.scout.rt.server.Server;
 import org.eclipse.scout.rt.server.services.common.security.AbstractAccessControlService;
 import org.eclipse.scout.rt.shared.security.RemoteServiceAccessPermission;
+import org.eclipsescout.demo.minicrm.server.ServerSession;
 
+@Server(ServerSession.class) /* XXX mvi check requirement of session class */
 public class AccessControlService extends AbstractAccessControlService {
 
   @Override

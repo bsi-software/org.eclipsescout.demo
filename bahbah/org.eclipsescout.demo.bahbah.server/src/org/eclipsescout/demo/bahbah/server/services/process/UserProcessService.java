@@ -19,6 +19,7 @@ import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.exception.VetoException;
 import org.eclipse.scout.commons.holders.IntegerHolder;
 import org.eclipse.scout.commons.holders.NVPair;
+import org.eclipse.scout.rt.server.Server;
 import org.eclipse.scout.rt.server.services.common.clustersync.IClusterSynchronizationService;
 import org.eclipse.scout.rt.server.services.common.jdbc.SQL;
 import org.eclipse.scout.rt.shared.TEXTS;
@@ -43,6 +44,7 @@ import org.eclipsescout.demo.bahbah.shared.services.process.INotificationProcess
 import org.eclipsescout.demo.bahbah.shared.services.process.IUserProcessService;
 import org.eclipsescout.demo.bahbah.shared.services.process.UserFormData;
 
+@Server(ServerSession.class) /* XXX mvi check requirement of session class */
 public class UserProcessService extends AbstractService implements IUserProcessService {
   private Set<String> m_users;
 

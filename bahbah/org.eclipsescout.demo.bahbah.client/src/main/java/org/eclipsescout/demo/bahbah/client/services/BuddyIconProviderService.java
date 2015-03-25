@@ -12,8 +12,11 @@ package org.eclipsescout.demo.bahbah.client.services;
 
 import java.net.URL;
 
+import org.eclipse.scout.rt.client.Client;
 import org.eclipse.scout.rt.client.services.common.icon.AbstractIconProviderService;
+import org.eclipsescout.demo.bahbah.client.ClientSession;
 
+@Client(ClientSession.class) /* XXX mvi check requirement of session class */
 public class BuddyIconProviderService extends AbstractIconProviderService {
 
   @Override

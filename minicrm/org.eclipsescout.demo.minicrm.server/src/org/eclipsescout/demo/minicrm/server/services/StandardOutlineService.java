@@ -13,14 +13,17 @@ package org.eclipsescout.demo.minicrm.server.services;
 import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.holders.NVPair;
+import org.eclipse.scout.rt.server.Server;
 import org.eclipse.scout.rt.server.services.common.jdbc.SQL;
 import org.eclipse.scout.service.AbstractService;
+import org.eclipsescout.demo.minicrm.server.ServerSession;
 import org.eclipsescout.demo.minicrm.shared.services.IStandardOutlineService;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.CompanyTablePageData;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.PersonTablePageData;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.searchform.CompanySearchFormData;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.searchform.PersonSearchFormData;
 
+@Server(ServerSession.class) /* XXX mvi check requirement of session class */
 public class StandardOutlineService extends AbstractService implements IStandardOutlineService {
 
   @Override

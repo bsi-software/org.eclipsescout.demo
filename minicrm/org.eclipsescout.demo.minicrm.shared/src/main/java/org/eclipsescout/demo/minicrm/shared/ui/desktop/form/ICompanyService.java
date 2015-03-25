@@ -11,11 +11,13 @@
 package org.eclipsescout.demo.minicrm.shared.ui.desktop.form;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.shared.TunnelToServer;
 import org.eclipse.scout.rt.shared.validate.IValidationStrategy;
 import org.eclipse.scout.rt.shared.validate.InputValidation;
 import org.eclipse.scout.service.IService;
 
 @InputValidation(IValidationStrategy.PROCESS.class)
+@TunnelToServer
 public interface ICompanyService extends IService {
 
   CompanyFormData create(CompanyFormData formData) throws ProcessingException;

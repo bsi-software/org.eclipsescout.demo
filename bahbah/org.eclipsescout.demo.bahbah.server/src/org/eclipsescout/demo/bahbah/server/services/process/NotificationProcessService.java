@@ -15,6 +15,7 @@ import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.exception.VetoException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
+import org.eclipse.scout.rt.server.Server;
 import org.eclipse.scout.rt.server.services.common.clientnotification.AllUserFilter;
 import org.eclipse.scout.rt.server.services.common.clientnotification.IClientNotificationService;
 import org.eclipse.scout.rt.server.services.common.clientnotification.SingleUserFilter;
@@ -29,6 +30,7 @@ import org.eclipsescout.demo.bahbah.shared.security.CreateNotificationPermission
 import org.eclipsescout.demo.bahbah.shared.services.process.INotificationProcessService;
 import org.eclipsescout.demo.bahbah.shared.util.SharedUserUtility;
 
+@Server(ServerSession.class) /* XXX mvi check requirement of session class */
 public class NotificationProcessService extends AbstractService implements INotificationProcessService {
   private static IScoutLogger LOG = ScoutLogManager.getLogger(NotificationProcessService.class);
 

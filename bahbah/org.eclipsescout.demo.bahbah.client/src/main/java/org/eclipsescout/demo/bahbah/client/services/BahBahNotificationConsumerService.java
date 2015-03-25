@@ -15,18 +15,21 @@ import java.util.Date;
 import org.eclipse.scout.commons.IRunnable;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
+import org.eclipse.scout.rt.client.Client;
 import org.eclipse.scout.rt.client.job.ClientJobs;
 import org.eclipse.scout.rt.client.job.ModelJobs;
 import org.eclipse.scout.rt.client.services.common.clientnotification.ClientNotificationConsumerEvent;
 import org.eclipse.scout.rt.client.session.ClientSessionProvider;
 import org.eclipse.scout.rt.shared.services.common.clientnotification.IClientNotification;
 import org.eclipse.scout.service.AbstractService;
+import org.eclipsescout.demo.bahbah.client.ClientSession;
 import org.eclipsescout.demo.bahbah.client.ui.desktop.Desktop;
 import org.eclipsescout.demo.bahbah.client.ui.desktop.outlines.pages.UserNodePage;
 import org.eclipsescout.demo.bahbah.client.ui.forms.ChatForm;
 import org.eclipsescout.demo.bahbah.shared.notification.MessageNotification;
 import org.eclipsescout.demo.bahbah.shared.notification.RefreshBuddiesNotification;
 
+@Client(ClientSession.class) /* XXX mvi check requirement of session class */
 public class BahBahNotificationConsumerService extends AbstractService implements IBahBahNotificationConsumerService {
   private static IScoutLogger LOG = ScoutLogManager.getLogger(BahBahNotificationConsumerService.class);
 
