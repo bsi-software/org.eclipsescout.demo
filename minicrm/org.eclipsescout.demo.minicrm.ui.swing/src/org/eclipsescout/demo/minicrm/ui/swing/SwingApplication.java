@@ -15,25 +15,35 @@ import java.security.PrivilegedExceptionAction;
 import javax.security.auth.Subject;
 
 import org.eclipse.equinox.app.IApplicationContext;
+import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.commons.security.SimplePrincipal;
 import org.eclipse.scout.rt.client.IClientSession;
-import org.eclipse.scout.rt.client.job.ModelJobInput;
+import org.eclipse.scout.rt.client.context.ClientRunContexts;
 import org.eclipse.scout.rt.client.session.ClientSessionProvider;
 import org.eclipse.scout.rt.platform.OBJ;
+import org.eclipse.scout.rt.platform.PlatformException;
 import org.eclipse.scout.rt.ui.swing.AbstractSwingApplication;
 import org.eclipse.scout.rt.ui.swing.ISwingEnvironment;
 
 public class SwingApplication extends AbstractSwingApplication {
+
   private static final IScoutLogger LOG = ScoutLogManager.getLogger(SwingApplication.class);
+
+  private final Subject m_subject;
+  private volatile IClientSession m_clientSession;
+
+  public SwingApplication() {
+    m_subject = new Subject();
+    m_subject.getPrincipals().add(new SimplePrincipal(StringUtility.nvl(System.getProperty("user.name"), "anonymous")));
+    m_subject.setReadOnly();
+  }
 
   @Override
   public Object start(final IApplicationContext context) throws Exception {
-    Subject subject = new Subject();
-    subject.getPrincipals().add(new SimplePrincipal(System.getProperty("user.name")));
-    return Subject.doAs(subject, new PrivilegedExceptionAction<Object>() {
+    return Subject.doAs(m_subject, new PrivilegedExceptionAction<Object>() {
       @Override
       public Object run() throws Exception {
         return startSecure(context);
@@ -52,12 +62,22 @@ public class SwingApplication extends AbstractSwingApplication {
 
   @Override
   protected IClientSession getClientSession() {
+    if (m_clientSession == null) {
+      synchronized (this) {
+        if (m_clientSession == null) {
+          m_clientSession = createClientSession();
+        }
+      }
+    }
+    return m_clientSession;
+  }
+
+  private IClientSession createClientSession() {
     try {
-      return OBJ.get(ClientSessionProvider.class).provide(ModelJobInput.fillEmpty().userAgent(initUserAgent()));
+      return OBJ.get(ClientSessionProvider.class).provide(ClientRunContexts.empty().subject(m_subject).userAgent(initUserAgent()));
     }
     catch (ProcessingException e) {
-      LOG.error("Unable to load client session", e);
-      return null;
+      throw new PlatformException("Failed to create ClientSession", e);
     }
   }
 }

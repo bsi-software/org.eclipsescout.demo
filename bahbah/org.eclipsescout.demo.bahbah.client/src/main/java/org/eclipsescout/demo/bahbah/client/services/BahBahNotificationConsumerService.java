@@ -15,10 +15,7 @@ import java.util.Date;
 import org.eclipse.scout.commons.IRunnable;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
-import org.eclipse.scout.rt.client.IClientSession;
-import org.eclipse.scout.rt.client.job.ClientJobInput;
 import org.eclipse.scout.rt.client.job.ClientJobs;
-import org.eclipse.scout.rt.client.job.ModelJobInput;
 import org.eclipse.scout.rt.client.job.ModelJobs;
 import org.eclipse.scout.rt.client.services.common.clientnotification.ClientNotificationConsumerEvent;
 import org.eclipse.scout.rt.client.session.ClientSessionProvider;
@@ -55,7 +52,6 @@ public class BahBahNotificationConsumerService extends AbstractService implement
     LOG.info("received client notification event for user '" + ClientSessionProvider.currentSession().getUserId() + "'");
 
     final IClientNotification notification = e.getClientNotification();
-    final IClientSession session = ClientSessionProvider.currentSession();
 
     // deal with notification in async jobs to prevent blocking of the model thread
     if (notification instanceof RefreshBuddiesNotification) {
@@ -67,9 +63,9 @@ public class BahBahNotificationConsumerService extends AbstractService implement
             public void run() throws Exception {
               handleRefreshBuddies();
             }
-          }, ModelJobInput.fillCurrent().session(session));
+          });
         }
-      }, ClientJobInput.fillCurrent().session(session));
+      });
     }
     else if (notification instanceof MessageNotification) {
       ClientJobs.schedule(new IRunnable() {
@@ -80,9 +76,9 @@ public class BahBahNotificationConsumerService extends AbstractService implement
             public void run() throws Exception {
               handleMessage((MessageNotification) notification);
             }
-          }, ModelJobInput.fillCurrent().session(session));
+          });
         }
-      }, ClientJobInput.fillCurrent().session(session));
+      });
     }
   }
 
