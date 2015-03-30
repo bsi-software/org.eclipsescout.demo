@@ -32,8 +32,6 @@
 
   <modules>
     <module>../org.eclipsescout.demo.master</module>
-    <module>../org.eclipsescout.demo.target</module>
-    <module>../org.eclipsescout.demo.repository</module>
     <module>../../bahbah/org.eclipsescout.demo.bahbah.parent</module>
     <module>../../minicrm/org.eclipsescout.demo.minicrm.parent</module>
     <module>../../widgets/org.eclipsescout.demo.widgets.parent</module>

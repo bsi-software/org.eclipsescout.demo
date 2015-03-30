@@ -8,9 +8,6 @@
 <project reference="1.0,https://github.com/BSI-Business-Systems-Integration-AG/org.eclipsescout.demo.git,master,widgets/org.eclipsescout.demo.widgets.shared"/>
 <project reference="1.0,https://github.com/BSI-Business-Systems-Integration-AG/org.eclipsescout.demo.git,master,widgets/org.eclipsescout.demo.widgets.shared.old"/>
 <project reference="1.0,https://github.com/BSI-Business-Systems-Integration-AG/org.eclipsescout.demo.git,master,widgets/org.eclipsescout.demo.widgets.ui.swing"/>
-<project reference="1.0,https://github.com/BSI-Business-Systems-Integration-AG/org.eclipsescout.demo.git,master,widgets/org.eclipsescout.demo.widgets.ui.swing.product"/>
 <project reference="1.0,https://github.com/BSI-Business-Systems-Integration-AG/org.eclipsescout.demo.git,master,widgets/org.eclipsescout.demo.widgets.ui.swing.rayo"/>
-<project reference="1.0,https://github.com/BSI-Business-Systems-Integration-AG/org.eclipsescout.demo.git,master,widgets/org.eclipsescout.demo.widgets.ui.swing.rayo.product"/>
-<project reference="1.0,https://github.com/BSI-Business-Systems-Integration-AG/org.eclipsescout.demo.git,master,widgets/org.eclipsescout.demo.widgets-feature"/>
 </provider>
 </psf>
