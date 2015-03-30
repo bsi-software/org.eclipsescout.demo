@@ -43,7 +43,7 @@ public class SwingApplication extends AbstractSwingApplication {
   @Override
   public void start() throws PlatformException {
     try {
-    return Subject.doAs(m_subject, new PrivilegedExceptionAction<Object>() {
+      Subject.doAs(m_subject, new PrivilegedExceptionAction<Object>() {
         @Override
         public Object run() throws Exception {
           startSecure();
