@@ -12,6 +12,8 @@ package org.eclipsescout.demo.widgets.ui.swing.rayo;
 
 import javax.security.auth.Subject;
 
+import org.eclipse.scout.commons.StringUtility;
+import org.eclipse.scout.commons.annotations.Priority;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
