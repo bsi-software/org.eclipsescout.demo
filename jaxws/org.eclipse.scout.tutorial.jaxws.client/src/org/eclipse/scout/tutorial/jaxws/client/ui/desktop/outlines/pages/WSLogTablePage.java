@@ -4,13 +4,14 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
 package org.eclipse.scout.tutorial.jaxws.client.ui.desktop.outlines.pages;
 
 import org.eclipse.scout.commons.annotations.Order;
+import org.eclipse.scout.commons.annotations.PageData;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
@@ -22,7 +23,9 @@ import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
 import org.eclipse.scout.service.SERVICES;
 import org.eclipse.scout.tutorial.jaxws.client.ui.forms.WSLogForm;
 import org.eclipse.scout.tutorial.jaxws.shared.services.outline.IStandardOutlineService;
+import org.eclipse.scout.tutorial.jaxws.shared.services.outline.WSLogTablePageData;
 
+@PageData(WSLogTablePageData.class)
 public class WSLogTablePage extends AbstractPageWithTable<WSLogTablePage.Table> {
 
   @Override
@@ -32,7 +35,9 @@ public class WSLogTablePage extends AbstractPageWithTable<WSLogTablePage.Table> 
 
   @Override
   protected void execLoadData(SearchFilter filter) throws ProcessingException {
-    importTableData(SERVICES.getService(IStandardOutlineService.class).getWsLogTableData());
+    WSLogTablePageData pageData = new WSLogTablePageData();
+    pageData = SERVICES.getService(IStandardOutlineService.class).getWsLogTablePageData(pageData);
+    importPageData(pageData);
   }
 
   @Order(10.0)
