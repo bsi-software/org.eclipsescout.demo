@@ -22,7 +22,6 @@ import org.eclipse.scout.rt.platform.Bean;
 import org.eclipse.scout.rt.platform.OBJ;
 import org.eclipse.scout.rt.server.context.ServerRunContext;
 import org.eclipse.scout.rt.server.context.ServerRunContexts;
-import org.eclipse.scout.rt.server.job.ServerJobs;
 import org.eclipse.scout.rt.server.services.common.clustersync.IClusterSynchronizationService;
 import org.eclipse.scout.rt.server.session.ServerSessionProviderWithCache;
 import org.eclipse.scout.service.SERVICES;
@@ -43,12 +42,10 @@ public class ServerApplication implements IApplication {
 
   @Override
   public Object start(IApplicationContext context) throws Exception {
-    ServerRunContext runContext = ServerRunContexts.empty();
-    runContext.subject(s_subject);
-    runContext.session(OBJ.get(ServerSessionProviderWithCache.class).provide(runContext.copy()));
-
-    // Run initialization jobs.
-    ServerJobs.runNow(new IRunnable() {
+    ServerRunContext serverRunContext = ServerRunContexts.empty();
+    serverRunContext.subject(s_subject);
+    serverRunContext.session(OBJ.get(ServerSessionProviderWithCache.class).provide(serverRunContext.copy()));
+    serverRunContext.run(new IRunnable() {
 
       @Override
       public void run() throws Exception {
@@ -56,7 +53,7 @@ public class ServerApplication implements IApplication {
         SERVICES.getService(IClusterSynchronizationService.class).addListener(new RegisterUserNotificationListener());
         SERVICES.getService(IClusterSynchronizationService.class).addListener(new UnregisterUserNotificationListener());
       }
-    }, ServerJobs.newInput(runContext).name("Install Db schema if necessary"));
+    });
 
     LOG.info("bahbah server initialized");
     return EXIT_OK;
