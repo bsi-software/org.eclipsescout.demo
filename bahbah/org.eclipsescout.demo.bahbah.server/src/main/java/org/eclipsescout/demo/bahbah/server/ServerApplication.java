@@ -12,13 +12,12 @@ package org.eclipsescout.demo.bahbah.server;
 
 import javax.security.auth.Subject;
 
-import org.eclipse.scout.commons.ConfigIniUtility;
 import org.eclipse.scout.commons.IRunnable;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.commons.security.SimplePrincipal;
+import org.eclipse.scout.rt.platform.AbstractApplication;
 import org.eclipse.scout.rt.platform.Bean;
-import org.eclipse.scout.rt.platform.IApplication;
 import org.eclipse.scout.rt.platform.OBJ;
 import org.eclipse.scout.rt.platform.PlatformException;
 import org.eclipse.scout.rt.server.context.ServerRunContext;
@@ -31,7 +30,7 @@ import org.eclipsescout.demo.bahbah.server.services.notification.RegisterUserNot
 import org.eclipsescout.demo.bahbah.server.services.notification.UnregisterUserNotificationListener;
 
 @Bean
-public class ServerApplication implements IApplication {
+public class ServerApplication extends AbstractApplication {
   private static IScoutLogger LOG = ScoutLogManager.getLogger(ServerApplication.class);
 
   public static Subject s_subject;
@@ -44,9 +43,9 @@ public class ServerApplication implements IApplication {
   @Override
   public void start() throws PlatformException {
     try {
-    ServerRunContext serverRunContext = ServerRunContexts.empty();
-    serverRunContext.subject(s_subject);
-    serverRunContext.session(OBJ.get(ServerSessionProviderWithCache.class).provide(serverRunContext.copy()));
+      ServerRunContext runContext = ServerRunContexts.empty();
+      runContext.subject(s_subject);
+      runContext.session(OBJ.get(ServerSessionProviderWithCache.class).provide(runContext.copy()));
     serverRunContext.run(new IRunnable() {
 
       // Run initialization jobs.
@@ -58,7 +57,7 @@ public class ServerApplication implements IApplication {
           SERVICES.getService(IClusterSynchronizationService.class).addListener(new RegisterUserNotificationListener());
           SERVICES.getService(IClusterSynchronizationService.class).addListener(new UnregisterUserNotificationListener());
         }
-    });
+      }, ServerJobs.newInput(runContext).name("Install Db schema if necessary"));
     }
     catch (Exception e) {
       throw new PlatformException("Unable to start server application.", e);
@@ -73,15 +72,5 @@ public class ServerApplication implements IApplication {
 
   public static Subject getSubject() {
     return s_subject;
-  }
-
-  @Override
-  public String getName() {
-    return ConfigIniUtility.getProperty(CONFIG_KEY_NAME);
-  }
-
-  @Override
-  public String getVersion() {
-    return ConfigIniUtility.getProperty(CONFIG_KEY_VERSION);
   }
 }

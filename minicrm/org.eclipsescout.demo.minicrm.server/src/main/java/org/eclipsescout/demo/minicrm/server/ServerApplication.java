@@ -10,13 +10,12 @@
  ******************************************************************************/
 package org.eclipsescout.demo.minicrm.server;
 
-import org.eclipse.scout.commons.ConfigIniUtility;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
-import org.eclipse.scout.rt.platform.IApplication;
+import org.eclipse.scout.rt.platform.AbstractApplication;
 import org.eclipse.scout.rt.platform.PlatformException;
 
-public class ServerApplication implements IApplication {
+public class ServerApplication extends AbstractApplication {
   private static IScoutLogger logger = ScoutLogManager.getLogger(ServerApplication.class);
 
   @Override
@@ -28,13 +27,4 @@ public class ServerApplication implements IApplication {
   public void stop() {
   }
 
-  @Override
-  public String getName() {
-    return ConfigIniUtility.getProperty(CONFIG_KEY_NAME);
-  }
-
-  @Override
-  public String getVersion() {
-    return ConfigIniUtility.getProperty(CONFIG_KEY_VERSION);
-  }
 }
