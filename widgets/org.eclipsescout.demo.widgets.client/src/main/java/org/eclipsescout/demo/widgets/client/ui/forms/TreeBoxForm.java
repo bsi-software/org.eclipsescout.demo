@@ -44,6 +44,7 @@ import org.eclipsescout.demo.widgets.client.ui.forms.TreeBoxForm.MainBox.Configu
 import org.eclipsescout.demo.widgets.client.ui.forms.TreeBoxForm.MainBox.ConfigurationBox.CheckUncheckBox.CheckAllButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.TreeBoxForm.MainBox.ConfigurationBox.CheckUncheckBox.UncheckAllButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.TreeBoxForm.MainBox.ConfigurationBox.FilterCheckedRowsValueField;
+import org.eclipsescout.demo.widgets.client.ui.forms.TreeBoxForm.MainBox.ConfigurationBox.IsEnabledField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TreeBoxForm.MainBox.ConfigurationBox.TreeBoxField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TreeBoxForm.MainBox.ConfigurationBox.TreeEntriesField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TreeBoxForm.MainBox.ExamplesBox;
@@ -78,6 +79,13 @@ public class TreeBoxForm extends AbstractForm implements IPageForm {
    */
   public AutoCheckChildNodesField getAutoCheckChildNodesField() {
     return getFieldByClass(AutoCheckChildNodesField.class);
+  }
+
+  /**
+   * @return the IsEnabledField
+   */
+  public IsEnabledField getIsEnabledField() {
+    return getFieldByClass(IsEnabledField.class);
   }
 
   /**
@@ -460,6 +468,30 @@ public class TreeBoxForm extends AbstractForm implements IPageForm {
         @Override
         protected void execChangedValue() throws ProcessingException {
           getTreeBoxField().setAutoCheckChildNodes(getValue());
+        }
+      }
+
+      @Order(70.0)
+      public class IsEnabledField extends AbstractCheckBox {
+
+        @Override
+        protected String getConfiguredFont() {
+          return "ITALIC";
+        }
+
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("IsEnabled");
+        }
+
+        @Override
+        protected void execChangedValue() throws ProcessingException {
+          getTreeBoxField().setEnabled(getValue());
+        }
+
+        @Override
+        protected void execInitField() throws ProcessingException {
+          setValue(getTreeBoxField().isEnabled());
         }
       }
     }

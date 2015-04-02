@@ -45,6 +45,7 @@ import org.eclipsescout.demo.widgets.client.ui.forms.ListBoxForm.MainBox.Configu
 import org.eclipsescout.demo.widgets.client.ui.forms.ListBoxForm.MainBox.ConfigurationBox.CheckUncheckBox.CheckAllButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.ListBoxForm.MainBox.ConfigurationBox.CheckUncheckBox.UncheckAllButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.ListBoxForm.MainBox.ConfigurationBox.FilterCheckedRowsValueField;
+import org.eclipsescout.demo.widgets.client.ui.forms.ListBoxForm.MainBox.ConfigurationBox.IsEnabledField;
 import org.eclipsescout.demo.widgets.client.ui.forms.ListBoxForm.MainBox.ConfigurationBox.ListBoxField;
 import org.eclipsescout.demo.widgets.client.ui.forms.ListBoxForm.MainBox.ConfigurationBox.ListEntriesField;
 import org.eclipsescout.demo.widgets.client.ui.forms.ListBoxForm.MainBox.ExamplesBox;
@@ -114,6 +115,13 @@ public class ListBoxForm extends AbstractForm implements IPageForm {
    */
   public FilterCheckedRowsValueField getFilterCheckedRowsValueField() {
     return getFieldByClass(FilterCheckedRowsValueField.class);
+  }
+
+  /**
+   * @return the IsEnabledField
+   */
+  public IsEnabledField getIsEnabledField() {
+    return getFieldByClass(IsEnabledField.class);
   }
 
   /**
@@ -430,6 +438,30 @@ public class ListBoxForm extends AbstractForm implements IPageForm {
         @Override
         protected void execChangedValue() throws ProcessingException {
           getListBoxField().setFilterCheckedRowsValue(getValue());
+        }
+      }
+
+      @Order(60.0)
+      public class IsEnabledField extends AbstractCheckBox {
+
+        @Override
+        protected String getConfiguredFont() {
+          return "ITALIC";
+        }
+
+        @Override
+        protected String getConfiguredLabel() {
+          return TEXTS.get("IsEnabled");
+        }
+
+        @Override
+        protected void execChangedValue() throws ProcessingException {
+          getListBoxField().setEnabled(getValue());
+        }
+
+        @Override
+        protected void execInitField() throws ProcessingException {
+          setValue(getListBoxField().isEnabled());
         }
       }
     }
