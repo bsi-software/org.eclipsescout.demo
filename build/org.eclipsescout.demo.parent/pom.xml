@@ -21,15 +21,6 @@
 
   <name>Eclipse Scout Demo</name>
 
-  <scm>
-    <url>https://github.com/BSI-Business-Systems-Integration-AG/org.eclipsescout.demo</url>
-    <connection>${tycho.scmUrl}</connection>
-  </scm>
-
-  <properties>
-    <tycho.scmUrl>scm:git:git://github.com/BSI-Business-Systems-Integration-AG/org.eclipsescout.demo.git</tycho.scmUrl>
-  </properties>
-
   <modules>
     <module>../org.eclipsescout.demo.master</module>
     <module>../../bahbah/org.eclipsescout.demo.bahbah.parent</module>
