@@ -21,7 +21,7 @@ import org.eclipse.scout.commons.security.SimplePrincipal;
 import org.eclipse.scout.rt.client.IClientSession;
 import org.eclipse.scout.rt.client.context.ClientRunContexts;
 import org.eclipse.scout.rt.client.session.ClientSessionProvider;
-import org.eclipse.scout.rt.platform.OBJ;
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.PlatformException;
 import org.eclipse.scout.rt.shared.ScoutTexts;
 import org.eclipse.scout.rt.ui.swing.AbstractSwingApplication;
@@ -68,7 +68,7 @@ public class SwingRayoApplication extends AbstractSwingApplication {
 
   private IClientSession createClientSession() {
     try {
-      return OBJ.get(ClientSessionProvider.class).provide(ClientRunContexts.empty().subject(m_subject).userAgent(initUserAgent()));
+      return BEANS.get(ClientSessionProvider.class).provide(ClientRunContexts.empty().subject(m_subject).userAgent(initUserAgent()));
     }
     catch (ProcessingException e) {
       throw new PlatformException("Failed to create ClientSession", e);

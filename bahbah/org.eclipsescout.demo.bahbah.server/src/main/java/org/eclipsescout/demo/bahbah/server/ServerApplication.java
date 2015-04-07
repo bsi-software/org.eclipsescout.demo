@@ -18,7 +18,7 @@ import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.commons.security.SimplePrincipal;
 import org.eclipse.scout.rt.platform.AbstractApplication;
 import org.eclipse.scout.rt.platform.Bean;
-import org.eclipse.scout.rt.platform.OBJ;
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.PlatformException;
 import org.eclipse.scout.rt.server.context.ServerRunContext;
 import org.eclipse.scout.rt.server.context.ServerRunContexts;
@@ -45,7 +45,7 @@ public class ServerApplication extends AbstractApplication {
     try {
       ServerRunContext runContext = ServerRunContexts.empty();
       runContext.subject(s_subject);
-      runContext.session(OBJ.get(ServerSessionProviderWithCache.class).provide(runContext.copy()));
+      runContext.session(BEANS.get(ServerSessionProviderWithCache.class).provide(runContext.copy()));
       runContext.run(new IRunnable() {
         @Override
         public void run() throws Exception {
