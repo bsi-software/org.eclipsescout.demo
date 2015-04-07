@@ -46,18 +46,14 @@ public class ServerApplication extends AbstractApplication {
       ServerRunContext runContext = ServerRunContexts.empty();
       runContext.subject(s_subject);
       runContext.session(OBJ.get(ServerSessionProviderWithCache.class).provide(runContext.copy()));
-    serverRunContext.run(new IRunnable() {
-
-      // Run initialization jobs.
-      ServerJobs.runNow(new IRunnable() {
-
+      runContext.run(new IRunnable() {
         @Override
         public void run() throws Exception {
           SERVICES.getService(IDbSetupService.class).installDb();
           SERVICES.getService(IClusterSynchronizationService.class).addListener(new RegisterUserNotificationListener());
           SERVICES.getService(IClusterSynchronizationService.class).addListener(new UnregisterUserNotificationListener());
         }
-      }, ServerJobs.newInput(runContext).name("Install Db schema if necessary"));
+      });
     }
     catch (Exception e) {
       throw new PlatformException("Unable to start server application.", e);
