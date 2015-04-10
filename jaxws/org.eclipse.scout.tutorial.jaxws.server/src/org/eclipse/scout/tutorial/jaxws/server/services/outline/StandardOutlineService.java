@@ -20,7 +20,8 @@ import org.eclipse.scout.tutorial.jaxws.shared.services.outline.WSLogTablePageDa
 public class StandardOutlineService extends AbstractService implements IStandardOutlineService {
 
   @Override
-  public CompanyTablePageData getCompanyTablePageData(CompanyTablePageData pageData) throws ProcessingException {
+  public CompanyTablePageData getCompanyTablePageData() throws ProcessingException {
+    CompanyTablePageData pageData = new CompanyTablePageData();
     SQL.selectInto("" + 
         "SELECT COMPANY_NR, " + 
         "       NAME, " + 
@@ -34,7 +35,8 @@ public class StandardOutlineService extends AbstractService implements IStandard
   }
   
   @Override
-  public WSLogTablePageData getWsLogTablePageData(WSLogTablePageData pageData) throws ProcessingException {
+  public WSLogTablePageData getWsLogTablePageData() throws ProcessingException {
+    WSLogTablePageData pageData = new WSLogTablePageData();
     SQL.selectInto("" + 
         "SELECT WS_LOG_NR, " + 
         "       EVT_DATE, " + 

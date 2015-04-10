@@ -16,16 +16,14 @@ import org.eclipse.scout.service.IService;
 public interface IStandardOutlineService extends IService {
 
   /**
-   * @param pageData
    * @return
    * @throws ProcessingException
    */
-  CompanyTablePageData getCompanyTablePageData(CompanyTablePageData pageData) throws ProcessingException;
+  CompanyTablePageData getCompanyTablePageData() throws ProcessingException;
 
   /**
-   * @param pageData
    * @return
    * @throws ProcessingException
    */
-  WSLogTablePageData getWsLogTablePageData(WSLogTablePageData pageData) throws ProcessingException;
+  WSLogTablePageData getWsLogTablePageData() throws ProcessingException;
 }

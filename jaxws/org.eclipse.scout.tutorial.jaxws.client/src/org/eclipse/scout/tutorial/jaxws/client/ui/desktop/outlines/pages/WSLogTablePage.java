@@ -35,9 +35,7 @@ public class WSLogTablePage extends AbstractPageWithTable<WSLogTablePage.Table> 
 
   @Override
   protected void execLoadData(SearchFilter filter) throws ProcessingException {
-    WSLogTablePageData pageData = new WSLogTablePageData();
-    pageData = SERVICES.getService(IStandardOutlineService.class).getWsLogTablePageData(pageData);
-    importPageData(pageData);
+    importPageData(SERVICES.getService(IStandardOutlineService.class).getWsLogTablePageData());
   }
 
   @Order(10.0)

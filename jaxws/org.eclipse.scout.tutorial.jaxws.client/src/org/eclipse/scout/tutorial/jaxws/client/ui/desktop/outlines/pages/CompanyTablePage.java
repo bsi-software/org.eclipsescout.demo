@@ -40,9 +40,7 @@ public class CompanyTablePage extends AbstractPageWithTable<CompanyTablePage.Tab
 
   @Override
   protected void execLoadData(SearchFilter filter) throws ProcessingException {
-    CompanyTablePageData pageData = new CompanyTablePageData();
-    pageData = SERVICES.getService(IStandardOutlineService.class).getCompanyTablePageData(pageData);
-    importPageData(pageData);
+    importPageData(SERVICES.getService(IStandardOutlineService.class).getCompanyTablePageData());
   }
 
   @Order(10.0)

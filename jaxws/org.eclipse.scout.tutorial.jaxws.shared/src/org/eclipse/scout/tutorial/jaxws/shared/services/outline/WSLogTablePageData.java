@@ -11,6 +11,7 @@
 package org.eclipse.scout.tutorial.jaxws.shared.services.outline;
 
 import javax.annotation.Generated;
+
 import org.eclipse.scout.rt.shared.data.basic.table.AbstractTableRowData;
 import org.eclipse.scout.rt.shared.data.page.AbstractTablePageData;
 
