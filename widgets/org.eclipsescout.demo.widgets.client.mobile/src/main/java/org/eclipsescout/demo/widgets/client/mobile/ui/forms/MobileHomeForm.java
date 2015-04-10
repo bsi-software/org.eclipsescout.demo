@@ -30,9 +30,9 @@ import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractArrayTableField;
+import org.eclipse.scout.rt.platform.service.SERVICES;
 import org.eclipse.scout.rt.shared.AbstractIcons;
 import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.service.SERVICES;
 import org.eclipsescout.demo.widgets.client.mobile.ui.forms.MobileHomeForm.MainBox.LogoutButton;
 import org.eclipsescout.demo.widgets.client.mobile.ui.forms.MobileHomeForm.MainBox.OutlinesTableField;
 

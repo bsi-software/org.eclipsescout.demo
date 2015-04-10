@@ -13,9 +13,9 @@ package org.eclipsescout.demo.bahbah.server.services.notification;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
+import org.eclipse.scout.rt.platform.service.SERVICES;
 import org.eclipse.scout.rt.server.services.common.clustersync.IClusterNotificationListener;
 import org.eclipse.scout.rt.server.services.common.clustersync.IClusterNotificationMessage;
-import org.eclipse.scout.service.SERVICES;
 import org.eclipsescout.demo.bahbah.shared.services.process.IUserProcessService;
 
 public class UnregisterUserNotificationListener implements IClusterNotificationListener {

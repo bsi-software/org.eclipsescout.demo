@@ -11,10 +11,10 @@
 package org.eclipsescout.demo.bahbah.shared.services.process;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.service.IService;
 import org.eclipse.scout.rt.shared.TunnelToServer;
 import org.eclipse.scout.rt.shared.validate.IValidationStrategy;
 import org.eclipse.scout.rt.shared.validate.InputValidation;
-import org.eclipse.scout.service.IService;
 
 @InputValidation(IValidationStrategy.NO_CHECK.class)
 @TunnelToServer

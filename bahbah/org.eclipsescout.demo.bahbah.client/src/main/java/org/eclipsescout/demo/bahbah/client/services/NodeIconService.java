@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.scout.service.AbstractService;
+import org.eclipse.scout.rt.platform.service.AbstractService;
 import org.eclipsescout.demo.bahbah.shared.Icons;
 
 /**

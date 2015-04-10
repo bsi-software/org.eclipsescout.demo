@@ -13,9 +13,9 @@ package org.eclipsescout.demo.widgets.client.ui.desktop.menu;
 import org.eclipse.scout.commons.ConfigIniUtility;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
+import org.eclipse.scout.rt.platform.service.SERVICES;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.shell.IShellService;
-import org.eclipse.scout.service.SERVICES;
 
 public abstract class AbstractViewSourceOnGitHubMenu extends AbstractMenu {
 

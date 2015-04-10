@@ -18,11 +18,11 @@ import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
+import org.eclipse.scout.rt.platform.service.SERVICES;
 import org.eclipse.scout.rt.server.AbstractServerSession;
 import org.eclipse.scout.rt.server.session.ServerSessionProvider;
 import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipse.scout.rt.shared.services.common.code.ICode;
-import org.eclipse.scout.service.SERVICES;
 import org.eclipsescout.demo.bahbah.shared.services.code.UserRoleCodeType;
 import org.eclipsescout.demo.bahbah.shared.services.process.IUserProcessService;
 

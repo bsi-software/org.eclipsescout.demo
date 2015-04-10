@@ -10,9 +10,9 @@
  ******************************************************************************/
 package org.eclipsescout.demo.minicrm.server.services.common.sql;
 
+import org.eclipse.scout.rt.platform.service.IService;
 import org.eclipse.scout.rt.server.Server;
 import org.eclipse.scout.rt.services.common.jdbc.AbstractDerbySqlService;
-import org.eclipse.scout.service.IService;
 import org.eclipsescout.demo.minicrm.server.ServerSession;
 
 @Server(ServerSession.class) /* XXX mvi check requirement of session class */

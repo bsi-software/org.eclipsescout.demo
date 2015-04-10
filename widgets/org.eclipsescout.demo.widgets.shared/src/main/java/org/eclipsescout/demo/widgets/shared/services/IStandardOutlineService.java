@@ -10,8 +10,8 @@
  ******************************************************************************/
 package org.eclipsescout.demo.widgets.shared.services;
 
+import org.eclipse.scout.rt.platform.service.IService;
 import org.eclipse.scout.rt.shared.TunnelToServer;
-import org.eclipse.scout.service.IService;
 
 /**
  * @author mzi
