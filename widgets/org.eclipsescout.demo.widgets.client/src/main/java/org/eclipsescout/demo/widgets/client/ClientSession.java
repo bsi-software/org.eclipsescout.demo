@@ -22,7 +22,7 @@ import org.eclipse.scout.rt.client.AbstractClientSession;
 import org.eclipse.scout.rt.client.services.common.bookmark.IBookmarkService;
 import org.eclipse.scout.rt.client.servicetunnel.http.ClientHttpServiceTunnel;
 import org.eclipse.scout.rt.client.session.ClientSessionProvider;
-import org.eclipse.scout.rt.platform.service.SERVICES;
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipse.scout.rt.shared.services.common.ping.IPingService;
 import org.eclipsescout.demo.widgets.client.ui.desktop.Desktop;
@@ -68,9 +68,9 @@ public class ClientSession extends AbstractClientSession {
 
     setDesktop(new Desktop());
     if (!isFootless()) {
-      SERVICES.getService(IBookmarkService.class).loadBookmarks();
+      BEANS.get(IBookmarkService.class).loadBookmarks();
       getServiceTunnel().setClientNotificationPollInterval(2000L);
-      SERVICES.getService(IPingService.class).ping("ping");
+      BEANS.get(IPingService.class).ping("ping");
     }
   }
 

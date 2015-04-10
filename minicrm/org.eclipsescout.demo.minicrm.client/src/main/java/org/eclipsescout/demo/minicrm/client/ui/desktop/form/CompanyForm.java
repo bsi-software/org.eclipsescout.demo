@@ -24,7 +24,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.radiobuttongroup.AbstractRadioButtonGroup;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
-import org.eclipse.scout.rt.platform.service.SERVICES;
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipsescout.demo.minicrm.client.ui.desktop.form.CompanyForm.MainBox.CancelButton;
@@ -190,7 +190,7 @@ public class CompanyForm extends AbstractForm {
 
     @Override
     protected void execLoad() throws ProcessingException {
-      ICompanyService service = SERVICES.getService(ICompanyService.class);
+      ICompanyService service = BEANS.get(ICompanyService.class);
       CompanyFormData formData = new CompanyFormData();
       exportFormData(formData);
       formData = service.load(formData);
@@ -200,7 +200,7 @@ public class CompanyForm extends AbstractForm {
 
     @Override
     protected void execStore() throws ProcessingException {
-      ICompanyService service = SERVICES.getService(ICompanyService.class);
+      ICompanyService service = BEANS.get(ICompanyService.class);
       CompanyFormData formData = new CompanyFormData();
       exportFormData(formData);
       formData = service.store(formData);
@@ -211,7 +211,7 @@ public class CompanyForm extends AbstractForm {
 
     @Override
     protected void execLoad() throws ProcessingException {
-      ICompanyService service = SERVICES.getService(ICompanyService.class);
+      ICompanyService service = BEANS.get(ICompanyService.class);
       CompanyFormData formData = new CompanyFormData();
       exportFormData(formData);
       formData = service.prepareCreate(formData);
@@ -220,7 +220,7 @@ public class CompanyForm extends AbstractForm {
 
     @Override
     protected void execStore() throws ProcessingException {
-      ICompanyService service = SERVICES.getService(ICompanyService.class);
+      ICompanyService service = BEANS.get(ICompanyService.class);
       CompanyFormData formData = new CompanyFormData();
       exportFormData(formData);
       formData = service.create(formData);

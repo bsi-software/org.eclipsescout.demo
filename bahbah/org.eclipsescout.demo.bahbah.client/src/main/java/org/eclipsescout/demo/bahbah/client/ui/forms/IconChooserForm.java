@@ -19,7 +19,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCancelButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractOkButton;
 import org.eclipse.scout.rt.client.ui.form.fields.filechooserfield.AbstractFileChooserField;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
-import org.eclipse.scout.rt.platform.service.SERVICES;
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.bahbah.client.ui.forms.IconChooserForm.MainBox.CancelButton;
 import org.eclipsescout.demo.bahbah.client.ui.forms.IconChooserForm.MainBox.IconField;
@@ -95,7 +95,7 @@ public class IconChooserForm extends AbstractForm {
     protected void execStore() throws ProcessingException {
       String filename = getIconField().getValue();
       byte[] content = IOUtility.getContent(filename);
-      SERVICES.getService(IIconProcessService.class).saveIcon(content);
+      BEANS.get(IIconProcessService.class).saveIcon(content);
     }
   }
 }

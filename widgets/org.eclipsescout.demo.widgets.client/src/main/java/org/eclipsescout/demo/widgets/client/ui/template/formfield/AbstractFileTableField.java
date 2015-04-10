@@ -40,7 +40,7 @@ import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractObjectColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractSmartColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
-import org.eclipse.scout.rt.platform.service.SERVICES;
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.shared.AbstractIcons;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.CODES;
@@ -315,7 +315,7 @@ public abstract class AbstractFileTableField extends AbstractTableField<Abstract
       protected void execAction() throws ProcessingException {
         for (ITableRow row : getSelectedRows()) {
           File file = (File) row.getKeyValues().get(0);
-          SERVICES.getService(IShellService.class).shellOpen(file.getPath());
+          BEANS.get(IShellService.class).shellOpen(file.getPath());
         }
       }
     }

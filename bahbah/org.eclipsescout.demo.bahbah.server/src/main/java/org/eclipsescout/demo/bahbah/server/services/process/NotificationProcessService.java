@@ -15,8 +15,8 @@ import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.exception.VetoException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.service.AbstractService;
-import org.eclipse.scout.rt.platform.service.SERVICES;
 import org.eclipse.scout.rt.server.Server;
 import org.eclipse.scout.rt.server.services.common.clientnotification.AllUserFilter;
 import org.eclipse.scout.rt.server.services.common.clientnotification.IClientNotificationService;
@@ -43,7 +43,7 @@ public class NotificationProcessService extends AbstractService implements INoti
     }
 
     LOG.info("queue 'update buddies' notification on server");
-    IClientNotificationService service = SERVICES.getService(IClientNotificationService.class);
+    IClientNotificationService service = BEANS.get(IClientNotificationService.class);
     service.putNotification(new RefreshBuddiesNotification(), new AllUserFilter(TIMEOUT));
   }
 
@@ -63,13 +63,13 @@ public class NotificationProcessService extends AbstractService implements INoti
     }
 
     // process message
-    IClientNotificationService service = SERVICES.getService(IClientNotificationService.class);
+    IClientNotificationService service = BEANS.get(IClientNotificationService.class);
     service.putNotification(new MessageNotification(ServerSession.get().getUserId(), message), new SingleUserFilter(buddyName, TIMEOUT));
   }
 
   @Override
   public void sendRefreshBuddiesInternal() throws ProcessingException {
-    IClientNotificationService service = SERVICES.getService(IClientNotificationService.class);
+    IClientNotificationService service = BEANS.get(IClientNotificationService.class);
     service.putNonClusterDistributedNotification(new RefreshBuddiesNotification(), new AllUserFilter(TIMEOUT));
   }
 }

@@ -30,7 +30,7 @@ import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractArrayTableField;
-import org.eclipse.scout.rt.platform.service.SERVICES;
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.shared.AbstractIcons;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.mobile.ui.forms.MobileHomeForm.MainBox.LogoutButton;
@@ -90,7 +90,7 @@ public class MobileHomeForm extends AbstractMobileForm implements IOutlineChoose
     @Override
     protected void execInitField() throws ProcessingException {
       // Table already is scrollable, it's not necessary to make the form scrollable too
-      IDeviceTransformationService service = SERVICES.getService(IDeviceTransformationService.class);
+      IDeviceTransformationService service = BEANS.get(IDeviceTransformationService.class);
       if (service != null && service.getDeviceTransformer() != null) {
         service.getDeviceTransformer().getDeviceTransformationConfig().excludeFieldTransformation(this, MobileDeviceTransformation.MAKE_MAINBOX_SCROLLABLE);
       }

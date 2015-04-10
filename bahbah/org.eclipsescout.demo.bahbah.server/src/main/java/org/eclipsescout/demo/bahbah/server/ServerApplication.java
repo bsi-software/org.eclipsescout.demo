@@ -17,10 +17,9 @@ import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.commons.security.SimplePrincipal;
 import org.eclipse.scout.rt.platform.AbstractApplication;
-import org.eclipse.scout.rt.platform.Bean;
 import org.eclipse.scout.rt.platform.BEANS;
+import org.eclipse.scout.rt.platform.Bean;
 import org.eclipse.scout.rt.platform.PlatformException;
-import org.eclipse.scout.rt.platform.service.SERVICES;
 import org.eclipse.scout.rt.server.context.ServerRunContext;
 import org.eclipse.scout.rt.server.context.ServerRunContexts;
 import org.eclipse.scout.rt.server.services.common.clustersync.IClusterSynchronizationService;
@@ -49,9 +48,9 @@ public class ServerApplication extends AbstractApplication {
       runContext.run(new IRunnable() {
         @Override
         public void run() throws Exception {
-          SERVICES.getService(IDbSetupService.class).installDb();
-          SERVICES.getService(IClusterSynchronizationService.class).addListener(new RegisterUserNotificationListener());
-          SERVICES.getService(IClusterSynchronizationService.class).addListener(new UnregisterUserNotificationListener());
+          BEANS.get(IDbSetupService.class).installDb();
+          BEANS.get(IClusterSynchronizationService.class).addListener(new RegisterUserNotificationListener());
+          BEANS.get(IClusterSynchronizationService.class).addListener(new UnregisterUserNotificationListener());
         }
       });
     }

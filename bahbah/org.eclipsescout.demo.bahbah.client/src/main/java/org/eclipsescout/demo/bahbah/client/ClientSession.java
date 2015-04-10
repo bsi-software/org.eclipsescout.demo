@@ -20,7 +20,7 @@ import org.eclipse.scout.rt.client.AbstractClientSession;
 import org.eclipse.scout.rt.client.services.common.clientnotification.IClientNotificationConsumerService;
 import org.eclipse.scout.rt.client.servicetunnel.http.ClientHttpServiceTunnel;
 import org.eclipse.scout.rt.client.session.ClientSessionProvider;
-import org.eclipse.scout.rt.platform.service.SERVICES;
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.shared.services.common.code.CODES;
 import org.eclipse.scout.rt.shared.services.common.code.ICode;
 import org.eclipsescout.demo.bahbah.client.services.IBahBahNotificationConsumerService;
@@ -58,8 +58,8 @@ public class ClientSession extends AbstractClientSession {
     getServiceTunnel().setClientNotificationPollInterval(1000L);
 
     // set the notification listener service (this service will be called when the client receives a notification)
-    IBahBahNotificationConsumerService notificationHandlerService = SERVICES.getService(IBahBahNotificationConsumerService.class);
-    SERVICES.getService(IClientNotificationConsumerService.class).addClientNotificationConsumerListener(this, notificationHandlerService);
+    IBahBahNotificationConsumerService notificationHandlerService = BEANS.get(IBahBahNotificationConsumerService.class);
+    BEANS.get(IClientNotificationConsumerService.class).addClientNotificationConsumerListener(this, notificationHandlerService);
 
     setDesktop(new Desktop());
   }
@@ -68,7 +68,7 @@ public class ClientSession extends AbstractClientSession {
   protected void execStoreSession() throws ProcessingException {
     // disable notification polling with -1
     ClientSession.get().getServiceTunnel().setClientNotificationPollInterval(-1);
-    SERVICES.getService(IUserProcessService.class).unregisterUser();
+    BEANS.get(IUserProcessService.class).unregisterUser();
   }
 
 }

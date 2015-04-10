@@ -41,6 +41,8 @@ import org.w3c.dom.svg.SVGCircleElement;
 import org.w3c.dom.svg.SVGDocument;
 import org.w3c.dom.svg.SVGLength;
 
+//github.com/BSI-Business-Systems-Integration-AG/org.eclipsescout.demo.git
+
 public class SvgFieldForm extends AbstractForm implements IPageForm {
 
   public SvgFieldForm() throws ProcessingException {

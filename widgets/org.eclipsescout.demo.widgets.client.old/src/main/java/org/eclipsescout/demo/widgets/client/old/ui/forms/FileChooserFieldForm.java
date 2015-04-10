@@ -38,7 +38,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.tabbox.AbstractTabBox;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
-import org.eclipse.scout.rt.platform.service.SERVICES;
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.shell.IShellService;
 import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
@@ -208,7 +208,7 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
 
             @Override
             protected void execClickAction() throws ProcessingException {
-              SERVICES.getService(IShellService.class).shellOpen(getChooseAnImageField().getValue());
+              BEANS.get(IShellService.class).shellOpen(getChooseAnImageField().getValue());
             }
           }
         }
@@ -483,7 +483,7 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
                   getSelectAFolderField().setValue(getContentField().getTable().getPathColumn().getSelectedValue());
                 }
                 else {
-                  SERVICES.getService(IShellService.class).shellOpen(getContentField().getTable().getPathColumn().getSelectedValue());
+                  BEANS.get(IShellService.class).shellOpen(getContentField().getTable().getPathColumn().getSelectedValue());
                 }
               }
             }

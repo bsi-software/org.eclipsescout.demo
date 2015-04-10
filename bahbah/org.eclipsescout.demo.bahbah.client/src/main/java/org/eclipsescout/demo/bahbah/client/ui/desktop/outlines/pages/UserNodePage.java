@@ -22,7 +22,7 @@ import org.eclipse.scout.rt.client.ui.basic.cell.Cell;
 import org.eclipse.scout.rt.client.ui.basic.tree.ITreeNode;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithNodes;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
-import org.eclipse.scout.rt.platform.service.SERVICES;
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
 import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
@@ -76,7 +76,7 @@ public class UserNodePage extends AbstractPageWithNodes {
 
   @Override
   protected void execCreateChildPages(List<IPage<?>> pageList) throws ProcessingException {
-    String[] buddies = SERVICES.getService(IStandardOutlineService.class).getOnlineUsers();
+    String[] buddies = BEANS.get(IStandardOutlineService.class).getOnlineUsers();
     for (String buddy : buddies) {
       BuddyNodePage buddyPage = new BuddyNodePage();
       buddyPage.setName(buddy);
@@ -87,7 +87,7 @@ public class UserNodePage extends AbstractPageWithNodes {
   public void updateBuddyPages() throws ProcessingException {
     HashSet<String> newBuddy = new HashSet<String>();
     ArrayList<String> updatedList = new ArrayList<String>();
-    String[] buddies = SERVICES.getService(IStandardOutlineService.class).getOnlineUsers();
+    String[] buddies = BEANS.get(IStandardOutlineService.class).getOnlineUsers();
 
     for (String buddy : buddies) {
       newBuddy.add(buddy);

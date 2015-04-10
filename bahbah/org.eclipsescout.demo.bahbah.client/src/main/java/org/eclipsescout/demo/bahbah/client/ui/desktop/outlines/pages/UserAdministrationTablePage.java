@@ -28,7 +28,7 @@ import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithTable;
 import org.eclipse.scout.rt.client.ui.form.useradmin.DefaultPasswordForm;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
-import org.eclipse.scout.rt.platform.service.SERVICES;
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
@@ -62,7 +62,7 @@ public class UserAdministrationTablePage extends AbstractPageWithTable<UserAdmin
       formData = new UserFormData();
     }
 
-    UserAdministrationTablePageData pageData = SERVICES.getService(IUserProcessService.class).getUserAdministrationTableData(formData);
+    UserAdministrationTablePageData pageData = BEANS.get(IUserProcessService.class).getUserAdministrationTableData(formData);
     importPageData(pageData);
   }
 
@@ -274,7 +274,7 @@ public class UserAdministrationTablePage extends AbstractPageWithTable<UserAdmin
       @Override
       protected void execAction() throws ProcessingException {
         if (MessageBox.showDeleteConfirmationMessage(TEXTS.get("Users"), getUsernameColumn().getValues(getSelectedRows()))) {
-          SERVICES.getService(IUserProcessService.class).deleteUsers(getUserIdColumn().getValues(getSelectedRows()));
+          BEANS.get(IUserProcessService.class).deleteUsers(getUserIdColumn().getValues(getSelectedRows()));
           reloadPage();
         }
       }

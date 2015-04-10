@@ -14,8 +14,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.service.AbstractService;
-import org.eclipse.scout.rt.platform.service.SERVICES;
 import org.eclipse.scout.rt.server.Server;
 import org.eclipsescout.demo.bahbah.server.ServerSession;
 import org.eclipsescout.demo.bahbah.shared.services.outline.IStandardOutlineService;
@@ -26,7 +26,7 @@ public class StandardOutlineService extends AbstractService implements IStandard
 
   @Override
   public String[] getOnlineUsers() throws ProcessingException {
-    Set<String> allUsers = SERVICES.getService(IUserProcessService.class).getUsersOnline();
+    Set<String> allUsers = BEANS.get(IUserProcessService.class).getUsersOnline();
     Set<String> users = new HashSet<String>(allUsers);
     // remove myself
     users.remove(ServerSession.get().getUserId());

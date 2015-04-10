@@ -19,8 +19,8 @@ import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.exception.VetoException;
 import org.eclipse.scout.commons.holders.IntegerHolder;
 import org.eclipse.scout.commons.holders.NVPair;
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.service.AbstractService;
-import org.eclipse.scout.rt.platform.service.SERVICES;
 import org.eclipse.scout.rt.server.Server;
 import org.eclipse.scout.rt.server.services.common.clustersync.IClusterSynchronizationService;
 import org.eclipse.scout.rt.server.services.common.jdbc.SQL;
@@ -61,7 +61,7 @@ public class UserProcessService extends AbstractService implements IUserProcessS
     }
 
     registerUserInternal(ServerSession.get().getUserId());
-    SERVICES.getService(IClusterSynchronizationService.class).publishNotification(new RegisterUserNotification(ServerSession.get().getUserId()));
+    BEANS.get(IClusterSynchronizationService.class).publishNotification(new RegisterUserNotification(ServerSession.get().getUserId()));
   }
 
   @Override
@@ -71,8 +71,8 @@ public class UserProcessService extends AbstractService implements IUserProcessS
     }
 
     m_users.remove(ServerSession.get().getUserId());
-    SERVICES.getService(INotificationProcessService.class).sendRefreshBuddies();
-    SERVICES.getService(IClusterSynchronizationService.class).publishNotification(new UnregisterUserNotification(ServerSession.get().getUserId()));
+    BEANS.get(INotificationProcessService.class).sendRefreshBuddies();
+    BEANS.get(IClusterSynchronizationService.class).publishNotification(new UnregisterUserNotification(ServerSession.get().getUserId()));
 
   }
 
@@ -148,12 +148,12 @@ public class UserProcessService extends AbstractService implements IUserProcessS
   @Override
   public void registerUserInternal(String userId) throws ProcessingException {
     m_users.add(userId);
-    SERVICES.getService(INotificationProcessService.class).sendRefreshBuddiesInternal();
+    BEANS.get(INotificationProcessService.class).sendRefreshBuddiesInternal();
   }
 
   @Override
   public void unregisterUserInternal(String userName) throws ProcessingException {
     m_users.remove(ServerSession.get().getUserId());
-    SERVICES.getService(INotificationProcessService.class).sendRefreshBuddiesInternal();
+    BEANS.get(INotificationProcessService.class).sendRefreshBuddiesInternal();
   }
 }

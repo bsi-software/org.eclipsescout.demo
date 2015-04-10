@@ -16,7 +16,7 @@ import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.client.services.common.icon.IIconProviderService;
 import org.eclipse.scout.rt.client.services.common.icon.IconLocator;
 import org.eclipse.scout.rt.client.services.common.icon.IconSpec;
-import org.eclipse.scout.rt.platform.service.SERVICES;
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipsescout.demo.bahbah.client.ClientSession;
 import org.eclipsescout.demo.bahbah.shared.services.process.IIconProcessService;
 
@@ -63,7 +63,7 @@ public class BuddyAvatarIconProviderService implements IIconProviderService {
   protected IconSpec loadBuddyAvatarIconSpec(String m_iconName) {
     try {
       if (ClientSession.get() != null) {
-        byte[] data = SERVICES.getService(IIconProcessService.class).loadIcon(m_iconName);
+        byte[] data = BEANS.get(IIconProcessService.class).loadIcon(m_iconName);
         return new IconSpec(m_iconName, data);
       }
     }

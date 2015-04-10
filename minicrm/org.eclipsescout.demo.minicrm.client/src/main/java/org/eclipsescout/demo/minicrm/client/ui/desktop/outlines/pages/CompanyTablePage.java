@@ -28,7 +28,7 @@ import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithTabl
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.ISearchForm;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
-import org.eclipse.scout.rt.platform.service.SERVICES;
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
@@ -63,7 +63,7 @@ public class CompanyTablePage extends AbstractPageWithTable<Table> {
     if (formData == null) {
       formData = new CompanySearchFormData();
     }
-    CompanyTablePageData pageData = SERVICES.getService(IStandardOutlineService.class).getCompanyTableData(formData);
+    CompanyTablePageData pageData = BEANS.get(IStandardOutlineService.class).getCompanyTableData(formData);
     importPageData(pageData);
   }
 
@@ -218,7 +218,7 @@ public class CompanyTablePage extends AbstractPageWithTable<Table> {
       @Override
       protected void execAction() throws ProcessingException {
         if (MessageBox.showDeleteConfirmationMessage(getNameColumn().getSelectedValue())) {
-          SERVICES.getService(ICompanyService.class).delete(getCompanyNrColumn().getSelectedValue());
+          BEANS.get(ICompanyService.class).delete(getCompanyNrColumn().getSelectedValue());
           reloadPage();
         }
       }

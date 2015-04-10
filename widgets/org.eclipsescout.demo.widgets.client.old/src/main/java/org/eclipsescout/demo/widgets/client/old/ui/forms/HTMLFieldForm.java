@@ -32,7 +32,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractLinkButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.htmlfield.AbstractHtmlField;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
-import org.eclipse.scout.rt.platform.service.SERVICES;
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.file.RemoteFile;
 import org.eclipse.scout.rt.shared.services.common.shell.IShellService;
@@ -178,7 +178,7 @@ public class HTMLFieldForm extends AbstractForm implements IPageForm {
           MessageBox.showOkMessage(null, TEXTS.get("LocalUrlClicked"), TEXTS.get("Parameters") + ":\n" + paramStr);
         }
         else {
-          SERVICES.getService(IShellService.class).shellOpen(url.toExternalForm());
+          BEANS.get(IShellService.class).shellOpen(url.toExternalForm());
         }
       }
     }

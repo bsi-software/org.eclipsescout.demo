@@ -30,7 +30,7 @@ import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractArrayTableField;
-import org.eclipse.scout.rt.platform.service.SERVICES;
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.data.basic.FontSpec;
 import org.eclipsescout.demo.bahbah.client.services.BuddyAvatarIconProviderService;
@@ -286,7 +286,7 @@ public class ChatForm extends AbstractForm {
           protected void execDecorateCell(Cell cell, ITableRow row) throws ProcessingException {
             if (cell.getValue() instanceof String && StringUtility.hasText((String) cell.getValue())) {
               String value = (String) cell.getValue();
-              String icon = SERVICES.getService(INodeIconService.class).getIcon(value);
+              String icon = BEANS.get(INodeIconService.class).getIcon(value);
               cell.setIconId(icon);
             }
           }
@@ -309,7 +309,7 @@ public class ChatForm extends AbstractForm {
           protected void execDecorateCell(Cell cell, ITableRow row) throws ProcessingException {
             if (cell.getValue() instanceof String && StringUtility.hasText((String) cell.getValue())) {
               String value = (String) cell.getValue();
-              String icon = SERVICES.getService(INodeIconService.class).getIcon(value);
+              String icon = BEANS.get(INodeIconService.class).getIcon(value);
               cell.setIconId(icon);
             }
           }
@@ -331,7 +331,7 @@ public class ChatForm extends AbstractForm {
 
         if (!StringUtility.isNullOrEmpty(message)) {
           // send message to server
-          SERVICES.getService(INotificationProcessService.class).sendMessage(getBuddyName(), message);
+          BEANS.get(INotificationProcessService.class).sendMessage(getBuddyName(), message);
           // update local chat history
 
           getHistoryField().addMessage(true, getUserName(), getBuddyName(), new Date(), message, "", "");

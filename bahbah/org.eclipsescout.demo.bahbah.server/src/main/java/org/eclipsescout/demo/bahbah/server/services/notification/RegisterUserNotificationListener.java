@@ -13,7 +13,7 @@ package org.eclipsescout.demo.bahbah.server.services.notification;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
-import org.eclipse.scout.rt.platform.service.SERVICES;
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.server.services.common.clustersync.IClusterNotificationListener;
 import org.eclipse.scout.rt.server.services.common.clustersync.IClusterNotificationMessage;
 import org.eclipsescout.demo.bahbah.shared.services.process.IUserProcessService;
@@ -26,7 +26,7 @@ public class RegisterUserNotificationListener implements IClusterNotificationLis
     if (isInteresting(notification)) {
       RegisterUserNotification registerUserNotification = (RegisterUserNotification) notification.getNotification();
       try {
-        SERVICES.getService(IUserProcessService.class).registerUserInternal(registerUserNotification.getUserName());
+        BEANS.get(IUserProcessService.class).registerUserInternal(registerUserNotification.getUserName());
       }
       catch (ProcessingException e) {
         LOG.error("Unable to register user internal", e);

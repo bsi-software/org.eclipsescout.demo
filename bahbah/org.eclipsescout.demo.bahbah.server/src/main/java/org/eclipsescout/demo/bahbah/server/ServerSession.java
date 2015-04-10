@@ -18,7 +18,7 @@ import org.eclipse.scout.commons.annotations.FormData;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
-import org.eclipse.scout.rt.platform.service.SERVICES;
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.server.AbstractServerSession;
 import org.eclipse.scout.rt.server.session.ServerSessionProvider;
 import org.eclipse.scout.rt.shared.services.common.code.CODES;
@@ -60,8 +60,8 @@ public class ServerSession extends AbstractServerSession {
       }
       else {
         LOG.info("created a new session for " + getUserId());
-        setPermission(SERVICES.getService(IUserProcessService.class).getUserPermission());
-        SERVICES.getService(IUserProcessService.class).registerUser();
+        setPermission(BEANS.get(IUserProcessService.class).getUserPermission());
+        BEANS.get(IUserProcessService.class).registerUser();
       }
     }
   }

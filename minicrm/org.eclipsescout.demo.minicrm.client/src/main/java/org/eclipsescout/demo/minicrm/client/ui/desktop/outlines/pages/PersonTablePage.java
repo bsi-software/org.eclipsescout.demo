@@ -19,7 +19,7 @@ import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithTable;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.ISearchForm;
-import org.eclipse.scout.rt.platform.service.SERVICES;
+import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
 import org.eclipsescout.demo.minicrm.client.ui.desktop.outlines.pages.PersonTablePage.Table;
@@ -51,7 +51,7 @@ public class PersonTablePage extends AbstractPageWithTable<Table> {
       formData = new PersonSearchFormData();
     }
 
-    PersonTablePageData pageData = SERVICES.getService(IStandardOutlineService.class).getPersonTableData(formData);
+    PersonTablePageData pageData = BEANS.get(IStandardOutlineService.class).getPersonTableData(formData);
     importPageData(pageData);
   }
 
