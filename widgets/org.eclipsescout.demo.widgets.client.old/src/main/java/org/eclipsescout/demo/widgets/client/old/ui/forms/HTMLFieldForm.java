@@ -12,15 +12,12 @@ package org.eclipsescout.demo.widgets.client.old.ui.forms;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStreamReader;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.scout.commons.IOUtility;
-import org.eclipse.scout.commons.UriBuilder;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.services.common.icon.IconLocator;
@@ -32,10 +29,8 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractLinkButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.htmlfield.AbstractHtmlField;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
-import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.file.RemoteFile;
-import org.eclipse.scout.rt.shared.services.common.shell.IShellService;
 import org.eclipsescout.demo.widgets.client.old.ResourceBase;
 import org.eclipsescout.demo.widgets.client.old.ui.forms.HTMLFieldForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.old.ui.forms.HTMLFieldForm.MainBox.GroupBox;
@@ -168,18 +163,8 @@ public class HTMLFieldForm extends AbstractForm implements IPageForm {
       }
 
       @Override
-      protected void execHyperlinkAction(URL url, String path, boolean local) throws ProcessingException {
-        if (local) {
-          Map<String, String> parameters = new UriBuilder(url).getParameters();
-          String paramStr = "";
-          if (parameters != null) {
-            paramStr = parameters.toString();
-          }
-          MessageBox.showOkMessage(null, TEXTS.get("LocalUrlClicked"), TEXTS.get("Parameters") + ":\n" + paramStr);
-        }
-        else {
-          BEANS.get(IShellService.class).shellOpen(url.toExternalForm());
-        }
+      protected void execAppLinkAction(String ref) throws ProcessingException {
+        MessageBox.showOkMessage(null, TEXTS.get("LocalUrlClicked"), TEXTS.get("Parameters") + ":\n" + ref);
       }
     }
 
