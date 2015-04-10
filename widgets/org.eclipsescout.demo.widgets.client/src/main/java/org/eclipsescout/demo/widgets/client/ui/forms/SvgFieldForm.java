@@ -25,9 +25,8 @@ import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
 import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.svg.client.SVGUtility;
-import org.eclipse.scout.svg.client.svgfield.AbstractSvgField;
-import org.eclipse.scout.rt.svg.client.svgfield.SvgFieldEvent;
+import org.eclipse.scout.rt.svg.client.SVGUtility;
+import org.eclipse.scout.rt.svg.client.svgfield.AbstractSvgField;
 import org.eclipsescout.demo.widgets.client.ResourceBase;
 import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.ExamplesBox.AlignedCenterField;
 import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.ExamplesBox.AlignedRightField;
@@ -246,18 +245,13 @@ public class SvgFieldForm extends AbstractForm implements IPageForm {
         }
 
         @Override
-        protected void execHyperlink(SvgFieldEvent e) throws ProcessingException {
-          if (e.getURL() == null) return;
-
-          // create a copy...
-          String url = e.getURL().toExternalForm();
-
-          if ("http://local/circle2".equals(url)) {
+        protected void execAppLinkAction(String ref) throws ProcessingException {
+          if ("circle2".equals(ref)) {
             SVGDocument doc = (SVGDocument) getSvgDocument().cloneNode(true);
             setSvgDocument(liveUpdateCircle(doc, "circle2"));
           }
           else {
-            MessageBox.showOkMessage(TEXTS.get("SVGLink"), TEXTS.get("SVGLinkMessage"), e.getURL().toString());
+            MessageBox.showOkMessage(TEXTS.get("SVGLink"), TEXTS.get("SVGLinkMessage"), ref);
           }
         }
       }
@@ -302,7 +296,7 @@ public class SvgFieldForm extends AbstractForm implements IPageForm {
 
       @Override
       protected void execClickAction() throws ProcessingException {
-        getSvgSourceField().setValue(TEXTS.get("SvgUserContend"));
+        getSvgSourceField().setValue(TEXTS.get("SvgUserContent"));
       }
     }
 
