@@ -319,7 +319,7 @@ public class NumberFieldsForm extends AbstractForm implements IPageForm {
         @Override
         protected void execInitField() throws ProcessingException {
           setValue(-3);
-          execChangedValue();
+          interceptChangedValue();
         }
       }
 
@@ -404,7 +404,7 @@ public class NumberFieldsForm extends AbstractForm implements IPageForm {
         @Override
         protected void execInitField() throws ProcessingException {
           setValue(-3L);
-          execChangedValue();
+          interceptChangedValue();
         }
       }
 
@@ -489,7 +489,7 @@ public class NumberFieldsForm extends AbstractForm implements IPageForm {
         @Override
         protected void execInitField() throws ProcessingException {
           setValue(BigInteger.valueOf(-3));
-          execChangedValue();
+          interceptChangedValue();
         }
       }
     }
