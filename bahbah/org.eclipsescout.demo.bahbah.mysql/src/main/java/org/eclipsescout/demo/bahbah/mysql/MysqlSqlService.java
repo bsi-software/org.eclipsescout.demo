@@ -12,9 +12,8 @@ package org.eclipsescout.demo.bahbah.mysql;
 
 import org.eclipse.scout.commons.annotations.Priority;
 import org.eclipse.scout.rt.server.Server;
+import org.eclipse.scout.rt.server.services.common.jdbc.mysql.AbstractMySqlSqlService;
 import org.eclipsescout.demo.bahbah.server.ServerSession;
-
-import com.bsiag.scout.rt.server.jdbc.AbstractMySqlSqlService;
 
 /**
  *

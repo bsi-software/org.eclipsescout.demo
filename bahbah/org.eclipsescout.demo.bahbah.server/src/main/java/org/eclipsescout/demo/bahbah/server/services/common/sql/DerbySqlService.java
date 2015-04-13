@@ -12,7 +12,7 @@ package org.eclipsescout.demo.bahbah.server.services.common.sql;
 
 import org.eclipse.scout.rt.platform.service.IService;
 import org.eclipse.scout.rt.server.Server;
-import org.eclipse.scout.rt.services.common.jdbc.AbstractDerbySqlService;
+import org.eclipse.scout.rt.server.services.common.jdbc.derby.AbstractDerbySqlService;
 import org.eclipsescout.demo.bahbah.server.ServerSession;
 
 @Server(ServerSession.class) /* XXX mvi check requirement of session class */
