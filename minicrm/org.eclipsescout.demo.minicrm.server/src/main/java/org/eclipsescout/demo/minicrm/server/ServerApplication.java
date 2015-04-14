@@ -13,7 +13,7 @@ package org.eclipsescout.demo.minicrm.server;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.rt.platform.AbstractApplication;
-import org.eclipse.scout.rt.platform.PlatformException;
+import org.eclipse.scout.rt.platform.exception.PlatformException;
 
 public class ServerApplication extends AbstractApplication {
   private static IScoutLogger logger = ScoutLogManager.getLogger(ServerApplication.class);

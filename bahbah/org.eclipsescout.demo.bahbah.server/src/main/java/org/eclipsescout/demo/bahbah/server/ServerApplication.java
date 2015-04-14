@@ -19,7 +19,7 @@ import org.eclipse.scout.commons.security.SimplePrincipal;
 import org.eclipse.scout.rt.platform.AbstractApplication;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.Bean;
-import org.eclipse.scout.rt.platform.PlatformException;
+import org.eclipse.scout.rt.platform.exception.PlatformException;
 import org.eclipse.scout.rt.server.context.ServerRunContext;
 import org.eclipse.scout.rt.server.context.ServerRunContexts;
 import org.eclipse.scout.rt.server.services.common.clustersync.IClusterSynchronizationService;
