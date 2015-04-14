@@ -28,6 +28,7 @@ import org.eclipse.scout.rt.client.ui.basic.table.ColumnSet;
 import org.eclipse.scout.rt.client.ui.basic.table.ITable;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
 import org.eclipse.scout.rt.client.ui.basic.table.TableRow;
+import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractBooleanColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractDateColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractSmartColumn;
@@ -40,7 +41,6 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.checkbox.AbstractCheckBox;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
-import org.eclipse.scout.rt.client.ui.form.fields.placeholder.AbstractPlaceholderField;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
@@ -50,19 +50,19 @@ import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
 import org.eclipsescout.demo.widgets.client.services.lookup.IconIdLookupCall;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox;
-import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.AutoResizeColumnsField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.DefaultIconIdField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.DeletedRowsField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.InsertedRowsField;
-import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.IsCheckableField;
-import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.IsEditableField;
-import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.MultiSelectField;
-import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.PlaceholderField;
+import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.PropertiesGroupBox;
+import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.PropertiesGroupBox.AutoResizeColumnsField;
+import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.PropertiesGroupBox.IsCheckableField;
+import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.PropertiesGroupBox.IsEditableField;
+import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.PropertiesGroupBox.MultiSelectField;
+import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.PropertiesGroupBox.TableHeaderVisibleField;
+import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.PropertiesGroupBox.TableStatusVisibleField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.SelectedRowsField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.TableField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.TableField.Table.LocationColumn;
-import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.TableHeaderVisibleField;
-import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.TableStatusVisibleField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.UpdatedRowsField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ExamplesBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ExamplesBox.DefaultField;
@@ -157,11 +157,8 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(MultiSelectField.class);
   }
 
-  /**
-   * @return the PlaceholderField
-   */
-  public PlaceholderField getPlaceholderField() {
-    return getFieldByClass(PlaceholderField.class);
+  public PropertiesGroupBox getPropertiesGroupBox() {
+    return getFieldByClass(PropertiesGroupBox.class);
   }
 
   /**
@@ -356,12 +353,8 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
             return getColumnSet().getColumnByClass(IdColumn.class);
           }
 
-          /**
-           * if editable field is set to true and row-id > 2 true is returned.
-           * otherwise, false is returned.
-           */
-          private boolean isEditable(ITableRow row) {
-            return getIsEditableField().getValue() && getIdColumn().getValue(row) > 2;
+          public AttendedColumn getAttendedColumn() {
+            return getColumnSet().getColumnByClass(AttendedColumn.class);
           }
 
           @Order(10.0)
@@ -402,12 +395,8 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
             }
 
             @Override
-            protected boolean execIsEditable(ITableRow row) throws ProcessingException {
-              if (Table.this.isEditable(row)) {
-                row.getCellForUpdate(getNameColumn()).setBackgroundColor(EDITABLE_CELL_BACKGROUND_COLOR);
-                return true;
-              }
-              return false;
+            protected void execDecorateCell(Cell cell, ITableRow row) throws ProcessingException {
+              super.execDecorateCell(cell, row);
             }
 
             @Override
@@ -445,14 +434,6 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
               return 150;
             }
 
-            @Override
-            protected boolean execIsEditable(ITableRow row) throws ProcessingException {
-              if (Table.this.isEditable(row)) {
-                row.getCellForUpdate(getLocationColumn()).setBackgroundColor(EDITABLE_CELL_BACKGROUND_COLOR);
-                return true;
-              }
-              return false;
-            }
           }
 
           @Order(40.0)
@@ -473,14 +454,6 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
               return 110;
             }
 
-            @Override
-            protected boolean execIsEditable(ITableRow row) throws ProcessingException {
-              if (Table.this.isEditable(row)) {
-                row.getCellForUpdate(getDateColumn()).setBackgroundColor(EDITABLE_CELL_BACKGROUND_COLOR);
-                return true;
-              }
-              return false;
-            }
           }
 
           @Order(50.0)
@@ -511,14 +484,6 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
               return 80;
             }
 
-            @Override
-            protected boolean execIsEditable(ITableRow row) throws ProcessingException {
-              if (Table.this.isEditable(row)) {
-                row.getCellForUpdate(getIndustryColumn()).setBackgroundColor(EDITABLE_CELL_BACKGROUND_COLOR);
-                return true;
-              }
-              return false;
-            }
           }
 
           @Order(70.0)
@@ -531,21 +496,12 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
 
             @Override
             protected String getConfiguredHeaderText() {
-              return TEXTS.get("Participans");
+              return TEXTS.get("Participants");
             }
 
             @Override
             protected int getConfiguredWidth() {
               return 100;
-            }
-
-            @Override
-            protected boolean execIsEditable(ITableRow row) throws ProcessingException {
-              if (getIsEditableField().getValue()) {
-                row.getCellForUpdate(getParticipantsColumn()).setBackgroundColor(EDITABLE_CELL_BACKGROUND_COLOR);
-                return true;
-              }
-              return false;
             }
 
             @Override
@@ -588,14 +544,31 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
               return 120;
             }
 
+          }
+
+          @Order(90.0)
+          public class AttendedColumn extends AbstractBooleanColumn {
+
             @Override
-            protected boolean execIsEditable(ITableRow row) throws ProcessingException {
-              if (Table.this.isEditable(row)) {
-                row.getCellForUpdate(getIndustryColumn()).setBackgroundColor(EDITABLE_CELL_BACKGROUND_COLOR);
-                return true;
-              }
-              return false;
+            protected boolean getConfiguredEditable() {
+              return true;
             }
+
+            @Override
+            protected String getConfiguredHeaderText() {
+              return TEXTS.get("Attended");
+            }
+
+            @Override
+            protected boolean getConfiguredVisible() {
+              return true;
+            }
+
+            @Override
+            protected int getConfiguredWidth() {
+              return 120;
+            }
+
           }
 
           @Order(10.0)
@@ -640,6 +613,30 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
             protected void execAction() throws ProcessingException {
               List<ITableRow> rows = getSelectedRows();
               deleteRows(rows);
+            }
+          }
+
+          @Order(30.0)
+          public class ToggleRowEnabledMenu extends AbstractMenu {
+
+            @Override
+            protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+              return CollectionUtility.<IMenuType> hashSet(TableMenuType.SingleSelection);
+            }
+
+            @Override
+            protected String getConfiguredText() {
+              return TEXTS.get("ToggleRowEnabled");
+            }
+
+            @Override
+            protected boolean getConfiguredInheritAccessibility() {
+              return false;
+            }
+
+            @Override
+            protected void execAction() throws ProcessingException {
+              getSelectedRow().setEnabled(!getSelectedRow().isEnabled());
             }
           }
         }
@@ -732,187 +729,229 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
       }
 
       @Order(70.0)
-      public class PlaceholderField extends AbstractPlaceholderField {
+      public class PropertiesGroupBox extends AbstractGroupBox {
+
+        @Override
+        protected int getConfiguredGridW() {
+          return 1;
+        }
+
         @Override
         protected int getConfiguredGridH() {
+          return 5;
+        }
+
+        @Override
+        protected int getConfiguredGridColumnCount() {
           return 2;
         }
 
-        @Override
-        protected double getConfiguredGridWeightY() {
-          return 0;
-        }
-      }
+        @Order(80.0)
+        public class AutoResizeColumnsField extends AbstractCheckBox {
 
-      @Order(80.0)
-      public class AutoResizeColumnsField extends AbstractCheckBox {
+          @Override
+          protected String getConfiguredLabel() {
+            return TEXTS.get("AutoResizeColumns");
+          }
 
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("AutoResizeColumns");
-        }
+          @Override
+          protected String getConfiguredFont() {
+            return "ITALIC";
+          }
 
-        @Override
-        protected String getConfiguredFont() {
-          return "ITALIC";
-        }
+          @Override
+          protected void execChangedValue() throws ProcessingException {
+            getTableField().getTable().setAutoResizeColumns(getValue());
+          }
 
-        @Override
-        protected void execChangedValue() throws ProcessingException {
-          getTableField().getTable().setAutoResizeColumns(getValue());
-        }
+          @Override
+          protected void execInitField() throws ProcessingException {
+            setValue(getTableField().getTable().isAutoResizeColumns());
+          }
 
-        @Override
-        protected void execInitField() throws ProcessingException {
-          setValue(getTableField().getTable().isAutoResizeColumns());
         }
 
-      }
+        @Order(90.0)
+        public class IsVisibleField extends AbstractCheckBox {
 
-      @Order(90.0)
-      public class IsVisibleField extends AbstractCheckBox {
+          @Override
+          protected String getConfiguredLabel() {
+            return TEXTS.get("IsVisible");
+          }
 
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("IsVisible");
+          @Override
+          protected void execChangedValue() throws ProcessingException {
+            getLocationColumn().setVisible(getValue());
+          }
+
+          @Override
+          protected void execInitField() throws ProcessingException {
+            setValue(getLocationColumn().isVisible());
+          }
+
+          @Override
+          protected String getConfiguredFont() {
+            return "ITALIC";
+          }
+
+          private IColumn<String> getLocationColumn() {
+            ITable table = getTableField().getTable();
+            return table.getColumnSet().getColumnByClass(LocationColumn.class);
+          }
         }
 
-        @Override
-        protected void execChangedValue() throws ProcessingException {
-          getLocationColumn().setVisible(getValue());
+        @Order(95.0)
+        public class IsEnabledField extends AbstractCheckBox {
+
+          @Override
+          protected String getConfiguredLabel() {
+            return TEXTS.get("IsEnabled");
+          }
+
+          @Override
+          protected String getConfiguredFont() {
+            return "ITALIC";
+          }
+
+          @Override
+          protected void execChangedValue() throws ProcessingException {
+            getTableField().setEnabled(getValue());
+          }
+
+          @Override
+          protected void execInitField() throws ProcessingException {
+            setValue(getTableField().isEnabled());
+          }
         }
 
-        @Override
-        protected void execInitField() throws ProcessingException {
-          setValue(getLocationColumn().isVisible());
+        @Order(100.0)
+        public class IsEditableField extends AbstractCheckBox {
+
+          @Override
+          protected String getConfiguredLabel() {
+            return TEXTS.get("IsEditable");
+          }
+
+          @Override
+          protected String getConfiguredFont() {
+            return "ITALIC";
+          }
+
+          @Override
+          protected void execChangedValue() throws ProcessingException {
+            for (IColumn<?> column : getTableField().getTable().getColumns()) {
+              column.setEditable(getValue());
+            }
+          }
+
+          @Override
+          protected void execInitField() throws ProcessingException {
+            setValue(true);
+          }
         }
 
-        @Override
-        protected String getConfiguredFont() {
-          return "ITALIC";
+        @Order(110.0)
+        public class MultiSelectField extends AbstractCheckBox {
+
+          @Override
+          protected String getConfiguredLabel() {
+            return TEXTS.get("MultiSelect");
+          }
+
+          @Override
+          protected String getConfiguredFont() {
+            return "ITALIC";
+          }
+
+          @Override
+          protected void execChangedValue() throws ProcessingException {
+            getTableField().getTable().setMultiSelect(getValue());
+          }
+
+          @Override
+          protected void execInitField() throws ProcessingException {
+            setValue(getTableField().getTable().isMultiSelect());
+            setValue(getTableField().getTable().isHeaderVisible());
+          }
         }
 
-        private IColumn<String> getLocationColumn() {
-          ITable table = getTableField().getTable();
-          return table.getColumnSet().getColumnByClass(LocationColumn.class);
-        }
-      }
+        @Order(120.0)
+        public class IsCheckableField extends AbstractCheckBox {
 
-      @Order(100.0)
-      public class IsEditableField extends AbstractCheckBox {
+          @Override
+          protected String getConfiguredLabel() {
+            return TEXTS.get("IsCheckable");
+          }
 
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("IsEditable");
-        }
+          @Override
+          protected String getConfiguredFont() {
+            return "ITALIC";
+          }
 
-        @Override
-        protected String getConfiguredFont() {
-          return "ITALIC";
-        }
-      }
+          @Override
+          protected void execChangedValue() throws ProcessingException {
+            getTableField().getTable().setCheckable(getValue());
+          }
 
-      @Order(110.0)
-      public class MultiSelectField extends AbstractCheckBox {
+          @Override
+          protected void execInitField() throws ProcessingException {
+            setValue(getTableField().getTable().isCheckable());
+          }
 
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("MultiSelect");
         }
 
-        @Override
-        protected String getConfiguredFont() {
-          return "ITALIC";
+        @Order(130.0)
+        public class TableStatusVisibleField extends AbstractBooleanField {
+
+          @Override
+          protected boolean getConfiguredEnabled() {
+            return false;
+          }
+
+          @Override
+          protected String getConfiguredLabel() {
+            return TEXTS.get("TableStatusVisible");
+          }
+
+          @Override
+          protected String getConfiguredFont() {
+            return "ITALIC";
+          }
+
+          @Override
+          protected String getConfiguredTooltipText() {
+            return TEXTS.get("ThisPropertyCannotBeChangedAtRuntime");
+          }
+
+          @Override
+          protected void execInitField() throws ProcessingException {
+            setValue(true);
+            getTableField().setTableStatusVisible(true);
+          }
         }
 
-        @Override
-        protected void execChangedValue() throws ProcessingException {
-          getTableField().getTable().setMultiSelect(getValue());
-        }
+        @Order(140.0)
+        public class TableHeaderVisibleField extends AbstractCheckBox {
 
-        @Override
-        protected void execInitField() throws ProcessingException {
-          setValue(getTableField().getTable().isMultiSelect());
-          setValue(getTableField().getTable().isHeaderVisible());
-        }
-      }
+          @Override
+          protected String getConfiguredLabel() {
+            return TEXTS.get("TableHeaderVisible");
+          }
 
-      @Order(120.0)
-      public class IsCheckableField extends AbstractCheckBox {
+          @Override
+          protected String getConfiguredFont() {
+            return "ITALIC";
+          }
 
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("IsCheckable");
-        }
+          @Override
+          protected void execChangedValue() throws ProcessingException {
+            getTableField().getTable().setHeaderVisible(getValue());
+          }
 
-        @Override
-        protected String getConfiguredFont() {
-          return "ITALIC";
-        }
-
-        @Override
-        protected void execChangedValue() throws ProcessingException {
-          getTableField().getTable().setCheckable(getValue());
-        }
-
-        @Override
-        protected void execInitField() throws ProcessingException {
-          setValue(getTableField().getTable().isCheckable());
-        }
-
-      }
-
-      @Order(130.0)
-      public class TableStatusVisibleField extends AbstractBooleanField {
-
-        @Override
-        protected boolean getConfiguredEnabled() {
-          return false;
-        }
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("TableStatusVisible");
-        }
-
-        @Override
-        protected String getConfiguredFont() {
-          return "ITALIC";
-        }
-
-        @Override
-        protected String getConfiguredTooltipText() {
-          return TEXTS.get("ThisPropertyCannotBeChangedAtRuntime");
-        }
-
-        @Override
-        protected void execInitField() throws ProcessingException {
-          setValue(true);
-          getTableField().setTableStatusVisible(true);
-        }
-      }
-
-      @Order(140.0)
-      public class TableHeaderVisibleField extends AbstractCheckBox {
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("TableHeaderVisible");
-        }
-
-        @Override
-        protected String getConfiguredFont() {
-          return "ITALIC";
-        }
-
-        @Override
-        protected void execChangedValue() throws ProcessingException {
-          getTableField().getTable().setHeaderVisible(getValue());
-        }
-
-        @Override
-        protected void execInitField() throws ProcessingException {
-          setValue(getTableField().getTable().isHeaderVisible());
+          @Override
+          protected void execInitField() throws ProcessingException {
+            setValue(getTableField().getTable().isHeaderVisible());
+          }
         }
       }
     }
