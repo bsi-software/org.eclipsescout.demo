@@ -16,7 +16,7 @@ import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
-import org.eclipse.scout.rt.client.ui.form.fields.colorpickerfield.AbstractColorField;
+import org.eclipse.scout.rt.client.ui.form.fields.colorfield.AbstractColorField;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;

@@ -31,7 +31,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.IValueField;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractOkButton;
-import org.eclipse.scout.rt.client.ui.form.fields.colorpickerfield.AbstractColorField;
+import org.eclipse.scout.rt.client.ui.form.fields.colorfield.AbstractColorField;
 import org.eclipse.scout.rt.client.ui.form.fields.datefield.AbstractDateField;
 import org.eclipse.scout.rt.client.ui.form.fields.filechooserfield.AbstractFileChooserField;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
