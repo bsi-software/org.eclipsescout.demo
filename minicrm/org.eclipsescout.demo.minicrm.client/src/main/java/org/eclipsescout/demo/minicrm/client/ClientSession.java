@@ -10,8 +10,6 @@
  ******************************************************************************/
 package org.eclipsescout.demo.minicrm.client;
 
-import org.eclipse.scout.commons.ConfigIniUtility;
-import org.eclipse.scout.commons.UriUtility;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
@@ -37,7 +35,7 @@ public class ClientSession extends AbstractClientSession {
 
   @Override
   protected void execLoadSession() throws ProcessingException {
-    setServiceTunnel(new ClientHttpServiceTunnel(this, UriUtility.toUrl(ConfigIniUtility.getProperty("server.url"))));
+    setServiceTunnel(new ClientHttpServiceTunnel(this));
 
     //pre-load all known code types
     CODES.getAllCodeTypes("org.eclipsescout.demo.minicrm.shared");

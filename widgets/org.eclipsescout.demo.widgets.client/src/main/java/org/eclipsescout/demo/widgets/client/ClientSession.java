@@ -10,11 +10,9 @@
  ******************************************************************************/
 package org.eclipsescout.demo.widgets.client;
 
-import java.net.URL;
 import java.util.Locale;
 
 import org.eclipse.scout.commons.ConfigIniUtility;
-import org.eclipse.scout.commons.UriUtility;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
@@ -58,8 +56,7 @@ public class ClientSession extends AbstractClientSession {
       logger.info("starting client without a server!");
     }
     else {
-      URL url = UriUtility.toUrl(ConfigIniUtility.getProperty("server.url"));
-      setServiceTunnel(new ClientHttpServiceTunnel(this, url));
+      setServiceTunnel(new ClientHttpServiceTunnel(this));
     }
 
     CODES.getAllCodeTypes("org.eclipsescout.demo.widgets.shared");
