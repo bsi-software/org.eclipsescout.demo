@@ -15,7 +15,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
 import org.eclipse.scout.commons.Base64Utility;
-import org.eclipse.scout.commons.EncryptionUtility2;
+import org.eclipse.scout.commons.SecurityUtility;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.exception.VetoException;
 import org.eclipse.scout.commons.holders.NVPair;
@@ -39,8 +39,8 @@ public class UserUtility extends SharedUserUtility {
       checkPassword(password);
       checkPermissionId(permission);
 
-      byte[] bSalt = EncryptionUtility2.createRandomBytes();
-      byte[] bHash = EncryptionUtility2.hash(password.getBytes(ENCODING), bSalt);
+      byte[] bSalt = SecurityUtility.createRandomBytes();
+      byte[] bHash = SecurityUtility.hash(password.getBytes(ENCODING), bSalt);
 
       String salt = Base64Utility.encode(bSalt);
       String digest = Base64Utility.encode(bHash);
@@ -72,8 +72,8 @@ public class UserUtility extends SharedUserUtility {
         }
       }
 
-      byte[] bSalt = EncryptionUtility2.createRandomBytes();
-      byte[] bHash = EncryptionUtility2.hash(newPassword.getBytes(ENCODING), bSalt);
+      byte[] bSalt = SecurityUtility.createRandomBytes();
+      byte[] bHash = SecurityUtility.hash(newPassword.getBytes(ENCODING), bSalt);
 
       String salt = Base64Utility.encode(bSalt);
       String digest = Base64Utility.encode(bHash);
@@ -127,7 +127,7 @@ public class UserUtility extends SharedUserUtility {
   private static boolean areEqual(String pass1, String pass2, String salt) throws UnsupportedEncodingException, ProcessingException {
     byte[] bPass = Base64Utility.decode(pass1);
     byte[] bSalt = Base64Utility.decode(salt);
-    byte[] bInput = EncryptionUtility2.hash(pass2.getBytes(ENCODING), bSalt);
+    byte[] bInput = SecurityUtility.hash(pass2.getBytes(ENCODING), bSalt);
 
     return Arrays.equals(bInput, bPass);
   }
