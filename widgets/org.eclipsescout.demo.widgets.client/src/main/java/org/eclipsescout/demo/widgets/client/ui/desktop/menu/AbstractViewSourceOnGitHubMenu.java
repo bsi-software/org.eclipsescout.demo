@@ -13,9 +13,8 @@ package org.eclipsescout.demo.widgets.client.ui.desktop.menu;
 import org.eclipse.scout.commons.ConfigIniUtility;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
-import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.services.common.shell.IShellService;
+import org.eclipsescout.demo.widgets.client.ClientSession;
 
 public abstract class AbstractViewSourceOnGitHubMenu extends AbstractMenu {
 
@@ -27,7 +26,6 @@ public abstract class AbstractViewSourceOnGitHubMenu extends AbstractMenu {
   @Override
   protected void execAction() throws ProcessingException {
     String canonicalName = provideSourceClass().getCanonicalName();
-
     StringBuilder sb = new StringBuilder();
     sb.append("https://github.com/BSI-Business-Systems-Integration-AG/org.eclipsescout.demo/tree/");
     sb.append(ConfigIniUtility.getProperty("git.branch"));
@@ -41,7 +39,7 @@ public abstract class AbstractViewSourceOnGitHubMenu extends AbstractMenu {
     sb.append("/src/");
     sb.append(canonicalName.replace(".", "/"));
     sb.append(".java");
-    BEANS.get(IShellService.class).shellOpen(sb.toString());
+    ClientSession.get().getDesktop().openUrlInBrowser(sb.toString());
   }
 
   abstract protected Class<?> provideSourceClass();
