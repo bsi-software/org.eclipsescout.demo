@@ -16,9 +16,11 @@ import org.eclipse.scout.commons.IRunnable;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
 import org.eclipse.scout.commons.security.SimplePrincipal;
-import org.eclipse.scout.rt.platform.AbstractApplication;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.Bean;
+import org.eclipse.scout.rt.platform.IPlatform;
+import org.eclipse.scout.rt.platform.IPlatformListener;
+import org.eclipse.scout.rt.platform.PlatformEvent;
 import org.eclipse.scout.rt.platform.exception.PlatformException;
 import org.eclipse.scout.rt.server.context.ServerRunContext;
 import org.eclipse.scout.rt.server.context.ServerRunContexts;
@@ -29,7 +31,7 @@ import org.eclipsescout.demo.bahbah.server.services.notification.RegisterUserNot
 import org.eclipsescout.demo.bahbah.server.services.notification.UnregisterUserNotificationListener;
 
 @Bean
-public class ServerApplication extends AbstractApplication {
+public class ServerApplication implements IPlatformListener {
   private static IScoutLogger LOG = ScoutLogManager.getLogger(ServerApplication.class);
 
   public static Subject s_subject;
@@ -40,29 +42,27 @@ public class ServerApplication extends AbstractApplication {
   }
 
   @Override
-  public void start() throws PlatformException {
-    try {
-      ServerRunContext runContext = ServerRunContexts.empty();
-      runContext.subject(s_subject);
-      runContext.session(BEANS.get(ServerSessionProviderWithCache.class).provide(runContext.copy()));
-      runContext.run(new IRunnable() {
-        @Override
-        public void run() throws Exception {
-          BEANS.get(IDbSetupService.class).installDb();
-          BEANS.get(IClusterSynchronizationService.class).addListener(new RegisterUserNotificationListener());
-          BEANS.get(IClusterSynchronizationService.class).addListener(new UnregisterUserNotificationListener());
-        }
-      });
-    }
-    catch (Exception e) {
-      throw new PlatformException("Unable to start server application.", e);
-    }
+  public void stateChanged(PlatformEvent event) throws PlatformException {
+    if (event.getState() == IPlatform.State.PlatformStarted) {
+      try {
+        ServerRunContext runContext = ServerRunContexts.empty();
+        runContext.subject(s_subject);
+        runContext.session(BEANS.get(ServerSessionProviderWithCache.class).provide(runContext.copy()));
+        runContext.run(new IRunnable() {
+          @Override
+          public void run() throws Exception {
+            BEANS.get(IDbSetupService.class).installDb();
+            BEANS.get(IClusterSynchronizationService.class).addListener(new RegisterUserNotificationListener());
+            BEANS.get(IClusterSynchronizationService.class).addListener(new UnregisterUserNotificationListener());
+          }
+        });
+      }
+      catch (Exception e) {
+        throw new PlatformException("Unable to start server application.", e);
+      }
 
-    LOG.info("bahbah server initialized");
-  }
-
-  @Override
-  public void stop() {
+      LOG.info("bahbah server initialized");
+    }
   }
 
   public static Subject getSubject() {

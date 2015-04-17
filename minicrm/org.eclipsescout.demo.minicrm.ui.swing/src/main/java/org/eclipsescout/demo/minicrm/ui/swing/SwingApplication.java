@@ -10,15 +10,9 @@
  ******************************************************************************/
 package org.eclipsescout.demo.minicrm.ui.swing;
 
-import java.security.PrivilegedExceptionAction;
-
-import javax.security.auth.Subject;
-
-import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
-import org.eclipse.scout.commons.security.SimplePrincipal;
 import org.eclipse.scout.rt.client.IClientSession;
 import org.eclipse.scout.rt.client.context.ClientRunContexts;
 import org.eclipse.scout.rt.client.session.ClientSessionProvider;
@@ -31,38 +25,11 @@ public class SwingApplication extends AbstractSwingApplication {
 
   private static final IScoutLogger LOG = ScoutLogManager.getLogger(SwingApplication.class);
 
-  private final Subject m_subject;
   private volatile IClientSession m_clientSession;
-
-  public SwingApplication() {
-    m_subject = new Subject();
-    m_subject.getPrincipals().add(new SimplePrincipal(StringUtility.nvl(System.getProperty("user.name"), "anonymous")));
-    m_subject.setReadOnly();
-  }
-
-  @Override
-  public void start() throws PlatformException {
-    try {
-      Subject.doAs(m_subject, new PrivilegedExceptionAction<Object>() {
-        @Override
-        public Object run() throws Exception {
-          startSecure();
-          return null;
-        }
-      });
-    }
-    catch (Exception e) {
-      throw new PlatformException("Unable to start application.", e);
-    }
-  }
 
   @Override
   protected ISwingEnvironment createSwingEnvironment() {
     return new SwingEnvironment();
-  }
-
-  private void startSecure() throws Exception {
-    super.start();
   }
 
   @Override
@@ -79,7 +46,7 @@ public class SwingApplication extends AbstractSwingApplication {
 
   private IClientSession createClientSession() {
     try {
-      return BEANS.get(ClientSessionProvider.class).provide(ClientRunContexts.empty().subject(m_subject).userAgent(initUserAgent()));
+      return BEANS.get(ClientSessionProvider.class).provide(ClientRunContexts.copyCurrent().userAgent(initUserAgent()));
     }
     catch (ProcessingException e) {
       throw new PlatformException("Failed to create ClientSession", e);

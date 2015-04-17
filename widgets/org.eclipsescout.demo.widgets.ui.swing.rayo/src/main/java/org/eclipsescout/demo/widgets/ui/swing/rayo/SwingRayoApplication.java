@@ -10,14 +10,10 @@
  ******************************************************************************/
 package org.eclipsescout.demo.widgets.ui.swing.rayo;
 
-import javax.security.auth.Subject;
-
-import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.annotations.Priority;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
-import org.eclipse.scout.commons.security.SimplePrincipal;
 import org.eclipse.scout.rt.client.IClientSession;
 import org.eclipse.scout.rt.client.context.ClientRunContexts;
 import org.eclipse.scout.rt.client.session.ClientSessionProvider;
@@ -33,14 +29,7 @@ public class SwingRayoApplication extends AbstractSwingApplication {
 
   private static final IScoutLogger LOG = ScoutLogManager.getLogger(SwingRayoApplication.class);
 
-  private final Subject m_subject;
   private volatile IClientSession m_clientSession;
-
-  public SwingRayoApplication() {
-    m_subject = new Subject();
-    m_subject.getPrincipals().add(new SimplePrincipal(StringUtility.nvl(System.getProperty("user.name"), "anonymous")));
-    m_subject.setReadOnly();
-  }
 
   @Override
   protected void startInSubject() throws Exception {
@@ -68,7 +57,7 @@ public class SwingRayoApplication extends AbstractSwingApplication {
 
   private IClientSession createClientSession() {
     try {
-      return BEANS.get(ClientSessionProvider.class).provide(ClientRunContexts.empty().subject(m_subject).userAgent(initUserAgent()));
+      return BEANS.get(ClientSessionProvider.class).provide(ClientRunContexts.copyCurrent().userAgent(initUserAgent()));
     }
     catch (ProcessingException e) {
       throw new PlatformException("Failed to create ClientSession", e);
