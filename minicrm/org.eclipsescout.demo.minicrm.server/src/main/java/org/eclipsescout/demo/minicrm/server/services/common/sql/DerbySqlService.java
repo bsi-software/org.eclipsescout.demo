@@ -13,9 +13,8 @@ package org.eclipsescout.demo.minicrm.server.services.common.sql;
 import org.eclipse.scout.rt.platform.service.IService;
 import org.eclipse.scout.rt.server.Server;
 import org.eclipse.scout.rt.server.services.common.jdbc.derby.AbstractDerbySqlService;
-import org.eclipsescout.demo.minicrm.server.ServerSession;
 
-@Server(ServerSession.class) /* XXX mvi check requirement of session class */
+@Server
 public class DerbySqlService extends AbstractDerbySqlService implements IService {
 
   @Override

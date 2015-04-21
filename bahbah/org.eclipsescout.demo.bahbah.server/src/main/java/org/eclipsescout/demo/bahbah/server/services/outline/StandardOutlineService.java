@@ -21,7 +21,7 @@ import org.eclipsescout.demo.bahbah.server.ServerSession;
 import org.eclipsescout.demo.bahbah.shared.services.outline.IStandardOutlineService;
 import org.eclipsescout.demo.bahbah.shared.services.process.IUserProcessService;
 
-@Server(ServerSession.class) /* XXX mvi check requirement of session class */
+@Server
 public class StandardOutlineService extends AbstractService implements IStandardOutlineService {
 
   @Override

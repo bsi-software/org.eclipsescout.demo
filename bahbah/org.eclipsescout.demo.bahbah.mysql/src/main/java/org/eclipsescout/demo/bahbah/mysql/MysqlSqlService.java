@@ -10,16 +10,15 @@
  ******************************************************************************/
 package org.eclipsescout.demo.bahbah.mysql;
 
-import org.eclipse.scout.commons.annotations.Priority;
+import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.rt.server.Server;
 import org.eclipse.scout.rt.server.services.common.jdbc.mysql.AbstractMySqlSqlService;
-import org.eclipsescout.demo.bahbah.server.ServerSession;
 
 /**
  *
  */
-@Priority(100)
-@Server(ServerSession.class) /* XXX mvi check requirement of session class */
+@Server
+@Order(-2100)
 public class MysqlSqlService extends AbstractMySqlSqlService {
 
   @Override

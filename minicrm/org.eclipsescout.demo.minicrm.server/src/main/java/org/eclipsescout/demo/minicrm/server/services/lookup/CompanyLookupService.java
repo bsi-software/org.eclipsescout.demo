@@ -14,11 +14,10 @@ import java.math.BigDecimal;
 
 import org.eclipse.scout.rt.server.Server;
 import org.eclipse.scout.rt.server.services.lookup.AbstractSqlLookupService;
-import org.eclipsescout.demo.minicrm.server.ServerSession;
 import org.eclipsescout.demo.minicrm.shared.Icons;
 import org.eclipsescout.demo.minicrm.shared.services.lookup.ICompanyLookupService;
 
-@Server(ServerSession.class) /* XXX mvi check requirement of session class */
+@Server
 public class CompanyLookupService extends AbstractSqlLookupService<BigDecimal> implements ICompanyLookupService {
 
   @Override

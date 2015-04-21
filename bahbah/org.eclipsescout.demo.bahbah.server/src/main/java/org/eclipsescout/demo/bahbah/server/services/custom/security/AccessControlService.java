@@ -30,7 +30,7 @@ import org.eclipsescout.demo.bahbah.shared.security.UpdateUserPermission;
 import org.eclipsescout.demo.bahbah.shared.services.code.UserRoleCodeType.AdministratorCode;
 import org.eclipsescout.demo.bahbah.shared.services.code.UserRoleCodeType.UserCode;
 
-@Server(ServerSession.class) /* XXX mvi check requirement of session class */
+@Server
 public class AccessControlService extends AbstractAccessControlService {
 
   @Override

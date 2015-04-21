@@ -13,12 +13,11 @@ package org.eclipsescout.demo.bahbah.mysql;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.eclipse.scout.commons.annotations.Priority;
+import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.platform.service.AbstractService;
 import org.eclipse.scout.rt.server.Server;
 import org.eclipse.scout.rt.server.services.common.jdbc.SQL;
-import org.eclipsescout.demo.bahbah.server.ServerSession;
 import org.eclipsescout.demo.bahbah.server.services.db.IDbSetupService;
 import org.eclipsescout.demo.bahbah.server.util.UserUtility;
 import org.eclipsescout.demo.bahbah.shared.services.code.UserRoleCodeType;
@@ -26,8 +25,8 @@ import org.eclipsescout.demo.bahbah.shared.services.code.UserRoleCodeType;
 /**
  * class that installs the bahbah DB schema
  */
-@Priority(100)
-@Server(ServerSession.class) /* XXX mvi check requirement of session class */
+@Server
+@Order(-2100)
 public class MySqlDbSetupService extends AbstractService implements IDbSetupService {
   @Override
   public void installDb() throws ProcessingException {

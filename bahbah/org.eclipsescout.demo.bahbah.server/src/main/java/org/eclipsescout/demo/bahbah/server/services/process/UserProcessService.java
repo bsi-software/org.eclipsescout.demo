@@ -44,7 +44,7 @@ import org.eclipsescout.demo.bahbah.shared.services.process.INotificationProcess
 import org.eclipsescout.demo.bahbah.shared.services.process.IUserProcessService;
 import org.eclipsescout.demo.bahbah.shared.services.process.UserFormData;
 
-@Server(ServerSession.class) /* XXX mvi check requirement of session class */
+@Server
 public class UserProcessService extends AbstractService implements IUserProcessService {
   private Set<String> m_users;
 

@@ -23,13 +23,12 @@ import org.eclipse.scout.rt.server.services.common.pwd.AbstractPasswordManagemen
 import org.eclipse.scout.rt.server.services.common.pwd.IPasswordPolicy;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
-import org.eclipsescout.demo.bahbah.server.ServerSession;
 import org.eclipsescout.demo.bahbah.server.util.UserUtility;
 import org.eclipsescout.demo.bahbah.shared.security.ResetPasswordPermission;
 import org.eclipsescout.demo.bahbah.shared.services.process.IPasswordProcessService;
 import org.eclipsescout.demo.bahbah.shared.util.SharedUserUtility;
 
-@Server(ServerSession.class) /* XXX mvi check requirement of session class */
+@Server
 public class PasswordProcessService extends AbstractPasswordManagementService implements IPasswordProcessService {
 
   @Override

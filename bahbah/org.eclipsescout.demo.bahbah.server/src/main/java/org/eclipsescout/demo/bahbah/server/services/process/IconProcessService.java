@@ -31,7 +31,7 @@ import org.eclipsescout.demo.bahbah.server.ServerSession;
 import org.eclipsescout.demo.bahbah.shared.security.UpdateIconPermission;
 import org.eclipsescout.demo.bahbah.shared.services.process.IIconProcessService;
 
-@Server(ServerSession.class) /* XXX mvi check requirement of session class */
+@Server
 public class IconProcessService extends AbstractService implements IIconProcessService {
   public final static int MAX_SIZE = 16;
 

@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.eclipsescout.demo.bahbah.client.services;
 
+import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
@@ -20,6 +21,7 @@ import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipsescout.demo.bahbah.client.ClientSession;
 import org.eclipsescout.demo.bahbah.shared.services.process.IIconProcessService;
 
+@Order(-2000)
 public class BuddyAvatarIconProviderService implements IIconProviderService {
   private static final IScoutLogger logger = ScoutLogManager.getLogger(BuddyAvatarIconProviderService.class);
 

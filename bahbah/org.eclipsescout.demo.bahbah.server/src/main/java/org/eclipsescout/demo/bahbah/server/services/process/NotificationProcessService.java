@@ -30,7 +30,7 @@ import org.eclipsescout.demo.bahbah.shared.security.CreateNotificationPermission
 import org.eclipsescout.demo.bahbah.shared.services.process.INotificationProcessService;
 import org.eclipsescout.demo.bahbah.shared.util.SharedUserUtility;
 
-@Server(ServerSession.class) /* XXX mvi check requirement of session class */
+@Server
 public class NotificationProcessService extends AbstractService implements INotificationProcessService {
   private static IScoutLogger LOG = ScoutLogManager.getLogger(NotificationProcessService.class);
 

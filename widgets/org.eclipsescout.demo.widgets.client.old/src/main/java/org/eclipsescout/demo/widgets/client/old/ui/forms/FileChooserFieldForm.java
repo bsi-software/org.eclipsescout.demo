@@ -38,16 +38,13 @@ import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.tabbox.AbstractTabBox;
 import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
-import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.shared.TEXTS;
-import org.eclipse.scout.rt.shared.services.common.shell.IShellService;
 import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
 import org.eclipsescout.demo.widgets.client.old.ui.forms.FileChooserFieldForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.old.ui.forms.FileChooserFieldForm.MainBox.TabBox;
 import org.eclipsescout.demo.widgets.client.old.ui.forms.FileChooserFieldForm.MainBox.TabBox.FileUploadBox;
 import org.eclipsescout.demo.widgets.client.old.ui.forms.FileChooserFieldForm.MainBox.TabBox.FileUploadBox.FileChooserFieldBox;
 import org.eclipsescout.demo.widgets.client.old.ui.forms.FileChooserFieldForm.MainBox.TabBox.FileUploadBox.FileChooserFieldBox.ChooseAnImageField;
-import org.eclipsescout.demo.widgets.client.old.ui.forms.FileChooserFieldForm.MainBox.TabBox.FileUploadBox.FileChooserFieldBox.OpenFileButton;
 import org.eclipsescout.demo.widgets.client.old.ui.forms.FileChooserFieldForm.MainBox.TabBox.FileUploadBox.FileDialogBox;
 import org.eclipsescout.demo.widgets.client.old.ui.forms.FileChooserFieldForm.MainBox.TabBox.FileUploadBox.FileDialogBox.UploadMultipleFilesButton;
 import org.eclipsescout.demo.widgets.client.old.ui.forms.FileChooserFieldForm.MainBox.TabBox.FileUploadBox.FileDialogBox.UploadSingleFileButton;
@@ -106,10 +103,6 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
 
   public MainBox getMainBox() {
     return getFieldByClass(MainBox.class);
-  }
-
-  public OpenFileButton getOpenFileButton() {
-    return getFieldByClass(OpenFileButton.class);
   }
 
   public FileUploadBox getFileUploadBox() {
@@ -188,27 +181,6 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
             @Override
             protected void execChangedValue() throws ProcessingException {
               getServerLogField().addLine("received " + getValueAsFile().getName());
-              getOpenFileButton().setVisible(true);
-            }
-
-          }
-
-          @Order(30.0)
-          public class OpenFileButton extends AbstractButton {
-
-            @Override
-            protected boolean getConfiguredVisible() {
-              return false;
-            }
-
-            @Override
-            protected String getConfiguredLabel() {
-              return TEXTS.get("OpenFile");
-            }
-
-            @Override
-            protected void execClickAction() throws ProcessingException {
-              BEANS.get(IShellService.class).shellOpen(getChooseAnImageField().getValue());
             }
           }
         }
@@ -466,25 +438,6 @@ public class FileChooserFieldForm extends AbstractForm implements IPageForm {
               @Override
               protected String getConfiguredHeaderText() {
                 return TEXTS.get("Path");
-              }
-            }
-
-            @Order(160.0)
-            public class OpenMenu extends AbstractMenu {
-
-              @Override
-              protected String getConfiguredText() {
-                return TEXTS.get("Open0");
-              }
-
-              @Override
-              protected void execAction() throws ProcessingException {
-                if (getContentField().getTable().getFileColumn().getSelectedValue().isDirectory()) {
-                  getSelectAFolderField().setValue(getContentField().getTable().getPathColumn().getSelectedValue());
-                }
-                else {
-                  BEANS.get(IShellService.class).shellOpen(getContentField().getTable().getPathColumn().getSelectedValue());
-                }
               }
             }
 

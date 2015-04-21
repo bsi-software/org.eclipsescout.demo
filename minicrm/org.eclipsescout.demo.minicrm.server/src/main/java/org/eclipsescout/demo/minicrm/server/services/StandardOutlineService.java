@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
@@ -16,14 +16,13 @@ import org.eclipse.scout.commons.holders.NVPair;
 import org.eclipse.scout.rt.platform.service.AbstractService;
 import org.eclipse.scout.rt.server.Server;
 import org.eclipse.scout.rt.server.services.common.jdbc.SQL;
-import org.eclipsescout.demo.minicrm.server.ServerSession;
 import org.eclipsescout.demo.minicrm.shared.services.IStandardOutlineService;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.CompanyTablePageData;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.PersonTablePageData;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.searchform.CompanySearchFormData;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.outlines.pages.searchform.PersonSearchFormData;
 
-@Server(ServerSession.class) /* XXX mvi check requirement of session class */
+@Server
 public class StandardOutlineService extends AbstractService implements IStandardOutlineService {
 
   @Override
@@ -35,7 +34,7 @@ public class StandardOutlineService extends AbstractService implements IStandard
             "       NAME, " +
             "       TYPE_UID " +
             " FROM COMPANY " +
-            " WHERE 1 = 1 ");
+        " WHERE 1 = 1 ");
     if (!StringUtility.isNullOrEmpty(formData.getShortName().getValue())) {
       statement.append("AND UPPER(SHORT_NAME) LIKE UPPER(:shortName || '%') ");
     }

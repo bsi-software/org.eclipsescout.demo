@@ -15,12 +15,11 @@ import java.security.Permissions;
 
 import org.eclipse.scout.rt.client.Client;
 import org.eclipse.scout.rt.shared.services.common.security.AbstractSharedAccessControlService;
-import org.eclipsescout.demo.widgets.client.ClientSession;
 
 /**
  * Client implementation of {@link org.eclipse.scout.rt.shared.services.common.security.IAccessControlService}
  */
-@Client(ClientSession.class) /* XXX mvi check requirement of session class */
+@Client
 public class ClientAccessControlService extends AbstractSharedAccessControlService {
 
   @Override

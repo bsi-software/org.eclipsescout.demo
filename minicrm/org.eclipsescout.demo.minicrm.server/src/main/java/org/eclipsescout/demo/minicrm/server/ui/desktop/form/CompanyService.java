@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
@@ -18,14 +18,13 @@ import org.eclipse.scout.rt.server.Server;
 import org.eclipse.scout.rt.server.services.common.jdbc.SQL;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.security.ACCESS;
-import org.eclipsescout.demo.minicrm.server.ServerSession;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.form.CompanyFormData;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.form.CreateCompanyPermission;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.form.ICompanyService;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.form.ReadCompanyPermission;
 import org.eclipsescout.demo.minicrm.shared.ui.desktop.form.UpdateCompanyPermission;
 
-@Server(ServerSession.class) /* XXX mvi check requirement of session class */
+@Server
 public class CompanyService extends AbstractService implements ICompanyService {
 
   @Override
