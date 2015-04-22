@@ -9,5 +9,5 @@ Export-Package: org.eclipsescout.demo.widgets.shared.old,
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.scout.rt.shared;visibility:=reexport,
  org.eclipsescout.demo.widgets.shared;visibility:=reexport
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy

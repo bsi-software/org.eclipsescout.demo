@@ -700,8 +700,8 @@ public class IconsForm extends AbstractForm implements IPageForm {
       protected void execClickAction() throws ProcessingException {
         getFontIconField().setValue("font:download");
         getFontField().setValue(FontIconProviderService.ICON_FONT);
-        getColorField().setValue("#009999");
-        getSizeField().setValue(256);
+        getColorField().setValue("#FAA635");
+        getSizeField().setValue(128);
         getBackgroundGroup().setValue(FontIconProviderService.ICON_BACKGROUND_SQUARE);
       }
     }

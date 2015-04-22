@@ -241,7 +241,7 @@ public class RadioButtonGroupFieldForm extends AbstractForm implements IPageForm
         }
 
         @Order(10.0)
-        public class WarningButton extends AbstractRadioButton {
+        public class WarningButton extends AbstractRadioButton<Long> {
 
           // TODO: https://bugs.eclipse.org/bugs/show_bug.cgi?id=436714
           @Override
@@ -250,13 +250,13 @@ public class RadioButtonGroupFieldForm extends AbstractForm implements IPageForm
           }
 
           @Override
-          protected Object getConfiguredRadioValue() {
+          protected Long getConfiguredRadioValue() {
             return Long.valueOf(-1L);
           }
         }
 
         @Order(20.0)
-        public class ErrorButton extends AbstractRadioButton {
+        public class ErrorButton extends AbstractRadioButton<Long> {
 
           @Override
           protected String getConfiguredIconId() {
@@ -264,7 +264,7 @@ public class RadioButtonGroupFieldForm extends AbstractForm implements IPageForm
           }
 
           @Override
-          protected Object getConfiguredRadioValue() {
+          protected Long getConfiguredRadioValue() {
             return Long.valueOf(-2L);
           }
         }
