@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Map;
 
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
@@ -23,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.eclipse.scout.commons.Base64Utility;
 import org.eclipse.scout.commons.ConfigIniUtility;
+import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.security.SimplePrincipal;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.server.commons.cache.IHttpSessionCacheService;
@@ -41,11 +41,9 @@ public class BasicForwardSecurityFilter extends AbstractChainableSecurityFilter 
   @Override
   public void init(FilterConfig config) throws ServletException {
     super.init(config);
-    Map<String, String> conf = ConfigIniUtility.getProperties(getClass());
-
-    String url = conf.get(AUTH_SERVLET_URL_PARAM);
-    if (url == null) {
-      throw new IllegalArgumentException("Missing config parameter '" + AUTH_SERVLET_URL_PARAM + "'");
+    String url = ConfigIniUtility.getProperty(AUTH_SERVLET_URL_PARAM, config.getInitParameter(AUTH_SERVLET_URL_PARAM));
+    if (!StringUtility.hasText(url)) {
+      throw new IllegalArgumentException("Missing config parameter '" + AUTH_SERVLET_URL_PARAM + "'.");
     }
     else {
       try {
