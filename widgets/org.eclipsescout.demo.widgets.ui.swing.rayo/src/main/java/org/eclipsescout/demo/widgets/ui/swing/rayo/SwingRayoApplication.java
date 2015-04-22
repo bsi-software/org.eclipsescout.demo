@@ -17,7 +17,6 @@ import org.eclipse.scout.rt.client.IClientSession;
 import org.eclipse.scout.rt.client.context.ClientRunContexts;
 import org.eclipse.scout.rt.client.session.ClientSessionProvider;
 import org.eclipse.scout.rt.platform.BEANS;
-import org.eclipse.scout.rt.platform.exception.PlatformException;
 import org.eclipse.scout.rt.shared.ScoutTexts;
 import org.eclipse.scout.rt.ui.swing.AbstractSwingApplication;
 import org.eclipse.scout.rt.ui.swing.ISwingEnvironment;
@@ -36,7 +35,7 @@ public class SwingRayoApplication extends AbstractSwingApplication {
   }
 
   @Override
-  protected IClientSession getClientSession() {
+  protected IClientSession getClientSession() throws ProcessingException {
     if (m_clientSession == null) {
       synchronized (this) {
         if (m_clientSession == null) {
@@ -53,12 +52,7 @@ public class SwingRayoApplication extends AbstractSwingApplication {
     return new SwingEnvironment();
   }
 
-  private IClientSession createClientSession() {
-    try {
-      return BEANS.get(ClientSessionProvider.class).provide(ClientRunContexts.copyCurrent().userAgent(initUserAgent()));
-    }
-    catch (ProcessingException e) {
-      throw new PlatformException("Failed to create ClientSession", e);
-    }
+  private IClientSession createClientSession() throws ProcessingException {
+    return BEANS.get(ClientSessionProvider.class).provide(ClientRunContexts.copyCurrent().userAgent(initUserAgent()));
   }
 }
