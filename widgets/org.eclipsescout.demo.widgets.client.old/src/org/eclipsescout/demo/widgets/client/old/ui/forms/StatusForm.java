@@ -42,6 +42,7 @@ import org.eclipsescout.demo.widgets.client.old.ui.forms.StatusForm.MainBox.INFO
 import org.eclipsescout.demo.widgets.client.old.ui.forms.StatusForm.MainBox.WARNINGStatusButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.IPageForm;
 
+@SuppressWarnings("deprecation")
 public class StatusForm extends AbstractForm implements IPageForm {
 
   private Long statusNr;

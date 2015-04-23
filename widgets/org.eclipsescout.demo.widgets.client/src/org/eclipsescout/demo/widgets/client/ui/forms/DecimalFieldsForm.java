@@ -65,6 +65,7 @@ import org.eclipsescout.demo.widgets.client.ui.forms.DecimalFieldsForm.MainBox.S
 import org.eclipsescout.demo.widgets.client.ui.forms.DecimalFieldsForm.MainBox.SmallestValueButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.NumberFieldsForm.MainBox.ExamplesBox.BigIntegerColumnField;
 
+@SuppressWarnings("deprecation")
 public class DecimalFieldsForm extends AbstractForm implements IPageForm {
 
   private static final BigDecimal FOUR = new BigDecimal(4);

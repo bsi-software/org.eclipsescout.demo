@@ -29,6 +29,7 @@ import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
 import org.eclipsescout.demo.widgets.client.services.lookup.CompanyTypeLookupCall;
 import org.eclipsescout.demo.widgets.client.ui.desktop.menu.AbstractViewSourceOnGitHubMenu;
 
+@SuppressWarnings("deprecation")
 public class PageWithTableTablePage extends AbstractPageWithTable<PageWithTableTablePage.Table> {
 
   public PageWithTableTablePage() {

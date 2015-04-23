@@ -64,6 +64,7 @@ import org.eclipsescout.demo.widgets.client.ui.forms.SequenceBoxForm.MainBox.Fie
 import org.eclipsescout.demo.widgets.shared.Icons;
 import org.eclipsescout.demo.widgets.shared.services.code.IndustryICBCodeType;
 
+@SuppressWarnings("deprecation")
 public class SequenceBoxForm extends AbstractForm implements IPageForm {
 
   public SequenceBoxForm() throws ProcessingException {

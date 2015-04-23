@@ -54,6 +54,7 @@ import org.eclipsescout.demo.widgets.client.old.ui.searchforms.SearchForm.MainBo
 import org.eclipsescout.demo.widgets.client.old.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.StringField;
 import org.eclipsescout.demo.widgets.client.services.lookup.CompanyTypeLookupCall;
 
+@SuppressWarnings("deprecation")
 public class SearchForm extends AbstractSearchForm {
 
   @Override

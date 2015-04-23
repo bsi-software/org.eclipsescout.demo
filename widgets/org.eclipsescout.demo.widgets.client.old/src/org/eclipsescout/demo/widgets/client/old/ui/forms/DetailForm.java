@@ -23,6 +23,7 @@ import org.eclipsescout.demo.widgets.client.old.ui.forms.DetailForm.MainBox.Grou
 import org.eclipsescout.demo.widgets.client.old.ui.forms.DetailForm.MainBox.GroupBox.ValueLowField;
 import org.eclipsescout.demo.widgets.client.old.ui.forms.DetailForm.MainBox.GroupBox.ValueOpenField;
 
+@SuppressWarnings("deprecation")
 public class DetailForm extends AbstractForm {
 
   public DetailForm() throws ProcessingException {
