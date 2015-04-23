@@ -21,7 +21,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.eclipse.scout.commons.Base64Utility;
-import org.eclipse.scout.commons.ConfigIniUtility;
 import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.security.SimplePrincipal;
 import org.eclipse.scout.rt.platform.BEANS;
@@ -41,7 +40,7 @@ public class BasicForwardSecurityFilter extends AbstractChainableSecurityFilter 
   @Override
   public void init(FilterConfig config) throws ServletException {
     super.init(config);
-    String url = ConfigIniUtility.getProperty(AUTH_SERVLET_URL_PARAM, config.getInitParameter(AUTH_SERVLET_URL_PARAM));
+    String url = config.getInitParameter(AUTH_SERVLET_URL_PARAM);
     if (!StringUtility.hasText(url)) {
       throw new IllegalArgumentException("Missing config parameter '" + AUTH_SERVLET_URL_PARAM + "'.");
     }
@@ -53,6 +52,10 @@ public class BasicForwardSecurityFilter extends AbstractChainableSecurityFilter 
         throw new ServletException("unable to parse authentication servlet", e);
       }
     }
+  }
+
+  @Override
+  public void destroy() {
   }
 
   @Override
