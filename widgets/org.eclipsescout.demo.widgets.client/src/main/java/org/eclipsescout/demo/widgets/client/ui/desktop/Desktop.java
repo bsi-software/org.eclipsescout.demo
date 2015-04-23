@@ -323,22 +323,12 @@ public class Desktop extends AbstractDesktop implements IDesktop {
     public SimpleWidgetsOutlineViewButton() {
       super(Desktop.this, SimpleWidgetsOutline.class);
     }
-
-    @Override
-    protected String getConfiguredKeyStroke() {
-      return IKeyStroke.F6;
-    }
   }
 
   @Order(20.0)
   public class AdvancedWidgetsOutlineViewButton extends AbstractOutlineViewButton {
     public AdvancedWidgetsOutlineViewButton() {
       super(Desktop.this, AdvancedWidgetsOutline.class);
-    }
-
-    @Override
-    protected String getConfiguredKeyStroke() {
-      return IKeyStroke.F4;
     }
   }
 

@@ -12,6 +12,7 @@ package org.eclipsescout.demo.widgets.client.old.ui.searchforms;
 
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.client.ui.action.keystroke.IKeyStroke;
 import org.eclipse.scout.rt.client.ui.basic.table.ITable;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractSearchForm;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPageWithTable;
@@ -333,6 +334,10 @@ public class SearchForm extends AbstractSearchForm {
 
     @Order(30.0)
     public class ResetButton extends AbstractResetButton {
+      @Override
+      protected String getConfiguredKeyStroke() {
+        return IKeyStroke.CONTROL + '-' + IKeyStroke.F6;
+      }
     }
 
     @Order(40.0)
