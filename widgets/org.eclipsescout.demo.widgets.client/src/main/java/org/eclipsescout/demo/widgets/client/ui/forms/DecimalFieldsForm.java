@@ -23,7 +23,6 @@ import org.eclipse.scout.rt.client.ui.form.fields.bigdecimalfield.AbstractBigDec
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.checkbox.AbstractCheckBox;
-import org.eclipse.scout.rt.client.ui.form.fields.doublefield.AbstractDoubleField;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.integerfield.AbstractIntegerField;
 import org.eclipse.scout.rt.client.ui.form.fields.labelfield.AbstractLabelField;
@@ -32,7 +31,6 @@ import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringFiel
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.ui.forms.DecimalFieldsForm.MainBox.CloseButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.DecimalFieldsForm.MainBox.ConfigurationBox;
-import org.eclipsescout.demo.widgets.client.ui.forms.DecimalFieldsForm.MainBox.ConfigurationBox.BigDecimalInputField;
 import org.eclipsescout.demo.widgets.client.ui.forms.DecimalFieldsForm.MainBox.ConfigurationBox.FormatField;
 import org.eclipsescout.demo.widgets.client.ui.forms.DecimalFieldsForm.MainBox.ConfigurationBox.FractionDigitsField;
 import org.eclipsescout.demo.widgets.client.ui.forms.DecimalFieldsForm.MainBox.ConfigurationBox.GetValue0Field;
@@ -54,11 +52,6 @@ import org.eclipsescout.demo.widgets.client.ui.forms.DecimalFieldsForm.MainBox.E
 import org.eclipsescout.demo.widgets.client.ui.forms.DecimalFieldsForm.MainBox.ExamplesBox.BigDecimalField;
 import org.eclipsescout.demo.widgets.client.ui.forms.DecimalFieldsForm.MainBox.ExamplesBox.BigDecimalMandatoryField;
 import org.eclipsescout.demo.widgets.client.ui.forms.DecimalFieldsForm.MainBox.ExamplesBox.BigDecimalStyledField;
-import org.eclipsescout.demo.widgets.client.ui.forms.DecimalFieldsForm.MainBox.ExamplesBox.DisabledField;
-import org.eclipsescout.demo.widgets.client.ui.forms.DecimalFieldsForm.MainBox.ExamplesBox.DoubleColumnField;
-import org.eclipsescout.demo.widgets.client.ui.forms.DecimalFieldsForm.MainBox.ExamplesBox.DoubleField;
-import org.eclipsescout.demo.widgets.client.ui.forms.DecimalFieldsForm.MainBox.ExamplesBox.MandatoryField;
-import org.eclipsescout.demo.widgets.client.ui.forms.DecimalFieldsForm.MainBox.ExamplesBox.StyledField;
 import org.eclipsescout.demo.widgets.client.ui.forms.DecimalFieldsForm.MainBox.HighestValueButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.DecimalFieldsForm.MainBox.PiButton;
 import org.eclipsescout.demo.widgets.client.ui.forms.DecimalFieldsForm.MainBox.SampleFormatButton;
@@ -92,14 +85,6 @@ public class DecimalFieldsForm extends AbstractForm implements IPageForm {
     return getFieldByClass(CloseButton.class);
   }
 
-  public DisabledField getDisabledField() {
-    return getFieldByClass(DisabledField.class);
-  }
-
-  public DoubleField getDoubleField() {
-    return getFieldByClass(DoubleField.class);
-  }
-
   /**
    * @return the FormatField
    */
@@ -127,14 +112,6 @@ public class DecimalFieldsForm extends AbstractForm implements IPageForm {
     return getFieldByClass(InputField.class);
   }
 
-  public DoubleColumnField getIntegerColumnField() {
-    return getFieldByClass(DoubleColumnField.class);
-  }
-
-  public DoubleField getIntegerField() {
-    return getFieldByClass(DoubleField.class);
-  }
-
   public MainBox getMainBox() {
     return getFieldByClass(MainBox.class);
   }
@@ -153,14 +130,6 @@ public class DecimalFieldsForm extends AbstractForm implements IPageForm {
 
   public BigIntegerColumnField getBigIntegerColumnField() {
     return getFieldByClass(BigIntegerColumnField.class);
-  }
-
-  public BigDecimalInputField getBigDecimalInputField() {
-    return getFieldByClass(BigDecimalInputField.class);
-  }
-
-  public MandatoryField getMandatoryField() {
-    return getFieldByClass(MandatoryField.class);
   }
 
   public MaxFractionDigitsField getMaxFractionDigitsField() {
@@ -230,10 +199,6 @@ public class DecimalFieldsForm extends AbstractForm implements IPageForm {
     return getFieldByClass(ConfigurationBox.class);
   }
 
-  public StyledField getStyledField() {
-    return getFieldByClass(StyledField.class);
-  }
-
   @Order(10.0)
   public class MainBox extends AbstractGroupBox {
 
@@ -248,91 +213,6 @@ public class DecimalFieldsForm extends AbstractForm implements IPageForm {
       @Override
       protected boolean getConfiguredMandatory() {
         return true;
-      }
-
-      @Order(10.0)
-      public class DoubleColumnField extends AbstractLabelField {
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("EmptyString");
-        }
-
-        @Override
-        protected String getConfiguredFont() {
-          return "BOLD";
-        }
-
-        @Override
-        protected void execInitField() throws ProcessingException {
-          setValue(TEXTS.get("DoubleField"));
-        }
-      }
-
-      @Order(20.0)
-      public class DoubleField extends AbstractDoubleField {
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("Default");
-        }
-      }
-
-      @Order(30.0)
-      public class MandatoryField extends AbstractDoubleField {
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("Mandatory");
-        }
-
-        @Override
-        protected boolean getConfiguredMandatory() {
-          return true;
-        }
-      }
-
-      @Order(40.0)
-      public class DisabledField extends AbstractDoubleField {
-
-        @Override
-        protected boolean getConfiguredEnabled() {
-          return false;
-        }
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("Disabled");
-        }
-
-        @Override
-        protected void execInitField() throws ProcessingException {
-          setValue(Math.E);
-        }
-      }
-
-      @Order(50.0)
-      public class StyledField extends AbstractDoubleField {
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("Styled");
-        }
-
-        @Override
-        protected void execChangedValue() throws ProcessingException {
-          if (getValue() < 0) {
-            setForegroundColor("FF0000");
-          }
-          else {
-            setForegroundColor(null);
-          }
-        }
-
-        @Override
-        protected void execInitField() throws ProcessingException {
-          setValue(-3.1415);
-          setForegroundColor("FF0000");
-        }
       }
 
       @Order(110.0)
@@ -431,11 +311,11 @@ public class DecimalFieldsForm extends AbstractForm implements IPageForm {
       }
 
       @Order(10.0)
-      public class InputField extends AbstractDoubleField {
+      public class InputField extends AbstractBigDecimalField {
 
         @Override
         protected String getConfiguredLabel() {
-          return TEXTS.get("DoubleFieldInput");
+          return TEXTS.get("BigDecimalFieldInput");
         }
       }
 
@@ -469,7 +349,7 @@ public class DecimalFieldsForm extends AbstractForm implements IPageForm {
       }
 
       @Order(30.0)
-      public class MinimumValueField extends AbstractDoubleField {
+      public class MinimumValueField extends AbstractBigDecimalField {
 
         @Override
         protected String getConfiguredLabel() {
@@ -485,20 +365,17 @@ public class DecimalFieldsForm extends AbstractForm implements IPageForm {
         protected void execChangedValue() throws ProcessingException {
           if (getValue() != null) {
             getInputField().setMinValue(getValue());
-            getBigDecimalInputField().setMinValue(BigDecimal.valueOf(getValue()));
           }
           else {
             getInputField().setMinValue(null);
-            getBigDecimalInputField().setMinValue(null);
           }
 
           getInputField().validateContent();
-          getBigDecimalInputField().validateContent();
         }
       }
 
       @Order(40.0)
-      public class MaximumValueField extends AbstractDoubleField {
+      public class MaximumValueField extends AbstractBigDecimalField {
 
         @Override
         protected String getConfiguredLabel() {
@@ -514,15 +391,12 @@ public class DecimalFieldsForm extends AbstractForm implements IPageForm {
         protected void execChangedValue() throws ProcessingException {
           if (getValue() != null) {
             getInputField().setMaxValue(getValue());
-            getBigDecimalInputField().setMaxValue(BigDecimal.valueOf(getValue()));
           }
           else {
             getInputField().setMaxValue(null);
-            getBigDecimalInputField().setMaxValue(null);
           }
 
           getInputField().validateContent();
-          getBigDecimalInputField().validateContent();
         }
       }
 
@@ -547,7 +421,6 @@ public class DecimalFieldsForm extends AbstractForm implements IPageForm {
         @Override
         protected void execChangedValue() throws ProcessingException {
           getInputField().setGroupingUsed(getValue());
-          getBigDecimalInputField().setGroupingUsed(getValue());
         }
       }
 
@@ -572,7 +445,6 @@ public class DecimalFieldsForm extends AbstractForm implements IPageForm {
         @Override
         protected void execChangedValue() throws ProcessingException {
           getInputField().setMinFractionDigits(NumberUtility.nvl(getValue(), 0));
-          getBigDecimalInputField().setMinFractionDigits(NumberUtility.nvl(getValue(), 0));
         }
       }
 
@@ -597,7 +469,6 @@ public class DecimalFieldsForm extends AbstractForm implements IPageForm {
         @Override
         protected void execChangedValue() throws ProcessingException {
           getInputField().setMaxFractionDigits(NumberUtility.nvl(getValue(), 2));
-          getBigDecimalInputField().setMaxFractionDigits(NumberUtility.nvl(getValue(), 2));
         }
       }
 
@@ -622,7 +493,6 @@ public class DecimalFieldsForm extends AbstractForm implements IPageForm {
         @Override
         protected void execChangedValue() throws ProcessingException {
           getInputField().setFractionDigits(NumberUtility.nvl(getValue(), 2));
-          getBigDecimalInputField().setFractionDigits(NumberUtility.nvl(getValue(), 2));
         }
       }
 
@@ -647,7 +517,6 @@ public class DecimalFieldsForm extends AbstractForm implements IPageForm {
         @Override
         protected void execChangedValue() throws ProcessingException {
           getInputField().setMultiplier(NumberUtility.nvl(getValue(), 1));
-          getBigDecimalInputField().setMultiplier(NumberUtility.nvl(getValue(), 1));
         }
       }
 
@@ -667,7 +536,6 @@ public class DecimalFieldsForm extends AbstractForm implements IPageForm {
         @Override
         protected void execChangedValue() throws ProcessingException {
           getInputField().setPercent(getValue());
-          getBigDecimalInputField().setPercent(getValue());
         }
       }
 
@@ -693,45 +561,6 @@ public class DecimalFieldsForm extends AbstractForm implements IPageForm {
           }
 
           getInputField().setFormat(format);
-          getBigDecimalInputField().setFormat(format);
-        }
-      }
-
-      @Order(120.0)
-      public class BigDecimalInputField extends AbstractBigDecimalField {
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("BigDecimalFieldInput");
-        }
-      }
-
-      @Order(130.0)
-      public class GetValue1Field extends AbstractStringField {
-
-        @Override
-        protected boolean getConfiguredEnabled() {
-          return false;
-        }
-
-        @Override
-        protected String getConfiguredLabel() {
-          return TEXTS.get("GetValue");
-        }
-
-        @Override
-        protected Class<? extends IValueField> getConfiguredMasterField() {
-          return BigDecimalInputField.class;
-        }
-
-        @Override
-        protected void execChangedMasterValue(Object newMasterValue) throws ProcessingException {
-          if (newMasterValue != null) {
-            setValue(((BigDecimal) newMasterValue).toString());
-          }
-          else {
-            setValue(null);
-          }
         }
       }
 
@@ -766,6 +595,10 @@ public class DecimalFieldsForm extends AbstractForm implements IPageForm {
       @Order(210.0)
       public class Place8Field extends AbstractPlaceholderField {
       }
+
+      @Order(220.0)
+      public class Place9Field extends AbstractPlaceholderField {
+      }
     }
 
     @Order(30.0)
@@ -778,8 +611,7 @@ public class DecimalFieldsForm extends AbstractForm implements IPageForm {
 
       @Override
       protected void execClickAction() throws ProcessingException {
-        getInputField().setValue(Double.MAX_VALUE);
-        getBigDecimalInputField().setDisplayText("can get as large as you want");
+        getInputField().setDisplayText("can get as large as you want");
       }
     }
 
@@ -793,8 +625,7 @@ public class DecimalFieldsForm extends AbstractForm implements IPageForm {
 
       @Override
       protected void execClickAction() throws ProcessingException {
-        getInputField().setValue(Double.MIN_VALUE);
-        getBigDecimalInputField().setDisplayText("can get as small as you want");
+        getInputField().setDisplayText("can get as small as you want");
       }
     }
 
@@ -850,8 +681,7 @@ public class DecimalFieldsForm extends AbstractForm implements IPageForm {
 
       @Override
       protected void execClickAction() throws ProcessingException {
-        getInputField().setValue(Math.PI);
-        getBigDecimalInputField().setValue(pi());
+        getInputField().setValue(pi());
       }
     }
 

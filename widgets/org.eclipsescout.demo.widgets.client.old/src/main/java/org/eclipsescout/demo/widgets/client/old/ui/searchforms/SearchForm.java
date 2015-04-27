@@ -17,12 +17,12 @@ import org.eclipse.scout.rt.client.ui.basic.table.ITable;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractSearchForm;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPageWithTable;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
+import org.eclipse.scout.rt.client.ui.form.fields.bigdecimalfield.AbstractBigDecimalField;
 import org.eclipse.scout.rt.client.ui.form.fields.booleanfield.AbstractBooleanField;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractResetButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractSearchButton;
 import org.eclipse.scout.rt.client.ui.form.fields.datefield.AbstractDateField;
-import org.eclipse.scout.rt.client.ui.form.fields.doublefield.AbstractDoubleField;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.integerfield.AbstractIntegerField;
 import org.eclipse.scout.rt.client.ui.form.fields.listbox.AbstractListBox;
@@ -43,8 +43,8 @@ import org.eclipsescout.demo.widgets.client.old.ui.searchforms.SearchForm.MainBo
 import org.eclipsescout.demo.widgets.client.old.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.DateBox.DateFrom;
 import org.eclipsescout.demo.widgets.client.old.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.DateBox.DateTo;
 import org.eclipsescout.demo.widgets.client.old.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.DoubleBox;
-import org.eclipsescout.demo.widgets.client.old.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.DoubleBox.DoubleFrom;
-import org.eclipsescout.demo.widgets.client.old.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.DoubleBox.DoubleTo;
+import org.eclipsescout.demo.widgets.client.old.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.DoubleBox.BigDecimalFrom;
+import org.eclipsescout.demo.widgets.client.old.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.DoubleBox.BigDecimalTo;
 import org.eclipsescout.demo.widgets.client.old.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.IntegerBox;
 import org.eclipsescout.demo.widgets.client.old.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.IntegerBox.IntegerFrom;
 import org.eclipsescout.demo.widgets.client.old.ui.searchforms.SearchForm.MainBox.TabBox.FieldBox.IntegerBox.IntegerTo;
@@ -90,12 +90,12 @@ public class SearchForm extends AbstractSearchForm {
     return getFieldByClass(DoubleBox.class);
   }
 
-  public DoubleFrom getDoubleFrom() {
-    return getFieldByClass(DoubleFrom.class);
+  public BigDecimalFrom getBigDecimalFrom() {
+    return getFieldByClass(BigDecimalFrom.class);
   }
 
-  public DoubleTo getDoubleTo() {
-    return getFieldByClass(DoubleTo.class);
+  public BigDecimalTo getBigDecimalTo() {
+    return getFieldByClass(BigDecimalTo.class);
   }
 
   public FieldBox getFieldBox() {
@@ -237,11 +237,11 @@ public class SearchForm extends AbstractSearchForm {
 
           @Override
           protected String getConfiguredLabel() {
-            return TEXTS.get("DoubleColumn");
+            return TEXTS.get("BigDecimalColumn");
           }
 
           @Order(10.0)
-          public class DoubleFrom extends AbstractDoubleField {
+          public class BigDecimalFrom extends AbstractBigDecimalField {
 
             @Override
             protected String getConfiguredLabel() {
@@ -250,7 +250,7 @@ public class SearchForm extends AbstractSearchForm {
           }
 
           @Order(20.0)
-          public class DoubleTo extends AbstractDoubleField {
+          public class BigDecimalTo extends AbstractBigDecimalField {
 
             @Override
             protected String getConfiguredLabel() {

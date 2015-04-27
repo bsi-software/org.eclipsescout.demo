@@ -18,10 +18,10 @@ import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.IFormField;
 import org.eclipse.scout.rt.client.ui.form.fields.IValueField;
 import org.eclipse.scout.rt.client.ui.form.fields.ScoutFieldStatus;
+import org.eclipse.scout.rt.client.ui.form.fields.bigdecimalfield.AbstractBigDecimalField;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.checkbox.AbstractCheckBox;
-import org.eclipse.scout.rt.client.ui.form.fields.doublefield.AbstractDoubleField;
 import org.eclipse.scout.rt.client.ui.form.fields.filechooserfield.AbstractFileChooserField;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.integerfield.AbstractIntegerField;
@@ -190,7 +190,7 @@ public class StatusForm extends AbstractForm implements IPageForm {
         }
 
         @Order(10.0)
-        public class SequenceFrom extends AbstractDoubleField {
+        public class SequenceFrom extends AbstractBigDecimalField {
 
           @Override
           protected String getConfiguredLabel() {
@@ -199,7 +199,7 @@ public class StatusForm extends AbstractForm implements IPageForm {
         }
 
         @Order(20.0)
-        public class SequenceTo extends AbstractDoubleField {
+        public class SequenceTo extends AbstractBigDecimalField {
 
           @Override
           protected String getConfiguredLabel() {

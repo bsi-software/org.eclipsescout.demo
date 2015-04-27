@@ -17,11 +17,11 @@ import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
+import org.eclipse.scout.rt.client.ui.form.fields.bigdecimalfield.AbstractBigDecimalField;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.checkbox.AbstractCheckBox;
 import org.eclipse.scout.rt.client.ui.form.fields.datefield.AbstractDateField;
-import org.eclipse.scout.rt.client.ui.form.fields.doublefield.AbstractDoubleField;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.imagebox.AbstractImageField;
 import org.eclipse.scout.rt.client.ui.form.fields.integerfield.AbstractIntegerField;
@@ -327,7 +327,7 @@ public class SequenceBoxForm extends AbstractForm implements IPageForm {
           }
 
           @Order(10.0)
-          public class FromField extends AbstractDoubleField {
+          public class FromField extends AbstractBigDecimalField {
 
             @Override
             protected String getConfiguredLabel() {
@@ -336,7 +336,7 @@ public class SequenceBoxForm extends AbstractForm implements IPageForm {
           }
 
           @Order(20.0)
-          public class ToField extends AbstractDoubleField {
+          public class ToField extends AbstractBigDecimalField {
 
             @Override
             protected String getConfiguredLabel() {

@@ -15,9 +15,9 @@ import java.sql.Date;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
+import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractBigDecimalColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractBooleanColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractDateColumn;
-import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractDoubleColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractIntegerColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractSmartColumn;
@@ -80,8 +80,8 @@ public class PageWithTableTablePage extends AbstractPageWithTable<PageWithTableT
       return getColumnSet().getColumnByClass(DateColumn.class);
     }
 
-    public DoubleColumn getDoubleColumn() {
-      return getColumnSet().getColumnByClass(DoubleColumn.class);
+    public BigDecimalColumn getBigDecimalColumn() {
+      return getColumnSet().getColumnByClass(BigDecimalColumn.class);
     }
 
     public IntegerColumn getIntegerColumn() {
@@ -139,7 +139,7 @@ public class PageWithTableTablePage extends AbstractPageWithTable<PageWithTableT
     }
 
     @Order(40.0)
-    public class DoubleColumn extends AbstractDoubleColumn {
+    public class BigDecimalColumn extends AbstractBigDecimalColumn {
 
       @Override
       protected boolean getConfiguredEditable() {
@@ -148,7 +148,7 @@ public class PageWithTableTablePage extends AbstractPageWithTable<PageWithTableT
 
       @Override
       protected String getConfiguredHeaderText() {
-        return TEXTS.get("DoubleColumn");
+        return TEXTS.get("BigDecimalColumn");
       }
     }
 

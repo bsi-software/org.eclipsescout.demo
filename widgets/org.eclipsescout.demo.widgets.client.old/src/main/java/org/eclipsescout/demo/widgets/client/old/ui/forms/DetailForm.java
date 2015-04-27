@@ -14,7 +14,7 @@ import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
-import org.eclipse.scout.rt.client.ui.form.fields.doublefield.AbstractDoubleField;
+import org.eclipse.scout.rt.client.ui.form.fields.bigdecimalfield.AbstractBigDecimalField;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.old.ui.forms.DetailForm.MainBox.GroupBox;
@@ -74,7 +74,7 @@ public class DetailForm extends AbstractForm {
       }
 
       @Order(10.0)
-      public class ValueLastField extends AbstractDoubleField {
+      public class ValueLastField extends AbstractBigDecimalField {
 
         @Override
         protected String getConfiguredLabel() {
@@ -83,7 +83,7 @@ public class DetailForm extends AbstractForm {
       }
 
       @Order(20.0)
-      public class ValueOpenField extends AbstractDoubleField {
+      public class ValueOpenField extends AbstractBigDecimalField {
 
         @Override
         protected String getConfiguredLabel() {
@@ -92,7 +92,7 @@ public class DetailForm extends AbstractForm {
       }
 
       @Order(30.0)
-      public class ValueLowField extends AbstractDoubleField {
+      public class ValueLowField extends AbstractBigDecimalField {
 
         @Override
         protected String getConfiguredLabel() {
@@ -101,7 +101,7 @@ public class DetailForm extends AbstractForm {
       }
 
       @Order(40.0)
-      public class ValueHighField extends AbstractDoubleField {
+      public class ValueHighField extends AbstractBigDecimalField {
 
         @Override
         protected String getConfiguredLabel() {
