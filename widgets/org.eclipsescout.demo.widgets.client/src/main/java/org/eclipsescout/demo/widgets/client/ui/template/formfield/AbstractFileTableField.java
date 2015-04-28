@@ -108,7 +108,7 @@ public abstract class AbstractFileTableField extends AbstractTableField<Abstract
 
     @Override
     protected void execAction() throws ProcessingException {
-      getTable().getMenu(DeleteMenu.class).doAction();
+      getTable().getMenuByClass(DeleteMenu.class).doAction();
     }
   }
 
@@ -204,7 +204,7 @@ public abstract class AbstractFileTableField extends AbstractTableField<Abstract
 
     @Override
     protected void execRowAction(ITableRow row) throws ProcessingException {
-      getMenu(OpenMenu.class).doAction();
+      getMenuByClass(OpenMenu.class).doAction();
     }
 
     @Override

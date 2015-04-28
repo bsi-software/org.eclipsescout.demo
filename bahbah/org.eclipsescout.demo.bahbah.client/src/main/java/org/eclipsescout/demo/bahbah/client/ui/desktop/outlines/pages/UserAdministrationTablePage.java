@@ -85,7 +85,7 @@ public class UserAdministrationTablePage extends AbstractPageWithTable<UserAdmin
 
     @Override
     protected void execRowAction(ITableRow row) throws ProcessingException {
-      getMenu(ModifyUserMenu.class).execAction();
+      getMenuByClass(ModifyUserMenu.class).execAction();
     }
 
     public RoleColumn getRoleColumn() {

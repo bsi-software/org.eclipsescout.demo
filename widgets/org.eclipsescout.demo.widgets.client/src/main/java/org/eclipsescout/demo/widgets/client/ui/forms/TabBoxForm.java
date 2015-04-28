@@ -254,7 +254,7 @@ public class TabBoxForm extends AbstractForm implements IPageForm {
 
           @Override
           protected void execClickAction() throws ProcessingException {
-            getFileTableField().getTable().getMenu(AddMenu.class).doAction();
+            getFileTableField().getTable().getMenuByClass(AddMenu.class).doAction();
           }
         }
       }
