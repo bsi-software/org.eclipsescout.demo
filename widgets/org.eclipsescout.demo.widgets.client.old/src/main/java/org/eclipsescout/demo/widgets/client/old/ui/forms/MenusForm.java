@@ -118,15 +118,101 @@ public class MenusForm extends AbstractForm implements IPageForm {
     }
 
     @Order(40.0)
-    public class NoMenusLinkButton extends AbstractLinkButton {
+    public class MenusIconMenu extends AbstractMenu {
+
+      @Override
+      protected String getConfiguredIconId() {
+        return "font:\uF0C9"; // icons-menu
+      }
+
+      @Override
+      protected String getConfiguredTooltipText() {
+        return TEXTS.get("Menus") + " (Menu)";
+      }
+
+      @Override
+      protected void injectActionNodesInternal(OrderedCollection<IMenu> actionNodes) {
+        new P_ConfiguredMenus().injectMenus(actionNodes);
+      }
+    }
+
+    @Order(110.0)
+    public class NoMenusButton extends AbstractButton {
 
       @Override
       protected String getConfiguredLabel() {
-        return "Click me";
+        return "Click me (Button)";
+      }
+
+      @Override
+      protected int getConfiguredHorizontalAlignment() {
+        return 1;
       }
 
       @Override
       protected void execClickAction() throws ProcessingException {
+        MessageBox.showOkMessage(null, "You clicked me!", null);
+      }
+    }
+
+    @Order(120.0)
+    public class NoMenusLinkButton extends AbstractLinkButton {
+
+      @Override
+      protected String getConfiguredLabel() {
+        return "Click me (Link)";
+      }
+
+      @Override
+      protected int getConfiguredHorizontalAlignment() {
+        return 1;
+      }
+
+      @Override
+      protected void execClickAction() throws ProcessingException {
+        MessageBox.showOkMessage(null, "You clicked me!", null);
+      }
+    }
+
+    @Order(130.0)
+    public class NoMenusMenu extends AbstractMenu {
+
+      @Override
+      protected String getConfiguredText() {
+        return "Click me (Menu)";
+      }
+
+      @Override
+      protected int getConfiguredHorizontalAlignment() {
+        return 1;
+      }
+
+      @Override
+      protected void execAction() throws ProcessingException {
+        MessageBox.showOkMessage(null, "You clicked me!", null);
+      }
+    }
+
+    @Order(140.0)
+    public class NoMenusIconMenu extends AbstractMenu {
+
+      @Override
+      protected String getConfiguredIconId() {
+        return "font:\uF0C9"; // icons-menu
+      }
+
+      @Override
+      protected String getConfiguredTooltipText() {
+        return "Click me (Menu)";
+      }
+
+      @Override
+      protected int getConfiguredHorizontalAlignment() {
+        return 1;
+      }
+
+      @Override
+      protected void execAction() throws ProcessingException {
         MessageBox.showOkMessage(null, "You clicked me!", null);
       }
     }
