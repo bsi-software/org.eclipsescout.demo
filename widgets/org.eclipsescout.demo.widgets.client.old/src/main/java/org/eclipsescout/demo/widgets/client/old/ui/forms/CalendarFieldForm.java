@@ -109,22 +109,22 @@ public class CalendarFieldForm extends AbstractForm implements IPageForm {
 
             @Override
             protected void execLoadItems(Date minDate, Date maxDate, final Set<ICalendarItem> result) throws ProcessingException {
-              String appColor = "7fff72";
+              String cssClass = "calendar-appointment";
               java.util.Calendar cal = java.util.Calendar.getInstance();
               Date start = cal.getTime();
               Date end = cal.getTime();
-              result.add(new CalendarAppointment(0L, 0L, start, end, true, "FULL DAY [P1]", "This appointment takes the full day", appColor));
+              result.add(new CalendarAppointment(0L, 0L, start, end, true, "FULL DAY [P1]", "This appointment takes the full day", cssClass));
               cal.add(java.util.Calendar.DAY_OF_YEAR, -1);
               start = cal.getTime();
               cal.add(java.util.Calendar.HOUR, 2);
               end = cal.getTime();
-              result.add(new CalendarAppointment(1L, 2L, start, end, false, "app1 [P1]", "appointment1 body", appColor));
+              result.add(new CalendarAppointment(1L, 2L, start, end, false, "app1 [P1]", "appointment1 body", cssClass));
 
               cal.add(java.util.Calendar.HOUR, 1);
               start = cal.getTime();
               cal.add(java.util.Calendar.MINUTE, 30);
               end = cal.getTime();
-              result.add(new CalendarAppointment(1L, 2L, start, end, false, "app2 [P1]", "appointment2 body", appColor));
+              result.add(new CalendarAppointment(2L, 2L, start, end, false, "app2 [P1]", "appointment2 body", cssClass));
 
               // future
               cal.setTime(new Date());
@@ -132,10 +132,10 @@ public class CalendarFieldForm extends AbstractForm implements IPageForm {
               start = cal.getTime();
               cal.add(java.util.Calendar.HOUR, 48);
               end = cal.getTime();
-              result.add(new CalendarAppointment(1L, 2L, start, end, false, "app3 [P1]", "appointment3 body", appColor));
+              result.add(new CalendarAppointment(3L, 2L, start, end, false, "app3 [P1]", "appointment3 body", cssClass));
               cal.add(java.util.Calendar.HOUR, 2);
               end = cal.getTime();
-              result.add(new CalendarAppointment(1L, 2L, start, end, false, "app4 [P1]", "appointment4 body", appColor));
+              result.add(new CalendarAppointment(4L, 2L, start, end, false, "app4 [P1]", "appointment4 body", cssClass));
             }
 
             @Order(200)
@@ -172,22 +172,22 @@ public class CalendarFieldForm extends AbstractForm implements IPageForm {
 
             @Override
             protected void execLoadItems(Date minDate, Date maxDate, final Set<ICalendarItem> result) throws ProcessingException {
-              String appColor = "ffcc00";
+              String cssClass = "calendar-task";
               java.util.Calendar cal = java.util.Calendar.getInstance();
               Date start = cal.getTime();
               Date end = cal.getTime();
-              result.add(new CalendarAppointment(0L, 0L, start, end, true, "FULL DAY [P2]", "This appointment takes the full day", appColor));
+              result.add(new CalendarAppointment(5L, 0L, start, end, true, "FULL DAY [P2]", "This appointment takes the full day", cssClass));
               cal.add(java.util.Calendar.DAY_OF_YEAR, -1);
               start = cal.getTime();
               cal.add(java.util.Calendar.HOUR, 2);
               end = cal.getTime();
-              result.add(new CalendarAppointment(1L, 2L, start, end, false, "app1 [P2]", "appointment1 body", appColor));
+              result.add(new CalendarAppointment(6L, 2L, start, end, false, "app1 [P2]", "appointment1 body", cssClass));
 
               cal.add(java.util.Calendar.HOUR, 1);
               start = cal.getTime();
               cal.add(java.util.Calendar.MINUTE, 30);
               end = cal.getTime();
-              result.add(new CalendarAppointment(1L, 2L, start, end, false, "app2 [P2]", "appointment2 body", appColor));
+              result.add(new CalendarAppointment(7L, 2L, start, end, false, "app2 [P2]", "appointment2 body", cssClass));
 
               // future
               cal.setTime(new Date());
@@ -195,10 +195,10 @@ public class CalendarFieldForm extends AbstractForm implements IPageForm {
               start = cal.getTime();
               cal.add(java.util.Calendar.HOUR, 48);
               end = cal.getTime();
-              result.add(new CalendarAppointment(1L, 2L, start, end, false, "app3 [P2]", "appointment3 body", appColor));
+              result.add(new CalendarAppointment(8L, 2L, start, end, false, "app3 [P2]", "appointment3 body", cssClass));
               cal.add(java.util.Calendar.HOUR, 2);
               end = cal.getTime();
-              result.add(new CalendarAppointment(1L, 2L, start, end, false, "app4 [P2]", "appointment4 body", appColor));
+              result.add(new CalendarAppointment(9L, 2L, start, end, false, "app4 [P2]", "appointment4 body", cssClass));
             }
 
             @Order(200)
