@@ -29,9 +29,9 @@ public class SwingRayoApplication extends AbstractSwingApplication {
   private volatile IClientSession m_clientSession;
 
   @Override
-  protected void startInSubject() throws Exception {
+  protected IClientSession startInSubject() throws Exception {
     LOG.info("Starting widget application...");
-    super.startInSubject();
+    return super.startInSubject();
   }
 
   @Override
