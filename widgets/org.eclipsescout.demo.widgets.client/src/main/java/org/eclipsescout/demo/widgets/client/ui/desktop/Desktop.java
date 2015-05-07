@@ -166,12 +166,6 @@ public class Desktop extends AbstractDesktop implements IDesktop {
       }
 
       @Override
-      protected void execAboutToShow() throws ProcessingException {
-        setText(getConfiguredText() + " " + (counter++));
-
-      }
-
-      @Override
       protected String getConfiguredText() {
         return TEXTS.get("MenuWithIcon");
       }
