@@ -23,7 +23,6 @@ import org.eclipse.scout.rt.client.ui.form.fields.placeholder.AbstractPlaceholde
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
-import org.eclipse.scout.rt.shared.AbstractIcons;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
 import org.eclipsescout.demo.widgets.client.services.lookup.IconIdLookupCall;
@@ -43,6 +42,7 @@ import org.eclipsescout.demo.widgets.client.ui.forms.ButtonLinkFieldsForm.MainBo
 import org.eclipsescout.demo.widgets.client.ui.forms.ButtonLinkFieldsForm.MainBox.ExamplesBox.ToggleButtonDisabledField;
 import org.eclipsescout.demo.widgets.client.ui.forms.ButtonLinkFieldsForm.MainBox.ExamplesBox.ToggleButtonField;
 import org.eclipsescout.demo.widgets.client.ui.forms.ButtonLinkFieldsForm.MainBox.ExamplesBox.ToggleButtonStyledField;
+import org.eclipsescout.demo.widgets.shared.Icons;
 
 public class ButtonLinkFieldsForm extends AbstractForm implements IPageForm {
 
@@ -214,7 +214,7 @@ public class ButtonLinkFieldsForm extends AbstractForm implements IPageForm {
 
         @Override
         protected String getConfiguredIconId() {
-          return AbstractIcons.WizardBackButton;
+          return Icons.StarRed;
         }
 
         @Override
@@ -309,7 +309,7 @@ public class ButtonLinkFieldsForm extends AbstractForm implements IPageForm {
 
         @Override
         protected String getConfiguredIconId() {
-          return AbstractIcons.Bookmark;
+          return Icons.StarRed;
         }
 
         @Override

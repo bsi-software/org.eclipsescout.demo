@@ -24,7 +24,6 @@ import org.eclipse.scout.rt.client.ui.form.fields.longfield.AbstractLongField;
 import org.eclipse.scout.rt.client.ui.form.fields.radiobuttongroup.AbstractRadioButtonGroup;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.client.ui.messagebox.MessageBox;
-import org.eclipse.scout.rt.shared.AbstractIcons;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
@@ -43,6 +42,7 @@ import org.eclipsescout.demo.widgets.client.ui.forms.RadioButtonGroupFieldForm.M
 import org.eclipsescout.demo.widgets.client.ui.forms.RadioButtonGroupFieldForm.MainBox.ExamplesBox.DefaultGroup;
 import org.eclipsescout.demo.widgets.client.ui.forms.RadioButtonGroupFieldForm.MainBox.ExamplesBox.DisabledGroup;
 import org.eclipsescout.demo.widgets.client.ui.forms.RadioButtonGroupFieldForm.MainBox.SampleContentButton;
+import org.eclipsescout.demo.widgets.shared.Icons;
 import org.eclipsescout.demo.widgets.shared.services.code.EventTypeCodeType;
 
 public class RadioButtonGroupFieldForm extends AbstractForm implements IPageForm {
@@ -246,7 +246,7 @@ public class RadioButtonGroupFieldForm extends AbstractForm implements IPageForm
           // TODO: https://bugs.eclipse.org/bugs/show_bug.cgi?id=436714
           @Override
           protected String getConfiguredIconId() {
-            return AbstractIcons.StatusWarning;
+            return Icons.StarYellow;
           }
 
           @Override
@@ -260,7 +260,7 @@ public class RadioButtonGroupFieldForm extends AbstractForm implements IPageForm
 
           @Override
           protected String getConfiguredIconId() {
-            return AbstractIcons.StatusError;
+            return Icons.StarRed;
           }
 
           @Override

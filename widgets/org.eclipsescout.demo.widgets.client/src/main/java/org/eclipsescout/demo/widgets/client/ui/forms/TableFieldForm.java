@@ -405,11 +405,9 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
 
               if (StringUtility.isNullOrEmpty(rawValue)) {
                 cell.setErrorStatus(TEXTS.get("NoEmptyName"));
-                cell.setIconId(Icons.StatusError);
               }
               else {
                 cell.clearErrorStatus();
-                cell.setIconId(null);
               }
 
               return rawValue;
@@ -510,11 +508,9 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
 
               if (NumberUtility.nvl(rawValue, 1) >= 0) {
                 cell.clearErrorStatus();
-                cell.setIconId(null);
               }
               else {
                 cell.setErrorStatus(TEXTS.get("NoNegNumber"));
-                cell.setIconId(Icons.StatusError);
               }
 
               return rawValue;

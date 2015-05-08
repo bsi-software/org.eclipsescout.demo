@@ -140,11 +140,6 @@ public abstract class AbstractFileTableField extends AbstractTableField<Abstract
     }
 
     @Override
-    protected String getConfiguredDefaultIconId() {
-      return AbstractIcons.ComposerFieldEntity;
-    }
-
-    @Override
     protected int getConfiguredDragType() {
       return TYPE_FILE_TRANSFER;
     }

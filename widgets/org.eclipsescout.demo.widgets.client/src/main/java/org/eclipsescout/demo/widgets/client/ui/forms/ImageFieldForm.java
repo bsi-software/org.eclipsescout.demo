@@ -28,7 +28,6 @@ import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.imagebox.AbstractImageField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
-import org.eclipse.scout.rt.shared.AbstractIcons;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.demo.widgets.client.ResourceBase;
 import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.CloseButton;
@@ -42,6 +41,7 @@ import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.Exam
 import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.ExamplesBox.DefaultField;
 import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.ExamplesBox.IconContentField;
 import org.eclipsescout.demo.widgets.client.ui.forms.ImageFieldForm.MainBox.SampleContentButton;
+import org.eclipsescout.demo.widgets.shared.Icons;
 
 public class ImageFieldForm extends AbstractForm implements IPageForm {
 
@@ -252,7 +252,7 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected String getConfiguredImageId() {
-          return AbstractIcons.Bookmark;
+          return Icons.House;
         }
 
         @Override
@@ -271,7 +271,7 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected String getConfiguredImageId() {
-          return AbstractIcons.Bookmark;
+          return Icons.House;
         }
 
         @Override
@@ -290,7 +290,7 @@ public class ImageFieldForm extends AbstractForm implements IPageForm {
 
         @Override
         protected String getConfiguredImageId() {
-          return AbstractIcons.Bookmark;
+          return Icons.House;
         }
 
         @Override
