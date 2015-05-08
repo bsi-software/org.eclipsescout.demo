@@ -12,13 +12,17 @@ package org.eclipsescout.demo.widgets.client.ui.forms;
 
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import org.eclipse.scout.commons.CollectionUtility;
 import org.eclipse.scout.commons.DateUtility;
+import org.eclipse.scout.commons.IRunnable;
 import org.eclipse.scout.commons.NumberUtility;
 import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.client.job.ClientJobs;
+import org.eclipse.scout.rt.client.job.ModelJobs;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.action.menu.IMenuType;
 import org.eclipse.scout.rt.client.ui.action.menu.TableMenuType;
@@ -385,6 +389,11 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
             }
 
             @Override
+            protected boolean getConfiguredMandatory() {
+              return true;
+            }
+
+            @Override
             protected String getConfiguredHeaderText() {
               return TEXTS.get("Name");
             }
@@ -551,6 +560,11 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
             }
 
             @Override
+            protected String getConfiguredCssClass() {
+              return "test";
+            }
+
+            @Override
             protected String getConfiguredHeaderText() {
               return TEXTS.get("Attended");
             }
@@ -565,6 +579,16 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
               return 120;
             }
 
+          }
+
+          private void newRow() throws ProcessingException {
+            ColumnSet cols = getColumnSet();
+            ITableRow row = new TableRow(cols);
+
+            row.getCellForUpdate(getIdColumn()).setValue(++m_maxId);
+            row.getCellForUpdate(getNameColumn()).setValue("New Event");
+
+            addRow(row, true);
           }
 
           @Order(10.0)
@@ -582,13 +606,37 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
 
             @Override
             protected void execAction() throws ProcessingException {
-              ColumnSet cols = getColumnSet();
-              ITableRow row = new TableRow(cols);
+              newRow();
+            }
+          }
 
-              row.getCellForUpdate(getIdColumn()).setValue(++m_maxId);
-              row.getCellForUpdate(getNameColumn()).setValue("New Event");
+          @Order(15.0)
+          public class NewEventDelayedMenu extends AbstractMenu {
 
-              addRow(row, true);
+            @Override
+            protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+              return CollectionUtility.<IMenuType> hashSet(TableMenuType.EmptySpace, TableMenuType.SingleSelection);
+            }
+
+            @Override
+            protected String getConfiguredText() {
+              return TEXTS.get("NewEventDelayed");
+            }
+
+            @Override
+            protected void execAction() throws ProcessingException {
+              ClientJobs.schedule(new IRunnable() {
+                @Override
+                public void run() throws Exception {
+                  ModelJobs.schedule(new IRunnable() {
+                    @Override
+                    public void run() throws Exception {
+                      newRow();
+                    }
+                  });
+                }
+              }, 2, TimeUnit.SECONDS);
+
             }
           }
 
@@ -609,6 +657,36 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
             protected void execAction() throws ProcessingException {
               List<ITableRow> rows = getSelectedRows();
               deleteRows(rows);
+            }
+          }
+
+          @Order(25.0)
+          public class DeleteEventDelayedMenu extends AbstractMenu {
+
+            @Override
+            protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+              return CollectionUtility.<IMenuType> hashSet(TableMenuType.MultiSelection, TableMenuType.SingleSelection);
+            }
+
+            @Override
+            protected String getConfiguredText() {
+              return TEXTS.get("DeleteEventDelayed");
+            }
+
+            @Override
+            protected void execAction() throws ProcessingException {
+              ClientJobs.schedule(new IRunnable() {
+                @Override
+                public void run() throws Exception {
+                  ModelJobs.schedule(new IRunnable() {
+                    @Override
+                    public void run() throws Exception {
+                      List<ITableRow> rows = getSelectedRows();
+                      deleteRows(rows);
+                    }
+                  });
+                }
+              }, 2, TimeUnit.SECONDS);
             }
           }
 
