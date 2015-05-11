@@ -10,10 +10,10 @@
  ******************************************************************************/
 package org.eclipsescout.demo.widgets.shared;
 
-
 public class Icons {
   private static final long serialVersionUID = 1L;
 
+  public static final String Bookmark = "bookmark";
   public static final String Eye = "eye";
   public static final String EclipseScout = "eclipse_scout";
   public static final String Forms = "forms_icon";
@@ -21,4 +21,6 @@ public class Icons {
   public static final String Wizard = "wizard_icon";
   public static final String StarYellow = "star_yellow";
   public static final String House = "house";
+  public static final String WizardBack = "wizard_back";
+  public static final String WizardNext = "wizard_next";
 }
