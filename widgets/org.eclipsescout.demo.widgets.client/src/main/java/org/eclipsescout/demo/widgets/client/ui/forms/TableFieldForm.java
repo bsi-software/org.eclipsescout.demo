@@ -64,6 +64,7 @@ import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.Conf
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.PropertiesGroupBox.MultiSelectField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.PropertiesGroupBox.TableHeaderVisibleField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.PropertiesGroupBox.TableStatusVisibleField;
+import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.PropertiesGroupBox.WrapTextField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.SelectedRowsField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.TableField;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ConfigurationBox.TableField.Table.LocationColumn;
@@ -143,11 +144,12 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
     return getFieldByClass(IsEditableField.class);
   }
 
-  /**
-   * @return the getFieldByClass
-   */
   public IsCheckableField getIsCheckableField() {
     return getFieldByClass(IsCheckableField.class);
+  }
+
+  public WrapTextField getWrapText() {
+    return getFieldByClass(WrapTextField.class);
   }
 
   public MainBox getMainBox() {
@@ -560,11 +562,6 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
             }
 
             @Override
-            protected String getConfiguredCssClass() {
-              return "test";
-            }
-
-            @Override
             protected String getConfiguredHeaderText() {
               return TEXTS.get("Attended");
             }
@@ -970,6 +967,31 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
           @Override
           protected void execInitField() throws ProcessingException {
             setValue(getTableField().getTable().isCheckable());
+          }
+
+        }
+
+        @Order(125.0)
+        public class WrapTextField extends AbstractCheckBox {
+
+          @Override
+          protected String getConfiguredLabel() {
+            return TEXTS.get("WrapText");
+          }
+
+          @Override
+          protected String getConfiguredFont() {
+            return "ITALIC";
+          }
+
+          @Override
+          protected void execChangedValue() throws ProcessingException {
+            getTableField().getTable().getNameColumn().setTextWrap(getValue());
+          }
+
+          @Override
+          protected void execInitField() throws ProcessingException {
+            setValue(getTableField().getTable().getNameColumn().isTextWrap());
           }
 
         }
