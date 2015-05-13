@@ -10,17 +10,27 @@
  ******************************************************************************/
 package org.eclipsescout.demo.widgets.client.old.ui.forms;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import org.eclipse.scout.commons.CollectionUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.commons.logger.IScoutLogger;
+import org.eclipse.scout.commons.logger.ScoutLogManager;
+import org.eclipse.scout.rt.client.IClientSession;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.action.menu.CalendarMenuType;
+import org.eclipse.scout.rt.client.ui.action.menu.IMenu;
 import org.eclipse.scout.rt.client.ui.action.menu.IMenuType;
+import org.eclipse.scout.rt.client.ui.action.menu.root.ContextMenuEvent;
+import org.eclipse.scout.rt.client.ui.action.menu.root.ContextMenuListener;
+import org.eclipse.scout.rt.client.ui.action.menu.root.IContextMenu;
 import org.eclipse.scout.rt.client.ui.basic.calendar.AbstractCalendar;
 import org.eclipse.scout.rt.client.ui.basic.calendar.provider.AbstractCalendarItemProvider;
+import org.eclipse.scout.rt.client.ui.desktop.outline.OutlineMenuWrapper;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
@@ -35,6 +45,8 @@ import org.eclipsescout.demo.widgets.client.old.ui.forms.CalendarFieldForm.MainB
 import org.eclipsescout.demo.widgets.client.ui.forms.IPageForm;
 
 public class CalendarFieldForm extends AbstractForm implements IPageForm {
+
+  private static final IScoutLogger LOG = ScoutLogManager.getLogger(CalendarFieldForm.class);
 
   public CalendarFieldForm() throws ProcessingException {
     super();
@@ -104,11 +116,50 @@ public class CalendarFieldForm extends AbstractForm implements IPageForm {
         @Order(10.0)
         public class Calendar extends AbstractCalendar {
 
+          private ContextMenuListener m_cml;
+
+          private List<IMenu> m_calendarMenus = new ArrayList<>();
+
+          @Override
+          protected void execInitCalendar() throws ProcessingException {
+            m_cml = new ContextMenuListener() {
+              @Override
+              public void contextMenuChanged(ContextMenuEvent event) {
+                if (ContextMenuEvent.TYPE_STRUCTURE_CHANGED == event.getType()) {
+                  IContextMenu rootContextMenu = getForm().getRootGroupBox().getContextMenu();
+                  rootContextMenu.removeChildActions(m_calendarMenus);
+                  m_calendarMenus.clear();
+                  for (IMenu menu : event.getSource().getChildActions()) {
+                    m_calendarMenus.add(new OutlineMenuWrapper(menu, menu.getMenuTypes()));
+                  }
+                  rootContextMenu.addChildActions(m_calendarMenus);
+                }
+              }
+            };
+            getCalendar().getContextMenu().addContextMenuListener(m_cml);
+          }
+
+          @Override
+          protected void execDisposeCalendar() throws ProcessingException {
+            getCalendar().getContextMenu().removeContextMenuListener(m_cml);
+          }
+
           @Order(10)
           public class ItemProvdider01 extends AbstractCalendarItemProvider {
 
             @Override
-            protected void execLoadItems(Date minDate, Date maxDate, final Set<ICalendarItem> result) throws ProcessingException {
+            protected void execLoadItemsInBackground(IClientSession session, Date minDate, Date maxDate, Set<ICalendarItem> result) throws ProcessingException {
+              LOG.info("ItemProvdider01#execLoadItemsInBackground");
+              System.out.println("START long running item fetch operation... ");
+              try {
+                Thread.sleep(5000);
+              }
+              catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+              }
+              System.out.println("END item fetch operation");
+
               String cssClass = "calendar-appointment";
               java.util.Calendar cal = java.util.Calendar.getInstance();
               Date start = cal.getTime();
@@ -132,10 +183,11 @@ public class CalendarFieldForm extends AbstractForm implements IPageForm {
               start = cal.getTime();
               cal.add(java.util.Calendar.HOUR, 48);
               end = cal.getTime();
-              result.add(new CalendarAppointment(3L, 2L, start, end, false, "app3 [P1]", "appointment3 body", cssClass));
+              result.add(new CalendarAppointment(3L, 2L, start, end, false, "app3 [P1]", null, cssClass));
               cal.add(java.util.Calendar.HOUR, 2);
               end = cal.getTime();
-              result.add(new CalendarAppointment(4L, 2L, start, end, false, "app4 [P1]", "appointment4 body", cssClass));
+
+              result.add(new CalendarAppointment(4L, 2L, start, end, false, null, "appointment4 body", cssClass));
             }
 
             @Order(200)
@@ -172,6 +224,8 @@ public class CalendarFieldForm extends AbstractForm implements IPageForm {
 
             @Override
             protected void execLoadItems(Date minDate, Date maxDate, final Set<ICalendarItem> result) throws ProcessingException {
+              LOG.info("ItemProvdider02#execLoadItems");
+
               String cssClass = "calendar-task";
               java.util.Calendar cal = java.util.Calendar.getInstance();
               Date start = cal.getTime();
