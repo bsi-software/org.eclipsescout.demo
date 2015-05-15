@@ -43,6 +43,7 @@ import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.booleanfield.AbstractBooleanField;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCloseButton;
+import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractLinkButton;
 import org.eclipse.scout.rt.client.ui.form.fields.checkbox.AbstractCheckBox;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
@@ -817,12 +818,22 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
           return 2;
         }
 
+        @Override
+        protected boolean getConfiguredBorderVisible() {
+          return false;
+        }
+
         @Order(80.0)
         public class AutoResizeColumnsField extends AbstractCheckBox {
 
           @Override
           protected String getConfiguredLabel() {
             return TEXTS.get("AutoResizeColumns");
+          }
+
+          @Override
+          protected boolean getConfiguredLabelVisible() {
+            return false;
           }
 
           @Override
@@ -848,6 +859,11 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
           @Override
           protected String getConfiguredLabel() {
             return TEXTS.get("IsVisible");
+          }
+
+          @Override
+          protected boolean getConfiguredLabelVisible() {
+            return false;
           }
 
           @Override
@@ -880,6 +896,11 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
           }
 
           @Override
+          protected boolean getConfiguredLabelVisible() {
+            return false;
+          }
+
+          @Override
           protected String getConfiguredFont() {
             return "ITALIC";
           }
@@ -901,6 +922,11 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
           @Override
           protected String getConfiguredLabel() {
             return TEXTS.get("IsEditable");
+          }
+
+          @Override
+          protected boolean getConfiguredLabelVisible() {
+            return false;
           }
 
           @Override
@@ -930,6 +956,11 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
           }
 
           @Override
+          protected boolean getConfiguredLabelVisible() {
+            return false;
+          }
+
+          @Override
           protected String getConfiguredFont() {
             return "ITALIC";
           }
@@ -955,6 +986,11 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
           }
 
           @Override
+          protected boolean getConfiguredLabelVisible() {
+            return false;
+          }
+
+          @Override
           protected String getConfiguredFont() {
             return "ITALIC";
           }
@@ -977,6 +1013,11 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
           @Override
           protected String getConfiguredLabel() {
             return TEXTS.get("WrapText");
+          }
+
+          @Override
+          protected boolean getConfiguredLabelVisible() {
+            return false;
           }
 
           @Override
@@ -1010,6 +1051,11 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
           }
 
           @Override
+          protected boolean getConfiguredLabelVisible() {
+            return false;
+          }
+
+          @Override
           protected String getConfiguredFont() {
             return "ITALIC";
           }
@@ -1035,6 +1081,11 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
           }
 
           @Override
+          protected boolean getConfiguredLabelVisible() {
+            return false;
+          }
+
+          @Override
           protected String getConfiguredFont() {
             return "ITALIC";
           }
@@ -1048,6 +1099,37 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
           protected void execInitField() throws ProcessingException {
             setValue(getTableField().getTable().isHeaderVisible());
           }
+        }
+
+        @Order(150.0)
+        public class ToggleHorizontalAlignmentField extends AbstractLinkButton {
+
+          @Override
+          protected String getConfiguredLabel() {
+            return TEXTS.get("ToggleHorizontalAlignment");
+          }
+
+          @Override
+          protected boolean getConfiguredProcessButton() {
+            return false;
+          }
+
+          @Override
+          protected String getConfiguredFont() {
+            return "ITALIC";
+          }
+
+          @Override
+          protected void execClickAction() throws ProcessingException {
+            for (IColumn column : getTableField().getTable().getColumns()) {
+              int newAlignment = column.getHorizontalAlignment() + 1;
+              if (newAlignment > 1) {
+                newAlignment = -1;
+              }
+              column.setHorizontalAlignment(newAlignment);
+            }
+          }
+
         }
       }
     }
