@@ -11,10 +11,14 @@
 package org.eclipsescout.demo.widgets.client.ui.forms;
 
 import java.util.List;
+import java.util.Set;
 
+import org.eclipse.scout.commons.CollectionUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
+import org.eclipse.scout.rt.client.ui.action.menu.IMenuType;
+import org.eclipse.scout.rt.client.ui.action.menu.TreeMenuType;
 import org.eclipse.scout.rt.client.ui.basic.cell.Cell;
 import org.eclipse.scout.rt.client.ui.basic.tree.AbstractTree;
 import org.eclipse.scout.rt.client.ui.basic.tree.AbstractTreeNode;
@@ -183,6 +187,25 @@ public class TreeFieldForm extends AbstractForm implements IPageForm {
           }
 
           @Order(30.0)
+          public class SelectNoneMenu extends AbstractMenu {
+
+            @Override
+            protected String getConfiguredText() {
+              return TEXTS.get("SelectNone");
+            }
+
+            @Override
+            protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+              return CollectionUtility.<IMenuType> hashSet(TreeMenuType.EmptySpace);
+            }
+
+            @Override
+            protected void execAction() throws ProcessingException {
+              deselectNodes(getSelectedNodes());
+            }
+          }
+
+          @Order(40.0)
           public class Info_Menu extends AbstractMenu {
 
             @Override
