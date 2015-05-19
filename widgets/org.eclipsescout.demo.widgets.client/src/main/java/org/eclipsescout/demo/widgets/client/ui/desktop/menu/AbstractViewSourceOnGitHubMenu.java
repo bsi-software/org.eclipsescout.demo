@@ -10,7 +10,7 @@
  ******************************************************************************/
 package org.eclipsescout.demo.widgets.client.ui.desktop.menu;
 
-import org.eclipse.scout.commons.ConfigIniUtility;
+import org.eclipse.scout.commons.ConfigUtility;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.shared.TEXTS;
@@ -28,7 +28,7 @@ public abstract class AbstractViewSourceOnGitHubMenu extends AbstractMenu {
     String canonicalName = provideSourceClass().getCanonicalName();
     StringBuilder sb = new StringBuilder();
     sb.append("https://github.com/BSI-Business-Systems-Integration-AG/org.eclipsescout.demo/tree/");
-    sb.append(ConfigIniUtility.getProperty("git.branch"));
+    sb.append(ConfigUtility.getProperty("git.branch"));
     sb.append("/widgets/");
     if (canonicalName.contains("widgets.client.old")) {
       sb.append("org.eclipsescout.demo.widgets.client.old");

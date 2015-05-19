@@ -12,7 +12,7 @@ package org.eclipsescout.demo.widgets.client;
 
 import java.util.Locale;
 
-import org.eclipse.scout.commons.ConfigIniUtility;
+import org.eclipse.scout.commons.ConfigUtility;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.logger.IScoutLogger;
 import org.eclipse.scout.commons.logger.ScoutLogManager;
@@ -51,7 +51,7 @@ public class ClientSession extends AbstractClientSession {
 
   @Override
   protected void execLoadSession() throws ProcessingException {
-    m_footless = !ConfigIniUtility.getPropertyBoolean("server.available", true);
+    m_footless = !ConfigUtility.getPropertyBoolean("server.available", true);
     if (isFootless()) {
       logger.info("starting client without a server!");
     }
