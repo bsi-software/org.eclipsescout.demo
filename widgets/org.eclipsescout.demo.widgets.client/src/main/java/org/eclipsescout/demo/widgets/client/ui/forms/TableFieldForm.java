@@ -584,22 +584,22 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
             ITableRow row = new TableRow(cols);
 
             row.getCellForUpdate(getIdColumn()).setValue(++m_maxId);
-            row.getCellForUpdate(getNameColumn()).setValue("New Event");
+            row.getCellForUpdate(getNameColumn()).setValue("New Row");
 
             addRow(row, true);
           }
 
           @Order(10.0)
-          public class NewEventMenu extends AbstractMenu {
+          public class NewMenu extends AbstractMenu {
 
             @Override
             protected Set<? extends IMenuType> getConfiguredMenuTypes() {
-              return CollectionUtility.<IMenuType> hashSet(TableMenuType.EmptySpace, TableMenuType.SingleSelection);
+              return CollectionUtility.<IMenuType> hashSet(TableMenuType.EmptySpace);
             }
 
             @Override
             protected String getConfiguredText() {
-              return TEXTS.get("NewEvent");
+              return TEXTS.get("New");
             }
 
             @Override
@@ -609,37 +609,63 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
           }
 
           @Order(15.0)
-          public class NewEventDelayedMenu extends AbstractMenu {
+          public class MoreMenu extends AbstractMenu {
+            @Override
+            protected String getConfiguredText() {
+              return TEXTS.get("More");
+            }
 
             @Override
             protected Set<? extends IMenuType> getConfiguredMenuTypes() {
-              return CollectionUtility.<IMenuType> hashSet(TableMenuType.EmptySpace, TableMenuType.SingleSelection);
+              return CollectionUtility.<IMenuType> hashSet(TableMenuType.EmptySpace);
             }
 
-            @Override
-            protected String getConfiguredText() {
-              return TEXTS.get("NewEventDelayed");
+            @Order(10.0)
+            public class NewDelayedMenu extends AbstractMenu {
+
+              @Override
+              protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+                return CollectionUtility.<IMenuType> hashSet(TableMenuType.EmptySpace);
+              }
+
+              @Override
+              protected String getConfiguredText() {
+                return TEXTS.get("NewDelayed");
+              }
+
+              @Override
+              protected void execAction() throws ProcessingException {
+                ClientJobs.schedule(new IRunnable() {
+                  @Override
+                  public void run() throws Exception {
+                    ModelJobs.schedule(new IRunnable() {
+                      @Override
+                      public void run() throws Exception {
+                        newRow();
+                      }
+                    });
+                  }
+                }, 2, TimeUnit.SECONDS);
+
+              }
             }
 
-            @Override
-            protected void execAction() throws ProcessingException {
-              ClientJobs.schedule(new IRunnable() {
-                @Override
-                public void run() throws Exception {
-                  ModelJobs.schedule(new IRunnable() {
-                    @Override
-                    public void run() throws Exception {
-                      newRow();
-                    }
-                  });
-                }
-              }, 2, TimeUnit.SECONDS);
+            @Order(15.0)
+            public class ScrollToSelection extends AbstractMenu {
+              @Override
+              protected String getConfiguredText() {
+                return TEXTS.get("ScrollToSelection");
+              }
 
+              @Override
+              protected void execAction() throws ProcessingException {
+                scrollToSelection();
+              }
             }
           }
 
           @Order(20.0)
-          public class DeleteEventMenu extends AbstractMenu {
+          public class DeleteMenu extends AbstractMenu {
 
             @Override
             protected Set<? extends IMenuType> getConfiguredMenuTypes() {
@@ -648,7 +674,7 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
 
             @Override
             protected String getConfiguredText() {
-              return TEXTS.get("DeleteEvent");
+              return TEXTS.get("Delete");
             }
 
             @Override
@@ -659,7 +685,7 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
           }
 
           @Order(25.0)
-          public class DeleteEventDelayedMenu extends AbstractMenu {
+          public class DeleteDelayedMenu extends AbstractMenu {
 
             @Override
             protected Set<? extends IMenuType> getConfiguredMenuTypes() {
@@ -668,7 +694,7 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
 
             @Override
             protected String getConfiguredText() {
-              return TEXTS.get("DeleteEventDelayed");
+              return TEXTS.get("DeleteDelayed");
             }
 
             @Override

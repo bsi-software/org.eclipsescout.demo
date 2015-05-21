@@ -12,10 +12,14 @@ package org.eclipsescout.demo.widgets.client.ui.forms;
 
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import org.eclipse.scout.commons.CollectionUtility;
+import org.eclipse.scout.commons.IRunnable;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.client.job.ClientJobs;
+import org.eclipse.scout.rt.client.job.ModelJobs;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
 import org.eclipse.scout.rt.client.ui.action.menu.IMenuType;
 import org.eclipse.scout.rt.client.ui.action.menu.TreeMenuType;
@@ -145,6 +149,111 @@ public class TreeFieldForm extends AbstractForm implements IPageForm {
         @Order(10.0)
         public class Tree extends AbstractTree {
 
+          protected void newNode() {
+            ITreeNode node = new AbstractTreeNode() {
+            };
+            node.getCellForUpdate().setText("New Node");
+            ITreeNode parent = getSelectedNode();
+            if (parent == null) {
+              parent = getRootNode();
+            }
+            addChildNode(parent, node);
+          }
+
+          @Order(10.0)
+          public class NewMenu extends AbstractMenu {
+
+            @Override
+            protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+              return CollectionUtility.<IMenuType> hashSet(TreeMenuType.EmptySpace);
+            }
+
+            @Override
+            protected String getConfiguredText() {
+              return TEXTS.get("New");
+            }
+
+            @Override
+            protected void execAction() throws ProcessingException {
+              newNode();
+            }
+          }
+
+          @Order(15.0)
+          public class MoreMenu extends AbstractMenu {
+            @Override
+            protected String getConfiguredText() {
+              return TEXTS.get("More");
+            }
+
+            @Override
+            protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+              return CollectionUtility.<IMenuType> hashSet(TreeMenuType.EmptySpace);
+            }
+
+            @Order(10.0)
+            public class NewDelayedMenu extends AbstractMenu {
+
+              @Override
+              protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+                return CollectionUtility.<IMenuType> hashSet(TreeMenuType.EmptySpace);
+              }
+
+              @Override
+              protected String getConfiguredText() {
+                return TEXTS.get("NewDelayed");
+              }
+
+              @Override
+              protected void execAction() throws ProcessingException {
+                ClientJobs.schedule(new IRunnable() {
+                  @Override
+                  public void run() throws Exception {
+                    ModelJobs.schedule(new IRunnable() {
+                      @Override
+                      public void run() throws Exception {
+                        newNode();
+                      }
+                    });
+                  }
+                }, 2, TimeUnit.SECONDS);
+
+              }
+            }
+
+            @Order(15.0)
+            public class ScrollToSelection extends AbstractMenu {
+              @Override
+              protected String getConfiguredText() {
+                return TEXTS.get("ScrollToSelection");
+              }
+
+              @Override
+              protected void execAction() throws ProcessingException {
+                scrollToSelection();
+              }
+            }
+
+            @Order(30.0)
+            public class SelectNoneMenu extends AbstractMenu {
+
+              @Override
+              protected String getConfiguredText() {
+                return TEXTS.get("SelectNone");
+              }
+
+              @Override
+              protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+                return CollectionUtility.<IMenuType> hashSet(TreeMenuType.EmptySpace);
+              }
+
+              @Override
+              protected void execAction() throws ProcessingException {
+                deselectNodes(getSelectedNodes());
+              }
+            }
+          }
+
           @Order(10.0)
           public class ExpandNodeMenu extends AbstractMenu {
 
@@ -183,25 +292,6 @@ public class TreeFieldForm extends AbstractForm implements IPageForm {
             protected void execOwnerValueChanged(Object newOwnerValue) throws ProcessingException {
               setVisible(getSelectedNode().getChildNodeCount() > 0);
               setEnabled(getSelectedNode().isExpanded());
-            }
-          }
-
-          @Order(30.0)
-          public class SelectNoneMenu extends AbstractMenu {
-
-            @Override
-            protected String getConfiguredText() {
-              return TEXTS.get("SelectNone");
-            }
-
-            @Override
-            protected Set<? extends IMenuType> getConfiguredMenuTypes() {
-              return CollectionUtility.<IMenuType> hashSet(TreeMenuType.EmptySpace);
-            }
-
-            @Override
-            protected void execAction() throws ProcessingException {
-              deselectNodes(getSelectedNodes());
             }
           }
 
