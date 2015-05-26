@@ -25,8 +25,8 @@ import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.security.SimplePrincipal;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.server.commons.cache.IHttpSessionCacheService;
-import org.eclipse.scout.rt.server.commons.servletfilter.security.AbstractChainableSecurityFilter;
-import org.eclipse.scout.rt.server.commons.servletfilter.security.PrincipalHolder;
+import org.eclipse.scout.rt.server.commons.servlet.filter.authentication.AbstractChainableSecurityFilter;
+import org.eclipse.scout.rt.server.commons.servlet.filter.authentication.PrincipalHolder;
 
 public class BasicForwardSecurityFilter extends AbstractChainableSecurityFilter {
 
