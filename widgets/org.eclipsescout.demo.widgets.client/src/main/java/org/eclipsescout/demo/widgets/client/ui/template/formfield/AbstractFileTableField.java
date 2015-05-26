@@ -320,7 +320,7 @@ public abstract class AbstractFileTableField extends AbstractTableField<Abstract
 
       @Override
       protected Set<? extends IMenuType> getConfiguredMenuTypes() {
-        return CollectionUtility.<IMenuType> hashSet(TableMenuType.EmptySpace, TableMenuType.Header, TableMenuType.SingleSelection);
+        return CollectionUtility.<IMenuType> hashSet(TableMenuType.EmptySpace);
       }
 
       @Override

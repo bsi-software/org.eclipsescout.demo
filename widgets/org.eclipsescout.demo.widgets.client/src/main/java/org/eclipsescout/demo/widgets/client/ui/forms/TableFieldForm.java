@@ -34,6 +34,7 @@ import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
 import org.eclipse.scout.rt.client.ui.basic.table.TableRow;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractBooleanColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractDateColumn;
+import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractIconColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractSmartColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
@@ -73,7 +74,6 @@ import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.Conf
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ExamplesBox;
 import org.eclipsescout.demo.widgets.client.ui.forms.TableFieldForm.MainBox.ExamplesBox.DefaultField;
 import org.eclipsescout.demo.widgets.client.ui.template.formfield.AbstractFileTableField;
-import org.eclipsescout.demo.widgets.shared.Icons;
 import org.eclipsescout.demo.widgets.shared.services.code.IndustryICBCodeType;
 
 public class TableFieldForm extends AbstractForm implements IPageForm {
@@ -282,6 +282,8 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
           table.getIndustryColumn().setValue(r, IndustryICBCodeType.ICB9000.ICB9500.ICB9530.ICB9537.ID);
           table.getParticipantsColumn().setValue(r, 680L);
           table.getWebPageColumn().setValue(r, "http://www.eclipsecon.org");
+          table.getPhoneColumn().setValue(r, "+41 (0)79 123 45 67");
+          table.getTrendColumn().setValue(r, "font:\uF176");
 
           //Second Row:
           r = table.addRow(getTable().createRow());
@@ -292,6 +294,8 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
           table.getIndustryColumn().setValue(r, IndustryICBCodeType.ICB9000.ICB9500.ICB9530.ICB9537.ID);
           table.getParticipantsColumn().setValue(r, 810L);
           table.getWebPageColumn().setValue(r, "http://www.javaland.eu");
+          table.getAttendedColumn().setValue(r, true);
+          table.getTrendColumn().setValue(r, "font:\uF175");
         }
 
         @Override
@@ -327,11 +331,6 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
 
           // TODO: [BUG] Table bug: organize columns throws null pointer exception
 
-          @Override
-          protected String getConfiguredDefaultIconId() {
-            return Icons.House;
-          }
-
           public NameColumn getNameColumn() {
             return getColumnSet().getColumnByClass(NameColumn.class);
           }
@@ -352,6 +351,14 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
             return getColumnSet().getColumnByClass(WebPageColumn.class);
           }
 
+          public PhoneColumn getPhoneColumn() {
+            return getColumnSet().getColumnByClass(PhoneColumn.class);
+          }
+
+          public TrendColumn getTrendColumn() {
+            return getColumnSet().getColumnByClass(TrendColumn.class);
+          }
+
           public DateColumn getDateColumn() {
             return getColumnSet().getColumnByClass(DateColumn.class);
           }
@@ -362,6 +369,17 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
 
           public AttendedColumn getAttendedColumn() {
             return getColumnSet().getColumnByClass(AttendedColumn.class);
+          }
+
+          @Override
+          protected void execDecorateRow(ITableRow row) throws ProcessingException {
+            Long participants = getParticipantsColumn().getValue(row);
+            if (participants != null && participants > 800) {
+              row.setIconId("font:\uE001");
+            }
+            else {
+              row.setIconId(null);
+            }
           }
 
           @Order(10.0)
@@ -575,6 +593,34 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
             @Override
             protected int getConfiguredWidth() {
               return 120;
+            }
+
+          }
+
+          @Order(100.0)
+          public class PhoneColumn extends AbstractStringColumn {
+            @Override
+            protected boolean getConfiguredEditable() {
+              return true;
+            }
+
+            @Override
+            protected String getConfiguredHeaderText() {
+              return TEXTS.get("Phone");
+            }
+
+            @Override
+            protected void execDecorateCell(Cell cell, ITableRow row) throws ProcessingException {
+              cell.setIconId("font:\uE011");//Icons.Phone
+            }
+          }
+
+          @Order(100.0)
+          public class TrendColumn extends AbstractIconColumn {
+
+            @Override
+            protected String getConfiguredHeaderText() {
+              return TEXTS.get("Trend");
             }
 
           }
