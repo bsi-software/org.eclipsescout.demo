@@ -74,13 +74,13 @@
       <unit id="org.junit.source" version="4.11.0.v201303080030"/>
       <unit id="org.hamcrest.core" version="1.3.0.v201303031735"/>
       <unit id="org.hamcrest.core.source" version="1.3.0.v201303031735"/>
-      <unit id="org.jsoup" version="1.7.2.v201304221138"/>
+      <unit id="org.jsoup" version="1.7.2.v201411291515"/>
       <unit id="com.thoughtworks.selenium" version="2.25.0.v201212071504"/>
       <unit id="com.thoughtworks.selenium.source" version="2.25.0.v201212071504"/>
       <unit id="com.google.guava" version="15.0.0.v201403281430"/>
       <unit id="com.google.guava.source" version="15.0.0.v201403281430"/>
 
-      <repository id="orbit_R" location="http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository"/>
+      <repository id="orbit_R" location="http://download.eclipse.org/tools/orbit/downloads/drops/R20150519210750/repository"/>
     </location>
   </locations>
 </target>
