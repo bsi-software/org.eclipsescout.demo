@@ -783,6 +783,37 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
               getSelectedRow().setEnabled(!getSelectedRow().isEnabled());
             }
           }
+
+          @Order(40.0)
+          public class HighlightRow extends AbstractMenu {
+
+            @Override
+            protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+              return CollectionUtility.<IMenuType> hashSet(TableMenuType.SingleSelection, TableMenuType.MultiSelection);
+            }
+
+            @Override
+            protected String getConfiguredText() {
+              return TEXTS.get("Highlight");
+            }
+
+            @Override
+            protected boolean getConfiguredInheritAccessibility() {
+              return false;
+            }
+
+            @Override
+            protected void execAction() throws ProcessingException {
+              for (ITableRow row : getSelectedRows()) {
+                if (row.getCssClass() == null) {
+                  row.setCssClass("highlight");
+                }
+                else {
+                  row.setCssClass(null);
+                }
+              }
+            }
+          }
         }
       }
 
@@ -1075,6 +1106,36 @@ public class TableFieldForm extends AbstractForm implements IPageForm {
           @Override
           protected void execInitField() throws ProcessingException {
             setValue(getTableField().getTable().isCheckable());
+          }
+
+        }
+
+        @Order(122.0)
+        public class IsRowIconVisibleField extends AbstractCheckBox {
+
+          @Override
+          protected String getConfiguredLabel() {
+            return TEXTS.get("RowIconVisible");
+          }
+
+          @Override
+          protected boolean getConfiguredLabelVisible() {
+            return false;
+          }
+
+          @Override
+          protected String getConfiguredFont() {
+            return "ITALIC";
+          }
+
+          @Override
+          protected void execChangedValue() throws ProcessingException {
+            getTableField().getTable().setRowIconVisible(getValue());
+          }
+
+          @Override
+          protected void execInitField() throws ProcessingException {
+            setValue(getTableField().getTable().isRowIconVisible());
           }
 
         }
