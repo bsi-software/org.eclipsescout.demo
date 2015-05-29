@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+
+   <extension
+         name=""
+         point="org.eclipse.scout.service.services">
+      <service
+            factory="org.eclipse.scout.rt.server.services.ServerServiceFactory"
+            class="org.eclipsescout.contacts.server.premium.services.EventManagementOutlineService"
+            session="org.eclipsescout.contacts.server.ServerSession">
+      </service>
+      <service
+            factory="org.eclipse.scout.rt.server.services.ServerServiceFactory"
+            class="org.eclipsescout.contacts.server.premium.services.EventService"
+            session="org.eclipsescout.contacts.server.ServerSession">
+      </service>
+      <service
+            factory="org.eclipse.scout.rt.server.services.ServerServiceFactory"
+            class="org.eclipsescout.contacts.server.premium.services.PremiumDBInstallService"
+            session="org.eclipsescout.contacts.server.ServerSession">
+      </service>
+   </extension>
+
+</plugin>

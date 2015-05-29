@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+
+   <extension
+         name=""
+         point="org.eclipse.scout.service.services">
+      <proxy
+            factory="org.eclipse.scout.rt.client.services.ClientProxyServiceFactory"
+            class="org.eclipsescout.contacts.shared.premium.services.IEventManagementOutlineService">
+      </proxy>
+      <proxy
+            factory="org.eclipse.scout.rt.client.services.ClientProxyServiceFactory"
+            class="org.eclipsescout.contacts.shared.premium.IEventService">
+      </proxy>
+   </extension>
+   <extension
+         name=""
+         point="org.eclipse.scout.rt.extension.client.desktopExtensions">
+      <desktopExtension
+            class="org.eclipsescout.contacts.client.premium.ui.desktop.DesktopExtension"
+            active="true">
+      </desktopExtension>
+   </extension>
+   <extension
+         point="org.eclipse.scout.rt.extension.client.pages">
+      <pageContribution
+            active="true"
+            class="org.eclipsescout.contacts.client.premium.ui.desktop.outlines.EventsTablePage"
+            order="30">
+         <outline
+               class="org.eclipsescout.contacts.client.ui.desktop.outlines.StandardOutline">
+         </outline>
+      </pageContribution>
+   </extension>
+
+</plugin>

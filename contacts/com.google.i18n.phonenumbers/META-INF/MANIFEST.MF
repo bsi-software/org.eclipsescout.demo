@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.google.i18n.phonenumbers
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: lib/libphonenumber-7.0.5.jar
+Export-Package: com.google.i18n.phonenumbers,
+ com.google.i18n.phonenumbers.data,
+ com.google.i18n.phonenumbers.internal
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
