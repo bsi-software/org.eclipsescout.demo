@@ -183,6 +183,20 @@ public class CheckboxFieldForm extends AbstractForm implements IPageForm {
         }
       }
 
+      @Order(10.0)
+      public class MandatoryField extends AbstractCheckBox {
+
+        @Override
+        protected String getConfiguredLabel() {
+          return "Mandatory";
+        }
+
+        @Override
+        protected void execChangedValue() throws ProcessingException {
+          getCheckboxField().setMandatory(getValue());
+        }
+      }
+
       @Order(20.0)
       public class IsCheckedField extends AbstractStringField {
 
