@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.eclipsescout.contacts.shared.services;
 
@@ -28,13 +28,6 @@ public interface IContactService extends IService {
    * @throws org.eclipse.scout.commons.exception.ProcessingException
    */
   ContactFormData load(ContactFormData formData) throws ProcessingException;
-
-  /**
-   * @param formData
-   * @return
-   * @throws org.eclipse.scout.commons.exception.ProcessingException
-   */
-  ContactFormData prepareCreate(ContactFormData formData) throws ProcessingException;
 
   /**
    * @param formData

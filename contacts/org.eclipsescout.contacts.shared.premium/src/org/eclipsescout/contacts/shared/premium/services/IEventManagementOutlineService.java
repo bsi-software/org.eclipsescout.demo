@@ -1,13 +1,13 @@
 /**
- * 
+ *
  */
 package org.eclipsescout.contacts.shared.premium.services;
 
+import org.eclipse.scout.commons.exception.ProcessingException;
+import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
 import org.eclipse.scout.rt.shared.validate.IValidationStrategy;
 import org.eclipse.scout.rt.shared.validate.InputValidation;
 import org.eclipse.scout.service.IService;
-import org.eclipse.scout.commons.exception.ProcessingException;
-import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
 import org.eclipsescout.contacts.shared.premium.ui.desktop.outlines.EventsTablePageData;
 
 /**
@@ -22,5 +22,5 @@ public interface IEventManagementOutlineService extends IService {
    * @return
    * @throws org.eclipse.scout.commons.exception.ProcessingException
    */
-  EventsTablePageData getEventsTableData(SearchFilter filter, String pageCompanyId) throws ProcessingException;
+  EventsTablePageData getEventsTableData(SearchFilter filter, String companyId) throws ProcessingException;
 }

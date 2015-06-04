@@ -27,7 +27,9 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
   public void preWindowOpen() {
     IWorkbenchWindowConfigurer configurer = getWindowConfigurer();
     configurer.setInitialSize(new Point(1024, 768));
-    configurer.setShowCoolBar(false);
+    // activate outline buttons according to scout wiki
+    // https://wiki.eclipse.org/Scout/HowTo/5.0/Changing_outlines_with_the_SWT_client#Adding_a_toolbar_to_the_SWT_application
+    configurer.setShowCoolBar(true);
     configurer.setShowStatusLine(true);
     configurer.setShowProgressIndicator(true);
     configurer.setShowMenuBar(true);

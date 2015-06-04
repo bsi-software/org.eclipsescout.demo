@@ -12,7 +12,6 @@ public class AccessControlService extends AbstractAccessControlService {
   protected Permissions execLoadPermissions() {
     Permissions permissions = new Permissions();
     permissions.add(new RemoteServiceAccessPermission("*.shared.*", "*"));
-    // TODO [mzi] Fill access control service
     permissions.add(new AllPermission());
     return permissions;
   }

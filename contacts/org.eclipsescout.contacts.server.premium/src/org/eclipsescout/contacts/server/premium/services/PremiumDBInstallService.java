@@ -38,7 +38,9 @@ public class PremiumDBInstallService extends DBInstallService implements IDBInst
       SQL.insert(TEXTS.get("SqlEventCreateTable"));
 
       if (addInitialData) {
-        SQL.insert(TEXTS.get("SqlEventInsertExample1"), new NVPair("eventId", UUID.randomUUID().toString()), new NVPair("starts", DateUtility.parse("23.06.2015 17:30", "dd.MM.yyyy HH:mm")), new NVPair("ends", DateUtility.parse("23.06.2015 23:00", "dd.MM.yyyy HH:mm")));
+        SQL.insert(TEXTS.get("SqlEventInsertExample1"), new NVPair("eventId", UUID.randomUUID().toString()), new NVPair("starts", DateUtility.parse("09.03.2015 09:00", "dd.MM.yyyy HH:mm")), new NVPair("ends", DateUtility.parse("12.03.2015 16:45", "dd.MM.yyyy HH:mm")));
+        SQL.insert(TEXTS.get("SqlEventInsertExample2"), new NVPair("eventId", UUID.randomUUID().toString()), new NVPair("starts", DateUtility.parse("24.03.2015 09:00", "dd.MM.yyyy HH:mm")), new NVPair("ends", DateUtility.parse("26.03.2015 17:00", "dd.MM.yyyy HH:mm")));
+        SQL.insert(TEXTS.get("SqlEventInsertExample3"), new NVPair("eventId", UUID.randomUUID().toString()), new NVPair("starts", DateUtility.parse("23.06.2015 17:30", "dd.MM.yyyy HH:mm")), new NVPair("ends", DateUtility.parse("23.06.2015 23:00", "dd.MM.yyyy HH:mm")));
       }
     }
   }

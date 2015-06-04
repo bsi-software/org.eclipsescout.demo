@@ -3,6 +3,8 @@
  */
 package org.eclipsescout.contacts.shared.premium.ui.forms;
 
+import java.util.Date;
+
 import javax.annotation.Generated;
 
 import org.eclipse.scout.commons.annotations.Extends;
@@ -38,15 +40,130 @@ public class ContactFormTabExtensionData extends AbstractFormFieldData {
     }
 
     @Override
-    public AbstractTableRowData createRow() {
-      return new AbstractTableRowData() {
-        private static final long serialVersionUID = 1L;
-      };
+    public EventsRowData addRow() {
+      return (EventsRowData) super.addRow();
+    }
+
+    @Override
+    public EventsRowData addRow(int rowState) {
+      return (EventsRowData) super.addRow(rowState);
+    }
+
+    @Override
+    public EventsRowData createRow() {
+      return new EventsRowData();
     }
 
     @Override
     public Class<? extends AbstractTableRowData> getRowType() {
-      return AbstractTableRowData.class;
+      return EventsRowData.class;
+    }
+
+    @Override
+    public EventsRowData[] getRows() {
+      return (EventsRowData[]) super.getRows();
+    }
+
+    @Override
+    public EventsRowData rowAt(int index) {
+      return (EventsRowData) super.rowAt(index);
+    }
+
+    public void setRows(EventsRowData[] rows) {
+      super.setRows(rows);
+    }
+
+    public static class EventsRowData extends AbstractTableRowData {
+
+      private static final long serialVersionUID = 1L;
+      public static final String id = "id";
+      public static final String title = "title";
+      public static final String starts = "starts";
+      public static final String city = "city";
+      public static final String country = "country";
+      private String m_id;
+      private String m_title;
+      private Date m_starts;
+      private String m_city;
+      private String m_country;
+
+      public EventsRowData() {
+      }
+
+      /**
+       * @return the Id
+       */
+      public String getId() {
+        return m_id;
+      }
+
+      /**
+       * @param id
+       *          the Id to set
+       */
+      public void setId(String id) {
+        m_id = id;
+      }
+
+      /**
+       * @return the Title
+       */
+      public String getTitle() {
+        return m_title;
+      }
+
+      /**
+       * @param title
+       *          the Title to set
+       */
+      public void setTitle(String title) {
+        m_title = title;
+      }
+
+      /**
+       * @return the Starts
+       */
+      public Date getStarts() {
+        return m_starts;
+      }
+
+      /**
+       * @param starts
+       *          the Starts to set
+       */
+      public void setStarts(Date starts) {
+        m_starts = starts;
+      }
+
+      /**
+       * @return the City
+       */
+      public String getCity() {
+        return m_city;
+      }
+
+      /**
+       * @param city
+       *          the City to set
+       */
+      public void setCity(String city) {
+        m_city = city;
+      }
+
+      /**
+       * @return the Country
+       */
+      public String getCountry() {
+        return m_country;
+      }
+
+      /**
+       * @param country
+       *          the Country to set
+       */
+      public void setCountry(String country) {
+        m_country = country;
+      }
     }
   }
 }

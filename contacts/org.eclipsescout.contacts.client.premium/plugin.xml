@@ -31,6 +31,14 @@
                class="org.eclipsescout.contacts.client.ui.desktop.outlines.StandardOutline">
          </outline>
       </pageContribution>
+      <pageContribution
+            active="true"
+            class="org.eclipsescout.contacts.client.premium.ui.desktop.outlines.EventsTablePage"
+            order="20">
+         <parentPage
+               class="org.eclipsescout.contacts.client.ui.desktop.outlines.CompanyDetailsNodePage">
+         </parentPage>
+      </pageContribution>
    </extension>
 
 </plugin>

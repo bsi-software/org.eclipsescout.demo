@@ -43,6 +43,7 @@ public class Activator extends Plugin {
         // register extension so that it becomes active
         SERVICES.getService(IExtensionRegistry.class).register(ContactFormTabExtension.class);
         SERVICES.getService(IExtensionRegistry.class).register(ContactFormTabExtensionData.class);
+
         return Status.OK_STATUS;
       }
     }.schedule();

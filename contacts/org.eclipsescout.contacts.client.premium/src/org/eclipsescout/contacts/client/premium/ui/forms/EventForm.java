@@ -64,6 +64,7 @@ import org.eclipsescout.contacts.shared.premium.IEventService;
 import org.eclipsescout.contacts.shared.premium.UpdateEventPermission;
 import org.eclipsescout.contacts.shared.services.IContactService;
 import org.eclipsescout.contacts.shared.services.lookup.CompanyLookupCall;
+import org.eclipsescout.contacts.shared.Icons;
 
 /**
  * @author mzi
@@ -377,6 +378,11 @@ public class EventForm extends AbstractForm {
              */
             public LastNameColumn getLastNameColumn() {
               return getColumnSet().getColumnByClass(LastNameColumn.class);
+            }
+
+            @Override
+            protected String getConfiguredDefaultIconId() {
+              return Icons.Eye;
             }
 
             @Override

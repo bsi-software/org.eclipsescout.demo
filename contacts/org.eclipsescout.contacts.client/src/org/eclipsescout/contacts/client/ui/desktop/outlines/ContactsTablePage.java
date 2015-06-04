@@ -13,9 +13,9 @@ import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.action.menu.IMenuType;
 import org.eclipse.scout.rt.client.ui.action.menu.TableMenuType;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
+import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractIntegerColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractSmartColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
-import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.ISearchForm;
 import org.eclipse.scout.rt.extension.client.ui.action.menu.AbstractExtensibleMenu;
 import org.eclipse.scout.rt.extension.client.ui.basic.table.AbstractExtensibleTable;
@@ -42,12 +42,6 @@ public class ContactsTablePage extends AbstractExtensiblePageWithTable<Table> {
   @Override
   protected String getConfiguredTitle() {
     return TEXTS.get("Contacts");
-  }
-
-  @Override
-  protected IPage execCreateChildPage(ITableRow row) throws ProcessingException {
-    ContactDetailsNodePage childPage = new ContactDetailsNodePage();
-    return childPage;
   }
 
   @Override
@@ -89,6 +83,18 @@ public class ContactsTablePage extends AbstractExtensiblePageWithTable<Table> {
      */
     public CompanyColumn getCompanyColumn() {
       return getColumnSet().getColumnByClass(CompanyColumn.class);
+    }
+
+    @Override
+    protected void execRowAction(ITableRow row) throws ProcessingException {
+      getMenu(EditMenu.class).doAction();
+    }
+
+    /**
+     * @return the EventsColumn
+     */
+    public EventsColumn getEventsColumn() {
+      return getColumnSet().getColumnByClass(EventsColumn.class);
     }
 
     /**
@@ -200,6 +206,16 @@ public class ContactsTablePage extends AbstractExtensiblePageWithTable<Table> {
       @Override
       protected Class<? extends ILookupCall<String>> getConfiguredLookupCall() {
         return CompanyLookupCall.class;
+      }
+    }
+
+    // TODO: move this column into premium module and add pagedata extension, loading of additional data, ...
+    @Order(11000.0)
+    public class EventsColumn extends AbstractIntegerColumn {
+
+      @Override
+      protected String getConfiguredHeaderText() {
+        return TEXTS.get("Events");
       }
     }
 

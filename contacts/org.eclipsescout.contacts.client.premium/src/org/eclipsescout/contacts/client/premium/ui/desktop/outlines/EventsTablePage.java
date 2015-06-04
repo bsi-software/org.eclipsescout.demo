@@ -22,8 +22,9 @@ import org.eclipse.scout.rt.shared.AbstractIcons;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
 import org.eclipse.scout.service.SERVICES;
-import org.eclipsescout.contacts.client.premium.ui.desktop.outlines.EventsTablePage.Table;
+//import org.eclipsescout.contacts.client.premium.ui.desktop.outlines.EventsTablePage.Table;
 import org.eclipsescout.contacts.client.premium.ui.forms.EventForm;
+import org.eclipsescout.contacts.client.ui.desktop.outlines.CompanyDetailsNodePage;
 import org.eclipsescout.contacts.shared.premium.services.IEventManagementOutlineService;
 import org.eclipsescout.contacts.shared.premium.ui.desktop.outlines.EventsTablePageData;
 
@@ -31,9 +32,9 @@ import org.eclipsescout.contacts.shared.premium.ui.desktop.outlines.EventsTableP
  * @author mzi
  */
 @PageData(EventsTablePageData.class)
-public class EventsTablePage extends AbstractPageWithTable<Table> {
+public class EventsTablePage extends AbstractPageWithTable<EventsTablePage.Table> {
 
-  private String m_personId;
+  private String m_companyId;
 
   @Override
   protected String getConfiguredIconId() {
@@ -45,9 +46,23 @@ public class EventsTablePage extends AbstractPageWithTable<Table> {
     return TEXTS.get("Events");
   }
 
+  /**
+   * checks for parent pages (contact and company) and set's event page variables accordingly.
+   *
+   * @see org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPage#execInitPage()
+   */
+  @Override
+  protected void execInitPage() throws ProcessingException {
+    CompanyDetailsNodePage companyParentPage = getParentNode(CompanyDetailsNodePage.class);
+
+    if (companyParentPage != null) {
+      setCompanyId(companyParentPage.getCompanyId());
+    }
+  }
+
   @Override
   protected void execLoadData(SearchFilter filter) throws ProcessingException {
-    importPageData(SERVICES.getService(IEventManagementOutlineService.class).getEventsTableData(filter, getPersonId()));
+    importPageData(SERVICES.getService(IEventManagementOutlineService.class).getEventsTableData(filter, getCompanyId()));
   }
 
   @Order(1000.0)
@@ -226,19 +241,19 @@ public class EventsTablePage extends AbstractPageWithTable<Table> {
   }
 
   /**
-   * @return the PersonId
+   * @return the CompanyId
    */
   @FormData
-  public String getPersonId() {
-    return m_personId;
+  public String getCompanyId() {
+    return m_companyId;
   }
 
   /**
-   * @param personId
-   *          the PersonId to set
+   * @param companyId
+   *          the CompanyId to set
    */
   @FormData
-  public void setPersonId(String personId) {
-    m_personId = personId;
+  public void setCompanyId(String companyId) {
+    m_companyId = companyId;
   }
 }

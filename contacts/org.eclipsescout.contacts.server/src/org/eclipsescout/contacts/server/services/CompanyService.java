@@ -35,7 +35,7 @@ public class CompanyService extends AbstractService implements ICompanyService {
 
     SQL.insert(TEXTS.get("SqlCompanyInsert"), formData);
 
-    return formData;
+    return store(formData);
   }
 
   @Override

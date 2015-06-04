@@ -4,7 +4,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.scout.commons.CollectionUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ClientSyncJob;
@@ -61,11 +60,14 @@ public class Desktop extends AbstractExtensibleDesktop {
     tableForm.setIconId(Icons.EclipseScout);
     tableForm.startView();
 
-    IOutline firstOutline = CollectionUtility.firstElement(getAvailableOutlines());
-    if (firstOutline != null) {
-      setOutline(firstOutline);
+    // ensure that the standard outline is acitvated first
+    // TODO: check if this is recommended or if there exists a better way
+    for (IOutline outline : getAvailableOutlines()) {
+      if (outline instanceof StandardOutline) {
+        setOutline(outline);
+        break;
+      }
     }
-
   }
 
   @Order(1000.0)
@@ -165,7 +167,7 @@ public class Desktop extends AbstractExtensibleDesktop {
   public class StandardOutlineViewButton extends AbstractOutlineViewButton {
 
     /**
-     * 
+     *
      */
     public StandardOutlineViewButton() {
       super(Desktop.this, StandardOutline.class);

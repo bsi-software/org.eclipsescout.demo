@@ -50,15 +50,6 @@ public class ContactService extends AbstractService implements IContactService {
   }
 
   @Override
-  public ContactFormData prepareCreate(ContactFormData formData) throws ProcessingException {
-    if (!ACCESS.check(new CreateContactPermission())) {
-      throw new VetoException(TEXTS.get("AuthorizationFailed"));
-    }
-
-    return formData;
-  }
-
-  @Override
   public ContactFormData store(ContactFormData formData) throws ProcessingException {
     if (!ACCESS.check(new UpdateContactPermission())) {
       throw new VetoException(TEXTS.get("AuthorizationFailed"));

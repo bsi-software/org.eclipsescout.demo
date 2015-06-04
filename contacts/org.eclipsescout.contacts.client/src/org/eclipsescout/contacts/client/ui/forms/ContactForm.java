@@ -133,7 +133,7 @@ public class ContactForm extends AbstractForm {
   /**
    * @return the Company1Field
    */
-  public Company1Field getCompany1Field(){
+  public Company1Field getCompany1Field() {
     return getFieldByClass(Company1Field.class);
   }
 
@@ -543,16 +543,6 @@ public class ContactForm extends AbstractForm {
   }
 
   public class NewHandler extends AbstractFormHandler {
-
-    @Override
-    protected void execLoad() throws ProcessingException {
-      IContactService service = SERVICES.getService(IContactService.class);
-      ContactFormData formData = new ContactFormData();
-      exportFormData(formData);
-      formData = service.prepareCreate(formData);
-      importFormData(formData);
-
-    }
 
     @Override
     protected void execStore() throws ProcessingException {
