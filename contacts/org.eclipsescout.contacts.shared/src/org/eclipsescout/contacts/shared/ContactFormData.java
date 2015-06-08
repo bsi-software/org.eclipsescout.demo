@@ -8,11 +8,9 @@ import java.util.Map;
 
 import javax.annotation.Generated;
 
-import org.eclipse.scout.rt.shared.data.basic.table.AbstractTableRowData;
 import org.eclipse.scout.rt.shared.data.form.AbstractFormData;
 import org.eclipse.scout.rt.shared.data.form.ValidationRule;
 import org.eclipse.scout.rt.shared.data.form.fields.AbstractValueFieldData;
-import org.eclipse.scout.rt.shared.data.form.fields.tablefield.AbstractTableFieldBeanData;
 import org.eclipse.scout.rt.shared.data.form.properties.AbstractPropertyData;
 import org.eclipsescout.contacts.shared.services.code.GenderCodeType;
 import org.eclipsescout.contacts.shared.services.lookup.CompanyLookupCall;
@@ -45,10 +43,6 @@ public class ContactFormData extends AbstractFormData {
 
   public Company getCompany() {
     return getFieldByClass(Company.class);
-  }
-
-  public Company1 getCompany1() {
-    return getFieldByClass(Company1.class);
   }
 
   /**
@@ -153,56 +147,6 @@ public class ContactFormData extends AbstractFormData {
       super.initValidationRules(ruleMap);
       ruleMap.put(ValidationRule.LOOKUP_CALL, CompanyLookupCall.class);
       ruleMap.put(ValidationRule.ZERO_NULL_EQUALITY, true);
-    }
-  }
-
-  public static class Company1 extends AbstractTableFieldBeanData {
-
-    private static final long serialVersionUID = 1L;
-
-    public Company1() {
-    }
-
-    @Override
-    public Company1RowData addRow() {
-      return (Company1RowData) super.addRow();
-    }
-
-    @Override
-    public Company1RowData addRow(int rowState) {
-      return (Company1RowData) super.addRow(rowState);
-    }
-
-    @Override
-    public Company1RowData createRow() {
-      return new Company1RowData();
-    }
-
-    @Override
-    public Class<? extends AbstractTableRowData> getRowType() {
-      return Company1RowData.class;
-    }
-
-    @Override
-    public Company1RowData[] getRows() {
-      return (Company1RowData[]) super.getRows();
-    }
-
-    @Override
-    public Company1RowData rowAt(int index) {
-      return (Company1RowData) super.rowAt(index);
-    }
-
-    public void setRows(Company1RowData[] rows) {
-      super.setRows(rows);
-    }
-
-    public static class Company1RowData extends AbstractTableRowData {
-
-      private static final long serialVersionUID = 1L;
-
-      public Company1RowData() {
-      }
     }
   }
 

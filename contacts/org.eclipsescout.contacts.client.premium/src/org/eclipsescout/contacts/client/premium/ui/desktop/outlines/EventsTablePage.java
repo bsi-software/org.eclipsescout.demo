@@ -14,6 +14,7 @@ import org.eclipse.scout.rt.client.ui.action.menu.IMenuType;
 import org.eclipse.scout.rt.client.ui.action.menu.TableMenuType;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractDateTimeColumn;
+import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractIntegerColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.AbstractPageWithTable;
 import org.eclipse.scout.rt.extension.client.ui.action.menu.AbstractExtensibleMenu;
@@ -22,7 +23,6 @@ import org.eclipse.scout.rt.shared.AbstractIcons;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
 import org.eclipse.scout.service.SERVICES;
-//import org.eclipsescout.contacts.client.premium.ui.desktop.outlines.EventsTablePage.Table;
 import org.eclipsescout.contacts.client.premium.ui.forms.EventForm;
 import org.eclipsescout.contacts.client.ui.desktop.outlines.CompanyDetailsNodePage;
 import org.eclipsescout.contacts.shared.premium.services.IEventManagementOutlineService;
@@ -107,6 +107,13 @@ public class EventsTablePage extends AbstractPageWithTable<EventsTablePage.Table
     }
 
     /**
+     * @return the ParticipantsColumn
+     */
+    public ParticipantsColumn getParticipantsColumn() {
+      return getColumnSet().getColumnByClass(ParticipantsColumn.class);
+    }
+
+    /**
      * @return the CityColumn
      */
     public CityColumn getCityColumn() {
@@ -148,6 +155,11 @@ public class EventsTablePage extends AbstractPageWithTable<EventsTablePage.Table
       protected String getConfiguredHeaderText() {
         return TEXTS.get("Title");
       }
+
+      @Override
+      protected int getConfiguredWidth() {
+        return 250;
+      }
     }
 
     @Order(3000.0)
@@ -156,6 +168,11 @@ public class EventsTablePage extends AbstractPageWithTable<EventsTablePage.Table
       @Override
       protected String getConfiguredHeaderText() {
         return TEXTS.get("Starts");
+      }
+
+      @Override
+      protected int getConfiguredWidth() {
+        return 120;
       }
     }
 
@@ -166,6 +183,11 @@ public class EventsTablePage extends AbstractPageWithTable<EventsTablePage.Table
       protected String getConfiguredHeaderText() {
         return TEXTS.get("Ends");
       }
+
+      @Override
+      protected int getConfiguredWidth() {
+        return 120;
+      }
     }
 
     @Order(5000.0)
@@ -174,6 +196,11 @@ public class EventsTablePage extends AbstractPageWithTable<EventsTablePage.Table
       @Override
       protected String getConfiguredHeaderText() {
         return TEXTS.get("City");
+      }
+
+      @Override
+      protected int getConfiguredWidth() {
+        return 120;
       }
     }
 
@@ -186,12 +213,26 @@ public class EventsTablePage extends AbstractPageWithTable<EventsTablePage.Table
       }
     }
 
+    @Order(6500.0)
+    public class ParticipantsColumn extends AbstractIntegerColumn {
+
+      @Override
+      protected String getConfiguredHeaderText() {
+        return TEXTS.get("Participants");
+      }
+    }
+
     @Order(7000.0)
     public class HomepageColumn extends AbstractStringColumn {
 
       @Override
       protected String getConfiguredHeaderText() {
         return TEXTS.get("Homepage");
+      }
+
+      @Override
+      protected int getConfiguredWidth() {
+        return 250;
       }
     }
 

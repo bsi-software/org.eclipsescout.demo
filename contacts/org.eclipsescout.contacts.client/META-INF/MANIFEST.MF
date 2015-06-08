@@ -5,6 +5,7 @@ Bundle-SymbolicName: org.eclipsescout.contacts.client;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.eclipsescout.contacts.client.Activator
 Export-Package: org.eclipsescout.contacts.client,
+ org.eclipsescout.contacts.client.services,
  org.eclipsescout.contacts.client.services.lookup,
  org.eclipsescout.contacts.client.ui.desktop,
  org.eclipsescout.contacts.client.ui.desktop.outlines,

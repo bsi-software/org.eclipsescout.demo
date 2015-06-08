@@ -68,7 +68,6 @@ public class ContactsTablePageData extends AbstractTablePageData {
     public static final String mobile = "mobile";
     public static final String email = "email";
     public static final String company = "company";
-    public static final String events = "events";
     private String m_contactId;
     private String m_firstName;
     private String m_lastName;
@@ -78,7 +77,6 @@ public class ContactsTablePageData extends AbstractTablePageData {
     private String m_mobile;
     private String m_email;
     private String m_company;
-    private Integer m_events;
 
     public ContactsTableRowData() {
     }
@@ -216,21 +214,6 @@ public class ContactsTablePageData extends AbstractTablePageData {
      */
     public void setCompany(String company) {
       m_company = company;
-    }
-
-    /**
-     * @return the Events
-     */
-    public Integer getEvents() {
-      return m_events;
-    }
-
-    /**
-     * @param events
-     *          the Events to set
-     */
-    public void setEvents(Integer events) {
-      m_events = events;
     }
   }
 }

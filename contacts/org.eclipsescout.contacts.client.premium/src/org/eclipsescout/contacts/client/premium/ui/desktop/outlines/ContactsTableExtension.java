@@ -6,7 +6,7 @@ package org.eclipsescout.contacts.client.premium.ui.desktop.outlines;
 import org.eclipse.scout.commons.annotations.Data;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.rt.client.extension.ui.basic.table.AbstractTableExtension;
-import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractIntegerColumn;
+import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractLongColumn;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipsescout.contacts.client.ui.desktop.outlines.ContactsTablePage;
 import org.eclipsescout.contacts.client.ui.desktop.outlines.ContactsTablePage.Table;
@@ -26,7 +26,7 @@ public class ContactsTableExtension extends AbstractTableExtension<ContactsTable
   }
 
   @Order(10000.0)
-  public class EventsColumn extends AbstractIntegerColumn {
+  public class EventsColumn extends AbstractLongColumn {
 
     @Override
     protected String getConfiguredHeaderText() {

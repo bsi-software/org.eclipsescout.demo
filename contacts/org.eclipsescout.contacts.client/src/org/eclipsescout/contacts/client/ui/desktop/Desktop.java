@@ -3,12 +3,15 @@ package org.eclipsescout.contacts.client.ui.desktop;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
+import org.eclipse.scout.commons.CollectionUtility;
 import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ClientSyncJob;
 import org.eclipse.scout.rt.client.ui.action.keystroke.AbstractKeyStroke;
 import org.eclipse.scout.rt.client.ui.action.menu.AbstractMenu;
+import org.eclipse.scout.rt.client.ui.action.menu.IMenuType;
 import org.eclipse.scout.rt.client.ui.desktop.outline.AbstractOutlineViewButton;
 import org.eclipse.scout.rt.client.ui.desktop.outline.IOutline;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.IPage;
@@ -24,6 +27,8 @@ import org.eclipse.scout.rt.shared.ui.UserAgentUtility;
 import org.eclipse.scout.service.SERVICES;
 import org.eclipsescout.contacts.client.ClientSession;
 import org.eclipsescout.contacts.client.ui.desktop.outlines.StandardOutline;
+import org.eclipsescout.contacts.client.ui.forms.CompanyForm;
+import org.eclipsescout.contacts.client.ui.forms.ContactForm;
 import org.eclipsescout.contacts.shared.Icons;
 
 public class Desktop extends AbstractExtensibleDesktop {
@@ -61,7 +66,6 @@ public class Desktop extends AbstractExtensibleDesktop {
     tableForm.startView();
 
     // ensure that the standard outline is acitvated first
-    // TODO: check if this is recommended or if there exists a better way
     for (IOutline outline : getAvailableOutlines()) {
       if (outline instanceof StandardOutline) {
         setOutline(outline);
@@ -79,6 +83,55 @@ public class Desktop extends AbstractExtensibleDesktop {
     }
 
     @Order(1000.0)
+    public class NewMenu extends AbstractExtensibleMenu {
+
+      @Override
+      protected String getConfiguredText() {
+        return TEXTS.get("New0");
+      }
+
+      @Order(1000.0)
+      public class ContactMenu extends AbstractExtensibleMenu {
+
+        @Override
+        protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+          return CollectionUtility.<IMenuType> hashSet();
+        }
+
+        @Override
+        protected String getConfiguredText() {
+          return TEXTS.get("Contact0");
+        }
+
+        @Override
+        protected void execAction() throws ProcessingException {
+          ContactForm form = new ContactForm();
+          form.startNew();
+        }
+      }
+
+      @Order(2000.0)
+      public class CompanyMenu extends AbstractExtensibleMenu {
+
+        @Override
+        protected Set<? extends IMenuType> getConfiguredMenuTypes() {
+          return CollectionUtility.<IMenuType> hashSet();
+        }
+
+        @Override
+        protected String getConfiguredText() {
+          return TEXTS.get("Company0");
+        }
+
+        @Override
+        protected void execAction() throws ProcessingException {
+          CompanyForm form = new CompanyForm();
+          form.startNew();
+        }
+      }
+    }
+
+    @Order(2000.0)
     public class ExitMenu extends AbstractMenu {
 
       @Override
@@ -91,6 +144,7 @@ public class Desktop extends AbstractExtensibleDesktop {
         ClientSyncJob.getCurrentSession(ClientSession.class).stopSession();
       }
     }
+
   }
 
   @Order(2000.0)

@@ -31,7 +31,7 @@
       </service>
       <service
             factory="org.eclipse.scout.rt.server.services.ServerServiceFactory"
-            class="org.eclipsescout.contacts.server.services.DBInstallService"
+            class="org.eclipsescout.contacts.server.services.ServerStartupService"
             session="org.eclipsescout.contacts.server.ServerSession">
       </service>
       <service

@@ -13,7 +13,6 @@ import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.action.menu.IMenuType;
 import org.eclipse.scout.rt.client.ui.action.menu.TableMenuType;
 import org.eclipse.scout.rt.client.ui.basic.table.ITableRow;
-import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractIntegerColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractSmartColumn;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractStringColumn;
 import org.eclipse.scout.rt.client.ui.desktop.outline.pages.ISearchForm;
@@ -91,13 +90,6 @@ public class ContactsTablePage extends AbstractExtensiblePageWithTable<Table> {
     }
 
     /**
-     * @return the EventsColumn
-     */
-    public EventsColumn getEventsColumn() {
-      return getColumnSet().getColumnByClass(EventsColumn.class);
-    }
-
-    /**
      * @return the CityColumn
      */
     public CityColumn getCityColumn() {
@@ -139,6 +131,11 @@ public class ContactsTablePage extends AbstractExtensiblePageWithTable<Table> {
       protected String getConfiguredHeaderText() {
         return TEXTS.get("FirstName");
       }
+
+      @Override
+      protected int getConfiguredWidth() {
+        return 120;
+      }
     }
 
     @Order(3000.0)
@@ -148,6 +145,11 @@ public class ContactsTablePage extends AbstractExtensiblePageWithTable<Table> {
       protected String getConfiguredHeaderText() {
         return TEXTS.get("LastName");
       }
+
+      @Override
+      protected int getConfiguredWidth() {
+        return 120;
+      }
     }
 
     @Order(5000.0)
@@ -156,6 +158,11 @@ public class ContactsTablePage extends AbstractExtensiblePageWithTable<Table> {
       @Override
       protected String getConfiguredHeaderText() {
         return TEXTS.get("City");
+      }
+
+      @Override
+      protected int getConfiguredWidth() {
+        return 120;
       }
     }
 
@@ -175,6 +182,11 @@ public class ContactsTablePage extends AbstractExtensiblePageWithTable<Table> {
       protected String getConfiguredHeaderText() {
         return TEXTS.get("Phone");
       }
+
+      @Override
+      protected int getConfiguredWidth() {
+        return 120;
+      }
     }
 
     @Order(8000.0)
@@ -184,6 +196,11 @@ public class ContactsTablePage extends AbstractExtensiblePageWithTable<Table> {
       protected String getConfiguredHeaderText() {
         return TEXTS.get("Mobile");
       }
+
+      @Override
+      protected int getConfiguredWidth() {
+        return 120;
+      }
     }
 
     @Order(9000.0)
@@ -192,6 +209,11 @@ public class ContactsTablePage extends AbstractExtensiblePageWithTable<Table> {
       @Override
       protected String getConfiguredHeaderText() {
         return TEXTS.get("Email");
+      }
+
+      @Override
+      protected int getConfiguredWidth() {
+        return 200;
       }
     }
 
@@ -207,15 +229,10 @@ public class ContactsTablePage extends AbstractExtensiblePageWithTable<Table> {
       protected Class<? extends ILookupCall<String>> getConfiguredLookupCall() {
         return CompanyLookupCall.class;
       }
-    }
-
-    // TODO: move this column into premium module and add pagedata extension, loading of additional data, ...
-    @Order(11000.0)
-    public class EventsColumn extends AbstractIntegerColumn {
 
       @Override
-      protected String getConfiguredHeaderText() {
-        return TEXTS.get("Events");
+      protected int getConfiguredWidth() {
+        return 200;
       }
     }
 

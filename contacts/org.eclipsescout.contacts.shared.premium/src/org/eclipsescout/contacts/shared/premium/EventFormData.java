@@ -205,11 +205,11 @@ public class EventFormData extends AbstractFormData {
     public static class ParticipantsRowData extends AbstractTableRowData {
 
       private static final long serialVersionUID = 1L;
-      public static final String id = "id";
+      public static final String contactId = "contactId";
       public static final String firstName = "firstName";
       public static final String lastName = "lastName";
       public static final String company = "company";
-      private String m_id;
+      private String m_contactId;
       private String m_firstName;
       private String m_lastName;
       private String m_company;
@@ -218,18 +218,18 @@ public class EventFormData extends AbstractFormData {
       }
 
       /**
-       * @return the Id
+       * @return the ContactId
        */
-      public String getId() {
-        return m_id;
+      public String getContactId() {
+        return m_contactId;
       }
 
       /**
-       * @param id
-       *          the Id to set
+       * @param contactId
+       *          the ContactId to set
        */
-      public void setId(String id) {
-        m_id = id;
+      public void setContactId(String contactId) {
+        m_contactId = contactId;
       }
 
       /**

@@ -79,7 +79,7 @@ public class ContactFormTabExtension extends AbstractTabBoxExtension<ContactForm
         }
 
         /**
-         * @return the IdColumn
+         * @return the ContactIdColumn
          */
         public IdColumn getIdColumn() {
           return getColumnSet().getColumnByClass(IdColumn.class);
@@ -106,6 +106,11 @@ public class ContactFormTabExtension extends AbstractTabBoxExtension<ContactForm
           protected String getConfiguredHeaderText() {
             return TEXTS.get("Title");
           }
+
+          @Override
+          protected int getConfiguredWidth() {
+            return 250;
+          }
         }
 
         @Order(3000.0)
@@ -120,6 +125,12 @@ public class ContactFormTabExtension extends AbstractTabBoxExtension<ContactForm
           protected int getConfiguredSortIndex() {
             return 0;
           }
+
+          @Override
+          protected int getConfiguredWidth() {
+            return 120;
+          }
+
         }
 
         @Order(4000.0)
@@ -128,6 +139,11 @@ public class ContactFormTabExtension extends AbstractTabBoxExtension<ContactForm
           @Override
           protected String getConfiguredHeaderText() {
             return TEXTS.get("City");
+          }
+
+          @Override
+          protected int getConfiguredWidth() {
+            return 120;
           }
         }
 

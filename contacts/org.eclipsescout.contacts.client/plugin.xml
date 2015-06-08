@@ -10,10 +10,6 @@
       </proxy>
       <proxy
             factory="org.eclipse.scout.rt.client.services.ClientProxyServiceFactory"
-            class="org.eclipsescout.contacts.shared.services.IDBInstallService">
-      </proxy>
-      <proxy
-            factory="org.eclipse.scout.rt.client.services.ClientProxyServiceFactory"
             class="org.eclipsescout.contacts.shared.services.IContactService">
       </proxy>
       <proxy

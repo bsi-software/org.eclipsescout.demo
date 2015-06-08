@@ -16,11 +16,17 @@
       </service>
       <service
             factory="org.eclipse.scout.rt.server.services.ServerServiceFactory"
-            class="org.eclipsescout.contacts.server.premium.services.PremiumDBInstallService"
+            class="org.eclipsescout.contacts.server.premium.services.PremiumServerStartupService"
             session="org.eclipsescout.contacts.server.ServerSession">
       </service>
       <service
-            class="org.eclipsescout.contacts.server.premium.services.ContactExtensionService"
+            factory="org.eclipse.scout.rt.server.services.ServerServiceFactory"
+            class="org.eclipsescout.contacts.server.premium.services.ContactServiceExtension"
+            session="org.eclipsescout.contacts.server.ServerSession"
+            ranking="100">
+      </service>
+      <service
+            class="org.eclipsescout.contacts.server.premium.services.StandardOutlineServiceExtension"
             factory="org.eclipse.scout.rt.server.services.ServerServiceFactory"
             ranking="100"
             session="org.eclipsescout.contacts.server.ServerSession">

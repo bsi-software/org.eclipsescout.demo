@@ -12,6 +12,14 @@
             factory="org.eclipse.scout.rt.client.services.ClientProxyServiceFactory"
             class="org.eclipsescout.contacts.shared.premium.IEventService">
       </proxy>
+      <service
+            factory="org.eclipse.scout.rt.client.services.ClientServiceFactory"
+            class="org.eclipsescout.contacts.client.premium.services.PremiumClientStartupService">
+      </service>
+      <proxy
+            factory="org.eclipse.scout.rt.client.services.ClientProxyServiceFactory"
+            class="org.eclipsescout.contacts.shared.premium.services.IStandardOutlineExService">
+      </proxy>
    </extension>
    <extension
          name=""
@@ -22,19 +30,20 @@
       </desktopExtension>
    </extension>
    <extension
+         name=""
          point="org.eclipse.scout.rt.extension.client.pages">
       <pageContribution
-            active="true"
+            order="30"
             class="org.eclipsescout.contacts.client.premium.ui.desktop.outlines.EventsTablePage"
-            order="30">
+            active="true">
          <outline
                class="org.eclipsescout.contacts.client.ui.desktop.outlines.StandardOutline">
          </outline>
       </pageContribution>
       <pageContribution
-            active="true"
+            order="20"
             class="org.eclipsescout.contacts.client.premium.ui.desktop.outlines.EventsTablePage"
-            order="20">
+            active="true">
          <parentPage
                class="org.eclipsescout.contacts.client.ui.desktop.outlines.CompanyDetailsNodePage">
          </parentPage>

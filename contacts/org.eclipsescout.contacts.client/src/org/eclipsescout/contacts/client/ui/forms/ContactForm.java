@@ -17,8 +17,6 @@ import org.eclipse.scout.rt.client.ui.form.fields.radiobuttongroup.AbstractRadio
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.client.ui.form.fields.tabbox.AbstractTabBox;
-import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
-import org.eclipse.scout.rt.extension.client.ui.basic.table.AbstractExtensibleTable;
 import org.eclipse.scout.rt.shared.TEXTS;
 import org.eclipse.scout.rt.shared.services.common.code.ICodeType;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
@@ -27,7 +25,6 @@ import org.eclipsescout.contacts.client.ui.forms.ContactForm.MainBox.CancelButto
 import org.eclipsescout.contacts.client.ui.forms.ContactForm.MainBox.DetailsBox;
 import org.eclipsescout.contacts.client.ui.forms.ContactForm.MainBox.DetailsBox.CommentsBox;
 import org.eclipsescout.contacts.client.ui.forms.ContactForm.MainBox.DetailsBox.CommentsBox.CommentsField;
-import org.eclipsescout.contacts.client.ui.forms.ContactForm.MainBox.DetailsBox.CommentsBox.Company1Field;
 import org.eclipsescout.contacts.client.ui.forms.ContactForm.MainBox.DetailsBox.ContactDetailsBox;
 import org.eclipsescout.contacts.client.ui.forms.ContactForm.MainBox.DetailsBox.ContactDetailsBox.AddressBox;
 import org.eclipsescout.contacts.client.ui.forms.ContactForm.MainBox.DetailsBox.ContactDetailsBox.EmailField;
@@ -131,13 +128,6 @@ public class ContactForm extends AbstractForm {
   }
 
   /**
-   * @return the Company1Field
-   */
-  public Company1Field getCompany1Field() {
-    return getFieldByClass(Company1Field.class);
-  }
-
-  /**
    * @return the CompanyField
    */
   public CompanyField getCompanyField() {
@@ -145,7 +135,7 @@ public class ContactForm extends AbstractForm {
   }
 
   /**
-   * @return the ContactDetailsBox
+   * @return the CompanyDetailsBox
    */
   public ContactDetailsBox getContactDetailsBox() {
     return getFieldByClass(ContactDetailsBox.class);
@@ -369,7 +359,7 @@ public class ContactForm extends AbstractForm {
 
         @Override
         protected String getConfiguredLabel() {
-          return TEXTS.get("ContactDetails");
+          return TEXTS.get("Details");
         }
 
         @Order(-1000.0)
@@ -492,19 +482,6 @@ public class ContactForm extends AbstractForm {
           @Override
           protected boolean getConfiguredMultilineText() {
             return true;
-          }
-        }
-
-        @Order(2000.0)
-        public class Company1Field extends AbstractTableField<Company1Field.Table> {
-
-          @Override
-          protected String getConfiguredLabel() {
-            return TEXTS.get("Company");
-          }
-
-          @Order(1000.0)
-          public class Table extends AbstractExtensibleTable {
           }
         }
       }

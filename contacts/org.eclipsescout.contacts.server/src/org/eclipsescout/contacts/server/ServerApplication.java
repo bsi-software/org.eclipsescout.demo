@@ -12,7 +12,7 @@ import org.eclipse.scout.rt.server.IServerJobService;
 import org.eclipse.scout.rt.server.ITransactionRunnable;
 import org.eclipse.scout.rt.server.ServerJob;
 import org.eclipse.scout.service.SERVICES;
-import org.eclipsescout.contacts.shared.services.IDBInstallService;
+import org.eclipsescout.contacts.shared.services.IServerStartupService;
 
 /**
  * Dummy application in order to manage server side product configurations in *.product files.
@@ -40,8 +40,8 @@ public class ServerApplication implements IApplication {
       @Override
       public IStatus run(IProgressMonitor monitor) {
         try {
-          for (IDBInstallService service : SERVICES.getServices(IDBInstallService.class)) {
-            service.installStorage();
+          for (IServerStartupService service : SERVICES.getServices(IServerStartupService.class)) {
+            service.init();
           }
 
           LOG.info("Contacts DB schema successfully created");

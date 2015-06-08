@@ -39,32 +39,33 @@ import org.eclipsescout.contacts.client.premium.ui.forms.EventForm.MainBox.Cance
 import org.eclipsescout.contacts.client.premium.ui.forms.EventForm.MainBox.DetailsBox;
 import org.eclipsescout.contacts.client.premium.ui.forms.EventForm.MainBox.DetailsBox.CommentsBox;
 import org.eclipsescout.contacts.client.premium.ui.forms.EventForm.MainBox.DetailsBox.CommentsBox.CommentsField;
-import org.eclipsescout.contacts.client.premium.ui.forms.EventForm.MainBox.DetailsBox.ContactDetailsBox;
-import org.eclipsescout.contacts.client.premium.ui.forms.EventForm.MainBox.DetailsBox.ContactDetailsBox.EmailField;
-import org.eclipsescout.contacts.client.premium.ui.forms.EventForm.MainBox.DetailsBox.ContactDetailsBox.LocationBox;
-import org.eclipsescout.contacts.client.premium.ui.forms.EventForm.MainBox.DetailsBox.ContactDetailsBox.PhoneField;
+import org.eclipsescout.contacts.client.premium.ui.forms.EventForm.MainBox.DetailsBox.EventDetailsBox;
+import org.eclipsescout.contacts.client.premium.ui.forms.EventForm.MainBox.DetailsBox.EventDetailsBox.EmailField;
+import org.eclipsescout.contacts.client.premium.ui.forms.EventForm.MainBox.DetailsBox.EventDetailsBox.LocationBox;
+import org.eclipsescout.contacts.client.premium.ui.forms.EventForm.MainBox.DetailsBox.EventDetailsBox.PhoneField;
 import org.eclipsescout.contacts.client.premium.ui.forms.EventForm.MainBox.DetailsBox.ParticipantsBox;
-import org.eclipsescout.contacts.client.premium.ui.forms.EventForm.MainBox.DetailsBox.ParticipantsBox.AddParticipantButton;
+import org.eclipsescout.contacts.client.premium.ui.forms.EventForm.MainBox.DetailsBox.ParticipantsBox.AddButton;
 import org.eclipsescout.contacts.client.premium.ui.forms.EventForm.MainBox.DetailsBox.ParticipantsBox.ParticipantsField;
-import org.eclipsescout.contacts.client.premium.ui.forms.EventForm.MainBox.DetailsBox.ParticipantsBox.ParticipantsField.Table.AddParticipantMenu;
-import org.eclipsescout.contacts.client.premium.ui.forms.EventForm.MainBox.DetailsBox.ParticipantsBox.ParticipantsField.Table.RemoveParticipantMenu;
-import org.eclipsescout.contacts.client.premium.ui.forms.EventForm.MainBox.DetailsBox.ParticipantsBox.RemoveParticipantButton;
+import org.eclipsescout.contacts.client.premium.ui.forms.EventForm.MainBox.DetailsBox.ParticipantsBox.ParticipantsField.Table.AddMenu;
+import org.eclipsescout.contacts.client.premium.ui.forms.EventForm.MainBox.DetailsBox.ParticipantsBox.ParticipantsField.Table.RemoveMenu;
+import org.eclipsescout.contacts.client.premium.ui.forms.EventForm.MainBox.DetailsBox.ParticipantsBox.RemoveButton;
 import org.eclipsescout.contacts.client.premium.ui.forms.EventForm.MainBox.GeneralBox;
 import org.eclipsescout.contacts.client.premium.ui.forms.EventForm.MainBox.GeneralBox.EndsField;
 import org.eclipsescout.contacts.client.premium.ui.forms.EventForm.MainBox.GeneralBox.HomepageField;
 import org.eclipsescout.contacts.client.premium.ui.forms.EventForm.MainBox.GeneralBox.StartsField;
 import org.eclipsescout.contacts.client.premium.ui.forms.EventForm.MainBox.GeneralBox.TitleField;
 import org.eclipsescout.contacts.client.premium.ui.forms.EventForm.MainBox.OkButton;
+import org.eclipsescout.contacts.client.ui.forms.ContactForm;
 import org.eclipsescout.contacts.client.ui.template.formfield.AbstractAddressBox;
 import org.eclipsescout.contacts.client.ui.template.formfield.AbstractEmailField;
 import org.eclipsescout.contacts.client.ui.template.formfield.AbstractPhoneField;
 import org.eclipsescout.contacts.shared.ContactFormData;
+import org.eclipsescout.contacts.shared.Icons;
 import org.eclipsescout.contacts.shared.premium.EventFormData;
 import org.eclipsescout.contacts.shared.premium.IEventService;
 import org.eclipsescout.contacts.shared.premium.UpdateEventPermission;
 import org.eclipsescout.contacts.shared.services.IContactService;
 import org.eclipsescout.contacts.shared.services.lookup.CompanyLookupCall;
-import org.eclipsescout.contacts.shared.Icons;
 
 /**
  * @author mzi
@@ -101,17 +102,17 @@ public class EventForm extends AbstractForm {
   }
 
   /**
-   * @return the AddParticipantButton
+   * @return the AddButton
    */
-  public AddParticipantButton getAddParticipantButton() {
-    return getFieldByClass(AddParticipantButton.class);
+  public AddButton getAddButton() {
+    return getFieldByClass(AddButton.class);
   }
 
   /**
-   * @return the AddParticipantButton
+   * @return the AddButton
    */
-  public RemoveParticipantButton getRemoveParticipantButton() {
-    return getFieldByClass(RemoveParticipantButton.class);
+  public RemoveButton getRemoveButton() {
+    return getFieldByClass(RemoveButton.class);
   }
 
   /**
@@ -136,10 +137,10 @@ public class EventForm extends AbstractForm {
   }
 
   /**
-   * @return the ContactDetailsBox
+   * @return the CompanyDetailsBox
    */
-  public ContactDetailsBox getContactDetailsBox() {
-    return getFieldByClass(ContactDetailsBox.class);
+  public EventDetailsBox getEventDetailsBox() {
+    return getFieldByClass(EventDetailsBox.class);
   }
 
   /**
@@ -314,11 +315,11 @@ public class EventForm extends AbstractForm {
     public class DetailsBox extends AbstractTabBox {
 
       @Order(1000.0)
-      public class ContactDetailsBox extends AbstractGroupBox {
+      public class EventDetailsBox extends AbstractGroupBox {
 
         @Override
         protected String getConfiguredLabel() {
-          return TEXTS.get("ContactDetails");
+          return TEXTS.get("Details");
         }
 
         @Order(1000.0)
@@ -386,8 +387,13 @@ public class EventForm extends AbstractForm {
             }
 
             @Override
+            protected void execRowAction(ITableRow row) throws ProcessingException {
+              getMenu(EditMenu.class).doAction();
+            }
+
+            @Override
             protected void execRowsSelected(List<? extends ITableRow> rows) throws ProcessingException {
-              getRemoveParticipantButton().setEnabled(rows.size() > 0);
+              getRemoveButton().setEnabled(rows.size() > 0);
             }
 
             /**
@@ -405,14 +411,14 @@ public class EventForm extends AbstractForm {
             }
 
             /**
-             * @return the IdColumn
+             * @return the ContactIdColumn
              */
-            public IdColumn getIdColumn() {
-              return getColumnSet().getColumnByClass(IdColumn.class);
+            public ContactIdColumn getContactIdColumn() {
+              return getColumnSet().getColumnByClass(ContactIdColumn.class);
             }
 
             @Order(1000.0)
-            public class IdColumn extends AbstractStringColumn {
+            public class ContactIdColumn extends AbstractStringColumn {
 
               @Override
               protected boolean getConfiguredDisplayable() {
@@ -437,6 +443,11 @@ public class EventForm extends AbstractForm {
               protected int getConfiguredSortIndex() {
                 return 0;
               }
+
+              @Override
+              protected int getConfiguredWidth() {
+                return 120;
+              }
             }
 
             @Order(3000.0)
@@ -445,6 +456,11 @@ public class EventForm extends AbstractForm {
               @Override
               protected String getConfiguredHeaderText() {
                 return TEXTS.get("LastName");
+              }
+
+              @Override
+              protected int getConfiguredWidth() {
+                return 120;
               }
             }
 
@@ -460,10 +476,15 @@ public class EventForm extends AbstractForm {
               protected Class<? extends ILookupCall<String>> getConfiguredLookupCall() {
                 return CompanyLookupCall.class;
               }
+
+              @Override
+              protected int getConfiguredWidth() {
+                return 250;
+              }
             }
 
             @Order(1000.0)
-            public class AddParticipantMenu extends AbstractExtensibleMenu {
+            public class AddMenu extends AbstractExtensibleMenu {
 
               @Override
               protected Set<? extends IMenuType> getConfiguredMenuTypes() {
@@ -472,13 +493,13 @@ public class EventForm extends AbstractForm {
 
               @Override
               protected String getConfiguredText() {
-                return TEXTS.get("AddParticipant");
+                return TEXTS.get("Add");
               }
 
               @Override
               protected void execAction() throws ProcessingException {
                 SelectContactForm form = new SelectContactForm();
-                form.setExistingContacts(getIdColumn().getValues(false));
+                form.setExistingContacts(getContactIdColumn().getValues(false));
                 form.startNew();
                 form.waitFor();
 
@@ -502,7 +523,7 @@ public class EventForm extends AbstractForm {
                   fd.setContactId(id);
                   fd = SERVICES.getService(IContactService.class).load(fd);
 
-                  table.getIdColumn().setValue(row, fd.getContactId());
+                  table.getContactIdColumn().setValue(row, fd.getContactId());
                   table.getFirstNameColumn().setValue(row, fd.getFirstName().getValue());
                   table.getLastNameColumn().setValue(row, fd.getLastName().getValue());
                   table.getCompanyColumn().setValue(row, fd.getCompany().getValue());
@@ -510,8 +531,24 @@ public class EventForm extends AbstractForm {
               }
             }
 
+            @Order(1500.0)
+            public class EditMenu extends AbstractExtensibleMenu {
+
+              @Override
+              protected String getConfiguredText() {
+                return TEXTS.get("Edit");
+              }
+
+              @Override
+              protected void execAction() throws ProcessingException {
+                ContactForm form = new ContactForm();
+                form.setContactId(getContactIdColumn().getSelectedValue());
+                form.startModify();
+              }
+            }
+
             @Order(2000.0)
-            public class RemoveParticipantMenu extends AbstractExtensibleMenu {
+            public class RemoveMenu extends AbstractExtensibleMenu {
 
               @Override
               protected String getConfiguredKeyStroke() {
@@ -525,7 +562,7 @@ public class EventForm extends AbstractForm {
 
               @Override
               protected String getConfiguredText() {
-                return TEXTS.get("RemoveParticipant");
+                return TEXTS.get("Remove");
               }
 
               @Override
@@ -537,21 +574,21 @@ public class EventForm extends AbstractForm {
         }
 
         @Order(2000.0)
-        public class AddParticipantButton extends AbstractLinkButton {
+        public class AddButton extends AbstractLinkButton {
 
           @Override
           protected String getConfiguredLabel() {
-            return TEXTS.get("AddParticipant");
+            return TEXTS.get("Add");
           }
 
           @Override
           protected void execClickAction() throws ProcessingException {
-            getParticipantsField().getTable().getMenu(AddParticipantMenu.class).doAction();
+            getParticipantsField().getTable().getMenu(AddMenu.class).doAction();
           }
         }
 
         @Order(3000.0)
-        public class RemoveParticipantButton extends AbstractLinkButton {
+        public class RemoveButton extends AbstractLinkButton {
 
           @Override
           protected boolean getConfiguredEnabled() {
@@ -560,12 +597,12 @@ public class EventForm extends AbstractForm {
 
           @Override
           protected String getConfiguredLabel() {
-            return TEXTS.get("RemoveParticipant");
+            return TEXTS.get("Remove");
           }
 
           @Override
           protected void execClickAction() throws ProcessingException {
-            getParticipantsField().getTable().getMenu(RemoveParticipantMenu.class).doAction();
+            getParticipantsField().getTable().getMenu(RemoveMenu.class).doAction();
           }
         }
       }

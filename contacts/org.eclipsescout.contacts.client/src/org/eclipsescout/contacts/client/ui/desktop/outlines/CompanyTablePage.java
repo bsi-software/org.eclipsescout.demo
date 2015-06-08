@@ -114,6 +114,11 @@ public class CompanyTablePage extends AbstractExtensiblePageWithTable<Table> {
       protected String getConfiguredHeaderText() {
         return TEXTS.get("Name");
       }
+
+      @Override
+      protected int getConfiguredWidth() {
+        return 250;
+      }
     }
 
     @Order(3000.0)
@@ -122,6 +127,11 @@ public class CompanyTablePage extends AbstractExtensiblePageWithTable<Table> {
       @Override
       protected String getConfiguredHeaderText() {
         return TEXTS.get("City");
+      }
+
+      @Override
+      protected int getConfiguredWidth() {
+        return 120;
       }
     }
 
@@ -140,6 +150,11 @@ public class CompanyTablePage extends AbstractExtensiblePageWithTable<Table> {
       @Override
       protected String getConfiguredHeaderText() {
         return TEXTS.get("Homepage");
+      }
+
+      @Override
+      protected int getConfiguredWidth() {
+        return 200;
       }
     }
 

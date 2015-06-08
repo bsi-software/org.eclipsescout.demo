@@ -21,11 +21,13 @@ public class PremiumClientStartupService extends AbstractService implements ICli
 
   @Override
   public void init() throws ProcessingException {
-    SERVICES.getService(IExtensionRegistry.class).register(NewMenuExtension.class);
     SERVICES.getService(IExtensionRegistry.class).register(ContactFormTabExtension.class);
     SERVICES.getService(IExtensionRegistry.class).register(ContactFormTabExtensionData.class);
+
     SERVICES.getService(IExtensionRegistry.class).register(ContactsTableExtension.class);
     SERVICES.getService(IExtensionRegistry.class).register(ContactsTableDataExtension.class);
+
+    SERVICES.getService(IExtensionRegistry.class).register(NewMenuExtension.class);
   }
 
 }

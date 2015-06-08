@@ -8,6 +8,7 @@ import org.eclipse.scout.commons.annotations.Order;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
+import org.eclipse.scout.rt.client.ui.form.fields.IValueField;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractCancelButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractLinkButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractOkButton;
@@ -19,18 +20,18 @@ import org.eclipse.scout.rt.shared.services.common.shell.IShellService;
 import org.eclipse.scout.service.SERVICES;
 import org.eclipsescout.contacts.client.ui.forms.CompanyForm.MainBox.CancelButton;
 import org.eclipsescout.contacts.client.ui.forms.CompanyForm.MainBox.DetailsBox;
-import org.eclipsescout.contacts.client.ui.forms.CompanyForm.MainBox.GeneralBox;
-import org.eclipsescout.contacts.client.ui.forms.CompanyForm.MainBox.OkButton;
 import org.eclipsescout.contacts.client.ui.forms.CompanyForm.MainBox.DetailsBox.CommentsBox;
-import org.eclipsescout.contacts.client.ui.forms.CompanyForm.MainBox.DetailsBox.ContactDetailsBox;
 import org.eclipsescout.contacts.client.ui.forms.CompanyForm.MainBox.DetailsBox.CommentsBox.CommentsField;
-import org.eclipsescout.contacts.client.ui.forms.CompanyForm.MainBox.DetailsBox.ContactDetailsBox.AddressBox;
-import org.eclipsescout.contacts.client.ui.forms.CompanyForm.MainBox.DetailsBox.ContactDetailsBox.EmailField;
-import org.eclipsescout.contacts.client.ui.forms.CompanyForm.MainBox.DetailsBox.ContactDetailsBox.PhoneField;
+import org.eclipsescout.contacts.client.ui.forms.CompanyForm.MainBox.DetailsBox.CompanyDetailsBox;
+import org.eclipsescout.contacts.client.ui.forms.CompanyForm.MainBox.DetailsBox.CompanyDetailsBox.AddressBox;
+import org.eclipsescout.contacts.client.ui.forms.CompanyForm.MainBox.DetailsBox.CompanyDetailsBox.EmailField;
+import org.eclipsescout.contacts.client.ui.forms.CompanyForm.MainBox.DetailsBox.CompanyDetailsBox.PhoneField;
+import org.eclipsescout.contacts.client.ui.forms.CompanyForm.MainBox.GeneralBox;
 import org.eclipsescout.contacts.client.ui.forms.CompanyForm.MainBox.GeneralBox.HomepageField;
 import org.eclipsescout.contacts.client.ui.forms.CompanyForm.MainBox.GeneralBox.LogoBox;
 import org.eclipsescout.contacts.client.ui.forms.CompanyForm.MainBox.GeneralBox.NameField;
 import org.eclipsescout.contacts.client.ui.forms.CompanyForm.MainBox.GeneralBox.OpenInBrowserButton;
+import org.eclipsescout.contacts.client.ui.forms.CompanyForm.MainBox.OkButton;
 import org.eclipsescout.contacts.client.ui.template.formfield.AbstractAddressBox;
 import org.eclipsescout.contacts.client.ui.template.formfield.AbstractEmailField;
 import org.eclipsescout.contacts.client.ui.template.formfield.AbstractPhoneField;
@@ -38,7 +39,6 @@ import org.eclipsescout.contacts.client.ui.template.formfield.AbstractPictureBox
 import org.eclipsescout.contacts.shared.CompanyFormData;
 import org.eclipsescout.contacts.shared.UpdateCompanyPermission;
 import org.eclipsescout.contacts.shared.services.ICompanyService;
-import org.eclipse.scout.rt.client.ui.form.fields.IValueField;
 
 /**
  * @author mzi
@@ -103,10 +103,10 @@ public class CompanyForm extends AbstractForm {
   }
 
   /**
-   * @return the ContactDetailsBox
+   * @return the CompanyDetailsBox
    */
-  public ContactDetailsBox getContactDetailsBox() {
-    return getFieldByClass(ContactDetailsBox.class);
+  public CompanyDetailsBox getCompanyDetailsBox() {
+    return getFieldByClass(CompanyDetailsBox.class);
   }
 
   /**
@@ -251,11 +251,11 @@ public class CompanyForm extends AbstractForm {
     public class DetailsBox extends AbstractTabBox {
 
       @Order(1000.0)
-      public class ContactDetailsBox extends AbstractGroupBox {
+      public class CompanyDetailsBox extends AbstractGroupBox {
 
         @Override
         protected String getConfiguredLabel() {
-          return TEXTS.get("ContactDetails");
+          return TEXTS.get("Details");
         }
 
         @Order(1000.0)
