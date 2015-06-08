@@ -9,6 +9,7 @@ import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.exception.ProcessingException;
 import org.eclipse.scout.commons.exception.VetoException;
 import org.eclipse.scout.commons.holders.ITableHolder;
+import org.eclipse.scout.commons.holders.NVPair;
 import org.eclipse.scout.commons.holders.TableBeanHolderFilter;
 import org.eclipse.scout.rt.server.services.common.jdbc.SQL;
 import org.eclipse.scout.rt.shared.TEXTS;
@@ -68,9 +69,17 @@ public class EventService extends AbstractService implements IEventService {
     }
 
     SQL.update(TEXTS.get("SqlEventUpdate"), formData);
-    SQL.delete(TEXTS.get("SqlEventParticipantsDelete"), new TableBeanHolderFilter(formData.getParticipants(), ITableHolder.STATUS_DELETED), formData);
-    SQL.insert(TEXTS.get("SqlEventParticipantsInsert"), new TableBeanHolderFilter(formData.getParticipants(), ITableHolder.STATUS_INSERTED), formData);
+    updateParticipants(formData);
 
     return formData;
+  }
+  
+  private void updateParticipants(EventFormData formData) throws ProcessingException {
+    TableBeanHolderFilter deletedParticipants = new TableBeanHolderFilter(formData.getParticipants(), ITableHolder.STATUS_DELETED);
+    TableBeanHolderFilter insertedParticipants = new TableBeanHolderFilter(formData.getParticipants(), ITableHolder.STATUS_INSERTED);
+    NVPair eventId = new NVPair("eventId", formData.getEventId());
+    
+    SQL.delete(TEXTS.get("SqlEventParticipantsDelete"), deletedParticipants, eventId);
+    SQL.insert(TEXTS.get("SqlEventParticipantsInsert"), insertedParticipants, eventId);
   }
 }
