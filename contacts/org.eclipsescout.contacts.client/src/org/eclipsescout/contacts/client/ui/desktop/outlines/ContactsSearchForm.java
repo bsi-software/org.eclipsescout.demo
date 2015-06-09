@@ -11,7 +11,6 @@ import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractResetButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractSearchButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
-import org.eclipse.scout.rt.client.ui.form.fields.sequencebox.AbstractSequenceBox;
 import org.eclipse.scout.rt.client.ui.form.fields.smartfield.AbstractSmartField;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.client.ui.form.fields.tabbox.AbstractTabBox;
@@ -25,12 +24,11 @@ import org.eclipsescout.contacts.client.ui.desktop.outlines.ContactsSearchForm.M
 import org.eclipsescout.contacts.client.ui.desktop.outlines.ContactsSearchForm.MainBox.TabBox.FieldBox.CompanyField;
 import org.eclipsescout.contacts.client.ui.desktop.outlines.ContactsSearchForm.MainBox.TabBox.FieldBox.FirstNameField;
 import org.eclipsescout.contacts.client.ui.desktop.outlines.ContactsSearchForm.MainBox.TabBox.FieldBox.LastNameField;
-import org.eclipsescout.contacts.client.ui.desktop.outlines.ContactsSearchForm.MainBox.TabBox.FieldBox.LocationBox;
-import org.eclipsescout.contacts.client.ui.desktop.outlines.ContactsSearchForm.MainBox.TabBox.FieldBox.LocationBox.CityField;
-import org.eclipsescout.contacts.client.ui.desktop.outlines.ContactsSearchForm.MainBox.TabBox.FieldBox.LocationBox.CountryField;
+import org.eclipsescout.contacts.client.ui.desktop.outlines.ContactsSearchForm.MainBox.TabBox.FieldBox.Location;
 import org.eclipsescout.contacts.client.ui.forms.ContactForm.MainBox.DetailsBox.ContactDetailsBox.EmailField;
 import org.eclipsescout.contacts.client.ui.forms.ContactForm.MainBox.DetailsBox.ContactDetailsBox.MobileField;
 import org.eclipsescout.contacts.client.ui.forms.ContactForm.MainBox.DetailsBox.ContactDetailsBox.PhoneField;
+import org.eclipsescout.contacts.client.ui.template.formfield.AbstractLocationBox;
 import org.eclipsescout.contacts.shared.services.lookup.CompanyLookupCall;
 import org.eclipsescout.contacts.shared.ui.desktop.outlines.ContactsSearchFormData;
 
@@ -66,24 +64,10 @@ public class ContactsSearchForm extends AbstractSearchForm {
   }
 
   /**
-   * @return the CityField
-   */
-  public CityField getCityField() {
-    return getFieldByClass(CityField.class);
-  }
-
-  /**
    * @return the CompanyField
    */
   public CompanyField getCompanyField() {
     return getFieldByClass(CompanyField.class);
-  }
-
-  /**
-   * @return the CountryField
-   */
-  public CountryField getCountryField() {
-    return getFieldByClass(CountryField.class);
   }
 
   /**
@@ -115,10 +99,10 @@ public class ContactsSearchForm extends AbstractSearchForm {
   }
 
   /**
-   * @return the LocationBox
+   * @return the LocatiBox
    */
-  public LocationBox getLocationBox() {
-    return getFieldByClass(LocationBox.class);
+  public Location getLocatiBox() {
+    return getFieldByClass(Location.class);
   }
 
   /**
@@ -195,46 +179,8 @@ public class ContactsSearchForm extends AbstractSearchForm {
           }
         }
 
-        @Order(2500.0)
-        public class LocationBox extends AbstractSequenceBox {
-
-          @Override
-          protected boolean getConfiguredAutoCheckFromTo() {
-            return false;
-          }
-
-          @Override
-          protected String getConfiguredLabel() {
-            return TEXTS.get("Location");
-          }
-
-          @Order(1000.0)
-          public class CityField extends AbstractStringField {
-
-            @Override
-            protected String getConfiguredLabel() {
-              return TEXTS.get("City");
-            }
-
-            @Override
-            protected int getConfiguredLabelPosition() {
-              return LABEL_POSITION_ON_FIELD;
-            }
-          }
-
-          @Order(2000.0)
-          public class CountryField extends AbstractStringField {
-
-            @Override
-            protected String getConfiguredLabel() {
-              return TEXTS.get("Country");
-            }
-
-            @Override
-            protected int getConfiguredLabelPosition() {
-              return LABEL_POSITION_ON_FIELD;
-            }
-          }
+        @Order(3125.0)
+        public class Location extends AbstractLocationBox {
         }
 
         @Order(3750.0)

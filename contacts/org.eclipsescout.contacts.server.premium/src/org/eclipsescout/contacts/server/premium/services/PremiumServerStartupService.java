@@ -17,6 +17,7 @@ import org.eclipse.scout.rt.shared.extension.IExtensionRegistry;
 import org.eclipse.scout.service.SERVICES;
 import org.eclipsescout.contacts.server.services.ServerStartupService;
 import org.eclipsescout.contacts.shared.premium.ui.desktop.outlines.ContactsTableDataExtension;
+import org.eclipsescout.contacts.shared.premium.ui.forms.ContactFormTabExtensionData;
 import org.eclipsescout.contacts.shared.services.IServerStartupService;
 
 /**
@@ -27,13 +28,17 @@ public class PremiumServerStartupService extends ServerStartupService implements
 
   @Override
   public void init() throws ProcessingException {
+
+    // register dto core extensions
+    SERVICES.getService(IExtensionRegistry.class).register(ContactsTableDataExtension.class);
+    SERVICES.getService(IExtensionRegistry.class).register(ContactFormTabExtensionData.class);
+
+    // setup contacts database
     if (doSetup()) {
       Set<String> tables = getExistingTables();
       createEventTable(tables, addInitialData());
       createParticipantTable(tables, addInitialData());
     }
-
-    SERVICES.getService(IExtensionRegistry.class).register(ContactsTableDataExtension.class);
 
     LOG.info("DB install completed");
   }

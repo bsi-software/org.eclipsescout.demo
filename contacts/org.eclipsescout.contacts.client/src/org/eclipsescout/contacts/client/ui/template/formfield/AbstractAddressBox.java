@@ -150,6 +150,7 @@ public abstract class AbstractAddressBox extends AbstractGroupBox {
         return CountryLookupCall.class;
       }
     }
+
   }
 
   private void verifyAllFields() {

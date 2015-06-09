@@ -11,7 +11,6 @@ import org.eclipse.scout.rt.client.ui.form.AbstractFormHandler;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractResetButton;
 import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractSearchButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
-import org.eclipse.scout.rt.client.ui.form.fields.sequencebox.AbstractSequenceBox;
 import org.eclipse.scout.rt.client.ui.form.fields.stringfield.AbstractStringField;
 import org.eclipse.scout.rt.client.ui.form.fields.tabbox.AbstractTabBox;
 import org.eclipse.scout.rt.shared.TEXTS;
@@ -21,9 +20,11 @@ import org.eclipsescout.contacts.client.ui.desktop.outlines.CompanySearchForm.Ma
 import org.eclipsescout.contacts.client.ui.desktop.outlines.CompanySearchForm.MainBox.TabBox;
 import org.eclipsescout.contacts.client.ui.desktop.outlines.CompanySearchForm.MainBox.TabBox.FieldBox;
 import org.eclipsescout.contacts.client.ui.desktop.outlines.CompanySearchForm.MainBox.TabBox.FieldBox.HomepageField;
-import org.eclipsescout.contacts.client.ui.desktop.outlines.CompanySearchForm.MainBox.TabBox.FieldBox.LocationBox.CityField;
-import org.eclipsescout.contacts.client.ui.desktop.outlines.CompanySearchForm.MainBox.TabBox.FieldBox.LocationBox.CountryField;
+import org.eclipsescout.contacts.client.ui.desktop.outlines.CompanySearchForm.MainBox.TabBox.FieldBox.Location;
 import org.eclipsescout.contacts.client.ui.desktop.outlines.CompanySearchForm.MainBox.TabBox.FieldBox.NameField;
+import org.eclipsescout.contacts.client.ui.template.formfield.AbstractLocationBox;
+import org.eclipsescout.contacts.client.ui.template.formfield.AbstractLocationBox.CityField;
+import org.eclipsescout.contacts.client.ui.template.formfield.AbstractLocationBox.CountryField;
 import org.eclipsescout.contacts.shared.ui.desktop.outlines.CompanySearchFormData;
 
 /**
@@ -83,6 +84,13 @@ public class CompanySearchForm extends AbstractSearchForm {
    */
   public HomepageField getHomepageField() {
     return getFieldByClass(HomepageField.class);
+  }
+
+  /**
+   * @return the LocationBox
+   */
+  public Location getLocationBox() {
+    return getFieldByClass(Location.class);
   }
 
   /**
@@ -152,35 +160,12 @@ public class CompanySearchForm extends AbstractSearchForm {
           }
         }
 
-        @Order(2500.0)
-        public class LocationBox extends AbstractSequenceBox {
-
-          @Override
-          protected boolean getConfiguredAutoCheckFromTo() {
-            return false;
-          }
+        @Order(4000.0)
+        public class Location extends AbstractLocationBox {
 
           @Override
           protected String getConfiguredLabel() {
             return TEXTS.get("Location");
-          }
-
-          @Order(1000.0)
-          public class CityField extends AbstractStringField {
-
-            @Override
-            protected String getConfiguredLabel() {
-              return TEXTS.get("City");
-            }
-          }
-
-          @Order(2000.0)
-          public class CountryField extends AbstractStringField {
-
-            @Override
-            protected String getConfiguredLabel() {
-              return TEXTS.get("Country");
-            }
           }
         }
       }

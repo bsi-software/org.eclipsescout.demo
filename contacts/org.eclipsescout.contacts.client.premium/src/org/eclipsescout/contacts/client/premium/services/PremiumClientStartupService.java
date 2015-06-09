@@ -21,6 +21,8 @@ public class PremiumClientStartupService extends AbstractService implements ICli
 
   @Override
   public void init() throws ProcessingException {
+
+    // register dto core extensions
     SERVICES.getService(IExtensionRegistry.class).register(ContactFormTabExtension.class);
     SERVICES.getService(IExtensionRegistry.class).register(ContactFormTabExtensionData.class);
 

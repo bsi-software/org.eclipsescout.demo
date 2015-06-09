@@ -100,7 +100,7 @@ public class Desktop extends AbstractExtensibleDesktop {
 
         @Override
         protected String getConfiguredText() {
-          return TEXTS.get("Contact0");
+          return TEXTS.get("Contact_");
         }
 
         @Override
@@ -120,7 +120,7 @@ public class Desktop extends AbstractExtensibleDesktop {
 
         @Override
         protected String getConfiguredText() {
-          return TEXTS.get("Company0");
+          return TEXTS.get("Company_");
         }
 
         @Override

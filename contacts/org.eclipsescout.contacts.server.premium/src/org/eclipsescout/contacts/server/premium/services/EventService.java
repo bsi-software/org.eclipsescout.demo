@@ -73,12 +73,12 @@ public class EventService extends AbstractService implements IEventService {
 
     return formData;
   }
-  
+
   private void updateParticipants(EventFormData formData) throws ProcessingException {
     TableBeanHolderFilter deletedParticipants = new TableBeanHolderFilter(formData.getParticipants(), ITableHolder.STATUS_DELETED);
     TableBeanHolderFilter insertedParticipants = new TableBeanHolderFilter(formData.getParticipants(), ITableHolder.STATUS_INSERTED);
     NVPair eventId = new NVPair("eventId", formData.getEventId());
-    
+
     SQL.delete(TEXTS.get("SqlEventParticipantsDelete"), deletedParticipants, eventId);
     SQL.insert(TEXTS.get("SqlEventParticipantsInsert"), insertedParticipants, eventId);
   }

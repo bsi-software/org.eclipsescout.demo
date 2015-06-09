@@ -11,6 +11,7 @@ import org.eclipse.scout.rt.shared.data.form.AbstractFormData;
 import org.eclipse.scout.rt.shared.data.form.ValidationRule;
 import org.eclipse.scout.rt.shared.data.form.fields.AbstractValueFieldData;
 import org.eclipsescout.contacts.shared.services.lookup.CompanyLookupCall;
+import org.eclipsescout.contacts.shared.ui.template.formfield.AbstractLocationBoxData;
 
 /**
  * <b>NOTE:</b><br>
@@ -26,16 +27,8 @@ public class ContactsSearchFormData extends AbstractFormData {
   public ContactsSearchFormData() {
   }
 
-  public City getCity() {
-    return getFieldByClass(City.class);
-  }
-
   public Company getCompany() {
     return getFieldByClass(Company.class);
-  }
-
-  public Country getCountry() {
-    return getFieldByClass(Country.class);
   }
 
   public FirstName getFirstName() {
@@ -46,21 +39,8 @@ public class ContactsSearchFormData extends AbstractFormData {
     return getFieldByClass(LastName.class);
   }
 
-  public static class City extends AbstractValueFieldData<String> {
-
-    private static final long serialVersionUID = 1L;
-
-    public City() {
-    }
-
-    /**
-     * list of derived validation rules.
-     */
-    @Override
-    protected void initValidationRules(Map<String, Object> ruleMap) {
-      super.initValidationRules(ruleMap);
-      ruleMap.put(ValidationRule.MAX_LENGTH, 4000);
-    }
+  public Location getLocation() {
+    return getFieldByClass(Location.class);
   }
 
   public static class Company extends AbstractValueFieldData<String> {
@@ -78,23 +58,6 @@ public class ContactsSearchFormData extends AbstractFormData {
       super.initValidationRules(ruleMap);
       ruleMap.put(ValidationRule.LOOKUP_CALL, CompanyLookupCall.class);
       ruleMap.put(ValidationRule.ZERO_NULL_EQUALITY, true);
-    }
-  }
-
-  public static class Country extends AbstractValueFieldData<String> {
-
-    private static final long serialVersionUID = 1L;
-
-    public Country() {
-    }
-
-    /**
-     * list of derived validation rules.
-     */
-    @Override
-    protected void initValidationRules(Map<String, Object> ruleMap) {
-      super.initValidationRules(ruleMap);
-      ruleMap.put(ValidationRule.MAX_LENGTH, 4000);
     }
   }
 
@@ -129,6 +92,14 @@ public class ContactsSearchFormData extends AbstractFormData {
     protected void initValidationRules(Map<String, Object> ruleMap) {
       super.initValidationRules(ruleMap);
       ruleMap.put(ValidationRule.MAX_LENGTH, 4000);
+    }
+  }
+
+  public static class Location extends AbstractLocationBoxData {
+
+    private static final long serialVersionUID = 1L;
+
+    public Location() {
     }
   }
 }

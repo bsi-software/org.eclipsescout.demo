@@ -143,9 +143,7 @@ public class ContactForm extends AbstractForm {
 
   /**
    * @return the CountryField
-   * @deprecated Use {@link #getAddressBox()#getCountryField()}
    */
-  @Deprecated
   public CountryField getCountryField() {
     return getAddressBox().getCountryField();
   }

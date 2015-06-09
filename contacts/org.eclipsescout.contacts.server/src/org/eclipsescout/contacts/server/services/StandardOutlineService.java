@@ -32,8 +32,8 @@ public class StandardOutlineService extends AbstractService implements IStandard
     if (searchData != null) {
       addToWhere(sqlWhere, searchData.getFirstName().getValue(), "first_name", "firstName");
       addToWhere(sqlWhere, searchData.getLastName().getValue(), "last_name", "lastName");
-      addToWhere(sqlWhere, searchData.getCity().getValue(), "city", "city");
-      addToWhere(sqlWhere, searchData.getCountry().getValue(), "country", "country");
+      addToWhere(sqlWhere, searchData.getLocation().getCity().getValue(), "city", "location.city");
+      addToWhere(sqlWhere, searchData.getLocation().getCountry().getValue(), "country", "location.country");
       addToWhere(sqlWhere, searchData.getCompany().getValue(), "company_id", "company");
       addToWhere(sqlWhere, pageCompanyId, "company_id", "pageCompanyId");
     }
@@ -56,8 +56,8 @@ public class StandardOutlineService extends AbstractService implements IStandard
 
     if (searchData != null) {
       addToWhere(sqlWhere, searchData.getName().getValue(), "name", "name");
-      addToWhere(sqlWhere, searchData.getCity().getValue(), "city", "city");
-      addToWhere(sqlWhere, searchData.getCountry().getValue(), "country", "country");
+      addToWhere(sqlWhere, searchData.getLocation().getCity().getValue(), "city", "location.city");
+      addToWhere(sqlWhere, searchData.getLocation().getCountry().getValue(), "country", "location.country");
       addToWhere(sqlWhere, searchData.getHomepage().getValue(), "url", "homepage");
     }
 

@@ -179,7 +179,7 @@ public class EventForm extends AbstractForm {
   }
 
   /**
-   * @return the LocationBox
+   * @return the LocationOldBox
    */
   public LocationBox getLocationBox() {
     return getFieldByClass(LocationBox.class);
