@@ -1,3 +1,9 @@
+h1. IMPORTANT
+
+This Branch is not used anymore. Please refer to [Scout/Contribution Guidelines] [1] which branch is suitable for you.
+
+[Scout/Contribution Guidelines] [1] https://wiki.eclipse.org/Scout/Contribution_Guidelines
+
 h1. Read Me
 
 This repository contains demo applications based on the "Eclipse Scout":http://eclipse.org/scout/ framework.
